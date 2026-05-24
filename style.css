@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Services | Leander Mena</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fractional F&B operations leadership and project-based support for restaurants and hotels in Miami.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Leander Mena</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="philosophy.html">Philosophy</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="pre-opening.html">Pre‑Opening</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="content-page">
+  <h1>Services</h1>
+  <h2>Fractional F&amp;B operations with a calm, hands-on approach.</h2>
+
+  <p>
+    I work with hospitality owners, operators, and development teams who need an experienced operator
+    to steady the floor, align the team, and protect the guest experience without adding a permanent
+    executive role.
+  </p>
+
+  <h3>Fractional operations leadership</h3>
+  <p>
+    A way to bring senior operations into the room a few days a week, for as long as the business
+    needs it. I plug into the existing structure and focus on the parts of service and reporting that
+    guests and ownership feel first.
+  </p>
+
+  <ul>
+    <li><strong>On‑site leadership</strong> during key services, peak periods, and transitions.</li>
+    <li><strong>Coaching for managers</strong> on pre‑service, floor presence, and follow‑up.</li>
+    <li><strong>Service standards and checklists</strong> that are realistic enough to be used nightly.</li>
+  </ul>
+
+  <h3>Stabilizing existing operations</h3>
+  <p>
+    For concepts that are already open but not performing as they should, the work is about tightening
+    the basics: guest journey, communication, pacing, and ownership of the numbers.
+  </p>
+
+  <ul>
+    <li><strong>Current‑state assessment</strong> of service, ticket times, and guest experience.</li>
+    <li><strong>Low‑friction changes</strong> that can be executed by the current team and layout.</li>
+    <li><strong>Simple reporting rhythms</strong> so leaders know what is working week to week.</li>
+  </ul>
+
+  <h3>Project-based support</h3>
+  <p>
+    Some properties only need a defined push: a season, a concept refresh, or support through a reopening.
+    In those cases we set clear start and end dates and work toward specific operational outcomes.
+  </p>
+
+  <ul>
+    <li><strong>Seasonal or event periods</strong> where demand and expectations spike.</li>
+    <li><strong>Concept adjustments</strong> when the offer or positioning needs to move.</li>
+    <li><strong>Reopenings and handovers</strong> where teams and standards have to reset quickly.</li>
+  </ul>
+
+  <p>
+    If you are considering fractional support or a focused project, the best place to start is a short
+    conversation about the property, the team, and where you feel the most pressure today.
+  </p>
+
+  <p>
+    <a href="contact.html">Contact me to discuss services →</a>
+  </p>
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> Leander Mena</p>
+  <a href="contact.html">Contact</a>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

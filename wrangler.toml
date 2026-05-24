@@ -1,0 +1,5 @@
+name = "leandermena-site"
+compatibility_date = "2026-05-18"
+
+[pages]
+build_output_dir = "./"
