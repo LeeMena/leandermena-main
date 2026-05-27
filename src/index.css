@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 91%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 91%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 91%;
+    --primary: 36 28% 60%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 91%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 53%;
+    --accent: 36 28% 60%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 36 28% 60%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { @apply scroll-smooth; }
+  body { @apply bg-luxury-black text-luxury-text font-sans antialiased; }
+  h1, h2 { @apply font-display; }
+}
+
+@layer components {
+  .gold-divider {
+    @apply h-px w-16 bg-gold;
+  }
+  .section-kicker {
+    @apply text-xs tracking-[0.25em] uppercase text-gold font-sans font-medium;
+  }
+  .luxury-card {
+    @apply bg-luxury-card border border-luxury-border rounded-lg;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-gold text-luxury-black font-sans font-semibold text-sm tracking-wide rounded transition-all duration-300 hover:bg-gold-light hover:shadow-glow;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-gold text-gold font-sans font-semibold text-sm tracking-wide rounded transition-all duration-300 hover:bg-gold hover:text-luxury-black;
+  }
+  .nav-link {
+    @apply text-luxury-muted hover:text-luxury-text text-sm font-sans tracking-wide transition-colors duration-200;
+  }
+  .shimmer-text {
+    @apply bg-gradient-to-r from-gold-dark via-gold-light to-gold-dark bg-[length:200%_auto] animate-shimmer bg-clip-text text-transparent;
+  }
+  .page-hero {
+    @apply relative flex items-end pb-12 pt-16;
+    min-height: 320px;
+  }
+  .form-input {
+    @apply w-full bg-luxury-dark border border-luxury-border rounded px-4 py-3 text-luxury-text text-sm placeholder:text-luxury-muted focus:outline-none focus:border-gold transition-colors duration-200;
+  }
+  .form-label {
+    @apply block text-xs tracking-widest uppercase text-luxury-muted mb-2;
+  }
+}
