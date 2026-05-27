@@ -1,6 +1,5 @@
-name = "leandermena-site"
+name = "leandermena-main"
 compatibility_date = "2026-05-18"
-main = "./worker.js"
 
 [assets]
-directory = "./dist"
+directory = "./"
