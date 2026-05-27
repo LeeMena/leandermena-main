@@ -1,5 +1,24 @@
-﻿https://leandermena.pages.dev/*
+https://:project.pages.dev/*
   X-Robots-Tag: noindex
 
 https://www.leandermena.com/*
   X-Robots-Tag: index, follow
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+https://www.leandermena.com/*.js
+  Cache-Control: public, max-age=2592000, immutable
+
+https://www.leandermena.com/*.css
+  Cache-Control: public, max-age=2592000, immutable
+
+https://www.leandermena.com/*.jpg
+  Cache-Control: public, max-age=2592000
+
+https://www.leandermena.com/*.webp
+  Cache-Control: public, max-age=2592000
+
+https://www.leandermena.com/*.html
+  Cache-Control: public, max-age=7200
