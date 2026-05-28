@@ -69,7 +69,6 @@
 
     .container { max-width: 1100px; margin-inline: auto; padding-inline: 24px; }
 
-    /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
     .reveal-delay-1 { transition-delay: 0.1s; }
@@ -77,7 +76,6 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* HERO ANIMATIONS */
     @keyframes fadeUp  { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
     @keyframes fadeIn  { from { opacity:0; } to { opacity:1; } }
     @keyframes dividerGrow { from{width:0;opacity:0} to{width:80px;opacity:1} }
@@ -88,7 +86,6 @@
     .delay-5{animation-delay:0.7s} .delay-6{animation-delay:0.85s}
     .delay-7{animation-delay:1.05s}
 
-    /* NAV */
     .site-header {
       position:fixed; top:0; left:0; right:0; z-index:200;
       background:rgba(10,10,10,0.88);
@@ -103,30 +100,22 @@
     .nav-links a { font-size:13px; font-weight:500; color:var(--lux-muted); letter-spacing:0.03em; transition:color 180ms ease; }
     .nav-links a:hover { color:var(--gold); }
 
-    /* HERO */
-    .hero {
-      position:relative; min-height:100vh;
-      display:flex; align-items:center; justify-content:center;
-      overflow:hidden;
-      background-color:#0a0a0a;
-    }
-    /* Full-bleed background image via <img> tag — most reliable across CDN/cache */
-    .hero-img {
+    .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .hero-bg {
       position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover; object-position:center top;
-      filter:brightness(0.30) contrast(1.05);
-      z-index:0;
+      background-image:url('landing-hero.jpg');
+      background-size:cover; background-position:center top;
+      filter:brightness(0.32);
     }
-    /* Dark overlay gradients on top of the image */
-    .hero-overlay {
-      position:absolute; inset:0; z-index:1;
+    .hero-bg::after {
+      content:'';
+      position:absolute; inset:0;
       background:
-        radial-gradient(ellipse at center, rgba(184,160,128,0.08) 0%, transparent 65%),
-        linear-gradient(to bottom, rgba(10,10,10,0.35) 0%, transparent 40%, rgba(10,10,10,0.95) 100%);
+        radial-gradient(ellipse at center, rgba(184,160,128,0.10) 0%, transparent 65%),
+        linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, transparent 45%, rgba(10,10,10,0.92) 100%);
     }
-    .hero-glow-l { position:absolute; top:25%; left:18%; width:420px; height:420px; background:rgba(184,160,128,0.06); border-radius:50%; filter:blur(120px); pointer-events:none; z-index:2; }
-    .hero-glow-r { position:absolute; bottom:20%; right:18%; width:340px; height:340px; background:rgba(184,160,128,0.05); border-radius:50%; filter:blur(100px); pointer-events:none; z-index:2; }
+    .hero-glow-l { position:absolute; top:25%; left:18%; width:420px; height:420px; background:rgba(184,160,128,0.06); border-radius:50%; filter:blur(120px); pointer-events:none; }
+    .hero-glow-r { position:absolute; bottom:20%; right:18%; width:340px; height:340px; background:rgba(184,160,128,0.05); border-radius:50%; filter:blur(100px); pointer-events:none; }
     .hero-inner { position:relative; z-index:10; text-align:center; padding:140px 24px 60px; max-width:920px; margin:0 auto; width:100%; }
 
     .eyebrow {
@@ -151,7 +140,6 @@
     .hero-tagline { font-family:var(--font-serif); font-style:italic; font-size:clamp(1rem,2vw,1.22rem); color:rgba(184,160,128,0.78); line-height:1.75; max-width:600px; margin:0 auto 40px; }
     .hero-cta { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
 
-    /* BUTTONS */
     .btn-primary {
       display:inline-flex; align-items:center; gap:8px;
       padding:13px 28px; font-size:13px; font-weight:600;
@@ -173,7 +161,6 @@
     }
     .btn-secondary:hover { border-color:var(--gold); color:var(--gold); background:rgba(184,160,128,0.05); }
 
-    /* STATS BAR */
     .stats-bar {
       margin-top:64px;
       display:grid; grid-template-columns:repeat(4,1fr);
@@ -185,12 +172,10 @@
     .stat-value { font-family:var(--font-serif); font-size:2rem; color:var(--lux-text); line-height:1; margin-bottom:4px; }
     .stat-label { font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--lux-muted); }
 
-    /* TRUST STRIP */
     .trust-strip { background:rgba(17,17,17,0.95); border-top:1px solid #1e1e1e; border-bottom:1px solid #1e1e1e; padding:20px 0; }
     .trust-list { display:flex; flex-wrap:wrap; justify-content:center; gap:10px 32px; }
     .trust-list span { font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(136,136,136,0.6); }
 
-    /* SECTIONS */
     .section { padding:96px 0; }
     .section-dark { background:var(--lux-black); }
     .section-mid  { background:var(--lux-dark); }
@@ -199,7 +184,6 @@
     .section-h2 { font-family:var(--font-serif); font-size:clamp(1.9rem,3.5vw,2.8rem); color:var(--lux-text); margin-bottom:16px; line-height:1.2; }
     .section-intro { color:var(--lux-muted); max-width:600px; margin:0 auto; font-size:15px; line-height:1.8; }
 
-    /* CARDS */
     .card-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(42,42,42,0.45); }
     .card-grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(42,42,42,0.45); }
     .card-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
@@ -211,7 +195,6 @@
     .card-link { font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold); }
     .card-link:hover { color:var(--gold-light); }
 
-    /* CTA PANELS */
     .cta-panel { background:var(--lux-card); border:1px solid var(--lux-border); padding:40px; }
     .cta-panel h2 { font-family:var(--font-serif); font-size:1.6rem; color:var(--lux-text); margin-bottom:16px; }
     .cta-panel p  { font-size:14px; color:var(--lux-muted); line-height:1.8; margin-bottom:24px; }
@@ -219,7 +202,6 @@
     .cta-list li { font-size:14px; color:#aaa; padding:10px 0 10px 20px; border-bottom:1px solid #1e1e1e; position:relative; line-height:1.5; }
     .cta-list li::before { content:"\2192"; position:absolute; left:0; color:var(--gold); font-size:12px; }
 
-    /* WHY SECTION */
     .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; }
     .why-list { list-style:none; margin-bottom:36px; }
     .why-list li { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
@@ -227,12 +209,8 @@
     .why-list h4 { font-size:14px; font-weight:600; color:var(--lux-text); margin-bottom:3px; }
     .why-list p  { font-size:13px; color:var(--lux-muted); }
 
-    /* About photo panel */
     .why-photo-panel { position:relative; }
-    .why-photo-wrap {
-      position:relative; overflow:hidden;
-      border:1px solid var(--lux-border);
-    }
+    .why-photo-wrap { position:relative; overflow:hidden; border:1px solid var(--lux-border); }
     .why-photo-wrap img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:brightness(0.88) contrast(1.05); }
     .why-photo-overlay {
       position:absolute; bottom:0; left:0; right:0;
@@ -243,25 +221,21 @@
     .why-stat-val { font-family:var(--font-serif); font-size:1.7rem; color:var(--gold); line-height:1; }
     .why-stat-label { font-size:10px; color:rgba(136,136,136,0.85); letter-spacing:0.12em; text-transform:uppercase; margin-top:3px; }
 
-    /* PROCESS */
     .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:40px; }
     .process-step-num { font-family:var(--font-serif); font-size:3.5rem; color:rgba(184,160,128,0.15); line-height:1; margin-bottom:12px; }
     .process-step-title { font-family:var(--font-serif); font-size:1.1rem; color:var(--lux-text); margin-bottom:8px; }
     .process-step-body { font-size:13px; color:var(--lux-muted); line-height:1.7; }
 
-    /* CTA BANNER */
     .cta-banner { background:linear-gradient(135deg,rgba(20,20,20,0.98),rgba(10,10,10,1)); border-top:1px solid rgba(184,160,128,0.2); border-bottom:1px solid rgba(184,160,128,0.2); padding:88px 0; text-align:center; }
     .cta-banner h2 { font-family:var(--font-serif); font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--lux-text); margin-bottom:16px; }
     .cta-banner p  { color:var(--lux-muted); max-width:520px; margin:0 auto 36px; font-size:15px; line-height:1.75; }
     .cta-banner-btns { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
 
-    /* FOOTER */
     .site-footer { background:#080808; border-top:1px solid #1a1a1a; padding:28px 0; }
     .footer-inner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-size:12px; color:var(--lux-muted); }
     .footer-inner a { color:#555; }
     .footer-inner a:hover { color:var(--gold); }
 
-    /* RESPONSIVE */
     @media (max-width:900px) {
       .stats-bar      { grid-template-columns:1fr 1fr; }
       .card-grid-3    { grid-template-columns:1fr; }
@@ -282,7 +256,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="/index.html">Leander Mena<small>Hospitality &amp; F&amp;B Operations</small></a>
@@ -300,24 +273,10 @@
 
   <main>
 
-    <!-- HERO -->
     <section class="hero">
-      <!-- Background image as <img> tag — bypasses CSS background-image caching issues -->
-      <img
-        class="hero-img"
-        src="landing-hero.jpg"
-        alt=""
-        aria-hidden="true"
-        width="1920"
-        height="1080"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <!-- Dark gradient overlay -->
-      <div class="hero-overlay"></div>
+      <div class="hero-bg"></div>
       <div class="hero-glow-l"></div>
       <div class="hero-glow-r"></div>
-
       <div class="hero-inner">
         <div class="anim-fade-in delay-1"><span class="eyebrow">Miami, Florida</span></div>
         <h1 class="hero-name anim-fade-up delay-2">Leander Mena</h1>
@@ -339,7 +298,6 @@
       </div>
     </section>
 
-    <!-- TRUST STRIP -->
     <div class="trust-strip">
       <div class="container">
         <div class="trust-list">
@@ -353,7 +311,6 @@
       </div>
     </div>
 
-    <!-- SERVICES -->
     <section class="section section-dark">
       <div class="container">
         <div class="section-header reveal">
@@ -393,7 +350,6 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
     <section class="section section-mid">
       <div class="container">
         <div class="section-header reveal">
@@ -425,7 +381,6 @@
       </div>
     </section>
 
-    <!-- WHY FRACTIONAL - with about.jpg -->
     <section class="section section-dark">
       <div class="container">
         <div class="why-grid">
@@ -443,8 +398,6 @@
             </ul>
             <a class="btn-primary" href="/about.html">Learn More About Leander</a>
           </div>
-
-          <!-- REAL PHOTO PANEL -->
           <div class="why-photo-panel reveal reveal-delay-2">
             <div class="why-photo-wrap">
               <img src="about.jpg" alt="Leander Mena — Miami F&B operations leader" width="540" height="680" loading="lazy" />
@@ -463,7 +416,6 @@
       </div>
     </section>
 
-    <!-- WHO IT'S FOR -->
     <section class="section section-mid">
       <div class="container">
         <div class="card-grid-2">
@@ -489,7 +441,6 @@
       </div>
     </section>
 
-    <!-- PROCESS -->
     <section class="section section-dark">
       <div class="container">
         <div class="section-header reveal">
@@ -505,7 +456,6 @@
       </div>
     </section>
 
-    <!-- ARTICLES -->
     <section class="section section-mid">
       <div class="container">
         <div class="section-header reveal">
@@ -535,7 +485,6 @@
       </div>
     </section>
 
-    <!-- FINAL CTA BANNER -->
     <section class="cta-banner">
       <div class="container reveal">
         <h2>Let's Build Something That Runs Well</h2>
@@ -549,7 +498,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>&copy; 2026 Leander Mena &middot; Miami, Florida</span>
@@ -562,7 +510,6 @@
     </div>
   </footer>
 
-  <!-- SCROLL REVEAL -->
   <script>
     (function(){
       var els = document.querySelectorAll('.reveal');
