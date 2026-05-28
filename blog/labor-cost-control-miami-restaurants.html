@@ -3,69 +3,249 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Labor Cost Control in Miami Restaurants | Leander Mena</title>
+  <title>Labor Cost Control for Miami Restaurants: A Manager's Framework | Leander Mena</title>
   <meta name="description" content="Leander Mena shares the scheduling and productivity systems he has used across 18+ years to keep labor cost in line in Miami restaurants without sacrificing service." />
   <link rel="canonical" href="https://www.leandermena.com/blog/labor-cost-control-miami-restaurants.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Labor Cost Control for Miami Restaurants: A Manager's Framework" />
+  <meta property="og:description" content="The scheduling and productivity systems used across 18+ years to keep labor cost in line in Miami restaurants without sacrificing service." />
+  <meta property="og:url" content="https://www.leandermena.com/blog/labor-cost-control-miami-restaurants.html" />
+  <meta property="og:image" content="https://www.leandermena.com/dining.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"Labor Cost Control for Miami Restaurants: A Manager's Framework","author":{"@type":"Person","name":"Leander Mena","url":"https://www.leandermena.com"},"publisher":{"@type":"Person","name":"Leander Mena"},"url":"https://www.leandermena.com/blog/labor-cost-control-miami-restaurants.html","image":"https://www.leandermena.com/dining.jpg"}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"Labor Cost Control in Miami Restaurants","author":{"@type":"Person","name":"Leander Mena","url":"https://www.leandermena.com"},"publisher":{"@type":"Person","name":"Leander Mena"},"url":"https://www.leandermena.com/blog/labor-cost-control-miami-restaurants.html"}
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; color: #e8e8e8; background: #0a0a0a; min-height: 100dvh; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: #b8a080; text-decoration: none; transition: color 180ms ease; }
+    a:hover { color: #c9b89a; }
+    :root {
+      --gold: #b8a080; --gold-light: #c9b89a;
+      --lux-black: #0a0a0a; --lux-dark: #111111; --lux-card: #141414;
+      --lux-border: #2a2a2a; --lux-text: #e8e8e8; --lux-muted: #888888;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    .container { max-width: 1100px; margin-inline: auto; padding-inline: 24px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(10,10,10,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,160,128,0.13); padding: 16px 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--lux-text); text-decoration: none; display: flex; flex-direction: column; line-height: 1.2; }
+    .brand small { font-family: var(--font-sans); font-size: 10px; font-weight: 400; color: var(--lux-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--lux-muted); transition: color 180ms ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .article-hero { position: relative; height: 52vh; min-height: 340px; display: flex; align-items: flex-end; overflow: hidden; }
+    .article-hero-bg { position: absolute; inset: 0; background-image: url('../dining.jpg'); background-size: cover; background-position: center 40%; filter: brightness(0.16); }
+    .article-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,1) 0%, transparent 55%); }
+    .article-hero-inner { position: relative; z-index: 10; padding: 0 24px 52px; width: 100%; max-width: 780px; margin: 0 auto; }
+    .eyebrow { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,160,128,0.35); padding: 5px 16px; margin-bottom: 16px; }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; color: var(--lux-text); line-height: 1.08; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: var(--lux-muted); display: flex; gap: 20px; flex-wrap: wrap; }
+    .article-meta a { color: var(--gold); }
+    .divider-gold { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 16px 0; }
+    .article-wrap { max-width: 780px; margin-inline: auto; padding: 72px 24px 100px; }
+    .article-lead { font-family: var(--font-serif); font-size: clamp(1.1rem, 2vw, 1.35rem); color: #ccc; line-height: 1.75; margin-bottom: 40px; font-style: italic; border-left: 2px solid var(--gold); padding-left: 24px; }
+    .article-wrap h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.5vw, 1.75rem); color: var(--lux-text); margin: 48px 0 16px; line-height: 1.2; }
+    .article-wrap h2::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); margin-bottom: 12px; }
+    .article-wrap p { font-size: 15px; color: #aaa; line-height: 1.9; margin-bottom: 20px; max-width: 70ch; }
+    .article-wrap ul { margin: 0 0 28px 0; padding: 0; list-style: none; }
+    .article-wrap ul li { font-size: 14px; color: #999; line-height: 1.75; padding: 10px 0 10px 24px; border-bottom: 1px solid var(--lux-border); position: relative; }
+    .article-wrap ul li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 1px; background: var(--gold); }
+    .article-wrap ul li:last-child { border-bottom: none; }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px,100%), 1fr)); gap: 1px; background: var(--lux-border); margin: 32px 0 40px; }
+    .metric-card { background: var(--lux-card); padding: 28px 24px; }
+    .metric-label { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .metric-name { font-family: var(--font-serif); font-size: 1.05rem; color: var(--lux-text); margin-bottom: 8px; }
+    .metric-desc { font-size: 13px; color: var(--lux-muted); line-height: 1.6; }
+    .formula-box { background: var(--lux-card); border: 1px solid rgba(184,160,128,0.2); padding: 24px 28px; margin: 28px 0; }
+    .formula-label { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .formula-text { font-family: var(--font-serif); font-size: 1.05rem; color: #ddd; line-height: 1.6; }
+    .formula-example { font-size: 13px; color: var(--lux-muted); margin-top: 8px; }
+    .pullquote { margin: 48px 0; padding: 32px 36px; border: 1px solid rgba(184,160,128,0.2); background: rgba(184,160,128,0.04); }
+    .pullquote p { font-family: var(--font-serif); font-size: clamp(1.1rem, 2vw, 1.4rem); color: #c9b89a; font-style: italic; line-height: 1.6; margin: 0; max-width: none; }
+    .article-cta { margin-top: 64px; padding: 48px; background: var(--lux-card); border: 1px solid var(--lux-border); text-align: center; }
+    .article-cta h3 { font-family: var(--font-serif); font-size: 1.5rem; color: var(--lux-text); margin-bottom: 12px; }
+    .article-cta p { font-size: 14px; color: var(--lux-muted); margin-bottom: 28px; max-width: 44ch; margin-inline: auto; }
+    .btn-primary { display: inline-block; padding: 13px 32px; background: var(--gold); color: #0a0a0a; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: background 200ms ease; }
+    .btn-primary:hover { background: var(--gold-light); color: #0a0a0a; }
+    .btn-ghost { display: inline-block; padding: 12px 32px; border: 1px solid rgba(184,160,128,0.45); color: var(--gold); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 12px; transition: all 200ms ease; }
+    .btn-ghost:hover { background: rgba(184,160,128,0.08); }
+    .back-bar { background: var(--lux-dark); border-bottom: 1px solid var(--lux-border); padding: 14px 0; }
+    .back-link { font-size: 12px; color: var(--lux-muted); letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; }
+    .back-link::before { content: '←'; color: var(--gold); }
+    .back-link:hover { color: var(--gold); }
+    .author-bio { display: flex; gap: 24px; align-items: flex-start; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--lux-border); }
+    .author-photo { width: 72px; height: 72px; object-fit: cover; object-position: top; flex-shrink: 0; filter: grayscale(0.2); }
+    .author-name { font-family: var(--font-serif); font-size: 1rem; color: var(--lux-text); margin-bottom: 4px; }
+    .author-title { font-size: 12px; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 8px; }
+    .author-desc { font-size: 13px; color: var(--lux-muted); line-height: 1.7; }
+    .site-footer { background: #080808; border-top: 1px solid var(--lux-border); padding: 32px 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--lux-muted); }
+    .footer-inner a { color: #555; }
+    .footer-inner a:hover { color: var(--gold); }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px,100%), 1fr)); gap: 1px; background: var(--lux-border); margin-top: 24px; }
+    .related-card { background: var(--lux-card); padding: 28px; transition: background 200ms ease; }
+    .related-card:hover { background: #1a1a1a; }
+    .related-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .related-title { font-family: var(--font-serif); font-size: 1.05rem; color: var(--lux-text); line-height: 1.3; margin-bottom: 8px; }
+    .related-excerpt { font-size: 13px; color: var(--lux-muted); line-height: 1.7; margin-bottom: 16px; }
+    .read-link { font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+    @media (max-width: 640px) { .nav-links { display: none; } .metric-grid { grid-template-columns: 1fr; } .author-bio { flex-direction: column; } .btn-ghost { margin-left: 0; margin-top: 10px; } }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html">Leander Mena<small>Hospitality &amp; F&amp;B Operations</small></a>
-      <nav class="nav-links">
-        <a href="../about.html">About</a>
-        <a href="../leander-mena-miami-hospitality.html">Profile</a>
-        <a href="../services.html">Services</a>
-        <a href="../pre-opening.html">Pre-Opening</a>
-        <a href="../experience.html">Experience</a>
-        <a href="index.html">Articles</a>
-        <a href="../contact.html">Contact</a>
+    <div class="container">
+      <nav class="nav">
+        <a href="../index.html" class="brand">Leander Mena<small>Miami Hospitality</small></a>
+        <div class="nav-links">
+          <a href="../about.html">About</a>
+          <a href="../services.html">Services</a>
+          <a href="../pre-opening.html">Pre-Opening</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../philosophy.html">Philosophy</a>
+          <a href="index.html" class="active">Insights</a>
+          <a href="../contact.html">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
-  <main>
-    <div class="article-header">
-      <span class="kicker">Operations</span>
-      <h1>Labor Cost Control in Miami Restaurants</h1>
-      <p>By <a href="../leander-mena-miami-hospitality.html">Leander Mena</a> &mdash; Miami F&amp;B Operations</p>
-    </div>
-    <div class="article-body">
-      <p>Labor cost is the most controllable major expense in a restaurant — and the one most often managed reactively. In Miami, where competition for experienced staff is intense and wages have risen consistently, operators who manage labor proactively run better businesses.</p>
-      <h2>Start With the Schedule as a Budget Tool</h2>
-      <p>Most operators write schedules based on who's available. The better approach is to write the schedule based on projected revenue — then work backwards to a labor cost target. A simple model: if your labor cost target is 28% and projected weekly revenue is $60,000, your weekly labor budget is $16,800.</p>
-      <h2>Productivity Metrics That Actually Matter</h2>
-      <ul>
-        <li><strong>Revenue per labor hour</strong> — total weekly revenue divided by total hours worked. Track this weekly.</li>
-        <li><strong>Covers per server</strong> — how many guests each front-of-house team member handles per shift.</li>
-        <li><strong>Kitchen labor as a percentage of food revenue</strong> — separate from front-of-house for cleaner analysis.</li>
-      </ul>
-      <h2>The Scheduling Disciplines That Reduce Waste</h2>
-      <p>Over 18+ years in Miami restaurants and hotels, Leander Mena has found that most labor cost problems come from the same few places: early clock-ins, late cut decisions, and over-staffing during shoulder periods. The fix is simple but requires daily attention.</p>
-      <ul>
-        <li>Set a hard rule on clock-in windows — no earlier than 7 minutes before scheduled time</li>
-        <li>Designate one manager per shift as the cut decision-maker with authority to send staff home</li>
-        <li>Review the prior week's labor report every Monday before writing the next schedule</li>
-        <li>Build in a swing position for Friday and Saturday rather than defaulting to full staff</li>
-      </ul>
-      <h2>Training Reduces Labor Cost</h2>
-      <p>Well-trained staff work faster, make fewer mistakes, and require less supervision. The time invested in proper onboarding and ongoing coaching pays back in productivity every shift. This is the least obvious but most durable form of labor cost control.</p>
-      <div class="inline-cta" style="margin-top:2rem">
-        <a class="btn btn-primary" href="../contact.html">Discuss your operations</a>
-        <a class="btn btn-secondary" href="../services.html">View services</a>
+
+  <div class="back-bar" style="padding-top:72px;">
+    <div class="container"><a href="index.html" class="back-link">All Articles</a></div>
+  </div>
+
+  <section class="article-hero">
+    <div class="article-hero-bg"></div>
+    <div class="article-hero-inner">
+      <div class="reveal">
+        <span class="eyebrow">Operations</span>
+        <h1>Labor Cost Control in Miami Restaurants</h1>
+        <div class="divider-gold"></div>
+        <div class="article-meta">
+          <span>By <a href="../leander-mena-miami-hospitality.html">Leander Mena</a></span>
+          <span>Miami F&amp;B Operations</span>
+          <span>7 min read</span>
+        </div>
       </div>
     </div>
-  </main>
-  <footer class="footer">
-    <div class="container">
-      Miami, Florida &middot; Fractional F&amp;B leadership &middot; Pre-opening consulting
-      &middot; <a href="https://www.linkedin.com/in/leandermena/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </section>
+
+  <div style="background:#0a0a0a;">
+    <div class="article-wrap">
+
+      <p class="article-lead reveal">Labor cost is the most controllable major expense in a restaurant — and the one most often managed reactively. In Miami, where competition for experienced staff is intense and wages have risen consistently, operators who manage labor proactively run better businesses.</p>
+
+      <div class="reveal">
+        <h2>Start With the Schedule as a Budget Tool</h2>
+        <p>Most operators write schedules based on who's available. The better approach is to write the schedule based on projected revenue — then work backwards to a labor cost target.</p>
+      </div>
+
+      <div class="formula-box reveal">
+        <div class="formula-label">The Formula</div>
+        <div class="formula-text">Labor Target % &times; Projected Weekly Revenue = Weekly Labor Budget</div>
+        <div class="formula-example">Example: 28% target &times; $60,000 projected revenue = $16,800 weekly labor budget. Build the schedule from this number — not the other way around.</div>
+      </div>
+
+      <div class="reveal">
+        <h2>The Three Metrics That Actually Matter</h2>
+      </div>
+
+      <div class="metric-grid reveal">
+        <div class="metric-card">
+          <div class="metric-label">Metric 01</div>
+          <div class="metric-name">Revenue per Labor Hour</div>
+          <div class="metric-desc">Total weekly revenue &divide; total hours worked. Track weekly. Compare to prior 4 weeks and same week last year.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Metric 02</div>
+          <div class="metric-name">Covers per Server</div>
+          <div class="metric-desc">Guests per front-of-house team member per shift. Reveals over-staffing that doesn't always show in labor percentage.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Metric 03</div>
+          <div class="metric-name">Kitchen Labor %</div>
+          <div class="metric-desc">Kitchen labor as a percentage of food revenue — kept separate from FOH. Blending the two hides where the problem actually is.</div>
+        </div>
+      </div>
+
+      <div class="pullquote reveal">
+        <p>&ldquo;Most labor cost problems come from the same four places: early clock-ins, slow cut decisions, over-staffing during shoulder periods, and schedules built on habit rather than data.&rdquo;</p>
+      </div>
+
+      <div class="reveal">
+        <h2>The Scheduling Disciplines That Reduce Waste</h2>
+        <ul>
+          <li><strong style="color:#ddd;">Hard clock-in windows</strong> — no employee clocks in more than 7 minutes before scheduled start. Enforced daily, worth several thousand dollars a year in most full-service restaurants.</li>
+          <li><strong style="color:#ddd;">Designated cut decision-maker</strong> — one manager per shift holds authority to send staff home based on pace. Decision made at 6:30pm, not 8:30pm.</li>
+          <li><strong style="color:#ddd;">Monday review before writing the next schedule</strong> — prior week's labor report reviewed before the current week is drafted. Never after.</li>
+          <li><strong style="color:#ddd;">Swing position on high-variance nights</strong> — one conditional Friday/Saturday staff confirmed by 4pm based on actual pace. More complex, but the right trade-off.</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <h2>Training Reduces Labor Cost</h2>
+        <p>Well-trained staff work faster, make fewer mistakes, and require less supervision. The time invested in structured onboarding and ongoing coaching pays back as productivity on every shift that employee works. This is the least obvious but most durable form of labor cost control.</p>
+      </div>
+
+      <div class="author-bio reveal">
+        <img src="../about.jpg" alt="Leander Mena" class="author-photo" width="72" height="72" loading="lazy" />
+        <div>
+          <div class="author-name">Leander Mena</div>
+          <div class="author-title">Miami F&amp;B Operations Leader &mdash; 18+ Years</div>
+          <div class="author-desc">Pre-opening GM, fractional consultant, and operations leader across SLS Brickell, Marabu Restaurant, Viceroy Miami, InterContinental Miami, and Butler Hospitality. Based in Miami Shores, FL.</div>
+        </div>
+      </div>
+
+      <div class="article-cta reveal">
+        <h3>Labor cost a persistent problem?</h3>
+        <p>Let&rsquo;s talk through what&rsquo;s driving it and how a fractional engagement would address it.</p>
+        <a href="../contact.html" class="btn-primary">Discuss Your Operations</a>
+        <a href="../services.html" class="btn-ghost">View Services</a>
+      </div>
+
+      <div style="margin-top:80px;" class="reveal">
+        <span class="eyebrow">More Insights</span>
+        <div class="divider-gold"></div>
+        <div class="related-grid">
+          <a href="miami-pre-opening-playbook.html" class="related-card">
+            <div class="related-tag">Pre-Opening</div>
+            <div class="related-title">The Miami Pre-Opening Playbook</div>
+            <div class="related-excerpt">The 90-day framework for taking a Miami restaurant from empty shell to opening night.</div>
+            <div class="read-link">Read &rarr;</div>
+          </a>
+          <a href="what-fractional-gm-does.html" class="related-card">
+            <div class="related-tag">Fractional Leadership</div>
+            <div class="related-title">What a Fractional GM Actually Does</div>
+            <div class="related-excerpt">What fractional F&amp;B leadership actually looks like week to week in Miami.</div>
+            <div class="read-link">Read &rarr;</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 Leander Mena &middot; Miami, Florida</span>
+      <span>Fractional F&amp;B Leadership &middot; Pre-Opening Consulting</span>
+      <span><a href="https://www.linkedin.com/in/leandermena/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="index.html">All Articles</a></span>
     </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

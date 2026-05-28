@@ -3,79 +3,256 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Miami Pre-Opening Playbook | Leander Mena</title>
+  <title>The Miami Pre-Opening Playbook: 90 Days to Opening Night | Leander Mena</title>
   <meta name="description" content="Leander Mena's 90-day framework for taking a Miami restaurant from empty shell to opening night — staffing, SOPs, vendors, and training." />
   <link rel="canonical" href="https://www.leandermena.com/blog/miami-pre-opening-playbook.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Miami Pre-Opening Playbook: 90 Days to Opening Night" />
+  <meta property="og:description" content="Leander Mena's 90-day framework for taking a Miami restaurant from empty shell to opening night." />
+  <meta property="og:url" content="https://www.leandermena.com/blog/miami-pre-opening-playbook.html" />
+  <meta property="og:image" content="https://www.leandermena.com/dining.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Article","headline":"The Miami Pre-Opening Playbook: 90 Days to Opening Night","author":{"@type":"Person","name":"Leander Mena","url":"https://www.leandermena.com"},"publisher":{"@type":"Person","name":"Leander Mena"},"url":"https://www.leandermena.com/blog/miami-pre-opening-playbook.html","image":"https://www.leandermena.com/dining.jpg","description":"Leander Mena's 90-day framework for taking a Miami restaurant from empty shell to opening night — staffing, SOPs, vendors, and training."}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../style.css" />
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Article","headline":"The Miami Pre-Opening Playbook","author":{"@type":"Person","name":"Leander Mena","url":"https://www.leandermena.com"},"publisher":{"@type":"Person","name":"Leander Mena"},"url":"https://www.leandermena.com/blog/miami-pre-opening-playbook.html","description":"Leander Mena's 90-day framework for taking a Miami restaurant from empty shell to opening night."}
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', system-ui, sans-serif; font-size: 16px; line-height: 1.6; color: #e8e8e8; background: #0a0a0a; min-height: 100dvh; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: #b8a080; text-decoration: none; transition: color 180ms ease; }
+    a:hover { color: #c9b89a; }
+    :root {
+      --gold: #b8a080; --gold-light: #c9b89a;
+      --lux-black: #0a0a0a; --lux-dark: #111111; --lux-card: #141414;
+      --lux-border: #2a2a2a; --lux-text: #e8e8e8; --lux-muted: #888888;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', system-ui, sans-serif;
+    }
+    .container { max-width: 1100px; margin-inline: auto; padding-inline: 24px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* NAV */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(10,10,10,0.88); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(184,160,128,0.13); padding: 16px 0; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--lux-text); text-decoration: none; display: flex; flex-direction: column; line-height: 1.2; }
+    .brand small { font-family: var(--font-sans); font-size: 10px; font-weight: 400; color: var(--lux-muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--lux-muted); transition: color 180ms ease; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    /* ARTICLE HERO */
+    .article-hero { position: relative; height: 52vh; min-height: 340px; display: flex; align-items: flex-end; overflow: hidden; }
+    .article-hero-bg { position: absolute; inset: 0; background-image: url('../dining.jpg'); background-size: cover; background-position: center 35%; filter: brightness(0.18); }
+    .article-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,1) 0%, transparent 55%); }
+    .article-hero-inner { position: relative; z-index: 10; padding: 0 24px 52px; width: 100%; max-width: 780px; margin: 0 auto; }
+    .eyebrow { display: inline-block; font-family: var(--font-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(184,160,128,0.35); padding: 5px 16px; margin-bottom: 16px; }
+    .article-hero h1 { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; color: var(--lux-text); line-height: 1.08; margin-bottom: 16px; }
+    .article-meta { font-size: 13px; color: var(--lux-muted); display: flex; gap: 20px; flex-wrap: wrap; }
+    .article-meta a { color: var(--gold); }
+    .divider-gold { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 16px 0; }
+    /* ARTICLE BODY */
+    .article-wrap { max-width: 780px; margin-inline: auto; padding: 72px 24px 100px; }
+    .article-lead { font-family: var(--font-serif); font-size: clamp(1.1rem, 2vw, 1.35rem); color: #ccc; line-height: 1.75; margin-bottom: 40px; font-style: italic; border-left: 2px solid var(--gold); padding-left: 24px; }
+    .article-wrap h2 { font-family: var(--font-display); font-size: clamp(1.3rem, 2.5vw, 1.75rem); color: var(--lux-text); margin: 48px 0 16px; line-height: 1.2; }
+    .article-wrap h2::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); margin-bottom: 12px; }
+    .article-wrap p { font-size: 15px; color: #aaa; line-height: 1.9; margin-bottom: 20px; max-width: 70ch; }
+    .article-wrap ul { margin: 0 0 28px 0; padding: 0; list-style: none; }
+    .article-wrap ul li { font-size: 14px; color: #999; line-height: 1.75; padding: 10px 0 10px 24px; border-bottom: 1px solid var(--lux-border); position: relative; }
+    .article-wrap ul li::before { content: ''; position: absolute; left: 0; top: 18px; width: 8px; height: 1px; background: var(--gold); }
+    .article-wrap ul li:last-child { border-bottom: none; }
+    /* PHASE CARDS */
+    .phase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px,100%), 1fr)); gap: 1px; background: var(--lux-border); margin: 32px 0 40px; }
+    .phase-card { background: var(--lux-card); padding: 28px 24px; }
+    .phase-label { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+    .phase-title { font-family: var(--font-serif); font-size: 1.1rem; color: var(--lux-text); margin-bottom: 6px; }
+    .phase-range { font-size: 12px; color: #555; }
+    /* PULLQUOTE */
+    .pullquote { margin: 48px 0; padding: 32px 36px; border: 1px solid rgba(184,160,128,0.2); background: rgba(184,160,128,0.04); }
+    .pullquote p { font-family: var(--font-serif); font-size: clamp(1.1rem, 2vw, 1.4rem); color: #c9b89a; font-style: italic; line-height: 1.6; margin: 0; max-width: none; }
+    /* CTA */
+    .article-cta { margin-top: 64px; padding: 48px; background: var(--lux-card); border: 1px solid var(--lux-border); text-align: center; }
+    .article-cta h3 { font-family: var(--font-serif); font-size: 1.5rem; color: var(--lux-text); margin-bottom: 12px; }
+    .article-cta p { font-size: 14px; color: var(--lux-muted); margin-bottom: 28px; max-width: 44ch; margin-inline: auto; }
+    .btn-primary { display: inline-block; padding: 13px 32px; background: var(--gold); color: #0a0a0a; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: background 200ms ease; }
+    .btn-primary:hover { background: var(--gold-light); color: #0a0a0a; }
+    .btn-ghost { display: inline-block; padding: 12px 32px; border: 1px solid rgba(184,160,128,0.45); color: var(--gold); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-left: 12px; transition: all 200ms ease; }
+    .btn-ghost:hover { background: rgba(184,160,128,0.08); }
+    /* BACK LINK */
+    .back-bar { background: var(--lux-dark); border-bottom: 1px solid var(--lux-border); padding: 14px 0; margin-top: 80px; }
+    .back-link { font-size: 12px; color: var(--lux-muted); letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; }
+    .back-link::before { content: '←'; color: var(--gold); }
+    .back-link:hover { color: var(--gold); }
+    /* AUTHOR BIO */
+    .author-bio { display: flex; gap: 24px; align-items: flex-start; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--lux-border); }
+    .author-photo { width: 72px; height: 72px; object-fit: cover; object-position: top; flex-shrink: 0; filter: grayscale(0.2); }
+    .author-name { font-family: var(--font-serif); font-size: 1rem; color: var(--lux-text); margin-bottom: 4px; }
+    .author-title { font-size: 12px; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 8px; }
+    .author-desc { font-size: 13px; color: var(--lux-muted); line-height: 1.7; }
+    /* FOOTER */
+    .site-footer { background: #080808; border-top: 1px solid var(--lux-border); padding: 32px 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; font-size: 12px; color: var(--lux-muted); }
+    .footer-inner a { color: #555; }
+    .footer-inner a:hover { color: var(--gold); }
+    /* RELATED */
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px,100%), 1fr)); gap: 1px; background: var(--lux-border); margin-top: 24px; }
+    .related-card { background: var(--lux-card); padding: 28px; transition: background 200ms ease; }
+    .related-card:hover { background: #1a1a1a; }
+    .related-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .related-title { font-family: var(--font-serif); font-size: 1.05rem; color: var(--lux-text); line-height: 1.3; margin-bottom: 8px; }
+    .related-excerpt { font-size: 13px; color: var(--lux-muted); line-height: 1.7; margin-bottom: 16px; }
+    .read-link { font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; }
+    @media (max-width: 640px) { .nav-links { display: none; } .author-bio { flex-direction: column; } .btn-ghost { margin-left: 0; margin-top: 10px; } }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="../index.html">Leander Mena<small>Hospitality &amp; F&amp;B Operations</small></a>
-      <nav class="nav-links">
-        <a href="../about.html">About</a>
-        <a href="../leander-mena-miami-hospitality.html">Profile</a>
-        <a href="../services.html">Services</a>
-        <a href="../pre-opening.html">Pre-Opening</a>
-        <a href="../experience.html">Experience</a>
-        <a href="index.html">Articles</a>
-        <a href="../contact.html">Contact</a>
+    <div class="container">
+      <nav class="nav">
+        <a href="../index.html" class="brand">Leander Mena<small>Miami Hospitality</small></a>
+        <div class="nav-links">
+          <a href="../about.html">About</a>
+          <a href="../services.html">Services</a>
+          <a href="../pre-opening.html">Pre-Opening</a>
+          <a href="../experience.html">Experience</a>
+          <a href="../philosophy.html">Philosophy</a>
+          <a href="index.html" class="active">Insights</a>
+          <a href="../contact.html">Contact</a>
+        </div>
       </nav>
     </div>
   </header>
-  <main>
-    <div class="article-header">
-      <span class="kicker">Pre-Opening</span>
-      <h1>The Miami Pre-Opening Playbook</h1>
-      <p>By <a href="../leander-mena-miami-hospitality.html">Leander Mena</a> &mdash; Miami F&amp;B Operations</p>
-    </div>
-    <div class="article-body">
-      <p>Opening a restaurant in Miami requires more than a great concept and a lease. The 90 days before doors open determine whether a team performs under pressure or collapses under it. This playbook outlines how Leander Mena approaches pre-opening builds from day one of engagement.</p>
-      <h2>Days 90–60: Foundation</h2>
-      <p>The first phase is about building the operating backbone before a single hire is made. That means walking the space, understanding the concept deeply, mapping the service flow, and writing the first draft of every core SOP.</p>
-      <ul>
-        <li>Space walkthrough and operational gap assessment</li>
-        <li>Vendor identification and preliminary outreach</li>
-        <li>Org chart and staffing plan by role and phase</li>
-        <li>Draft service flow for each daypart</li>
-        <li>Opening budget alignment with ownership</li>
-      </ul>
-      <h2>Days 60–30: Hiring and Systems</h2>
-      <p>Miami's hospitality labor market is competitive. Hiring has to start early, and onboarding has to be structured from the first day an employee walks in. This phase is about building the team and installing the systems they'll use.</p>
-      <ul>
-        <li>Management team hired and onboarded</li>
-        <li>Line staff recruitment and selection</li>
-        <li>POS configuration and reporting setup</li>
-        <li>Menu training materials and knowledge tests</li>
-        <li>Vendor contracts finalized and delivery schedules confirmed</li>
-      </ul>
-      <h2>Days 30–0: Training and Execution</h2>
-      <p>The final 30 days are the most intense. Soft opens, staff meals, mock services, and final walkthroughs compress weeks of learning into days. The goal is a team that has failed safely before guests arrive.</p>
-      <ul>
-        <li>Two to three soft opening services with real guests</li>
-        <li>Daily pre-shift meetings and post-service debriefs</li>
-        <li>Final SOP sign-off by all managers</li>
-        <li>Opening night execution plan distributed to all staff</li>
-      </ul>
-      <h2>What This Looks Like With Leander Mena</h2>
-      <p>When Leander Mena leads a pre-opening engagement, ownership gets a single point of accountability for the operational side of the launch. That means fewer surprises, a team that's prepared, and an operating system that doesn't fall apart in month two.</p>
-      <div class="inline-cta" style="margin-top:2rem">
-        <a class="btn btn-primary" href="../contact.html">Discuss your pre-opening project</a>
-        <a class="btn btn-secondary" href="../pre-opening.html">Pre-Opening Services</a>
+
+  <div class="back-bar" style="margin-top:0;padding-top:72px;">
+    <div class="container"><a href="index.html" class="back-link">All Articles</a></div>
+  </div>
+
+  <section class="article-hero">
+    <div class="article-hero-bg"></div>
+    <div class="article-hero-inner">
+      <div class="reveal">
+        <span class="eyebrow">Pre-Opening</span>
+        <h1>The Miami Pre-Opening Playbook</h1>
+        <div class="divider-gold"></div>
+        <div class="article-meta">
+          <span>By <a href="../leander-mena-miami-hospitality.html">Leander Mena</a></span>
+          <span>Miami F&amp;B Operations</span>
+          <span>8 min read</span>
+        </div>
       </div>
     </div>
-  </main>
-  <footer class="footer">
-    <div class="container">
-      Miami, Florida &middot; Fractional F&amp;B leadership &middot; Pre-opening consulting
-      &middot; <a href="https://www.linkedin.com/in/leandermena/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </section>
+
+  <div style="background:#0a0a0a;">
+    <div class="article-wrap">
+
+      <p class="article-lead reveal">Opening a restaurant in Miami requires more than a great concept and a lease. The 90 days before doors open determine whether a team performs under pressure or collapses under it.</p>
+
+      <div class="phase-grid reveal">
+        <div class="phase-card"><div class="phase-label">Phase 1</div><div class="phase-title">Foundation</div><div class="phase-range">Days 90–60</div></div>
+        <div class="phase-card"><div class="phase-label">Phase 2</div><div class="phase-title">Hiring &amp; Systems</div><div class="phase-range">Days 60–30</div></div>
+        <div class="phase-card"><div class="phase-label">Phase 3</div><div class="phase-title">Training &amp; Execution</div><div class="phase-range">Days 30–0</div></div>
+      </div>
+
+      <div class="reveal">
+        <h2>Days 90–60: Foundation</h2>
+        <p>The first phase is about building the operating backbone before a single hire is made. That means walking the space, understanding the concept deeply, mapping the service flow, and writing the first draft of every core SOP. Most operators skip this phase because it doesn't feel productive — there's nothing to photograph, no one to introduce. But the decisions made here determine whether the system works six months after opening.</p>
+        <ul>
+          <li>Space walkthrough and operational gap assessment</li>
+          <li>Vendor identification and preliminary outreach</li>
+          <li>Org chart and staffing plan by role and phase</li>
+          <li>Draft service flow for each daypart</li>
+          <li>Opening budget alignment with ownership</li>
+        </ul>
+      </div>
+
+      <div class="pullquote reveal">
+        <p>&ldquo;The budget conversation is the one most operators avoid. Have it on paper, with a shared model — not at week four when you&rsquo;re already over-committed.&rdquo;</p>
+      </div>
+
+      <div class="reveal">
+        <h2>Days 60–30: Hiring and Systems</h2>
+        <p>Miami's hospitality labor market is competitive. If you start recruiting your management team at the 30-day mark, you'll be settling. Hiring has to begin at 60 days out, and structured onboarding has to start the first day a new manager walks in — not after you finish everything else.</p>
+        <ul>
+          <li>Management team hired and contributing to SOP development</li>
+          <li>Line staff recruitment — front-of-house before back-of-house</li>
+          <li>POS configured, not just installed — reporting structure, comp flows, modifier logic</li>
+          <li>Menu training materials and knowledge tests drafted</li>
+          <li>Vendor contracts finalized with confirmed delivery schedules</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <h2>Days 30–0: Training and Execution</h2>
+        <p>The final 30 days are the most intense stretch of any pre-opening project. Soft opens, staff meals, mock services, and final walkthroughs compress weeks of learning into days. The goal isn't a perfect soft open — it's a team that has made its mistakes in front of forgiving guests, not a full house on opening night.</p>
+        <ul>
+          <li>Two to three soft opening services with real guests at reduced capacity</li>
+          <li>Daily pre-shift meetings and written post-service debriefs</li>
+          <li>Final SOP sign-off by every manager before first public service</li>
+          <li>Opening night execution plan distributed and walked through with all staff</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <h2>What This Looks Like With Leander Mena</h2>
+        <p>When Leander Mena leads a pre-opening engagement, ownership gets a single point of accountability for the operational side of the launch. Not a vendor who delivers a document. A leader who is on-site, building the team, installing the systems, and accountable for the result on opening night.</p>
+      </div>
+
+      <!-- AUTHOR BIO -->
+      <div class="author-bio reveal">
+        <img src="../about.jpg" alt="Leander Mena" class="author-photo" width="72" height="72" loading="lazy" />
+        <div>
+          <div class="author-name">Leander Mena</div>
+          <div class="author-title">Miami F&amp;B Operations Leader &mdash; 18+ Years</div>
+          <div class="author-desc">Pre-opening GM, fractional consultant, and operations leader across SLS Brickell, Marabu Restaurant, Viceroy Miami, InterContinental Miami, and Butler Hospitality. Based in Miami Shores, FL.</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="article-cta reveal">
+        <h3>Opening a restaurant in Miami?</h3>
+        <p>Let&rsquo;s talk through your timeline and what a pre-opening engagement looks like.</p>
+        <a href="../contact.html" class="btn-primary">Start the Conversation</a>
+        <a href="../pre-opening.html" class="btn-ghost">Pre-Opening Services</a>
+      </div>
+
+      <!-- RELATED -->
+      <div style="margin-top:80px;" class="reveal">
+        <span class="eyebrow">More Insights</span>
+        <div class="divider-gold"></div>
+        <div class="related-grid">
+          <a href="what-fractional-gm-does.html" class="related-card">
+            <div class="related-tag">Fractional Leadership</div>
+            <div class="related-title">What a Fractional GM Actually Does</div>
+            <div class="related-excerpt">What fractional F&amp;B leadership actually looks like week to week in Miami.</div>
+            <div class="read-link">Read &rarr;</div>
+          </a>
+          <a href="labor-cost-control-miami-restaurants.html" class="related-card">
+            <div class="related-tag">Operations</div>
+            <div class="related-title">Labor Cost Control in Miami Restaurants</div>
+            <div class="related-excerpt">The scheduling and productivity systems that keep labor cost in line without sacrificing service.</div>
+            <div class="read-link">Read &rarr;</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>&copy; 2026 Leander Mena &middot; Miami, Florida</span>
+      <span>Fractional F&amp;B Leadership &middot; Pre-Opening Consulting</span>
+      <span><a href="https://www.linkedin.com/in/leandermena/" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="index.html">All Articles</a></span>
     </div>
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
