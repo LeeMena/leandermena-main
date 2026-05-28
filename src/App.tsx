@@ -7,6 +7,11 @@ import PreOpening from '@/pages/PreOpening'
 import Experience from '@/pages/Experience'
 import Philosophy from '@/pages/Philosophy'
 import Contact from '@/pages/Contact'
+import Profile from '@/pages/Profile'
+import BlogIndex from '@/pages/BlogIndex'
+import BlogPreOpening from '@/pages/BlogPreOpening'
+import BlogFractionalGM from '@/pages/BlogFractionalGM'
+import BlogLaborCost from '@/pages/BlogLaborCost'
 
 export default function App() {
   return (
@@ -19,6 +24,11 @@ export default function App() {
         <Route path="experience" element={<Experience />} />
         <Route path="philosophy" element={<Philosophy />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="leander-mena-miami-hospitality" element={<Profile />} />
+        <Route path="blog" element={<BlogIndex />} />
+        <Route path="blog/miami-pre-opening-playbook" element={<BlogPreOpening />} />
+        <Route path="blog/what-fractional-gm-does" element={<BlogFractionalGM />} />
+        <Route path="blog/labor-cost-control-miami-restaurants" element={<BlogLaborCost />} />
       </Route>
     </Routes>
   )
