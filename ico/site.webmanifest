@@ -1,0 +1,33 @@
+{
+  "name": "Leander Mena — Hospitality & F&B Consulting",
+  "short_name": "Leander Mena",
+  "description": "Fractional F&B operations leadership and pre-opening consulting for Miami restaurants, hotels, and hospitality groups.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#b8a080",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/ico/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ico/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ico/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en-US",
+  "scope": "/"
+}
