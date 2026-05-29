@@ -1,59 +1,75 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Mail } from 'lucide-react';
+
+const links = [
+  { label: 'About', href: '/about' },
+  { label: 'Services', href: '/services' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Pre-Opening', href: '/pre-opening' },
+  { label: 'Philosophy', href: '/philosophy' },
+  { label: 'Insights', href: '/insights' },
+  { label: 'Contact', href: '/contact' },
+];
 
 export default function Footer() {
-  const year = new Date().getFullYear()
-
   return (
-    <footer className="border-t border-luxury-border bg-luxury-dark">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-3 gap-10 mb-10">
+    <footer className="bg-luxury-dark border-t border-luxury-border/30">
+      <div className="container-luxury py-16">
+        <div className="grid md:grid-cols-3 gap-12">
+          {/* Brand */}
           <div>
-            <Link to="/" className="flex flex-col gap-1 mb-4">
-              <span className="font-display text-luxury-text text-xl">Leander Mena</span>
-              <span className="text-gold text-[10px] tracking-[0.2em] uppercase font-sans">Hospitality &amp; F&amp;B Operations</span>
+            <Link to="/" className="flex flex-col mb-6">
+              <span className="font-serif text-xl text-luxury-text tracking-wider">Leander Mena</span>
+              <span className="text-[9px] tracking-[0.25em] uppercase text-gold">Miami Hospitality</span>
             </Link>
-            <p className="text-luxury-muted text-sm leading-relaxed">
-              Fractional F&amp;B leadership and pre-opening consulting for Miami restaurants, hotels, and hospitality groups.
+            <p className="text-sm text-luxury-muted leading-relaxed max-w-xs">
+              Fractional F&B operations leadership for Miami restaurants, hotels, and new openings.
             </p>
           </div>
+
+          {/* Navigation */}
           <div>
-            <h4 className="text-xs tracking-widest uppercase text-luxury-muted mb-4">Navigation</h4>
-            <nav className="flex flex-col gap-2">
-              {[
-                { href: '/about', label: 'About' },
-                { href: '/services', label: 'Services' },
-                { href: '/pre-opening', label: 'Pre-Opening' },
-                { href: '/experience', label: 'Experience' },
-                { href: '/philosophy', label: 'Philosophy' },
-                { href: '/contact', label: 'Contact' },
-              ].map((l) => (
-                <Link key={l.href} to={l.href} className="nav-link text-xs">{l.label}</Link>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-luxury-muted/60 mb-5">Navigation</p>
+            <nav className="flex flex-col gap-3">
+              {links.map(link => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-luxury-muted hover:text-gold transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
               ))}
             </nav>
           </div>
+
+          {/* Contact */}
           <div>
-            <h4 className="text-xs tracking-widest uppercase text-luxury-muted mb-4">Connect</h4>
-            <div className="flex flex-col gap-3">
-              <a
-                href="https://www.linkedin.com/in/leandermena/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-link text-xs"
-              >
-                LinkedIn →
-              </a>
-              <Link to="/contact" className="nav-link text-xs">Send an Inquiry →</Link>
-            </div>
-            <div className="mt-6">
-              <Link to="/contact" className="btn-gold text-xs px-4 py-2">Work with Leander</Link>
-            </div>
+            <p className="text-[10px] tracking-[0.2em] uppercase text-luxury-muted/60 mb-5">Contact</p>
+            <a
+              href="mailto:consulting@leandermena.com"
+              className="flex items-center gap-2 text-sm text-luxury-muted hover:text-gold transition-colors duration-200 mb-4"
+            >
+              <Mail className="w-4 h-4" />
+              consulting@leandermena.com
+            </a>
+            <p className="text-sm text-luxury-muted">Miami, Florida</p>
+            <Link to="/contact" className="btn-primary mt-6 text-[10px] py-3">
+              Book a Discovery Call
+            </Link>
           </div>
         </div>
-        <div className="pt-6 border-t border-luxury-border flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-luxury-muted text-xs">&copy; {year} Leander Mena · Miami, Florida</p>
-          <p className="text-luxury-muted text-xs">Fractional F&amp;B Leadership &middot; Pre-Opening Consulting &middot; Operations Recovery</p>
+
+        <div className="divider-gold mt-12 mb-8" style={{marginLeft: 0}} />
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-[11px] text-luxury-muted/50">
+            &copy; {new Date().getFullYear()} Leander Mena. All rights reserved.
+          </p>
+          <p className="text-[11px] text-luxury-muted/50">
+            Miami, FL &nbsp;&middot;&nbsp; leandermena.com
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }
