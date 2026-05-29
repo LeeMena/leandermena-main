@@ -4,48 +4,49 @@ export interface BlogPost {
   title: string;
   excerpt: string;
   category: string;
-  date: string;
   readTime: string;
-  featured?: boolean;
+  date: string;
 }
 
 export const blogPosts: BlogPost[] = [
   {
-    id: 'b1',
+    id: '1',
     slug: 'labor-cost-control-miami-restaurants',
-    title: 'How Miami Restaurants Can Cut Labor Costs Without Cutting Staff',
-    excerpt: 'Labor is your largest controllable cost. Here is the exact framework I use to reduce labor percentage without layoffs, schedule cuts, or lowering service standards.',
+    title: 'Labor Cost Control for Miami Restaurants',
+    excerpt:
+      'Labor cost problems usually begin before payroll is processed. They start in unclear roles, weak schedules, and service models that require too many people to produce inconsistent results.',
     category: 'Operations',
-    date: '2026-05-01',
-    readTime: '8 min read',
-    featured: true,
+    readTime: '5 min',
+    date: 'May 2026',
   },
   {
-    id: 'b2',
+    id: '2',
     slug: 'miami-pre-opening-playbook',
-    title: 'The Miami Pre-Opening Playbook: 120 Days to a Flawless Launch',
-    excerpt: 'After leading 12+ pre-openings in Miami, I have built a repeatable roadmap. These are the 7 milestones every restaurant opening in Miami must hit.',
+    title: 'Miami Pre-Opening Playbook',
+    excerpt:
+      'Opening a restaurant in Miami demands more than good design and a strong concept. The real work is turning vision into a team, a system, and a launch plan that survives the first ninety days.',
     category: 'Pre-Opening',
-    date: '2026-04-15',
-    readTime: '10 min read',
-    featured: true,
+    readTime: '6 min',
+    date: 'April 2026',
   },
   {
-    id: 'b3',
+    id: '3',
     slug: 'what-fractional-gm-does',
-    title: 'What a Fractional GM Actually Does (And When You Need One)',
-    excerpt: 'Most operators do not know fractional leadership exists until they are already in trouble. Here is how it works, what it costs, and when it makes sense.',
-    category: 'Fractional Leadership',
-    date: '2026-03-20',
-    readTime: '6 min read',
+    title: 'What a Fractional GM Does',
+    excerpt:
+      'A fractional GM gives an operator access to experienced leadership without committing to a full-time executive hire. In hospitality, that matters most when the business needs immediate structure and momentum.',
+    category: 'Leadership',
+    readTime: '4 min',
+    date: 'March 2026',
   },
   {
-    id: 'b4',
-    slug: 'leander-mena-miami-hospitality',
-    title: 'Building a Hospitality Career in Miami: 18 Years of Hard Lessons',
-    excerpt: 'From banquet captain to fractional GM, here is what 18 years operating Miami restaurants and hotels taught me about leadership, systems, and survival.',
-    category: 'Career & Leadership',
-    date: '2026-02-10',
-    readTime: '12 min read',
+    id: '4',
+    slug: 'sop-systems-that-stick',
+    title: 'Building SOPs Your Team Will Actually Follow',
+    excerpt:
+      'Most SOP failures are not writing failures. They are implementation failures. The difference between an SOP binder that collects dust and one that changes how a team operates is how it is introduced.',
+    category: 'Systems',
+    readTime: '5 min',
+    date: 'February 2026',
   },
 ];
