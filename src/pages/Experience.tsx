@@ -1,90 +1,65 @@
-const roles = [
-  {
-    title: 'General Manager — Marabu Restaurant / V&E Hospitality',
-    meta: 'Miami, FL · La Cerveceria de Barrio concept',
-    body: 'Led full restaurant general management including P&L oversight, labor management, vendor relationships, guest experience strategy, revenue growth, and front-of-house team development for a high-volume Miami concept.',
-  },
-  {
-    title: 'Miami Market Operations — Butler Hospitality',
-    meta: 'Miami, FL',
-    body: 'Managed Miami market hotel partner operations for Butler Hospitality, overseeing multi-property F&B delivery, brand standards, staffing, and guest satisfaction across hotel accounts.',
-  },
-  {
-    title: 'Opening General Manager — Maska Indian Kitchen + Bar',
-    meta: 'Miami, FL · Michelin Star Chef concept',
-    body: 'Led full pre-opening build of an upscale Indian restaurant. Recruited and trained the complete opening team, established SOPs, coordinated vendor onboarding, and managed the launch into the Miami dining market.',
-  },
-  {
-    title: 'Director of Banquets — SLS Hotels / SLS Brickell',
-    meta: 'Miami, FL · Pre-opening support',
-    body: 'Provided pre-opening banquet operations leadership for SLS Brickell, building event execution systems, staffing models, catering menus, and service standards for a luxury urban hotel property.',
-  },
-  {
-    title: 'Banquet Manager — Accor / Sofitel Miami → Pullman Miami Airport',
-    meta: 'Miami, FL · Rebranding transition',
-    body: "Managed banquet and event operations through Accor's rebranding transition from Sofitel Miami to Pullman Miami Airport, maintaining service continuity and team performance throughout the property conversion.",
-  },
-  {
-    title: 'Banquet Manager — Viceroy Hotel',
-    meta: 'Miami, FL',
-    body: "Oversaw banquet and event execution for a luxury Miami hotel, managing large-scale corporate events, catering coordination, banquet staffing, and cost controls while maintaining Viceroy's high service standards.",
-  },
-  {
-    title: 'Catering Coordinator — The Palms Hotel & Spa',
-    meta: 'Miami Beach, FL',
-    body: 'Coordinated catering operations and event services at a Miami Beach boutique luxury hotel, supporting event planning, client relations, F&B logistics, and on-site event execution.',
-  },
-  {
-    title: 'Food & Beverage Operations — InterContinental Miami',
-    meta: 'Miami, FL',
-    body: "Supported food-and-beverage operations at one of Miami's premier full-service hotels, contributing to outlet management, team service, banquet support, and daily F&B standards.",
-  },
-]
+import Layout from '../components/Layout';
+import CTABanner from '../components/CTABanner';
 
-const skills = [
-  'Pre-Opening Leadership', 'P&L Management', 'Cost Control', 'Labor Scheduling',
-  'Revenue Management', 'Menu Engineering', 'Vendor Negotiation', 'SOP Development',
-  'Staff Training', 'Guest Experience', 'Multi-Unit Operations', 'Banquet & Event Execution',
-  'Catering Management', 'Corporate Events', 'Fine Dining', 'Guest Recovery',
-  'Rebranding Support', 'Regulatory Compliance', 'Team Building',
-]
+const stats = [
+  { value: '18+', label: 'Years in Hospitality' },
+  { value: '40+', label: 'Properties Operated' },
+  { value: '500+', label: 'Team Members Trained' },
+  { value: '$12M+', label: 'Revenue Impact' },
+];
 
 export default function Experience() {
   return (
-    <div className="pt-16">
-      <section
-        className="page-hero"
-        style={{ background: 'linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.85)), url("/dining.jpg") center/cover no-repeat' }}
-      >
-        <div className="max-w-6xl mx-auto px-6 w-full">
-          <span className="section-kicker mb-2 block">18+ Years · Miami, Florida</span>
-          <h1 className="font-display text-4xl md:text-5xl text-luxury-text">Restaurant &amp; Hotel Operations Experience</h1>
-          <div className="gold-divider mt-4" />
-        </div>
-      </section>
-
-      <section className="py-20 bg-luxury-black">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="space-y-10 mb-16">
-            {roles.map((r) => (
-              <div key={r.title} className="border-l-2 border-gold/30 pl-7">
-                <h2 className="font-display text-xl text-luxury-text mb-1">{r.title}</h2>
-                <p className="text-gold text-xs tracking-wide uppercase mb-3">{r.meta}</p>
-                <p className="text-luxury-muted text-sm leading-relaxed">{r.body}</p>
+    <Layout seo={{
+      title: 'Restaurant & Hotel Operations Experience | Leander Mena Miami',
+      description: '18-year track record in Miami hospitality: pre-opening leadership, hotel F&B, banquet operations, restaurant management, and labor optimization.',
+    }}>
+      <section className="pt-40 pb-24 bg-luxury-black">
+        <div className="container-luxury">
+          <span className="eyebrow">Experience</span>
+          <h1 className="font-display text-5xl md:text-7xl text-luxury-text mb-6 max-w-3xl">
+            Hospitality Operations Experience — Miami
+          </h1>
+          <p className="text-lg text-luxury-muted max-w-2xl">
+            18+ years leading service, labor, revenue, and opening initiatives across independent restaurants, luxury hotels, banquet operations, and multi-outlet F&B teams.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+            {stats.map((s) => (
+              <div key={s.label} className="border border-luxury-border/40 p-6 text-center">
+                <p className="font-serif text-4xl text-gold mb-2">{s.value}</p>
+                <p className="text-xs tracking-[0.15em] uppercase text-luxury-muted">{s.label}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="luxury-card p-8">
-            <h3 className="font-sans font-semibold text-luxury-text tracking-widest uppercase text-xs mb-5">Key Skills Across Career</h3>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((s) => (
-                <span key={s} className="px-3 py-1 bg-luxury-dark border border-luxury-border rounded text-luxury-muted text-xs">{s}</span>
-              ))}
-            </div>
+      <section className="section-padding bg-luxury-dark">
+        <div className="container-luxury">
+          <span className="eyebrow">Core Strengths</span>
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            {[
+              { title: 'Pre-Opening Strategy', desc: 'Staffing models, SOP development, training systems, soft-opening execution, and launch-week leadership.' },
+              { title: 'Labor & Cost Control', desc: 'Scheduling structure, role clarity, accountability systems, and financial rhythm that protect margins without hurting culture.' },
+              { title: 'Banquet & Event Operations', desc: 'Captain accountability, event SOP systems, setup and service standards, and consistent execution across high-volume events.' },
+              { title: 'Team Development', desc: 'Manager coaching, training systems, performance frameworks, and building teams that do not depend on the owner to function.' },
+              { title: 'Hotel F&B Leadership', desc: 'Multi-outlet coordination, rooms integration, banquet alignment, and revenue discipline across complex hotel F&B environments.' },
+              { title: 'Operations Recovery', desc: 'Rapid diagnostic, priority action planning, and embedded execution support for underperforming restaurants and F&B departments.' },
+            ].map((item) => (
+              <div key={item.title} className="border border-luxury-border/50 p-6">
+                <h3 className="font-serif text-xl text-luxury-text mb-3">{item.title}</h3>
+                <p className="text-sm text-luxury-muted leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
-  )
+
+      <CTABanner
+        title="Discuss an Engagement"
+        subtitle="Every engagement starts with a direct conversation about your property and what needs to change."
+        primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
+      />
+    </Layout>
+  );
 }

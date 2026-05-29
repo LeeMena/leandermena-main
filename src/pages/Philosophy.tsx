@@ -1,61 +1,47 @@
-const pillars = [
-  {
-    number: '01',
-    title: 'Clarity & Communication',
-    body: 'Teams perform best when they know what is expected, what success looks like, and what happens when standards slip. I build communication systems — pre-shifts, check-ins, and documented expectations — that reduce confusion and increase accountability without adding bureaucracy.',
-  },
-  {
-    number: '02',
-    title: 'Systems Before Heroics',
-    body: 'A well-run operation should not depend on any single person having a great day. I design processes, checklists, and workflows that let your average performer do above-average work consistently. Systems are the product.',
-  },
-  {
-    number: '03',
-    title: 'Guest Experience as a Business Metric',
-    body: 'Guest satisfaction is not a soft measure — it drives return visits, reviews, and referrals, all of which show up in revenue. I connect service standards directly to financial outcomes so that ownership and operators are aligned on what matters.',
-  },
-  {
-    number: '04',
-    title: 'Respect for the Work',
-    body: 'Hospitality is hard, physical, and relentless. I take it seriously. That means showing up on the floor, doing the unglamorous work alongside the team, and never asking anyone to do something I would not do myself.',
-  },
-]
+import Layout from '../components/Layout';
+import CTABanner from '../components/CTABanner';
 
 export default function Philosophy() {
   return (
-    <div className="pt-16">
-      <section
-        className="page-hero"
-        style={{ background: 'linear-gradient(rgba(10,10,10,0.72),rgba(10,10,10,0.72)), url("/philosophy.jpg") center/cover no-repeat' }}
-      >
-        <div className="max-w-6xl mx-auto px-6 w-full">
-          <span className="section-kicker mb-2 block">Leadership Philosophy</span>
-          <h1 className="font-display text-4xl md:text-5xl text-luxury-text">How I Think About Operations</h1>
-          <div className="gold-divider mt-4" />
+    <Layout seo={{
+      title: 'Leadership Philosophy | Leander Mena',
+      description: "Leander Mena's approach to hospitality operations: disciplined systems, strong culture, guest-centered execution, and measurable performance.",
+    }}>
+      <section className="pt-40 pb-24 bg-luxury-black">
+        <div className="container-luxury">
+          <span className="eyebrow">Philosophy</span>
+          <h1 className="font-display text-5xl md:text-7xl text-luxury-text mb-6 max-w-3xl">
+            Great operations are built on clarity, accountability, and culture.
+          </h1>
         </div>
       </section>
 
-      <section className="py-20 bg-luxury-black">
-        <div className="max-w-4xl mx-auto px-6">
-          <p className="text-luxury-muted text-lg leading-relaxed mb-16 max-w-2xl">
-            These are not mission-statement buzzwords. They are the principles that show up
-            in how I run a shift, structure a training, and give feedback to a manager.
-          </p>
-          <div className="space-y-12">
-            {pillars.map((p) => (
-              <div key={p.number} className="grid md:grid-cols-12 gap-6">
-                <div className="md:col-span-2">
-                  <span className="font-display text-5xl text-luxury-border leading-none">{p.number}</span>
-                </div>
-                <div className="md:col-span-10 luxury-card p-8">
-                  <h2 className="font-display text-2xl text-luxury-text mb-4">{p.title}</h2>
-                  <p className="text-luxury-muted leading-relaxed text-sm">{p.body}</p>
-                </div>
+      <section className="section-padding bg-luxury-dark">
+        <div className="container-luxury">
+          <blockquote className="font-serif text-2xl md:text-3xl text-gold/90 italic max-w-3xl mb-16 leading-relaxed">
+            "When operations become simpler for the team, the guest experience becomes stronger, faster, and more reliable."
+          </blockquote>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { title: 'Systems over chaos', desc: 'Documented standards, clean workflows, and practical SOPs reduce friction and make execution repeatable.' },
+              { title: 'People drive performance', desc: 'Hiring, training, coaching, and accountability shape the guest experience more than any technology or menu.' },
+              { title: 'Guest experience with discipline', desc: 'Service excellence matters most when it is supported by labor control, prep discipline, and clear communication.' },
+              { title: 'Results that can be measured', desc: 'Every operational improvement should connect to retention, consistency, profitability, or speed to opening.' },
+            ].map((item) => (
+              <div key={item.title} className="border border-luxury-border/50 p-8">
+                <h3 className="font-serif text-2xl text-luxury-text mb-4">{item.title}</h3>
+                <p className="text-luxury-muted leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-    </div>
-  )
+
+      <CTABanner
+        title="Start a Conversation"
+        subtitle="Philosophy in action means showing up, diagnosing the real situation, and making changes that last."
+        primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
+      />
+    </Layout>
+  );
 }

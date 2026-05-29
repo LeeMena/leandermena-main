@@ -1,22 +1,25 @@
-import { Outlet, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import Nav from './Nav'
-import Footer from './Footer'
+import { useEffect } from 'react';
+import Navbar from './Navbar';
+import Footer from './Footer';
 
-export default function Layout() {
-  const { pathname } = useLocation()
+interface SEO {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
 
+export default function Layout({ children, seo }: { children: React.ReactNode; seo?: SEO }) {
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    if (seo?.title) document.title = seo.title;
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc && seo?.description) desc.setAttribute('content', seo.description);
+  }, [seo]);
 
   return (
     <div className="min-h-screen bg-luxury-black flex flex-col">
-      <Nav />
-      <main className="flex-1">
-        <Outlet />
-      </main>
+      <Navbar />
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
-  )
+  );
 }
