@@ -1,0 +1,20 @@
+<!--
+  BRAND MARK — INLINE VERSION
+  Use this SVG code directly inside <a class="brand"> in every .html page.
+  The rect background uses fill="transparent" so it adapts to both light and dark mode.
+  The border rect and paths use stroke="currentColor" with explicit gold color set via
+  the parent .brand-mark CSS: color: var(--gold)
+  The outer background rect uses fill="var(--bg)" so it matches the page surface in both themes.
+
+  REPLACE the existing brand-mark SVG in every .html file with this block:
+-->
+<svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: matches page bg in both light + dark mode -->
+  <rect width="32" height="32" fill="var(--bg,#0a0a0a)"/>
+  <!-- L mark -->
+  <path d="M7 8v16h8" stroke="var(--gold,#b8a080)" stroke-width="1.4" stroke-linecap="square" stroke-linejoin="miter"/>
+  <!-- M mark -->
+  <path d="M17 8l4 8 4-8M17 24l4-8 4 8" stroke="var(--gold,#b8a080)" stroke-width="1.4" stroke-linecap="square" stroke-linejoin="miter"/>
+  <!-- Border -->
+  <rect x="0.5" y="0.5" width="31" height="31" stroke="var(--gold,#b8a080)" stroke-opacity="0.25" stroke-width="0.5"/>
+</svg>
