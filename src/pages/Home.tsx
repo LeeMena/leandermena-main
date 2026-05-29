@@ -90,11 +90,11 @@ export default function Home() {
           <img
             src="/landing-hero.jpg"
             alt=""
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-70"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/90 to-[#0a0a0a]/70" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/60 to-[#0a0a0a]/35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/15" />
         </div>
 
         <div className="container relative z-10 py-[clamp(4rem,10vw,8rem)]">
@@ -168,7 +168,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY FRACTIONAL — Explain the model BEFORE listing services */}
+      {/* WHY FRACTIONAL */}
       <section className="section">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -231,7 +231,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES — Now they understand fractional, show offerings */}
+      {/* SERVICES */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -272,10 +272,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TESTIMONIALS — Social proof right after services */}
+      {/* TESTIMONIALS */}
       <Testimonials />
 
-      {/* EXPERIENCE — Proof deepens after emotional buy-in */}
+      {/* EXPERIENCE */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -309,7 +309,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHO THIS IS FOR — Qualify before explaining process */}
+      {/* WHO THIS IS FOR */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -338,7 +338,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW WE WORK — Process reduces friction for ready buyers */}
+      {/* HOW WE WORK */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
