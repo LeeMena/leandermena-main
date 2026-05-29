@@ -1,13 +1,17 @@
+# Block Cloudflare Pages preview domain from indexing
 https://:project.pages.dev/*
   X-Robots-Tag: noindex
 
+# Production domain — full indexing, security headers
 https://www.leandermena.com/*
   X-Robots-Tag: index, follow
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
+# Long-cache static assets
 https://www.leandermena.com/*.js
   Cache-Control: public, max-age=2592000, immutable
 
@@ -20,5 +24,12 @@ https://www.leandermena.com/*.jpg
 https://www.leandermena.com/*.webp
   Cache-Control: public, max-age=2592000
 
+https://www.leandermena.com/*.png
+  Cache-Control: public, max-age=2592000
+
+# Short-cache HTML pages
 https://www.leandermena.com/*.html
-  Cache-Control: public, max-age=7200
+  Cache-Control: public, max-age=7200, stale-while-revalidate=86400
+
+https://www.leandermena.com/
+  Cache-Control: public, max-age=7200, stale-while-revalidate=86400
