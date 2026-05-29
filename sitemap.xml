@@ -1,81 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://www.leandermena.com/</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
   </url>
-
   <url>
-    <loc>https://www.leandermena.com/about.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://www.leandermena.com/about</loc>
+    <priority>0.8</priority>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.leandermena.com/services</loc>
     <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.leandermena.com/services.html</loc>
-    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.leandermena.com/pre-opening</loc>
     <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.leandermena.com/pre-opening.html</loc>
-    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://www.leandermena.com/experience.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.leandermena.com/philosophy.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.leandermena.com/experience</loc>
     <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.leandermena.com/contact.html</loc>
-    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.leandermena.com/philosophy</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.leandermena.com/contact</loc>
     <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.leandermena.com/leander-mena-miami-hospitality.html</loc>
-    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.leandermena.com/profile</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.leandermena.com/blog</loc>
     <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
   </url>
-
   <url>
-    <loc>https://www.leandermena.com/miami-pre-opening-playbook.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.leandermena.com/blog/pre-opening</loc>
     <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
-
   <url>
-    <loc>https://www.leandermena.com/what-fractional-gm-does.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.leandermena.com/blog/fractional-gm</loc>
     <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
-
   <url>
-    <loc>https://www.leandermena.com/labor-cost-control-miami-restaurants.html</loc>
-    <lastmod>2026-05-29</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://www.leandermena.com/blog/labor-cost</loc>
     <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
-
 </urlset>
