@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 
@@ -62,7 +62,7 @@ export default function Contact() {
 
       <section className="page-header">
         <div className="container">
-          <span className="kicker">Contact Leander Mena — Miami F&B Consulting</span>
+          <span className="kicker">Contact Leander Mena â€” Miami F&B Consulting</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
             Start the Conversation
           </h1>
@@ -84,17 +84,17 @@ export default function Contact() {
                   </h3>
                   <div className="flex flex-col gap-4 text-sm text-[#888888]">
                     <div className="flex items-start gap-3">
-                      <span className="text-[#b8a080]">⌖</span>
-                      <span>Miami, Florida · South Florida</span>
+                      <span className="text-[#b8a080]">âŒ–</span>
+                      <span>Miami, Florida Â· South Florida</span>
                     </div>
                     <div className="flex items-start gap-3">
-                      <span className="text-[#b8a080]">✉</span>
+                      <span className="text-[#b8a080]">âœ‰</span>
                       <a href="mailto:leander@leandermena.com" className="hover:text-[#b8a080]">
                         leander@leandermena.com
                       </a>
                     </div>
                     <div className="flex items-start gap-3">
-                      <span className="text-[#b8a080]">◷</span>
+                      <span className="text-[#b8a080]">â—·</span>
                       <span>Response time: within 24 hours</span>
                     </div>
                   </div>
@@ -106,20 +106,20 @@ export default function Contact() {
                   </h3>
                   <ul className="flex flex-col gap-3 text-sm text-[#888888]">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→</span>
-                      Fractional F&B Director — 2–4 days/week
+                      <span className="text-[#b8a080]">â†’</span>
+                      Fractional F&B Director â€” 2â€“4 days/week
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→</span>
-                      Pre-Opening Consulting — 90-day sprint
+                      <span className="text-[#b8a080]">â†’</span>
+                      Pre-Opening Consulting â€” 90-day sprint
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→</span>
-                      Operations Recovery — 30–60 day intensive
+                      <span className="text-[#b8a080]">â†’</span>
+                      Operations Recovery â€” 30â€“60 day intensive
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→</span>
-                      Banquet & Catering Leadership — project-based
+                      <span className="text-[#b8a080]">â†’</span>
+                      Banquet & Catering Leadership â€” project-based
                     </li>
                   </ul>
                 </div>
@@ -156,7 +156,7 @@ export default function Contact() {
                 {state === 'success' ? (
                   <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl p-8 text-center">
                     <div className="w-12 h-12 bg-[#b8a080]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-[#b8a080] text-xl">✓</span>
+                      <span className="text-[#b8a080] text-xl">âœ“</span>
                     </div>
                     <h3 className="text-lg font-bold text-[#e8e8e8] mb-2">Message Received</h3>
                     <p className="text-sm text-[#888888]">
@@ -268,3 +268,4 @@ export default function Contact() {
     </>
   )
 }
+

@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+﻿import Layout from '../components/Layout';
 import CTABanner from '../components/CTABanner';
 import { caseStudies } from '../data/caseStudies';
 
@@ -61,3 +61,4 @@ export default function CaseStudies() {
     </Layout>
   );
 }
+

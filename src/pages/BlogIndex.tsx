@@ -1,4 +1,4 @@
-import ScrollReveal from '@/components/ScrollReveal'
+﻿import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
@@ -6,7 +6,7 @@ const articles = [
   {
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
-    body: 'The 90-day framework for taking a Miami restaurant from empty shell to opening night — staffing, SOPs, vendors, and training.',
+    body: 'The 90-day framework for taking a Miami restaurant from empty shell to opening night â€” staffing, SOPs, vendors, and training.',
     href: '/blog/pre-opening',
   },
   {
@@ -59,7 +59,7 @@ export default function BlogIndex() {
                   </h3>
                   <p className="text-sm text-[#888888] flex-1">{a.body}</p>
                   <span className="text-sm font-semibold text-[#b8a080] mt-4 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Read article →
+                    Read article â†’
                   </span>
                 </Link>
               </ScrollReveal>
@@ -70,3 +70,4 @@ export default function BlogIndex() {
     </>
   )
 }
+

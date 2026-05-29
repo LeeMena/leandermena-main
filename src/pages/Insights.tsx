@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+﻿import Layout from '../components/Layout';
 import CTABanner from '../components/CTABanner';
 import { blogPosts } from '../data/blogPosts';
 
@@ -44,3 +44,4 @@ export default function Insights() {
     </Layout>
   );
 }
+

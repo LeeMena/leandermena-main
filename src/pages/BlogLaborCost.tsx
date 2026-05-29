@@ -1,4 +1,4 @@
-import ScrollReveal from '@/components/ScrollReveal'
+﻿import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
@@ -19,7 +19,7 @@ export default function BlogLaborCost() {
               Labor Cost Control in Miami Restaurants
             </h1>
             <p className="text-[#888888] text-lg max-w-[54ch]">
-              Labor cost is the most controllable major expense in a restaurant — and the one most
+              Labor cost is the most controllable major expense in a restaurant â€” and the one most
               often managed reactively.
             </p>
           </div>
@@ -30,7 +30,7 @@ export default function BlogLaborCost() {
             <h2>Start With the Schedule as a Budget Tool</h2>
             <p>
               Most operators write schedules based on who's available. The better approach is to
-              write the schedule based on projected revenue — then work backwards to a labor cost
+              write the schedule based on projected revenue â€” then work backwards to a labor cost
               target. If your labor cost target is 28% and projected weekly revenue is $60,000, your
               weekly labor budget is $16,800.
             </p>
@@ -38,13 +38,13 @@ export default function BlogLaborCost() {
             <h2>Productivity Metrics That Actually Matter</h2>
             <ul>
               <li>
-                <strong>Revenue per labor hour</strong> — total weekly revenue divided by total hours worked.
+                <strong>Revenue per labor hour</strong> â€” total weekly revenue divided by total hours worked.
               </li>
               <li>
-                <strong>Covers per server</strong> — how many guests each front-of-house team member handles per shift.
+                <strong>Covers per server</strong> â€” how many guests each front-of-house team member handles per shift.
               </li>
               <li>
-                <strong>Kitchen labor as a percentage of food revenue</strong> — separate from front-of-house for cleaner analysis.
+                <strong>Kitchen labor as a percentage of food revenue</strong> â€” separate from front-of-house for cleaner analysis.
               </li>
             </ul>
 
@@ -54,7 +54,7 @@ export default function BlogLaborCost() {
               decisions, and over-staffing during shoulder periods.
             </p>
             <ul>
-              <li>Set a hard rule on clock-in windows — no earlier than 7 minutes before scheduled time</li>
+              <li>Set a hard rule on clock-in windows â€” no earlier than 7 minutes before scheduled time</li>
               <li>Designate one manager per shift as the cut decision-maker</li>
               <li>Review the prior week's labor report every Monday before writing the next schedule</li>
               <li>Build in a swing position for Friday and Saturday rather than defaulting to full staff</li>
@@ -84,3 +84,4 @@ export default function BlogLaborCost() {
     </>
   )
 }
+

@@ -1,4 +1,4 @@
-import ScrollReveal from '@/components/ScrollReveal'
+﻿import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
@@ -26,7 +26,7 @@ export default function About() {
     <>
       <SEO
         title="About"
-        description="Leander Mena — 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
+        description="Leander Mena â€” 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
         path="/about"
       />
 
@@ -47,7 +47,7 @@ export default function About() {
           <div className="grid lg:grid-cols-[220px_1fr] gap-10 items-start mb-12">
             <ScrollReveal>
               <img
-                src="/about.jpg"
+                src="/images/about.jpg"
                 alt="Leander Mena"
                 className="w-full rounded-xl shadow-md object-cover aspect-[3/4]"
                 loading="lazy"
@@ -68,7 +68,7 @@ export default function About() {
                   experience spans pre-openings, day-to-day operations, and restructuring under pressure.
                 </p>
                 <p>
-                  I am comfortable both on the floor and behind the scenes — coaching service
+                  I am comfortable both on the floor and behind the scenes â€” coaching service
                   standards, managing schedules, working through P&L details, and partnering with
                   ownership to align financial targets with guest experience goals.
                 </p>
@@ -103,3 +103,4 @@ export default function About() {
     </>
   )
 }
+
