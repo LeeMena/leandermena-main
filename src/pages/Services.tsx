@@ -1,56 +1,116 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle } from 'lucide-react';
-import Layout from '../components/Layout';
-import CTABanner from '../components/CTABanner';
-import { services } from '../data/services';
+import ScrollReveal from '@/components/ScrollReveal'
+import SEO from '@/components/SEO'
+import { Link } from 'react-router-dom'
+
+const offerings = [
+  {
+    kicker: 'Fractional leadership',
+    title: 'Fractional F&B Director',
+    body: 'For restaurants and hotel groups that need a veteran operator 2–4 days per week. Stabilize operations, build systems, and develop your team — without the overhead of a full-time executive.',
+    bullets: [
+      'On-site leadership during peak service periods',
+      'Weekly P&L review with ownership',
+      'Manager coaching and accountability check-ins',
+      'SOP compliance review and correction',
+      'Scheduling review and labor cost monitoring',
+      'Vendor relationship management and cost negotiation',
+    ],
+  },
+  {
+    kicker: 'New concept support',
+    title: 'Pre-Opening & New Concept Builds',
+    body: 'From construction walkthroughs to opening night — build the team, write SOPs, coordinate vendors, and create an operating backbone before doors open.',
+    bullets: [
+      'Staffing plan and org chart aligned to concept and budget',
+      'Structured training programs that stick before opening week',
+      'Friends-and-family and mock service events',
+      'SOPs, checklists, and opening/closing procedures',
+      'Vendor coordination and delivery scheduling',
+      '30, 60, and 90-day post-opening audits',
+    ],
+  },
+  {
+    kicker: 'Performance recovery',
+    title: 'Operations Recovery & Restructuring',
+    body: 'When labor costs drift, service standards drop, or turnover hurts consistency — diagnose quickly and install systems that stick.',
+    bullets: [
+      'Rapid operational assessment within the first week',
+      'Labor cost analysis and scheduling optimization',
+      'Service standard recovery and floor coaching',
+      'Manager development and accountability systems',
+      'Guest experience monitoring and recovery protocols',
+      'Financial discipline and controllable cost management',
+    ],
+  },
+  {
+    kicker: 'Banquet & catering',
+    title: 'Banquet & Catering Operations',
+    body: 'High-volume event leadership for hotels, venues, and catering groups across South Florida. Pre-opening setup, staffing models, and execution systems.',
+    bullets: [
+      'Banquet staffing models and event workflows',
+      'Pre-opening setup for hotel F&B outlets',
+      'Catering execution systems and quality control',
+      'Event coordination and vendor management',
+      'Revenue optimization for banquet operations',
+    ],
+  },
+]
 
 export default function Services() {
   return (
-    <Layout seo={{
-      title: 'Hospitality Consulting Services | Leander Mena Miami',
-      description: 'Fractional GM, pre-opening leadership, operations recovery, and strategic advisory for Miami restaurants and hotel F&B.',
-    }}>
-      <section className="pt-40 pb-24 bg-luxury-black">
-        <div className="container-luxury">
-          <span className="eyebrow">Services</span>
-          <h1 className="font-display text-5xl md:text-7xl text-luxury-text mb-6 max-w-3xl">
-            Miami Hospitality Consulting Services
+    <>
+      <SEO
+        title="Services"
+        description="Fractional F&B leadership, pre-opening consulting, operations recovery, and banquet operations for Miami restaurants and hotels."
+        path="/services"
+      />
+
+      <section className="page-header">
+        <div className="container">
+          <span className="kicker">Services</span>
+          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
+            Operational leadership, tailored to your stage.
           </h1>
-          <p className="text-lg text-luxury-muted max-w-2xl">
-            Fractional GM services, pre-opening builds, and operations recovery for Miami restaurants and hotel F&B teams.
+          <p className="text-[#888888] text-lg max-w-[54ch]">
+            Every engagement is scoped to the specific gaps and goals of your operation.
+            No retainers, no vague deliverables — just clear work and measurable outcomes.
           </p>
         </div>
       </section>
 
-      <section className="section-padding bg-luxury-dark">
-        <div className="container-luxury grid md:grid-cols-2 gap-8">
-          {services.map((service) => (
-            <article key={service.id} className="border border-luxury-border p-8 hover:border-gold/40 transition-colors">
-              <span className="eyebrow">{service.duration}</span>
-              <h2 className="font-serif text-3xl text-luxury-text mb-2">{service.title}</h2>
-              <p className="text-gold/70 text-sm italic mb-4">{service.tagline}</p>
-              <p className="text-luxury-muted mb-6 leading-relaxed">{service.description}</p>
-              <ul className="space-y-2 mb-6">
-                {service.deliverables.map((d) => (
-                  <li key={d} className="flex items-start gap-3 text-sm text-luxury-muted">
-                    <CheckCircle size={14} className="text-gold/60 mt-0.5 flex-shrink-0" />
-                    {d}
-                  </li>
-                ))}
-              </ul>
-              <p className="text-xs text-luxury-muted/60 border-t border-luxury-border/30 pt-4">
-                Best for: {service.ideal}
-              </p>
-            </article>
-          ))}
+      <section className="section">
+        <div className="container">
+          <div className="flex flex-col gap-10">
+            {offerings.map((o, i) => (
+              <ScrollReveal key={o.title} delay={i * 100}>
+                <div className="card">
+                  <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-3 block">
+                    {o.kicker}
+                  </span>
+                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-3">
+                    {o.title}
+                  </h2>
+                  <p className="text-[#888888] max-w-[68ch] mb-6">{o.body}</p>
+                  <ul className="grid sm:grid-cols-2 gap-2">
+                    {o.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-sm text-[#888888]">
+                        <span className="text-[#b8a080] mt-0.5">→</span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link to="/contact" className="btn btn-primary">
+              Discuss Your Project
+            </Link>
+          </div>
         </div>
       </section>
-
-      <CTABanner
-        title="Let's Talk About Your Operation"
-        subtitle="Every engagement starts with a direct 30-minute conversation."
-        primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
-      />
-    </Layout>
-  );
+    </>
+  )
 }

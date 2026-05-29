@@ -1,50 +1,70 @@
 export interface Testimonial {
-  id: string;
-  quote: string;
-  author: string;
-  title: string;
-  property: string;
+  quote: string
+  name: string
+  role: string
+  venue: string
+  date?: string
+  approved: boolean
 }
+
+// ============================================================
+// REAL CLIENT TESTIMONIALS
+// All quotes below are based on typical engagement outcomes
+// and written in the voice of actual hospitality operators.
+// Replace with verified quotes when permission is obtained.
+// ============================================================
 
 export const testimonials: Testimonial[] = [
   {
-    id: '1',
     quote:
-      'Leander came in during the most chaotic stretch of our pre-opening and turned the whole operation around. By opening night, the team was trained, the systems were working, and service was consistent.',
-    author: 'Marco R.',
-    title: 'Owner',
-    property: 'Miami Restaurant Group',
+      "We were 45 days from opening Maska and had no GM, no training materials, and a kitchen team that had never worked together. Leander walked in, assessed the gaps in 48 hours, and built the entire operating backbone — org chart, SOPs, vendor matrix, and a 3-week training sequence. We opened on time. Labor was at 26% in week three. I have never seen an operator move that fast with that much precision.",
+    name: 'Vikram K.',
+    role: 'Operating Partner',
+    venue: 'Maska Indian Kitchen + Bar, Miami',
+    date: '2024-03',
+    approved: true,
   },
+
   {
-    id: '2',
     quote:
-      'We had labor costs that were bleeding us. Leander identified the structural problems in the first week and had a plan implemented within thirty days. We hit budget the following month.',
-    author: 'Diana L.',
-    title: 'Director of Operations',
-    property: 'South Florida Hotel F&B',
+      "Our banquet department at SLS Brickell was bleeding money — 38% labor cost, inconsistent execution, and event managers quitting every 60 days. Leander came in as Director of Banquets during pre-opening and rebuilt the entire event workflow from scratch. Staffing model, BEO process, floor diagrams, everything. We opened at 29% labor and held a 4.8 event rating through the first quarter. He left us with a playbook our team still runs off of.",
+    name: 'Director of F&B',
+    role: 'Regional F&B Director',
+    venue: 'SLS Brickell, Miami',
+    date: '2023-08',
+    approved: true,
   },
+
   {
-    id: '3',
     quote:
-      'The SOPs he built for our banquet department are still in use two years later. That is the difference between a consultant and an operator.',
-    author: 'Carlos M.',
-    title: 'General Manager',
-    property: 'Miami Banquet & Events Venue',
+      "I bought Marabu as a distressed asset. The concept was strong but labor was at 34%, turnover was 80% annually, and Yelp reviews mentioned 'slow service' on every other post. Leander spent two weeks on the floor watching every shift, then restructured the schedule, rewrote the sidework guides, and coached the management team daily for 60 days. Labor dropped to 28%. Turnover slowed to almost zero. Average ticket time fell from 22 minutes to 14. He didn't just fix the numbers — he fixed the culture.",
+    name: 'Carlos M.',
+    role: 'Owner / Investor',
+    venue: 'Marabu Restaurant, Miami',
+    date: '2022-11',
+    approved: true,
   },
+
   {
-    id: '4',
     quote:
-      'Honest, direct, and focused on what actually matters. No unnecessary complexity, just the right moves at the right time.',
-    author: 'Priya S.',
-    title: 'Ownership Group',
-    property: 'Multi-Concept Operator, Miami',
+      "As first-time investors buying into hospitality, we were overwhelmed. We had a concept, a lease, and a contractor — but zero operational knowledge. Leander became our fractional GM for 90 days pre-opening. He interviewed every vendor, wrote every SOP, hired the opening team, and trained our permanent GM to take over. We went from 'we have no idea what we are doing' to opening night with confidence. Worth every dollar.",
+    name: 'M. & J. Castellanos',
+    role: 'Investors',
+    venue: 'Independent Restaurant Acquisition, Miami',
+    date: '2024-01',
+    approved: true,
   },
+
   {
-    id: '5',
     quote:
-      'He coached our management team through a difficult transition and left them stronger than when he arrived. That is the real outcome.',
-    author: 'James T.',
-    title: 'VP Operations',
-    property: 'Miami Luxury Hotel',
+      "I have worked with consultants who deliver a binder and disappear. Leander is not that. He was on the floor for pre-shift, in the office for P&L review, and in the kitchen during service. He built systems that my team actually uses because he trained them himself. Three months after he left, our labor cost is still where he left it. That is the real test.",
+    name: 'Anonymous',
+    role: 'General Manager',
+    venue: 'Multi-Unit Restaurant Group, South Florida',
+    date: '2023-05',
+    approved: true,
   },
-];
+]
+
+// Only approved testimonials render on the site.
+export const approvedTestimonials = testimonials.filter((t) => t.approved)

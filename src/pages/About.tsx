@@ -1,63 +1,105 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import Layout from '../components/Layout';
-import CTABanner from '../components/CTABanner';
+import ScrollReveal from '@/components/ScrollReveal'
+import SEO from '@/components/SEO'
+import { Link } from 'react-router-dom'
+
+const areas = [
+  {
+    label: 'Leadership & Culture',
+    desc: 'Building accountable, service-driven teams with clear expectations and consistent follow-through.',
+  },
+  {
+    label: 'Operations Systems',
+    desc: 'Installing service flows, sidework, and opening/closing procedures that keep shifts controlled.',
+  },
+  {
+    label: 'Financial Discipline',
+    desc: 'Managing labor, COGS, and controllables with a focus on both guest satisfaction and profitability.',
+  },
+  {
+    label: 'Guest Experience',
+    desc: 'Using feedback, reviews, and floor presence to continuously improve service and retention.',
+  },
+]
 
 export default function About() {
   return (
-    <Layout seo={{
-      title: 'About Leander Mena | Miami Hospitality Consultant',
-      description: 'Leander Mena is a Miami-based hospitality operator with 18+ years in restaurant, hotel F&B, banquet, and pre-opening leadership.',
-    }}>
-      <section className="relative pt-40 pb-24 bg-luxury-black">
-        <div className="container-luxury">
-          <span className="eyebrow">About</span>
-          <h1 className="font-display text-5xl md:text-7xl text-luxury-text mb-6 max-w-3xl">
-            Built by real operations, not theory.
+    <>
+      <SEO
+        title="About"
+        description="Leander Mena — 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
+        path="/about"
+      />
+
+      <section className="page-header">
+        <div className="container">
+          <span className="kicker">Miami, Florida</span>
+          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
+            About Leander Mena
           </h1>
-          <div className="divider-gold mb-8" style={{ marginLeft: 0 }} />
-          <p className="text-lg text-luxury-muted max-w-2xl leading-relaxed">
-            Leander Mena is a Miami-based hospitality and F&B operator with 18+ years of leadership across restaurants, hotels, banquets, catering, and multi-outlet operations.
+          <p className="text-[#888888] text-lg max-w-[54ch]">
+            Professional profile and operational philosophy from 18+ years in Miami hospitality.
           </p>
         </div>
       </section>
 
-      <section className="section-padding bg-luxury-dark">
-        <div className="container-luxury grid lg:grid-cols-2 gap-16 items-start">
-          <div>
-            <span className="eyebrow">The Profile</span>
-            <h2 className="font-serif text-4xl text-luxury-text mb-6">Operator First</h2>
-            <p className="text-luxury-muted leading-relaxed mb-6">
-              His work sits at the intersection of service standards, team accountability, and commercial discipline. That combination makes him especially valuable during openings, turnarounds, and leadership transitions — when operators need someone who has been on the floor, not just in the boardroom.
-            </p>
-            <p className="text-luxury-muted leading-relaxed mb-8">
-              Leander has led staffing builds from zero, rebuilt underperforming departments, developed management teams, and created systems that make businesses easier to run day after day.
-            </p>
-            <Link to="/book" className="btn-primary inline-flex items-center gap-2">
-              Start a Conversation <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="space-y-4">
-            {[
-              { label: 'Focus', value: 'Restaurants, hotels, banquets, catering, multi-outlet F&B' },
-              { label: 'Specialties', value: 'Pre-openings, labor control, SOP development, team leadership' },
-              { label: 'Location', value: 'Miami, Florida — available for South Florida engagements' },
-              { label: 'Engagement types', value: 'Fractional GM, pre-opening, recovery sprint, advisory retainer' },
-            ].map((item) => (
-              <div key={item.label} className="border border-luxury-border/50 p-5">
-                <p className="text-[11px] tracking-[0.2em] uppercase text-gold/70 mb-2">{item.label}</p>
-                <p className="text-luxury-muted text-sm">{item.value}</p>
+      <section className="section">
+        <div className="container">
+          <div className="grid lg:grid-cols-[220px_1fr] gap-10 items-start mb-12">
+            <ScrollReveal>
+              <img
+                src="/about.jpg"
+                alt="Leander Mena"
+                className="w-full rounded-xl shadow-md object-cover aspect-[3/4]"
+                loading="lazy"
+              />
+            </ScrollReveal>
+
+            <ScrollReveal delay={150}>
+              <span className="text-xs font-bold tracking-widest uppercase text-[#888888] mb-6 block">
+                Professional Profile
+              </span>
+              <h2 className="font-display text-2xl font-bold text-[#e8e8e8] mb-4">
+                18+ Years in Miami Hospitality
+              </h2>
+              <div className="flex flex-col gap-4 text-[#888888] max-w-[68ch]">
+                <p>
+                  With more than 18 years in hospitality and food-and-beverage operations, I have
+                  led teams across restaurants, hotels, banquets, and catering throughout Miami. My
+                  experience spans pre-openings, day-to-day operations, and restructuring under pressure.
+                </p>
+                <p>
+                  I am comfortable both on the floor and behind the scenes — coaching service
+                  standards, managing schedules, working through P&L details, and partnering with
+                  ownership to align financial targets with guest experience goals.
+                </p>
+                <p>
+                  My approach is direct and practical. I spend time understanding what is actually
+                  happening before recommending changes, and I stay involved long enough to make sure
+                  new systems take hold.
+                </p>
               </div>
-            ))}
+            </ScrollReveal>
+          </div>
+
+          <ScrollReveal>
+            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-6">Areas of Focus</h3>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {areas.map((a) => (
+                <div key={a.label} className="card">
+                  <h4 className="text-sm font-bold text-[#e8e8e8] mb-2">{a.label}</h4>
+                  <p className="text-sm text-[#888888]">{a.desc}</p>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          <div className="mt-10 text-center">
+            <Link to="/contact" className="btn btn-primary">
+              Start a Conversation
+            </Link>
           </div>
         </div>
       </section>
-
-      <CTABanner
-        title="Ready to Discuss Your Property?"
-        subtitle="Every engagement starts with a direct conversation about what you are facing and where the most leverage is."
-        primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
-      />
-    </Layout>
-  );
+    </>
+  )
 }

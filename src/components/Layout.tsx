@@ -1,25 +1,25 @@
-import { useEffect } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import { useState, useEffect } from 'react'
+import { useLocation, Outlet } from 'react-router-dom'
+import Navigation from '@/components/Navigation'
+import Footer from '@/components/Footer'
+import CalendlyModal from '@/components/CalendlyModal'
 
-interface SEO {
-  title?: string;
-  description?: string;
-  canonical?: string;
-}
+export default function Layout() {
+  const { pathname } = useLocation()
+  const [calendlyOpen, setCalendlyOpen] = useState(false)
 
-export default function Layout({ children, seo }: { children: React.ReactNode; seo?: SEO }) {
   useEffect(() => {
-    if (seo?.title) document.title = seo.title;
-    const desc = document.querySelector('meta[name="description"]');
-    if (desc && seo?.description) desc.setAttribute('content', seo.description);
-  }, [seo]);
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname])
 
   return (
-    <div className="min-h-screen bg-luxury-black flex flex-col">
-      <Navbar />
-      <main className="flex-1">{children}</main>
+    <div className="min-h-[100dvh] flex flex-col bg-[#0a0a0a] text-[#e8e8e8]">
+      <Navigation onBookCall={() => setCalendlyOpen(true)} />
+      <main className="flex-1">
+        <Outlet />
+      </main>
       <Footer />
+      <CalendlyModal isOpen={calendlyOpen} onClose={() => setCalendlyOpen(false)} />
     </div>
-  );
+  )
 }

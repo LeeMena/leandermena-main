@@ -1,65 +1,110 @@
-import Layout from '../components/Layout';
-import CTABanner from '../components/CTABanner';
+import ScrollReveal from '@/components/ScrollReveal'
+import SEO from '@/components/SEO'
+import { Link } from 'react-router-dom'
 
-const stats = [
-  { value: '18+', label: 'Years in Hospitality' },
-  { value: '40+', label: 'Properties Operated' },
-  { value: '500+', label: 'Team Members Trained' },
-  { value: '$12M+', label: 'Revenue Impact' },
-];
+const roles = [
+  {
+    meta: 'Opening General Manager',
+    title: 'Maska Indian Kitchen + Bar — Miami',
+    body: 'Built the full opening team, vendor relationships, service standards, and operating systems for a concept led by a Michelin-starred chef.',
+    skills: ['Pre-Opening', 'Team Building', 'SOP Development', 'Vendor Management'],
+  },
+  {
+    meta: 'Director of Banquets — Pre-Opening',
+    title: 'SLS Brickell — Miami',
+    body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival.',
+    skills: ['Banquet Operations', 'Staffing Models', 'Pre-Opening', 'Luxury Hotels'],
+  },
+  {
+    meta: 'General Manager',
+    title: 'Marabu Restaurant | Coal Fire Cuban Cuisine — Miami',
+    body: 'Led labor optimization, service consistency, and guest-experience improvement for a high-volume Miami restaurant.',
+    skills: ['Labor Cost Control', 'Service Recovery', 'P&L Management', 'Team Training'],
+  },
+  {
+    meta: 'General Manager',
+    title: 'Viceroy Miami — Miami Beach',
+    body: 'Managed F&B operations across restaurant, pool, and banquet outlets at an iconic Miami Beach luxury property.',
+    skills: ['Hotel F&B', 'Multi-Outlet', 'Luxury Hospitality', 'Guest Experience'],
+  },
+]
+
+const skills = [
+  'Restaurant Operations',
+  'Hotel F&B Management',
+  'Pre-Opening GM',
+  'Banquet Operations',
+  'Catering Management',
+  'P&L Management',
+  'Labor Cost Control',
+  'SOP Development',
+  'Team Training',
+  'Guest Experience',
+  'Vendor Management',
+  'Fractional Leadership',
+]
 
 export default function Experience() {
   return (
-    <Layout seo={{
-      title: 'Restaurant & Hotel Operations Experience | Leander Mena Miami',
-      description: '18-year track record in Miami hospitality: pre-opening leadership, hotel F&B, banquet operations, restaurant management, and labor optimization.',
-    }}>
-      <section className="pt-40 pb-24 bg-luxury-black">
-        <div className="container-luxury">
-          <span className="eyebrow">Experience</span>
-          <h1 className="font-display text-5xl md:text-7xl text-luxury-text mb-6 max-w-3xl">
-            Hospitality Operations Experience — Miami
-          </h1>
-          <p className="text-lg text-luxury-muted max-w-2xl">
-            18+ years leading service, labor, revenue, and opening initiatives across independent restaurants, luxury hotels, banquet operations, and multi-outlet F&B teams.
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            {stats.map((s) => (
-              <div key={s.label} className="border border-luxury-border/40 p-6 text-center">
-                <p className="font-serif text-4xl text-gold mb-2">{s.value}</p>
-                <p className="text-xs tracking-[0.15em] uppercase text-luxury-muted">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-luxury-dark">
-        <div className="container-luxury">
-          <span className="eyebrow">Core Strengths</span>
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            {[
-              { title: 'Pre-Opening Strategy', desc: 'Staffing models, SOP development, training systems, soft-opening execution, and launch-week leadership.' },
-              { title: 'Labor & Cost Control', desc: 'Scheduling structure, role clarity, accountability systems, and financial rhythm that protect margins without hurting culture.' },
-              { title: 'Banquet & Event Operations', desc: 'Captain accountability, event SOP systems, setup and service standards, and consistent execution across high-volume events.' },
-              { title: 'Team Development', desc: 'Manager coaching, training systems, performance frameworks, and building teams that do not depend on the owner to function.' },
-              { title: 'Hotel F&B Leadership', desc: 'Multi-outlet coordination, rooms integration, banquet alignment, and revenue discipline across complex hotel F&B environments.' },
-              { title: 'Operations Recovery', desc: 'Rapid diagnostic, priority action planning, and embedded execution support for underperforming restaurants and F&B departments.' },
-            ].map((item) => (
-              <div key={item.title} className="border border-luxury-border/50 p-6">
-                <h3 className="font-serif text-xl text-luxury-text mb-3">{item.title}</h3>
-                <p className="text-sm text-luxury-muted leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTABanner
-        title="Discuss an Engagement"
-        subtitle="Every engagement starts with a direct conversation about your property and what needs to change."
-        primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
+    <>
+      <SEO
+        title="Experience"
+        description="18+ years of restaurant, hotel, banquet, and catering operations experience across Miami. Michelin concepts, luxury hotels, and independent restaurants."
+        path="/experience"
       />
-    </Layout>
-  );
+
+      <section className="page-header">
+        <div className="container">
+          <span className="kicker">Restaurant & Hotel Operations Experience</span>
+          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
+            18+ Years · Miami, Florida
+          </h1>
+          <p className="text-[#888888] text-lg max-w-[54ch]">
+            Selected roles that demonstrate the breadth of operational leadership across
+            restaurants, hotels, and catering in South Florida.
+          </p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="flex flex-col gap-8 mb-12">
+            {roles.map((r, i) => (
+              <ScrollReveal key={r.title} delay={i * 100}>
+                <div className="role">
+                  <span className="role-meta">{r.meta}</span>
+                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">
+                    {r.title}
+                  </h2>
+                  <p className="text-[#888888] max-w-[62ch] mb-4">{r.body}</p>
+                  <div className="skills-wall">
+                    {r.skills.map((s) => (
+                      <span key={s} className="skill-tag">{s}</span>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <ScrollReveal>
+            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-4">
+              Key Skills Across Career
+            </h3>
+            <div className="skills-wall">
+              {skills.map((s) => (
+                <span key={s} className="skill-tag">{s}</span>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          <div className="mt-10 text-center">
+            <Link to="/contact" className="btn btn-primary">
+              Discuss Your Project
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  )
 }
