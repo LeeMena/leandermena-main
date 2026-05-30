@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Download, Star, Shield, Clock, Check } from 'lucide-react';
-import Layout from '@/components/Layout';
-import ProductCard from '@/components/ProductCard';
-import CTABanner from '@/components/CTABanner';
-import { products } from '@/data/products';
-import { Link } from 'react-router-dom';
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Download, Star, Shield, Clock, Check } from 'lucide-react'
+import SEO from '@/components/SEO'
+import ProductCard from '@/components/ProductCard'
+import CTABanner from '@/components/CTABanner'
+import BlueprintModal from '@/components/BlueprintModal'
+import { products } from '@/data/products'
+import { Link } from 'react-router-dom'
 
 const categories = [
   { key: 'all', label: 'All Products' },
@@ -13,105 +14,188 @@ const categories = [
   { key: 'playbook', label: 'Playbooks' },
   { key: 'course', label: 'Courses' },
   { key: 'toolkit', label: 'Toolkits' },
-];
+]
 
 const trustSignals = [
-  { icon: <Download className="w-5 h-5" />, title: 'Instant Download', desc: 'Access immediately after purchase' },
-  { icon: <Shield className="w-5 h-5" />, title: '30-Day Guarantee', desc: 'Full refund if not satisfied' },
-  { icon: <Clock className="w-5 h-5" />, title: 'Lifetime Updates', desc: 'Free updates to all products' },
-  { icon: <Star className="w-5 h-5" />, title: '4.8+ Average Rating', desc: 'From verified purchasers' },
-];
+  { icon: <Download size={18} />, title: 'Instant Download', desc: 'Access immediately after purchase' },
+  { icon: <Shield size={18} />, title: '30-Day Guarantee', desc: 'Full refund if not satisfied' },
+  { icon: <Clock size={18} />, title: 'Lifetime Updates', desc: 'Free updates to all products' },
+  { icon: <Star size={18} />, title: '4.8+ Average Rating', desc: 'From verified purchasers' },
+]
 
 export default function Products() {
-  const [activeCategory, setActiveCategory] = useState('all');
+  const [activeCategory, setActiveCategory] = useState('all')
+  const [blueprintOpen, setBlueprintOpen] = useState(false)
 
   const filteredProducts = activeCategory === 'all'
     ? products
-    : products.filter(p => p.category === activeCategory);
+    : products.filter((p) => p.category === activeCategory)
 
   return (
-    <Layout seo={{
-      title: 'Digital Products | SOPs, Playbooks & Courses | Leander Mena',
-      description: 'Hospitality operations templates, pre-opening playbooks, labor optimization toolkits, and online courses from 18+ years of Miami F&B leadership.',
-    }}>
-      <section className="relative min-h-[50vh] flex items-end pb-20 overflow-hidden bg-luxury-black">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(184,160,128,0.1)_0%,_transparent_60%)]" />
-        <div className="container-luxury relative z-10 pt-32">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="eyebrow">Digital Products</span>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-luxury-text mb-6">
+    <>
+      <SEO
+        title="Digital Products | SOPs, Playbooks & Courses | Leander Mena"
+        description="Hospitality operations templates, pre-opening playbooks, labor optimization toolkits, and online courses from 18+ years of Miami F&B leadership."
+        path="/products"
+      />
+
+      <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
+
+      {/* Hero */}
+      <section
+        style={{
+          background: 'var(--color-bg)',
+          paddingTop: 'clamp(5rem, 10vw, 8rem)',
+          paddingBottom: 'clamp(3rem, 5vw, 4rem)',
+          borderBottom: '1px solid var(--color-border)',
+        }}
+      >
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <span className="kicker">Digital Products</span>
+            <h1
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+                marginBottom: 'var(--space-4)',
+                color: 'var(--color-text)',
+              }}
+            >
               Tools Built from Real Experience
             </h1>
-            <div className="divider-gold mb-6 ml-0" />
-            <p className="font-serif text-lg text-luxury-muted/80 italic max-w-2xl leading-relaxed">
-              SOPs, playbooks, and courses distilled from 18+ years operating Miami's top hospitality venues.
+            <div style={{ height: '1px', background: 'linear-gradient(to right, var(--color-primary), transparent)', maxWidth: '160px', marginBottom: 'var(--space-4)' }} />
+            <p
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
+                fontStyle: 'italic',
+                color: 'var(--color-text-muted)',
+                maxWidth: '56ch',
+                lineHeight: 1.7,
+              }}
+            >
+              SOPs, playbooks, and courses distilled from 18+ years operating Miami’s top hospitality venues.
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="border-y border-luxury-border/30 bg-luxury-dark/50">
-        <div className="container-luxury py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {trustSignals.map((signal, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center bg-gold/10 text-gold flex-shrink-0">{signal.icon}</div>
+      {/* Trust bar */}
+      <div style={{ borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)' }}>
+        <div className="container" style={{ paddingBlock: 'var(--space-6)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 'var(--space-4)' }}>
+            {trustSignals.map((s, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
+                style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                <div style={{ width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(184,160,128,0.10)', color: 'var(--color-primary)', borderRadius: 'var(--radius-sm)', flexShrink: 0 }}>
+                  {s.icon}
+                </div>
                 <div>
-                  <p className="text-xs font-medium text-luxury-text">{signal.title}</p>
-                  <p className="text-[10px] text-luxury-muted">{signal.desc}</p>
+                  <p style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text)' }}>{s.title}</p>
+                  <p style={{ fontSize: '0.7rem', color: 'var(--color-text-muted)' }}>{s.desc}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      <section className="section-padding bg-luxury-dark">
-        <div className="container-luxury">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-wrap gap-3 mb-12 justify-center">
+      {/* Free Blueprint highlight */}
+      <div style={{ background: 'var(--color-primary)', paddingBlock: 'var(--space-4)' }}>
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
+          <p style={{ color: '#fff', fontSize: '0.88rem', fontWeight: 500 }}>
+            🎁 <strong>Free Resource:</strong> The 90-Day Pre-Opening Blueprint — our most popular framework, yours at no cost.
+          </p>
+          <button
+            onClick={() => setBlueprintOpen(true)}
+            style={{
+              background: '#fff', color: 'var(--color-primary)',
+              border: 'none', borderRadius: 'var(--radius-full)',
+              padding: '0.4rem 1.1rem', fontSize: '0.78rem', fontWeight: 700,
+              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 'var(--space-2)',
+              flexShrink: 0,
+            }}
+          >
+            <Download size={13} /> Get Free Blueprint
+          </button>
+        </div>
+      </div>
+
+      {/* Products grid */}
+      <section className="section">
+        <div className="container">
+          {/* Category filter */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)', marginBottom: 'var(--space-10)', justifyContent: 'center' }}
+          >
             {categories.map((cat) => (
-              <button key={cat.key} onClick={() => setActiveCategory(cat.key)}
-                className={`px-5 py-2 text-[11px] tracking-[0.15em] uppercase transition-all ${
-                  activeCategory === cat.key ? 'bg-gold text-luxury-black' : 'border border-luxury-border text-luxury-muted hover:border-gold hover:text-gold'
-                }`}>
+              <button
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                className={activeCategory === cat.key ? 'btn btn-primary' : 'btn btn-ghost'}
+                style={{ fontSize: '0.78rem', padding: '0.45rem 1rem', minHeight: 34 }}
+              >
                 {cat.label}
               </button>
             ))}
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map((product, i) => (<ProductCard key={product.id} product={product} index={i} detailed />))}
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 'var(--space-6)' }}>
+            {filteredProducts.map((product, i) => (
+              <ProductCard key={product.id} product={product} index={i} detailed />
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-luxury-black">
-        <div className="container-luxury">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}
-            className="relative overflow-hidden border border-gold/30 bg-luxury-card p-8 md:p-12 lg:p-16">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 rounded-full blur-[100px]" />
-            <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
-              <div>
-                <span className="eyebrow">Limited Time</span>
-                <h2 className="font-serif text-4xl md:text-5xl text-luxury-text mb-4">The Complete Operations Bundle</h2>
-                <p className="text-luxury-muted leading-relaxed mb-6">Get all six digital products at a significant discount.</p>
-                <ul className="space-y-3 mb-8">
-                  {['All 6 digital products','Priority email support','Quarterly group Q&A calls','Private community access','Early access to new releases'].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-luxury-muted"><Check className="w-4 h-4 text-gold" />{item}</li>
-                  ))}
-                </ul>
-                <div className="flex flex-col sm:flex-row items-start gap-4">
-                  <button className="btn-primary flex items-center gap-2">Get the Bundle<ArrowRight className="w-4 h-4" /></button>
-                  <Link to="/book" className="btn-secondary">Have Questions? Book a Call</Link>
-                </div>
+      {/* Bundle CTA */}
+      <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', paddingBlock: 'clamp(3rem, 6vw, 5rem)' }}>
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            style={{
+              border: '1px solid var(--color-border)',
+              borderRadius: 'var(--radius-xl)',
+              background: 'var(--color-surface-offset)',
+              padding: 'clamp(var(--space-8), 4vw, var(--space-16))',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: 'var(--space-12)',
+              alignItems: 'center',
+            }}
+          >
+            <div>
+              <span className="kicker">Limited Time</span>
+              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.5rem, 3.5vw, 2.5rem)', marginBottom: 'var(--space-4)', color: 'var(--color-text)' }}>
+                The Complete Operations Bundle
+              </h2>
+              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: 'var(--space-6)', fontSize: '0.95rem' }}>
+                Get all six digital products at a significant discount.
+              </p>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginBottom: 'var(--space-8)' }}>
+                {['All 6 digital products', 'Priority email support', 'Quarterly group Q&A calls', 'Private community access', 'Early access to new releases'].map((item) => (
+                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
+                    <Check size={15} style={{ color: 'var(--color-primary)', flexShrink: 0 }} /> {item}
+                  </li>
+                ))}
+              </ul>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
+                <button className="btn btn-primary" style={{ gap: 'var(--space-2)' }}>Get the Bundle <ArrowRight size={15} /></button>
+                <Link to="/book" className="btn btn-secondary">Have Questions? Book a Call</Link>
               </div>
-              <div className="text-center lg:text-right">
-                <div className="inline-block">
-                  <p className="text-sm text-luxury-muted line-through mb-1">${products.reduce((a, p) => a + (p.originalPrice || p.price), 0)}</p>
-                  <p className="font-serif text-6xl text-gold mb-2">$997</p>
-                  <p className="text-sm text-luxury-muted mb-4">One-time payment</p>
-                  <p className="inline-block px-4 py-2 bg-gold/10 text-gold text-sm">Save ${products.reduce((a, p) => a + (p.originalPrice || p.price), 0) - 997}</p>
-                </div>
-              </div>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', textDecoration: 'line-through', marginBottom: 'var(--space-1)' }}>
+                ${products.reduce((a, p) => a + (p.originalPrice || p.price), 0)}
+              </p>
+              <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(3rem, 7vw, 5rem)', color: 'var(--color-primary)', lineHeight: 1, marginBottom: 'var(--space-2)' }}>$997</p>
+              <p style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-4)' }}>One-time payment</p>
+              <span style={{ display: 'inline-block', padding: 'var(--space-2) var(--space-4)', background: 'rgba(184,160,128,0.10)', color: 'var(--color-primary)', fontSize: '0.82rem', borderRadius: 'var(--radius-full)' }}>
+                Save ${products.reduce((a, p) => a + (p.originalPrice || p.price), 0) - 997}
+              </span>
             </div>
           </motion.div>
         </div>
@@ -123,6 +207,6 @@ export default function Products() {
         primaryCta={{ label: 'Book a Free Consultation', href: '/book' }}
         secondaryCta={{ label: 'View Services', href: '/services' }}
       />
-    </Layout>
-  );
+    </>
+  )
 }

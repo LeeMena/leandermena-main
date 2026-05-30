@@ -1,140 +1,220 @@
-import { ShoppingCart, Star, Check, Download } from 'lucide-react';
-import { motion } from 'framer-motion';
-import type { Product } from '@/data/products';
-import { toast } from 'sonner';
+import { useState } from 'react'
+import { ShoppingCart, Star, Check, Download, ExternalLink } from 'lucide-react'
+import { motion } from 'framer-motion'
+import type { Product } from '@/data/products'
+import BlueprintModal from './BlueprintModal'
 
 interface ProductCardProps {
-  product: Product;
-  index?: number;
-  detailed?: boolean;
+  product: Product
+  index?: number
+  detailed?: boolean
 }
 
+const categoryLabel: Record<Product['category'], string> = {
+  template: 'Template',
+  playbook: 'Playbook',
+  course: 'Course',
+  toolkit: 'Toolkit',
+}
+
+const BLUEPRINT_IDS = ['pre-opening-playbook']
+
 export default function ProductCard({ product, index = 0, detailed = false }: ProductCardProps) {
-  const handleAddToCart = () => {
-    toast.success(`${product.title} added to cart`);
-  };
+  const [blueprintOpen, setBlueprintOpen] = useState(false)
+  const isBlueprint = BLUEPRINT_IDS.includes(product.id)
+
+  const handleCTA = () => {
+    if (isBlueprint) {
+      setBlueprintOpen(true)
+    }
+  }
 
   if (detailed) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="group bg-luxury-card border border-luxury-border card-hover overflow-hidden"
-      >
-        <div className="relative aspect-[16/10] bg-gradient-to-br from-luxury-dark via-luxury-card to-luxury-dark overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(184,160,128,0.15)_0%,_transparent_60%)]" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-20 h-20 rounded-full bg-gold/10 flex items-center justify-center">
-              <Download className="w-8 h-8 text-gold/60" />
+      <>
+        <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.08 }}
+          style={{
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border)',
+            borderRadius: 'var(--radius-lg)',
+            overflow: 'hidden',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+        >
+          {/* Image / cover area */}
+          <div
+            style={{
+              aspectRatio: '16/9',
+              background: 'linear-gradient(135deg, #0f0e0c 0%, #1c1a16 100%)',
+              position: 'relative',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <div
+              style={{
+                width: '64px', height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(184,160,128,0.12)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}
+            >
+              <Download size={24} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
+            </div>
+            {product.badge && (
+              <span style={{
+                position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
+                fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase',
+                background: 'var(--color-primary)', color: '#fff',
+                padding: '3px 10px', borderRadius: 'var(--radius-full)',
+                fontWeight: 600,
+              }}>{product.badge}</span>
+            )}
+            {product.originalPrice && (
+              <span style={{
+                position: 'absolute', top: 'var(--space-3)', right: 'var(--space-3)',
+                fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+                background: 'rgba(161,44,123,0.85)', color: '#fff',
+                padding: '3px 10px', borderRadius: 'var(--radius-full)',
+              }}>Save ${product.originalPrice - product.price}</span>
+            )}
+          </div>
+
+          <div style={{ padding: 'var(--space-6)', flex: 1, display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontSize: '0.65rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-2)', display: 'block' }}>
+              {categoryLabel[product.category]}
+            </span>
+            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--color-text)', marginBottom: 'var(--space-1)' }}>{product.title}</h3>
+            <p style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-4)' }}>{product.subtitle}</p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: 'var(--space-5)' }}>{product.description}</p>
+
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
+              {product.features.slice(0, 4).map((f) => (
+                <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-2)', fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>
+                  <Check size={13} style={{ color: 'var(--color-primary)', flexShrink: 0, marginTop: '2px' }} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
+              <div style={{ display: 'flex', gap: '2px' }}>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} size={12} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
+                ))}
+              </div>
+              <span style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>{product.rating} ({product.reviewCount} reviews)</span>
+            </div>
+
+            <div style={{ marginTop: 'auto', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div>
+                <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--color-primary)' }}>${product.price}</span>
+                {product.originalPrice && (
+                  <span style={{ fontSize: '0.82rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-2)' }}>${product.originalPrice}</span>
+                )}
+              </div>
+              {isBlueprint ? (
+                <button onClick={handleCTA} className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
+                  <Download size={14} /> Free Download
+                </button>
+              ) : (
+                <button className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
+                  <ShoppingCart size={14} /> Add to Cart
+                </button>
+              )}
             </div>
           </div>
+        </motion.div>
+      </>
+    )
+  }
+
+  // Compact card (used on homepage + shop)
+  return (
+    <>
+      <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.08 }}
+        style={{
+          background: 'var(--color-surface)',
+          border: '1px solid var(--color-border)',
+          borderRadius: 'var(--radius-lg)',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          style={{
+            aspectRatio: '16/9',
+            background: 'linear-gradient(135deg, #0f0e0c 0%, #1c1a16 100%)',
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            style={{
+              width: '52px', height: '52px',
+              borderRadius: '50%',
+              background: 'rgba(184,160,128,0.10)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <Download size={20} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
+          </div>
           {product.badge && (
-            <span className="absolute top-4 left-4 px-3 py-1 bg-gold text-luxury-black text-[10px] font-medium tracking-wider uppercase">
-              {product.badge}
-            </span>
-          )}
-          {product.originalPrice && (
-            <span className="absolute top-4 right-4 px-3 py-1 bg-red-900/80 text-red-200 text-[10px] font-medium tracking-wider uppercase">
-              Save ${product.originalPrice - product.price}
-            </span>
+            <span style={{
+              position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
+              fontSize: '0.58rem', letterSpacing: '0.15em', textTransform: 'uppercase',
+              background: 'var(--color-primary)', color: '#fff',
+              padding: '2px 8px', borderRadius: 'var(--radius-full)', fontWeight: 600,
+            }}>{product.badge}</span>
           )}
         </div>
 
-        <div className="p-6 md:p-8">
-          <span className="text-[10px] tracking-[0.2em] uppercase text-gold mb-2 block">
-            {product.category === 'template' ? 'Templates' : product.category === 'playbook' ? 'Playbook' : product.category === 'course' ? 'Course' : 'Toolkit'}
+        <div style={{ padding: 'var(--space-5)' }}>
+          <span style={{ fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-1)', display: 'block' }}>
+            {categoryLabel[product.category]}
           </span>
-          <h3 className="font-serif text-xl text-luxury-text mb-1">{product.title}</h3>
-          <p className="text-sm text-luxury-muted mb-4">{product.subtitle}</p>
-          <p className="text-sm text-luxury-muted leading-relaxed mb-6">{product.description}</p>
+          <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--color-text)', marginBottom: 'var(--space-1)' }}>{product.title}</h3>
+          <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>{product.subtitle}</p>
 
-          <ul className="space-y-2 mb-6">
-            {product.features.slice(0, 4).map((feature, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-luxury-muted">
-                <Check className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
-                {feature}
-              </li>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-4)' }}>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} size={11} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
             ))}
-          </ul>
-
-          <div className="flex items-center gap-2 mb-6">
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-gold fill-gold' : 'text-luxury-border'}`} />
-              ))}
-            </div>
-            <span className="text-xs text-luxury-muted">{product.rating} ({product.reviewCount} reviews)</span>
+            <span style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-1)' }}>{product.rating}</span>
           </div>
 
-          <div className="flex items-center justify-between pt-4 border-t border-luxury-border">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--color-border)' }}>
             <div>
-              <span className="font-serif text-2xl text-gold">${product.price}</span>
+              <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--color-primary)' }}>${product.price}</span>
               {product.originalPrice && (
-                <span className="text-sm text-luxury-muted line-through ml-2">${product.originalPrice}</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-1)' }}>${product.originalPrice}</span>
               )}
             </div>
-            <button onClick={handleAddToCart} className="btn-primary flex items-center gap-2 text-[10px] py-3 px-5">
-              <ShoppingCart className="w-4 h-4" />
-              Add to Cart
-            </button>
+            {isBlueprint ? (
+              <button onClick={handleCTA} style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600 }}>
+                <Download size={15} />
+              </button>
+            ) : (
+              <button style={{ color: 'var(--color-primary)' }}>
+                <ShoppingCart size={18} />
+              </button>
+            )}
           </div>
         </div>
       </motion.div>
-    );
-  }
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group bg-luxury-card border border-luxury-border card-hover"
-    >
-      <div className="relative aspect-[16/10] bg-gradient-to-br from-luxury-dark via-luxury-card to-luxury-dark overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(184,160,128,0.15)_0%,_transparent_60%)]" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-            <Download className="w-6 h-6 text-gold/60" />
-          </div>
-        </div>
-        {product.badge && (
-          <span className="absolute top-3 left-3 px-2 py-1 bg-gold text-luxury-black text-[9px] font-medium tracking-wider uppercase">
-            {product.badge}
-          </span>
-        )}
-      </div>
-
-      <div className="p-6">
-        <span className="text-[10px] tracking-[0.2em] uppercase text-gold mb-2 block">
-          {product.category === 'template' ? 'Templates' : product.category === 'playbook' ? 'Playbook' : product.category === 'course' ? 'Course' : 'Toolkit'}
-        </span>
-        <h3 className="font-serif text-lg text-luxury-text mb-1">{product.title}</h3>
-        <p className="text-sm text-luxury-muted mb-4">{product.subtitle}</p>
-
-        <div className="flex items-center gap-2 mb-4">
-          <div className="flex items-center gap-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'text-gold fill-gold' : 'text-luxury-border'}`} />
-            ))}
-          </div>
-          <span className="text-[10px] text-luxury-muted">{product.rating}</span>
-        </div>
-
-        <div className="flex items-center justify-between pt-3 border-t border-luxury-border">
-          <div>
-            <span className="font-serif text-xl text-gold">${product.price}</span>
-            {product.originalPrice && (
-              <span className="text-xs text-luxury-muted line-through ml-2">${product.originalPrice}</span>
-            )}
-          </div>
-          <button onClick={handleAddToCart} className="text-gold hover:text-gold-light transition-colors">
-            <ShoppingCart className="w-5 h-5" />
-          </button>
-        </div>
-      </div>
-    </motion.div>
-  );
+    </>
+  )
 }
