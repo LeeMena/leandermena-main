@@ -91,12 +91,12 @@ export default function Home() {
         path="/"
       />
 
-      {/* HERO — min-height scales with viewport on mobile */}
+      {/* HERO */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(520px, 85vh, 780px)' }}>
-        <div className="absolute inset-0 z-0" aria-hidden="true">
+        <div className="absolute inset-0 z-0">
           <img
             src="/images/landing-hero.jpg"
-            alt=""
+            alt="Miami restaurant hospitality operations — Leander Mena, Fractional F&B Director"
             width="1400"
             height="900"
             className="w-full h-full object-cover"
@@ -133,7 +133,6 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Stats card — hidden on mobile to avoid overflow, shown lg+ */}
             <ScrollReveal delay={200} className="hidden lg:block">
               <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
                 <span className="kicker">At a glance</span>
@@ -155,7 +154,6 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            {/* Mobile stats row — shown only on mobile below hero text */}
             <div className="lg:hidden grid grid-cols-2 gap-3 mt-2">
               {stats.map((s) => (
                 <div key={s.label} className="bg-[#0a0a0a]/70 backdrop-blur-sm border border-[#3a3a3a] rounded-lg p-3">
@@ -168,10 +166,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TRUST BAR */}
       <TrustBar />
 
-      {/* CAPABILITIES BAND */}
       <section className="bg-[#c9a87a] py-3">
         <div className="container">
           <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
@@ -184,7 +180,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY FRACTIONAL */}
       <section className="section">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-10 items-start">
@@ -192,7 +187,7 @@ export default function Home() {
               <span className="kicker">The Difference</span>
               <h2>Why Operators Choose Fractional Leadership</h2>
               <p className="text-[#bbbbbb] max-w-[54ch] leading-relaxed mb-8">
-                Most hospitality groups don’t need another full-time executive. They need a
+                Most hospitality groups don't need another full-time executive. They need a
                 seasoned operator who can diagnose issues fast, implement systems that stick,
                 and transfer knowledge to your existing team — without the overhead of a
                 permanent hire.
@@ -245,7 +240,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -272,7 +266,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FULL-WIDTH IMAGE BREAK — height scales down on mobile */}
       <section className="relative overflow-hidden my-2" style={{ height: 'clamp(260px, 45vw, 580px)' }}>
         <img
           src="/images/dining (1).jpg"
@@ -296,7 +289,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RESULTS */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -319,7 +311,6 @@ export default function Home() {
 
       <Testimonials />
 
-      {/* EXPERIENCE */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -343,7 +334,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHO THIS IS FOR */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -365,7 +355,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW WE WORK */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -390,7 +379,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
       <section className="section border-b-0">
         <div className="container">
           <ScrollReveal>
