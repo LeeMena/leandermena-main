@@ -41,22 +41,22 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.leandermena.com/blog</loc>
+    <loc>https://www.leandermena.com/insights</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.leandermena.com/blog/pre-opening</loc>
+    <loc>https://www.leandermena.com/insights/miami-pre-opening-playbook</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.leandermena.com/blog/fractional-gm</loc>
+    <loc>https://www.leandermena.com/insights/what-a-fractional-gm-actually-does</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.leandermena.com/blog/labor-cost</loc>
+    <loc>https://www.leandermena.com/insights/labor-cost-control-miami-restaurants</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>

@@ -12,6 +12,7 @@ import BlogIndex from '@/pages/BlogIndex'
 import BlogPreOpening from '@/pages/BlogPreOpening'
 import BlogFractionalGM from '@/pages/BlogFractionalGM'
 import BlogLaborCost from '@/pages/BlogLaborCost'
+import NotFound from '@/pages/NotFound'
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/insights/pre-opening" element={<Navigate to="/insights/miami-pre-opening-playbook" replace />} />
         <Route path="/insights/labor-cost-control-miami-restaurants" element={<BlogLaborCost />} />
         <Route path="/insights/labor-cost" element={<Navigate to="/insights/labor-cost-control-miami-restaurants" replace />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )
