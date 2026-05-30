@@ -43,9 +43,7 @@ export default function Testimonials() {
           <h2 className="font-display text-[clamp(1.5rem,2.5vw,2.25rem)] font-bold tracking-tight text-[#e8e8e8] mb-3">
             Results operators notice.
           </h2>
-          <p className="section-intro">
-            Real results from real engagements across Miami's hospitality market.
-          </p>
+          <p className="section-intro">Real results from real engagements across Miami's hospitality market.</p>
         </ScrollReveal>
 
         {/* Desktop: 3-column grid */}
@@ -113,5 +111,6 @@ export default function Testimonials() {
     </section>
   )
 }
+
 
 

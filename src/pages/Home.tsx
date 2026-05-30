@@ -273,7 +273,6 @@ export default function Home() {
       </section>
 
       <Testimonials />
-      <Testimonials />
 
       {/* EXPERIENCE */}
       <section className="section">
@@ -399,6 +398,7 @@ export default function Home() {
     </>
   )
 }
+
 
 
 
