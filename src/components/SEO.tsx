@@ -12,7 +12,7 @@ export default function SEO({
   title,
   description,
   path = '',
-  image = 'https://www.leandermena.com/images/aboutme.jpg',
+  image = 'https://www.leandermena.com/images/about.jpg',
   type = 'website',
 }: Props) {
   const fullTitle = `${title} | Leander Mena — Miami F&B Operations`
@@ -41,6 +41,15 @@ export default function SEO({
     setMeta('twitter:title', fullTitle)
     setMeta('twitter:description', description)
     setMeta('twitter:image', image)
+
+    // Canonical
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonical)
+    }
+    canonical.href = url
   }, [fullTitle, description, url, image, type])
 
   const structuredData = {
@@ -51,7 +60,7 @@ export default function SEO({
     description:
       '18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami.',
     url: 'https://www.leandermena.com',
-    image: 'https://www.leandermena.com/images/aboutme.jpg',
+    image: 'https://www.leandermena.com/images/about.jpg',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Miami',
