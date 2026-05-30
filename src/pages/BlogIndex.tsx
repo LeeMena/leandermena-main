@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom'
 
 const posts = [
   {
-    slug: '/insights/fractional-gm',
+    slug: '/insights/what-a-fractional-gm-actually-does',
     kicker: 'Fractional Leadership',
     title: 'What a Fractional GM Actually Does',
     excerpt: 'The fractional model isn’t a compromise — it’s a strategic choice. Here’s how it works in practice.',
   },
   {
-    slug: '/insights/labor-cost',
+    slug: '/insights/labor-cost-control-miami-restaurants',
     kicker: 'Operations',
     title: 'How Miami Restaurants Can Control Labor Costs',
     excerpt: 'Labor is your largest controllable cost. These are the systems that actually move the number.',
   },
   {
-    slug: '/insights/pre-opening',
+    slug: '/insights/miami-pre-opening-playbook',
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
     excerpt: 'What the first 90 days before opening should look like — and what most operators get wrong.',
@@ -35,7 +35,7 @@ export default function BlogIndex() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/contact.jpg"
+            src="/images/philosophy-banner.jpg"
             alt=""
             width="1400"
             height="600"
