@@ -32,11 +32,11 @@ export default function BlogIndex() {
         path="/insights"
       />
 
-      {/* HERO BANNER \u2014 full image, max brightness */}
+      {/* HERO BANNER \u2014 philosophy-banner.jpg, full brightness */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '340px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/dining.jpg"
+            src="/images/philosophy-banner.jpg"
             alt=""
             width="1400"
             height="600"
