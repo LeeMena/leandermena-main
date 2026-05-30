@@ -83,9 +83,15 @@ export default function PreOpening() {
                 Whether this is your first opening or one of many, I right-size the support around
                 the project, timeline, and the internal team you already have in place.
               </p>
-              <Link to="/contact" className="btn btn-primary">
-                Start a Pre-Opening Conversation
-              </Link>
+              {/* fix: added secondary cross-link to Services */}
+              <div className="flex flex-wrap gap-3">
+                <Link to="/contact" className="btn btn-primary">
+                  Start a Pre-Opening Conversation
+                </Link>
+                <Link to="/services" className="btn btn-ghost">
+                  View All Services &rarr;
+                </Link>
+              </div>
             </div>
           </ScrollReveal>
         </div>

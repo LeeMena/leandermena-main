@@ -27,6 +27,12 @@ const roles = [
     body: 'Managed F&B operations across restaurant, pool, and banquet outlets at an iconic Miami Beach luxury property.',
     skills: ['Hotel F&B', 'Multi-Outlet', 'Luxury Hospitality', 'Guest Experience'],
   },
+  {
+    meta: 'Operations Leader',
+    title: 'La Cerveceria de Barrio — Miami',
+    body: 'Oversaw day-to-day F&B operations, cost management, and team development at a high-volume Latin concept.',
+    skills: ['Volume Operations', 'Labor Management', 'Team Development', 'Cost Control'],
+  },
 ]
 
 const skills = [
@@ -98,10 +104,19 @@ export default function Experience() {
             </div>
           </ScrollReveal>
 
-          <div className="mt-10 text-center">
+          {/* fix: added LinkedIn cross-link for full history */}
+          <div className="mt-8 flex flex-wrap gap-3 justify-center">
             <Link to="/contact" className="btn btn-primary">
               Discuss Your Project
             </Link>
+            <a
+              href="https://www.linkedin.com/in/leandermena"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost"
+            >
+              Full History on LinkedIn &rarr;
+            </a>
           </div>
         </div>
       </section>

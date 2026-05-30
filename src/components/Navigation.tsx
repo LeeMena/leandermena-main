@@ -103,12 +103,13 @@ export default function Navigation({ onBookCall }: Props) {
                   {l.label}
                 </Link>
               ))}
+              {/* fix: w-full on mobile so button doesn't overflow at 320px */}
               <button
                 onClick={() => {
                   onBookCall()
                   setOpen(false)
                 }}
-                className="btn btn-primary text-xs mt-2 w-fit"
+                className="btn btn-primary text-xs mt-2 w-full"
               >
                 Book a Call
               </button>

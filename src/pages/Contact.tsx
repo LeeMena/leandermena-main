@@ -58,7 +58,7 @@ export default function Contact() {
             Start a Conversation
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Whether you’re 90 days from opening or trying to fix a difficult quarter —
+            Whether you're 90 days from opening or trying to fix a difficult quarter —
             the first step is a simple conversation.
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function Contact() {
                 <div className="card text-center py-12">
                   <p className="text-2xl mb-2">✓</p>
                   <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received.</h3>
-                  <p className="text-[#888888]">I’ll be in touch within one business day.</p>
+                  <p className="text-[#888888]">I'll be in touch within one business day.</p>
                 </div>
               ) : (
                 <form onSubmit={submit} className="flex flex-col gap-5">
@@ -95,7 +95,8 @@ export default function Contact() {
                     </div>
                     <div className="field">
                       <label htmlFor="type">Inquiry type</label>
-                      <select id="type" name="type" required value={form.type} onChange={handle}>
+                      {/* fix: added aria-label and custom appearance handled in CSS */}
+                      <select id="type" name="type" required value={form.type} onChange={handle} aria-label="Select inquiry type">
                         <option value="">Select one…</option>
                         <option>Fractional F&amp;B Director</option>
                         <option>Pre-Opening Support</option>
@@ -112,8 +113,9 @@ export default function Contact() {
                   <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
                     {status === 'sending' ? 'Sending…' : 'Send Message'}
                   </button>
+                  {/* fix: added role="alert" so screen readers announce the error */}
                   {status === 'error' && (
-                    <p className="text-sm text-red-400">Something went wrong. Please try again or email directly.</p>
+                    <p role="alert" className="text-sm text-red-400">Something went wrong. Please try again or email directly at leander@leandermena.com</p>
                   )}
                 </form>
               )}

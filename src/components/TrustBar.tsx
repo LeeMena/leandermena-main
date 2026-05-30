@@ -17,14 +17,20 @@ export default function TrustBar() {
           <p className="text-center text-xs font-semibold tracking-widest uppercase text-[#888888] mb-6">
             Trusted by Miami's leading hospitality groups
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-            {clients.map((c) => (
-              <span
-                key={c}
-                className="text-sm font-medium text-[#555555] hover:text-[#888888] transition-colors"
-              >
-                {c}
-              </span>
+          {/* fix: elevated client name styling — larger, semibold with separator dots */}
+          <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-4">
+            {clients.map((c, i) => (
+              <>
+                <span
+                  key={c}
+                  className="text-sm font-semibold tracking-wide text-[#6a6a6a] hover:text-[#b8a080] transition-colors uppercase"
+                >
+                  {c}
+                </span>
+                {i < clients.length - 1 && (
+                  <span className="text-[#333333] text-xs select-none">&middot;</span>
+                )}
+              </>
             ))}
           </div>
         </ScrollReveal>

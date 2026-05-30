@@ -60,9 +60,13 @@ export default function Philosophy() {
             ))}
           </div>
 
-          <div className="mt-4 text-center">
+          {/* fix: added cross-link to Experience so philosophy connects to proof */}
+          <div className="mt-4 flex flex-wrap gap-3 justify-center">
             <Link to="/contact" className="btn btn-primary">
               Work Together
+            </Link>
+            <Link to="/experience" className="btn btn-ghost">
+              See This in Practice &rarr;
             </Link>
           </div>
         </div>

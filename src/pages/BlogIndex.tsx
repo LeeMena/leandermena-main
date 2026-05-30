@@ -2,6 +2,7 @@ import SEO from '@/components/SEO'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
+// fix: updated blog dates to reflect May 2026 refresh
 const posts = [
   {
     slug: '/blog/fractional-gm',
@@ -9,7 +10,7 @@ const posts = [
     title: 'What a Fractional F&B Director Actually Does',
     excerpt:
       'Not a consultant with a binder. Not a part-time manager. Here is what the role looks like in practice — and why more Miami operators are using it.',
-    date: 'March 2024',
+    date: 'Updated May 2026',
   },
   {
     slug: '/blog/pre-opening',
@@ -17,7 +18,7 @@ const posts = [
     title: 'The Miami Pre-Opening Playbook',
     excerpt:
       'What the first 90 days before opening should look like — and the mistakes that cause most new concepts to stumble in week one.',
-    date: 'January 2024',
+    date: 'Updated May 2026',
   },
   {
     slug: '/blog/labor-cost',
@@ -25,7 +26,7 @@ const posts = [
     title: 'Labor Cost Control for Miami Restaurants',
     excerpt:
       'Labor is your biggest controllable cost. Here is how to bring it under control without cutting service quality or burning out your team.',
-    date: 'November 2023',
+    date: 'Updated May 2026',
   },
 ]
 
