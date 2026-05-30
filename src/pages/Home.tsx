@@ -91,29 +91,49 @@ export default function Home() {
         path="/"
       />
 
+      {/* FULL-PAGE BACKGROUND IMAGE — fixed behind everything */}
+      <div
+        className="fixed inset-0 -z-10 pointer-events-none"
+        aria-hidden="true"
+        style={{ top: 0, left: 0, right: 0, bottom: 0 }}
+      >
+        <img
+          src="/images/landing-hero.jpg"
+          alt=""
+          width="1400"
+          height="900"
+          className="w-full h-full object-cover"
+          style={{ opacity: 0.18 }}
+          loading="eager"
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.75) 60%, rgba(10,10,10,0.95) 100%)' }} />
+      </div>
+
       {/* HERO */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[540px]">
-        <div className="absolute inset-0 z-0">
+      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[640px]">
+        {/* Hero-specific bright image layer — just for the top section */}
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
             src="/images/landing-hero.jpg"
             alt=""
             width="1400"
             height="900"
-            className="w-full h-full object-cover opacity-80"
+            className="w-full h-full object-cover"
+            style={{ opacity: 0.72 }}
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/50 to-[#0a0a0a]/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.5) 55%, rgba(10,10,10,0.2) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,1) 0%, transparent 40%)' }} />
         </div>
 
-        <div className="container relative z-10 py-[clamp(5rem,12vw,10rem)]">
+        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <ScrollReveal>
               <span className="kicker">Miami hospitality consulting</span>
               <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
                 Fractional F&B Operations Leadership
               </h1>
-              <p className="text-[#c0c0c0] text-lg max-w-[52ch] mb-8 leading-relaxed">
+              <p className="text-[#d0d0d0] text-lg max-w-[52ch] mb-8 leading-relaxed">
                 18+ years opening, stabilizing, and scaling hospitality operations across Miami.
                 Senior operational expertise without the full-time overhead.
               </p>
@@ -133,12 +153,12 @@ export default function Home() {
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="bg-[#0f0f0f]/85 backdrop-blur-sm border border-[#3a3a3a] rounded-xl p-8 shadow-lg">
+              <div className="bg-[#0a0a0a]/80 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
                 <span className="kicker">At a glance</span>
                 <h3 className="text-lg font-bold text-white mb-3">
                   Operational leadership for Miami restaurants & hotels
                 </h3>
-                <p className="text-sm text-[#aaaaaa] mb-6">
+                <p className="text-sm text-[#bbbbbb] mb-6">
                   Pre-opening builds, operations recovery, and fractional F&B direction for
                   independent restaurants, luxury hotels, and multi-unit groups.
                 </p>
@@ -146,7 +166,7 @@ export default function Home() {
                   {stats.map((s) => (
                     <div key={s.label} className="flex flex-col gap-1">
                       <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
-                      <span className="text-xs text-[#aaaaaa]">{s.label}</span>
+                      <span className="text-xs text-[#bbbbbb]">{s.label}</span>
                     </div>
                   ))}
                 </div>
@@ -173,7 +193,7 @@ export default function Home() {
       </section>
 
       {/* WHY FRACTIONAL */}
-      <section className="section bg-[#0f0f0f]">
+      <section className="section bg-[#0f0f0f]/90 backdrop-blur-sm">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <ScrollReveal>
@@ -181,7 +201,7 @@ export default function Home() {
               <h2 className="font-display text-[clamp(1.5rem,2.5vw,2.25rem)] font-bold tracking-tight text-white mb-6">
                 Why Operators Choose Fractional Leadership
               </h2>
-              <p className="text-[#aaaaaa] max-w-[54ch] leading-relaxed mb-8">
+              <p className="text-[#bbbbbb] max-w-[54ch] leading-relaxed mb-8">
                 Most hospitality groups don’t need another full-time executive. They need a
                 seasoned operator who can diagnose issues fast, implement systems that stick,
                 and transfer knowledge to your existing team — without the overhead of a
@@ -196,14 +216,14 @@ export default function Home() {
                 ].map((item) => (
                   <div key={item.title} className="border-l-2 border-[#c9a87a]/60 pl-4">
                     <h4 className="text-sm font-bold text-white mb-1">{item.title}</h4>
-                    <p className="text-sm text-[#aaaaaa]">{item.body}</p>
+                    <p className="text-sm text-[#bbbbbb]">{item.body}</p>
                   </div>
                 ))}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="bg-[#161616] border border-[#333333] rounded-xl p-8">
+              <div className="bg-[#161616]/90 border border-[#333333] rounded-xl p-8">
                 <img
                   src="/images/about.jpg"
                   alt="Leander Mena — Miami F&B Operations Leader"
@@ -214,15 +234,15 @@ export default function Home() {
                 />
                 <div className="text-center">
                   <p className="font-display text-xl font-bold text-white">Leander Mena</p>
-                  <p className="text-sm text-[#aaaaaa]">Miami, Florida</p>
+                  <p className="text-sm text-[#bbbbbb]">Miami, Florida</p>
                   <div className="flex justify-center gap-6 mt-4">
                     <div>
                       <strong className="text-lg font-extrabold text-[#d4b896]">$12M+</strong>
-                      <p className="text-xs text-[#aaaaaa]">Revenue Optimized</p>
+                      <p className="text-xs text-[#bbbbbb]">Revenue Optimized</p>
                     </div>
                     <div>
                       <strong className="text-lg font-extrabold text-[#d4b896]">500+</strong>
-                      <p className="text-xs text-[#aaaaaa]">Team Members Trained</p>
+                      <p className="text-xs text-[#bbbbbb]">Team Members Trained</p>
                     </div>
                   </div>
                 </div>
@@ -238,7 +258,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="section">
+      <section className="section backdrop-blur-sm">
         <div className="container">
           <ScrollReveal>
             <span className="kicker">What I do</span>
@@ -250,12 +270,12 @@ export default function Home() {
           <div className="grid-3 mt-10">
             {services.map((s, i) => (
               <ScrollReveal key={s.title} delay={i * 120}>
-                <div className="card h-full flex flex-col" style={{background:'#161616', borderColor:'#333333'}}>
+                <div className="card h-full flex flex-col" style={{background:'rgba(22,22,22,0.92)', borderColor:'#333333'}}>
                   <span className="text-xs font-semibold tracking-widest uppercase text-[#d4b896] mb-3">
                     {s.kicker}
                   </span>
                   <h3 className="text-base font-bold text-white mb-3 leading-snug">{s.title}</h3>
-                  <p className="text-sm text-[#aaaaaa] mb-6 flex-1">{s.body}</p>
+                  <p className="text-sm text-[#bbbbbb] mb-6 flex-1">{s.body}</p>
                   <Link
                     to={s.href}
                     className="text-sm font-semibold text-[#d4b896] hover:text-[#e8cfa8] inline-flex items-center gap-1 group"
@@ -283,10 +303,11 @@ export default function Home() {
           alt="Miami restaurant dining room"
           width="1400"
           height="600"
-          className="w-full h-full object-cover opacity-75"
+          className="w-full h-full object-cover"
+          style={{ opacity: 0.82 }}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/80 via-[#0a0a0a]/40 to-transparent" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.4) 55%, rgba(10,10,10,0.15) 100%)' }} />
         <div className="absolute inset-0 flex items-center">
           <div className="container">
             <ScrollReveal>
@@ -300,7 +321,7 @@ export default function Home() {
       </section>
 
       {/* RESULTS */}
-      <section className="section bg-[#0f0f0f]">
+      <section className="section bg-[#0f0f0f]/90 backdrop-blur-sm">
         <div className="container">
           <ScrollReveal>
             <span className="kicker">Real Outcomes</span>
@@ -311,7 +332,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {results.map((r, i) => (
               <ScrollReveal key={r.label} delay={i * 100}>
-                <div className="bg-[#161616] border border-[#333333] rounded-xl p-6 text-center">
+                <div className="bg-[#161616]/90 border border-[#333333] rounded-xl p-6 text-center">
                   <strong className="block text-[clamp(2rem,4vw,3rem)] font-extrabold text-[#d4b896] leading-none mb-2">{r.num}</strong>
                   <p className="text-sm font-bold text-white mb-1">{r.label}</p>
                   <p className="text-xs text-[#888888]">{r.sub}</p>
@@ -325,7 +346,7 @@ export default function Home() {
       <Testimonials />
 
       {/* EXPERIENCE */}
-      <section className="section">
+      <section className="section backdrop-blur-sm">
         <div className="container">
           <ScrollReveal>
             <span className="kicker">Selected experience</span>
@@ -337,12 +358,12 @@ export default function Home() {
           <div className="grid-3 mt-10">
             {experience.map((e, i) => (
               <ScrollReveal key={e.venue} delay={i * 120}>
-                <div className="card h-full flex flex-col" style={{background:'#161616', borderColor:'#333333'}}>
+                <div className="card h-full flex flex-col" style={{background:'rgba(22,22,22,0.92)', borderColor:'#333333'}}>
                   <span className="text-xs font-semibold tracking-widest uppercase text-[#d4b896] mb-3">
                     {e.venue}
                   </span>
                   <h3 className="text-base font-bold text-white mb-3 leading-snug">{e.title}</h3>
-                  <p className="text-sm text-[#aaaaaa] flex-1">{e.body}</p>
+                  <p className="text-sm text-[#bbbbbb] flex-1">{e.body}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -357,7 +378,7 @@ export default function Home() {
       </section>
 
       {/* WHO THIS IS FOR */}
-      <section className="section bg-[#0f0f0f]">
+      <section className="section bg-[#0f0f0f]/90 backdrop-blur-sm">
         <div className="container">
           <ScrollReveal>
             <span className="kicker">Who This Is For</span>
@@ -370,7 +391,7 @@ export default function Home() {
             </p>
           </ScrollReveal>
 
-          <div className="bg-[#161616] border border-[#333333] rounded-xl p-8">
+          <div className="bg-[#161616]/90 border border-[#333333] rounded-xl p-8">
             <ul className="list">
               {audience.map((item) => (
                 <li key={item}>{item}</li>
@@ -386,7 +407,7 @@ export default function Home() {
       </section>
 
       {/* HOW WE WORK */}
-      <section className="section">
+      <section className="section backdrop-blur-sm">
         <div className="container">
           <ScrollReveal>
             <span className="kicker">How We Work Together</span>
@@ -402,10 +423,10 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
             {steps.map((s, i) => (
               <ScrollReveal key={s.num} delay={i * 150}>
-                <div className="card h-full" style={{background:'#161616', borderColor:'#333333'}}>
+                <div className="card h-full" style={{background:'rgba(22,22,22,0.92)', borderColor:'#333333'}}>
                   <span className="text-3xl font-extrabold text-[#d4b896]/30">{s.num}</span>
                   <h3 className="text-base font-bold text-white mt-3 mb-2">{s.title}</h3>
-                  <p className="text-sm text-[#aaaaaa]">{s.body}</p>
+                  <p className="text-sm text-[#bbbbbb]">{s.body}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -414,15 +435,15 @@ export default function Home() {
       </section>
 
       {/* FINAL CTA */}
-      <section className="section border-b-0">
+      <section className="section border-b-0 backdrop-blur-sm">
         <div className="container">
           <ScrollReveal>
-            <div className="bg-[#161616] border border-[#333333] rounded-xl p-8 md:p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
+            <div className="bg-[#161616]/90 border border-[#333333] rounded-xl p-8 md:p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
               <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#c9a87a]/8 rounded-full blur-[80px] pointer-events-none" />
               <h2 className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-tight text-white mb-4 relative">
                 Let’s build something that runs well.
               </h2>
-              <p className="text-[#aaaaaa] max-w-xl mx-auto mb-8 relative">
+              <p className="text-[#bbbbbb] max-w-xl mx-auto mb-8 relative">
                 Whether you’re 90 days from opening or trying to fix a difficult quarter,
                 the next step is simple: start the conversation.
               </p>
