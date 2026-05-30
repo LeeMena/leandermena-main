@@ -3,6 +3,8 @@ import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import TrustBar from '@/components/TrustBar'
 import Testimonials from '@/components/Testimonials'
+import { services } from '@/data/services'
+import { caseStudies } from '@/data/caseStudies'
 
 const stats = [
   { num: '18+', label: 'Years Experience' },
@@ -20,45 +22,6 @@ const capabilities = [
   'Banquet & Catering',
   'Operations Recovery',
   'Vendor Management',
-]
-
-const services = [
-  {
-    kicker: 'Fractional leadership',
-    title: 'Fractional F&B Director',
-    body: 'For restaurants and hotel groups that need a veteran operator 2–4 days per week. Stabilize operations, build systems, and develop your team.',
-    href: '/services',
-  },
-  {
-    kicker: 'New concept support',
-    title: 'Pre-Opening & New Concepts',
-    body: 'From construction walkthroughs to opening night — team hiring, SOP creation, vendor coordination, and opening-day execution.',
-    href: '/pre-opening',
-  },
-  {
-    kicker: 'Performance recovery',
-    title: 'Operations Recovery',
-    body: 'When labor costs drift, service drops, or turnover hurts consistency, I diagnose quickly and install systems that stick.',
-    href: '/services',
-  },
-]
-
-const experience = [
-  {
-    venue: 'Maska Indian Kitchen + Bar',
-    title: 'Opening General Manager',
-    body: 'Built the opening team, vendor relationships, service standards, and operational systems for a Miami concept led by a Michelin-starred chef.',
-  },
-  {
-    venue: 'SLS Brickell',
-    title: 'Director of Banquets — Pre-Opening',
-    body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival.',
-  },
-  {
-    venue: 'Marabu Restaurant',
-    title: 'General Manager',
-    body: 'Led labor optimization, service consistency improvements, and guest-experience recovery for a high-volume Miami restaurant.',
-  },
 ]
 
 const audience = [
@@ -81,6 +44,12 @@ const results = [
   { num: '3–5×', label: 'ROI on consulting fee', sub: 'within 6 months' },
   { num: '90d', label: 'Average stabilization', sub: 'for recovery engagements' },
 ]
+
+// Show first 3 services as homepage preview cards
+const homeServices = services.slice(0, 3)
+
+// Show first 2 case studies as proof snippets
+const homeProof = caseStudies.slice(0, 2)
 
 export default function Home() {
   return (
@@ -240,6 +209,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Services — from services.ts */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
@@ -247,13 +217,14 @@ export default function Home() {
             <h2>Focused operational leadership</h2>
           </ScrollReveal>
           <div className="grid-3 mt-10">
-            {services.map((s, i) => (
-              <ScrollReveal key={s.title} delay={i * 120}>
+            {homeServices.map((s, i) => (
+              <ScrollReveal key={s.id} delay={i * 120}>
                 <div className="card h-full flex flex-col">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-[#d4b896] mb-3">{s.kicker}</span>
-                  <h3 className="text-base font-bold text-white mb-3 leading-snug">{s.title}</h3>
-                  <p className="text-sm text-[#bbbbbb] mb-6 flex-1">{s.body}</p>
-                  <Link to={s.href} className="text-sm font-semibold text-[#d4b896] hover:text-[#e8cfa8] inline-flex items-center gap-1 group">
+                  <span className="text-xs font-semibold tracking-widest uppercase text-[#d4b896] mb-3">{s.duration}</span>
+                  <h3 className="text-base font-bold text-white mb-2 leading-snug">{s.title}</h3>
+                  <p className="text-xs text-[#b8a080] italic mb-3">{s.tagline}</p>
+                  <p className="text-sm text-[#bbbbbb] mb-6 flex-1">{s.description}</p>
+                  <Link to="/services" className="text-sm font-semibold text-[#d4b896] hover:text-[#e8cfa8] inline-flex items-center gap-1 group">
                     Learn more <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                   </Link>
                 </div>
@@ -311,25 +282,43 @@ export default function Home() {
 
       <Testimonials />
 
+      {/* Proof snippets — from caseStudies.ts */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
-            <span className="kicker">Selected experience</span>
+            <span className="kicker">Documented Results</span>
             <h2>Proof, not a résumé dump.</h2>
           </ScrollReveal>
-          <div className="grid-3 mt-10">
-            {experience.map((e, i) => (
-              <ScrollReveal key={e.venue} delay={i * 120}>
+          <div className="grid sm:grid-cols-2 gap-6 mt-10">
+            {homeProof.map((cs, i) => (
+              <ScrollReveal key={cs.id} delay={i * 120}>
                 <div className="card h-full flex flex-col">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-[#d4b896] mb-3">{e.venue}</span>
-                  <h3 className="text-base font-bold text-white mb-3 leading-snug">{e.title}</h3>
-                  <p className="text-sm text-[#bbbbbb] flex-1">{e.body}</p>
+                  <div className="flex items-center gap-3 mb-3 flex-wrap">
+                    {cs.badge && (
+                      <span style={{
+                        fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.07em',
+                        textTransform: 'uppercase',
+                        background: 'var(--color-primary)', color: '#0a0a0a',
+                        padding: '0.2rem 0.6rem', borderRadius: 'var(--radius-sm)',
+                      }}>{cs.badge}</span>
+                    )}
+                    <span className="kicker" style={{ margin: 0 }}>{cs.category}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-white mb-1 leading-snug">{cs.title}</h3>
+                  <p className="text-xs text-[#888888] mb-4">{cs.property} · {cs.location} · {cs.timeframe}</p>
+                  <ul className="flex flex-col gap-1 flex-1">
+                    {cs.results.map((r) => (
+                      <li key={r} className="flex items-start gap-2 text-sm text-[#bbbbbb]">
+                        <span className="text-[#b8a080] mt-0.5 shrink-0">✓</span>{r}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </ScrollReveal>
             ))}
           </div>
           <div className="mt-10">
-            <Link to="/experience" className="btn btn-secondary">View Full Experience</Link>
+            <Link to="/case-studies" className="btn btn-secondary">View All Case Studies</Link>
           </div>
         </div>
       </section>
