@@ -52,8 +52,8 @@ export default function Home() {
             height="1080"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
-          {/* Dark overlay */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.70) 60%, var(--color-bg) 100%)' }} />
+          {/* Lighter overlay — top 30% → mid 50% → bottom fades to bg */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0.50) 60%, var(--color-bg) 100%)' }} />
         </div>
 
         <div className="container relative" style={{ zIndex: 1, paddingTop: 'clamp(6rem, 12vw, 9rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}>
