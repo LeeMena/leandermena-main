@@ -36,7 +36,7 @@ export default function CaseStudies() {
       <section className="section">
         <div className="container">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
-            {caseStudies.map((cs, i) => (
+            {caseStudies.map((cs) => (
               <article
                 key={cs.id}
                 className="card"
