@@ -28,6 +28,7 @@ export default function About() {
         title="About"
         description="Leander Mena — 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
         path="/about"
+        schemaType="about"
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>

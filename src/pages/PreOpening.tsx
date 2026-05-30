@@ -36,6 +36,7 @@ export default function PreOpening() {
         title="Pre-Opening F&B Operations"
         description="Pre-opening restaurant and hotel F&B consulting in Miami. Staffing, training, SOPs, vendor coordination, and post-opening audits."
         path="/pre-opening"
+        schemaType="pre-opening"
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
@@ -100,7 +101,7 @@ export default function PreOpening() {
                   Start a Pre-Opening Conversation
                 </Link>
                 <Link to="/services" className="btn btn-ghost">
-                  View All Services &rarr;
+                  View All Services →
                 </Link>
               </div>
             </div>

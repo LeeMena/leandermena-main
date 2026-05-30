@@ -30,9 +30,9 @@ export default function BlogIndex() {
         title="Insights"
         description="Operational insights for Miami restaurants and hotels \u2014 fractional leadership, labor cost control, and pre-opening strategy."
         path="/insights"
+        schemaType="insights"
       />
 
-      {/* HERO — matches homepage layout exactly */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
@@ -88,7 +88,6 @@ export default function BlogIndex() {
         </div>
       </section>
 
-      {/* ARTICLES GRID */}
       <section className="section">
         <div className="container">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

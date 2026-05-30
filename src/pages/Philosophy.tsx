@@ -29,9 +29,10 @@ export default function Philosophy() {
   return (
     <>
       <SEO
-        title="Philosophy"
+        title="Leadership Philosophy"
         description="Leander Mena's operational philosophy — systems, floor presence, root-cause thinking, and leadership accountability in Miami F&B."
         path="/philosophy"
+        schemaType="philosophy"
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
@@ -65,8 +66,13 @@ export default function Philosophy() {
               <ScrollReveal key={p.num} delay={i * 100}>
                 <div className="role">
                   <span className="role-meta">{p.num}</span>
-                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">{p.title}</h2>
-                  <p className="text-[#888888] max-w-[62ch]">{p.body}</p>
+                  <div>
+                    <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">{p.title}</h2>
+                    <p className="text-[#888888] max-w-[62ch] mb-3">{p.body}</p>
+                    <Link to="/services" className="text-xs text-[#b8a080] hover:text-[#d4b896] transition-colors">
+                      See this in our services →
+                    </Link>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}
@@ -77,7 +83,7 @@ export default function Philosophy() {
               Work Together
             </Link>
             <Link to="/experience" className="btn btn-ghost">
-              See This in Practice &rarr;
+              See This in Practice →
             </Link>
           </div>
         </div>

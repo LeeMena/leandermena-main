@@ -63,6 +63,7 @@ export default function Services() {
         title="Services"
         description="Fractional F&B leadership, pre-opening consulting, operations recovery, and banquet operations for Miami restaurants and hotels."
         path="/services"
+        schemaType="services"
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">

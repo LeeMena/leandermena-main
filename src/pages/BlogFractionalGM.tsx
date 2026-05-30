@@ -9,6 +9,13 @@ export default function BlogFractionalGM() {
         title="What a Fractional F&B Director Actually Does"
         description="Not a consultant with a binder. Here is what the fractional F&B director role looks like in practice and why Miami operators are using it."
         path="/insights/what-a-fractional-gm-actually-does"
+        type="article"
+        schemaType="article"
+        article={{
+          headline: 'What a Fractional F&B Director Actually Does',
+          datePublished: '2024-03-01',
+          dateModified: '2026-05-30',
+        }}
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
@@ -39,7 +46,7 @@ export default function BlogFractionalGM() {
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                The title sounds like a workaround. It isn't. A fractional F&B director is a
+                The title sounds like a workaround. It isn’t. A fractional F&B director is a
                 full-capability operator who works with your business on a defined schedule —
                 typically two to four days per week — instead of full-time. The work is the same.
                 The overhead is not.
@@ -98,6 +105,7 @@ export default function BlogFractionalGM() {
             <ScrollReveal delay={450}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Talk About Your Operation</Link>
+                <Link to="/services" className="btn btn-ghost">View Services →</Link>
                 <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
               </div>
             </ScrollReveal>

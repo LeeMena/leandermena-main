@@ -9,6 +9,13 @@ export default function BlogPreOpening() {
         title="The Miami Pre-Opening Playbook"
         description="What the first 90 days before opening should look like and the mistakes that cause most new concepts to stumble in week one."
         path="/insights/miami-pre-opening-playbook"
+        type="article"
+        schemaType="article"
+        article={{
+          headline: 'The Miami Pre-Opening Playbook',
+          datePublished: '2024-01-01',
+          dateModified: '2026-05-30',
+        }}
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
@@ -86,6 +93,7 @@ export default function BlogPreOpening() {
             <ScrollReveal delay={350}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Start a Pre-Opening Conversation</Link>
+                <Link to="/pre-opening" className="btn btn-ghost">Pre-Opening Services →</Link>
                 <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
               </div>
             </ScrollReveal>

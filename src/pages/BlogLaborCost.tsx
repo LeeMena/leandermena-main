@@ -9,6 +9,13 @@ export default function BlogLaborCost() {
         title="Labor Cost Control for Miami Restaurants"
         description="Labor is your biggest controllable cost. Here is how to bring it under control without cutting service quality or burning out your team."
         path="/insights/labor-cost-control-miami-restaurants"
+        type="article"
+        schemaType="article"
+        article={{
+          headline: 'Labor Cost Control for Miami Restaurants',
+          datePublished: '2023-11-01',
+          dateModified: '2026-05-30',
+        }}
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
@@ -84,6 +91,7 @@ export default function BlogLaborCost() {
             <ScrollReveal delay={350}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Talk About Your Labor Cost</Link>
+                <Link to="/services" className="btn btn-ghost">Operations Services →</Link>
                 <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
               </div>
             </ScrollReveal>

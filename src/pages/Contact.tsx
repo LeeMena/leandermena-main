@@ -49,6 +49,7 @@ export default function Contact() {
         title="Contact"
         description="Start a conversation about fractional F&B leadership, pre-opening support, or operations recovery in Miami."
         path="/contact"
+        schemaType="contact"
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
@@ -70,7 +71,7 @@ export default function Contact() {
             Start a Conversation
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Whether you're 90 days from opening or trying to fix a difficult quarter —
+            Whether you’re 90 days from opening or trying to fix a difficult quarter —
             the first step is a simple conversation.
           </p>
         </div>
@@ -84,7 +85,7 @@ export default function Contact() {
                 <div className="card text-center py-12">
                   <p className="text-2xl mb-2">✓</p>
                   <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received.</h3>
-                  <p className="text-[#888888]">I'll be in touch within one business day.</p>
+                  <p className="text-[#888888]">I’ll be in touch within one business day.</p>
                 </div>
               ) : (
                 <form onSubmit={submit} className="flex flex-col gap-5">
