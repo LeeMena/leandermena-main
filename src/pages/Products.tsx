@@ -106,7 +106,7 @@ export default function Products() {
       <div style={{ background: 'var(--color-primary)', paddingBlock: 'var(--space-4)' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
           <p style={{ color: '#fff', fontSize: '0.88rem', fontWeight: 500 }}>
-            🎁 <strong>Free Resource:</strong> The 90-Day Pre-Opening Blueprint — our most popular framework, yours at no cost.
+            🎁 <strong>Free Resource:</strong> The 90-Day Pre-Opening Blueprint -our most popular framework, yours at no cost.
           </p>
           <button
             onClick={() => setBlueprintOpen(true)}
