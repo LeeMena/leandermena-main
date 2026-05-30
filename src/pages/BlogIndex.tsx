@@ -2,10 +2,9 @@ import SEO from '@/components/SEO'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
-// fix: updated blog dates to reflect May 2026 refresh
 const posts = [
   {
-    slug: '/blog/fractional-gm',
+    slug: '/insights/what-a-fractional-gm-actually-does',
     kicker: 'Fractional Operations',
     title: 'What a Fractional F&B Director Actually Does',
     excerpt:
@@ -13,7 +12,7 @@ const posts = [
     date: 'Updated May 2026',
   },
   {
-    slug: '/blog/pre-opening',
+    slug: '/insights/miami-pre-opening-playbook',
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
     excerpt:
@@ -21,7 +20,7 @@ const posts = [
     date: 'Updated May 2026',
   },
   {
-    slug: '/blog/labor-cost',
+    slug: '/insights/labor-cost-control-miami-restaurants',
     kicker: 'Labor & Finance',
     title: 'Labor Cost Control for Miami Restaurants',
     excerpt:
@@ -36,7 +35,7 @@ export default function BlogIndex() {
       <SEO
         title="Insights"
         description="Operational perspectives on running restaurants and hotel F&B in Miami. Written by Leander Mena."
-        path="/blog"
+        path="/insights"
       />
 
       <section className="page-header">
