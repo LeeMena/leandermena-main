@@ -38,12 +38,22 @@ export default function Navigation({ onBookCall }: Props) {
     >
       <div className="container">
         <nav className="flex items-center justify-between gap-4 py-4">
-          <Link to="/" className="flex flex-col leading-tight group">
-            <span className="font-display text-lg font-bold text-[#e8e8e8] group-hover:text-[#b8a080] transition-colors">
-              Leander Mena
-            </span>
-            <span className="text-[11px] font-medium tracking-wide text-[#888888]">
-              Hospitality & F&B Operations
+          <Link to="/" className="flex items-center gap-3 group">
+            {/* LM Brand Mark */}
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 shrink-0 transition-opacity group-hover:opacity-80">
+              <rect width="32" height="32" fill="#0a0a0a"/>
+              <path d="M7 8v16h8" stroke="#b8a080" strokeWidth="1.4" strokeLinecap="square" strokeLinejoin="miter"/>
+              <path d="M17 8l4 8 4-8M17 24l4-8 4 8" stroke="#b8a080" strokeWidth="1.4" strokeLinecap="square" strokeLinejoin="miter"/>
+              <rect x="0.5" y="0.5" width="31" height="31" stroke="#b8a080" strokeOpacity="0.35" strokeWidth="0.75"/>
+            </svg>
+            {/* Name + tagline */}
+            <span className="flex flex-col leading-tight">
+              <span className="font-display text-lg font-bold text-[#e8e8e8] group-hover:text-[#b8a080] transition-colors">
+                Leander Mena
+              </span>
+              <span className="text-[11px] font-medium tracking-wide text-[#888888]">
+                Hospitality &amp; F&amp;B Operations
+              </span>
             </span>
           </Link>
 
@@ -103,7 +113,6 @@ export default function Navigation({ onBookCall }: Props) {
                   {l.label}
                 </Link>
               ))}
-              {/* fix: w-full on mobile so button doesn't overflow at 320px */}
               <button
                 onClick={() => {
                   onBookCall()
