@@ -1,25 +1,30 @@
-﻿import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
-const articles = [
+const posts = [
   {
+    slug: '/insights/what-a-fractional-gm-actually-does',
+    kicker: 'Fractional Operations',
+    title: 'What a Fractional F&B Director Actually Does',
+    excerpt:
+      'Not a consultant with a binder. Not a part-time manager. Here is what the role looks like in practice — and why more Miami operators are using it.',
+    date: 'March 2024',
+  },
+  {
+    slug: '/insights/miami-pre-opening-playbook',
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
-    body: 'The 90-day framework for taking a Miami restaurant from empty shell to opening night —” staffing, SOPs, vendors, and training.',
-    href: '/blog/pre-opening',
+    excerpt:
+      'What the first 90 days before opening should look like — and the mistakes that cause most new concepts to stumble in week one.',
+    date: 'January 2024',
   },
   {
-    kicker: 'Fractional Leadership',
-    title: 'What a Fractional GM Actually Does',
-    body: 'Most restaurant owners have heard the term. Few understand what fractional F&B leadership actually looks like week to week.',
-    href: '/blog/fractional-gm',
-  },
-  {
-    kicker: 'Operations',
-    title: 'Labor Cost Control in Miami Restaurants',
-    body: 'The scheduling and productivity systems used across 18+ years to keep labor cost in line without sacrificing service.',
-    href: '/blog/labor-cost',
+    slug: '/insights/labor-cost-control-miami-restaurants',
+    kicker: 'Labor & Finance',
+    title: 'Labor Cost Control for Miami Restaurants',
+    excerpt:
+      'Labor is your biggest controllable cost. Here is how to bring it under control without cutting service quality or burning out your team.',
+    date: 'November 2023',
   },
 ]
 
@@ -28,41 +33,40 @@ export default function BlogIndex() {
     <>
       <SEO
         title="Insights"
-        description="Practical writing on restaurant operations, pre-opening strategy, and fractional F&B leadership from 18+ years in Miami hospitality."
-        path="/blog"
+        description="Operational perspectives on running restaurants and hotel F&B in Miami. Written by Leander Mena."
+        path="/insights"
       />
 
       <section className="page-header">
         <div className="container">
-          <span className="kicker">Insights from the floor</span>
+          <span className="kicker">Insights</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            Articles by Leander Mena
+            Operational perspectives from the floor.
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Practical writing on restaurant operations, pre-opening strategy, and fractional F&B
-            leadership from 18+ years in Miami hospitality.
+            Practical writing on labor, pre-openings, and running F&B operations in Miami.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((a, i) => (
-              <ScrollReveal key={a.title} delay={i * 120}>
-                <Link to={a.href} className="card h-full flex flex-col group">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-3">
-                    {a.kicker}
-                  </span>
-                  <h3 className="text-base font-bold text-[#e8e8e8] mb-3 leading-snug group-hover:text-[#b8a080] transition-colors">
-                    {a.title}
-                  </h3>
-                  <p className="text-sm text-[#888888] flex-1">{a.body}</p>
-                  <span className="text-sm font-semibold text-[#b8a080] mt-4 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Read article →’
-                  </span>
-                </Link>
-              </ScrollReveal>
+          <div className="flex flex-col gap-8">
+            {posts.map((post, i) => (
+              <Link
+                key={post.slug}
+                to={post.slug}
+                className="card block group hover:border-[#b8a080] transition-colors"
+              >
+                <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-2 block">
+                  {post.kicker}
+                </span>
+                <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2 group-hover:text-[#b8a080] transition-colors">
+                  {post.title}
+                </h2>
+                <p className="text-[#888888] max-w-[68ch] mb-4">{post.excerpt}</p>
+                <span className="text-xs text-[#555555]">{post.date}</span>
+              </Link>
             ))}
           </div>
         </div>
@@ -70,8 +74,3 @@ export default function BlogIndex() {
     </>
   )
 }
-
-
-
-
-

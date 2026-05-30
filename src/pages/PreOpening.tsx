@@ -1,4 +1,4 @@
-﻿import ScrollReveal from '@/components/ScrollReveal'
+import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
@@ -40,7 +40,7 @@ export default function PreOpening() {
 
       <section className="page-header">
         <div className="container">
-          <span className="kicker">Pre-Opening Restaurant & Hotel F&B —” Miami</span>
+          <span className="kicker">Pre-Opening Restaurant & Hotel F&B — Miami</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
             Pre-Opening F&B Operations
           </h1>
@@ -75,7 +75,7 @@ export default function PreOpening() {
                 How I Work with Development Teams
               </h3>
               <p className="text-[#888888] max-w-[68ch] mb-4">
-                I slot in alongside ownership, brand, and design as the operations voice —”
+                I slot in alongside ownership, brand, and design as the operations voice —
                 translating the concept into service flows, staffing plans, and standards that can
                 be executed in a real room by a real team.
               </p>
@@ -84,7 +84,7 @@ export default function PreOpening() {
                 the project, timeline, and the internal team you already have in place.
               </p>
               <Link to="/contact" className="btn btn-primary">
-                Start a Pre-Opening Conversation →’
+                Start a Pre-Opening Conversation
               </Link>
             </div>
           </ScrollReveal>
@@ -93,8 +93,3 @@ export default function PreOpening() {
     </>
   )
 }
-
-
-
-
-
