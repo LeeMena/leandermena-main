@@ -53,7 +53,7 @@ const PERSON_BASE = {
   ],
 }
 
-function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta) {
+function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string) {
   const breadcrumb = (label: string, position: number) => ({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -176,7 +176,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta)
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
           publisher: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
           description:
-            'The operating principles and leadership philosophy behind Leander Mena's approach to F&B operations management.',
+            'The operating principles and leadership philosophy behind Leander Mena\u2019s approach to F&B operations management.',
           datePublished: '2026-01-01',
         },
         breadcrumb('Philosophy', 2),
@@ -240,7 +240,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta)
           },
           datePublished: article.datePublished,
           dateModified: article.dateModified,
-          description: '',
+          description: description ?? '',
           mainEntityOfPage: { '@type': 'WebPage', '@id': url },
         },
       ]
@@ -314,7 +314,7 @@ export default function SEO({
     }
   }, [fullTitle, description, url, image, ogType, schemaType, article])
 
-  const schemas = buildSchema(schemaType, url, article)
+  const schemas = buildSchema(schemaType, url, article, description)
 
   return (
     <>
