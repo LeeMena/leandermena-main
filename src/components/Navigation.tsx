@@ -39,11 +39,14 @@ export default function Navigation({ onBookCall }: Props) {
       <div className="container">
         <nav className="flex items-center justify-between gap-4 py-4">
           <Link to="/" className="flex items-center gap-3 group">
-            {/* LM Brand Mark */}
+            {/* LM Brand Mark — L left, M right, gold on dark */}
             <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 shrink-0 transition-opacity group-hover:opacity-80">
               <rect width="32" height="32" fill="#0a0a0a"/>
-              <path d="M7 8v16h8" stroke="#b8a080" strokeWidth="1.4" strokeLinecap="square" strokeLinejoin="miter"/>
-              <path d="M17 8l4 8 4-8M17 24l4-8 4 8" stroke="#b8a080" strokeWidth="1.4" strokeLinecap="square" strokeLinejoin="miter"/>
+              {/* L — vertical stroke down, horizontal foot right */}
+              <path d="M5 8v16h7" stroke="#b8a080" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"/>
+              {/* M — two verticals with a V notch in the middle */}
+              <path d="M15 8v16M15 8l5 7 5-7M25 8v16" stroke="#b8a080" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"/>
+              {/* Border */}
               <rect x="0.5" y="0.5" width="31" height="31" stroke="#b8a080" strokeOpacity="0.35" strokeWidth="0.75"/>
             </svg>
             {/* Name + tagline */}
