@@ -65,8 +65,20 @@ export default function Services() {
         path="/services"
       />
 
-      <section className="page-header">
-        <div className="container">
+      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/dining.jpg"
+            alt=""
+            width="1400"
+            height="600"
+            className="w-full h-full object-cover opacity-40"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+        </div>
+        <div className="container relative z-10 py-16">
           <span className="kicker">Services</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
             Operational leadership, tailored to your stage.

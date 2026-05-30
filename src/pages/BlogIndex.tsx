@@ -4,28 +4,22 @@ import { Link } from 'react-router-dom'
 
 const posts = [
   {
-    slug: '/insights/what-a-fractional-gm-actually-does',
-    kicker: 'Fractional Operations',
-    title: 'What a Fractional F&B Director Actually Does',
-    excerpt:
-      'Not a consultant with a binder. Not a part-time manager. Here is what the role looks like in practice — and why more Miami operators are using it.',
-    date: 'Updated May 2026',
+    slug: '/insights/fractional-gm',
+    kicker: 'Fractional Leadership',
+    title: 'What a Fractional GM Actually Does',
+    excerpt: 'The fractional model isn’t a compromise — it’s a strategic choice. Here’s how it works in practice.',
   },
   {
-    slug: '/insights/miami-pre-opening-playbook',
+    slug: '/insights/labor-cost',
+    kicker: 'Operations',
+    title: 'How Miami Restaurants Can Control Labor Costs',
+    excerpt: 'Labor is your largest controllable cost. These are the systems that actually move the number.',
+  },
+  {
+    slug: '/insights/pre-opening',
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
-    excerpt:
-      'What the first 90 days before opening should look like — and the mistakes that cause most new concepts to stumble in week one.',
-    date: 'Updated May 2026',
-  },
-  {
-    slug: '/insights/labor-cost-control-miami-restaurants',
-    kicker: 'Labor & Finance',
-    title: 'Labor Cost Control for Miami Restaurants',
-    excerpt:
-      'Labor is your biggest controllable cost. Here is how to bring it under control without cutting service quality or burning out your team.',
-    date: 'Updated May 2026',
+    excerpt: 'What the first 90 days before opening should look like — and what most operators get wrong.',
   },
 ]
 
@@ -34,39 +28,47 @@ export default function BlogIndex() {
     <>
       <SEO
         title="Insights"
-        description="Operational perspectives on running restaurants and hotel F&B in Miami. Written by Leander Mena."
+        description="Operational insights for Miami restaurants and hotels — fractional leadership, labor cost control, and pre-opening strategy."
         path="/insights"
       />
 
-      <section className="page-header">
-        <div className="container">
-          <span className="kicker">Insights</span>
+      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/contact.jpg"
+            alt=""
+            width="1400"
+            height="600"
+            className="w-full h-full object-cover opacity-40"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+        </div>
+        <div className="container relative z-10 py-16">
+          <span className="kicker">Operational Insights</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            Operational perspectives from the floor.
+            Insights
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Practical writing on labor, pre-openings, and running F&B operations in Miami.
+            Practical thinking on F&B operations, pre-opening strategy, and fractional leadership for Miami hospitality.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="flex flex-col gap-8">
-            {posts.map((post, i) => (
-              <ScrollReveal key={post.slug} delay={i * 100}>
-                <Link
-                  to={post.slug}
-                  className="card block group hover:border-[#b8a080] transition-colors"
-                >
-                  <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-2 block">
-                    {post.kicker}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((p, i) => (
+              <ScrollReveal key={p.slug} delay={i * 100}>
+                <Link to={p.slug} className="card block h-full hover:border-[#b8a080]/40 transition-colors">
+                  <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-3 block">
+                    {p.kicker}
                   </span>
-                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2 group-hover:text-[#b8a080] transition-colors">
-                    {post.title}
+                  <h2 className="font-display text-base font-bold text-[#e8e8e8] mb-3 leading-snug">
+                    {p.title}
                   </h2>
-                  <p className="text-[#888888] max-w-[68ch] mb-4">{post.excerpt}</p>
-                  <span className="text-xs text-[#555555]">{post.date}</span>
+                  <p className="text-sm text-[#888888]">{p.excerpt}</p>
                 </Link>
               </ScrollReveal>
             ))}

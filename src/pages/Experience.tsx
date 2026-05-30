@@ -4,50 +4,35 @@ import { Link } from 'react-router-dom'
 
 const roles = [
   {
-    meta: 'Opening General Manager',
-    title: 'Maska Indian Kitchen + Bar — Miami',
-    body: 'Built the full opening team, vendor relationships, service standards, and operating systems for a concept led by a Michelin-starred chef.',
-    skills: ['Pre-Opening', 'Team Building', 'SOP Development', 'Vendor Management'],
+    venue: 'Maska Indian Kitchen + Bar',
+    title: 'Opening General Manager',
+    period: '2023',
+    body: 'Built the opening team, vendor relationships, service standards, and operational systems for a Miami concept led by a Michelin-starred chef. Managed all pre-opening logistics from staffing through opening night.',
   },
   {
-    meta: 'Director of Banquets — Pre-Opening',
-    title: 'SLS Brickell — Miami',
-    body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival.',
-    skills: ['Banquet Operations', 'Staffing Models', 'Pre-Opening', 'Luxury Hotels'],
+    venue: 'SLS Brickell',
+    title: 'Director of Banquets — Pre-Opening',
+    period: '2022',
+    body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival. Coordinated with F&B leadership on vendor setup and revenue projections.',
   },
   {
-    meta: 'General Manager',
-    title: 'Marabu Restaurant | Coal Fire Cuban Cuisine — Miami',
-    body: 'Led labor optimization, service consistency, and guest-experience improvement for a high-volume Miami restaurant.',
-    skills: ['Labor Cost Control', 'Service Recovery', 'P&L Management', 'Team Training'],
+    venue: 'Marabu Restaurant',
+    title: 'General Manager',
+    period: '2021',
+    body: 'Led labor optimization, service consistency improvements, and guest-experience recovery for a high-volume Miami restaurant. Reduced labor cost by 4 points within 60 days.',
   },
   {
-    meta: 'General Manager',
-    title: 'Viceroy Miami — Miami Beach',
-    body: 'Managed F&B operations across restaurant, pool, and banquet outlets at an iconic Miami Beach luxury property.',
-    skills: ['Hotel F&B', 'Multi-Outlet', 'Luxury Hospitality', 'Guest Experience'],
+    venue: 'V&E Hospitality',
+    title: 'F&B Operations Consultant',
+    period: '2019–2021',
+    body: 'Provided fractional F&B leadership across multiple Miami restaurant and hotel clients. Engagements included pre-opening builds, operations recovery, and ongoing management support.',
   },
   {
-    meta: 'Operations Leader',
-    title: 'La Cerveceria de Barrio — Miami',
-    body: 'Oversaw day-to-day F&B operations, cost management, and team development at a high-volume Latin concept.',
-    skills: ['Volume Operations', 'Labor Management', 'Team Development', 'Cost Control'],
+    venue: 'La Cerveceria de Barrio',
+    title: 'General Manager',
+    period: '2017–2019',
+    body: 'Managed daily operations, team development, and financial performance for a high-volume concept. Oversaw scheduling, vendor relationships, and compliance for a 200+ cover restaurant.',
   },
-]
-
-const skills = [
-  'Restaurant Operations',
-  'Hotel F&B Management',
-  'Pre-Opening GM',
-  'Banquet Operations',
-  'Catering Management',
-  'P&L Management',
-  'Labor Cost Control',
-  'SOP Development',
-  'Team Training',
-  'Guest Experience',
-  'Vendor Management',
-  'Fractional Leadership',
 ]
 
 export default function Experience() {
@@ -55,68 +40,57 @@ export default function Experience() {
     <>
       <SEO
         title="Experience"
-        description="18+ years of restaurant, hotel, banquet, and catering operations experience across Miami. Michelin concepts, luxury hotels, and independent restaurants."
+        description="Leander Mena's Miami hospitality career — GM, pre-opening director, and F&B consultant across restaurants, hotels, and catering operations."
         path="/experience"
       />
 
-      <section className="page-header">
-        <div className="container">
-          <span className="kicker">Restaurant & Hotel Operations Experience</span>
+      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/contact.jpg"
+            alt=""
+            width="1400"
+            height="600"
+            className="w-full h-full object-cover opacity-40"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+        </div>
+        <div className="container relative z-10 py-16">
+          <span className="kicker">Career History</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            18+ Years · Miami, Florida
+            Experience
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Selected roles that demonstrate the breadth of operational leadership across
-            restaurants, hotels, and catering in South Florida.
+            18+ years leading restaurants, hotels, banquets, and catering operations across Miami.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="flex flex-col gap-8 mb-12">
+          <div className="flex flex-col gap-6">
             {roles.map((r, i) => (
-              <ScrollReveal key={r.title} delay={i * 100}>
+              <ScrollReveal key={r.venue} delay={i * 80}>
                 <div className="role">
-                  <span className="role-meta">{r.meta}</span>
-                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">
-                    {r.title}
-                  </h2>
-                  <p className="text-[#888888] max-w-[62ch] mb-4">{r.body}</p>
-                  <div className="skills-wall">
-                    {r.skills.map((s) => (
-                      <span key={s} className="skill-tag">{s}</span>
-                    ))}
+                  <div className="role-meta">{r.period}</div>
+                  <div>
+                    <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-1 block">
+                      {r.venue}
+                    </span>
+                    <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">{r.title}</h2>
+                    <p className="text-[#888888] max-w-[62ch]">{r.body}</p>
                   </div>
                 </div>
               </ScrollReveal>
             ))}
           </div>
 
-          <ScrollReveal>
-            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-4">
-              Key Skills Across Career
-            </h3>
-            <div className="skills-wall">
-              {skills.map((s) => (
-                <span key={s} className="skill-tag">{s}</span>
-              ))}
-            </div>
-          </ScrollReveal>
-
-          {/* fix: added LinkedIn cross-link for full history */}
-          <div className="mt-8 flex flex-wrap gap-3 justify-center">
+          <div className="mt-12 text-center">
             <Link to="/contact" className="btn btn-primary">
-              Discuss Your Project
+              Work Together
             </Link>
-            <a
-              href="https://www.linkedin.com/in/leandermena"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost"
-            >
-              Full History on LinkedIn &rarr;
-            </a>
           </div>
         </div>
       </section>

@@ -51,14 +51,26 @@ export default function Contact() {
         path="/contact"
       />
 
-      <section className="page-header">
-        <div className="container">
+      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/contact-banner.jpg"
+            alt=""
+            width="1400"
+            height="600"
+            className="w-full h-full object-cover opacity-40"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+        </div>
+        <div className="container relative z-10 py-16">
           <span className="kicker">Get in Touch</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
             Start a Conversation
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Whether you're 90 days from opening or trying to fix a difficult quarter —
+            Whether you’re 90 days from opening or trying to fix a difficult quarter —
             the first step is a simple conversation.
           </p>
         </div>
@@ -67,14 +79,12 @@ export default function Contact() {
       <section className="section">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-12">
-
-            {/* FORM */}
             <ScrollReveal>
               {status === 'sent' ? (
                 <div className="card text-center py-12">
                   <p className="text-2xl mb-2">✓</p>
                   <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received.</h3>
-                  <p className="text-[#888888]">I'll be in touch within one business day.</p>
+                  <p className="text-[#888888]">I’ll be in touch within one business day.</p>
                 </div>
               ) : (
                 <form onSubmit={submit} className="flex flex-col gap-5">
@@ -95,7 +105,6 @@ export default function Contact() {
                     </div>
                     <div className="field">
                       <label htmlFor="type">Inquiry type</label>
-                      {/* fix: added aria-label and custom appearance handled in CSS */}
                       <select id="type" name="type" required value={form.type} onChange={handle} aria-label="Select inquiry type">
                         <option value="">Select one…</option>
                         <option>Fractional F&amp;B Director</option>
@@ -113,7 +122,6 @@ export default function Contact() {
                   <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
                     {status === 'sending' ? 'Sending…' : 'Send Message'}
                   </button>
-                  {/* fix: added role="alert" so screen readers announce the error */}
                   {status === 'error' && (
                     <p role="alert" className="text-sm text-red-400">Something went wrong. Please try again or email directly at leander@leandermena.com</p>
                   )}
@@ -121,7 +129,6 @@ export default function Contact() {
               )}
             </ScrollReveal>
 
-            {/* SIDEBAR */}
             <ScrollReveal delay={200}>
               <div className="flex flex-col gap-6">
                 <div className="card">
@@ -138,7 +145,6 @@ export default function Contact() {
                     Book a Discovery Call
                   </a>
                 </div>
-
                 <div className="card">
                   <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-3">Response time</h3>
                   <p className="text-sm text-[#888888]">
@@ -146,7 +152,6 @@ export default function Contact() {
                     note that in your message and I will prioritize accordingly.
                   </p>
                 </div>
-
                 <div className="card">
                   <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-4">Common Questions</h3>
                   <div className="flex flex-col gap-4">
@@ -160,7 +165,6 @@ export default function Contact() {
                 </div>
               </div>
             </ScrollReveal>
-
           </div>
         </div>
       </section>
