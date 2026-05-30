@@ -54,7 +54,7 @@ const PERSON_BASE = {
 }
 
 function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string) {
-  const breadcrumb = (label: string, position: number) => ({
+  const breadcrumb = (label: string, _position: number) => ({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -126,7 +126,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           '@context': 'https://schema.org',
           '@type': 'Service',
           name: 'Fractional F&B Operations & Consulting',
-          provider: { '@type': 'Person', ...PERSON_BASE },
+          provider: { ...PERSON_BASE },
           serviceType: 'Food and Beverage Operations Consulting',
           areaServed: PERSON_BASE.address,
           url: `${BASE_URL}/services`,
@@ -142,7 +142,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           '@context': 'https://schema.org',
           '@type': 'Service',
           name: 'Restaurant & Hotel Pre-Opening Consulting',
-          provider: { '@type': 'Person', ...PERSON_BASE },
+          provider: { ...PERSON_BASE },
           serviceType: 'Pre-Opening F&B Consulting',
           areaServed: PERSON_BASE.address,
           url: `${BASE_URL}/pre-opening`,
