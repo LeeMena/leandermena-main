@@ -8,9 +8,6 @@ import Experience from '@/pages/Experience'
 import Philosophy from '@/pages/Philosophy'
 import Contact from '@/pages/Contact'
 import Profile from '@/pages/Profile'
-import Book from '@/pages/Book'
-import CaseStudies from '@/pages/CaseStudies'
-import Insights from '@/pages/Insights'
 import BlogIndex from '@/pages/BlogIndex'
 import BlogPreOpening from '@/pages/BlogPreOpening'
 import BlogFractionalGM from '@/pages/BlogFractionalGM'
@@ -28,9 +25,6 @@ export default function App() {
         <Route path="philosophy" element={<Philosophy />} />
         <Route path="contact" element={<Contact />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="book" element={<Book />} />
-        <Route path="case-studies" element={<CaseStudies />} />
-        <Route path="insights" element={<Insights />} />
         <Route path="blog" element={<BlogIndex />} />
         <Route path="blog/pre-opening" element={<BlogPreOpening />} />
         <Route path="blog/fractional-gm" element={<BlogFractionalGM />} />
