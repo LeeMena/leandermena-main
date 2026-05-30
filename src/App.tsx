@@ -14,6 +14,8 @@ import BlogFractionalGM from '@/pages/BlogFractionalGM'
 import BlogLaborCost from '@/pages/BlogLaborCost'
 import Shop from '@/pages/Shop'
 import CaseStudies from '@/pages/CaseStudies'
+import Products from '@/pages/Products'
+import Book from '@/pages/Book'
 import NotFound from '@/pages/NotFound'
 
 export default function App() {
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/book" element={<Book />} />
         <Route path="/insights" element={<BlogIndex />} />
         <Route path="/blog" element={<Navigate to="/insights" replace />} />
         <Route path="/insights/what-a-fractional-gm-actually-does" element={<BlogFractionalGM />} />
