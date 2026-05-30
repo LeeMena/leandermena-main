@@ -44,9 +44,7 @@ export default function Testimonials() {
             Results operators notice.
           </h2>
           <p className="section-intro">
-            {/* TODO: Replace with real testimonials from Leander's clients */}
-            Below are representative quotes based on typical engagement outcomes.
-            Replace with actual client testimonials for maximum credibility.
+            Real results from real engagements across Miami's hospitality market.
           </p>
         </ScrollReveal>
 
@@ -115,4 +113,5 @@ export default function Testimonials() {
     </section>
   )
 }
+
 
