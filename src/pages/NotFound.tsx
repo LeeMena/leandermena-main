@@ -30,7 +30,7 @@ export default function NotFound() {
           </h1>
           <p className="text-[#d8d8d8] text-lg max-w-[48ch] mb-8 leading-relaxed">
             The URL you followed may be outdated or the page may have moved.
-            Let’s get you back to something useful.
+            Let's get you back to something useful.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link to="/" className="btn btn-primary">Go to Homepage</Link>

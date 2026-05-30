@@ -7,7 +7,7 @@ const links = [
   { href: '/pre-opening', label: 'Pre-Opening' },
   { href: '/experience', label: 'Experience' },
   { href: '/philosophy', label: 'Philosophy' },
-  { href: '/blog', label: 'Insights' },
+  { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -39,17 +39,12 @@ export default function Navigation({ onBookCall }: Props) {
       <div className="container">
         <nav className="flex items-center justify-between gap-4 py-4">
           <Link to="/" className="flex items-center gap-3 group">
-            {/* LM Brand Mark — L left, M right, gold on dark */}
             <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 shrink-0 transition-opacity group-hover:opacity-80">
               <rect width="32" height="32" fill="#0a0a0a"/>
-              {/* L — vertical stroke down, horizontal foot right */}
               <path d="M5 8v16h7" stroke="#b8a080" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"/>
-              {/* M — two verticals with a V notch in the middle */}
               <path d="M15 8v16M15 8l5 7 5-7M25 8v16" stroke="#b8a080" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"/>
-              {/* Border */}
               <rect x="0.5" y="0.5" width="31" height="31" stroke="#b8a080" strokeOpacity="0.35" strokeWidth="0.75"/>
             </svg>
-            {/* Name + tagline */}
             <span className="flex flex-col leading-tight">
               <span className="font-display text-lg font-bold text-[#e8e8e8] group-hover:text-[#b8a080] transition-colors">
                 Leander Mena
@@ -60,14 +55,13 @@ export default function Navigation({ onBookCall }: Props) {
             </span>
           </Link>
 
-          {/* Desktop */}
           <div className="hidden md:flex items-center gap-6">
             {links.map((l) => (
               <Link
                 key={l.href}
                 to={l.href}
                 className={`text-sm font-medium transition-colors ${
-                  pathname === l.href
+                  pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
                     ? 'text-[#b8a080]'
                     : 'text-[#888888] hover:text-[#e8e8e8]'
                 }`}
@@ -83,7 +77,6 @@ export default function Navigation({ onBookCall }: Props) {
             </button>
           </div>
 
-          {/* Mobile toggle */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden p-2 text-[#e8e8e8]"
@@ -99,7 +92,6 @@ export default function Navigation({ onBookCall }: Props) {
           </button>
         </nav>
 
-        {/* Mobile menu */}
         {open && (
           <div className="md:hidden pb-4 border-t border-[#2a2a2a]">
             <div className="flex flex-col gap-3 pt-4">
@@ -108,7 +100,7 @@ export default function Navigation({ onBookCall }: Props) {
                   key={l.href}
                   to={l.href}
                   className={`text-sm font-medium py-1 ${
-                    pathname === l.href
+                    pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
                       ? 'text-[#b8a080]'
                       : 'text-[#888888] hover:text-[#e8e8e8]'
                   }`}

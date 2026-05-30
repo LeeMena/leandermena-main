@@ -8,7 +8,7 @@ export default function BlogFractionalGM() {
       <SEO
         title="What a Fractional F&B Director Actually Does"
         description="Not a consultant with a binder. Here is what the fractional F&B director role looks like in practice and why Miami operators are using it."
-        path="/blog/fractional-gm"
+        path="/insights/what-a-fractional-gm-actually-does"
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
@@ -98,7 +98,7 @@ export default function BlogFractionalGM() {
             <ScrollReveal delay={450}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Talk About Your Operation</Link>
-                <Link to="/blog" className="btn btn-ghost">← Back to Insights</Link>
+                <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
               </div>
             </ScrollReveal>
           </div>

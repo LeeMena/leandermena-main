@@ -12,6 +12,23 @@ export default function Layout() {
     window.scrollTo({ top: 0, behavior: 'instant' })
   }, [pathname])
 
+  // Preconnect to Calendly for faster modal load
+  useEffect(() => {
+    const domains = [
+      'https://calendly.com',
+      'https://assets.calendly.com',
+    ]
+    domains.forEach((href) => {
+      if (!document.querySelector(`link[rel="preconnect"][href="${href}"]`)) {
+        const link = document.createElement('link')
+        link.rel = 'preconnect'
+        link.href = href
+        link.crossOrigin = 'anonymous'
+        document.head.appendChild(link)
+      }
+    })
+  }, [])
+
   return (
     <div className="min-h-[100dvh] flex flex-col bg-[#0a0a0a] text-[#e8e8e8]">
       <Navigation onBookCall={() => setCalendlyOpen(true)} />

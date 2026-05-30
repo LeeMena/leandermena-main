@@ -8,7 +8,7 @@ export default function BlogLaborCost() {
       <SEO
         title="Labor Cost Control for Miami Restaurants"
         description="Labor is your biggest controllable cost. Here is how to bring it under control without cutting service quality or burning out your team."
-        path="/blog/labor-cost"
+        path="/insights/labor-cost-control-miami-restaurants"
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
@@ -84,7 +84,7 @@ export default function BlogLaborCost() {
             <ScrollReveal delay={350}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Talk About Your Labor Cost</Link>
-                <Link to="/blog" className="btn btn-ghost">← Back to Insights</Link>
+                <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
               </div>
             </ScrollReveal>
           </div>
