@@ -1,103 +1,140 @@
-import { Product } from '@/data/products';
-import { useCart } from '@/context/CartContext';
+import { ShoppingCart, Star, Check, Download } from 'lucide-react';
+import { motion } from 'framer-motion';
+import type { Product } from '@/data/products';
+import { toast } from 'sonner';
 
-interface Props {
+interface ProductCardProps {
   product: Product;
+  index?: number;
+  detailed?: boolean;
 }
 
-const categoryLabel: Record<Product['category'], string> = {
-  template: 'Template',
-  playbook: 'Playbook',
-  course: 'Course',
-  toolkit: 'Toolkit',
-};
+export default function ProductCard({ product, index = 0, detailed = false }: ProductCardProps) {
+  const handleAddToCart = () => {
+    toast.success(`${product.title} added to cart`);
+  };
 
-export default function ProductCard({ product }: Props) {
-  const { addToCart, items } = useCart();
-  const inCart = items.some((i) => i.product.id === product.id);
-
-  return (
-    <div
-      className="card"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-        paddingTop: product.badge ? 'calc(var(--space-6) + 0.5rem)' : 'var(--space-6)',
-      }}
-    >
-      {/* Badge */}
-      {product.badge && (
-        <span style={{
-          position: 'absolute', top: 'var(--space-4)', left: 'var(--space-6)',
-          fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.07em',
-          textTransform: 'uppercase',
-          background: 'var(--color-primary)', color: '#0a0a0a',
-          padding: '0.2rem 0.6rem', borderRadius: 'var(--radius-sm)',
-        }}>
-          {product.badge}
-        </span>
-      )}
-
-      {/* Category */}
-      <span className="kicker" style={{ marginBottom: 'var(--space-2)' }}>
-        {categoryLabel[product.category]}
-      </span>
-
-      {/* Title */}
-      <h3 style={{
-        fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-        fontWeight: 700, marginBottom: 'var(--space-1)',
-        lineHeight: 1.25,
-      }}>
-        {product.title}
-      </h3>
-
-      <p style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-4)' }}>
-        {product.subtitle}
-      </p>
-
-      {/* Description */}
-      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: 'var(--space-4)', flex: 1 }}>
-        {product.description}
-      </p>
-
-      {/* Features */}
-      <ul className="list" style={{ marginBottom: 'var(--space-5)' }}>
-        {product.features.map((f) => <li key={f}>{f}</li>)}
-      </ul>
-
-      {/* Includes */}
-      <div style={{
-        display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)',
-        marginBottom: 'var(--space-5)',
-      }}>
-        {product.includes.map((inc) => (
-          <span key={inc} className="skill-tag">{inc}</span>
-        ))}
-      </div>
-
-      {/* Price + CTA */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 'var(--space-4)', marginTop: 'auto' }}>
-        <div>
-          <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 700, color: 'var(--color-primary)' }}>
-            ${product.price}
-          </span>
+  if (detailed) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="group bg-luxury-card border border-luxury-border card-hover overflow-hidden"
+      >
+        <div className="relative aspect-[16/10] bg-gradient-to-br from-luxury-dark via-luxury-card to-luxury-dark overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(184,160,128,0.15)_0%,_transparent_60%)]" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full bg-gold/10 flex items-center justify-center">
+              <Download className="w-8 h-8 text-gold/60" />
+            </div>
+          </div>
+          {product.badge && (
+            <span className="absolute top-4 left-4 px-3 py-1 bg-gold text-luxury-black text-[10px] font-medium tracking-wider uppercase">
+              {product.badge}
+            </span>
+          )}
           {product.originalPrice && (
-            <span style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', textDecoration: 'line-through', marginLeft: '0.5rem' }}>
-              ${product.originalPrice}
+            <span className="absolute top-4 right-4 px-3 py-1 bg-red-900/80 text-red-200 text-[10px] font-medium tracking-wider uppercase">
+              Save ${product.originalPrice - product.price}
             </span>
           )}
         </div>
-        <button
-          className={inCart ? 'btn btn-ghost' : 'btn btn-primary'}
-          style={{ whiteSpace: 'nowrap' }}
-          onClick={() => addToCart(product)}
-        >
-          {inCart ? 'In Cart ✓' : 'Add to Cart'}
-        </button>
+
+        <div className="p-6 md:p-8">
+          <span className="text-[10px] tracking-[0.2em] uppercase text-gold mb-2 block">
+            {product.category === 'template' ? 'Templates' : product.category === 'playbook' ? 'Playbook' : product.category === 'course' ? 'Course' : 'Toolkit'}
+          </span>
+          <h3 className="font-serif text-xl text-luxury-text mb-1">{product.title}</h3>
+          <p className="text-sm text-luxury-muted mb-4">{product.subtitle}</p>
+          <p className="text-sm text-luxury-muted leading-relaxed mb-6">{product.description}</p>
+
+          <ul className="space-y-2 mb-6">
+            {product.features.slice(0, 4).map((feature, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-luxury-muted">
+                <Check className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-gold fill-gold' : 'text-luxury-border'}`} />
+              ))}
+            </div>
+            <span className="text-xs text-luxury-muted">{product.rating} ({product.reviewCount} reviews)</span>
+          </div>
+
+          <div className="flex items-center justify-between pt-4 border-t border-luxury-border">
+            <div>
+              <span className="font-serif text-2xl text-gold">${product.price}</span>
+              {product.originalPrice && (
+                <span className="text-sm text-luxury-muted line-through ml-2">${product.originalPrice}</span>
+              )}
+            </div>
+            <button onClick={handleAddToCart} className="btn-primary flex items-center gap-2 text-[10px] py-3 px-5">
+              <ShoppingCart className="w-4 h-4" />
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group bg-luxury-card border border-luxury-border card-hover"
+    >
+      <div className="relative aspect-[16/10] bg-gradient-to-br from-luxury-dark via-luxury-card to-luxury-dark overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(184,160,128,0.15)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+            <Download className="w-6 h-6 text-gold/60" />
+          </div>
+        </div>
+        {product.badge && (
+          <span className="absolute top-3 left-3 px-2 py-1 bg-gold text-luxury-black text-[9px] font-medium tracking-wider uppercase">
+            {product.badge}
+          </span>
+        )}
       </div>
-    </div>
+
+      <div className="p-6">
+        <span className="text-[10px] tracking-[0.2em] uppercase text-gold mb-2 block">
+          {product.category === 'template' ? 'Templates' : product.category === 'playbook' ? 'Playbook' : product.category === 'course' ? 'Course' : 'Toolkit'}
+        </span>
+        <h3 className="font-serif text-lg text-luxury-text mb-1">{product.title}</h3>
+        <p className="text-sm text-luxury-muted mb-4">{product.subtitle}</p>
+
+        <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className={`w-3 h-3 ${i < Math.floor(product.rating) ? 'text-gold fill-gold' : 'text-luxury-border'}`} />
+            ))}
+          </div>
+          <span className="text-[10px] text-luxury-muted">{product.rating}</span>
+        </div>
+
+        <div className="flex items-center justify-between pt-3 border-t border-luxury-border">
+          <div>
+            <span className="font-serif text-xl text-gold">${product.price}</span>
+            {product.originalPrice && (
+              <span className="text-xs text-luxury-muted line-through ml-2">${product.originalPrice}</span>
+            )}
+          </div>
+          <button onClick={handleAddToCart} className="text-gold hover:text-gold-light transition-colors">
+            <ShoppingCart className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+    </motion.div>
   );
 }
