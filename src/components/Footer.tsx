@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+﻿import { Link } from 'react-router-dom'
 
 const navLinks = [
   { href: '/about', label: 'About' },
@@ -80,3 +80,4 @@ export default function Footer() {
     </footer>
   )
 }
+

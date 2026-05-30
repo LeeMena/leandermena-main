@@ -59,7 +59,7 @@ export default function BlogIndex() {
                   </h3>
                   <p className="text-sm text-[#888888] flex-1">{a.body}</p>
                   <span className="text-sm font-semibold text-[#b8a080] mt-4 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                    Read article â†’
+                    Read article →’
                   </span>
                 </Link>
               </ScrollReveal>
@@ -70,6 +70,7 @@ export default function BlogIndex() {
     </>
   )
 }
+
 
 
 

@@ -85,7 +85,7 @@ export default function Contact() {
                   <div className="flex flex-col gap-4 text-sm text-[#888888]">
                     <div className="flex items-start gap-3">
                       <span className="text-[#b8a080]">âŒ–</span>
-                      <span>Miami, Florida Â· South Florida</span>
+                      <span>Miami, Florida · South Florida</span>
                     </div>
                     <div className="flex items-start gap-3">
                       <span className="text-[#b8a080]">âœ‰</span>
@@ -106,19 +106,19 @@ export default function Contact() {
                   </h3>
                   <ul className="flex flex-col gap-3 text-sm text-[#888888]">
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">â†’</span>
+                      <span className="text-[#b8a080]">→’</span>
                       Fractional F&B Director —” 2—“4 days/week
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">â†’</span>
+                      <span className="text-[#b8a080]">→’</span>
                       Pre-Opening Consulting —” 90-day sprint
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">â†’</span>
+                      <span className="text-[#b8a080]">→’</span>
                       Operations Recovery —” 30—“60 day intensive
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">â†’</span>
+                      <span className="text-[#b8a080]">→’</span>
                       Banquet & Catering Leadership —” project-based
                     </li>
                   </ul>
@@ -268,6 +268,7 @@ export default function Contact() {
     </>
   )
 }
+
 
 
 

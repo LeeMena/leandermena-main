@@ -84,7 +84,7 @@ export default function PreOpening() {
                 the project, timeline, and the internal team you already have in place.
               </p>
               <Link to="/contact" className="btn btn-primary">
-                Start a Pre-Opening Conversation â†’
+                Start a Pre-Opening Conversation →’
               </Link>
             </div>
           </ScrollReveal>
@@ -93,6 +93,7 @@ export default function PreOpening() {
     </>
   )
 }
+
 
 
 

@@ -57,7 +57,7 @@ export default function Experience() {
         <div className="container">
           <span className="kicker">Restaurant & Hotel Operations Experience</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            18+ Years Â· Miami, Florida
+            18+ Years · Miami, Florida
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
             Selected roles that demonstrate the breadth of operational leadership across
@@ -108,6 +108,7 @@ export default function Experience() {
     </>
   )
 }
+
 
 
 

@@ -94,7 +94,7 @@ export default function Services() {
                   <ul className="grid sm:grid-cols-2 gap-2">
                     {o.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-sm text-[#888888]">
-                        <span className="text-[#b8a080] mt-0.5">â†’</span>
+                        <span className="text-[#b8a080] mt-0.5">→’</span>
                         {b}
                       </li>
                     ))}
@@ -114,6 +114,7 @@ export default function Services() {
     </>
   )
 }
+
 
 
 

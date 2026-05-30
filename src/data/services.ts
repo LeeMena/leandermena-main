@@ -22,13 +22,13 @@ export const services: Service[] = [
       'Service standard enforcement',
       'Owner reporting and KPI tracking',
     ],
-    duration: '3â€“6 month engagements',
+    duration: '3"“6 month engagements',
     ideal: 'Independent operators and ownership groups between GMs or scaling rapidly.',
   },
   {
     id: 'pre-opening',
     title: 'Pre-Opening Leadership',
-    tagline: 'From blank floor plan to opening night â€” built right.',
+    tagline: 'From blank floor plan to opening night "” built right.',
     description:
       'End-to-end pre-opening support for restaurants, hotel F&B, banquets, and catering concepts. Staffing plans, SOPs, training, and opening-week oversight.',
     deliverables: [
@@ -38,7 +38,7 @@ export const services: Service[] = [
       'Opening-week on-site leadership',
       'Post-launch stabilization',
     ],
-    duration: '60â€“120 days pre-opening',
+    duration: '60"“120 days pre-opening',
     ideal: 'New restaurant and hotel F&B concepts opening in Miami.',
   },
   {
@@ -54,7 +54,7 @@ export const services: Service[] = [
       'Team re-alignment and coaching',
       'Systems rebuild where needed',
     ],
-    duration: '30â€“90 day recovery sprints',
+    duration: '30"“90 day recovery sprints',
     ideal: 'Operators facing underperformance, ownership pressure, or brand inconsistency.',
   },
   {
@@ -74,4 +74,5 @@ export const services: Service[] = [
     ideal: 'Owners and GMs who want a senior sounding board without a full engagement.',
   },
 ];
+
 

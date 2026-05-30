@@ -188,7 +188,7 @@ export default function Home() {
                   { title: 'Rapid Diagnosis', body: 'Identify root causes within the first week, not months.' },
                   { title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow.' },
                   { title: 'Proven Track Record', body: '18+ years across Michelin concepts, luxury hotels, and independents.' },
-                  { title: 'Measurable ROI', body: 'Average 3—“5Ã— return on consulting investment within 6 months.' },
+                  { title: 'Measurable ROI', body: 'Average 3—“5× return on consulting investment within 6 months.' },
                 ].map((item) => (
                   <div key={item.title} className="border-l-2 border-[#b8a080]/30 pl-4">
                     <h4 className="text-sm font-bold text-[#e8e8e8] mb-1">{item.title}</h4>
@@ -257,7 +257,7 @@ export default function Home() {
                     className="text-sm font-semibold text-[#b8a080] hover:text-[#c9b89a] inline-flex items-center gap-1 group"
                   >
                     Learn more
-                    <span className="group-hover:translate-x-1 transition-transform">â†’</span>
+                    <span className="group-hover:translate-x-1 transition-transform">→’</span>
                   </Link>
                 </div>
               </ScrollReveal>
@@ -398,6 +398,7 @@ export default function Home() {
     </>
   )
 }
+
 
 
 
