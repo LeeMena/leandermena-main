@@ -1,13 +1,10 @@
-﻿import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { ViteSSG } from 'vite-ssg'
+import { setupLayouts } from 'virtual:generated-layouts'
 import App from './App'
 import './index.css'
+import { routes } from './routes'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
+export const createApp = ViteSSG(
+  App,
+  { routes },
 )

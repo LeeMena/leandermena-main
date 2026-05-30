@@ -1,0 +1,18 @@
+export const routes = [
+  { path: '/', component: () => import('./pages/Home') },
+  { path: '/about', component: () => import('./pages/About') },
+  { path: '/services', component: () => import('./pages/Services') },
+  { path: '/pre-opening', component: () => import('./pages/PreOpening') },
+  { path: '/experience', component: () => import('./pages/Experience') },
+  { path: '/philosophy', component: () => import('./pages/Philosophy') },
+  { path: '/contact', component: () => import('./pages/Contact') },
+  { path: '/profile', component: () => import('./pages/Profile') },
+  { path: '/insights', component: () => import('./pages/BlogIndex') },
+  { path: '/blog', redirect: '/insights' },
+  { path: '/insights/miami-pre-opening-playbook', component: () => import('./pages/BlogPreOpening') },
+  { path: '/insights/pre-opening', redirect: '/insights/miami-pre-opening-playbook' },
+  { path: '/insights/what-a-fractional-gm-actually-does', component: () => import('./pages/BlogFractionalGM') },
+  { path: '/insights/fractional-gm', redirect: '/insights/what-a-fractional-gm-actually-does' },
+  { path: '/insights/labor-cost-control-miami-restaurants', component: () => import('./pages/BlogLaborCost') },
+  { path: '/insights/labor-cost', redirect: '/insights/labor-cost-control-miami-restaurants' },
+]
