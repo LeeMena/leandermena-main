@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom'
 
 const roles = [
   {
-    venue: 'Maska Indian Kitchen | Bar',
-    title: 'Opening General Manager',
+    venue: 'Maska Indian Kitchen & Bar',
+    title: 'General Manager | Pre-Opening Team',
     period: '2023',
     body: 'Built the opening team, vendor relationships, service standards, and operational systems for a Miami concept led by a Michelin-starred chef. Managed all pre-opening logistics from staffing through opening night.',
     link: '/pre-opening',
   },
   {
     venue: 'SLS Brickell',
-    title: 'Director of Banquets - Pre-Opening Team',
+    title: 'Director of Banquets | Pre-Opening Team',
     period: '2022',
     body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival. Coordinated with F&B leadership on vendor setup and revenue projections.',
     link: '/services',
@@ -33,7 +33,7 @@ const roles = [
   },
   {
     venue: 'La Cerveceria de Barrio',
-    title: 'General Manager',
+    title: 'General Manager | Pre-Opening Team',
     period: '2017–2019',
     body: 'Managed daily operations, team development, and financial performance for a high-volume concept. Oversaw scheduling, vendor relationships, and compliance for a 200+ cover restaurant.',
     link: '/insights/labor-cost-control-miami-restaurants',
