@@ -33,7 +33,7 @@ export default function Services() {
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
             Every engagement is scoped to the specific gaps and goals of your operation.
-            No retainers, no vague deliverables — just clear work and measurable outcomes.
+            No retainers, no vague deliverables -just clear work and measurable outcomes.
           </p>
         </div>
       </section>
