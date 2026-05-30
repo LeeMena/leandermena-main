@@ -69,15 +69,19 @@
 }
 
 @layer components {
+  /* Mobile-first container: 16px on small screens, 24px on md+ */
   .container {
     max-width: var(--content-default);
     margin-inline: auto;
-    padding-inline: var(--space-6);
+    padding-inline: var(--space-4);
+  }
+  @media (min-width: 640px) {
+    .container { padding-inline: var(--space-6); }
   }
 
-  /* ── Page header (used by every inner page) ── */
+  /* ── Page header ── */
   .page-header {
-    padding-block: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(2.5rem, 5vw, 5rem);
     border-bottom: 1px solid var(--color-border);
     background: var(--color-surface);
   }
@@ -92,11 +96,14 @@
     margin-bottom: var(--space-4);
   }
 
+  /* Buttons — min 44px height for touch targets */
   .btn {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-2);
-    padding: .625rem 1.25rem;
+    padding: .75rem 1.25rem;
+    min-height: 44px;
     border-radius: var(--radius-md);
     font-size: .875rem;
     font-weight: 600;
@@ -144,31 +151,34 @@
     padding: var(--space-6);
     transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease;
   }
-  .card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-    border-color: #3a3a3a;
+  /* Disable lift-on-hover on touch devices to avoid sticky hover states */
+  @media (hover: hover) {
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: #3a3a3a;
+    }
   }
 
+  /* Section padding: tighter on mobile */
   .section {
-    padding-block: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(2.5rem, 5vw, 5rem);
     border-bottom: 1px solid var(--color-border);
   }
   .section h2 {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-size: clamp(1.5rem, 5vw, 2.25rem);
     font-weight: 700;
     letter-spacing: -.02em;
     margin-bottom: var(--space-3);
   }
   .section-intro {
-    font-size: 1.05rem;
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     color: var(--color-text-muted);
     max-width: 62ch;
     margin-bottom: var(--space-8);
   }
 
-  /* fix: grid-3 tablet orphan — go single column at 768px, not 900px */
   .grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -204,14 +214,13 @@
     position: relative;
   }
   .list li::before {
-    content: '→';
+    content: '\2192';
     position: absolute;
     left: 0;
     color: var(--color-primary);
     font-weight: 600;
   }
 
-  /* ── Skill tags + wall ── */
   .skills-wall {
     display: flex;
     flex-wrap: wrap;
@@ -226,7 +235,6 @@
     border-radius: var(--radius-sm);
   }
 
-  /* fix: role left border — was near-invisible at 0.12 opacity, now 0.55 */
   .role {
     border-left: 3px solid rgba(184, 160, 128, 0.55);
     padding-left: var(--space-6);
@@ -251,7 +259,7 @@
     max-width: 62ch;
   }
 
-  /* ── Form fields (.field and .form-group both work) ── */
+  /* ── Form fields ── */
   .field,
   .form-group {
     display: flex;
@@ -272,8 +280,9 @@
   .form-group select,
   .form-group textarea {
     font-family: var(--font-body);
-    font-size: .9rem;
-    padding: .6rem .85rem;
+    font-size: 1rem; /* 16px prevents iOS auto-zoom */
+    padding: .75rem .85rem;
+    min-height: 44px;
     border: 1.5px solid var(--color-border);
     border-radius: var(--radius-md);
     background: var(--color-surface);
@@ -281,12 +290,10 @@
     transition: border-color 180ms ease, box-shadow 180ms ease;
     outline: none;
     width: 100%;
-    /* fix: force dark theme on native select in all browsers */
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
   }
-  /* fix: custom dropdown arrow for <select> since we removed native appearance */
   .field select,
   .form-group select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
@@ -340,8 +347,7 @@
   .font-serif { font-family: var(--font-serif); }
 }
 
-/* Responsive */
-/* fix: grid-3 now collapses at 768px (was 900px) to avoid orphaned 3rd card on tablets */
+/* ── Responsive grid breakpoints ── */
 @media (max-width: 900px) {
   .grid-2 { grid-template-columns: 1fr; }
 }
@@ -350,4 +356,8 @@
 }
 @media (max-width: 640px) {
   .grid-3 { grid-template-columns: 1fr; }
+  /* Tighter card padding on mobile */
+  .card { padding: var(--space-4); }
+  /* Tighter role indent on mobile */
+  .role { padding-left: var(--space-4); }
 }

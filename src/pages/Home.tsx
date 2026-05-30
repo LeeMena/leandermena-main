@@ -91,8 +91,8 @@ export default function Home() {
         path="/"
       />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
+      {/* HERO — min-height scales with viewport on mobile */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(520px, 85vh, 780px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
             src="/images/landing-hero.jpg"
@@ -103,19 +103,18 @@ export default function Home() {
             style={{ opacity: 1 }}
             loading="eager"
           />
-          {/* Lighter overlays for more vivid background */}
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.62) 0%, rgba(10,10,10,0.22) 50%, rgba(10,10,10,0.02) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.75) 0%, transparent 30%)' }} />
         </div>
 
-        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="container relative z-10" style={{ paddingBlock: 'clamp(3.5rem, 10vw, 9rem)' }}>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <ScrollReveal>
               <span className="kicker">Miami hospitality consulting</span>
-              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
+              <h1 className="font-display text-[clamp(2rem,6vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-5">
                 Fractional F&B Operations Leadership
               </h1>
-              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+              <p className="text-[#d8d8d8] text-base max-w-[48ch] mb-7 leading-relaxed">
                 18+ years opening, stabilizing, and scaling hospitality operations across Miami.
                 Senior operational expertise without the full-time overhead.
               </p>
@@ -134,7 +133,8 @@ export default function Home() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={200}>
+            {/* Stats card — hidden on mobile to avoid overflow, shown lg+ */}
+            <ScrollReveal delay={200} className="hidden lg:block">
               <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
                 <span className="kicker">At a glance</span>
                 <h3 className="text-lg font-bold text-white mb-3">
@@ -154,6 +154,16 @@ export default function Home() {
                 </div>
               </div>
             </ScrollReveal>
+
+            {/* Mobile stats row — shown only on mobile below hero text */}
+            <div className="lg:hidden grid grid-cols-2 gap-3 mt-2">
+              {stats.map((s) => (
+                <div key={s.label} className="bg-[#0a0a0a]/70 backdrop-blur-sm border border-[#3a3a3a] rounded-lg p-3">
+                  <strong className="block text-xl font-extrabold text-[#d4b896]">{s.num}</strong>
+                  <span className="text-xs text-[#cccccc]">{s.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -162,11 +172,11 @@ export default function Home() {
       <TrustBar />
 
       {/* CAPABILITIES BAND */}
-      <section className="bg-[#c9a87a] py-4">
+      <section className="bg-[#c9a87a] py-3">
         <div className="container">
-          <div className="flex flex-wrap gap-x-8 gap-y-2 justify-center">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
             {capabilities.map((c) => (
-              <span key={c} className="text-xs font-semibold tracking-widest uppercase text-[#1a1a1a]">
+              <span key={c} className="text-[11px] font-semibold tracking-widest uppercase text-[#1a1a1a]">
                 {c}
               </span>
             ))}
@@ -177,17 +187,17 @@ export default function Home() {
       {/* WHY FRACTIONAL */}
       <section className="section">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
             <ScrollReveal>
               <span className="kicker">The Difference</span>
               <h2>Why Operators Choose Fractional Leadership</h2>
               <p className="text-[#bbbbbb] max-w-[54ch] leading-relaxed mb-8">
-                Most hospitality groups don't need another full-time executive. They need a
+                Most hospitality groups don’t need another full-time executive. They need a
                 seasoned operator who can diagnose issues fast, implement systems that stick,
                 and transfer knowledge to your existing team — without the overhead of a
                 permanent hire.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {[
                   { title: 'Rapid Diagnosis', body: 'Identify root causes within the first week, not months.' },
                   { title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow.' },
@@ -262,8 +272,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FULL-WIDTH IMAGE BREAK — taller, more immersive */}
-      <section className="relative overflow-hidden my-2" style={{ height: '580px' }}>
+      {/* FULL-WIDTH IMAGE BREAK — height scales down on mobile */}
+      <section className="relative overflow-hidden my-2" style={{ height: 'clamp(260px, 45vw, 580px)' }}>
         <img
           src="/images/dining (1).jpg"
           alt="Miami restaurant dining room"
@@ -277,10 +287,10 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center">
           <div className="container">
             <ScrollReveal>
-              <p className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-white max-w-[22ch] leading-tight">
+              <p className="font-display text-[clamp(1.25rem,3.5vw,2.5rem)] font-bold text-white max-w-[22ch] leading-tight">
                 “The floor doesn’t lie. Everything you need to know is in the room during service.”
               </p>
-              <p className="text-[#c9a87a] text-sm mt-4 font-semibold tracking-wider uppercase">Leander Mena</p>
+              <p className="text-[#c9a87a] text-sm mt-3 font-semibold tracking-wider uppercase">Leander Mena</p>
             </ScrollReveal>
           </div>
         </div>
@@ -293,11 +303,11 @@ export default function Home() {
             <span className="kicker">Real Outcomes</span>
             <h2>What Results Look Like</h2>
           </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
             {results.map((r, i) => (
               <ScrollReveal key={r.label} delay={i * 100}>
                 <div className="card text-center">
-                  <strong className="block text-[clamp(2rem,4vw,3rem)] font-extrabold text-[#d4b896] leading-none mb-2">{r.num}</strong>
+                  <strong className="block text-[clamp(1.75rem,4vw,3rem)] font-extrabold text-[#d4b896] leading-none mb-2">{r.num}</strong>
                   <p className="text-sm font-bold text-white mb-1">{r.label}</p>
                   <p className="text-xs text-[#888888]">{r.sub}</p>
                 </div>
@@ -340,7 +350,7 @@ export default function Home() {
             <span className="kicker">Who This Is For</span>
             <h2>Built for Operators Who Need Results</h2>
             <p className="section-intro">
-              Whether you're launching a new concept, recovering a struggling operation, or need
+              Whether you’re launching a new concept, recovering a struggling operation, or need
               hands-on leadership without a full-time hire — this is built for you.
             </p>
           </ScrollReveal>
@@ -366,7 +376,7 @@ export default function Home() {
               scope, timeline, and deliverables — no retainer lock-ins, no ambiguous billing.
             </p>
           </ScrollReveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-10">
             {steps.map((s, i) => (
               <ScrollReveal key={s.num} delay={i * 150}>
                 <div className="card h-full">
@@ -384,16 +394,16 @@ export default function Home() {
       <section className="section border-b-0">
         <div className="container">
           <ScrollReveal>
-            <div className="card p-8 md:p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
+            <div className="card p-6 md:p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
               <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#c9a87a]/8 rounded-full blur-[80px] pointer-events-none" />
-              <h2 className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-tight text-white mb-4 relative">
+              <h2 className="font-display text-[clamp(1.4rem,3.5vw,2.5rem)] font-bold tracking-tight text-white mb-4 relative">
                 Let’s build something that runs well.
               </h2>
               <p className="text-[#bbbbbb] max-w-xl mx-auto mb-8 relative">
-                Whether you're 90 days from opening or trying to fix a difficult quarter,
+                Whether you’re 90 days from opening or trying to fix a difficult quarter,
                 the next step is simple: start the conversation.
               </p>
-              <div className="flex flex-wrap justify-center gap-3 relative">
+              <div className="flex flex-col sm:flex-row justify-center gap-3 relative">
                 <a href="https://calendly.com/leandermena/30min" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Book a Discovery Call</a>
                 <Link to="/contact" className="btn btn-secondary">See Engagement Options</Link>
               </div>
