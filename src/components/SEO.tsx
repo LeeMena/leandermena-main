@@ -15,7 +15,9 @@ export default function SEO({
   image = 'https://www.leandermena.com/images/about.jpg',
   type = 'website',
 }: Props) {
-  const fullTitle = `${title} | Leander Mena — Miami F&B Operations`
+  // Use \u2014 (em dash) instead of the raw character to prevent UTF-8 encoding
+  // corruption when crawlers read the meta tag content attribute
+  const fullTitle = `${title} \u2014 Leander Mena, Miami F&B Operations`
   const url = `https://www.leandermena.com${path}`
 
   useEffect(() => {
