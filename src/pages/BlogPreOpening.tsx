@@ -11,25 +11,26 @@ export default function BlogPreOpening() {
         path="/blog/pre-opening"
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
-        <div className="absolute inset-0 z-0">
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/Playbook.jpg"
+            src="/images/Playbook (1).jpg"
             alt=""
             width="1400"
             height="600"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover"
+            style={{ opacity: 1 }}
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.1) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 40%)' }} />
         </div>
-        <div className="container relative z-10 py-16">
+        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
           <span className="kicker">Pre-Opening</span>
-          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
+          <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[26ch] mb-4">
             The Miami Pre-Opening Playbook
           </h1>
-          <p className="text-[#555555] text-sm">January 2024</p>
+          <p className="text-[#d8d8d8] text-lg max-w-[52ch] leading-relaxed">January 2024</p>
         </div>
       </section>
 

@@ -30,27 +30,63 @@ export default function About() {
         path="/about"
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
-        <div className="absolute inset-0 z-0">
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/1.jpg"
+            src="/images/aboutme.jpg"
             alt=""
             width="1400"
-            height="600"
-            className="w-full h-full object-cover opacity-40"
+            height="900"
+            className="w-full h-full object-cover"
+            style={{ opacity: 1 }}
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
-        <div className="container relative z-10 py-16">
-          <span className="kicker">Miami, Florida</span>
-          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            About Leander Mena
-          </h1>
-          <p className="text-[#888888] text-lg max-w-[54ch]">
-            Professional profile and operational philosophy from 18+ years in Miami hospitality.
-          </p>
+        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <ScrollReveal>
+              <span className="kicker">Miami, Florida</span>
+              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
+                About Leander Mena
+              </h1>
+              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+                18+ years opening, stabilizing, and leading hospitality operations across Miami.
+                F&B leadership without the full-time overhead.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
+                <Link to="/experience" className="btn btn-secondary">View Experience</Link>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={200}>
+              <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
+                <span className="kicker">Professional Profile</span>
+                <h3 className="text-lg font-bold text-white mb-3">
+                  18+ Years in Miami Hospitality
+                </h3>
+                <p className="text-sm text-[#cccccc] mb-6">
+                  Restaurants, hotels, banquets, and catering throughout Miami. Pre-openings,
+                  day-to-day operations, and restructuring under pressure.
+                </p>
+                <div className="grid grid-cols-2 gap-4 border-t border-[#3a3a3a] pt-6">
+                  {[
+                    { num: '18+', label: 'Years Experience' },
+                    { num: '$12M+', label: 'Revenue Optimized' },
+                    { num: '500+', label: 'Team Members Trained' },
+                    { num: '40+', label: 'Properties Operated' },
+                  ].map((s) => (
+                    <div key={s.label} className="flex flex-col gap-1">
+                      <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
+                      <span className="text-xs text-[#cccccc]">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
