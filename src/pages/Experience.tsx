@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const roles = [
   {
-    venue: 'Maska Indian Kitchen + Bar',
+    venue: 'Maska Indian Kitchen | Bar',
     title: 'Opening General Manager',
     period: '2023',
     body: 'Built the opening team, vendor relationships, service standards, and operational systems for a Miami concept led by a Michelin-starred chef. Managed all pre-opening logistics from staffing through opening night.',
@@ -12,21 +12,21 @@ const roles = [
   },
   {
     venue: 'SLS Brickell',
-    title: 'Director of Banquets — Pre-Opening',
+    title: 'Director of Banquets - Pre-Opening Team',
     period: '2022',
     body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival. Coordinated with F&B leadership on vendor setup and revenue projections.',
     link: '/services',
   },
   {
-    venue: 'Marabu Restaurant',
+    venue: 'Marabu Restaurant | Cuban Coal Fire',
     title: 'General Manager',
     period: '2021',
     body: 'Led labor optimization, service consistency improvements, and guest-experience recovery for a high-volume Miami restaurant. Reduced labor cost by 4 points within 60 days.',
     link: '/insights/labor-cost-control-miami-restaurants',
   },
   {
-    venue: 'V&E Hospitality',
-    title: 'F&B Operations Consultant',
+    venue: 'Butler Hospitality',
+    title: 'Regional Manager',
     period: '2019–2021',
     body: 'Provided fractional F&B leadership across multiple Miami restaurant and hotel clients. Engagements included pre-opening builds, operations recovery, and ongoing management support.',
     link: '/services',
@@ -45,7 +45,7 @@ export default function Experience() {
     <>
       <SEO
         title="Experience"
-        description="Leander Mena's Miami hospitality career — GM, pre-opening director, and F&B consultant across restaurants, hotels, and catering operations."
+        description="Leander Mena's Miami hospitality career - GM, pre-opening director, and F&B consultant across restaurants, hotels, and catering operations."
         path="/experience"
         schemaType="experience"
       />
