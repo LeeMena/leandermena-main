@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 90-Day Pre-Opening Blueprint Ebook</title>
+  <meta name="description" content="Printable designed ebook for The 90-Day Pre-Opening Blueprint." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  @media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+  
+    :root{
+      --page-w: 8.5in;
+      --page-h: 11in;
+      --bleed: .58in;
+      --text-xs: 11px;
+      --text-sm: 12.5px;
+      --text-base: 14.5px;
+      --text-lg: 20px;
+      --text-xl: 28px;
+      --text-2xl: 42px;
+      --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px; --space-6: 24px; --space-8: 32px; --space-10: 40px; --space-12: 48px; --space-16: 64px;
+      --bg: #111111;
+      --surface: #161616;
+      --surface-2: #1d1d1d;
+      --gold: #cba45b;
+      --gold-soft: rgba(203,164,91,.14);
+      --gold-faint: rgba(203,164,91,.08);
+      --line: rgba(203,164,91,.22);
+      --text: #f1ebdf;
+      --muted: #cabfae;
+      --faint: #8f8478;
+      --shadow: 0 24px 80px rgba(0,0,0,.35);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Manrope', Arial, sans-serif;
+      --cover-image: url('Profile-Headshot.jpg');
+    }
+    *,:before,:after{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#0c0c0c;color:var(--text);font-family:var(--font-body)}
+    body{padding:24px;display:flex;flex-direction:column;gap:28px;align-items:center}
+    .page{
+      width:var(--page-w);
+      min-height:var(--page-h);
+      background:
+        radial-gradient(circle at top right, rgba(203,164,91,.12), transparent 22%),
+        radial-gradient(circle at bottom left, rgba(203,164,91,.08), transparent 20%),
+        var(--bg);
+      position:relative;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      page-break-after:always;
+      break-after:page;
+    }
+    .page-inner{padding:var(--bleed);position:relative;z-index:2}
+    .page:before{content:'';position:absolute;inset:22px;border:1px solid rgba(203,164,91,.08);pointer-events:none}
+    .page-number{position:absolute;bottom:.35in;right:.58in;font-size:var(--text-xs);color:var(--faint);letter-spacing:.18em;text-transform:uppercase}
+    .brand-top{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:28px}
+    .logo-box{width:52px;height:52px;background:linear-gradient(145deg,#f3e5c3,#8d7140);color:#14110f;display:grid;place-items:center;font-weight:800;font-size:30px;border-radius:4px;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+    .brand-line{font-size:var(--text-xs);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+    .eyebrow{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.28em;color:var(--gold);margin-bottom:12px}
+    h1,h2,h3,h4{font-family:var(--font-display);line-height:1.02;margin:0;color:var(--text)}
+    h1{font-size:62px;max-width:8.7ch;margin-bottom:18px}
+    h2{font-size:var(--text-2xl);margin-bottom:10px}
+    h3{font-size:var(--text-xl);margin-bottom:12px}
+    h4{font-size:var(--text-lg);margin-bottom:10px}
+    p{margin:0 0 12px;font-size:var(--text-base);line-height:1.68;color:var(--muted)}
+    .lede{font-size:18px;line-height:1.7;max-width:34ch;color:var(--text)}
+    .gold-rule{height:1px;background:linear-gradient(90deg, transparent, var(--gold), transparent);margin:22px 0 24px}
+    .soft-rule{height:1px;background:var(--line);margin:18px 0 18px}
+    .cover{display:grid;grid-template-columns:1.15fr .85fr;min-height:100%}
+    .cover-copy{padding:var(--bleed);display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2}
+    .cover-portrait{position:relative;min-height:100%}
+    .cover-portrait:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(17,17,17,.08), rgba(17,17,17,.35));z-index:1}
+    .cover-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+    .cover-panel{background:linear-gradient(180deg, rgba(203,164,91,.12), rgba(203,164,91,.03));border:1px solid var(--line);padding:18px;border-radius:18px;max-width:320px}
+    .cta-tag{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#14110f;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:var(--text-sm);padding:12px 16px;border-radius:999px;margin-top:16px}
+    .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:var(--faint);font-size:var(--text-sm)}
+    .section-title{display:grid;grid-template-columns:1fr auto;align-items:end;gap:18px;margin-bottom:18px}
+    .phase-tag{padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:var(--text-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));border:1px solid var(--line);border-radius:18px;padding:18px}
+    .quote-card{padding:18px 0 8px}
+    .quote-card blockquote{margin:0;font-family:var(--font-display);font-size:36px;line-height:1.08;color:var(--text);max-width:12ch}
+    .quote-card span{display:block;margin-top:10px;font-size:var(--text-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+    ul.checks, ul.tight, ol.numbered{margin:0;padding-left:18px}
+    ul.checks li, ul.tight li, ol.numbered li{margin:0 0 8px;color:var(--muted);font-size:var(--text-base);line-height:1.55}
+    ul.checks li::marker, ul.tight li::marker{color:var(--gold)}
+    .subhead{font-size:var(--text-sm);letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:6px 0 12px;font-weight:700}
+    .week-block{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(203,164,91,.12)}
+    .week-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+    .week-block h4{margin-bottom:8px}
+    .week-block ul{margin:0;padding-left:18px}
+    .week-block li{margin:0 0 6px;color:var(--muted);font-size:13.5px;line-height:1.5}
+    .table{width:100%;border-collapse:collapse;margin-top:10px}
+    .table th,.table td{border-bottom:1px solid var(--line);padding:10px 10px 10px 0;text-align:left;font-size:13px;color:var(--muted)}
+    .table th{color:var(--text);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+    .author-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;align-items:start}
+    .author-photo{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+    .author-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
+    .contact-list p{margin-bottom:8px}
+    .fine-print{font-size:13px;line-height:1.8;color:var(--muted);font-style:italic}
+    .center-wrap{display:flex;align-items:center;justify-content:center;text-align:center;height:100%}
+    .closing{max-width:30ch}
+    .service-pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .service-pills span{padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:var(--text-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .spacious li{margin-bottom:10px}
+    @page { size: Letter portrait; margin: 0; }
+    @media print {
+      html,body{background:#fff}
+      body{padding:0;gap:0}
+      .page{box-shadow:none;margin:0;width:100%;min-height:100vh}
+      .page:before{inset:.22in}
+    }
+    @media screen and (max-width: 900px){
+      body{padding:8px}
+      .page{width:100%;min-height:auto}
+      .cover,.two-col,.three-col,.author-grid,.section-title{grid-template-columns:1fr}
+      .cover-portrait{min-height:320px}
+      .page-number{position:static;margin-top:20px}
+    }
+  </style>
+</head>
+<body>
+
+  <section class="page">
+    <div class="cover">
+      <div class="cover-copy">
+        <div>
+          <div class="brand-top">
+            <div class="logo-box">L</div>
+            <div class="brand-line">Leander Mena | Hospitality | F&amp;B Operations Consulting</div>
+          </div>
+          <div class="eyebrow">Free resource</div>
+          <h1>The 90-Day Pre-Opening Blueprint</h1>
+          <p class="lede">The checklist used with every client, reimagined as a premium printable guide for restaurant and hospitality operators moving from blank floor plan to opening night.</p>
+          <div class="cta-tag">For restaurant &amp; hospitality operators</div>
+        </div>
+        <div>
+          <div class="cover-panel">
+            <p><strong>By Leander Mena</strong><br>Fractional F&amp;B Operations Leader, Miami</p>
+            <p>This elevated edition pairs the original framework with a modern dark editorial layout, gold accents, and founder-led presentation styling.</p>
+          </div>
+          <div class="stats">
+            <span>30+ page framework</span>
+            <span>Operational checklists</span>
+            <span>Opening week playbook</span>
+          </div>
+        </div>
+      </div>
+      <div class="cover-portrait">
+        <img src="Profile-Headshot.jpg" alt="Professional portrait of Leander Mena in a navy blazer and white shirt." width="1200" height="1500" />
+      </div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="brand-top">
+        <div class="logo-box">L</div>
+        <div class="brand-line">Leander Mena | Hospitality | F&amp;B Operations Consulting</div>
+      </div>
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Introduction</div>
+          <h2>About this blueprint</h2>
+        </div>
+        <div class="phase-tag">Start at Day -120</div>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="two-col">
+        <div>
+          <p>This framework was built over 18 years and 15+ restaurant openings across Miami, from Michelin-chef concepts to luxury hotel F&amp;B. It was the backbone of operations at Maska Indian Kitchen + Bar, which opened on schedule, achieved a 4.7+ opening week, and delivered 26% labor by week three.</p>
+          <p>It also reflects banquet revenue recovery work at SLS Brickell, where revenue improved 31% in 90 days. Every item in this checklist has been tested, refined, and stress-tested under real opening-night pressure.</p>
+        </div>
+        <div class="card quote-card">
+          <blockquote>“If you don’t get the first 30 days right, every later fix becomes more expensive.”</blockquote>
+          <span>Operating principle</span>
+        </div>
+      </div>
+      <div class="soft-rule"></div>
+      <h3>How to use this blueprint</h3>
+      <ol class="numbered spacious">
+        <li><strong>Start at Day -120</strong> or wherever the project currently sits.</li>
+        <li><strong>Assign an owner</strong> to every deliverable.</li>
+        <li><strong>Use the weekly scorecard</strong> to track progress and weak spots.</li>
+        <li><strong>Flag risks early</strong>; a fix at Day -30 costs far more than the same fix at Day -90.</li>
+      </ol>
+      <div class="page-number">02</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Phase 1</div>
+          <h2>Foundation</h2>
+          <p class="lede">Days -120 to -90</p>
+        </div>
+        <div class="phase-tag">Concept before spend</div>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="quote-card"><blockquote>“If you don’t get this right, everything else is expensive band-aids.”</blockquote></div>
+      <div class="two-col" style="margin-top:20px">
+        <div class="week-block">
+          <div class="subhead">Week 1–2</div>
+          <h4>Concept clarification</h4>
+          <ul>
+            <li>Finalize concept statement in 25 words or less</li>
+            <li>Define target guest persona: demographics, psychographics, occasion</li>
+            <li>Lock menu direction with chef or culinary lead</li>
+            <li>Confirm price point strategy: check average and high-low range</li>
+            <li>Establish brand voice and service style: casual, polished, experiential</li>
+            <li>Create mood board for interior, plating, and uniform direction</li>
+            <li>Sign off on floor plan with kitchen flow analysis</li>
+          </ul>
+        </div>
+        <div class="week-block">
+          <div class="subhead">Week 3–4</div>
+          <h4>Financial framework</h4>
+          <ul>
+            <li>Build 24-month P&amp;L projection: conservative, base, optimistic</li>
+            <li>Set opening budget cap and contingency, with 15% buffer preferred</li>
+            <li>Define labor cost target by month 3, 6, and 12</li>
+            <li>Establish food cost target and vendor negotiation strategy</li>
+            <li>Create pre-opening cash flow model through break-even</li>
+            <li>Secure funding or investor sign-off on budget</li>
+            <li>Set up accounting system and chart of accounts</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week-block" style="margin-top:10px">
+        <div class="subhead">Week 5–6</div>
+        <h4>Legal &amp; permits</h4>
+        <div class="two-col">
+          <ul class="tight">
+            <li>File for business entity: LLC, Corp, etc.</li>
+            <li>Apply for EIN</li>
+            <li>Submit liquor license application immediately</li>
+            <li>Submit food service license application</li>
+          </ul>
+          <ul class="tight">
+            <li>Schedule health department pre-inspection walkthrough</li>
+            <li>Confirm zoning compliance for seating, signage, and hours</li>
+            <li>Review lease terms for TI allowance, kick-out clauses, and key money</li>
+            <li>Secure general liability, property, and workers’ comp insurance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="page-number">03</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="brand-top">
+        <div class="logo-box">L</div>
+        <div class="brand-line">Foundation continued</div>
+      </div>
+      <div class="week-block">
+        <div class="subhead">Week 7–8</div>
+        <h2>Team architecture</h2>
+        <ul class="checks spacious">
+          <li>Build organizational chart with all positions and reporting lines</li>
+          <li>Define salary bands and total compensation for every role</li>
+          <li>Draft offer letters and employment agreements</li>
+          <li>Create hiring timeline showing when each role must be filled</li>
+          <li>Identify key hire risks for hard-to-fill roles in the local market</li>
+          <li>Set up payroll system: Gusto, ADP, or equivalent</li>
+          <li>Design benefits package where applicable</li>
+        </ul>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="card">
+        <div class="eyebrow">Phase 1 checkpoint</div>
+        <h3>Before moving to buildout</h3>
+        <p>The concept, budget, licenses, org chart, and opening labor targets should already be clear before procurement starts. This is where operator confidence is earned: every later decision gets easier when the business model is already disciplined.</p>
+      </div>
+      <div class="soft-rule"></div>
+      <div class="quote-card">
+        <blockquote>“Clarity compounds. Chaos compounds faster.”</blockquote>
+        <span>Pre-opening operating truth</span>
+      </div>
+      <div class="page-number">04</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Phase 2</div>
+          <h2>Buildout &amp; procurement</h2>
+          <p class="lede">Days -90 to -60</p>
+        </div>
+        <div class="phase-tag">Margin decisions happen here</div>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="quote-card"><blockquote>“The decisions made here determine your operating margins for the next three years.”</blockquote></div>
+      <div class="week-block" style="margin-top:20px">
+        <div class="subhead">Week 9–10</div>
+        <h4>Vendor matrix &amp; negotiation</h4>
+        <div class="two-col">
+          <ul class="tight">
+            <li>Issue RFPs to at least three vendors per category</li>
+            <li>Protein: beef, poultry, seafood</li>
+            <li>Produce</li>
+            <li>Dry goods and pantry</li>
+            <li>Beverage: alcohol and non-alcohol</li>
+            <li>Linens and uniforms</li>
+          </ul>
+          <ul class="tight">
+            <li>Smallwares and equipment</li>
+            <li>Cleaning and chemicals</li>
+            <li>Score vendors on price, reliability, quality, delivery, terms, backup, certifications, and relationship</li>
+            <li>Negotiate payment terms: Net 30 minimum, Net 45 ideal</li>
+            <li>Lock order quantities and delivery schedule</li>
+            <li>Establish a backup vendor for every critical category</li>
+            <li>Set up vendor file with contacts, account numbers, and cutoff times</li>
+          </ul>
+        </div>
+      </div>
+      <div class="page-number">05</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="brand-top">
+        <div class="logo-box">L</div>
+        <div class="brand-line">Buildout continued</div>
+      </div>
+      <div class="two-col">
+        <div class="week-block">
+          <div class="subhead">Week 11–12</div>
+          <h4>Equipment &amp; smallwares</h4>
+          <ul>
+            <li>Finalize kitchen equipment list with chef</li>
+            <li>Order long-lead items: custom hoods, walk-ins, specialty equipment</li>
+            <li>Purchase smallwares: pots, pans, utensils, thermometers</li>
+            <li>Order POS system and test integration</li>
+            <li>Set up reservation system: Resy, OpenTable, Tock</li>
+            <li>Purchase uniforms and approve samples</li>
+            <li>Order menu boards, signage, and wayfinding</li>
+          </ul>
+        </div>
+        <div class="week-block">
+          <div class="subhead">Week 13–14</div>
+          <h4>Menu engineering</h4>
+          <ul>
+            <li>Finalize recipes with exact specs: yield, portion, plating</li>
+            <li>Cost every menu item to the penny</li>
+            <li>Run theoretical food cost analysis with 28–32% target for full-service</li>
+            <li>Design menu layout with eye-tracking principles</li>
+            <li>Price using competitor analysis plus cost and perceived value</li>
+            <li>Identify high-margin stars and low-margin dogs</li>
+            <li>Create modifier and upsell strategy</li>
+            <li>Build allergen matrix and dietary accommodation protocol</li>
+          </ul>
+        </div>
+      </div>
+      <div class="soft-rule"></div>
+      <div class="week-block">
+        <div class="subhead">Week 15–16</div>
+        <h4>Tech stack</h4>
+        <div class="two-col">
+          <ul class="tight">
+            <li>Configure POS with full menu, modifiers, and pricing</li>
+            <li>Set up inventory management system</li>
+            <li>Configure reservation platform with table map</li>
+            <li>Set up online ordering if applicable</li>
+          </ul>
+          <ul class="tight">
+            <li>Configure payroll and scheduling software</li>
+            <li>Set up CRM or guest database</li>
+            <li>Create email marketing account: Klaviyo or Mailchimp</li>
+            <li>Set up Google Business Profile and social accounts</li>
+          </ul>
+        </div>
+      </div>
+      <div class="page-number">06</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Phase 3</div>
+          <h2>People &amp; process</h2>
+          <p class="lede">Days -60 to -30</p>
+        </div>
+        <div class="phase-tag">Team before launch</div>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="quote-card"><blockquote>“You can fix a broken plate. You can’t fix a broken team on opening night.”</blockquote></div>
+      <div class="two-col" style="margin-top:20px">
+        <div class="week-block">
+          <div class="subhead">Week 17–18</div>
+          <h4>Hiring sprint</h4>
+          <ul>
+            <li>Post all remaining positions</li>
+            <li>Conduct interviews with a structured scorecard, not gut feel</li>
+            <li>Check references for every management hire</li>
+            <li>Extend offers with clear start dates</li>
+            <li>Schedule pre-opening training calendar</li>
+            <li>Order training materials and handbooks</li>
+            <li>Plan a “meet the team” event for culture-building</li>
+          </ul>
+        </div>
+        <div class="week-block">
+          <div class="subhead">Week 19–20</div>
+          <h4>SOP development</h4>
+          <ul>
+            <li>Write opening procedure: who unlocks, what time, checklist</li>
+            <li>Write closing procedure: cash out, cleaning, security</li>
+            <li>Write server sequence of service</li>
+            <li>Write line cook prep standards</li>
+            <li>Write inventory management SOP</li>
+            <li>Write guest recovery protocol</li>
+            <li>Write cash handling and tip pooling policy</li>
+            <li>Write health and safety compliance checklist</li>
+          </ul>
+        </div>
+      </div>
+      <div class="page-number">07</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="brand-top">
+        <div class="logo-box">L</div>
+        <div class="brand-line">People &amp; process continued</div>
+      </div>
+      <div class="week-block">
+        <div class="subhead">Week 21–22</div>
+        <h2>Training program</h2>
+        <div class="two-col">
+          <ul class="tight">
+            <li>Build a two-week training curriculum</li>
+            <li>Day 1–2: Culture, mission, tour, introductions</li>
+            <li>Day 3–4: Menu knowledge; taste every dish, know every ingredient</li>
+            <li>Day 5–6: Service standards and role-specific skills</li>
+            <li>Day 7–8: POS training and mock orders</li>
+          </ul>
+          <ul class="tight">
+            <li>Day 9–10: Shadow shifts and feedback loops</li>
+            <li>Day 11–12: Team service practice and mock service</li>
+            <li>Day 13–14: Soft opening prep and final assessments</li>
+            <li>Create training manual: digital and printed</li>
+            <li>Schedule trainer assignments and plan daily huddle talking points</li>
+          </ul>
+        </div>
+      </div>
+      <div class="soft-rule"></div>
+      <div class="week-block">
+        <div class="subhead">Week 23–24</div>
+        <h4>Soft opening plan</h4>
+        <ul class="checks">
+          <li>Set soft opening dates: 3–5 nights, limited covers recommended</li>
+          <li>Create invite list: friends, family, industry, media</li>
+          <li>Design feedback collection system: digital survey + manager table touches</li>
+          <li>Plan menu for soft opening: full menu or limited version</li>
+          <li>Set comp budget for soft opening</li>
+          <li>Schedule post-soft-opening debrief meetings</li>
+          <li>Create social media content calendar for opening buzz</li>
+        </ul>
+      </div>
+      <div class="page-number">08</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Phase 4</div>
+          <h2>Final sprint</h2>
+          <p class="lede">Days -30 to opening</p>
+        </div>
+        <div class="phase-tag">Eliminate, don’t add</div>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="quote-card"><blockquote>“The last 30 days are about elimination, not addition.”</blockquote></div>
+      <div class="two-col" style="margin-top:20px">
+        <div class="week-block">
+          <div class="subhead">Week 25–26</div>
+          <h4>Pre-launch checks</h4>
+          <ul>
+            <li>Final health department inspection walkthrough</li>
+            <li>Fire department inspection and certificate of occupancy</li>
+            <li>Liquor license final approval and posted</li>
+            <li>All permits displayed visibly</li>
+            <li>POS fully programmed and tested with dummy transactions</li>
+            <li>Music licensing secured: ASCAP, BMI, SESAC</li>
+            <li>Final equipment calibration: ovens, fryers, refrigeration temps</li>
+            <li>Emergency contact list posted: plumber, electrician, HVAC, exterminator</li>
+          </ul>
+        </div>
+        <div class="week-block">
+          <div class="subhead">Week 27–28</div>
+          <h4>Staff readiness</h4>
+          <ul>
+            <li>All staff hired and onboarded</li>
+            <li>Uniforms distributed and fitted</li>
+            <li>Schedule published through opening week</li>
+            <li>All staff pass menu knowledge test: 80% minimum</li>
+            <li>Mock service completed with full team</li>
+            <li>Identify weak performers and assign extra coaching</li>
+            <li>Confirm opening-night staffing levels with 20% overstaffing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="page-number">09</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="brand-top">
+        <div class="logo-box">L</div>
+        <div class="brand-line">Final sprint continued</div>
+      </div>
+      <div class="week-block">
+        <div class="subhead">Week 29–30</div>
+        <h2>Opening week execution</h2>
+        <div class="two-col">
+          <ul class="tight">
+            <li>Day -7: Final deep clean of the entire space</li>
+            <li>Day -6: Inventory delivery and storage organization</li>
+            <li>Day -5: Staff walkthrough of every station</li>
+            <li>Day -4: Friends &amp; Family night #1 at 50% capacity</li>
+          </ul>
+          <ul class="tight">
+            <li>Day -3: Friends &amp; Family night #2 at 75% capacity</li>
+            <li>Day -2: Final team meeting, role assignments, pep talk</li>
+            <li>Day -1: Rest. No work. Leader needs to be sharp.</li>
+            <li>Day 0: Opening night</li>
+          </ul>
+        </div>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="week-block">
+        <div class="subhead">Opening week playbook</div>
+        <h4>Daily rhythm</h4>
+        <div class="three-col">
+          <div class="card">
+            <div class="subhead">Pre-service</div>
+            <ul class="tight">
+              <li>Manager walkthrough: lighting, music, temperature, cleanliness</li>
+              <li>Line check: every station, ingredient, and temp</li>
+              <li>Pre-shift huddle: 10 minutes, 3 priorities, 1 focus</li>
+              <li>POS test: one test transaction per terminal</li>
+              <li>Reservation review: VIPs, occasions, dietary notes</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="subhead">During service</div>
+            <ul class="tight">
+              <li>Manager floor presence, not office presence</li>
+              <li>2-minute table touches on every table</li>
+              <li>Kitchen timing checks every 15 minutes</li>
+              <li>Real-time feedback collection: verbal, not formal</li>
+              <li>Social media content capture with guest permission</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="subhead">Post-service</div>
+            <ul class="tight">
+              <li>Team debrief: what worked, what didn’t, one fix for tomorrow</li>
+              <li>Revenue reconciliation and cash deposit</li>
+              <li>Prep list for tomorrow</li>
+              <li>Manager log entry</li>
+              <li>Thank-you message to VIPs or media</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="page-number">10</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">Tracking + risk</div>
+          <h2>Weekly scorecard &amp; red flags</h2>
+        </div>
+        <div class="phase-tag">Use every Monday</div>
+      </div>
+      <div class="gold-rule"></div>
+      <h3>The weekly scorecard</h3>
+      <p>Track these metrics every Monday morning to catch drift before it becomes a launch problem.</p>
+      <table class="table">
+        <thead>
+          <tr><th>Metric</th><th>Target</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Covers / Night</td><td>—</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Average Check</td><td>$___</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Labor Cost %</td><td>&lt; ___%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Food Cost %</td><td>&lt; ___%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Guest Complaints</td><td>0</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>5-Star Reviews</td><td>&gt; ___%</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Staff No-Shows</td><td>0</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>Menu Item 86’d</td><td>&lt;2/night</td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <div class="soft-rule"></div>
+      <h3>Red flags — when to pause and fix</h3>
+      <ol class="numbered spacious">
+        <li><strong>Health inspection failure</strong> — do not open. Period.</li>
+        <li><strong>Less than 70% of kitchen team hired by Day -30</strong> — push opening date.</li>
+        <li><strong>Food cost theoretical above 35%</strong> — re-engineer menu before printing.</li>
+        <li><strong>No backup vendor for protein</strong> — single-source protein is a shutdown risk.</li>
+        <li><strong>POS not tested with real transactions</strong> — opening night is not a test environment.</li>
+        <li><strong>Chef hasn’t tasted final menu with full team</strong> — menu knowledge gap becomes service failure.</li>
+        <li><strong>No guest recovery protocol</strong> — one bad opening-night experience can live forever online.</li>
+      </ol>
+      <div class="page-number">11</div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="page-inner">
+      <div class="section-title">
+        <div>
+          <div class="eyebrow">About the author</div>
+          <h2>Founder profile</h2>
+        </div>
+        <div class="phase-tag">Miami-based operator</div>
+      </div>
+      <div class="gold-rule"></div>
+      <div class="author-grid">
+        <div class="author-photo">
+          <img src="Profile-Headshot.jpg" alt="Professional founder portrait used in the author profile section." width="1200" height="1500" />
+        </div>
+        <div>
+          <p><strong>Leander Mena</strong> is a Fractional F&amp;B Operations Leader based in Miami, Florida. With 18+ years opening, stabilizing, and scaling hospitality operations, he specializes in pre-opening leadership, operations recovery, and fractional GM support for restaurants and hotel F&amp;B teams.</p>
+          <p><strong>Trusted by:</strong> Maska Indian Kitchen + Bar, SLS Brickell, Marabu Restaurant, Viceroy Miami, Accor Properties, and SLS Hotels &amp; Resorts.</p>
+          <p><strong>Services:</strong> Fractional General Manager engagements, pre-opening leadership from 60–120 days, and operations recovery sprints from 30–90 days.</p>
+          <div class="service-pills">
+            <span>Pre-opening leadership</span>
+            <span>Operations recovery</span>
+            <span>Fractional GM</span>
+          </div>
+          <div class="soft-rule"></div>
+          <div class="contact-list">
+            <p><strong>Email</strong> — consulting@leandermena.com</p>
+            <p><strong>Website</strong> — www.leandermena.com</p>
+            <p><strong>Location</strong> — Miami, Florida</p>
+          </div>
+        </div>
+      </div>
+      <div class="soft-rule"></div>
+      <p class="fine-print">This blueprint is provided for educational purposes. Every operation is unique. Adapt the framework to your concept, market, and team. For hands-on support, book a discovery call at www.leandermena.com.</p>
+      <p class="fine-print">© 2026 Leander Mena. All rights reserved.</p>
+      <div class="page-number">12</div>
+    </div>
+  </section>
+
+</body>
+</html>
