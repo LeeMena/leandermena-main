@@ -57,8 +57,8 @@ export default function About() {
                 F&B leadership without the full-time overhead.
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
-                <Link to="/experience" className="btn btn-secondary">View Experience</Link>
+                <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
+                <Link to="/case-studies" className="btn btn-secondary">View Case Studies</Link>
               </div>
             </ScrollReveal>
 
@@ -120,7 +120,7 @@ export default function About() {
                 </p>
                 <p>
                   I am comfortable both on the floor and behind the scenes — coaching service
-                  standards, managing schedules, working through P&L details, and partnering with
+                  standards, managing schedules, working through P&amp;L details, and partnering with
                   ownership to align financial targets with guest experience goals.
                 </p>
                 <p>
@@ -144,10 +144,9 @@ export default function About() {
             </div>
           </ScrollReveal>
 
-          <div className="mt-10 text-center">
-            <Link to="/contact" className="btn btn-primary">
-              Start a Conversation
-            </Link>
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
+            <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
+            <Link to="/case-studies" className="btn btn-secondary">View Case Studies</Link>
           </div>
         </div>
       </section>

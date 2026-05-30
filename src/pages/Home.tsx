@@ -199,8 +199,8 @@ export default function Home() {
           </motion.div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-6)' }}>
-            {products.slice(0, 3).map((product, i) => (
-              <ProductCard key={product.id} product={product} index={i} />
+            {products.slice(0, 3).map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
@@ -282,35 +282,40 @@ export default function Home() {
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <div style={{
                 aspectRatio: '4/5',
-                background: 'linear-gradient(135deg, var(--color-surface) 0%, var(--color-bg) 100%)',
-                border: '1px solid var(--color-border)',
                 borderRadius: 'var(--radius-lg)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
                 overflow: 'hidden',
+                position: 'relative',
+                border: '1px solid var(--color-border)',
               }}>
-                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at bottom left, rgba(184,160,128,0.12) 0%, transparent 60%)' }} />
-                <div style={{ textAlign: 'center', padding: 'var(--space-10)', position: 'relative', zIndex: 1 }}>
-                  <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'rgba(184,160,128,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto var(--space-6)' }}>
-                    <Award size={40} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
-                  </div>
-                  <p style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--color-text)', marginBottom: 'var(--space-3)' }}>18+ Years</p>
-                  <p style={{ color: 'var(--color-text-muted)', fontSize: '0.875rem', maxWidth: '28ch', margin: '0 auto' }}>
-                    Of hands-on hospitality leadership across Miami&rsquo;s most demanding venues
-                  </p>
-                  <div style={{ height: '1px', background: 'linear-gradient(to right, transparent, var(--color-primary), transparent)', margin: 'var(--space-6) auto', maxWidth: '120px' }} />
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)' }}>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.75rem', color: 'var(--color-primary)' }}>$12M+</p>
-                      <p style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Revenue Optimized</p>
+                <img
+                  src="/images/about.jpg"
+                  alt="Leander Mena — F&B Operations Leader"
+                  width="600"
+                  height="750"
+                  loading="lazy"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
+                />
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 45%)',
+                }} />
+                <div style={{
+                  position: 'absolute', bottom: 0, left: 0, right: 0,
+                  padding: 'var(--space-8)',
+                  display: 'grid', gridTemplateColumns: '1fr 1fr',
+                  gap: 'var(--space-6)',
+                }}>
+                  {[
+                    { num: '$12M+', label: 'Revenue Optimized' },
+                    { num: '500+', label: 'Team Members' },
+                    { num: '40+', label: 'Properties' },
+                    { num: '18+', label: 'Years Leading' },
+                  ].map((s) => (
+                    <div key={s.label}>
+                      <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--color-primary)', lineHeight: 1 }}>{s.num}</p>
+                      <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: '0.2rem' }}>{s.label}</p>
                     </div>
-                    <div>
-                      <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.75rem', color: 'var(--color-primary)' }}>500+</p>
-                      <p style={{ fontSize: '0.65rem', color: 'var(--color-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Team Members</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -353,8 +358,8 @@ export default function Home() {
 
       {/* ── CTA Banner ── */}
       <CTABanner
-        title="Let’s Build Something That Runs Well"
-        subtitle="Whether you’re 90 days from opening or trying to fix a difficult quarter, the next move is simple: start the conversation."
+        title="Let's Build Something That Runs Well"
+        subtitle="Whether you're 90 days from opening or trying to fix a difficult quarter, the next move is simple: start the conversation."
         primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
         secondaryCta={{ label: 'Explore Products', href: '/products' }}
       />

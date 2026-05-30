@@ -6,7 +6,7 @@ const links = [
   { href: '/services', label: 'Services' },
   { href: '/pre-opening', label: 'Pre-Opening' },
   { href: '/experience', label: 'Experience' },
-  { href: '/philosophy', label: 'Philosophy' },
+  { href: '/case-studies', label: 'Case Studies' },
   { href: '/products', label: 'Resources' },
   { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },

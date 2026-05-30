@@ -68,9 +68,12 @@ export default function Services() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <Link to="/contact" className="btn btn-primary">
-              Discuss Your Project
+          <div className="mt-12 flex flex-wrap gap-4 justify-center">
+            <Link to="/book" className="btn btn-primary">
+              Book a Discovery Call
+            </Link>
+            <Link to="/contact" className="btn btn-secondary">
+              Send a Message
             </Link>
           </div>
         </div>
