@@ -1,0 +1,7 @@
+name = "formspree-to-convertkit"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+# CONVERTKIT_API_KEY is set as a secret via: npx wrangler secret put CONVERTKIT_API_KEY
+# CONVERTKIT_FORM_ID is set as a secret via: npx wrangler secret put CONVERTKIT_FORM_ID
