@@ -102,7 +102,7 @@ export default function Contact() {
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div className="field">
                       <label htmlFor="phone">Phone (optional)</label>
-                      <input id="phone" name="phone" placeholder="(305) 000-0000" value={form.phone} onChange={handle} />
+                      <input id="phone" name="phone" placeholder="         " value={form.phone} onChange={handle} />
                     </div>
                     <div className="field">
                       <label htmlFor="type">Inquiry type</label>
