@@ -7,7 +7,7 @@ const posts = [
     slug: '/insights/what-a-fractional-gm-actually-does',
     kicker: 'Fractional Leadership',
     title: 'What a Fractional GM Actually Does',
-    excerpt: 'The fractional model isn't a compromise — it's a strategic choice. Here's how it works in practice.',
+    excerpt: "The fractional model isn\u2019t a compromise \u2014 it\u2019s a strategic choice. Here\u2019s how it works in practice.",
   },
   {
     slug: '/insights/labor-cost-control-miami-restaurants',
@@ -19,7 +19,7 @@ const posts = [
     slug: '/insights/miami-pre-opening-playbook',
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
-    excerpt: 'What the first 90 days before opening should look like — and what most operators get wrong.',
+    excerpt: 'What the first 90 days before opening should look like \u2014 and what most operators get wrong.',
   },
 ]
 
@@ -28,11 +28,11 @@ export default function BlogIndex() {
     <>
       <SEO
         title="Insights"
-        description="Operational insights for Miami restaurants and hotels — fractional leadership, labor cost control, and pre-opening strategy."
+        description="Operational insights for Miami restaurants and hotels \u2014 fractional leadership, labor cost control, and pre-opening strategy."
         path="/insights"
       />
 
-      {/* HERO BANNER — full image, max brightness */}
+      {/* HERO BANNER \u2014 full image, max brightness */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '340px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
