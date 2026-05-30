@@ -10,13 +10,20 @@ const navLinks = [
   { href: '/contact', label: 'Contact' },
 ]
 
+const resourceLinks = [
+  { href: '/products', label: 'Resources & Tools' },
+  { href: '/book', label: 'Book a Session' },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/shop', label: 'Shop' },
+]
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
     <footer className="border-t border-[#2a2a2a] bg-[#0a0a0a]">
       <div className="container py-12">
-        <div className="grid md:grid-cols-3 gap-10 mb-10">
+        <div className="grid md:grid-cols-4 gap-10 mb-10">
           <div>
             <Link to="/" className="flex flex-col leading-tight mb-4">
               <span className="font-display text-lg font-bold text-[#e8e8e8]">Leander Mena</span>
@@ -34,6 +41,23 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-2">
               {navLinks.map((l) => (
+                <Link
+                  key={l.href}
+                  to={l.href}
+                  className="text-sm text-[#888888] hover:text-[#b8a080] transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#e8e8e8] mb-4">
+              Resources
+            </h4>
+            <div className="flex flex-col gap-2">
+              {resourceLinks.map((l) => (
                 <Link
                   key={l.href}
                   to={l.href}

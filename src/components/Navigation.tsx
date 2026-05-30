@@ -7,6 +7,7 @@ const links = [
   { href: '/pre-opening', label: 'Pre-Opening' },
   { href: '/experience', label: 'Experience' },
   { href: '/philosophy', label: 'Philosophy' },
+  { href: '/products', label: 'Resources' },
   { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },
 ]
@@ -28,7 +29,6 @@ export default function Navigation({ onBookCall }: Props) {
 
   useEffect(() => { setOpen(false) }, [pathname])
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -84,7 +84,7 @@ export default function Navigation({ onBookCall }: Props) {
             </button>
           </div>
 
-          {/* Mobile hamburger — 44×44 tap target */}
+          {/* Mobile hamburger */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden flex items-center justify-center w-11 h-11 -mr-2 text-[#e8e8e8] rounded-md"
@@ -102,7 +102,7 @@ export default function Navigation({ onBookCall }: Props) {
         </nav>
       </div>
 
-      {/* Mobile menu — full-width drawer */}
+      {/* Mobile menu */}
       {open && (
         <div className="md:hidden fixed inset-0 top-[57px] z-40 bg-[#0a0a0a] overflow-y-auto">
           <div className="container py-6">
