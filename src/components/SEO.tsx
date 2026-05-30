@@ -12,7 +12,7 @@ export default function SEO({
   title,
   description,
   path = '',
-  image = 'https://www.leandermena.com/images/about.jpg',
+  image = 'https://www.leandermena.com/images/aboutme.jpg',
   type = 'website',
 }: Props) {
   const fullTitle = `${title} | Leander Mena — Miami F&B Operations`
@@ -51,7 +51,7 @@ export default function SEO({
     description:
       '18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami.',
     url: 'https://www.leandermena.com',
-    image: 'https://www.leandermena.com/images/about.jpg',
+    image: 'https://www.leandermena.com/images/aboutme.jpg',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Miami',

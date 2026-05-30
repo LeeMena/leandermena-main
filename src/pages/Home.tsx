@@ -91,7 +91,7 @@ export default function Home() {
         path="/"
       />
 
-      {/* HERO — full image backdrop, max brightness */}
+      {/* HERO */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
@@ -103,7 +103,6 @@ export default function Home() {
             style={{ opacity: 1 }}
             loading="eager"
           />
-          {/* Only the text-side gets a subtle dark scrim for legibility */}
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
@@ -205,7 +204,7 @@ export default function Home() {
             <ScrollReveal delay={200}>
               <div className="card">
                 <img
-                  src="/images/about.jpg"
+                  src="/images/aboutme.jpg"
                   alt="Leander Mena — Miami F&B Operations Leader"
                   width="600"
                   height="450"
@@ -262,7 +261,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FULL-WIDTH IMAGE BREAK — max brightness */}
+      {/* FULL-WIDTH IMAGE BREAK */}
       <section className="relative overflow-hidden my-2" style={{ height: '420px' }}>
         <img
           src="/images/dining.jpg"
@@ -278,7 +277,7 @@ export default function Home() {
           <div className="container">
             <ScrollReveal>
               <p className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-white max-w-[22ch] leading-tight">
-                "The floor doesn't lie. Everything you need to know is in the room during service."
+                “The floor doesn’t lie. Everything you need to know is in the room during service.”
               </p>
               <p className="text-[#c9a87a] text-sm mt-4 font-semibold tracking-wider uppercase">Leander Mena</p>
             </ScrollReveal>
@@ -340,7 +339,7 @@ export default function Home() {
             <span className="kicker">Who This Is For</span>
             <h2>Built for Operators Who Need Results</h2>
             <p className="section-intro">
-              Whether you're launching a new concept, recovering a struggling operation, or need
+              Whether you’re launching a new concept, recovering a struggling operation, or need
               hands-on leadership without a full-time hire — this is built for you.
             </p>
           </ScrollReveal>
@@ -387,10 +386,10 @@ export default function Home() {
             <div className="card p-8 md:p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
               <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#c9a87a]/8 rounded-full blur-[80px] pointer-events-none" />
               <h2 className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-tight text-white mb-4 relative">
-                Let's build something that runs well.
+                Let’s build something that runs well.
               </h2>
               <p className="text-[#bbbbbb] max-w-xl mx-auto mb-8 relative">
-                Whether you're 90 days from opening or trying to fix a difficult quarter,
+                Whether you’re 90 days from opening or trying to fix a difficult quarter,
                 the next step is simple: start the conversation.
               </p>
               <div className="flex flex-wrap justify-center gap-3 relative">
