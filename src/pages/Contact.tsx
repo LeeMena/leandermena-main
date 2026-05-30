@@ -62,7 +62,7 @@ export default function Contact() {
 
       <section className="page-header">
         <div className="container">
-          <span className="kicker">Contact Leander Mena â€” Miami F&B Consulting</span>
+          <span className="kicker">Contact Leander Mena —” Miami F&B Consulting</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
             Start the Conversation
           </h1>
@@ -107,19 +107,19 @@ export default function Contact() {
                   <ul className="flex flex-col gap-3 text-sm text-[#888888]">
                     <li className="flex items-start gap-2">
                       <span className="text-[#b8a080]">â†’</span>
-                      Fractional F&B Director â€” 2â€“4 days/week
+                      Fractional F&B Director —” 2—“4 days/week
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#b8a080]">â†’</span>
-                      Pre-Opening Consulting â€” 90-day sprint
+                      Pre-Opening Consulting —” 90-day sprint
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#b8a080]">â†’</span>
-                      Operations Recovery â€” 30â€“60 day intensive
+                      Operations Recovery —” 30—“60 day intensive
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-[#b8a080]">â†’</span>
-                      Banquet & Catering Leadership â€” project-based
+                      Banquet & Catering Leadership —” project-based
                     </li>
                   </ul>
                 </div>
@@ -268,6 +268,7 @@ export default function Contact() {
     </>
   )
 }
+
 
 
 

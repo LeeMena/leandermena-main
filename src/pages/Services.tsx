@@ -6,7 +6,7 @@ const offerings = [
   {
     kicker: 'Fractional leadership',
     title: 'Fractional F&B Director',
-    body: 'For restaurants and hotel groups that need a veteran operator 2â€“4 days per week. Stabilize operations, build systems, and develop your team â€” without the overhead of a full-time executive.',
+    body: 'For restaurants and hotel groups that need a veteran operator 2—“4 days per week. Stabilize operations, build systems, and develop your team —” without the overhead of a full-time executive.',
     bullets: [
       'On-site leadership during peak service periods',
       'Weekly P&L review with ownership',
@@ -19,7 +19,7 @@ const offerings = [
   {
     kicker: 'New concept support',
     title: 'Pre-Opening & New Concept Builds',
-    body: 'From construction walkthroughs to opening night â€” build the team, write SOPs, coordinate vendors, and create an operating backbone before doors open.',
+    body: 'From construction walkthroughs to opening night —” build the team, write SOPs, coordinate vendors, and create an operating backbone before doors open.',
     bullets: [
       'Staffing plan and org chart aligned to concept and budget',
       'Structured training programs that stick before opening week',
@@ -32,7 +32,7 @@ const offerings = [
   {
     kicker: 'Performance recovery',
     title: 'Operations Recovery & Restructuring',
-    body: 'When labor costs drift, service standards drop, or turnover hurts consistency â€” diagnose quickly and install systems that stick.',
+    body: 'When labor costs drift, service standards drop, or turnover hurts consistency —” diagnose quickly and install systems that stick.',
     bullets: [
       'Rapid operational assessment within the first week',
       'Labor cost analysis and scheduling optimization',
@@ -73,7 +73,7 @@ export default function Services() {
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
             Every engagement is scoped to the specific gaps and goals of your operation.
-            No retainers, no vague deliverables â€” just clear work and measurable outcomes.
+            No retainers, no vague deliverables —” just clear work and measurable outcomes.
           </p>
         </div>
       </section>
@@ -114,6 +114,7 @@ export default function Services() {
     </>
   )
 }
+
 
 
 

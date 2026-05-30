@@ -5,25 +5,25 @@ import { Link } from 'react-router-dom'
 const roles = [
   {
     meta: 'Opening General Manager',
-    title: 'Maska Indian Kitchen + Bar â€” Miami',
+    title: 'Maska Indian Kitchen + Bar —” Miami',
     body: 'Built the full opening team, vendor relationships, service standards, and operating systems for a concept led by a Michelin-starred chef.',
     skills: ['Pre-Opening', 'Team Building', 'SOP Development', 'Vendor Management'],
   },
   {
-    meta: 'Director of Banquets â€” Pre-Opening',
-    title: 'SLS Brickell â€” Miami',
+    meta: 'Director of Banquets —” Pre-Opening',
+    title: 'SLS Brickell —” Miami',
     body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival.',
     skills: ['Banquet Operations', 'Staffing Models', 'Pre-Opening', 'Luxury Hotels'],
   },
   {
     meta: 'General Manager',
-    title: 'Marabu Restaurant | Coal Fire Cuban Cuisine â€” Miami',
+    title: 'Marabu Restaurant | Coal Fire Cuban Cuisine —” Miami',
     body: 'Led labor optimization, service consistency, and guest-experience improvement for a high-volume Miami restaurant.',
     skills: ['Labor Cost Control', 'Service Recovery', 'P&L Management', 'Team Training'],
   },
   {
     meta: 'General Manager',
-    title: 'Viceroy Miami â€” Miami Beach',
+    title: 'Viceroy Miami —” Miami Beach',
     body: 'Managed F&B operations across restaurant, pool, and banquet outlets at an iconic Miami Beach luxury property.',
     skills: ['Hotel F&B', 'Multi-Outlet', 'Luxury Hospitality', 'Guest Experience'],
   },
@@ -108,6 +108,7 @@ export default function Experience() {
     </>
   )
 }
+
 
 
 

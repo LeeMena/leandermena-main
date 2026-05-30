@@ -7,7 +7,7 @@ export default function BlogFractionalGM() {
     <>
       <SEO
         title="What a Fractional GM Actually Does"
-        description="What fractional F&B leadership actually looks like week to week â€” on-site leadership, P&L review, manager coaching, and systems that stick."
+        description="What fractional F&B leadership actually looks like week to week —” on-site leadership, P&L review, manager coaching, and systems that stick."
         path="/blog/fractional-gm"
       />
 
@@ -30,7 +30,7 @@ export default function BlogFractionalGM() {
             <p>
               A fractional engagement typically runs two to four days per week on-site, with
               availability for calls and planning outside those days. The fractional GM operates
-              inside the business â€” attending pre-shifts, reviewing numbers, developing managers,
+              inside the business —” attending pre-shifts, reviewing numbers, developing managers,
               and making operational decisions with the owner.
             </p>
 
@@ -56,7 +56,7 @@ export default function BlogFractionalGM() {
             <h2>What It Is Not</h2>
             <p>
               A fractional GM is not a mystery shopper, a trainer who visits once, or a consultant
-              who delivers a deck and disappears. The value is in continuity â€” showing up, staying
+              who delivers a deck and disappears. The value is in continuity —” showing up, staying
               accountable, and making decisions that compound over time.
             </p>
 
@@ -77,6 +77,7 @@ export default function BlogFractionalGM() {
     </>
   )
 }
+
 
 
 

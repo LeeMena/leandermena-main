@@ -40,7 +40,7 @@ export default function Philosophy() {
     <>
       <SEO
         title="Philosophy"
-        description="How Leander Mena thinks about hospitality operations â€” principles that show up in how he runs shifts, structures training, and gives feedback to managers."
+        description="How Leander Mena thinks about hospitality operations —” principles that show up in how he runs shifts, structures training, and gives feedback to managers."
         path="/philosophy"
       />
 
@@ -83,6 +83,7 @@ export default function Philosophy() {
     </>
   )
 }
+
 
 
 

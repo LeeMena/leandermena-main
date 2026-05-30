@@ -26,13 +26,13 @@ const services = [
   {
     kicker: 'Fractional leadership',
     title: 'Fractional F&B Director',
-    body: 'For restaurants and hotel groups that need a veteran operator 2â€“4 days per week. Stabilize operations, build systems, and develop your team.',
+    body: 'For restaurants and hotel groups that need a veteran operator 2—“4 days per week. Stabilize operations, build systems, and develop your team.',
     href: '/services',
   },
   {
     kicker: 'New concept support',
     title: 'Pre-Opening & New Concepts',
-    body: 'From construction walkthroughs to opening night â€” team hiring, SOP creation, vendor coordination, and opening-day execution.',
+    body: 'From construction walkthroughs to opening night —” team hiring, SOP creation, vendor coordination, and opening-day execution.',
     href: '/pre-opening',
   },
   {
@@ -51,7 +51,7 @@ const experience = [
   },
   {
     venue: 'SLS Brickell',
-    title: 'Director of Banquets â€” Pre-Opening',
+    title: 'Director of Banquets —” Pre-Opening',
     body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival.',
   },
   {
@@ -70,7 +70,7 @@ const audience = [
 
 const steps = [
   { num: '01', title: 'Discovery', body: '30-minute call to understand your goals, gaps, and timeline.' },
-  { num: '02', title: 'Proposal', body: 'Clear scope, deliverables, and investment â€” within 48 hours.' },
+  { num: '02', title: 'Proposal', body: 'Clear scope, deliverables, and investment —” within 48 hours.' },
   { num: '03', title: 'Engagement', body: 'On-site or hybrid leadership, tailored to your operation.' },
   { num: '04', title: 'Handoff', body: 'Systems, training, and documentation your team owns.' },
 ]
@@ -80,7 +80,7 @@ export default function Home() {
     <>
       <SEO
         title="Fractional F&B Operations Leader"
-        description="18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami â€” now available as fractional leadership."
+        description="18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami —” now available as fractional leadership."
         path="/"
       />
 
@@ -180,7 +180,7 @@ export default function Home() {
               <p className="text-[#888888] max-w-[54ch] leading-relaxed mb-8">
                 Most hospitality groups don't need another full-time executive. They need a
                 seasoned operator who can diagnose issues fast, implement systems that stick,
-                and transfer knowledge to your existing team â€” without the overhead of a
+                and transfer knowledge to your existing team —” without the overhead of a
                 permanent hire.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -188,7 +188,7 @@ export default function Home() {
                   { title: 'Rapid Diagnosis', body: 'Identify root causes within the first week, not months.' },
                   { title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow.' },
                   { title: 'Proven Track Record', body: '18+ years across Michelin concepts, luxury hotels, and independents.' },
-                  { title: 'Measurable ROI', body: 'Average 3â€“5Ã— return on consulting investment within 6 months.' },
+                  { title: 'Measurable ROI', body: 'Average 3—“5Ã— return on consulting investment within 6 months.' },
                 ].map((item) => (
                   <div key={item.title} className="border-l-2 border-[#b8a080]/30 pl-4">
                     <h4 className="text-sm font-bold text-[#e8e8e8] mb-1">{item.title}</h4>
@@ -202,7 +202,7 @@ export default function Home() {
               <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl p-8">
                 <img
                   src="/images/about.jpg"
-                  alt="Leander Mena â€” Miami F&B Operations Leader"
+                  alt="Leander Mena —” Miami F&B Operations Leader"
                   className="w-full rounded-lg mb-6 object-cover aspect-[4/3]"
                   loading="lazy"
                 />
@@ -318,7 +318,7 @@ export default function Home() {
             </h2>
             <p className="section-intro">
               Whether you're launching a new concept, recovering a struggling operation, or need
-              hands-on leadership without a full-time hire â€” this is built for you.
+              hands-on leadership without a full-time hire —” this is built for you.
             </p>
           </ScrollReveal>
 
@@ -347,7 +347,7 @@ export default function Home() {
             </h2>
             <p className="section-intro">
               Every engagement starts with a no-obligation discovery call. From there, we define
-              scope, timeline, and deliverables â€” no retainer lock-ins, no ambiguous billing.
+              scope, timeline, and deliverables —” no retainer lock-ins, no ambiguous billing.
             </p>
           </ScrollReveal>
 
@@ -398,6 +398,7 @@ export default function Home() {
     </>
   )
 }
+
 
 
 

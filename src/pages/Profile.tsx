@@ -20,17 +20,17 @@ const competencies = [
 const roles = [
   {
     meta: 'Opening GM',
-    title: 'Maska Indian Kitchen + Bar â€” Miami',
+    title: 'Maska Indian Kitchen + Bar —” Miami',
     body: 'Built the full opening team, vendor relationships, service standards, and operating systems for a concept led by a Michelin-starred chef.',
   },
   {
-    meta: 'Director of Banquets â€” Pre-Opening',
-    title: 'SLS Brickell â€” Miami',
+    meta: 'Director of Banquets —” Pre-Opening',
+    title: 'SLS Brickell —” Miami',
     body: 'Created staffing models, event workflows, and banquet execution systems before first guest arrival at a luxury urban hotel.',
   },
   {
     meta: 'General Manager',
-    title: 'Marabu Restaurant | Coal Fire Cuban Cuisine â€” Miami',
+    title: 'Marabu Restaurant | Coal Fire Cuban Cuisine —” Miami',
     body: 'Led labor optimization, service consistency, and guest-experience improvement for a high-volume Miami concept.',
   },
   {
@@ -45,13 +45,13 @@ export default function Profile() {
     <>
       <SEO
         title="Profile"
-        description="Leander Mena â€” Miami hospitality and F&B operations leader. 18+ years opening, stabilizing, and scaling restaurants, hotels, banquets, and catering."
+        description="Leander Mena —” Miami hospitality and F&B operations leader. 18+ years opening, stabilizing, and scaling restaurants, hotels, banquets, and catering."
         path="/profile"
       />
 
       <section className="page-header">
         <div className="container">
-          <span className="kicker">Leander Mena â€” Miami Hospitality & F&B Operations Leader</span>
+          <span className="kicker">Leander Mena —” Miami Hospitality & F&B Operations Leader</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
             Miami, Florida
           </h1>
@@ -128,6 +128,7 @@ export default function Profile() {
     </>
   )
 }
+
 
 
 

@@ -7,7 +7,7 @@ export default function BlogPreOpening() {
     <>
       <SEO
         title="The Miami Pre-Opening Playbook"
-        description="The 90-day framework for taking a Miami restaurant from empty shell to opening night â€” staffing, SOPs, vendors, and training."
+        description="The 90-day framework for taking a Miami restaurant from empty shell to opening night —” staffing, SOPs, vendors, and training."
         path="/blog/pre-opening"
       />
 
@@ -28,7 +28,7 @@ export default function BlogPreOpening() {
 
         <section className="content-body">
           <ScrollReveal>
-            <h2>Days 90â€“60: Foundation</h2>
+            <h2>Days 90—“60: Foundation</h2>
             <p>
               The first phase is about building the operating backbone before a single hire is made.
               That means walking the space, understanding the concept deeply, mapping the service
@@ -42,7 +42,7 @@ export default function BlogPreOpening() {
               <li>Opening budget alignment with ownership</li>
             </ul>
 
-            <h2>Days 60â€“30: Hiring and Systems</h2>
+            <h2>Days 60—“30: Hiring and Systems</h2>
             <p>
               Miami's hospitality labor market is competitive. Hiring has to start early, and
               onboarding has to be structured from the first day an employee walks in.
@@ -55,7 +55,7 @@ export default function BlogPreOpening() {
               <li>Vendor contracts finalized and delivery schedules confirmed</li>
             </ul>
 
-            <h2>Days 30â€“0: Training and Execution</h2>
+            <h2>Days 30—“0: Training and Execution</h2>
             <p>
               The final 30 days compress weeks of learning into days. The goal is a team that has
               failed safely before guests arrive.
@@ -81,6 +81,7 @@ export default function BlogPreOpening() {
     </>
   )
 }
+
 
 
 

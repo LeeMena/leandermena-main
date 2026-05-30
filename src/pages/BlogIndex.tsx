@@ -6,7 +6,7 @@ const articles = [
   {
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
-    body: 'The 90-day framework for taking a Miami restaurant from empty shell to opening night â€” staffing, SOPs, vendors, and training.',
+    body: 'The 90-day framework for taking a Miami restaurant from empty shell to opening night —” staffing, SOPs, vendors, and training.',
     href: '/blog/pre-opening',
   },
   {
@@ -70,6 +70,7 @@ export default function BlogIndex() {
     </>
   )
 }
+
 
 
 
