@@ -54,7 +54,7 @@ export default function Contact() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/contact-banner.jpg"
+            src="/images/contact (1) (1).jpg"
             alt=""
             width="1400"
             height="600"
@@ -70,7 +70,7 @@ export default function Contact() {
             Start a Conversation
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Whether you’re 90 days from opening or trying to fix a difficult quarter —
+            Whether you're 90 days from opening or trying to fix a difficult quarter —
             the first step is a simple conversation.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function Contact() {
                 <div className="card text-center py-12">
                   <p className="text-2xl mb-2">✓</p>
                   <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received.</h3>
-                  <p className="text-[#888888]">I’ll be in touch within one business day.</p>
+                  <p className="text-[#888888]">I'll be in touch within one business day.</p>
                 </div>
               ) : (
                 <form onSubmit={submit} className="flex flex-col gap-5">

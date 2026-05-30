@@ -12,7 +12,7 @@ export default function NotFound() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/dining.jpg"
+            src="/images/dining (1).jpg"
             alt=""
             width="1400"
             height="900"

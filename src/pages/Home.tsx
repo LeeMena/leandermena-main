@@ -264,7 +264,7 @@ export default function Home() {
       {/* FULL-WIDTH IMAGE BREAK */}
       <section className="relative overflow-hidden my-2" style={{ height: '420px' }}>
         <img
-          src="/images/dining.jpg"
+          src="/images/dining (1).jpg"
           alt="Miami restaurant dining room"
           width="1400"
           height="600"
@@ -277,7 +277,7 @@ export default function Home() {
           <div className="container">
             <ScrollReveal>
               <p className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-white max-w-[22ch] leading-tight">
-                “The floor doesn’t lie. Everything you need to know is in the room during service.”
+                "The floor doesn't lie. Everything you need to know is in the room during service."
               </p>
               <p className="text-[#c9a87a] text-sm mt-4 font-semibold tracking-wider uppercase">Leander Mena</p>
             </ScrollReveal>
@@ -339,7 +339,7 @@ export default function Home() {
             <span className="kicker">Who This Is For</span>
             <h2>Built for Operators Who Need Results</h2>
             <p className="section-intro">
-              Whether you’re launching a new concept, recovering a struggling operation, or need
+              Whether you're launching a new concept, recovering a struggling operation, or need
               hands-on leadership without a full-time hire — this is built for you.
             </p>
           </ScrollReveal>
@@ -386,10 +386,10 @@ export default function Home() {
             <div className="card p-8 md:p-12 text-center max-w-3xl mx-auto relative overflow-hidden">
               <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#c9a87a]/8 rounded-full blur-[80px] pointer-events-none" />
               <h2 className="font-display text-[clamp(1.5rem,3vw,2.5rem)] font-bold tracking-tight text-white mb-4 relative">
-                Let’s build something that runs well.
+                Let's build something that runs well.
               </h2>
               <p className="text-[#bbbbbb] max-w-xl mx-auto mb-8 relative">
-                Whether you’re 90 days from opening or trying to fix a difficult quarter,
+                Whether you're 90 days from opening or trying to fix a difficult quarter,
                 the next step is simple: start the conversation.
               </p>
               <div className="flex flex-wrap justify-center gap-3 relative">
