@@ -46,11 +46,11 @@ export default function CalendlyModal({ isOpen, onClose }: Props) {
         </div>
         <div className="p-0">
           <iframe
-            src="https://calendly.com/leandermena_consulting"
+            src="https://calendly.com/leandermena/30min"
             width="100%"
             height="600"
             frameBorder="0"
-            title="Book a discovery call with Leander Mena"
+            title="Book a 30-minute discovery call with Leander Mena"
             className="bg-white"
           />
         </div>

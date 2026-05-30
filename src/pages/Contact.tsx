@@ -58,7 +58,7 @@ export default function Contact() {
             Start a Conversation
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Whether you're 90 days from opening or trying to fix a difficult quarter —
+            Whether you’re 90 days from opening or trying to fix a difficult quarter —
             the first step is a simple conversation.
           </p>
         </div>
@@ -74,7 +74,7 @@ export default function Contact() {
                 <div className="card text-center py-12">
                   <p className="text-2xl mb-2">✓</p>
                   <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received.</h3>
-                  <p className="text-[#888888]">I'll be in touch within one business day.</p>
+                  <p className="text-[#888888]">I’ll be in touch within one business day.</p>
                 </div>
               ) : (
                 <form onSubmit={submit} className="flex flex-col gap-5">
@@ -97,10 +97,10 @@ export default function Contact() {
                       <label htmlFor="type">Inquiry type</label>
                       <select id="type" name="type" required value={form.type} onChange={handle}>
                         <option value="">Select one…</option>
-                        <option>Fractional F&B Director</option>
+                        <option>Fractional F&amp;B Director</option>
                         <option>Pre-Opening Support</option>
                         <option>Operations Recovery</option>
-                        <option>Banquet & Catering</option>
+                        <option>Banquet &amp; Catering</option>
                         <option>Other</option>
                       </select>
                     </div>
@@ -158,6 +158,7 @@ export default function Contact() {
                 </div>
               </div>
             </ScrollReveal>
+
           </div>
         </div>
       </section>

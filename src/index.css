@@ -75,6 +75,13 @@
     padding-inline: var(--space-6);
   }
 
+  /* ── Page header (used by every inner page) ── */
+  .page-header {
+    padding-block: clamp(3rem, 6vw, 5rem);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
   .kicker {
     display: inline-block;
     font-size: .75rem;
@@ -203,6 +210,12 @@
     font-weight: 600;
   }
 
+  /* ── Skill tags + wall ── */
+  .skills-wall {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
   .skill-tag {
     font-size: .78rem;
     font-weight: 600;
@@ -223,6 +236,7 @@
     text-transform: uppercase;
     color: var(--color-primary);
     margin-bottom: var(--space-1);
+    display: block;
   }
   .role h3 {
     font-size: 1.1rem;
@@ -235,6 +249,23 @@
     max-width: 62ch;
   }
 
+  /* ── Form fields (.field and .form-group both work) ── */
+  .field,
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .field label,
+  .form-group label {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    display: block;
+  }
+  .field input,
+  .field select,
+  .field textarea,
   .form-group input,
   .form-group select,
   .form-group textarea {
@@ -249,19 +280,37 @@
     outline: none;
     width: 100%;
   }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus,
   .form-group input:focus,
   .form-group select:focus,
   .form-group textarea:focus {
     border-color: var(--color-primary);
     box-shadow: 0 0 0 3px rgba(184, 160, 128, .12);
   }
+  .field textarea,
   .form-group textarea { resize: vertical; min-height: 120px; }
-  .form-group label {
-    font-size: .85rem;
-    font-weight: 600;
+
+  /* ── Blog article body ── */
+  .prose-article {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    color: var(--color-text-muted);
+    max-width: 68ch;
+  }
+  .prose-article p {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+  .prose-article h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 700;
     color: var(--color-text);
-    margin-bottom: var(--space-2);
-    display: block;
+    margin-top: var(--space-4);
+    letter-spacing: -.01em;
   }
 
   /* Scrollbar styling */

@@ -1,9 +1,10 @@
 import SEO from '@/components/SEO'
+import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
 const posts = [
   {
-    slug: '/insights/what-a-fractional-gm-actually-does',
+    slug: '/blog/fractional-gm',
     kicker: 'Fractional Operations',
     title: 'What a Fractional F&B Director Actually Does',
     excerpt:
@@ -11,7 +12,7 @@ const posts = [
     date: 'March 2024',
   },
   {
-    slug: '/insights/miami-pre-opening-playbook',
+    slug: '/blog/pre-opening',
     kicker: 'Pre-Opening',
     title: 'The Miami Pre-Opening Playbook',
     excerpt:
@@ -19,7 +20,7 @@ const posts = [
     date: 'January 2024',
   },
   {
-    slug: '/insights/labor-cost-control-miami-restaurants',
+    slug: '/blog/labor-cost',
     kicker: 'Labor & Finance',
     title: 'Labor Cost Control for Miami Restaurants',
     excerpt:
@@ -34,7 +35,7 @@ export default function BlogIndex() {
       <SEO
         title="Insights"
         description="Operational perspectives on running restaurants and hotel F&B in Miami. Written by Leander Mena."
-        path="/insights"
+        path="/blog"
       />
 
       <section className="page-header">
@@ -53,20 +54,21 @@ export default function BlogIndex() {
         <div className="container">
           <div className="flex flex-col gap-8">
             {posts.map((post, i) => (
-              <Link
-                key={post.slug}
-                to={post.slug}
-                className="card block group hover:border-[#b8a080] transition-colors"
-              >
-                <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-2 block">
-                  {post.kicker}
-                </span>
-                <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2 group-hover:text-[#b8a080] transition-colors">
-                  {post.title}
-                </h2>
-                <p className="text-[#888888] max-w-[68ch] mb-4">{post.excerpt}</p>
-                <span className="text-xs text-[#555555]">{post.date}</span>
-              </Link>
+              <ScrollReveal key={post.slug} delay={i * 100}>
+                <Link
+                  to={post.slug}
+                  className="card block group hover:border-[#b8a080] transition-colors"
+                >
+                  <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-2 block">
+                    {post.kicker}
+                  </span>
+                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2 group-hover:text-[#b8a080] transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="text-[#888888] max-w-[68ch] mb-4">{post.excerpt}</p>
+                  <span className="text-xs text-[#555555]">{post.date}</span>
+                </Link>
+              </ScrollReveal>
             ))}
           </div>
         </div>
