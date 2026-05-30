@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Download, CheckCircle, Loader2 } from 'lucide-react'
+import { X, Download, CheckCircle, Loader2, FileText, ExternalLink } from 'lucide-react'
 
 interface BlueprintModalProps {
   isOpen: boolean
@@ -25,18 +25,12 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
     setErrorMsg('')
 
     try {
-      // Send to Worker (ConvertKit)
       await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: form.email,
-          firstName: form.firstName,
-          phone: form.phone,
-        }),
+        body: JSON.stringify({ email: form.email, firstName: form.firstName, phone: form.phone }),
       })
 
-      // Also send to Formspree for email notification
       await fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -68,36 +62,25 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={handleClose}
-            style={{
-              position: 'fixed', inset: 0, zIndex: 50,
-              background: 'rgba(10, 9, 8, 0.75)',
-              backdropFilter: 'blur(4px)',
-            }}
+            style={{ position: 'fixed', inset: 0, zIndex: 50, background: 'rgba(10,9,8,0.75)', backdropFilter: 'blur(4px)' }}
           />
 
-          {/* Modal */}
           <motion.div
             key="modal"
             initial={{ opacity: 0, y: 24, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="blueprint-modal-title"
+            role="dialog" aria-modal="true" aria-labelledby="blueprint-modal-title"
             style={{
               position: 'fixed', inset: 0, zIndex: 51,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              padding: 'var(--space-4)',
-              pointerEvents: 'none',
+              padding: 'var(--space-4)', pointerEvents: 'none',
             }}
           >
             <div style={{
@@ -111,7 +94,6 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
               boxShadow: '0 24px 64px rgba(0,0,0,0.4)',
             }}>
 
-              {/* Close button */}
               <button
                 onClick={handleClose}
                 aria-label="Close modal"
@@ -119,8 +101,7 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
                   position: 'absolute', top: 'var(--space-4)', right: 'var(--space-4)',
                   width: '32px', height: '32px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'var(--color-text-muted)',
-                  borderRadius: 'var(--radius-sm)',
+                  color: 'var(--color-text-muted)', borderRadius: 'var(--radius-sm)',
                   transition: 'color 180ms, background 180ms',
                 }}
                 onMouseOver={e => (e.currentTarget.style.color = 'var(--color-text)')}
@@ -130,23 +111,45 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
               </button>
 
               {status === 'success' ? (
-                <div style={{ textAlign: 'center', padding: 'var(--space-6) 0' }}>
+                <div style={{ textAlign: 'center', padding: 'var(--space-4) 0' }}>
                   <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 'var(--space-4)', color: 'var(--color-primary)' }}>
                     <CheckCircle size={48} strokeWidth={1.5} />
                   </div>
-                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--color-text)', marginBottom: 'var(--space-3)' }}>
-                    You're on the list
+                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--color-text)', marginBottom: 'var(--space-2)' }}>
+                    You're in!
                   </h2>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: 'var(--space-6)' }}>
-                    Check your inbox — your 90-Day Pre-Opening Blueprint is on its way.
+                  <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: 'var(--space-6)' }}>
+                    Access your blueprint below. Open it in Chrome and press{' '}
+                    <strong style={{ color: 'var(--color-text)' }}>Ctrl+P → Save as PDF</strong>{' '}
+                    to keep a copy.
                   </p>
-                  <button onClick={handleClose} className="btn btn-secondary" style={{ width: '100%' }}>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginBottom: 'var(--space-6)' }}>
+                    <a
+                      href="/assets/pre-opening-blueprint-ebook.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary"
+                      style={{ justifyContent: 'center', gap: 'var(--space-2)' }}
+                    >
+                      <ExternalLink size={16} /> Open Blueprint Ebook
+                    </a>
+                    <a
+                      href="/assets/90-day-pre-opening-blueprint.pdf"
+                      download
+                      className="btn btn-secondary"
+                      style={{ justifyContent: 'center', gap: 'var(--space-2)' }}
+                    >
+                      <Download size={16} /> Download PDF Version
+                    </a>
+                  </div>
+
+                  <button onClick={handleClose} style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
                     Close
                   </button>
                 </div>
               ) : (
                 <>
-                  {/* Header */}
                   <div style={{ marginBottom: 'var(--space-6)' }}>
                     <span className="kicker" style={{ marginBottom: 'var(--space-2)', display: 'block' }}>Free Resource</span>
                     <h2
@@ -166,88 +169,34 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
                     </p>
                   </div>
 
-                  {/* Form */}
                   <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }}>
-                      <label htmlFor="firstName" style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
-                        First Name
-                      </label>
-                      <input
-                        id="firstName"
-                        name="firstName"
-                        type="text"
-                        required
-                        placeholder="Leander"
-                        value={form.firstName}
-                        onChange={handleChange}
-                        style={{
-                          padding: 'var(--space-3) var(--space-4)',
-                          background: 'var(--color-bg)',
-                          border: '1px solid var(--color-border)',
-                          borderRadius: 'var(--radius-md)',
-                          color: 'var(--color-text)',
-                          fontSize: '0.95rem',
-                          outline: 'none',
-                          transition: 'border-color 180ms',
-                        }}
-                        onFocus={e => (e.target.style.borderColor = 'var(--color-primary)')}
-                        onBlur={e => (e.target.style.borderColor = 'var(--color-border)')}
-                      />
-                    </div>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }}>
-                      <label htmlFor="email" style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
-                        Email Address
-                      </label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="you@example.com"
-                        value={form.email}
-                        onChange={handleChange}
-                        style={{
-                          padding: 'var(--space-3) var(--space-4)',
-                          background: 'var(--color-bg)',
-                          border: '1px solid var(--color-border)',
-                          borderRadius: 'var(--radius-md)',
-                          color: 'var(--color-text)',
-                          fontSize: '0.95rem',
-                          outline: 'none',
-                          transition: 'border-color 180ms',
-                        }}
-                        onFocus={e => (e.target.style.borderColor = 'var(--color-primary)')}
-                        onBlur={e => (e.target.style.borderColor = 'var(--color-border)')}
-                      />
-                    </div>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }}>
-                      <label htmlFor="phone" style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
-                        Phone Number
-                      </label>
-                      <input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        required
-                        placeholder="+1 (305) 000-0000"
-                        value={form.phone}
-                        onChange={handleChange}
-                        style={{
-                          padding: 'var(--space-3) var(--space-4)',
-                          background: 'var(--color-bg)',
-                          border: '1px solid var(--color-border)',
-                          borderRadius: 'var(--radius-md)',
-                          color: 'var(--color-text)',
-                          fontSize: '0.95rem',
-                          outline: 'none',
-                          transition: 'border-color 180ms',
-                        }}
-                        onFocus={e => (e.target.style.borderColor = 'var(--color-primary)')}
-                        onBlur={e => (e.target.style.borderColor = 'var(--color-border)')}
-                      />
-                    </div>
+                    {[{ id: 'firstName', label: 'First Name', type: 'text', placeholder: 'Leander' },
+                      { id: 'email', label: 'Email Address', type: 'email', placeholder: 'you@example.com' },
+                      { id: 'phone', label: 'Phone Number', type: 'tel', placeholder: '+1 (305) 000-0000' },
+                    ].map(({ id, label, type, placeholder }) => (
+                      <div key={id} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-1)' }}>
+                        <label htmlFor={id} style={{ fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
+                          {label}
+                        </label>
+                        <input
+                          id={id} name={id} type={type} required placeholder={placeholder}
+                          value={form[id as keyof typeof form]}
+                          onChange={handleChange}
+                          style={{
+                            padding: 'var(--space-3) var(--space-4)',
+                            background: 'var(--color-bg)',
+                            border: '1px solid var(--color-border)',
+                            borderRadius: 'var(--radius-md)',
+                            color: 'var(--color-text)',
+                            fontSize: '0.95rem',
+                            outline: 'none',
+                            transition: 'border-color 180ms',
+                          }}
+                          onFocus={e => (e.target.style.borderColor = 'var(--color-primary)')}
+                          onBlur={e => (e.target.style.borderColor = 'var(--color-border)')}
+                        />
+                      </div>
+                    ))}
 
                     {errorMsg && (
                       <p style={{ fontSize: '0.82rem', color: 'var(--color-error)' }}>{errorMsg}</p>
