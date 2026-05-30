@@ -11,7 +11,7 @@ const roles = [
     link: '/pre-opening',
   },
   {
-    venue: 'SLS Brickell',
+    venue: 'SBE Group | SLS Brickell',
     title: 'Director of Banquets | Pre-Opening Team',
     period: '2022',
     body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival. Coordinated with F&B leadership on vendor setup and revenue projections.',
