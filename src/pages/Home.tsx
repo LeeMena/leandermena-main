@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, TrendingUp, Users, Clock, Award, Star, Zap, CheckCircle } from 'lucide-react'
+import { ArrowRight, TrendingUp, Users, Clock, Award, Star, Zap, CheckCircle, Download } from 'lucide-react'
 import SEO from '@/components/SEO'
 import CTABanner from '@/components/CTABanner'
 import ProductCard from '@/components/ProductCard'
 import TestimonialCard from '@/components/TestimonialCard'
 import ServiceCard from '@/components/ServiceCard'
+import BlueprintModal from '@/components/BlueprintModal'
 import { products } from '@/data/products'
 import { services } from '@/data/services'
 import { approvedTestimonials } from '@/data/testimonials'
@@ -27,6 +29,8 @@ const trustBadges = [
 ]
 
 export default function Home() {
+  const [blueprintOpen, setBlueprintOpen] = useState(false)
+
   return (
     <>
       <SEO
@@ -34,6 +38,8 @@ export default function Home() {
         description="Fractional F&B operations leadership for Miami restaurants, hotels & new openings. 18+ years opening, stabilizing, and scaling hospitality operations."
         path="/"
       />
+
+      <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
       {/* ── Hero ── */}
       <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
@@ -112,6 +118,13 @@ export default function Home() {
               <Link to="/products" className="btn btn-secondary">
                 Explore Digital Products
               </Link>
+              <button
+                onClick={() => setBlueprintOpen(true)}
+                className="btn btn-secondary"
+                style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
+              >
+                <Download size={16} /> Free Pre-Opening Blueprint
+              </button>
             </motion.div>
           </div>
 
