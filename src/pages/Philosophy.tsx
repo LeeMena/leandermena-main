@@ -1,37 +1,27 @@
-﻿import ScrollReveal from '@/components/ScrollReveal'
+import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
-const pillars = [
+const principles = [
   {
-    number: '01',
-    title: 'Understand Before Acting',
-    body: 'I spend the first week observing, listening, and reviewing data before making recommendations. The best solutions come from understanding what is actually happening, not what should be happening.',
+    num: '01',
+    title: 'Systems before heroics',
+    body: 'A well-run operation does not depend on any one person having a great night. It depends on clear systems that any trained team member can execute consistently.',
   },
   {
-    number: '02',
-    title: 'Systems Over Personality',
-    body: 'A great operator should make the business better, not dependent. Every process I install is documented, trainable, and designed to outlast my engagement.',
+    num: '02',
+    title: 'The floor does not lie',
+    body: 'Data matters, but nothing replaces time spent on the floor during service. That is where the real story of an operation becomes visible.',
   },
   {
-    number: '03',
-    title: 'Accountability at Every Level',
-    body: 'Clear expectations, consistent follow-through, and honest feedback create teams that perform without constant supervision. I coach managers to lead this way.',
+    num: '03',
+    title: 'Fix the root, not the symptom',
+    body: 'High turnover, inconsistent service, and runaway labor costs are symptoms. The causes are almost always in the hiring process, the training program, or the schedule structure.',
   },
   {
-    number: '04',
-    title: 'Guest Experience Is the Scoreboard',
-    body: 'Reviews, repeat visits, and word-of-mouth are the true measures of operational health. Every system I build is judged by whether guests leave happier.',
-  },
-  {
-    number: '05',
-    title: 'Financial Discipline Is Non-Negotiable',
-    body: 'Great hospitality is sustainable only when the numbers work. I manage labor, COGS, and controllables with the same rigor as service standards.',
-  },
-  {
-    number: '06',
-    title: 'Stay Until It Sticks',
-    body: 'Consulting that leaves before systems take hold is wasted money. I design handoff plans and stay accountable until the team owns the new standards.',
+    num: '04',
+    title: 'Ownership earns ownership',
+    body: 'Teams follow leaders who are present, fair, and direct. Accountability starts with the person at the top of the org chart — not the bottom.',
   },
 ]
 
@@ -40,42 +30,39 @@ export default function Philosophy() {
     <>
       <SEO
         title="Philosophy"
-        description="How Leander Mena thinks about hospitality operations —” principles that show up in how he runs shifts, structures training, and gives feedback to managers."
+        description="Leander Mena's operational philosophy — systems, floor presence, root-cause thinking, and leadership accountability in Miami F&B."
         path="/philosophy"
       />
 
       <section className="page-header">
         <div className="container">
-          <span className="kicker">How I Think About Operations</span>
+          <span className="kicker">How I Work</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            Leadership Philosophy
+            Operational Philosophy
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            These are not mission-statement buzzwords. They are the principles that show up
-            in how I run a shift, structure a training, and give feedback to a manager.
+            The principles that guide how I assess, structure, and lead F&B operations.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pillars.map((p, i) => (
-              <ScrollReveal key={p.number} delay={i * 100}>
-                <div className="card h-full">
-                  <span className="text-4xl font-extrabold text-[#b8a080]/15">{p.number}</span>
-                  <h3 className="font-display text-lg font-bold text-[#e8e8e8] mt-2 mb-3">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-[#888888] leading-relaxed">{p.body}</p>
+          <div className="flex flex-col gap-8 mb-12">
+            {principles.map((p, i) => (
+              <ScrollReveal key={p.num} delay={i * 100}>
+                <div className="role">
+                  <span className="role-meta">{p.num}</span>
+                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">{p.title}</h2>
+                  <p className="text-[#888888] max-w-[62ch]">{p.body}</p>
                 </div>
               </ScrollReveal>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-4 text-center">
             <Link to="/contact" className="btn btn-primary">
-              Work With These Principles
+              Work Together
             </Link>
           </div>
         </div>
@@ -83,7 +70,3 @@ export default function Philosophy() {
     </>
   )
 }
-
-
-
-

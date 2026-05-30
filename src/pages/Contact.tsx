@@ -1,54 +1,45 @@
-﻿import { useState } from 'react'
-import ScrollReveal from '@/components/ScrollReveal'
+import { useState } from 'react'
 import SEO from '@/components/SEO'
+import ScrollReveal from '@/components/ScrollReveal'
+
+const faqs = [
+  {
+    q: 'What does a typical engagement look like?',
+    a: 'Most fractional engagements run 2–4 days per week over 3–6 months. Pre-opening projects are scoped to the timeline and complexity of the concept. Every engagement starts with a 30-minute discovery call.',
+  },
+  {
+    q: 'Do you work outside of Miami?',
+    a: 'My primary market is South Florida, but I consider projects in other markets depending on scope, timeline, and travel logistics.',
+  },
+  {
+    q: 'What size operations do you work with?',
+    a: 'Independent restaurants, multi-unit groups (2–5 locations), and hotel F&B departments. I right-size the engagement to match the operation.',
+  },
+  {
+    q: 'How quickly can you start?',
+    a: 'For urgent stabilization needs, I can typically begin within one week of scoping. Pre-opening projects are scheduled based on your construction and opening timeline.',
+  },
+]
 
 export default function Contact() {
-  const [state, setState] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    business: '',
-    interest: '',
-    details: '',
-  })
-  const [honeypot, setHoneypot] = useState('')
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [form, setForm] = useState({ name: '', email: '', phone: '', type: '', message: '' })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
-  const validate = () => {
-    const e: Record<string, string> = {}
-    if (!form.name.trim()) e.name = 'Name is required'
-    if (!form.email.trim()) e.email = 'Email is required'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Enter a valid email'
-    if (!form.interest) e.interest = 'Select an interest'
-    setErrors(e)
-    return Object.keys(e).length === 0
-  }
+  const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-    if (errors[e.target.name]) {
-      setErrors((prev) => { const n = { ...prev }; delete n[e.target.name]; return n })
-    }
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (honeypot) return
-    if (!validate()) return
-    setState('sending')
+    setStatus('sending')
     try {
-      const res = await fetch('https://api.leandermena.com/contact', {
+      const res = await fetch('https://formspree.io/f/xpwzgvod', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
       })
-      if (!res.ok) throw new Error('Network error')
-      setState('success')
-      setForm({ name: '', email: '', business: '', interest: '', details: '' })
+      setStatus(res.ok ? 'sent' : 'error')
     } catch {
-      setState('error')
+      setStatus('error')
     }
   }
 
@@ -56,220 +47,120 @@ export default function Contact() {
     <>
       <SEO
         title="Contact"
-        description="Start a conversation with Leander Mena about fractional F&B leadership, pre-opening consulting, or operations recovery for your Miami hospitality business."
+        description="Start a conversation about fractional F&B leadership, pre-opening support, or operations recovery in Miami."
         path="/contact"
       />
 
       <section className="page-header">
         <div className="container">
-          <span className="kicker">Contact Leander Mena —” Miami F&B Consulting</span>
+          <span className="kicker">Get in Touch</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            Start the Conversation
+            Start a Conversation
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            Whether you have a specific engagement in mind or just want to understand how
-            fractional leadership could work for your business, reach out. I respond within 24 hours.
+            Whether you're 90 days from opening or trying to fix a difficult quarter —
+            the first step is a simple conversation.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="grid lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-2">
-              <ScrollReveal>
-                <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl p-6 mb-6">
-                  <h3 className="text-sm font-bold text-[#e8e8e8] mb-4 uppercase tracking-wider">
-                    Contact Info
-                  </h3>
-                  <div className="flex flex-col gap-4 text-sm text-[#888888]">
-                    <div className="flex items-start gap-3">
-                      <span className="text-[#b8a080]">âŒ–</span>
-                      <span>Miami, Florida · South Florida</span>
+          <div className="grid lg:grid-cols-2 gap-12">
+
+            {/* FORM */}
+            <ScrollReveal>
+              {status === 'sent' ? (
+                <div className="card text-center py-12">
+                  <p className="text-2xl mb-2">✓</p>
+                  <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received.</h3>
+                  <p className="text-[#888888]">I'll be in touch within one business day.</p>
+                </div>
+              ) : (
+                <form onSubmit={submit} className="flex flex-col gap-5">
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div className="field">
+                      <label htmlFor="name">Name</label>
+                      <input id="name" name="name" required placeholder="Your name" value={form.name} onChange={handle} />
                     </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-[#b8a080]">âœ‰</span>
-                      <a href="mailto:leander@leandermena.com" className="hover:text-[#b8a080]">
-                        leander@leandermena.com
-                      </a>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <span className="text-[#b8a080]">â—·</span>
-                      <span>Response time: within 24 hours</span>
+                    <div className="field">
+                      <label htmlFor="email">Email</label>
+                      <input id="email" name="email" type="email" required placeholder="your@email.com" value={form.email} onChange={handle} />
                     </div>
                   </div>
-                </div>
-
-                <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl p-6">
-                  <h3 className="text-sm font-bold text-[#e8e8e8] mb-4 uppercase tracking-wider">
-                    Typical Engagements
-                  </h3>
-                  <ul className="flex flex-col gap-3 text-sm text-[#888888]">
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→’</span>
-                      Fractional F&B Director —” 2—“4 days/week
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→’</span>
-                      Pre-Opening Consulting —” 90-day sprint
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→’</span>
-                      Operations Recovery —” 30—“60 day intensive
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#b8a080]">→’</span>
-                      Banquet & Catering Leadership —” project-based
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Calendly inline embed */}
-                <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl p-6 mt-6">
-                  <h3 className="text-sm font-bold text-[#e8e8e8] mb-4 uppercase tracking-wider">
-                    Or Book Directly
-                  </h3>
-                  <p className="text-sm text-[#888888] mb-4">
-                    Prefer to schedule? Pick a time that works for you.
-                  </p>
-                  <div className="rounded-lg overflow-hidden bg-white">
-                    <iframe
-                      src="https://calendly.com/leandermena_consulting"
-                      width="100%"
-                      height="400"
-                      frameBorder="0"
-                      title="Schedule a discovery call with Leander Mena"
-                    />
-                  </div>
-                  <p className="text-xs text-[#888888] mt-3">
-                    Having trouble? Email directly at{' '}
-                    <a href="mailto:leander@leandermena.com" className="text-[#b8a080]">
-                      leander@leandermena.com
-                    </a>
-                  </p>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div className="lg:col-span-3">
-              <ScrollReveal delay={150}>
-                {state === 'success' ? (
-                  <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl p-8 text-center">
-                    <div className="w-12 h-12 bg-[#b8a080]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-[#b8a080] text-xl">âœ“</span>
+                  <div className="grid sm:grid-cols-2 gap-5">
+                    <div className="field">
+                      <label htmlFor="phone">Phone (optional)</label>
+                      <input id="phone" name="phone" placeholder="(305) 000-0000" value={form.phone} onChange={handle} />
                     </div>
-                    <h3 className="text-lg font-bold text-[#e8e8e8] mb-2">Message Received</h3>
-                    <p className="text-sm text-[#888888]">
-                      Thank you. Leander will respond within 24 hours.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="flex flex-col gap-5 max-w-xl">
-                    <div className="form-group">
-                      <label htmlFor="name">Name *</label>
-                      <input
-                        id="name"
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="Your name"
-                        autoComplete="name"
-                      />
-                      {errors.name && <span className="text-xs text-red-400 mt-1">{errors.name}</span>}
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="email">Email *</label>
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="you@company.com"
-                        autoComplete="email"
-                      />
-                      {errors.email && <span className="text-xs text-red-400 mt-1">{errors.email}</span>}
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="business">Business / Property</label>
-                      <input
-                        id="business"
-                        name="business"
-                        value={form.business}
-                        onChange={handleChange}
-                        placeholder="Restaurant or hotel name"
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="interest">What are you interested in? *</label>
-                      <select
-                        id="interest"
-                        name="interest"
-                        value={form.interest}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select an option</option>
-                        <option value="fractional">Fractional F&B Leadership</option>
-                        <option value="preopening">Pre-Opening Consulting</option>
-                        <option value="recovery">Operations Recovery</option>
-                        <option value="banquet">Banquet & Catering</option>
-                        <option value="other">Something else</option>
+                    <div className="field">
+                      <label htmlFor="type">Inquiry type</label>
+                      <select id="type" name="type" required value={form.type} onChange={handle}>
+                        <option value="">Select one…</option>
+                        <option>Fractional F&B Director</option>
+                        <option>Pre-Opening Support</option>
+                        <option>Operations Recovery</option>
+                        <option>Banquet & Catering</option>
+                        <option>Other</option>
                       </select>
-                      {errors.interest && <span className="text-xs text-red-400 mt-1">{errors.interest}</span>}
                     </div>
+                  </div>
+                  <div className="field">
+                    <label htmlFor="message">Tell me about your project</label>
+                    <textarea id="message" name="message" required rows={5} placeholder="Concept, location, timeline, main challenge…" value={form.message} onChange={handle} />
+                  </div>
+                  <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
+                    {status === 'sending' ? 'Sending…' : 'Send Message'}
+                  </button>
+                  {status === 'error' && (
+                    <p className="text-sm text-red-400">Something went wrong. Please try again or email directly.</p>
+                  )}
+                </form>
+              )}
+            </ScrollReveal>
 
-                    <div className="form-group">
-                      <label htmlFor="details">Project Details</label>
-                      <textarea
-                        id="details"
-                        name="details"
-                        value={form.details}
-                        onChange={handleChange}
-                        placeholder="Tell me about your timeline, team size, and biggest challenge..."
-                        rows={5}
-                      />
-                    </div>
+            {/* SIDEBAR */}
+            <ScrollReveal delay={200}>
+              <div className="flex flex-col gap-6">
+                <div className="card">
+                  <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-4">Prefer to book directly?</h3>
+                  <p className="text-sm text-[#888888] mb-4">
+                    Schedule a 30-minute discovery call and we can talk through your project in real time.
+                  </p>
+                  <a
+                    href="https://calendly.com/leandermena/30min"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary w-full text-center"
+                  >
+                    Book a Discovery Call
+                  </a>
+                </div>
 
-                    {/* Honeypot */}
-                    <div className="hidden">
-                      <input
-                        name="website"
-                        value={honeypot}
-                        onChange={(e) => setHoneypot(e.target.value)}
-                        tabIndex={-1}
-                        autoComplete="off"
-                      />
-                    </div>
+                <div className="card">
+                  <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-3">Response time</h3>
+                  <p className="text-sm text-[#888888]">
+                    I respond to all inquiries within one business day. For urgent operational needs,
+                    note that in your message and I will prioritize accordingly.
+                  </p>
+                </div>
 
-                    <button
-                      type="submit"
-                      disabled={state === 'sending'}
-                      className="btn btn-primary w-fit disabled:opacity-50"
-                    >
-                      {state === 'sending' ? 'Sending...' : 'Send Message'}
-                    </button>
-
-                    {state === 'error' && (
-                      <p className="text-sm text-red-400">
-                        Something went wrong. Please email directly at{' '}
-                        <a href="mailto:leander@leandermena.com">leander@leandermena.com</a>.
-                      </p>
-                    )}
-                  </form>
-                )}
-              </ScrollReveal>
-            </div>
+                <div className="card">
+                  <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-4">Common Questions</h3>
+                  <div className="flex flex-col gap-4">
+                    {faqs.map((f) => (
+                      <div key={f.q}>
+                        <p className="text-sm font-bold text-[#e8e8e8] mb-1">{f.q}</p>
+                        <p className="text-sm text-[#888888]">{f.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
     </>
   )
 }
-
-
-
-
-
