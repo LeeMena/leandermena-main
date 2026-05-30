@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react'
+import { useEffect } from 'react'
 
 interface Props {
   title: string
@@ -15,7 +15,7 @@ export default function SEO({
   image = 'https://www.leandermena.com/about.jpg',
   type = 'website',
 }: Props) {
-  const fullTitle = `${title} | Leander Mena —” Miami F&B Operations`
+  const fullTitle = `${title} | Leander Mena — Miami F&B Operations`
   const url = `https://www.leandermena.com${path}`
 
   useEffect(() => {
@@ -77,4 +77,3 @@ export default function SEO({
     </script>
   )
 }
-
