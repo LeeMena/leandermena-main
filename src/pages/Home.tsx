@@ -43,12 +43,20 @@ export default function Home() {
 
       {/* ── Hero ── */}
       <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
-        <div className="absolute inset-0" style={{ background: 'var(--color-bg)' }}>
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, rgba(184,160,128,0.10) 0%, transparent 60%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 60%, var(--color-bg))' }} />
+        {/* Background image */}
+        <div className="absolute inset-0" style={{ zIndex: 0 }}>
+          <img
+            src="/images/landing-hero.jpg"
+            alt=""
+            width="1920"
+            height="1080"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+          />
+          {/* Dark overlay */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.55) 0%, rgba(10,10,10,0.70) 60%, var(--color-bg) 100%)' }} />
         </div>
 
-        <div className="container relative z-10" style={{ paddingTop: 'clamp(6rem, 12vw, 9rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}>
+        <div className="container relative" style={{ zIndex: 1, paddingTop: 'clamp(6rem, 12vw, 9rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}>
           <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center' }}>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -65,7 +73,7 @@ export default function Home() {
                 fontWeight: 700,
                 letterSpacing: '-0.02em',
                 lineHeight: 0.95,
-                color: 'var(--color-text)',
+                color: '#ffffff',
                 marginBottom: 'var(--space-6)',
               }}
             >
@@ -83,7 +91,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              style={{ fontSize: '0.72rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}
+              style={{ fontSize: '0.72rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 'var(--space-6)' }}
             >
               Hospitality &amp; Food-and-Beverage Operations
             </motion.p>
@@ -96,11 +104,10 @@ export default function Home() {
                 fontFamily: 'var(--font-serif)',
                 fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
                 fontStyle: 'italic',
-                color: 'var(--color-text-muted)',
+                color: 'rgba(255,255,255,0.75)',
                 maxWidth: '54ch',
                 margin: '0 auto var(--space-10)',
                 lineHeight: 1.7,
-                opacity: 0.85,
               }}
             >
               18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami — now available as fractional leadership and digital products.
@@ -142,14 +149,15 @@ export default function Home() {
                 style={{
                   textAlign: 'center',
                   padding: 'var(--space-6)',
-                  border: '1px solid var(--color-border)',
-                  background: 'rgba(255,255,255,0.02)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  background: 'rgba(0,0,0,0.35)',
+                  backdropFilter: 'blur(8px)',
                   borderRadius: 'var(--radius-md)',
                 }}
               >
                 <div style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-3)', display: 'flex', justifyContent: 'center' }}>{stat.icon}</div>
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: 'var(--color-text)', marginBottom: 'var(--space-1)', lineHeight: 1 }}>{stat.value}</p>
-                <p style={{ fontSize: '0.68rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>{stat.label}</p>
+                <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#ffffff', marginBottom: 'var(--space-1)', lineHeight: 1 }}>{stat.value}</p>
+                <p style={{ fontSize: '0.68rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>{stat.label}</p>
               </div>
             ))}
           </motion.div>
