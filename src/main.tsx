@@ -1,10 +1,13 @@
-import { ViteSSG } from 'vite-ssg'
-import { setupLayouts } from 'virtual:generated-layouts'
+import { ViteSSG } from 'vite-ssg/single-page'
+import { StrictMode } from 'react'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
-import { routes } from './routes'
 
-export const createApp = ViteSSG(
-  App,
-  { routes },
-)
+export const createApp = ViteSSG(() => (
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
+))

@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import { ViteSSG } from 'vite-ssg'
 
 export default defineConfig({
   plugins: [react()],
@@ -13,9 +12,20 @@ export default defineConfig({
   ssgOptions: {
     script: 'async',
     formatting: 'minify',
-    crittersOptions: {
-      preload: 'swap',
-    },
+    includedRoutes: () => [
+      '/',
+      '/about',
+      '/services',
+      '/pre-opening',
+      '/experience',
+      '/philosophy',
+      '/contact',
+      '/profile',
+      '/insights',
+      '/insights/miami-pre-opening-playbook',
+      '/insights/what-a-fractional-gm-actually-does',
+      '/insights/labor-cost-control-miami-restaurants',
+    ],
   },
   build: {
     outDir: 'dist',
