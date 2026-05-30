@@ -123,7 +123,7 @@ export default function Contact() {
                     {status === 'sending' ? 'Sending…' : 'Send Message'}
                   </button>
                   {status === 'error' && (
-                    <p role="alert" className="text-sm text-red-400">Something went wrong. Please try again or email directly at leander@leandermena.com</p>
+                    <p role="alert" className="text-sm text-red-400">Something went wrong. Please try again or email directly at consulting@leandermena.com</p>
                   )}
                 </form>
               )}

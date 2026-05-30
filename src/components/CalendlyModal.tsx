@@ -56,8 +56,8 @@ export default function CalendlyModal({ isOpen, onClose }: Props) {
         </div>
         <p className="px-6 py-3 text-xs text-[#888888] border-t border-[#2a2a2a]">
           Having trouble? Email directly at{' '}
-          <a href="mailto:leander@leandermena.com" className="text-[#b8a080]">
-            leander@leandermena.com
+          <a href="mailto:consulting@leandermena.com" className="text-[#b8a080]">
+            consulting@leandermena.com
           </a>
         </p>
       </div>

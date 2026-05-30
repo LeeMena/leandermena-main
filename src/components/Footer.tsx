@@ -64,10 +64,10 @@ export default function Footer() {
               LinkedIn
             </a>
             <a
-              href="mailto:leander@leandermena.com"
+              href="mailto:consulting@leandermena.com"
               className="text-sm text-[#888888] hover:text-[#b8a080] transition-colors block"
             >
-              leander@leandermena.com
+              consulting@leandermena.com
             </a>
           </div>
         </div>
