@@ -33,7 +33,7 @@ export default function About() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/about.jpg"
+            src="/images/1.jpg"
             alt=""
             width="1400"
             height="600"
