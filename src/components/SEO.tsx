@@ -7,10 +7,10 @@ export type SchemaType =
   | 'pre-opening'
   | 'experience'
   | 'philosophy'
+  | 'profile'
   | 'contact'
   | 'insights'
   | 'article'
-  | 'profile'
 
 interface ArticleMeta {
   datePublished: string
@@ -30,6 +30,7 @@ interface Props {
 
 const BASE_URL = 'https://www.leandermena.com'
 const DEFAULT_IMAGE = `${BASE_URL}/images/about.jpg`
+
 const PERSON_BASE = {
   '@type': 'Person',
   name: 'Leander Mena',
@@ -51,6 +52,19 @@ const PERSON_BASE = {
     'Labor Cost Control',
     'SOP Development',
   ],
+}
+
+// Organization publisher — required by Google for Article Rich Results
+const ORGANIZATION_PUBLISHER = {
+  '@type': 'Organization',
+  name: 'Leander Mena',
+  url: BASE_URL,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${BASE_URL}/favicon.svg`,
+    width: 512,
+    height: 512,
+  },
 }
 
 function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string) {
@@ -173,11 +187,14 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           '@type': 'Article',
           headline: 'Leadership Philosophy — Leander Mena',
           url: `${BASE_URL}/philosophy`,
+          image: DEFAULT_IMAGE,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
-          publisher: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          publisher: ORGANIZATION_PUBLISHER,
           description:
             'The operating principles and leadership philosophy behind Leander Mena\u2019s approach to F&B operations management.',
           datePublished: '2026-01-01',
+          dateModified: '2026-01-01',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/philosophy` },
         },
         breadcrumb('Philosophy', 2),
       ]
@@ -216,6 +233,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           name: 'Insights — Leander Mena',
           url: `${BASE_URL}/insights`,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          publisher: ORGANIZATION_PUBLISHER,
           description:
             'Hospitality and F&B operations insights from Leander Mena: pre-opening, fractional GM models, labor cost control, and Miami restaurant strategy.',
         },
@@ -232,12 +250,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           url,
           image: DEFAULT_IMAGE,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
-          publisher: {
-            '@type': 'Person',
-            name: 'Leander Mena',
-            url: BASE_URL,
-            image: DEFAULT_IMAGE,
-          },
+          publisher: ORGANIZATION_PUBLISHER,
           datePublished: article.datePublished,
           dateModified: article.dateModified,
           description: description ?? '',
@@ -266,7 +279,9 @@ export default function SEO({
   schemaType = 'home',
   article,
 }: Props) {
-  const fullTitle = `${title} \u2014 Leander Mena, Miami F&B Operations`
+  const fullTitle = title.includes('Leander Mena')
+    ? title
+    : `${title} | Leander Mena`
   const url = `${BASE_URL}${path}`
   const ogType = schemaType === 'article' ? 'article' : type
 
