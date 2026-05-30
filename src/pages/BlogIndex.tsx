@@ -35,22 +35,22 @@ export default function BlogIndex() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/philosophy-banner.jpg"
+            src="/images/dining.jpg"
             alt=""
             width="1400"
             height="600"
-            className="w-full h-full object-cover opacity-40"
+            className="w-full h-full object-cover opacity-80"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/55 to-[#0a0a0a]/25" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
         </div>
         <div className="container relative z-10 py-16">
           <span className="kicker">Operational Insights</span>
-          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
+          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-white max-w-[36ch] mb-3">
             Insights
           </h1>
-          <p className="text-[#888888] text-lg max-w-[54ch]">
+          <p className="text-[#c0c0c0] text-lg max-w-[54ch]">
             Practical thinking on F&B operations, pre-opening strategy, and fractional leadership for Miami hospitality.
           </p>
         </div>
@@ -61,14 +61,14 @@ export default function BlogIndex() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((p, i) => (
               <ScrollReveal key={p.slug} delay={i * 100}>
-                <Link to={p.slug} className="card block h-full hover:border-[#b8a080]/40 transition-colors">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-[#b8a080] mb-3 block">
+                <Link to={p.slug} className="card block h-full hover:border-[#c9a87a]/40 transition-colors">
+                  <span className="text-xs font-semibold tracking-widest uppercase text-[#d4b896] mb-3 block">
                     {p.kicker}
                   </span>
-                  <h2 className="font-display text-base font-bold text-[#e8e8e8] mb-3 leading-snug">
+                  <h2 className="font-display text-base font-bold text-white mb-3 leading-snug">
                     {p.title}
                   </h2>
-                  <p className="text-sm text-[#888888]">{p.excerpt}</p>
+                  <p className="text-sm text-[#aaaaaa]">{p.excerpt}</p>
                 </Link>
               </ScrollReveal>
             ))}
