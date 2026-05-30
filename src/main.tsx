@@ -4,13 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import './index.css'
 
-export const createApp = ViteSSG(
-  () => (
-    <StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StrictMode>
-  ),
-  { rootContainerId: 'app' },
+const Root = () => (
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
 )
+
+export const createApp = ViteSSG(Root)
