@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import ScrollReveal from '@/components/ScrollReveal'
 
 interface Testimonial {
@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "We brought Leander in to stabilize labor costs that had drifted to 34%. In 60 days we were at 28% and guest satisfaction scores were up. He doesn't just diagnose — he stays until the fix sticks.",
+      "We brought Leander in to stabilize labor costs that had drifted to 34%. In 60 days we were at 28% and guest satisfaction scores were up. He doesn't just diagnose â€” he stays until the fix sticks.",
     name: 'Partner, Hotel Management Co.',
     role: 'Regional Director',
     venue: 'Luxury Hotel Group, South Florida',
@@ -115,3 +115,4 @@ export default function Testimonials() {
     </section>
   )
 }
+
