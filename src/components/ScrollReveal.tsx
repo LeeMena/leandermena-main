@@ -7,6 +7,9 @@ interface Props {
   direction?: 'up' | 'down' | 'left' | 'right'
 }
 
+// True when running on the server (vite-ssg SSR pass) — no window object
+const isSSR = typeof window === 'undefined'
+
 export default function ScrollReveal({
   children,
   className = '',
@@ -14,11 +17,16 @@ export default function ScrollReveal({
   direction = 'up',
 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+  // Start visible on SSR so static HTML contains real content for crawlers.
+  // On the client, start hidden so the reveal animation still plays.
+  const [visible, setVisible] = useState(isSSR)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
+
+    // If already visible (shouldn't happen on client), skip observer
+    if (visible) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -27,7 +35,6 @@ export default function ScrollReveal({
           observer.unobserve(el)
         }
       },
-      // threshold:0 + no negative rootMargin = fires the moment ANY pixel is visible
       { threshold: 0, rootMargin: '0px 0px 0px 0px' }
     )
     observer.observe(el)
@@ -40,6 +47,11 @@ export default function ScrollReveal({
     down: 'translateY(-24px)',
     left: 'translateX(24px)',
     right: 'translateX(-24px)',
+  }
+
+  // On SSR: no inline styles — let content render fully for crawlers
+  if (isSSR) {
+    return <div className={className}>{children}</div>
   }
 
   return (
