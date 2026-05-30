@@ -53,7 +53,7 @@ export default function PreOpening() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
         </div>
         <div className="container relative z-10 py-16">
-          <span className="kicker">Pre-Opening Restaurant & Hotel F&B — Miami</span>
+          <span className="kicker">Pre-Opening Restaurant & Hotel F&B -Miami</span>
           <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
             Pre-Opening F&B Operations
           </h1>
