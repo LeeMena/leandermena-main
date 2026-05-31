@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <SEO
         title="Leander Mena | Fractional F&B Leadership & Hospitality Consulting | Miami"
-        description="Fractional F&B operations leadership for Miami restaurants, hotels & new openings. 18+ years opening, stabilizing, and scaling hospitality operations."
+        description="Fractional F&B operations leadership for Miami restaurants, hotels & new openings. 18 years opening, stabilizing, and scaling hospitality operations."
         path="/"
       />
 
