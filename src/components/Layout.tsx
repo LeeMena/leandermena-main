@@ -3,6 +3,7 @@ import Navigation from './Navigation'
 import Footer from './Footer'
 import AnnouncementBar from './AnnouncementBar'
 import CommandMenu from './CommandMenu'
+import ThemeToggle from './ThemeToggle'
 
 export default function Layout() {
   return (
@@ -10,6 +11,7 @@ export default function Layout() {
       <AnnouncementBar />
       <Navigation />
       <CommandMenu />
+      <ThemeToggle />
       <main style={{ flex: 1 }}>
         <Outlet />
       </main>
