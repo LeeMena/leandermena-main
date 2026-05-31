@@ -2,22 +2,18 @@ import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
-const areas = [
+const competencies = [
+  {
+    label: 'Operations & Strategy',
+    items: ['Multi-Unit Management', 'Pre-Opening & Launch Operations', 'P&L Optimization', 'Labor Modeling & Cost Control', 'Vendor Relations & Negotiations', 'Regulatory Compliance'],
+  },
+  {
+    label: 'Revenue & Growth',
+    items: ['Menu Engineering & Development', 'Strategic Pricing', 'Delivery & Off-Premise Programs', 'Revenue Forecasting', 'Margin Optimization', 'Sales Strategy'],
+  },
   {
     label: 'Leadership & Culture',
-    desc: 'Building accountable, service-driven teams with clear expectations and consistent follow-through.',
-  },
-  {
-    label: 'Operations Systems',
-    desc: 'Installing service flows, sidework, and opening/closing procedures that keep shifts controlled.',
-  },
-  {
-    label: 'Financial Discipline',
-    desc: 'Managing labor, COGS, and controllables with a focus on both guest satisfaction and profitability.',
-  },
-  {
-    label: 'Guest Experience',
-    desc: 'Using feedback, reviews, and floor presence to continuously improve service and retention.',
+    items: ['High-Volume Team Building', 'Staff Training & Development', 'Guest Experience Design', 'Brand Consistency', 'SOP & Playbook Development', 'Cross-Functional Collaboration'],
   },
 ]
 
@@ -26,11 +22,12 @@ export default function About() {
     <>
       <SEO
         title="About"
-        description="Leander Mena | 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
+        description="Leander Mena | 17+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
         path="/about"
         schemaType="about"
       />
 
+      {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
@@ -53,8 +50,7 @@ export default function About() {
                 About Leander Mena
               </h1>
               <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-                18+ years opening, stabilizing, and leading hospitality operations across Miami.
-                F&B leadership without the full-time overhead.
+                17+ years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
@@ -64,24 +60,17 @@ export default function About() {
 
             <ScrollReveal delay={200}>
               <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
-                <span className="kicker">Professional Profile</span>
-                <h3 className="text-lg font-bold text-white mb-3">
-                  18+ Years in Miami Hospitality
-                </h3>
-                <p className="text-sm text-[#cccccc] mb-6">
-                  Restaurants, hotels, banquets, and catering throughout Miami. Pre-openings,
-                  day-to-day operations, and restructuring under pressure.
-                </p>
-                <div className="grid grid-cols-2 gap-4 border-t border-[#3a3a3a] pt-6">
+                <span className="kicker">By the Numbers</span>
+                <div className="grid grid-cols-2 gap-6 mt-4">
                   {[
-                    { num: '18+', label: 'Years Experience' },
-                    { num: '$12M+', label: 'Revenue Optimized' },
-                    { num: '500+', label: 'Team Members Trained' },
-                    { num: '40+', label: 'Properties Operated' },
+                    { num: '17+', label: 'Years in Miami Hospitality' },
+                    { num: '$9.1M', label: 'Annual Revenue Managed' },
+                    { num: '220', label: 'Seats + 78 FTEs Led' },
+                    { num: '40+', label: 'Team Members Hired & Trained at Single Opening' },
                   ].map((s) => (
                     <div key={s.label} className="flex flex-col gap-1">
                       <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
-                      <span className="text-xs text-[#cccccc]">{s.label}</span>
+                      <span className="text-xs text-[#cccccc] leading-snug">{s.label}</span>
                     </div>
                   ))}
                 </div>
@@ -91,6 +80,7 @@ export default function About() {
         </div>
       </section>
 
+      {/* Bio + Photo */}
       <section className="section">
         <div className="container">
           <div className="grid lg:grid-cols-[220px_1fr] gap-10 items-start mb-12">
@@ -110,35 +100,37 @@ export default function About() {
                 Professional Profile
               </span>
               <h2 className="font-display text-2xl font-bold text-[#e8e8e8] mb-4">
-                18+ Years in Miami Hospitality
+                Where Vision Meets Operational Reality
               </h2>
-              <div className="flex flex-col gap-4 text-[#888888] max-w-[68ch]">
+              <div className="flex flex-col gap-4 text-[#888888] max-w-[68ch]" style={{ fontSize: '0.92rem', lineHeight: 1.75 }}>
                 <p>
-                  With more than 18 years in hospitality and food-and-beverage operations, I have
-                  led teams across restaurants, hotels, banquets, and catering throughout Miami. My
-                  experience spans pre-openings, day-to-day operations, and restructuring under pressure.
+                  Over 17 years in hospitality, I\'ve learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap — from Michelin-starred pre-openings in Midtown Miami to multi-unit P&L management at scale, and everywhere in between.
                 </p>
                 <p>
-                  I am comfortable both on the floor and behind the scenes -coaching service
-                  standards, managing schedules, working through P&amp;L details, and partnering with
-                  ownership to align financial targets with guest experience goals.
+                  I\'ve built teams, negotiated vendor contracts, engineered menus, modeled labor, and stood on the floor through openings, pivots, and recoveries. When the pandemic hit in 2020, my team and I built a fully operational delivery program in 10 days. That\'s the pace I\'m used to.
                 </p>
                 <p>
-                  My approach is direct and practical. I spend time understanding what is actually
-                  happening before recommending changes, and I stay involved long enough to make sure
-                  new systems take hold.
+                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real — not just on paper. I work in English, Spanish, and conversational French, and I\'m at home in both independent concepts and luxury hotel environments.
                 </p>
               </div>
             </ScrollReveal>
           </div>
 
+          {/* Core Competencies */}
           <ScrollReveal>
-            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-6">Areas of Focus</h3>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {areas.map((a) => (
-                <div key={a.label} className="card">
-                  <h4 className="text-sm font-bold text-[#e8e8e8] mb-2">{a.label}</h4>
-                  <p className="text-sm text-[#888888]">{a.desc}</p>
+            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-6">Core Competencies</h3>
+            <div className="grid sm:grid-cols-3 gap-6">
+              {competencies.map((c) => (
+                <div key={c.label} className="card" style={{ padding: 'var(--space-6)' }}>
+                  <h4 className="text-sm font-bold text-[#d4b896] mb-3">{c.label}</h4>
+                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+                    {c.items.map((item) => (
+                      <li key={item} style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                        <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-primary)', flexShrink: 0, display: 'inline-block' }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -146,7 +138,7 @@ export default function About() {
 
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
-            <Link to="/case-studies" className="btn btn-secondary">View Case Studies</Link>
+            <Link to="/experience" className="btn btn-secondary">Full Experience</Link>
           </div>
         </div>
       </section>
