@@ -64,7 +64,7 @@ export default function Experience() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
             src="/images/experience.jpg"
@@ -78,14 +78,14 @@ export default function Experience() {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
-        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="container relative z-10" style={{ paddingTop: 'clamp(3rem, 10vw, 7rem)', paddingBottom: 'clamp(3rem, 10vw, 7rem)' }}>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <ScrollReveal>
               <span className="kicker">Career History</span>
-              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
+              <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
                 18 Years of Hospitality Leadership
               </h1>
-              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+              <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
                 Opening, scaling, and leading operations across Miami's most demanding restaurants, hotels, and catering venues.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -94,7 +94,7 @@ export default function Experience() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={200}>
+            <ScrollReveal delay={200} className="hidden lg:block">
               <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
                 <span className="kicker">Career Highlights</span>
                 <div className="grid grid-cols-2 gap-6 mt-4">

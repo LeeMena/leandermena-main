@@ -13,7 +13,7 @@ export default function CaseStudies() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
             src="/images/case-studies.jpg"
@@ -27,14 +27,14 @@ export default function CaseStudies() {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
-        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+        <div className="container relative z-10" style={{ paddingTop: 'clamp(3rem, 10vw, 7rem)', paddingBottom: 'clamp(3rem, 10vw, 7rem)' }}>
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <ScrollReveal>
               <span className="kicker">Documented Results</span>
-              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
+              <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
                 Case Studies
               </h1>
-              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+              <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
                 A selection of engagements with documented outcomes — pre-openings, turnarounds, and operational transformations across Miami hospitality.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -43,7 +43,7 @@ export default function CaseStudies() {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={200}>
+            <ScrollReveal delay={200} className="hidden lg:block">
               <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
                 <span className="kicker">Results at a Glance</span>
                 <div className="grid grid-cols-2 gap-6 mt-4">
@@ -77,8 +77,6 @@ export default function CaseStudies() {
                     gap: 'var(--space-8)',
                     alignItems: 'start',
                   }}>
-
-                    {/* Left: Meta + Challenge + Approach */}
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-4)', flexWrap: 'wrap' }}>
                         <span style={{
@@ -86,58 +84,27 @@ export default function CaseStudies() {
                           textTransform: 'uppercase',
                           background: 'var(--color-primary)', color: '#fff',
                           padding: '0.2rem 0.65rem', borderRadius: 'var(--radius-full)',
-                        }}>
-                          {cs.industry}
-                        </span>
+                        }}>{cs.industry}</span>
                         <span className="kicker" style={{ margin: 0 }}>{cs.duration}</span>
                       </div>
-
-                      <h2 style={{
-                        fontFamily: 'var(--font-display)',
-                        fontSize: 'clamp(1.15rem, 2.5vw, 1.55rem)',
-                        fontWeight: 700,
-                        marginBottom: 'var(--space-2)',
-                        lineHeight: 1.2,
-                        color: 'var(--color-text)',
-                      }}>
-                        {cs.title}
-                      </h2>
-
-                      <p style={{ fontSize: '0.82rem', color: 'var(--color-primary)', fontWeight: 600, marginBottom: 'var(--space-5)' }}>
-                        {cs.client}
-                      </p>
-
+                      <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.15rem, 2.5vw, 1.55rem)', fontWeight: 700, marginBottom: 'var(--space-2)', lineHeight: 1.2, color: 'var(--color-text)' }}>{cs.title}</h2>
+                      <p style={{ fontSize: '0.82rem', color: 'var(--color-primary)', fontWeight: 600, marginBottom: 'var(--space-5)' }}>{cs.client}</p>
                       <div style={{ marginBottom: 'var(--space-4)' }}>
                         <h3 style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: 'var(--space-2)' }}>The Challenge</h3>
                         <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.68 }}>{cs.challenge}</p>
                       </div>
-
                       <div style={{ marginBottom: 'var(--space-5)' }}>
                         <h3 style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: 'var(--space-2)' }}>The Approach</h3>
                         <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.68 }}>{cs.approach}</p>
                       </div>
-
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
                         {cs.services.map((s) => (
-                          <span key={s} style={{
-                            fontSize: '0.68rem', letterSpacing: '0.06em',
-                            border: '1px solid var(--color-border)',
-                            borderRadius: 'var(--radius-full)',
-                            padding: '0.2rem 0.65rem',
-                            color: 'var(--color-text-muted)',
-                          }}>{s}</span>
+                          <span key={s} style={{ fontSize: '0.68rem', letterSpacing: '0.06em', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-full)', padding: '0.2rem 0.65rem', color: 'var(--color-text-muted)' }}>{s}</span>
                         ))}
                       </div>
                     </div>
-
-                    {/* Right: Results + Testimonial */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-                      <div style={{
-                        background: 'var(--color-bg)',
-                        border: '1px solid var(--color-border)',
-                        borderRadius: 'var(--radius-lg)',
-                        padding: 'var(--space-6)',
-                      }}>
+                      <div style={{ background: 'var(--color-bg)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)', padding: 'var(--space-6)' }}>
                         <h3 style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-4)' }}>Results</h3>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
                           {cs.results.map((r) => (
@@ -148,25 +115,13 @@ export default function CaseStudies() {
                           ))}
                         </div>
                       </div>
-
                       {cs.testimonial && (
-                        <blockquote style={{
-                          background: 'var(--color-surface)',
-                          border: '1px solid var(--color-border)',
-                          borderLeft: '3px solid var(--color-primary)',
-                          borderRadius: 'var(--radius-md)',
-                          padding: 'var(--space-5)',
-                          margin: 0,
-                        }}>
+                        <blockquote style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderLeft: '3px solid var(--color-primary)', borderRadius: 'var(--radius-md)', padding: 'var(--space-5)', margin: 0 }}>
                           <p style={{ fontSize: '0.88rem', fontStyle: 'italic', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>"{cs.testimonial}"</p>
                         </blockquote>
                       )}
-
-                      <Link to="/contact" className="btn btn-secondary" style={{ textAlign: 'center', justifyContent: 'center' }}>
-                        Discuss Your Project
-                      </Link>
+                      <Link to="/contact" className="btn btn-secondary" style={{ textAlign: 'center', justifyContent: 'center' }}>Discuss Your Project</Link>
                     </div>
-
                   </div>
                 </article>
               </ScrollReveal>
@@ -178,12 +133,7 @@ export default function CaseStudies() {
       <section className="section" style={{ borderBottom: 'none' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
           <span className="kicker">Ready to Work Together?</span>
-          <h2 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-            fontWeight: 700,
-            marginBottom: 'var(--space-4)',
-          }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 700, marginBottom: 'var(--space-4)' }}>
             Your operation could be the next case study.
           </h2>
           <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)', maxWidth: '52ch', marginInline: 'auto' }}>
