@@ -5,25 +5,25 @@ import { Link } from 'react-router-dom'
 const roles = [
   {
     meta: 'Opening General Manager',
-    title: 'Maska Indian Kitchen + Bar — Miami',
+    title: 'Maska Indian Kitchen + Bar - Miami',
     body: 'Built the opening team, vendor relationships, service standards, and operational systems for a Miami concept led by a Michelin-starred chef.',
     skills: ['Pre-Opening', 'Team Building', 'SOP Development', 'Vendor Management'],
   },
   {
-    meta: 'Director of Banquets — Pre-Opening',
-    title: 'SLS Brickell — Miami',
+    meta: 'Director of Banquets - Pre-Opening',
+    title: 'SBE | SLS Brickell - Miami',
     body: 'Created staffing models, event workflows, and banquet execution systems for a luxury urban hotel before first guest arrival.',
     skills: ['Banquet Operations', 'Staffing Models', 'Pre-Opening', 'Luxury Hotels'],
   },
   {
     meta: 'General Manager',
-    title: 'Marabu Restaurant — Miami',
+    title: 'Marabu Cuban Coal Fire - Miami',
     body: 'Led labor optimization, service consistency improvements, and guest-experience recovery for a high-volume Miami restaurant.',
     skills: ['Labor Cost Control', 'Service Recovery', 'P&L Management', 'Team Training'],
   },
   {
-    meta: 'General Manager',
-    title: 'Viceroy Miami — Miami Beach',
+    meta: 'Banquet Manager',
+    title: 'Viceroy Miami - Miami, Fl',
     body: 'Managed F&B operations across restaurant, pool, and banquet outlets at an iconic Miami Beach luxury property.',
     skills: ['Hotel F&B', 'Multi-Outlet', 'Luxury Hospitality', 'Guest Experience'],
   },
@@ -41,7 +41,7 @@ export default function Profile() {
     <>
       <SEO
         title="Profile"
-        description="Full professional profile for Leander Mena — 18+ years in Miami F&B and hospitality operations."
+        description="Full professional profile for Leander Mena - 18+ years in Miami F&B and hospitality operations."
         path="/profile"
       />
 
@@ -78,7 +78,7 @@ export default function Profile() {
                   My experience spans pre-openings, day-to-day operations, and restructuring under pressure.
                 </p>
                 <p>
-                  I am comfortable both on the floor and behind the scenes — coaching service
+                  I am comfortable both on the floor and behind the scenes - coaching service
                   standards, managing schedules, working through P&L details, and partnering with
                   ownership to align financial targets with guest experience goals.
                 </p>
