@@ -80,65 +80,53 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact form + info */}
+      {/* Contact form only — no duplicate info box */}
       <section className="section">
-        <div className="container">
-          <div className="grid lg:grid-cols-[1fr_380px] gap-10 items-start">
-            <ScrollReveal>
-              {status === 'sent' ? (
-                <div className="card" style={{ padding: 'var(--space-8)', textAlign: 'center' }}>
-                  <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✓</p>
-                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received</h2>
-                  <p className="text-[#888888]">I&rsquo;ll be in touch shortly.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="card flex flex-col gap-5" style={{ padding: 'var(--space-6)' }}>
-                  <h2 className="font-display text-xl font-bold text-[#e8e8e8]">Send a Message</h2>
-                  <div className="flex flex-col gap-1">
-                    <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Name</label>
-                    <input
-                      type="text" required
-                      value={form.name}
-                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                      style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Email</label>
-                    <input
-                      type="email" required
-                      value={form.email}
-                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                      style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1">
-                    <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Message</label>
-                    <textarea
-                      required rows={5}
-                      value={form.message}
-                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                      style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none', resize: 'vertical' }}
-                    />
-                  </div>
-                  <button type="submit" className="btn btn-primary" disabled={status === 'sending'} style={{ fontWeight: 800 }}>
-                    {status === 'sending' ? 'Sending…' : 'Send Message'}
-                  </button>
-                  {status === 'error' && <p style={{ color: 'var(--color-error, #e05)', fontSize: '0.85rem' }}>Something went wrong — try emailing me directly.</p>}
-                </form>
-              )}
-            </ScrollReveal>
-
-            <ScrollReveal delay={150}>
-              <div className="flex flex-col gap-4">
-                <div className="card" style={{ padding: 'var(--space-5)' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>Direct Contact</span>
-                  <a href="mailto:leander@leandermena.com" style={{ fontSize: '0.95rem', color: 'var(--color-text)', display: 'block', marginBottom: '0.3rem' }}>leander@leandermena.com</a>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Miami, Florida</span>
-                </div>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
+          <ScrollReveal>
+            {status === 'sent' ? (
+              <div className="card" style={{ padding: 'var(--space-8)', textAlign: 'center' }}>
+                <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✓</p>
+                <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received</h2>
+                <p className="text-[#888888]">I&rsquo;ll be in touch shortly.</p>
               </div>
-            </ScrollReveal>
-          </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="card flex flex-col gap-5" style={{ padding: 'var(--space-6)' }}>
+                <h2 className="font-display text-xl font-bold text-[#e8e8e8]">Send a Message</h2>
+                <div className="flex flex-col gap-1">
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Name</label>
+                  <input
+                    type="text" required
+                    value={form.name}
+                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                    style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Email</label>
+                  <input
+                    type="email" required
+                    value={form.email}
+                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                    style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Message</label>
+                  <textarea
+                    required rows={5}
+                    value={form.message}
+                    onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                    style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none', resize: 'vertical' }}
+                  />
+                </div>
+                <button type="submit" className="btn btn-primary" disabled={status === 'sending'} style={{ fontWeight: 800 }}>
+                  {status === 'sending' ? 'Sending…' : 'Send Message'}
+                </button>
+                {status === 'error' && <p style={{ color: 'var(--color-error, #e05)', fontSize: '0.85rem' }}>Something went wrong — try emailing me directly.</p>}
+              </form>
+            )}
+          </ScrollReveal>
         </div>
       </section>
     </>

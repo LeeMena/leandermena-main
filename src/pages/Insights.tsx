@@ -42,7 +42,7 @@ export default function Insights() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/playbook.jpg"
+            src="/images/insights.jpg"
             alt=""
             width="1400"
             height="900"
@@ -114,7 +114,7 @@ export default function Insights() {
         <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
           <span className="kicker">Want This Applied to Your Operation?</span>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 700, marginBottom: 'var(--space-4)' }}>Reading is one thing. Execution is another.</h2>
-          <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)', maxWidth: '52ch', marginInline: 'auto' }}>If any of this resonates, let’s talk about what your operation actually needs.</p>
+          <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)', maxWidth: '52ch', marginInline: 'auto' }}>If any of this resonates, let's talk about what your operation actually needs.</p>
           <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
         </div>
       </section>
