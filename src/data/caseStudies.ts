@@ -22,7 +22,7 @@ export const caseStudies: CaseStudy[] = [
     client: 'Maska Indian Kitchen + Bar',
     industry: 'Fine Dining / Michelin Concept',
     title: 'Building a Michelin-Starred Restaurant from Ground Zero',
-    challenge: 'Open an upscale Indian restaurant concept led by a Michelin-starred chef in Miami\'s competitive dining market. The project required building an entirely new team, establishing vendor relationships, creating service standards, and executing a flawless opening — all within a compressed timeline.',
+    challenge: 'Open an upscale Indian restaurant concept led by a Michelin-starred chef in Miami\'s competitive dining market. The project required building an entirely new team, establishing vendor relationships, creating service standards, and executing a flawless opening - all within a compressed timeline.',
     approach: 'Implemented a comprehensive 120-day pre-opening system: recruited and trained 35+ team members across FOH and BOH, established 22 vendor partnerships, developed 50+ SOPs, and executed a phased soft opening leading to the grand opening. Created custom training modules for Indian cuisine service standards.',
     results: [
       { metric: '35+', label: 'Team members hired & trained' },
@@ -32,7 +32,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     services: ['Pre-Opening Consulting', 'Team Training', 'SOP Development'],
     duration: '4 months',
-    testimonial: 'Leander built our entire operational foundation. From a construction site to a fully functioning fine dining restaurant — his system left nothing to chance.',
+    testimonial: 'Leander built our entire operational foundation. From a construction site to a fully functioning fine dining restaurant - his system left nothing to chance.',
     image: '/case-studies/maska.jpg',
     slug: 'maska-indian-kitchen'
   },
