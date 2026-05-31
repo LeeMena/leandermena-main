@@ -26,7 +26,7 @@ export default function About() {
     <>
       <SEO
         title="About"
-        description="Leander Mena -18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
+        description="Leander Mena | 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
         path="/about"
         schemaType="about"
       />
