@@ -16,11 +16,11 @@ interface Props {
   onBookCall: () => void
 }
 
-// Brand mark — uses the actual favicon.svg from /public
+// Brand mark — uses favicon-96x96.png from /public
 function BrandMark() {
   return (
     <img
-      src="/favicon.svg"
+      src="/favicon-96x96.png"
       alt="Leander Mena"
       width={42}
       height={42}
