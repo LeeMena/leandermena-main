@@ -21,7 +21,7 @@ export default function BlogLaborCost() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/Labor (1).jpg"
+            src="/images/blog-labor-cost.jpg"
             alt=""
             width="1400"
             height="600"

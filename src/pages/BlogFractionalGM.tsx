@@ -21,7 +21,7 @@ export default function BlogFractionalGM() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/Fnb.mamager (1).jpg"
+            src="/images/blog-fractional-gm.jpg"
             alt=""
             width="1400"
             height="600"
@@ -35,7 +35,7 @@ export default function BlogFractionalGM() {
         <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
           <span className="kicker">Fractional Operations</span>
           <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[26ch] mb-4">
-            What a Fractional F&B Director Actually Does
+            What a Fractional F&amp;B Director Actually Does
           </h1>
           <p className="text-[#d8d8d8] text-lg max-w-[52ch] leading-relaxed">March 2024</p>
         </div>
@@ -46,7 +46,7 @@ export default function BlogFractionalGM() {
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                The title sounds like a workaround. It isn’t. A fractional F&B director is a
+                The title sounds like a workaround. It isn't. A fractional F&amp;B director is a
                 full-capability operator who works with your business on a defined schedule -
                 typically two to four days per week - instead of full-time. The work is the same.
                 The overhead is not.
@@ -67,7 +67,7 @@ export default function BlogFractionalGM() {
               <div className="card">
                 <p>
                   On a typical engagement I am on-site during peak service periods, in the office for
-                  weekly P&L review with ownership, and running manager coaching sessions built around
+                  weekly P&amp;L review with ownership, and running manager coaching sessions built around
                   what I am actually seeing. I am not writing reports about problems. I am fixing them
                   in real time.
                 </p>
@@ -87,7 +87,7 @@ export default function BlogFractionalGM() {
             <ScrollReveal delay={350}>
               <div className="card">
                 <p>
-                  A full-time F&B director in Miami costs $90,000 to $130,000 per year in salary alone
+                  A full-time F&amp;B director in Miami costs $90,000 to $130,000 per year in salary alone
                   before benefits, payroll taxes, and the six to twelve months it takes to find and
                   onboard the right person. A fractional engagement delivers the same operational
                   capability at a fraction of that cost - and it starts in days, not months.
@@ -97,7 +97,7 @@ export default function BlogFractionalGM() {
             <ScrollReveal delay={400}>
               <p>
                 The model works best for independent operators, ownership groups managing two to five
-                units, and hotel F&B departments that need senior leadership without the full-time
+                units, and hotel F&amp;B departments that need senior leadership without the full-time
                 budget to support it.
               </p>
             </ScrollReveal>
@@ -105,8 +105,8 @@ export default function BlogFractionalGM() {
             <ScrollReveal delay={450}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Talk About Your Operation</Link>
-                <Link to="/services" className="btn btn-ghost">View Services →</Link>
-                <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
+                <Link to="/services" className="btn btn-ghost">View Services &rarr;</Link>
+                <Link to="/insights" className="btn btn-ghost">&larr; Back to Insights</Link>
               </div>
             </ScrollReveal>
           </div>

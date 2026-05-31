@@ -21,7 +21,7 @@ export default function BlogPreOpening() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/Playbook (1).jpg"
+            src="/images/blog-pre-opening.jpg"
             alt=""
             width="1400"
             height="600"
@@ -47,7 +47,7 @@ export default function BlogPreOpening() {
             <ScrollReveal>
               <p>
                 Most openings fail in the last thirty days before the doors open. Not because the
-                concept is wrong or the team is bad — but because the operational foundation was
+                concept is wrong or the team is bad - but because the operational foundation was
                 never built. Menus get finalized too late. Training happens in a rush. SOPs get
                 skipped entirely. And on opening night, everything the guest experiences reflects
                 that chaos.
@@ -78,7 +78,7 @@ export default function BlogPreOpening() {
                   A structured pre-opening has a staffing plan built before the first hire is made.
                   It has a training sequence that moves from classroom to floor in stages, with
                   assessments at each step. It has friends-and-family events that are treated like
-                  real service — not a party. It has post-opening audits at 30, 60, and 90 days
+                  real service - not a party. It has post-opening audits at 30, 60, and 90 days
                   that measure performance against targets and adjust systems before problems compound.
                 </p>
               </div>
@@ -86,15 +86,15 @@ export default function BlogPreOpening() {
             <ScrollReveal delay={300}>
               <p>
                 The goal is not a perfect opening night. The goal is a team that knows what to do
-                when things go wrong — because they will.
+                when things go wrong - because they will.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Start a Pre-Opening Conversation</Link>
-                <Link to="/pre-opening" className="btn btn-ghost">Pre-Opening Services →</Link>
-                <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
+                <Link to="/pre-opening" className="btn btn-ghost">Pre-Opening Services &rarr;</Link>
+                <Link to="/insights" className="btn btn-ghost">&larr; Back to Insights</Link>
               </div>
             </ScrollReveal>
           </div>
