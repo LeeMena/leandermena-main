@@ -1,38 +1,17 @@
-import { useState } from 'react'
 import SEO from '@/components/SEO'
 import ScrollReveal from '@/components/ScrollReveal'
-
-const faqs = [
-  {
-    q: 'What does a typical engagement look like?',
-    a: 'Most fractional engagements run 2–4 days per week over 3–6 months. Pre-opening projects are scoped to the timeline and complexity of the concept. Every engagement starts with a 30-minute discovery call.',
-  },
-  {
-    q: 'Do you work outside of Miami?',
-    a: 'My primary market is South Florida, but I consider projects in other markets depending on scope, timeline, and travel logistics.',
-  },
-  {
-    q: 'What size operations do you work with?',
-    a: 'Independent restaurants, multi-unit groups (2–5 locations), and hotel F&B departments. I right-size the engagement to match the operation.',
-  },
-  {
-    q: 'How quickly can you start?',
-    a: 'For urgent stabilization needs, I can typically begin within one week of scoping. Pre-opening projects are scheduled based on your construction and opening timeline.',
-  },
-]
+import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', type: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
 
-  const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm({ ...form, [e.target.name]: e.target.value })
-
-  const submit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setStatus('sending')
     try {
-      const res = await fetch('https://formspree.io/f/xpwzgvod', {
+      const res = await fetch('https://formspree.io/f/xpwzgkqp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
@@ -47,122 +26,101 @@ export default function Contact() {
     <>
       <SEO
         title="Contact"
-        description="Start a conversation about fractional F&B leadership, pre-opening support, or operations recovery in Miami."
+        description="Get in touch with Leander Mena — Miami F&B operations consultant."
         path="/contact"
-        schemaType="contact"
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
-        <div className="absolute inset-0 z-0">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/contact (1) (1).jpg"
+            src="/images/contact.jpg"
             alt=""
             width="1400"
-            height="600"
-            className="w-full h-full object-cover opacity-40"
+            height="900"
+            className="w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.15) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 40%)' }} />
         </div>
-        <div className="container relative z-10 py-16">
-          <span className="kicker">Get in Touch</span>
-          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            Start a Conversation
-          </h1>
-          <p className="text-[#888888] text-lg max-w-[54ch]">
-            Whether you’re 90 days from opening or trying to fix a difficult quarter —
-            the first step is a simple conversation.
-          </p>
+        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
+          <ScrollReveal>
+            <span className="kicker">Get in Touch</span>
+            <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-6">
+              Let&rsquo;s Start a Conversation
+            </h1>
+            <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+              Whether you&rsquo;re opening a new concept, fixing an existing one, or just exploring — reach out directly.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/book" className="btn btn-primary">Book a Call</Link>
+              <a href="mailto:leander@leandermena.com" className="btn btn-secondary">Send an Email</a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
+      {/* Contact form + info */}
       <section className="section">
         <div className="container">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-10 items-start">
             <ScrollReveal>
               {status === 'sent' ? (
-                <div className="card text-center py-12">
-                  <p className="text-2xl mb-2">✓</p>
-                  <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received.</h3>
-                  <p className="text-[#888888]">I’ll be in touch within one business day.</p>
+                <div className="card" style={{ padding: 'var(--space-8)', textAlign: 'center' }}>
+                  <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✓</p>
+                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received</h2>
+                  <p className="text-[#888888]">I&rsquo;ll be in touch shortly.</p>
                 </div>
               ) : (
-                <form onSubmit={submit} className="flex flex-col gap-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div className="field">
-                      <label htmlFor="name">Name</label>
-                      <input id="name" name="name" required placeholder="Your name" value={form.name} onChange={handle} />
-                    </div>
-                    <div className="field">
-                      <label htmlFor="email">Email</label>
-                      <input id="email" name="email" type="email" required placeholder="your@email.com" value={form.email} onChange={handle} />
-                    </div>
+                <form onSubmit={handleSubmit} className="card flex flex-col gap-5" style={{ padding: 'var(--space-6)' }}>
+                  <h2 className="font-display text-xl font-bold text-[#e8e8e8]">Send a Message</h2>
+                  <div className="flex flex-col gap-1">
+                    <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Name</label>
+                    <input
+                      type="text" required
+                      value={form.name}
+                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                      style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
+                    />
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div className="field">
-                      <label htmlFor="phone">Phone (optional)</label>
-                      <input id="phone" name="phone" placeholder="         " value={form.phone} onChange={handle} />
-                    </div>
-                    <div className="field">
-                      <label htmlFor="type">Inquiry type</label>
-                      <select id="type" name="type" required value={form.type} onChange={handle} aria-label="Select inquiry type">
-                        <option value="">Select one…</option>
-                        <option>Fractional F&amp;B Director</option>
-                        <option>Pre-Opening Support</option>
-                        <option>Operations Recovery</option>
-                        <option>Banquet &amp; Catering</option>
-                        <option>Other</option>
-                      </select>
-                    </div>
+                  <div className="flex flex-col gap-1">
+                    <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Email</label>
+                    <input
+                      type="email" required
+                      value={form.email}
+                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                      style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
+                    />
                   </div>
-                  <div className="field">
-                    <label htmlFor="message">Tell me about your project</label>
-                    <textarea id="message" name="message" required rows={5} placeholder="Concept, location, timeline, main challenge…" value={form.message} onChange={handle} />
+                  <div className="flex flex-col gap-1">
+                    <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Message</label>
+                    <textarea
+                      required rows={5}
+                      value={form.message}
+                      onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                      style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none', resize: 'vertical' }}
+                    />
                   </div>
-                  <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
+                  <button type="submit" className="btn btn-primary" disabled={status === 'sending'} style={{ fontWeight: 800 }}>
                     {status === 'sending' ? 'Sending…' : 'Send Message'}
                   </button>
-                  {status === 'error' && (
-                    <p role="alert" className="text-sm text-red-400">Something went wrong. Please try again or email directly at consulting@leandermena.com</p>
-                  )}
+                  {status === 'error' && <p style={{ color: 'var(--color-error, #e05)', fontSize: '0.85rem' }}>Something went wrong — try emailing me directly.</p>}
                 </form>
               )}
             </ScrollReveal>
 
-            <ScrollReveal delay={200}>
-              <div className="flex flex-col gap-6">
-                <div className="card">
-                  <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-4">Prefer to book directly?</h3>
-                  <p className="text-sm text-[#888888] mb-4">
-                    Schedule a 30-minute discovery call and we can talk through your project in real time.
-                  </p>
-                  <a
-                    href="https://calendly.com/leandermena/30min"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary w-full text-center"
-                  >
-                    Book a Discovery Call
-                  </a>
+            <ScrollReveal delay={150}>
+              <div className="flex flex-col gap-4">
+                <div className="card" style={{ padding: 'var(--space-5)' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>Direct Contact</span>
+                  <a href="mailto:leander@leandermena.com" style={{ fontSize: '0.95rem', color: 'var(--color-text)', display: 'block', marginBottom: '0.3rem' }}>leander@leandermena.com</a>
+                  <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Miami, Florida</span>
                 </div>
-                <div className="card">
-                  <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-3">Response time</h3>
-                  <p className="text-sm text-[#888888]">
-                    I respond to all inquiries within one business day. For urgent operational needs,
-                    note that in your message and I will prioritize accordingly.
-                  </p>
-                </div>
-                <div className="card">
-                  <h3 className="font-display text-lg font-bold text-[#e8e8e8] mb-4">Common Questions</h3>
-                  <div className="flex flex-col gap-4">
-                    {faqs.map((f) => (
-                      <div key={f.q}>
-                        <p className="text-sm font-bold text-[#e8e8e8] mb-1">{f.q}</p>
-                        <p className="text-sm text-[#888888]">{f.a}</p>
-                      </div>
-                    ))}
-                  </div>
+                <div className="card" style={{ padding: 'var(--space-5)' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>Book a Call</span>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginBottom: '0.75rem' }}>Prefer to talk directly? Schedule a free 30-minute discovery call.</p>
+                  <Link to="/book" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontWeight: 800 }}>Book on Calendly</Link>
                 </div>
               </div>
             </ScrollReveal>

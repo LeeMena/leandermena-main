@@ -1,31 +1,27 @@
-import ScrollReveal from '@/components/ScrollReveal'
 import SEO from '@/components/SEO'
+import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
-const items = [
+const phases = [
   {
-    label: 'Staffing & Org Design',
-    desc: 'Aligning headcount, positions, and schedules with the concept, forecast, and budget.',
+    number: '01',
+    title: 'Concept & Financial Foundation',
+    items: ['Concept statement and guest persona', 'P&L structure and opening budget', 'Labor and food cost targets', 'Entity, EIN, licenses, zoning, insurance', 'Org chart and hiring timeline'],
   },
   {
-    label: 'Training Programs',
-    desc: 'Sequencing classroom, menu, and floor training so information sticks before opening week.',
+    number: '02',
+    title: 'Buildout & Procurement',
+    items: ['Vendor matrix and negotiation', 'Equipment and smallwares', 'Menu engineering and costing', 'POS, reservations, CRM setup', 'Digital presence and delivery setup'],
   },
   {
-    label: 'Service Rehearsals',
-    desc: 'Friends-and-family and mock service events that expose real issues before paying guests arrive.',
+    number: '03',
+    title: 'People & Process',
+    items: ['Hiring sprint and structured interviews', 'SOP development', 'Two-week training curriculum', 'Soft opening planning', 'Guest feedback loop'],
   },
   {
-    label: 'SOPs & Standards',
-    desc: 'Checklists, sidework guides, and opening/closing procedures teams can actually follow.',
-  },
-  {
-    label: 'Vendor Coordination',
-    desc: 'Working with your F&B vendors to ensure product is right, priced correctly, and delivered on time.',
-  },
-  {
-    label: 'Post-Opening Audits',
-    desc: '30, 60, and 90-day check-ins to measure performance against targets and adjust systems as needed.',
+    number: '04',
+    title: 'Final Sprint & Launch',
+    items: ['Inspection and permit finals', 'Staff readiness and mock service', 'Opening week execution cadence', 'Weekly scorecard', 'Red-flag trigger system'],
   },
 ]
 
@@ -33,79 +29,67 @@ export default function PreOpening() {
   return (
     <>
       <SEO
-        title="Pre-Opening F&B Operations"
-        description="Pre-opening restaurant and hotel F&B consulting in Miami. Staffing, training, SOPs, vendor coordination, and post-opening audits."
+        title="Pre-Opening"
+        description="Pre-opening restaurant consulting: 90-day framework from concept through launch. Leander Mena, Miami."
         path="/pre-opening"
-        schemaType="pre-opening"
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
-        <div className="absolute inset-0 z-0">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
+        <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
             src="/images/pre-opening.jpg"
             alt=""
             width="1400"
-            height="600"
-            className="w-full h-full object-cover opacity-40"
+            height="900"
+            className="w-full h-full object-cover"
             loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.15) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 40%)' }} />
         </div>
-        <div className="container relative z-10 py-16">
-          <span className="kicker">Pre-Opening Restaurant & Hotel F&B -Miami</span>
-          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            Pre-Opening F&B Operations
-          </h1>
-          <p className="text-[#888888] text-lg max-w-[54ch]">
-            Openings are where expectations are highest and tolerance for mistakes is lowest.
-            My role is to help you move from construction and design into a calm, organized opening
-            where the team is genuinely ready to serve guests on day one.
-          </p>
+        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
+          <ScrollReveal>
+            <span className="kicker">Pre-Opening Framework</span>
+            <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-6">
+              From Concept to Open Door
+            </h1>
+            <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+              A battle-tested 90-day pre-opening system covering every phase from financial foundation through grand opening execution.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
+              <Link to="/blueprint" className="btn btn-secondary">Get the Blueprint</Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
+      {/* Phases */}
       <section className="section">
         <div className="container">
-          <ScrollReveal>
-            <h2 className="font-display text-2xl font-bold text-[#e8e8e8] mb-8">What I Cover</h2>
-          </ScrollReveal>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {items.map((item, i) => (
-              <ScrollReveal key={item.label} delay={i * 100}>
-                <div className="card h-full">
-                  <h3 className="text-sm font-bold text-[#e8e8e8] mb-2">{item.label}</h3>
-                  <p className="text-sm text-[#888888]">{item.desc}</p>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {phases.map((p, i) => (
+              <ScrollReveal key={p.number} delay={i * 100}>
+                <div className="card h-full" style={{ padding: 'var(--space-6)' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '0.5rem' }}>Phase {p.number}</span>
+                  <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-4">{p.title}</h2>
+                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    {p.items.map(item => (
+                      <li key={item} style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                        <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-primary)', flexShrink: 0, marginTop: '0.55rem', display: 'inline-block' }} />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </ScrollReveal>
             ))}
           </div>
-
-          <ScrollReveal>
-            <div className="bg-[#111111] border border-[#2a2a2a] rounded-xl p-8">
-              <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-4">
-                How I Work with Development Teams
-              </h3>
-              <p className="text-[#888888] max-w-[68ch] mb-4">
-                I slot in alongside ownership, brand, and design as the operations voice —
-                translating the concept into service flows, staffing plans, and standards that can
-                be executed in a real room by a real team.
-              </p>
-              <p className="text-[#888888] max-w-[68ch] mb-6">
-                Whether this is your first opening or one of many, I right-size the support around
-                the project, timeline, and the internal team you already have in place.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link to="/contact" className="btn btn-primary">
-                  Start a Pre-Opening Conversation
-                </Link>
-                <Link to="/services" className="btn btn-ghost">
-                  View All Services →
-                </Link>
-              </div>
-            </div>
-          </ScrollReveal>
+          <div className="mt-10 flex flex-wrap gap-4 justify-center">
+            <Link to="/book" className="btn btn-primary">Start the Conversation</Link>
+            <Link to="/blueprint" className="btn btn-secondary">Download the Blueprint</Link>
+          </div>
         </div>
       </section>
     </>

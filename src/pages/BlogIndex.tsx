@@ -4,22 +4,25 @@ import { Link } from 'react-router-dom'
 
 const posts = [
   {
-    slug: '/insights/what-a-fractional-gm-actually-does',
-    kicker: 'Fractional Leadership',
-    title: 'What a Fractional GM Actually Does',
-    excerpt: "The fractional model isn\u2019t a compromise \u2014 it\u2019s a strategic choice. Here\u2019s how it works in practice.",
-  },
-  {
-    slug: '/insights/labor-cost-control-miami-restaurants',
-    kicker: 'Operations',
-    title: 'How Miami Restaurants Can Control Labor Costs',
-    excerpt: 'Labor is your largest controllable cost. These are the systems that actually move the number.',
-  },
-  {
-    slug: '/insights/miami-pre-opening-playbook',
+    slug: 'pre-opening',
+    title: 'The 90-Day Pre-Opening Framework',
+    description: 'A structured approach to taking a restaurant concept from permit to packed house in 90 days without the chaos most operators accept as normal.',
     kicker: 'Pre-Opening',
-    title: 'The Miami Pre-Opening Playbook',
-    excerpt: 'What the first 90 days before opening should look like \u2014 and what most operators get wrong.',
+    readTime: '8 min read',
+  },
+  {
+    slug: 'fractional-gm',
+    title: 'Why Fractional F&B Leadership Works',
+    description: 'How operators are replacing full-time directors with fractional leaders — and getting better results at a fraction of the cost.',
+    kicker: 'Leadership',
+    readTime: '6 min read',
+  },
+  {
+    slug: 'labor-cost',
+    title: 'Controlling Labor Cost Without Cutting Staff',
+    description: 'The scheduling and modeling disciplines that let high-volume operators reduce labor cost by 3–5% without losing team quality or guest experience.',
+    kicker: 'Operations',
+    readTime: '7 min read',
   },
 ]
 
@@ -28,75 +31,52 @@ export default function BlogIndex() {
     <>
       <SEO
         title="Insights"
-        description="Operational insights for Miami restaurants and hotels \u2014 fractional leadership, labor cost control, and pre-opening strategy."
+        description="F&B operations insights from Leander Mena — pre-opening, labor cost, fractional leadership, and more."
         path="/insights"
-        schemaType="insights"
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/philosophy-banner.jpg"
+            src="/images/insights.jpg"
             alt=""
             width="1400"
             height="900"
             className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
             loading="eager"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.15) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 40%)' }} />
         </div>
-
-        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <ScrollReveal>
-              <span className="kicker">Operational Insights</span>
-              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
-                Insights
-              </h1>
-              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-                Practical thinking on F&amp;B operations, pre-opening strategy, and fractional
-                leadership for Miami hospitality.
-              </p>
-              <Link to="/contact" className="btn btn-primary">Work With Leander</Link>
-            </ScrollReveal>
-
-            <ScrollReveal delay={200}>
-              <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
-                <span className="kicker">In this section</span>
-                <h3 className="text-lg font-bold text-white mb-3">Field-tested perspective on Miami hospitality</h3>
-                <p className="text-sm text-[#cccccc] mb-6">
-                  No theory. Every article draws from real engagements \u2014 opening teams, recovery
-                  turnarounds, and fractional leadership in Miami restaurants and hotels.
-                </p>
-                <div className="grid grid-cols-3 gap-4 border-t border-[#3a3a3a] pt-6">
-                  {[
-                    { num: '3', label: 'Articles' },
-                    { num: '18+', label: 'Yrs Experience' },
-                    { num: '40+', label: 'Properties' },
-                  ].map((s) => (
-                    <div key={s.label} className="flex flex-col gap-1">
-                      <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
-                      <span className="text-xs text-[#cccccc]">{s.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
+        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
+          <ScrollReveal>
+            <span className="kicker">Field Notes</span>
+            <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-6">
+              Insights & Perspectives
+            </h1>
+            <p className="text-[#d8d8d8] text-lg max-w-[52ch] leading-relaxed">
+              Practical F&B operations thinking from 18 years on the floor — no filler, no listicles.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
+      {/* Posts */}
       <section className="section">
-        <div className="container">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="container max-w-3xl">
+          <div className="flex flex-col gap-6">
             {posts.map((p, i) => (
               <ScrollReveal key={p.slug} delay={i * 100}>
-                <Link to={p.slug} className="card block h-full hover:border-[#c9a87a]/40 transition-colors">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-[#d4b896] mb-3 block">{p.kicker}</span>
-                  <h2 className="font-display text-base font-bold text-white mb-3 leading-snug">{p.title}</h2>
-                  <p className="text-sm text-[#bbbbbb]">{p.excerpt}</p>
+                <Link to={`/insights/${p.slug}`} style={{ textDecoration: 'none' }}>
+                  <div className="card" style={{ padding: 'var(--space-6)', cursor: 'pointer', transition: 'border-color 200ms ease' }}>
+                    <div className="flex items-center justify-between gap-4 mb-3">
+                      <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>{p.kicker}</span>
+                      <span style={{ fontSize: '0.72rem', color: 'var(--color-text-faint)' }}>{p.readTime}</span>
+                    </div>
+                    <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">{p.title}</h2>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: 0 }}>{p.description}</p>
+                  </div>
                 </Link>
               </ScrollReveal>
             ))}
