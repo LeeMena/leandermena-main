@@ -46,7 +46,7 @@ export default function Home() {
       <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
         <div className="absolute inset-0" style={{ zIndex: 0 }}>
           <img
-            src="/images/landing-hero.jpg"
+            src="/landing-hero.jpg"
             alt=""
             width="1920"
             height="1080"
