@@ -6,105 +6,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Add these to your existing tailwind.config.js or index.css */
-
-/* Dark mode color variables - add to :root and .dark */
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
-}
-
-/* Smooth theme transition */
-html {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-html.dark {
-  color-scheme: dark;
-}
-
-/* Dark mode specific overrides for your site */
-.dark body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-}
-
-.dark .bg-slate-50 {
-  background-color: hsl(222.2 84% 8%);
-}
-
-.dark .bg-slate-100 {
-  background-color: hsl(222.2 84% 10%);
-}
-
-.dark .bg-slate-900 {
-  background-color: hsl(210 40% 98%);
-}
-
-.dark .text-slate-900 {
-  color: hsl(210 40% 98%);
-}
-
-.dark .text-slate-600 {
-  color: hsl(215 20.2% 65.1%);
-}
-
-.dark .text-slate-300 {
-  color: hsl(222.2 47.4% 11.2%);
-}
-
-.dark .border-slate-200 {
-  border-color: hsl(217.2 32.6% 17.5%);
-}
-
-.dark .border-slate-800 {
-  border-color: hsl(214.3 31.8% 91.4%);
-}
 
 @layer base {
+  /* ── Design tokens (dark-first defaults) ── */
   :root {
+    --color-bg: #0a0a0a;
+    --color-surface: #111111;
+    --color-surface-raised: #141414;
+    --color-text: #e8e8e8;
+    --color-text-muted: #888888;
+    --color-primary: #b8a080;
+    --color-primary-hover: #c9b89a;
+    --color-border: #2a2a2a;
+    --color-accent-light: rgba(184, 160, 128, 0.12);
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-display: 'Playfair Display', serif;
+    --font-serif: 'Cormorant Garamond', serif;
+    --space-1: .25rem; --space-2: .5rem; --space-3: .75rem;
+    --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem;
+    --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+    --radius-sm: .375rem; --radius-md: .5rem; --radius-lg: .75rem;
+    --radius-full: 9999px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
+    --shadow-md: 0 4px 14px rgba(0,0,0,.5);
+    --content-default: 1100px;
+    --content-narrow: 720px;
+
+    /* shadcn/ui tokens (dark defaults) */
     --background: 0 0% 4%;
     --foreground: 0 0% 91%;
     --card: 0 0% 8%;
@@ -125,30 +53,53 @@ html.dark {
     --input: 0 0% 16%;
     --ring: 30 25% 55%;
     --radius: 0.5rem;
-
-    --color-bg: #0a0a0a;
-    --color-surface: #111111;
-    --color-surface-raised: #141414;
-    --color-text: #e8e8e8;
-    --color-text-muted: #888888;
-    --color-primary: #b8a080;
-    --color-primary-hover: #c9b89a;
-    --color-border: #2a2a2a;
-    --color-accent-light: rgba(184, 160, 128, 0.12);
-    --font-body: 'Inter', system-ui, sans-serif;
-    --font-display: 'Playfair Display', serif;
-    --font-serif: 'Cormorant Garamond', serif;
-    --space-1: .25rem; --space-2: .5rem; --space-3: .75rem;
-    --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem;
-    --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
-    --radius-sm: .375rem; --radius-md: .5rem; --radius-lg: .75rem;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,.4);
-    --shadow-md: 0 4px 14px rgba(0,0,0,.5);
-    --content-default: 1100px;
-    --content-narrow: 720px;
   }
 
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  /* ── Light mode overrides ── */
+  [data-theme="light"] {
+    color-scheme: light;
+    --color-bg: #f7f5f0;
+    --color-surface: #ffffff;
+    --color-surface-raised: #f0ede8;
+    --color-text: #1a1a1a;
+    --color-text-muted: #5a5a5a;
+    --color-primary: #8a6a40;
+    --color-primary-hover: #7a5a30;
+    --color-border: #e0dbd4;
+    --color-accent-light: rgba(138, 106, 64, 0.10);
+
+    /* shadcn/ui tokens (light) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+  }
+
+  /* ── Dark mode explicit (matches :root defaults, ensures color-scheme is set) ── */
+  [data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 
   body {
     font-family: var(--font-body);
@@ -165,7 +116,6 @@ html.dark {
 }
 
 @layer components {
-  /* Mobile-first container: 16px on small screens, 24px on md+ */
   .container {
     max-width: var(--content-default);
     margin-inline: auto;
@@ -175,7 +125,6 @@ html.dark {
     .container { padding-inline: var(--space-6); }
   }
 
-  /* ── Page header ── */
   .page-header {
     padding-block: clamp(2.5rem, 5vw, 5rem);
     border-bottom: 1px solid var(--color-border);
@@ -192,7 +141,6 @@ html.dark {
     margin-bottom: var(--space-4);
   }
 
-  /* Buttons — min 44px height for touch targets */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -247,7 +195,6 @@ html.dark {
     padding: var(--space-6);
     transition: box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease;
   }
-  /* Disable lift-on-hover on touch devices to avoid sticky hover states */
   @media (hover: hover) {
     .card:hover {
       box-shadow: var(--shadow-md);
@@ -256,7 +203,6 @@ html.dark {
     }
   }
 
-  /* Section padding: tighter on mobile */
   .section {
     padding-block: clamp(2.5rem, 5vw, 5rem);
     border-bottom: 1px solid var(--color-border);
@@ -355,7 +301,6 @@ html.dark {
     max-width: 62ch;
   }
 
-  /* ── Form fields ── */
   .field,
   .form-group {
     display: flex;
@@ -376,7 +321,7 @@ html.dark {
   .form-group select,
   .form-group textarea {
     font-family: var(--font-body);
-    font-size: 1rem; /* 16px prevents iOS auto-zoom */
+    font-size: 1rem;
     padding: .75rem .85rem;
     min-height: 44px;
     border: 1.5px solid var(--color-border);
@@ -409,7 +354,6 @@ html.dark {
   .field textarea,
   .form-group textarea { resize: vertical; min-height: 120px; }
 
-  /* ── Blog article body ── */
   .prose-article {
     display: flex;
     flex-direction: column;
@@ -430,7 +374,6 @@ html.dark {
     letter-spacing: -.01em;
   }
 
-  /* Scrollbar styling */
   ::-webkit-scrollbar { width: 8px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
@@ -443,7 +386,7 @@ html.dark {
   .font-serif { font-family: var(--font-serif); }
 }
 
-/* ── Responsive grid breakpoints ── */
+/* ── Responsive breakpoints ── */
 @media (max-width: 900px) {
   .grid-2 { grid-template-columns: 1fr; }
 }
@@ -452,40 +395,6 @@ html.dark {
 }
 @media (max-width: 640px) {
   .grid-3 { grid-template-columns: 1fr; }
-  /* Tighter card padding on mobile */
   .card { padding: var(--space-4); }
-  /* Tighter role indent on mobile */
   .role { padding-left: var(--space-4); }
-}
-html.dark {
-  color-scheme: dark;
-}
-
-html.dark body {
-  background-color: #0a0a0a;
-  color: #fafafa;
-}
-
-html.dark .bg-slate-50 {
-  background-color: #0f172a;
-}
-
-html.dark .bg-slate-100 {
-  background-color: #1e293b;
-}
-
-html.dark .bg-white {
-  background-color: #0f172a;
-}
-
-html.dark .text-slate-900 {
-  color: #f8fafc;
-}
-
-html.dark .text-slate-600 {
-  color: #94a3b8;
-}
-
-html.dark .border-slate-200 {
-  border-color: #334155;
 }
