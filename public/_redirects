@@ -13,6 +13,7 @@
 # SEO static pages — serve directly BEFORE the SPA fallback
 /leander-mena-miami-hospitality      /leander-mena-miami-hospitality/index.html  200
 /pre-opening                         /pre-opening/index.html  200
+/philosophy                          /philosophy/index.html   200
 
 # SPA fallback — all unmatched routes serve index.html
 /*    /index.html   200
