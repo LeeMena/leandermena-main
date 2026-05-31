@@ -33,7 +33,7 @@ export default function BlogLaborCost() {
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 40%)' }} />
         </div>
         <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
-          <span className="kicker">Labor & Finance</span>
+          <span className="kicker">Labor &amp; Finance</span>
           <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[26ch] mb-4">
             Labor Cost Control for Miami Restaurants
           </h1>
@@ -46,8 +46,8 @@ export default function BlogLaborCost() {
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                Labor is the largest controllable cost in any restaurant or hotel F&B operation.
-                It is also the one most operators manage reactively — cutting hours when the
+                Labor is the largest controllable cost in any restaurant or hotel F&amp;B operation.
+                It is also the one most operators manage reactively - cutting hours when the
                 month looks bad, adding them back when it gets busy, and wondering why the
                 percentage never stabilizes.
               </p>
@@ -73,7 +73,7 @@ export default function BlogLaborCost() {
             <ScrollReveal delay={250}>
               <div className="card">
                 <p>
-                  The fix starts with trailing sales data — not last week, but the last eight to
+                  The fix starts with trailing sales data - not last week, but the last eight to
                   twelve weeks by day part. You build the schedule to match that curve, with defined
                   thresholds for when to add or cut positions based on actual covers, not gut feel.
                   Managers stop making staffing decisions and start executing a system.
@@ -84,15 +84,15 @@ export default function BlogLaborCost() {
               <p>
                 When the schedule is built correctly and managers are held to it, labor typically
                 moves three to five points in the first thirty days. Not because anyone worked
-                harder — but because the hours finally match the revenue.
+                harder - but because the hours finally match the revenue.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
               <div className="mt-4 flex gap-4 flex-wrap">
                 <Link to="/contact" className="btn btn-primary">Talk About Your Labor Cost</Link>
-                <Link to="/services" className="btn btn-ghost">Operations Services →</Link>
-                <Link to="/insights" className="btn btn-ghost">← Back to Insights</Link>
+                <Link to="/services" className="btn btn-ghost">Operations Services &rarr;</Link>
+                <Link to="/insights" className="btn btn-ghost">&larr; Back to Insights</Link>
               </div>
             </ScrollReveal>
           </div>
