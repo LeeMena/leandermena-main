@@ -73,10 +73,6 @@ export default function Contact() {
                     <span className="text-xs text-[#888888] uppercase tracking-widest block mb-1">Location</span>
                     <span className="text-[#cccccc] text-sm">Miami, Florida</span>
                   </div>
-                  <div>
-                    <span className="text-xs text-[#888888] uppercase tracking-widest block mb-2">Prefer a call?</span>
-                    <Link to="/book" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Book on Calendly</Link>
-                  </div>
                 </div>
               </div>
             </ScrollReveal>
