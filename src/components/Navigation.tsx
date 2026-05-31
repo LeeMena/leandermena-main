@@ -118,7 +118,7 @@ export default function Navigation({ onBookCall }: Props) {
               onClick={onBookCall}
               className="btn btn-primary text-xs"
             >
-              Book a Call
+              Let&rsquo;s Talk
             </button>
           </div>
 
@@ -173,7 +173,7 @@ export default function Navigation({ onBookCall }: Props) {
                 }}
                 className="btn btn-primary mt-6 w-full text-sm"
               >
-                Book a Discovery Call
+                Let&rsquo;s Talk
               </button>
             </div>
           </div>
