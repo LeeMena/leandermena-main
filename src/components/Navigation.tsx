@@ -68,7 +68,6 @@ function ThemeToggleButton() {
       }}
     >
       {isDark ? (
-        // Sun icon
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
@@ -81,7 +80,6 @@ function ThemeToggleButton() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       ) : (
-        // Moon icon
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
@@ -140,7 +138,7 @@ export default function Navigation({ onBookCall }: Props) {
             </span>
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav links */}
           <div style={{ display: 'none' }} className="md-nav-desktop">
             {links.map((l) => (
               <Link
@@ -167,7 +165,7 @@ export default function Navigation({ onBookCall }: Props) {
             <button
               onClick={onBookCall}
               className="btn btn-primary"
-              style={{ fontSize: '0.8rem', display: 'none' }}
+              style={{ fontSize: '0.8rem', fontWeight: 800, display: 'none' }}
               id="nav-cta-desktop"
             >
               Let&rsquo;s Talk
@@ -247,7 +245,7 @@ export default function Navigation({ onBookCall }: Props) {
               <button
                 onClick={() => { onBookCall(); setOpen(false) }}
                 className="btn btn-primary"
-                style={{ marginTop: '1.5rem', width: '100%', fontSize: '0.9rem' }}
+                style={{ marginTop: '1.5rem', width: '100%', fontSize: '0.9rem', fontWeight: 800 }}
               >
                 Let&rsquo;s Talk
               </button>
