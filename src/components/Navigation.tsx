@@ -16,6 +16,33 @@ interface Props {
   onBookCall: () => void
 }
 
+// Brand mark — gold gradient "L" square
+function BrandMark() {
+  return (
+    <div
+      aria-hidden="true"
+      style={{
+        width: '42px',
+        height: '42px',
+        borderRadius: '0.2rem',
+        background: 'linear-gradient(145deg, #f1e3c1, #8e7342)',
+        display: 'grid',
+        placeItems: 'center',
+        color: '#111',
+        fontWeight: 800,
+        fontSize: '1.35rem',
+        boxShadow: '0 8px 30px rgba(41,31,20,0.18)',
+        lineHeight: 1,
+        fontFamily: 'var(--font-display, serif)',
+        flexShrink: 0,
+        userSelect: 'none',
+      }}
+    >
+      L
+    </div>
+  )
+}
+
 export default function Navigation({ onBookCall }: Props) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -44,19 +71,39 @@ export default function Navigation({ onBookCall }: Props) {
     >
       <div className="container">
         <nav className="flex items-center justify-between gap-4 py-3">
-          <Link to="/" className="flex items-center gap-3 group">
-            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 shrink-0 transition-opacity group-hover:opacity-80">
-              <rect width="32" height="32" fill="#0a0a0a"/>
-              <path d="M5 8v16h7" stroke="#b8a080" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"/>
-              <path d="M15 8v16M15 8l5 7 5-7M25 8v16" stroke="#b8a080" strokeWidth="1.5" strokeLinecap="square" strokeLinejoin="miter"/>
-              <rect x="0.5" y="0.5" width="31" height="31" stroke="#b8a080" strokeOpacity="0.35" strokeWidth="0.75"/>
-            </svg>
-            <span className="flex flex-col leading-tight">
-              <span className="font-display text-base font-bold text-[#e8e8e8] group-hover:text-[#b8a080] transition-colors">
+
+          {/* Brand lockup */}
+          <Link
+            to="/"
+            className="flex items-center gap-3 group"
+            aria-label="Leander Mena — home"
+          >
+            <BrandMark />
+            <span className="flex flex-col leading-tight gap-[2px]">
+              <strong
+                style={{
+                  fontSize: '0.875rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#e8e8e8',
+                  fontWeight: 700,
+                  transition: 'color 180ms ease',
+                }}
+                className="group-hover:text-[#d4b896]"
+              >
                 Leander Mena
-              </span>
-              <span className="text-[10px] font-medium tracking-wide text-[#888888]">
-                Hospitality &amp; F&amp;B Operations
+              </strong>
+              <span
+                style={{
+                  fontSize: '0.68rem',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: '#888888',
+                  fontWeight: 500,
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Hospitality&nbsp;|&nbsp;F&amp;B Operations Consulting
               </span>
             </span>
           </Link>
@@ -107,6 +154,14 @@ export default function Navigation({ onBookCall }: Props) {
         <div className="md:hidden fixed inset-0 top-[57px] z-40 bg-[#0a0a0a] overflow-y-auto">
           <div className="container py-6">
             <div className="flex flex-col">
+              {/* Mini brand in mobile menu */}
+              <div className="flex items-center gap-3 pb-5 mb-2 border-b border-[#1e1e1e]">
+                <BrandMark />
+                <span className="flex flex-col gap-[2px]">
+                  <strong style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#e8e8e8' }}>Leander Mena</strong>
+                  <span style={{ fontSize: '0.62rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888888' }}>Hospitality&nbsp;|&nbsp;F&amp;B Operations</span>
+                </span>
+              </div>
               {links.map((l) => (
                 <Link
                   key={l.href}
