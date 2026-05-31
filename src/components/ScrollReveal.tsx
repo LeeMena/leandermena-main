@@ -7,7 +7,6 @@ interface Props {
   direction?: 'up' | 'down' | 'left' | 'right'
 }
 
-// True when running on the server (vite-ssg SSR pass) — no window object
 const isSSR = typeof window === 'undefined'
 
 export default function ScrollReveal({
@@ -17,30 +16,36 @@ export default function ScrollReveal({
   direction = 'up',
 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
-  // Start visible on SSR so static HTML contains real content for crawlers.
-  // On the client, start hidden so the reveal animation still plays.
   const [visible, setVisible] = useState(isSSR)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
 
-    // If already visible (shouldn't happen on client), skip observer
-    if (visible) return
+    // Safety fallback: reveal after timeout if observer never fires
+    const fallback = setTimeout(() => setVisible(true), 400 + delay)
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
+          clearTimeout(fallback)
           setVisible(true)
           observer.unobserve(el)
         }
       },
-      { threshold: 0, rootMargin: '0px 0px 0px 0px' }
+      {
+        threshold: 0,
+        // Negative bottom margin catches elements already near viewport on load
+        rootMargin: '0px 0px -40px 0px',
+      }
     )
     observer.observe(el)
 
-    return () => observer.disconnect()
-  }, [])
+    return () => {
+      clearTimeout(fallback)
+      observer.disconnect()
+    }
+  }, [delay])
 
   const transforms = {
     up: 'translateY(24px)',
@@ -49,7 +54,6 @@ export default function ScrollReveal({
     right: 'translateX(-24px)',
   }
 
-  // On SSR: no inline styles — let content render fully for crawlers
   if (isSSR) {
     return <div className={className}>{children}</div>
   }
@@ -61,7 +65,8 @@ export default function ScrollReveal({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translate(0)' : transforms[direction],
-        transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
+        transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`,
+        willChange: visible ? 'auto' : 'opacity, transform',
       }}
     >
       {children}
