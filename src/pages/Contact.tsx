@@ -140,11 +140,6 @@ export default function Contact() {
                   <a href="mailto:leander@leandermena.com" style={{ fontSize: '0.95rem', color: 'var(--color-text)', display: 'block', marginBottom: '0.3rem' }}>leander@leandermena.com</a>
                   <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Miami, Florida</span>
                 </div>
-                <div className="card" style={{ padding: 'var(--space-5)' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '0.75rem' }}>Book a Call</span>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginBottom: '0.75rem' }}>Prefer to talk directly? Schedule a free 30-minute discovery call.</p>
-                  <Link to="/book" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', fontWeight: 800 }}>Book on Calendly</Link>
-                </div>
               </div>
             </ScrollReveal>
           </div>
