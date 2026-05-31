@@ -82,7 +82,7 @@ export default function Experience() {
             Experience
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            17+ years opening, scaling, and leading hospitality operations across Miami's most demanding venues.
+            18+ years opening, scaling, and leading hospitality operations across Miami's most demanding venues.
           </p>
         </div>
       </section>

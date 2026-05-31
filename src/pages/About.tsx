@@ -22,7 +22,7 @@ export default function About() {
     <>
       <SEO
         title="About"
-        description="Leander Mena | 17+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
+        description="Leander Mena | 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
         path="/about"
         schemaType="about"
       />
@@ -50,7 +50,7 @@ export default function About() {
                 About Leander Mena
               </h1>
               <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-                17+ years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami.
+                18+ years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
@@ -63,7 +63,7 @@ export default function About() {
                 <span className="kicker">By the Numbers</span>
                 <div className="grid grid-cols-2 gap-6 mt-4">
                   {[
-                    { num: '17+', label: 'Years in Miami Hospitality' },
+                    { num: '18+', label: 'Years in Miami Hospitality' },
                     { num: '$9.1M', label: 'Annual Revenue Managed' },
                     { num: '220', label: 'Seats + 78 FTEs Led' },
                     { num: '40+', label: 'Team Members Hired & Trained at Single Opening' },
@@ -104,13 +104,13 @@ export default function About() {
               </h2>
               <div className="flex flex-col gap-4 text-[#888888] max-w-[68ch]" style={{ fontSize: '0.92rem', lineHeight: 1.75 }}>
                 <p>
-                  Over 17 years in hospitality, I\'ve learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap — from Michelin-starred pre-openings in Midtown Miami to multi-unit P&L management at scale, and everywhere in between.
+                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap — from Michelin-starred pre-openings in Midtown Miami to multi-unit P&L management at scale, and everywhere in between.
                 </p>
                 <p>
-                  I\'ve built teams, negotiated vendor contracts, engineered menus, modeled labor, and stood on the floor through openings, pivots, and recoveries. When the pandemic hit in 2020, my team and I built a fully operational delivery program in 10 days. That\'s the pace I\'m used to.
+                  I've built teams, negotiated vendor contracts, engineered menus, modeled labor, and stood on the floor through openings, pivots, and recoveries. When the pandemic hit in 2020, my team and I built a fully operational delivery program in 10 days. That's the pace I'm used to.
                 </p>
                 <p>
-                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real — not just on paper. I work in English, Spanish, and conversational French, and I\'m at home in both independent concepts and luxury hotel environments.
+                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real — not just on paper. I work in English, Spanish, and conversational French, and I'm at home in both independent concepts and luxury hotel environments.
                 </p>
               </div>
             </ScrollReveal>
