@@ -41,7 +41,7 @@ export default function Profile() {
     <>
       <SEO
         title="Profile"
-        description="Full professional profile for Leander Mena - 18+ years in Miami F&B and hospitality operations."
+        description="Full professional profile for Leander Mena - 18 years in Miami F&B and hospitality operations."
         path="/profile"
       />
 
@@ -52,7 +52,7 @@ export default function Profile() {
             Leander Mena
           </h1>
           <p className="text-[#888888] text-lg max-w-[54ch]">
-            18+ years of F&B and hospitality operations leadership across Miami.
+            18 years of F&B and hospitality operations leadership across Miami.
           </p>
         </div>
       </section>
