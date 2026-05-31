@@ -83,7 +83,7 @@ export default function CartDrawer() {
                         onClick={() => updateQuantity(product.id, quantity - 1)}
                         style={{
                           width: 28, height: 28, borderRadius: 'var(--radius-sm)',
-                          background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)',
+                          background: 'var(--color-surface-2)', border: '1px solid var(--color-border)',
                           color: 'var(--color-text)', cursor: 'pointer', fontSize: '1rem',
                         }}
                       >-</button>
@@ -92,7 +92,7 @@ export default function CartDrawer() {
                         onClick={() => updateQuantity(product.id, quantity + 1)}
                         style={{
                           width: 28, height: 28, borderRadius: 'var(--radius-sm)',
-                          background: 'var(--color-surface-raised)', border: '1px solid var(--color-border)',
+                          background: 'var(--color-surface-2)', border: '1px solid var(--color-border)',
                           color: 'var(--color-text)', cursor: 'pointer', fontSize: '1rem',
                         }}
                       >+</button>
