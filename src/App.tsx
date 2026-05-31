@@ -31,6 +31,7 @@ export default function App() {
         <Route path="philosophy" element={<Philosophy />} />
         <Route path="contact" element={<Contact />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="leander-mena-miami-hospitality" element={<Navigate to="/leander-mena-miami-hospitality" replace />} />
         <Route path="insights" element={<BlogIndex />} />
         <Route path="insights/pre-opening" element={<BlogPreOpening />} />
         <Route path="insights/fractional-gm" element={<BlogFractionalGM />} />
