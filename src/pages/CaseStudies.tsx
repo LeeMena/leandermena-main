@@ -1,18 +1,18 @@
+import { Link } from 'react-router-dom'
 import SEO from '@/components/SEO'
 import ScrollReveal from '@/components/ScrollReveal'
-import { Link } from 'react-router-dom'
-import { caseStudies } from '@/caseStudies'
+import { caseStudies } from '@/data/caseStudies'
 
 export default function CaseStudies() {
   return (
     <>
       <SEO
-        title="Case Studies"
-        description="Real F&B operations results: pre-openings, turnarounds, and revenue recovery across Miami hospitality."
+        title="Case Studies — F&B Operations Results | Leander Mena"
+        description="Real results from pre-opening projects, operations recovery, and fractional GM engagements across Miami hospitality."
         path="/case-studies"
       />
 
-      {/* Hero */}
+      {/* Hero — About-style full-bleed */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
@@ -28,12 +28,12 @@ export default function CaseStudies() {
         </div>
         <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
           <ScrollReveal>
-            <span className="kicker">Real Results</span>
+            <span className="kicker">Documented Results</span>
             <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-6">
               Case Studies
             </h1>
             <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-              Operational outcomes from pre-openings, turnarounds, and embedded engagements across Miami hospitality.
+              A selection of engagements with documented outcomes — pre-openings, turnarounds, and operational transformations across Miami hospitality.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
@@ -43,41 +43,131 @@ export default function CaseStudies() {
         </div>
       </section>
 
-      {/* Case studies */}
       <section className="section">
         <div className="container">
-          <div className="flex flex-col gap-6">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-8)' }}>
             {caseStudies.map((cs, i) => (
-              <ScrollReveal key={cs.id} delay={i * 100}>
-                <div className="card" style={{ padding: 'var(--space-6)' }}>
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <ScrollReveal key={cs.id} delay={i * 80}>
+                <article className="card" style={{ padding: 'var(--space-8)' }}>
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                    gap: 'var(--space-8)',
+                    alignItems: 'start',
+                  }}>
+
+                    {/* Left: Meta + Challenge + Approach */}
                     <div>
-                      <span style={{ fontSize: '0.7rem', fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: '0.4rem' }}>{cs.category}</span>
-                      <h2 className="font-display text-xl font-bold text-[#e8e8e8]">{cs.title}</h2>
-                    </div>
-                    {cs.metric && (
-                      <div style={{ textAlign: 'right', flexShrink: 0 }}>
-                        <strong style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-primary)', display: 'block' }}>{cs.metric}</strong>
-                        <span style={{ fontSize: '0.72rem', color: 'var(--color-text-faint)' }}>{cs.metricLabel}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-4)', flexWrap: 'wrap' }}>
+                        <span style={{
+                          fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          background: 'var(--color-primary)', color: '#fff',
+                          padding: '0.2rem 0.65rem', borderRadius: 'var(--radius-full)',
+                        }}>
+                          {cs.industry}
+                        </span>
+                        <span className="kicker" style={{ margin: 0 }}>{cs.duration}</span>
                       </div>
-                    )}
-                  </div>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: '1rem' }}>{cs.summary}</p>
-                  {cs.outcomes && (
-                    <div className="flex flex-wrap gap-2">
-                      {cs.outcomes.map(o => (
-                        <span key={o} style={{ fontSize: '0.72rem', fontWeight: 700, padding: '0.25rem 0.6rem', borderRadius: 'var(--radius-full)', background: 'rgba(180,144,96,0.1)', color: 'var(--color-primary)', letterSpacing: '0.04em' }}>{o}</span>
-                      ))}
+
+                      <h2 style={{
+                        fontFamily: 'var(--font-display)',
+                        fontSize: 'clamp(1.15rem, 2.5vw, 1.55rem)',
+                        fontWeight: 700,
+                        marginBottom: 'var(--space-2)',
+                        lineHeight: 1.2,
+                        color: 'var(--color-text)',
+                      }}>
+                        {cs.title}
+                      </h2>
+
+                      <p style={{ fontSize: '0.82rem', color: 'var(--color-primary)', fontWeight: 600, marginBottom: 'var(--space-5)' }}>
+                        {cs.client}
+                      </p>
+
+                      <div style={{ marginBottom: 'var(--space-4)' }}>
+                        <h3 style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: 'var(--space-2)' }}>The Challenge</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.68 }}>{cs.challenge}</p>
+                      </div>
+
+                      <div style={{ marginBottom: 'var(--space-5)' }}>
+                        <h3 style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-text-muted)', marginBottom: 'var(--space-2)' }}>The Approach</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.68 }}>{cs.approach}</p>
+                      </div>
+
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-2)' }}>
+                        {cs.services.map((s) => (
+                          <span key={s} style={{
+                            fontSize: '0.68rem', letterSpacing: '0.06em',
+                            border: '1px solid var(--color-border)',
+                            borderRadius: 'var(--radius-full)',
+                            padding: '0.2rem 0.65rem',
+                            color: 'var(--color-text-muted)',
+                          }}>{s}</span>
+                        ))}
+                      </div>
                     </div>
-                  )}
-                </div>
+
+                    {/* Right: Results + Testimonial */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+                      <div style={{
+                        background: 'var(--color-bg)',
+                        border: '1px solid var(--color-border)',
+                        borderRadius: 'var(--radius-lg)',
+                        padding: 'var(--space-6)',
+                      }}>
+                        <h3 style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-4)' }}>Results</h3>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }}>
+                          {cs.results.map((r) => (
+                            <div key={r.label}>
+                              <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', fontWeight: 700, color: 'var(--color-text)', lineHeight: 1 }}>{r.metric}</p>
+                              <p style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)', marginTop: 'var(--space-1)', lineHeight: 1.4 }}>{r.label}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {cs.testimonial && (
+                        <blockquote style={{
+                          background: 'var(--color-surface)',
+                          border: '1px solid var(--color-border)',
+                          borderLeft: '3px solid var(--color-primary)',
+                          borderRadius: 'var(--radius-md)',
+                          padding: 'var(--space-5)',
+                          margin: 0,
+                        }}>
+                          <p style={{ fontSize: '0.88rem', fontStyle: 'italic', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>"{cs.testimonial}"</p>
+                        </blockquote>
+                      )}
+
+                      <Link to="/contact" className="btn btn-secondary" style={{ textAlign: 'center', justifyContent: 'center' }}>
+                        Discuss Your Project
+                      </Link>
+                    </div>
+
+                  </div>
+                </article>
               </ScrollReveal>
             ))}
           </div>
-          <div className="mt-10 flex flex-wrap gap-4 justify-center">
-            <Link to="/book" className="btn btn-primary">Start the Conversation</Link>
-            <Link to="/services" className="btn btn-secondary">View Services</Link>
-          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ borderBottom: 'none' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
+          <span className="kicker">Ready to Work Together?</span>
+          <h2 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
+            fontWeight: 700,
+            marginBottom: 'var(--space-4)',
+          }}>
+            Your operation could be the next case study.
+          </h2>
+          <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)', maxWidth: '52ch', marginInline: 'auto' }}>
+            Pre-opening, recovery, or fractional leadership — let&rsquo;s talk about what your property needs.
+          </p>
+          <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
         </div>
       </section>
     </>
