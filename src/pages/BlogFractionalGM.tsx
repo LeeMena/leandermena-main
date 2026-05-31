@@ -47,8 +47,8 @@ export default function BlogFractionalGM() {
             <ScrollReveal>
               <p>
                 The title sounds like a workaround. It isn’t. A fractional F&B director is a
-                full-capability operator who works with your business on a defined schedule —
-                typically two to four days per week — instead of full-time. The work is the same.
+                full-capability operator who works with your business on a defined schedule -
+                typically two to four days per week - instead of full-time. The work is the same.
                 The overhead is not.
               </p>
             </ScrollReveal>
@@ -90,7 +90,7 @@ export default function BlogFractionalGM() {
                   A full-time F&B director in Miami costs $90,000 to $130,000 per year in salary alone
                   before benefits, payroll taxes, and the six to twelve months it takes to find and
                   onboard the right person. A fractional engagement delivers the same operational
-                  capability at a fraction of that cost — and it starts in days, not months.
+                  capability at a fraction of that cost - and it starts in days, not months.
                 </p>
               </div>
             </ScrollReveal>
