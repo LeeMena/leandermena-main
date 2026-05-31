@@ -5,14 +5,8 @@
       <stop offset="100%" stop-color="#8e7342"/>
     </linearGradient>
   </defs>
+  <!-- Background square -->
   <rect width="32" height="32" rx="3" fill="url(#g)"/>
-  <text
-    x="16"
-    y="23"
-    text-anchor="middle"
-    font-family="Georgia, serif"
-    font-weight="800"
-    font-size="20"
-    fill="#111111"
-  >L</text>
+  <!-- Geometric L path: vertical stroke + horizontal base -->
+  <path d="M9 6 L9 26 L23 26 L23 22 L13 22 L13 6 Z" fill="#111111"/>
 </svg>
