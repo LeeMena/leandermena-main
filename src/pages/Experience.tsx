@@ -63,34 +63,56 @@ export default function Experience() {
         schemaType="experience"
       />
 
-      {/* Hero — About-style full-bleed */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/contact.jpg"
+            src="/images/experience.jpg"
             alt=""
             width="1400"
             height="900"
             className="w-full h-full object-cover"
+            style={{ opacity: 1 }}
             loading="eager"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.15) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 40%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
-        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
-          <ScrollReveal>
-            <span className="kicker">Career History</span>
-            <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-6">
-              Experience
-            </h1>
-            <p className="text-[#d8d8d8] text-lg max-w-[54ch] mb-8 leading-relaxed">
-              18 years opening, scaling, and leading hospitality operations across Miami’s most demanding venues.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
-              <Link to="/case-studies" className="btn btn-secondary">View Case Studies</Link>
-            </div>
-          </ScrollReveal>
+        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <ScrollReveal>
+              <span className="kicker">Career History</span>
+              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
+                18 Years of Hospitality Leadership
+              </h1>
+              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+                Opening, scaling, and leading operations across Miami's most demanding restaurants, hotels, and catering venues.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
+                <Link to="/case-studies" className="btn btn-secondary">View Case Studies</Link>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={200}>
+              <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
+                <span className="kicker">Career Highlights</span>
+                <div className="grid grid-cols-2 gap-6 mt-4">
+                  {[
+                    { num: '18+', label: 'Years in Miami Hospitality' },
+                    { num: '$9.1M', label: 'Annual Revenue Managed' },
+                    { num: '40+', label: 'Team Members Hired at a Single Opening' },
+                    { num: '5+', label: 'Pre-Opening Projects Led' },
+                  ].map((s) => (
+                    <div key={s.label} className="flex flex-col gap-1">
+                      <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
+                      <span className="text-xs text-[#cccccc] leading-snug">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 

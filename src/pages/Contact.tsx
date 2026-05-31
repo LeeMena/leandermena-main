@@ -31,7 +31,7 @@ export default function Contact() {
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
             src="/images/contact.jpg"
@@ -39,25 +39,48 @@ export default function Contact() {
             width="1400"
             height="900"
             className="w-full h-full object-cover"
+            style={{ opacity: 1 }}
             loading="eager"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.15) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.92) 0%, transparent 40%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
-        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
-          <ScrollReveal>
-            <span className="kicker">Get in Touch</span>
-            <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-6">
-              Let&rsquo;s Start a Conversation
-            </h1>
-            <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-              Whether you&rsquo;re opening a new concept, fixing an existing one, or just exploring — reach out directly.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/book" className="btn btn-primary">Book a Call</Link>
-              <a href="mailto:leander@leandermena.com" className="btn btn-secondary">Send an Email</a>
-            </div>
-          </ScrollReveal>
+        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <ScrollReveal>
+              <span className="kicker">Get in Touch</span>
+              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
+                Let&rsquo;s Start a Conversation
+              </h1>
+              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
+                Whether you&rsquo;re opening a new concept, fixing an existing one, or just exploring — reach out directly.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/book" className="btn btn-primary">Book a Call</Link>
+                <a href="mailto:leander@leandermena.com" className="btn btn-secondary">Send an Email</a>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={200}>
+              <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
+                <span className="kicker">Direct Contact</span>
+                <div className="flex flex-col gap-5 mt-4">
+                  <div>
+                    <span className="text-xs text-[#888888] uppercase tracking-widest block mb-1">Email</span>
+                    <a href="mailto:leander@leandermena.com" className="text-[#d4b896] text-base font-semibold">leander@leandermena.com</a>
+                  </div>
+                  <div>
+                    <span className="text-xs text-[#888888] uppercase tracking-widest block mb-1">Location</span>
+                    <span className="text-[#cccccc] text-sm">Miami, Florida</span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-[#888888] uppercase tracking-widest block mb-2">Prefer a call?</span>
+                    <Link to="/book" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Book on Calendly</Link>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
