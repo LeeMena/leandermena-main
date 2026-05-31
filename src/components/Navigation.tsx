@@ -1,116 +1,269 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '@/context/ThemeProvider'
 
-const navLinks = [
-  { label: 'Services', href: '/services' },
-  { label: 'Case Studies', href: '/case-studies' },
-  { label: 'Insights', href: '/insights' },
-  { label: 'About', href: '/about' },
+const links = [
+  { href: '/about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/pre-opening', label: 'Pre-Opening' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/products', label: 'Resources' },
+  { href: '/insights', label: 'Insights' },
+  { href: '/contact', label: 'Contact' },
 ]
 
-export default function Navigation() {
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const { pathname } = useLocation()
+interface Props {
+  onBookCall: () => void
+}
+
+function BrandMark() {
+  return (
+    <img
+      src="/favicon-96x96.png"
+      alt="Leander Mena"
+      width={42}
+      height={42}
+      style={{
+        borderRadius: '0.2rem',
+        boxShadow: '0 8px 30px rgba(41,31,20,0.18)',
+        flexShrink: 0,
+        display: 'block',
+      }}
+    />
+  )
+}
+
+function ThemeToggleButton() {
+  const { theme, toggleTheme } = useTheme()
+  const isDark = theme === 'dark'
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      {/* Gradient fade background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0D0D0D]/95 via-[#0D0D0D]/80 to-transparent pointer-events-none" />
+    <button
+      onClick={toggleTheme}
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      style={{
+        width: '36px',
+        height: '36px',
+        borderRadius: '50%',
+        border: '1px solid var(--color-border)',
+        background: 'var(--color-surface)',
+        color: 'var(--color-text-muted)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        transition: 'background 180ms ease, color 180ms ease, border-color 180ms ease',
+        flexShrink: 0,
+      }}
+      onMouseEnter={e => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.background = 'var(--color-surface-raised)'
+        el.style.color = 'var(--color-text)'
+      }}
+      onMouseLeave={e => {
+        const el = e.currentTarget as HTMLButtonElement
+        el.style.background = 'var(--color-surface)'
+        el.style.color = 'var(--color-text-muted)'
+      }}
+    >
+      {isDark ? (
+        // Sun icon
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      ) : (
+        // Moon icon
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      )}
+    </button>
+  )
+}
 
-      <div className="relative flex items-center justify-between px-6 sm:px-8 lg:px-12 py-5 sm:py-6">
-        {/* Logo */}
-        <Link 
-          to="/" 
-          className="font-serif text-xl sm:text-[1.35rem] font-semibold tracking-[0.5px] text-[#F5F0E8] no-underline"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-        >
-          Leander <span className="text-[#C9A96E]">Mena</span>
-        </Link>
+export default function Navigation({ onBookCall }: Props) {
+  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const { pathname } = useLocation()
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className={`text-[0.8rem] font-medium uppercase tracking-[1.5px] transition-colors duration-300 no-underline ${
-                pathname === link.href 
-                  ? 'text-[#C9A96E]' 
-                  : 'text-[#B8B0A0] hover:text-[#C9A96E]'
-              }`}
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  useEffect(() => { setOpen(false) }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
+
+  return (
+    <header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        transition: 'all 300ms ease',
+        borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
+        background: scrolled ? 'color-mix(in srgb, var(--color-bg) 95%, transparent)' : 'var(--color-bg)',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+      }}
+    >
+      <div className="container">
+        <nav style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', padding: '0.75rem 0' }}>
+
+          {/* Brand lockup */}
+          <Link
+            to="/"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}
+            aria-label="Leander Mena — home"
+          >
+            <BrandMark />
+            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, gap: '2px' }}>
+              <strong style={{ fontSize: '0.875rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-text)', fontWeight: 700, transition: 'color 180ms ease' }}>
+                Leander Mena
+              </strong>
+              <span style={{ fontSize: '0.68rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-text-muted)', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                Hospitality&nbsp;|&nbsp;F&amp;B Operations Consulting
+              </span>
+            </span>
+          </Link>
+
+          {/* Desktop nav */}
+          <div style={{ display: 'none' }} className="md-nav-desktop">
+            {links.map((l) => (
+              <Link
+                key={l.href}
+                to={l.href}
+                style={{
+                  fontSize: '0.875rem',
+                  fontWeight: 500,
+                  textDecoration: 'none',
+                  transition: 'color 180ms ease',
+                  color: pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
+                    ? 'var(--color-primary)'
+                    : 'var(--color-text-muted)',
+                }}
+              >
+                {l.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Right side: theme toggle + CTA + hamburger */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <ThemeToggleButton />
+            <button
+              onClick={onBookCall}
+              className="btn btn-primary"
+              style={{ fontSize: '0.8rem', display: 'none' }}
+              id="nav-cta-desktop"
             >
-<<<<<<< Updated upstream
               Let&rsquo;s Talk
             </button>
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setOpen(!open)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '44px',
+                height: '44px',
+                marginRight: '-0.5rem',
+                color: 'var(--color-text)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                borderRadius: 'var(--radius-md)',
+              }}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              id="nav-hamburger"
+            >
+              <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
+                {open ? (
+                  <path d="M6 6l12 12M6 18L18 6" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
-=======
-              {link.label}
-            </Link>
-          ))}
->>>>>>> Stashed changes
-
-          {/* Gold pill CTA */}
-          <Link
-            to="/book"
-            className="text-[0.8rem] font-semibold uppercase tracking-[1px] bg-[#C9A96E] text-[#0D0D0D] px-6 py-2.5 rounded-sm transition-all duration-300 hover:bg-[#E8D5B0] hover:-translate-y-px no-underline"
-          >
-            Book a Call
-          </Link>
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 text-[#B8B0A0] hover:text-[#C9A96E] transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        </nav>
       </div>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-[#0D0D0D]/98 backdrop-blur-lg border-t border-[#2A2A2A]"
-          >
-            <div className="px-6 py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
+      {open && (
+        <div style={{
+          position: 'fixed',
+          inset: 0,
+          top: '57px',
+          zIndex: 40,
+          background: 'var(--color-bg)',
+          overflowY: 'auto',
+        }}>
+          <div className="container" style={{ paddingTop: '1.5rem', paddingBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingBottom: '1.25rem', marginBottom: '0.5rem', borderBottom: '1px solid var(--color-border)' }}>
+                <BrandMark />
+                <span style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                  <strong style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text)' }}>Leander Mena</strong>
+                  <span style={{ fontSize: '0.62rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>Hospitality&nbsp;|&nbsp;F&amp;B Operations</span>
+                </span>
+              </div>
+              {links.map((l) => (
                 <Link
-                  key={link.href}
-                  to={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={`text-sm font-medium uppercase tracking-[1.5px] py-2 transition-colors no-underline ${
-                    pathname === link.href 
-                      ? 'text-[#C9A96E]' 
-                      : 'text-[#B8B0A0] hover:text-[#C9A96E]'
-                  }`}
+                  key={l.href}
+                  to={l.href}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    padding: '1rem 0',
+                    borderBottom: '1px solid var(--color-border)',
+                    fontSize: '1rem',
+                    fontWeight: 500,
+                    textDecoration: 'none',
+                    transition: 'color 180ms ease',
+                    color: pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
+                      ? 'var(--color-primary)'
+                      : 'var(--color-text)',
+                  }}
                 >
-                  {link.label}
+                  {l.label}
                 </Link>
               ))}
-              <Link
-                to="/book"
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-semibold uppercase tracking-[1px] bg-[#C9A96E] text-[#0D0D0D] px-6 py-3 rounded-sm text-center no-underline mt-2"
+              <button
+                onClick={() => { onBookCall(); setOpen(false) }}
+                className="btn btn-primary"
+                style={{ marginTop: '1.5rem', width: '100%', fontSize: '0.9rem' }}
               >
-<<<<<<< Updated upstream
                 Let&rsquo;s Talk
               </button>
-=======
-                Book a Call
-              </Link>
->>>>>>> Stashed changes
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+          </div>
+        </div>
+      )}
+
+      {/* Responsive nav styles */}
+      <style>{`
+        @media (min-width: 768px) {
+          .md-nav-desktop { display: flex !important; align-items: center; gap: 1.5rem; }
+          #nav-cta-desktop { display: inline-flex !important; }
+          #nav-hamburger { display: none !important; }
+        }
+      `}</style>
+    </header>
   )
 }
