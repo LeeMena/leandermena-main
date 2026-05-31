@@ -22,7 +22,7 @@ export default function About() {
     <>
       <SEO
         title="About"
-        description="Leander Mena | 18+ years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
+        description="Leander Mena | 18 years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
         path="/about"
         schemaType="about"
       />
@@ -50,7 +50,7 @@ export default function About() {
                 About Leander Mena
               </h1>
               <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-                18+ years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami.
+                18 years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
@@ -63,7 +63,7 @@ export default function About() {
                 <span className="kicker">By the Numbers</span>
                 <div className="grid grid-cols-2 gap-6 mt-4">
                   {[
-                    { num: '18+', label: 'Years in Miami Hospitality' },
+                    { num: '18', label: 'Years in Miami Hospitality' },
                     { num: '$9.1M', label: 'Annual Revenue Managed' },
                     { num: '220', label: 'Seats + 78 FTEs Led' },
                     { num: '40+', label: 'Team Members Hired & Trained at Single Opening' },
