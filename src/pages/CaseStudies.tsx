@@ -16,15 +16,14 @@ export default function CaseStudies() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/case-studies.jpg"
+            src="/images/fnb-manager.jpg"
             alt=""
             width="1400"
             height="900"
             className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
             loading="eager"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.1) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
         <div className="container relative z-10" style={{ paddingTop: 'clamp(3rem, 10vw, 7rem)', paddingBottom: 'clamp(3rem, 10vw, 7rem)' }}>
@@ -71,20 +70,10 @@ export default function CaseStudies() {
             {caseStudies.map((cs, i) => (
               <ScrollReveal key={cs.id} delay={i * 80}>
                 <article className="card" style={{ padding: 'var(--space-8)' }}>
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                    gap: 'var(--space-8)',
-                    alignItems: 'start',
-                  }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-8)', alignItems: 'start' }}>
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', marginBottom: 'var(--space-4)', flexWrap: 'wrap' }}>
-                        <span style={{
-                          fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em',
-                          textTransform: 'uppercase',
-                          background: 'var(--color-primary)', color: '#fff',
-                          padding: '0.2rem 0.65rem', borderRadius: 'var(--radius-full)',
-                        }}>{cs.industry}</span>
+                        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', background: 'var(--color-primary)', color: '#fff', padding: '0.2rem 0.65rem', borderRadius: 'var(--radius-full)' }}>{cs.industry}</span>
                         <span className="kicker" style={{ margin: 0 }}>{cs.duration}</span>
                       </div>
                       <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.15rem, 2.5vw, 1.55rem)', fontWeight: 700, marginBottom: 'var(--space-2)', lineHeight: 1.2, color: 'var(--color-text)' }}>{cs.title}</h2>
@@ -133,12 +122,8 @@ export default function CaseStudies() {
       <section className="section" style={{ borderBottom: 'none' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
           <span className="kicker">Ready to Work Together?</span>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 700, marginBottom: 'var(--space-4)' }}>
-            Your operation could be the next case study.
-          </h2>
-          <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)', maxWidth: '52ch', marginInline: 'auto' }}>
-            Pre-opening, recovery, or fractional leadership — let&rsquo;s talk about what your property needs.
-          </p>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 700, marginBottom: 'var(--space-4)' }}>Your operation could be the next case study.</h2>
+          <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)', maxWidth: '52ch', marginInline: 'auto' }}>Pre-opening, recovery, or fractional leadership — let’s talk about what your property needs.</p>
           <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
         </div>
       </section>

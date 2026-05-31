@@ -67,15 +67,14 @@ export default function Experience() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/experience.jpg"
+            src="/images/dining.jpg"
             alt=""
             width="1400"
             height="900"
             className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
             loading="eager"
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.1) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
         </div>
         <div className="container relative z-10" style={{ paddingTop: 'clamp(3rem, 10vw, 7rem)', paddingBottom: 'clamp(3rem, 10vw, 7rem)' }}>
@@ -86,7 +85,7 @@ export default function Experience() {
                 18 Years of Hospitality Leadership
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                Opening, scaling, and leading operations across Miami's most demanding restaurants, hotels, and catering venues.
+                Opening, scaling, and leading operations across Miami’s most demanding restaurants, hotels, and catering venues.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
@@ -129,9 +128,7 @@ export default function Experience() {
                     <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-1">{r.title}</h2>
                     <p className="text-xs text-[#888888] mb-3 tracking-wide">{r.subtitle}</p>
                     <p className="text-[#888888] max-w-[68ch] mb-3 leading-relaxed" style={{ fontSize: '0.9rem' }}>{r.body}</p>
-                    <Link to={r.link} className="text-xs text-[#b8a080] hover:text-[#d4b896] transition-colors">
-                      Related work →
-                    </Link>
+                    <Link to={r.link} className="text-xs text-[#b8a080] hover:text-[#d4b896] transition-colors">Related work →</Link>
                   </div>
                 </div>
               </ScrollReveal>
@@ -143,13 +140,7 @@ export default function Experience() {
               <h3 className="text-xs font-bold tracking-widest uppercase text-[#b8a080] mb-4">Earlier Roles</h3>
               <div className="flex flex-wrap gap-3">
                 {earlier.map((e) => (
-                  <span key={e} style={{
-                    fontSize: '0.78rem',
-                    color: 'var(--color-text-muted)',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: 'var(--radius-full)',
-                    padding: '0.25rem 0.75rem',
-                  }}>{e}</span>
+                  <span key={e} style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-full)', padding: '0.25rem 0.75rem' }}>{e}</span>
                 ))}
               </div>
             </div>
