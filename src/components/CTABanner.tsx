@@ -1,52 +1,100 @@
-import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-interface Props {
-  title: string
-  subtitle: string
-  primaryCta: { label: string; href: string }
-  secondaryCta?: { label: string; href: string }
+interface CTABannerProps {
+  title: string;
+  subtitle: string;
+  primaryCta: { label: string; href: string; external?: boolean };
+  secondaryCta?: { label: string; href: string; external?: boolean };
+  variant?: 'default' | 'dark' | 'gradient';
 }
 
-export default function CTABanner({ title, subtitle, primaryCta, secondaryCta }: Props) {
+export default function CTABanner({
+  title,
+  subtitle,
+  primaryCta,
+  secondaryCta,
+  variant = 'default',
+}: CTABannerProps) {
+  const variantStyles = {
+    default: 'bg-primary text-primary-foreground',
+    dark: 'bg-slate-900 text-white',
+    gradient: 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground',
+  };
+
+  const LinkComponent = ({ cta }: { cta: CTABannerProps['primaryCta'] }) => {
+    const baseClasses =
+      'inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200';
+
+    if (cta.external) {
+      return (
+        <a
+          href={cta.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${baseClasses} bg-white text-slate-900 hover:bg-white/90`}
+        >
+          {cta.label}
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      );
+    }
+
+    return (
+      <Link
+        to={cta.href}
+        className={`${baseClasses} bg-white text-slate-900 hover:bg-white/90`}
+      >
+        {cta.label}
+        <ArrowRight className="h-4 w-4" />
+      </Link>
+    );
+  };
+
   return (
-    <section style={{
-      background: 'var(--color-surface)',
-      borderTop: '1px solid var(--color-border)',
-      paddingBlock: 'clamp(3rem, 7vw, 6rem)',
-    }}>
-      <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
-        <h2 style={{
-          fontFamily: 'var(--font-display)',
-          fontSize: 'clamp(1.5rem, 3.5vw, 2.25rem)',
-          fontWeight: 700,
-          letterSpacing: '-0.02em',
-          marginBottom: 'var(--space-4)',
-          color: 'var(--color-text)',
-        }}>
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`${variantStyles[variant]} py-20 px-4 sm:px-6 lg:px-8`}
+    >
+      <div className="max-w-4xl mx-auto text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
+        >
           {title}
-        </h2>
-        <p style={{
-          fontSize: 'clamp(0.9rem, 2vw, 1rem)',
-          color: 'var(--color-text-muted)',
-          maxWidth: '55ch',
-          marginInline: 'auto',
-          marginBottom: 'var(--space-8)',
-          lineHeight: 1.7,
-        }}>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-lg sm:text-xl opacity-90 max-w-2xl mx-auto mb-10"
+        >
           {subtitle}
-        </p>
-        <div style={{ display: 'flex', gap: 'var(--space-4)', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Link to={primaryCta.href} className="btn btn-primary">
-            {primaryCta.label} <ArrowRight size={16} />
-          </Link>
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
+        >
+          <LinkComponent cta={primaryCta} />
+
           {secondaryCta && (
-            <Link to={secondaryCta.href} className="btn btn-secondary">
-              {secondaryCta.label}
-            </Link>
+            <LinkComponent cta={secondaryCta} />
           )}
-        </div>
+        </motion.div>
       </div>
-    </section>
-  )
+    </motion.section>
+  );
 }
