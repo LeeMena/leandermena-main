@@ -16,30 +16,21 @@ interface Props {
   onBookCall: () => void
 }
 
-// Brand mark — gold gradient "L" square
+// Brand mark — uses the actual favicon.svg from /public
 function BrandMark() {
   return (
-    <div
-      aria-hidden="true"
+    <img
+      src="/favicon.svg"
+      alt="Leander Mena"
+      width={42}
+      height={42}
       style={{
-        width: '42px',
-        height: '42px',
         borderRadius: '0.2rem',
-        background: 'linear-gradient(145deg, #f1e3c1, #8e7342)',
-        display: 'grid',
-        placeItems: 'center',
-        color: '#111',
-        fontWeight: 800,
-        fontSize: '1.35rem',
         boxShadow: '0 8px 30px rgba(41,31,20,0.18)',
-        lineHeight: 1,
-        fontFamily: 'var(--font-display, serif)',
         flexShrink: 0,
-        userSelect: 'none',
+        display: 'block',
       }}
-    >
-      L
-    </div>
+    />
   )
 }
 
