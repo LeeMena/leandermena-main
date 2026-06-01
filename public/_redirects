@@ -10,7 +10,12 @@
 /leander-mena-miami-hospitality.html /leander-mena-miami-hospitality  301
 /insights.html                       /insights            301
 
-# SEO static pages — serve directly BEFORE the SPA fallback
+# Legacy short blog slugs → canonical long-form URLs (301)
+/insights/fractional-gm              /insights/what-a-fractional-gm-actually-does  301
+/insights/pre-opening                /insights/miami-pre-opening-playbook          301
+/insights/labor-cost                 /insights/labor-cost-control-miami-restaurants 301
+
+# SEO static page shells — serve prerendered index before SPA fallback
 /leander-mena-miami-hospitality      /leander-mena-miami-hospitality/index.html  200
 /pre-opening                         /pre-opening/index.html    200
 /philosophy                          /philosophy/index.html     200
@@ -20,6 +25,8 @@
 /contact                             /contact/index.html        200
 /insights                            /insights/index.html       200
 /book                                /book/index.html           200
+/case-studies                        /case-studies/index.html   200
+/blueprint                           /blueprint/index.html      200
 
 # SPA fallback — all unmatched routes serve index.html
 /*    /index.html   200

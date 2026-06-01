@@ -1,10 +1,8 @@
 User-agent: *
 Allow: /
 
-# Block redirect-only routes from being crawled
-Disallow: /blog
-Disallow: /insights/fractional-gm
-Disallow: /insights/pre-opening
-Disallow: /insights/labor-cost
+# Block non-content utility routes
+Disallow: /profile
+Disallow: /downloads/
 
 Sitemap: https://www.leandermena.com/sitemap.xml
