@@ -11,6 +11,8 @@ export type SchemaType =
   | 'contact'
   | 'insights'
   | 'article'
+  | 'case-studies'
+  | 'blueprint'
 
 interface ArticleMeta {
   datePublished: string
@@ -68,7 +70,7 @@ const ORGANIZATION_PUBLISHER = {
 }
 
 function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string) {
-  const breadcrumb = (label: string, _position: number) => ({
+  const breadcrumb = (label: string) => ({
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
@@ -121,7 +123,6 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           ...PERSON_BASE,
           description:
             'Leander Mena is a Miami-based fractional F&B operations leader with 18+ years of experience opening and managing restaurants, hotels, and hospitality venues.',
-          alumniOf: [],
           hasOccupation: {
             '@type': 'Occupation',
             name: 'Fractional F&B Director',
@@ -131,7 +132,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
               'Pre-opening consulting, operations leadership, and team development for Miami hospitality brands.',
           },
         },
-        breadcrumb('About', 2),
+        breadcrumb('About'),
       ]
 
     case 'services':
@@ -147,7 +148,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           description:
             'Fractional F&B Director services for Miami restaurants and hotels including operations leadership, menu development, team training, and financial oversight.',
         },
-        breadcrumb('Services', 2),
+        breadcrumb('Services'),
       ]
 
     case 'pre-opening':
@@ -163,7 +164,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           description:
             'End-to-end pre-opening consulting for new restaurants and hotel F&B programs in Miami: concept development, SOP creation, staff hiring and training, and opening-day execution.',
         },
-        breadcrumb('Pre-Opening', 2),
+        breadcrumb('Pre-Opening'),
       ]
 
     case 'experience':
@@ -177,26 +178,23 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           description:
             'Career history of Leander Mena across Miami hospitality: restaurant groups, hotel F&B, banquet operations, and pre-opening projects.',
         },
-        breadcrumb('Experience', 2),
+        breadcrumb('Experience'),
       ]
 
     case 'philosophy':
       return [
         {
           '@context': 'https://schema.org',
-          '@type': 'Article',
-          headline: 'Leadership Philosophy — Leander Mena',
+          '@type': 'WebPage',
+          name: 'Leadership Philosophy — Leander Mena',
           url: `${BASE_URL}/philosophy`,
           image: DEFAULT_IMAGE,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
-          publisher: ORGANIZATION_PUBLISHER,
           description:
             'The operating principles and leadership philosophy behind Leander Mena\u2019s approach to F&B operations management.',
-          datePublished: '2026-01-01',
-          dateModified: '2026-01-01',
           mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/philosophy` },
         },
-        breadcrumb('Philosophy', 2),
+        breadcrumb('Philosophy'),
       ]
 
     case 'contact':
@@ -222,7 +220,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           },
           sameAs: PERSON_BASE.sameAs,
         },
-        breadcrumb('Contact', 2),
+        breadcrumb('Contact'),
       ]
 
     case 'insights':
@@ -237,7 +235,35 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           description:
             'Hospitality and F&B operations insights from Leander Mena: pre-opening, fractional GM models, labor cost control, and Miami restaurant strategy.',
         },
-        breadcrumb('Insights', 2),
+        breadcrumb('Insights'),
+      ]
+
+    case 'case-studies':
+      return [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: 'Case Studies — Leander Mena',
+          url: `${BASE_URL}/case-studies`,
+          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          description:
+            'Real results from hospitality consulting engagements: pre-opening builds, operations turnarounds, and labor cost improvements across Miami restaurants and hotels.',
+        },
+        breadcrumb('Case Studies'),
+      ]
+
+    case 'blueprint':
+      return [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: 'Pre-Opening Blueprint — Leander Mena',
+          url: `${BASE_URL}/blueprint`,
+          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          description:
+            'The pre-opening blueprint used across 5+ Miami restaurant and hotel openings. Download the free framework for staffing, SOPs, and opening-day execution.',
+        },
+        breadcrumb('Blueprint'),
       ]
 
     case 'article':

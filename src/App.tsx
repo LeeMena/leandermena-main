@@ -31,11 +31,21 @@ export default function App() {
         <Route path="philosophy" element={<Philosophy />} />
         <Route path="contact" element={<Contact />} />
         <Route path="profile" element={<Profile />} />
-        <Route path="leander-mena-miami-hospitality" element={<Navigate to="/leander-mena-miami-hospitality" replace />} />
+
+        {/* ORM brand page — redirect to canonical /about */}
+        <Route path="leander-mena-miami-hospitality" element={<Navigate to="/about" replace />} />
+
+        {/* Insights — canonical long-form slugs */}
         <Route path="insights" element={<BlogIndex />} />
-        <Route path="insights/pre-opening" element={<BlogPreOpening />} />
-        <Route path="insights/fractional-gm" element={<BlogFractionalGM />} />
-        <Route path="insights/labor-cost" element={<BlogLaborCost />} />
+        <Route path="insights/what-a-fractional-gm-actually-does" element={<BlogFractionalGM />} />
+        <Route path="insights/miami-pre-opening-playbook" element={<BlogPreOpening />} />
+        <Route path="insights/labor-cost-control-miami-restaurants" element={<BlogLaborCost />} />
+
+        {/* Legacy short slugs — client-side redirect to canonical URLs */}
+        <Route path="insights/fractional-gm" element={<Navigate to="/insights/what-a-fractional-gm-actually-does" replace />} />
+        <Route path="insights/pre-opening" element={<Navigate to="/insights/miami-pre-opening-playbook" replace />} />
+        <Route path="insights/labor-cost" element={<Navigate to="/insights/labor-cost-control-miami-restaurants" replace />} />
+
         <Route path="shop" element={<Shop />} />
         <Route path="case-studies" element={<CaseStudies />} />
         <Route path="products" element={<Products />} />
