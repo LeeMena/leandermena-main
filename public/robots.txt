@@ -5,4 +5,6 @@ Allow: /
 Disallow: /profile
 Disallow: /downloads/
 
+# Preferred domain: www
+# Sitemap
 Sitemap: https://www.leandermena.com/sitemap.xml

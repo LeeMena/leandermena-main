@@ -10,6 +10,9 @@
 /leander-mena-miami-hospitality.html /leander-mena-miami-hospitality  301
 /insights.html                       /insights            301
 
+# Canonical www redirect (non-www → www)
+https://leandermena.com/*            https://www.leandermena.com/:splat  301
+
 # Legacy short blog slugs → canonical long-form URLs (301)
 /insights/fractional-gm              /insights/what-a-fractional-gm-actually-does  301
 /insights/pre-opening                /insights/miami-pre-opening-playbook          301
@@ -20,6 +23,7 @@
 /pre-opening                         /pre-opening/index.html    200
 /philosophy                          /philosophy/index.html     200
 /about                               /about/index.html          200
+/skills                              /skills/index.html         200
 /services                            /services/index.html       200
 /experience                          /experience/index.html     200
 /contact                             /contact/index.html        200

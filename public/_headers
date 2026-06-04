@@ -7,10 +7,9 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-XSS-Protection: 1; mode=block
 
-# Immutable cache for Vite hashed bundles
+# Immutable cache for Vite hashed bundles - NOT noindex (assets are JS/CSS, not pages)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
-  X-Robots-Tag: noindex
 
 # No-cache for HTML entry points and crawlable XML
 /index.html
@@ -26,3 +25,6 @@
 /downloads/*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: private, no-store
+
+/profile
+  X-Robots-Tag: noindex, nofollow
