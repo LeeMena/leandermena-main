@@ -31,6 +31,14 @@ https://leandermena.com/*            https://www.leandermena.com/:splat  301
 /book                                /book/index.html           200
 /case-studies                        /case-studies/index.html   200
 /blueprint                           /blueprint/index.html      200
+/shop                                /shop/index.html           200
+/profile                             /profile/index.html        200
+/privacy                             /privacy/index.html        200
+
+# Blog post prerendered shells
+/insights/what-a-fractional-gm-actually-does      /insights/what-a-fractional-gm-actually-does/index.html   200
+/insights/miami-pre-opening-playbook              /insights/miami-pre-opening-playbook/index.html           200
+/insights/labor-cost-control-miami-restaurants    /insights/labor-cost-control-miami-restaurants/index.html 200
 
 # SPA fallback — all unmatched routes serve index.html
 /*    /index.html   200
