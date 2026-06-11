@@ -1,17 +1,10 @@
-name: Cloudflare Cache Purge
-
-on:
-  push:
-    branches: [main]
-
-jobs:
-  purge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Purge Cloudflare Cache
-        run: |
-          curl -s -X POST \
-            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
-            -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}'
+# DEPRECATED — superseded by deploy.yml (purge job)
+# This file is kept as a tombstone to prevent accidental recreation.
+# The cache purge now runs as job 2 in .github/workflows/deploy.yml
+# after the Pages deploy completes, using surgical URL-based purge
+# instead of purge_everything.
+#
+# DO NOT re-enable this workflow.
+#
+# To manually trigger a cache purge + status check:
+#   GitHub → Actions → "Deploy → Purge → Status" → Run workflow

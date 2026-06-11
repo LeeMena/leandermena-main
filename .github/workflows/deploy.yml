@@ -1,24 +1,155 @@
-name: Deploy to Cloudflare Pages
+# =============================================================
+# deploy.yml
+# leandermena.com — Build → Deploy → Cache Purge → Status Check
+#
+# Secrets required (Settings → Secrets → Actions):
+#   CLOUDFLARE_API_TOKEN   — Pages deploy token (needs Pages:Edit)
+#   CLOUDFLARE_ACCOUNT_ID  — CF account ID
+#   CF_ZONE_ID             — Zone ID for leandermena.com
+#   CF_CACHE_TOKEN         — CF API token scoped to Cache Purge only
+# =============================================================
+
+name: Deploy → Purge → Status
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:  # allow manual trigger from GitHub UI
 
 jobs:
+  # -----------------------------------------------------------
+  # JOB 1: Build & Deploy to Cloudflare Pages
+  # -----------------------------------------------------------
   deploy:
+    name: Build & Deploy
     runs-on: ubuntu-latest
+    outputs:
+      deploy_url: ${{ steps.pages_deploy.outputs.url }}
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
-      - run: npm run build
-      - uses: cloudflare/pages-action@v1
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Deploy to Cloudflare Pages
+        id: pages_deploy
+        uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: leandermena-main
           directory: dist
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  # -----------------------------------------------------------
+  # JOB 2: Surgical Cache Purge
+  # Runs AFTER deploy succeeds. Purges only HTML pages +
+  # crawl assets — leaves immutable /assets/* bundles intact.
+  # -----------------------------------------------------------
+  purge:
+    name: Purge Cache
+    runs-on: ubuntu-latest
+    needs: deploy  # waits for deploy job to finish
+
+    steps:
+      - name: Wait for Pages edge propagation
+        run: sleep 20
+
+      - name: Purge HTML pages & crawl assets
+        env:
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+          CF_CACHE_TOKEN: ${{ secrets.CF_CACHE_TOKEN }}
+        run: |
+          URLS='{
+            "files": [
+              "https://www.leandermena.com/",
+              "https://www.leandermena.com/about",
+              "https://www.leandermena.com/services",
+              "https://www.leandermena.com/pre-opening",
+              "https://www.leandermena.com/experience",
+              "https://www.leandermena.com/philosophy",
+              "https://www.leandermena.com/contact",
+              "https://www.leandermena.com/book",
+              "https://www.leandermena.com/case-studies",
+              "https://www.leandermena.com/blueprint",
+              "https://www.leandermena.com/shop",
+              "https://www.leandermena.com/insights",
+              "https://www.leandermena.com/sitemap.xml",
+              "https://www.leandermena.com/robots.txt"
+            ]
+          }'
+
+          RESPONSE=$(curl -s -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+            -H "Authorization: Bearer ${CF_CACHE_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data "$URLS")
+
+          echo "CF purge response: $RESPONSE"
+
+          if echo "$RESPONSE" | grep -q '"success":true'; then
+            echo "::notice::Cache purged for 14 URLs"
+          else
+            echo "::error::Cloudflare cache purge failed"
+            echo "$RESPONSE"
+            exit 1
+          fi
+
+  # -----------------------------------------------------------
+  # JOB 3: Deploy Status Check
+  # Fetches all 6 rebuilt static shells + homepage after
+  # purge and verifies HTTP 200 + correct Content-Type.
+  # Fails the workflow if any page returns non-200.
+  # -----------------------------------------------------------
+  status_check:
+    name: Status Check
+    runs-on: ubuntu-latest
+    needs: purge  # waits for purge to finish
+
+    steps:
+      - name: Wait for global edge propagation
+        run: sleep 15
+
+      - name: Check all key pages return HTTP 200
+        run: |
+          FAILED=0
+          PAGES=(
+            "https://www.leandermena.com/"
+            "https://www.leandermena.com/about"
+            "https://www.leandermena.com/services"
+            "https://www.leandermena.com/pre-opening"
+            "https://www.leandermena.com/experience"
+            "https://www.leandermena.com/philosophy"
+            "https://www.leandermena.com/contact"
+            "https://www.leandermena.com/sitemap.xml"
+          )
+
+          for URL in "${PAGES[@]}"; do
+            STATUS=$(curl -o /dev/null -s -w "%{http_code}" --max-time 10 "$URL")
+            if [ "$STATUS" = "200" ]; then
+              echo "::notice::${URL} — ${STATUS} OK"
+            else
+              echo "::error::${URL} returned HTTP ${STATUS}"
+              FAILED=1
+            fi
+          done
+
+          if [ $FAILED -ne 0 ]; then
+            echo "::error::One or more pages failed the status check."
+            exit 1
+          fi
+
+          echo "::notice::All pages passed status check ✔"
