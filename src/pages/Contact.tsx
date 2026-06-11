@@ -3,21 +3,32 @@ import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
+const CONTACT_ENDPOINT = 'https://contact.leandermena.com/submit'
+
 export default function Contact() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [errorMsg, setErrorMsg] = useState('')
+  const [form, setForm] = useState({ name: '', email: '', message: '', website: '' })
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setStatus('sending')
+    setErrorMsg('')
     try {
-      const res = await fetch('https://formspree.io/f/xpwzgkqp', {
+      const res = await fetch(CONTACT_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
       })
-      setStatus(res.ok ? 'sent' : 'error')
+      const data = await res.json()
+      if (res.ok && data.status === 'success') {
+        setStatus('sent')
+      } else {
+        setErrorMsg(data.error || 'Something went wrong.')
+        setStatus('error')
+      }
     } catch {
+      setErrorMsg('Network error — please email leander@leandermena.com directly.')
       setStatus('error')
     }
   }
@@ -39,7 +50,6 @@ export default function Contact() {
             width="1400"
             height="900"
             className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
             loading="eager"
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
@@ -53,7 +63,7 @@ export default function Contact() {
                 Let&rsquo;s Start a Conversation
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                Whether you&rsquo;re opening a new concept, fixing an existing one, or just exploring — reach out directly.
+                Whether you&rsquo;re opening a new concept, fixing an existing one, or just exploring &mdash; reach out directly.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/book" className="btn btn-primary">Book a Call</Link>
@@ -80,7 +90,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Contact form only — no duplicate info box */}
+      {/* Contact form */}
       <section className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <ScrollReveal>
@@ -93,6 +103,21 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="card flex flex-col gap-5" style={{ padding: 'var(--space-6)' }}>
                 <h2 className="font-display text-xl font-bold text-[#e8e8e8]">Send a Message</h2>
+
+                {/* Honeypot — hidden from humans, filled by bots */}
+                <div style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }} aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={e => setForm(f => ({ ...f, website: e.target.value }))}
+                  />
+                </div>
+
                 <div className="flex flex-col gap-1">
                   <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Name</label>
                   <input
@@ -123,7 +148,11 @@ export default function Contact() {
                 <button type="submit" className="btn btn-primary" disabled={status === 'sending'} style={{ fontWeight: 800 }}>
                   {status === 'sending' ? 'Sending…' : 'Send Message'}
                 </button>
-                {status === 'error' && <p style={{ color: 'var(--color-error, #e05)', fontSize: '0.85rem' }}>Something went wrong — try emailing me directly.</p>}
+                {status === 'error' && (
+                  <p style={{ color: 'var(--color-error, #e05)', fontSize: '0.85rem' }}>
+                    {errorMsg || 'Something went wrong — try emailing me directly at leander@leandermena.com'}
+                  </p>
+                )}
               </form>
             )}
           </ScrollReveal>

@@ -1,0 +1,32 @@
+name = "leandermena-contact-form"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+# --- Routes ---
+# Deploy to: https://contact.leandermena.com/submit
+# Add a Custom Domain in the Cloudflare Workers dashboard after deploying,
+# or use the route below (replace ZONE_ID with your actual zone ID).
+#
+# [[routes]]
+# pattern = "contact.leandermena.com/submit"
+# zone_name = "leandermena.com"
+
+# --- Email Routing binding ---
+# 1. Enable Cloudflare Email Routing for leandermena.com in the dashboard.
+# 2. Verify noreply@leandermena.com as a sender address.
+# 3. Add destination address leander@leandermena.com.
+# The binding name below (SEND_EMAIL) must match the env variable used in index.js.
+[[send_email]]
+binding = "SEND_EMAIL"
+
+# --- KV for rate limiting ---
+# Create the KV namespace first:
+#   npx wrangler kv:namespace create RATE_LIMIT_KV
+# Then paste the returned id below.
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+# --- Secrets (set via CLI, never commit values) ---
+# npx wrangler secret put RECIPIENT_EMAIL    # leander@leandermena.com
+# npx wrangler secret put SENDER_EMAIL       # noreply@leandermena.com

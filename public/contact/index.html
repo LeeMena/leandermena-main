@@ -23,7 +23,7 @@
     "url": "https://www.leandermena.com/contact",
     "mainEntity": {
       "@type": "LocalBusiness",
-      "name": "Leander Mena — F&B Operations Consulting",
+      "name": "Leander Mena \u2014 F&B Operations Consulting",
       "url": "https://www.leandermena.com",
       "email": "leander@leandermena.com",
       "address": { "@type": "PostalAddress", "addressLocality": "Miami", "addressRegion": "FL", "addressCountry": "US" },
@@ -63,7 +63,9 @@
     .form-input { background: #1c1b19; border: 1px solid #2a2a2a; border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.95rem; color: #e8e8e8; outline: none; width: 100%; }
     .form-input:focus { border-color: #4f98a3; }
     textarea.form-input { resize: vertical; min-height: 120px; }
+    .hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
     .form-submit { background: #01696f; color: #fff; border: none; border-radius: 0.5rem; padding: 0.8rem 1.75rem; font-size: 0.95rem; font-weight: 800; cursor: pointer; width: 100%; margin-top: 0.5rem; }
+    .form-submit:hover { background: #018a91; }
     footer { border-top: 1px solid #2a2a2a; padding: 2rem 0; text-align: center; color: #797876; font-size: 0.85rem; }
     footer a { color: #4f98a3; text-decoration: none; }
   </style>
@@ -99,7 +101,12 @@
     <div class="container">
       <div class="form-card">
         <h2>Send a Message</h2>
-        <form action="https://formspree.io/f/xpwzgkqp" method="POST">
+        <form id="contact-form">
+          <!-- Honeypot: hidden from humans, filled by bots -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
           <div class="form-group">
             <label class="form-label" for="name">Name</label>
             <input class="form-input" type="text" id="name" name="name" required />
@@ -112,11 +119,61 @@
             <label class="form-label" for="message">Message</label>
             <textarea class="form-input" id="message" name="message" rows="5" required></textarea>
           </div>
-          <button type="submit" class="form-submit">Send Message</button>
+          <p id="form-error" style="color:#e05555;font-size:0.85rem;margin-bottom:0.75rem;display:none;"></p>
+          <button type="submit" class="form-submit" id="form-submit">Send Message</button>
         </form>
+        <div id="form-success" style="text-align:center;padding:2rem;display:none;">
+          <p style="font-size:1.5rem;margin-bottom:0.5rem;">&#10003;</p>
+          <h2 style="color:#e8e8e8;margin-bottom:0.5rem;">Message received</h2>
+          <p style="color:#888;">I&#8217;ll be in touch shortly.</p>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const btn  = document.getElementById('form-submit');
+    const err  = document.getElementById('form-error');
+    const suc  = document.getElementById('form-success');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Sending\u2026';
+      err.style.display = 'none';
+
+      const payload = {
+        name:    form.name.value.trim(),
+        email:   form.email.value.trim(),
+        message: form.message.value.trim(),
+        website: form.website.value,
+      };
+
+      try {
+        const res  = await fetch('https://contact.leandermena.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (res.ok && data.status === 'success') {
+          form.style.display = 'none';
+          suc.style.display  = 'block';
+        } else {
+          err.textContent    = data.error || 'Something went wrong.';
+          err.style.display  = 'block';
+          btn.disabled       = false;
+          btn.textContent    = 'Send Message';
+        }
+      } catch {
+        err.textContent   = 'Network error \u2014 please email leander@leandermena.com directly.';
+        err.style.display = 'block';
+        btn.disabled      = false;
+        btn.textContent   = 'Send Message';
+      }
+    });
+  </script>
 
   <footer><div class="container"><p>&copy; 2026 <a href="https://www.leandermena.com">Leander Mena</a> &#8212; Miami, FL | Fractional F&amp;B Operations Consultant</p></div></footer>
 </body>
