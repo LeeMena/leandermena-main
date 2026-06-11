@@ -1,30 +1,100 @@
-/*
-  X-Robots-Tag: index, follow
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  X-XSS-Protection: 1; mode=block
+# =============================================================
+# Cloudflare Pages _headers
+# leandermena.com — Security + Cache + SEO directives
+# Last updated: 2026-06-11
+# =============================================================
 
-# Immutable cache for Vite hashed bundles - NOT noindex (assets are JS/CSS, not pages)
+# -------------------------------------------------------------
+# GLOBAL — applies to every response
+# -------------------------------------------------------------
+/*
+  # SEO
+  X-Robots-Tag: index, follow
+
+  # Security baseline
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-XSS-Protection: 0
+
+  # HSTS — 2-year max-age, subdomains, preload-ready
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # Permissions — deny all sensors/hardware access
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+
+  # Cross-Origin policies
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Cross-Origin-Resource-Policy: same-site
+
+  # Content Security Policy
+  # Allows: self, inline styles (Tailwind), Google Fonts, Cloudflare Images,
+  #         Calendly (for /book embed), Formspree removed — replaced by Worker
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://imagedelivery.net https://www.leandermena.com; connect-src 'self' https://contact.leandermena.com https://static.cloudflareinsights.com; frame-src https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self' https://contact.leandermena.com; upgrade-insecure-requests;
+
+# -------------------------------------------------------------
+# ASSETS — Vite hashed bundles (JS, CSS, fonts, images)
+# Immutable: 1 year, cached at edge + browser
+# -------------------------------------------------------------
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+  X-Robots-Tag: noindex
 
-# No-cache for HTML entry points and crawlable XML
+# -------------------------------------------------------------
+# HTML ENTRY POINTS
+# SPA root: no-cache so React updates are picked up immediately
+# Static shells: short edge TTL (2h) so GSC sees updates fast
+# -------------------------------------------------------------
 /index.html
   Cache-Control: no-cache, no-store, must-revalidate
 
+/about/index.html
+  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+
+/services/index.html
+  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+
+/pre-opening/index.html
+  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+
+/experience/index.html
+  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+
+/philosophy/index.html
+  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+
+/contact/index.html
+  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+
+# -------------------------------------------------------------
+# CRAWL ASSETS — short TTL, public
+# -------------------------------------------------------------
 /sitemap.xml
   Cache-Control: public, max-age=3600
+  X-Robots-Tag: noindex
 
 /robots.txt
   Cache-Control: public, max-age=86400
+  X-Robots-Tag: noindex
 
-# Block indexing of downloads and utility routes
+# -------------------------------------------------------------
+# IMAGES — public cache, no index signal needed
+# -------------------------------------------------------------
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+  X-Robots-Tag: noindex
+
+# -------------------------------------------------------------
+# APP-INTERNAL ROUTES — block from indexing
+# -------------------------------------------------------------
+/profile
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/skills
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
 /downloads/*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: private, no-store
-
-/profile
-  X-Robots-Tag: noindex, nofollow
