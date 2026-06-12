@@ -13,11 +13,17 @@ export default function About() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '520px' }}>
-        <div
-          className="absolute inset-0 bg-cover"
-          style={{ backgroundImage: 'url(/images/aboutme.jpg)', backgroundPosition: 'center 40%' }}
+        <img
+          src="/images/aboutme.jpg"
+          alt=""
+          aria-hidden="true"
+          width="1400"
+          height="900"
+          loading="eager"
+          className="absolute inset-0 w-full h-full"
+          style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
         />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.88) 40%, rgba(10,10,10,0.45) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <span className="kicker">About</span>
           <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
@@ -50,9 +56,12 @@ export default function About() {
             </div>
             <div>
               <img
-                src="/images/aboutme.jpg"
+                src="/images/about.jpg"
                 alt="Leander Mena - Miami F&B Operations Consultant"
-                style={{ borderRadius: 'var(--radius-lg)', width: '100%', objectFit: 'cover', aspectRatio: '4/5' }}
+                width="600"
+                height="750"
+                loading="lazy"
+                style={{ borderRadius: 'var(--radius-lg)', width: '100%', objectFit: 'cover', objectPosition: 'top', aspectRatio: '4/5' }}
               />
             </div>
           </div>
