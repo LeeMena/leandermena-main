@@ -1,4 +1,4 @@
-import { SEO } from '@/components/SEO'
+import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
 export default function About() {
@@ -8,20 +8,7 @@ export default function About() {
         title="About Leander Mena"
         description="18 years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami."
         path="/about"
-        schema={{
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          name: 'Leander Mena',
-          jobTitle: 'Fractional F&B Operations Leader',
-          url: 'https://www.leandermena.com/about',
-          sameAs: ['https://www.linkedin.com/in/leandermena'],
-          knowsAbout: ['Restaurant Operations', 'Hotel F&B', 'Pre-Opening Management', 'Labor Cost Control', 'Fractional Leadership'],
-          worksFor: {
-            '@type': 'Organization',
-            name: 'Leander Mena Consulting',
-            url: 'https://www.leandermena.com'
-          }
-        }}
+        schemaType="about"
       />
 
       {/* Hero */}

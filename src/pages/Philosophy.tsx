@@ -1,4 +1,4 @@
-import { SEO } from '@/components/SEO'
+import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
 const principles = [
@@ -35,6 +35,7 @@ export default function Philosophy() {
         title="Leadership Philosophy"
         description="Leander Mena's operational philosophy - systems, floor presence, root-cause thinking, and leadership accountability in Miami F&B."
         path="/philosophy"
+        schemaType="philosophy"
       />
 
       <section className="page-header">

@@ -1,4 +1,4 @@
-import { SEO } from '@/components/SEO'
+import SEO from '@/components/SEO'
 
 export default function Book() {
   return (
@@ -18,7 +18,6 @@ export default function Book() {
           <p style={{ fontSize: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.7, maxWidth: '44ch', marginBottom: '2rem' }}>
             30 minutes. No pitch, no pressure. Just an honest conversation about your operation and whether I can help.
           </p>
-          {/* Calendly inline widget */}
           <div
             className="calendly-inline-widget"
             data-url="https://calendly.com/leandermena/discovery"

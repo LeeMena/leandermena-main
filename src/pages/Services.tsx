@@ -1,4 +1,4 @@
-import { SEO } from '@/components/SEO'
+import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 import { services } from '@/data/services'
 
@@ -9,9 +9,10 @@ export default function Services() {
         title="Hospitality Consulting Services - Miami | Leander Mena"
         description="Fractional GM services, pre-opening builds, and operations recovery for Miami restaurants and hotel F&B teams."
         path="/services"
+        schemaType="services"
       />
 
-      {/* Hero - About-style full-bleed */}
+      {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div
           className="absolute inset-0 bg-cover bg-center"

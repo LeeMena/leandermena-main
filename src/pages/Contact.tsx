@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { SEO } from '@/components/SEO'
+import SEO from '@/components/SEO'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
@@ -42,6 +42,7 @@ export default function Contact() {
         title="Contact"
         description="Get in touch with Leander Mena - Miami F&B operations consultant."
         path="/contact"
+        schemaType="contact"
       />
 
       <section className="section" style={{ minHeight: '80dvh' }}>

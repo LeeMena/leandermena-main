@@ -1,4 +1,4 @@
-import { SEO } from '@/components/SEO'
+import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
 const cases = [
@@ -53,6 +53,7 @@ export default function CaseStudies() {
         title="Case Studies - F&B Operations Results | Leander Mena"
         description="Real results from pre-opening projects, operations recovery, and fractional GM engagements across Miami hospitality."
         path="/case-studies"
+        schemaType="case-studies"
       />
 
       {/* Hero */}

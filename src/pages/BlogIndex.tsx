@@ -1,4 +1,4 @@
-import { SEO } from '@/components/SEO'
+import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
 const posts = [
@@ -39,6 +39,7 @@ export default function BlogIndex() {
         title="Insights"
         description="F&B operations insights from Leander Mena - pre-opening, labor cost, fractional leadership, and more."
         path="/insights"
+        schemaType="insights"
       />
 
       <section className="page-header">
