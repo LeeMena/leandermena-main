@@ -1,34 +1,37 @@
-import SEO from '@/components/SEO'
-import ScrollReveal from '@/components/ScrollReveal'
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import { SEO } from '@/components/SEO'
 
-const CONTACT_ENDPOINT = 'https://contact.leandermena.com/submit'
+type Status = 'idle' | 'sending' | 'success' | 'error'
 
 export default function Contact() {
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
-  const [form, setForm] = useState({ name: '', email: '', message: '', website: '' })
+  const [form, setForm] = useState({
+    name: '', email: '', business: '', interest: '', details: ''
+  })
+
+  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+    setForm(prev => ({ ...prev, [k]: e.target.value }))
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setStatus('sending')
     setErrorMsg('')
     try {
-      const res = await fetch(CONTACT_ENDPOINT, {
+      const res = await fetch('https://contact.leandermena.com/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
       const data = await res.json()
       if (res.ok && data.status === 'success') {
-        setStatus('sent')
+        setStatus('success')
       } else {
-        setErrorMsg(data.error || 'Something went wrong.')
+        setErrorMsg(data.message || 'Something went wrong. Please try again.')
         setStatus('error')
       }
     } catch {
-      setErrorMsg('Network error — please email leander@leandermena.com directly.')
+      setErrorMsg('Network error - please email leander@leandermena.com directly.')
       setStatus('error')
     }
   }
@@ -37,125 +40,86 @@ export default function Contact() {
     <>
       <SEO
         title="Contact"
-        description="Get in touch with Leander Mena — Miami F&B operations consultant."
+        description="Get in touch with Leander Mena - Miami F&B operations consultant."
         path="/contact"
       />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
-        <div className="absolute inset-0 z-0" aria-hidden="true">
-          <img
-            src="/images/contact.jpg"
-            alt=""
-            width="1400"
-            height="900"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
-        </div>
-        <div className="container relative z-10" style={{ paddingTop: 'clamp(3rem, 10vw, 7rem)', paddingBottom: 'clamp(3rem, 10vw, 7rem)' }}>
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
-            <ScrollReveal>
-              <span className="kicker">Get in Touch</span>
-              <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
-                Let&rsquo;s Start a Conversation
+      <section className="section" style={{ minHeight: '80dvh' }}>
+        <div className="container">
+          <div className="grid-2" style={{ gap: 'clamp(2rem,5vw,4rem)', alignItems: 'start' }}>
+
+            {/* Left */}
+            <div>
+              <span className="kicker">Contact</span>
+              <h1 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-tight mb-4">
+                Contact Leander Mena
               </h1>
-              <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                Whether you&rsquo;re opening a new concept, fixing an existing one, or just exploring &mdash; reach out directly.
+              <p style={{ fontSize: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.7, maxWidth: '44ch', marginBottom: '2rem' }}>
+                Tell me about your operation and what you're trying to solve. I'll respond within one business day.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <Link to="/book" className="btn btn-primary">Book a Call</Link>
-                <a href="mailto:leander@leandermena.com" className="btn btn-secondary">Send an Email</a>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <a href="mailto:leander@leandermena.com" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  leander@leandermena.com
+                </a>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Miami, FL
+                </span>
               </div>
-            </ScrollReveal>
+            </div>
 
-            <ScrollReveal delay={200} className="hidden lg:block">
-              <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
-                <span className="kicker">Direct Contact</span>
-                <div className="flex flex-col gap-5 mt-4">
-                  <div>
-                    <span className="text-xs text-[#888888] uppercase tracking-widest block mb-1">Email</span>
-                    <a href="mailto:leander@leandermena.com" className="text-[#d4b896] text-base font-semibold">leander@leandermena.com</a>
-                  </div>
-                  <div>
-                    <span className="text-xs text-[#888888] uppercase tracking-widest block mb-1">Location</span>
-                    <span className="text-[#cccccc] text-sm">Miami, Florida</span>
-                  </div>
+            {/* Right - Form */}
+            <div>
+              {status === 'success' ? (
+                <div className="card" style={{ textAlign: 'center', padding: '3rem 2rem' }}>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" style={{ marginInline: 'auto', marginBottom: '1rem' }}>
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/>
+                  </svg>
+                  <h2 className="font-display" style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '0.75rem' }}>Message sent</h2>
+                  <p style={{ color: 'var(--color-text-muted)' }}>I'll be in touch within one business day.</p>
                 </div>
-              </div>
-            </ScrollReveal>
+              ) : (
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                  <div className="grid-2" style={{ gap: '1rem' }}>
+                    <div className="field">
+                      <label htmlFor="name">Your name</label>
+                      <input id="name" type="text" required value={form.name} onChange={set('name')} placeholder="First and last" />
+                    </div>
+                    <div className="field">
+                      <label htmlFor="email">Email address</label>
+                      <input id="email" type="email" required value={form.email} onChange={set('email')} placeholder="you@example.com" />
+                    </div>
+                  </div>
+                  <div className="field">
+                    <label htmlFor="business">Restaurant or hotel name</label>
+                    <input id="business" type="text" value={form.business} onChange={set('business')} placeholder="Optional" />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="interest">What are you looking for?</label>
+                    <select id="interest" value={form.interest} onChange={set('interest')} required>
+                      <option value="">Select one...</option>
+                      <option value="fractional">Fractional F&B Leadership</option>
+                      <option value="pre-opening">Pre-Opening Support</option>
+                      <option value="recovery">Operations Recovery</option>
+                      <option value="speaking">Speaking or Training</option>
+                      <option value="other">Something else</option>
+                    </select>
+                  </div>
+                  <div className="field">
+                    <label htmlFor="details">Tell me about your situation</label>
+                    <textarea id="details" rows={5} value={form.details} onChange={set('details')} placeholder="What's the challenge? What have you tried? What does success look like?" />
+                  </div>
+                  {/* Honeypot */}
+                  <input type="text" name="website" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+                  {errorMsg && <p style={{ color: '#e05555', fontSize: '0.875rem' }}>{errorMsg}</p>}
+                  <button type="submit" className="btn btn-primary" disabled={status === 'sending'} style={{ fontWeight: 800 }}>
+                    {status === 'sending' ? 'Sending...' : 'Send Message'}
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Contact form */}
-      <section className="section">
-        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <ScrollReveal>
-            {status === 'sent' ? (
-              <div className="card" style={{ padding: 'var(--space-8)', textAlign: 'center' }}>
-                <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✓</p>
-                <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">Message received</h2>
-                <p className="text-[#888888]">I&rsquo;ll be in touch shortly.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="card flex flex-col gap-5" style={{ padding: 'var(--space-6)' }}>
-                <h2 className="font-display text-xl font-bold text-[#e8e8e8]">Send a Message</h2>
-
-                {/* Honeypot — hidden from humans, filled by bots */}
-                <div style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }} aria-hidden="true">
-                  <label htmlFor="website">Website</label>
-                  <input
-                    type="text"
-                    id="website"
-                    name="website"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    value={form.website}
-                    onChange={e => setForm(f => ({ ...f, website: e.target.value }))}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1">
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Name</label>
-                  <input
-                    type="text" required
-                    value={form.name}
-                    onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                    style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Email</label>
-                  <input
-                    type="email" required
-                    value={form.email}
-                    onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                    style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none' }}
-                  />
-                </div>
-                <div className="flex flex-col gap-1">
-                  <label style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Message</label>
-                  <textarea
-                    required rows={5}
-                    value={form.message}
-                    onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                    style={{ background: 'var(--color-surface-2)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-md)', padding: '0.75rem 1rem', fontSize: '0.95rem', color: 'var(--color-text)', outline: 'none', resize: 'vertical' }}
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary" disabled={status === 'sending'} style={{ fontWeight: 800 }}>
-                  {status === 'sending' ? 'Sending…' : 'Send Message'}
-                </button>
-                {status === 'error' && (
-                  <p style={{ color: 'var(--color-error, #e05)', fontSize: '0.85rem' }}>
-                    {errorMsg || 'Something went wrong — try emailing me directly at leander@leandermena.com'}
-                  </p>
-                )}
-              </form>
-            )}
-          </ScrollReveal>
         </div>
       </section>
     </>

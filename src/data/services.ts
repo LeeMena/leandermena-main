@@ -18,7 +18,7 @@ export const services: Service[] = [
     id: 'fractional-leadership',
     title: 'Fractional F&B Leadership',
     subtitle: 'Part-Time Executive Operations Oversight',
-    description: 'Senior operational leadership on a fractional basis — typically 2-4 days per week. I step in as your interim Director of Operations or F&B Director, bringing Fortune 500-level systems to independent restaurants and hotel groups.',
+    description: 'Senior operational leadership on a fractional basis - typically 2-4 days per week. I step in as your interim Director of Operations or F&B Director, bringing Fortune 500-level systems to independent restaurants and hotel groups.',
     price: '$4,500',
     priceNote: 'per week, 90-day minimum engagement',
     features: [
@@ -136,7 +136,7 @@ export const services: Service[] = [
       'Hospitality industry conferences',
       'Corporate leadership retreats',
       'Hotel group annual meetings',
-      'Restaurant team development days'
+      'Restaurant group team development days'
     ],
     icon: 'mic',
     cta: 'Book Leander to Speak'

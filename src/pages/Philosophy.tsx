@@ -1,27 +1,30 @@
-import ScrollReveal from '@/components/ScrollReveal'
-import SEO from '@/components/SEO'
+import { SEO } from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
 const principles = [
   {
-    num: '01',
-    title: 'Systems before heroics',
-    body: 'A well-run operation does not depend on any one person having a great night. It depends on clear systems that any trained team member can execute consistently.',
+    title: 'Systems over heroics',
+    body: 'A well-run operation doesn\'t depend on the owner being present 80 hours a week. The goal is always replicable systems that work without you.',
   },
   {
-    num: '02',
-    title: 'The floor does not lie',
-    body: 'Data matters, but nothing replaces time spent on the floor during service. That is where the real story of an operation becomes visible.',
+    title: 'Floor presence is not optional',
+    body: 'You can\'t manage a restaurant from a spreadsheet. The numbers tell you what happened. The floor tells you why.',
   },
   {
-    num: '03',
-    title: 'Fix the root, not the symptom',
-    body: 'High turnover, inconsistent service, and runaway labor costs are symptoms. The causes are almost always in the hiring process, the training program, or the schedule structure.',
+    title: 'Root cause over symptom',
+    body: 'High turnover, missed targets, inconsistent quality - these are symptoms. My job is to work backward to the actual problem before recommending anything.',
   },
   {
-    num: '04',
     title: 'Ownership earns ownership',
-    body: 'Teams follow leaders who are present, fair, and direct. Accountability starts with the person at the top of the org chart — not the bottom.',
+    body: 'Teams follow leaders who are present, fair, and direct. Accountability starts with the person at the top of the org chart - not the bottom.',
+  },
+  {
+    title: 'Speed with discipline',
+    body: 'Operators need results quickly. I move fast but I don\'t cut corners on the fundamentals. Quick fixes that don\'t hold are worse than no fix at all.',
+  },
+  {
+    title: 'Honest assessment first',
+    body: 'Before any plan, I need to understand what is actually happening - not what anyone wishes were happening. That requires hard conversations early.',
   },
 ]
 
@@ -30,61 +33,43 @@ export default function Philosophy() {
     <>
       <SEO
         title="Leadership Philosophy"
-        description="Leander Mena's operational philosophy — systems, floor presence, root-cause thinking, and leadership accountability in Miami F&B."
+        description="Leander Mena's operational philosophy - systems, floor presence, root-cause thinking, and leadership accountability in Miami F&B."
         path="/philosophy"
-        schemaType="philosophy"
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a] min-h-[280px]">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/images/philosophy (1).jpg"
-            alt=""
-            width="1400"
-            height="600"
-            className="w-full h-full object-cover opacity-40"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/70 to-[#0a0a0a]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
-        </div>
-        <div className="container relative z-10 py-16">
-          <span className="kicker">How I Work</span>
-          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
-            Operational Philosophy
+      <section className="page-header">
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
+          <span className="kicker">Philosophy</span>
+          <h1 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight mb-3">
+            How I Think About Operations
           </h1>
-          <p className="text-[#888888] text-lg max-w-[54ch]">
-            The principles that guide how I assess, structure, and lead F&B operations.
+          <p className="section-intro">
+            These aren't values on a wall. They're the actual principles behind every decision I make on a property.
           </p>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <div className="flex flex-col gap-8 mb-12">
-            {principles.map((p, i) => (
-              <ScrollReveal key={p.num} delay={i * 100}>
-                <div className="role">
-                  <span className="role-meta">{p.num}</span>
-                  <div>
-                    <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">{p.title}</h2>
-                    <p className="text-[#888888] max-w-[62ch] mb-3">{p.body}</p>
-                    <Link to="/services" className="text-xs text-[#b8a080] hover:text-[#d4b896] transition-colors">
-                      See this in our services →
-                    </Link>
-                  </div>
-                </div>
-              </ScrollReveal>
+          <div className="grid-2">
+            {principles.map((p) => (
+              <div key={p.title} className="card">
+                <strong style={{ display: 'block', fontSize: '1rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.6rem' }}>{p.title}</strong>
+                <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>{p.body}</p>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-4 flex flex-wrap gap-3 justify-center">
-            <Link to="/contact" className="btn btn-primary">
-              Work Together
-            </Link>
-            <Link to="/experience" className="btn btn-ghost">
-              See This in Practice →
-            </Link>
+      <section className="section" style={{ background: 'var(--color-surface)' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
+          <span className="kicker">Work together</span>
+          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Same values, different operation?</h2>
+          <p className="section-intro" style={{ marginInline: 'auto' }}>Let's talk about what you're building and how I can help.</p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link to="/contact" className="btn btn-primary">Get in Touch</Link>
+            <Link to="/about" className="btn btn-secondary">More About Leander</Link>
           </div>
         </div>
       </section>

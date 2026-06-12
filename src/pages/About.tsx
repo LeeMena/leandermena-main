@@ -1,144 +1,110 @@
-import ScrollReveal from '@/components/ScrollReveal'
-import SEO from '@/components/SEO'
+import { SEO } from '@/components/SEO'
 import { Link } from 'react-router-dom'
-
-const competencies = [
-  {
-    label: 'Operations & Strategy',
-    items: ['Multi-Unit Management', 'Pre-Opening & Launch Operations', 'P&L Optimization', 'Labor Modeling & Cost Control', 'Vendor Relations & Negotiations', 'Regulatory Compliance'],
-  },
-  {
-    label: 'Revenue & Growth',
-    items: ['Menu Engineering & Development', 'Strategic Pricing', 'Delivery & Off-Premise Programs', 'Revenue Forecasting', 'Margin Optimization', 'Sales Strategy'],
-  },
-  {
-    label: 'Leadership & Culture',
-    items: ['High-Volume Team Building', 'Staff Training & Development', 'Guest Experience Design', 'Brand Consistency', 'SOP & Playbook Development', 'Cross-Functional Collaboration'],
-  },
-]
 
 export default function About() {
   return (
     <>
       <SEO
-        title="About"
-        description="Leander Mena | 18 years in Miami hospitality. F&B operations leader for restaurants, hotels, banquets, and catering."
+        title="About Leander Mena"
+        description="18 years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami."
         path="/about"
-        schemaType="about"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Leander Mena',
+          jobTitle: 'Fractional F&B Operations Leader',
+          url: 'https://www.leandermena.com/about',
+          sameAs: ['https://www.linkedin.com/in/leandermena'],
+          knowsAbout: ['Restaurant Operations', 'Hotel F&B', 'Pre-Opening Management', 'Labor Cost Control', 'Fractional Leadership'],
+          worksFor: {
+            '@type': 'Organization',
+            name: 'Leander Mena Consulting',
+            url: 'https://www.leandermena.com'
+          }
+        }}
       />
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '680px' }}>
-        <div className="absolute inset-0 z-0" aria-hidden="true">
-          <img
-            src="/images/aboutme.jpg"
-            alt=""
-            width="1400"
-            height="900"
-            className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
-            loading="eager"
-          />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.78) 0%, rgba(10,10,10,0.35) 50%, rgba(10,10,10,0.05) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '520px' }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/about.jpg)' }}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
+        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
+          <span className="kicker">About</span>
+          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
+            Built in the Trenches of Miami Hospitality
+          </h1>
+          <p className="text-[#b8b8b8] text-base max-w-[48ch] leading-relaxed">
+            18 years. Pre-openings, turnarounds, multi-unit management. Every system I use was earned on the floor.
+          </p>
         </div>
-        <div className="container relative z-10 py-[clamp(6rem,13vw,11rem)]">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            <ScrollReveal>
-              <span className="kicker">Miami, Florida</span>
-              <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-6">
-                About Leander Mena
-              </h1>
-              <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-                18 years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
-                <Link to="/case-studies" className="btn btn-secondary">View Case Studies</Link>
-              </div>
-            </ScrollReveal>
+      </section>
 
-            <ScrollReveal delay={200}>
-              <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
-                <span className="kicker">By the Numbers</span>
-                <div className="grid grid-cols-2 gap-6 mt-4">
-                  {[
-                    { num: '18', label: 'Years in Miami Hospitality' },
-                    { num: '$9.1M', label: 'Annual Revenue Managed' },
-                    { num: '220', label: 'Seats + 78 FTEs Led' },
-                    { num: '40+', label: 'Team Members Hired & Trained at Single Opening' },
-                  ].map((s) => (
-                    <div key={s.label} className="flex flex-col gap-1">
-                      <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
-                      <span className="text-xs text-[#cccccc] leading-snug">{s.label}</span>
-                    </div>
-                  ))}
-                </div>
+      {/* Bio */}
+      <section className="section">
+        <div className="container">
+          <div className="grid-2" style={{ gap: 'clamp(2rem,5vw,4rem)', alignItems: 'start' }}>
+            <div>
+              <span className="kicker">Background</span>
+              <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">From the floor up</h2>
+              <div className="prose-article">
+                <p>
+                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap - from Michelin-starred pre-openings in Midtown Miami to multi-unit P&L management at scale, and everywhere in between.
+                </p>
+                <p>
+                  I've opened hotels, turned around struggling concepts, built training programs from scratch, and managed teams of 80+ across multiple outlets. The through-line in every engagement: operations only improve when someone with real accountability is in the building.
+                </p>
+                <p>
+                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real - not just on paper. I work in English, Spanish, and conversational French, and I'm at home in both independent concepts and luxury hotel environments.
+                </p>
               </div>
-            </ScrollReveal>
+            </div>
+            <div>
+              <img
+                src="/about.jpg"
+                alt="Leander Mena - Miami F&B Operations Consultant"
+                style={{ borderRadius: 'var(--radius-lg)', width: '100%', objectFit: 'cover', aspectRatio: '4/5' }}
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Bio + Photo */}
-      <section className="section">
+      {/* Core values */}
+      <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
-          <div className="grid lg:grid-cols-[220px_1fr] gap-10 items-start mb-12">
-            <ScrollReveal>
-              <img
-                src="/images/about.jpg"
-                alt="Leander Mena"
-                width="220"
-                height="293"
-                className="w-full rounded-xl shadow-md object-cover aspect-[3/4]"
-                loading="lazy"
-              />
-            </ScrollReveal>
-
-            <ScrollReveal delay={150}>
-              <span className="text-xs font-bold tracking-widest uppercase text-[#888888] mb-6 block">
-                Professional Profile
-              </span>
-              <h2 className="font-display text-2xl font-bold text-[#e8e8e8] mb-4">
-                Where Vision Meets Operational Reality
-              </h2>
-              <div className="flex flex-col gap-4 text-[#888888] max-w-[68ch]" style={{ fontSize: '0.92rem', lineHeight: 1.75 }}>
-                <p>
-                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap — from Michelin-starred pre-openings in Midtown Miami to multi-unit P&L management at scale, and everywhere in between.
-                </p>
-                <p>
-                  I've built teams, negotiated vendor contracts, engineered menus, modeled labor, and stood on the floor through openings, pivots, and recoveries. When the pandemic hit in 2020, my team and I built a fully operational delivery program in 10 days. That's the pace I'm used to.
-                </p>
-                <p>
-                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real — not just on paper. I work in English, Spanish, and conversational French, and I'm at home in both independent concepts and luxury hotel environments.
-                </p>
+          <span className="kicker">What I believe</span>
+          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-3">Operating principles</h2>
+          <p className="section-intro">The mindset behind every engagement.</p>
+          <div className="grid-3">
+            {[
+              { title: 'Systems over heroics', body: 'A well-run operation doesn\'t depend on the owner being present 80 hours a week. The goal is always replicable systems.' },
+              { title: 'Floor presence is non-negotiable', body: 'You can\'t manage a restaurant from a spreadsheet. The data tells you what; the floor tells you why.' },
+              { title: 'Root cause over symptom', body: 'High turnover, missed targets, inconsistent quality - these are symptoms. I work backward to the actual problem.' },
+              { title: 'Speed with discipline', body: 'Operators need results quickly. I move fast without cutting corners on the fundamentals.' },
+              { title: 'People build operations', body: 'The best SOP in the world fails without buy-in. Training, culture, and accountability come before the manual.' },
+              { title: 'Honest assessment first', body: 'Before any plan, I need to understand what\'s actually happening - not what anyone wishes were happening.' },
+            ].map((p) => (
+              <div key={p.title} className="card">
+                <strong style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.5rem' }}>{p.title}</strong>
+                <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>{p.body}</p>
               </div>
-            </ScrollReveal>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Core Competencies */}
-          <ScrollReveal>
-            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-6">Core Competencies</h3>
-            <div className="grid sm:grid-cols-3 gap-6">
-              {competencies.map((c) => (
-                <div key={c.label} className="card" style={{ padding: 'var(--space-6)' }}>
-                  <h4 className="text-sm font-bold text-[#d4b896] mb-3">{c.label}</h4>
-                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
-                    {c.items.map((item) => (
-                      <li key={item} style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-                        <span style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-primary)', flexShrink: 0, display: 'inline-block' }} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-
-          <div className="mt-10 flex flex-wrap gap-4 justify-center">
-            <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
-            <Link to="/experience" className="btn btn-secondary">Full Experience</Link>
+      {/* CTA */}
+      <section className="section">
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
+          <span className="kicker">Work together</span>
+          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Ready to stabilize and grow?</h2>
+          <p className="section-intro" style={{ marginInline: 'auto' }}>Let's talk about where your operation is and where it needs to go.</p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
+            <Link to="/services" className="btn btn-secondary">View Services</Link>
           </div>
         </div>
       </section>
