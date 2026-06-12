@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 import { Download, CheckCircle, Loader2, ExternalLink, ArrowRight, FileText, Clock, Users, TrendingUp, Star } from 'lucide-react'
 import SEO from '@/components/SEO'
 
-const WORKER_URL = 'https://odd-scene-3aa4.httpsskytabtechupdate011pagesdev.workers.dev'
-const FORMSPREE_URL = 'https://formspree.io/f/mkoeaovj'
+const WORKER_URL = 'https://blueprint-lead-capture.httpsskytabtechupdate011pagesdev.workers.dev/subscribe'
 
 const chapters = [
   { num: '01', days: 'Days 1-15', title: 'Foundation & Systems Setup', items: ['Org chart & hiring plan', 'Vendor selection & contracts', 'POS & tech stack decisions', 'Brand standards documentation'] },
@@ -35,16 +34,12 @@ export default function Blueprint() {
     setStatus('loading')
     setErrorMsg('')
     try {
-      await fetch(WORKER_URL, {
+      const res = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: form.email, firstName: form.firstName, phone: form.phone }),
+        body: JSON.stringify({ email: form.email, first_name: form.firstName }),
       })
-      await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email: form.email, firstName: form.firstName, phone: form.phone, _subject: 'New Blueprint Download - /blueprint page' }),
-      })
+      if (!res.ok) throw new Error('Worker error')
       setStatus('success')
     } catch {
       setStatus('error')
