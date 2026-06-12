@@ -8,11 +8,11 @@ const WORKER_URL = 'https://odd-scene-3aa4.httpsskytabtechupdate011pagesdev.work
 const FORMSPREE_URL = 'https://formspree.io/f/mkoeaovj'
 
 const chapters = [
-  { num: '01', days: 'Days 1–15', title: 'Foundation & Systems Setup', items: ['Org chart & hiring plan', 'Vendor selection & contracts', 'POS & tech stack decisions', 'Brand standards documentation'] },
-  { num: '02', days: 'Days 16–30', title: 'Hiring & Training Framework', items: ['Interview & onboarding SOPs', 'Service sequence training', 'Back-of-house standards', 'Management accountability systems'] },
-  { num: '03', days: 'Days 31–60', title: 'Menu, Cost & Operations', items: ['Menu costing & pricing strategy', 'Food cost control targets', 'Ordering par levels', 'Kitchen flow & line setup'] },
-  { num: '04', days: 'Days 61–75', title: 'Soft-Open Strategy', items: ['Friends & family run playbook', 'Feedback collection system', 'Adjustment protocol', 'Team confidence building'] },
-  { num: '05', days: 'Days 76–90', title: 'Grand Opening & Beyond', items: ['Opening week staffing plan', 'Marketing & press coordination', 'Day-1 operations checklist', 'Week 1 KPI benchmarks'] },
+  { num: '01', days: 'Days 1-15', title: 'Foundation & Systems Setup', items: ['Org chart & hiring plan', 'Vendor selection & contracts', 'POS & tech stack decisions', 'Brand standards documentation'] },
+  { num: '02', days: 'Days 16-30', title: 'Hiring & Training Framework', items: ['Interview & onboarding SOPs', 'Service sequence training', 'Back-of-house standards', 'Management accountability systems'] },
+  { num: '03', days: 'Days 31-60', title: 'Menu, Cost & Operations', items: ['Menu costing & pricing strategy', 'Food cost control targets', 'Ordering par levels', 'Kitchen flow & line setup'] },
+  { num: '04', days: 'Days 61-75', title: 'Soft-Open Strategy', items: ['Friends & family run playbook', 'Feedback collection system', 'Adjustment protocol', 'Team confidence building'] },
+  { num: '05', days: 'Days 76-90', title: 'Grand Opening & Beyond', items: ['Opening week staffing plan', 'Marketing & press coordination', 'Day-1 operations checklist', 'Week 1 KPI benchmarks'] },
 ]
 
 const socialProof = [
@@ -43,7 +43,7 @@ export default function Blueprint() {
       await fetch(FORMSPREE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ email: form.email, firstName: form.firstName, phone: form.phone, _subject: 'New Blueprint Download — /blueprint page' }),
+        body: JSON.stringify({ email: form.email, firstName: form.firstName, phone: form.phone, _subject: 'New Blueprint Download - /blueprint page' }),
       })
       setStatus('success')
     } catch {
@@ -60,7 +60,7 @@ export default function Blueprint() {
         path="/blueprint"
       />
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section
         style={{
           background: 'var(--color-bg)',
@@ -78,9 +78,9 @@ export default function Blueprint() {
               alignItems: 'center',
             }}
           >
-            {/* Left — headline + form */}
+            {/* Left - headline + form */}
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <span className="kicker" style={{ marginBottom: 'var(--space-3)', display: 'block' }}>Free Resource — No Cost, No Catch</span>
+              <span className="kicker" style={{ marginBottom: 'var(--space-3)', display: 'block' }}>Free Resource - No Cost, No Catch</span>
 
               <h1
                 style={{
@@ -104,7 +104,7 @@ export default function Blueprint() {
                   marginBottom: 'var(--space-6)',
                 }}
               >
-                The exact day-by-day framework I’ve used to open restaurants and hotels across Miami — on time, on budget, and ready for a packed house. Free download.
+                The exact day-by-day framework I've used to open restaurants and hotels across Miami - on time, on budget, and ready for a packed house. Free download.
               </p>
 
               <div style={{ display: 'flex', gap: 'var(--space-6)', flexWrap: 'wrap', marginBottom: 'var(--space-8)' }}>
@@ -120,7 +120,6 @@ export default function Blueprint() {
                 ))}
               </div>
 
-              {/* Lead capture form */}
               {status === 'success' ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.97 }}
@@ -138,7 +137,7 @@ export default function Blueprint() {
                   </div>
                   <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', marginBottom: 'var(--space-2)', color: 'var(--color-text)' }}>You\'re in!</h2>
                   <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: 'var(--space-6)' }}>
-                    Access your blueprint below. Open in Chrome and press <strong style={{ color: 'var(--color-text)' }}>Ctrl+P → Save as PDF</strong> to keep a copy.
+                    Access your blueprint below. Open in Chrome and press <strong style={{ color: 'var(--color-text)' }}>Ctrl+P - Save as PDF</strong> to keep a copy.
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-3)' }}>
                     <a href="/assets/pre-opening-blueprint-ebook.html" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ justifyContent: 'center', gap: 'var(--space-2)' }}>
@@ -200,7 +199,7 @@ export default function Blueprint() {
                       style={{ width: '100%', justifyContent: 'center', gap: 'var(--space-2)', marginTop: 'var(--space-2)' }}
                     >
                       {status === 'loading'
-                        ? <><Loader2 size={16} className="animate-spin" /> Sending…</>
+                        ? <><Loader2 size={16} className="animate-spin" /> Sending...</>
                         : <><Download size={16} /> Get the Free Blueprint</>
                       }
                     </button>
@@ -210,7 +209,7 @@ export default function Blueprint() {
               )}
             </motion.div>
 
-            {/* Right — ebook cover mockup */}
+            {/* Right - ebook cover mockup */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -263,7 +262,7 @@ export default function Blueprint() {
         </div>
       </section>
 
-      {/* ── What's Inside ── */}
+      {/* What's Inside */}
       <section className="section">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
@@ -318,12 +317,12 @@ export default function Blueprint() {
         </div>
       </section>
 
-      {/* ── Social Proof ── */}
+      {/* Social Proof */}
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
             <span className="kicker">What Operators Say</span>
-            <h2>Used by Miami’s Top Hospitality Operators</h2>
+            <h2>Used by Miami's Top Hospitality Operators</h2>
           </motion.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--space-6)' }}>
             {socialProof.map((t, i) => (
@@ -344,7 +343,7 @@ export default function Blueprint() {
                   {Array.from({ length: 5 }).map((_, s) => <Star key={s} size={12} style={{ color: 'var(--color-primary)', fill: 'var(--color-primary)' }} />)}
                 </div>
                 <p style={{ fontSize: '0.88rem', color: 'var(--color-text)', lineHeight: 1.7, marginBottom: 'var(--space-4)', fontStyle: 'italic' }}>
-                  “{t.quote}”
+                  "{t.quote}"
                 </p>
                 <div>
                   <p style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-text)' }}>{t.name}</p>
@@ -356,15 +355,15 @@ export default function Blueprint() {
         </div>
       </section>
 
-      {/* ── About the Author ── */}
+      {/* About the Author */}
       <section className="section">
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-12)', alignItems: 'center' }}>
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <span className="kicker">About the Author</span>
-              <h2 style={{ marginBottom: 'var(--space-4)' }}>18+ Years Opening Miami’s Best</h2>
+              <h2 style={{ marginBottom: 'var(--space-4)' }}>18+ Years Opening Miami's Best</h2>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, fontSize: '0.95rem', marginBottom: 'var(--space-6)' }}>
-                Leander Mena is a fractional F&amp;B operations leader based in Miami, Florida. He’s opened, stabilized, and scaled restaurants, hotels, banquets, and catering operations across South Florida — from Michelin-starred concepts to large-scale luxury hotels.
+                Leander Mena is a fractional F&amp;B operations leader based in Miami, Florida. He's opened, stabilized, and scaled restaurants, hotels, banquets, and catering operations across South Florida - from Michelin-starred concepts to large-scale luxury hotels.
               </p>
               <div style={{ display: 'flex', gap: 'var(--space-8)', marginBottom: 'var(--space-8)' }}>
                 {[{ num: '18+', label: 'Years' }, { num: '40+', label: 'Properties' }, { num: '$12M+', label: 'Revenue' }].map((s) => (
@@ -388,7 +387,7 @@ export default function Blueprint() {
         </div>
       </section>
 
-      {/* ── Bottom CTA ── */}
+      {/* Bottom CTA */}
       <section
         style={{
           background: 'var(--color-surface)',
@@ -399,9 +398,9 @@ export default function Blueprint() {
       >
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <span className="kicker">Ready to Open Right?</span>
-          <h2 style={{ marginBottom: 'var(--space-4)' }}>Download the Blueprint — Free</h2>
+          <h2 style={{ marginBottom: 'var(--space-4)' }}>Download the Blueprint - Free</h2>
           <p style={{ color: 'var(--color-text-muted)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: 'var(--space-8)' }}>
-            Whether you’re 90 days out or just starting to plan, this framework gives you the structure to open with confidence.
+            Whether you're 90 days out or just starting to plan, this framework gives you the structure to open with confidence.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
             <a href="#top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn btn-primary">
