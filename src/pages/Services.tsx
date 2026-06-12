@@ -16,7 +16,7 @@ export default function Services() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/dining.jpg)' }}
+          style={{ backgroundImage: 'url(/images/dining.jpg)' }}
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
@@ -82,9 +82,9 @@ export default function Services() {
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
           <span className="kicker">Get started</span>
-          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Not sure which service fits?</h2>
-          <p className="section-intro" style={{ marginInline: 'auto' }}>Every engagement starts with a conversation. Tell me about your operation and I'll tell you what I'd do.</p>
-          <Link to="/contact" className="btn btn-primary">Schedule a Free Discovery Call</Link>
+          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Ready to start?</h2>
+          <p className="section-intro" style={{ marginInline: 'auto' }}>Tell me what you're working with. I'll tell you honestly whether I can help.</p>
+          <Link to="/contact" className="btn btn-primary">Start the Conversation</Link>
         </div>
       </section>
     </>

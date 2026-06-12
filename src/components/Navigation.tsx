@@ -189,9 +189,10 @@ export default function Navigation({ onBookCall }: Props) {
                 key={l.href}
                 to={l.href}
                 style={{
-                  fontSize: '0.875rem',
+                  fontSize: '0.8rem',
                   fontWeight: 500,
                   textDecoration: 'none',
+                  whiteSpace: 'nowrap',
                   transition: 'color 180ms ease',
                   color: pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
                     ? 'var(--color-primary)'
@@ -344,7 +345,7 @@ export default function Navigation({ onBookCall }: Props) {
       {/* Responsive rules */}
       <style>{`
         @media (min-width: 768px) {
-          .md-nav-desktop { display: flex !important; align-items: center; gap: 1.5rem; }
+          .md-nav-desktop { display: flex !important; align-items: center; gap: 1.1rem; }
           #nav-cta-desktop { display: inline-flex !important; }
           #nav-hamburger   { display: none !important; }
         }
