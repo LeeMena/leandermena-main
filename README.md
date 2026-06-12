@@ -37,9 +37,9 @@ Output goes to `/dist`. Cloudflare Pages auto-deploys on push to `main`.
 ## Images (kept from previous static site)
 
 All original images are preserved at the repo root and served as public assets via Vite:
-- `landing-hero.jpg` — Home hero
-- `about.jpg` — About page headshot
-- `1.jpg` — About page banner
-- `dining.jpg` — Experience section
-- `philosophy.jpg` — Philosophy hero
-- `contact.jpg` / `contact-banner.jpg` — Contact + Services heroes
+- `landing-hero.jpg` - Home hero
+- `about.jpg` - About page headshot
+- `1.jpg` - About page banner
+- `dining.jpg` - Experience section
+- `philosophy.jpg` - Philosophy hero
+- `contact.jpg` / `contact-banner.jpg` - Contact + Services heroes
