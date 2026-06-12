@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { Download, CheckCircle, Loader2, ExternalLink, ArrowRight, FileText, Clock, Users, TrendingUp, Star } from 'lucide-react'
+import { Download, CheckCircle, Loader2, ExternalLink, ArrowRight, FileText, Clock, Star } from 'lucide-react'
 import SEO from '@/components/SEO'
 
 const WORKER_URL = 'https://blueprint-lead-capture.httpsskytabtechupdate011pagesdev.workers.dev/subscribe'
@@ -47,6 +47,11 @@ export default function Blueprint() {
     }
   }
 
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault()
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
       <SEO
@@ -57,6 +62,7 @@ export default function Blueprint() {
 
       {/* Hero */}
       <section
+        id="top"
         style={{
           background: 'var(--color-bg)',
           paddingTop: 'clamp(5rem, 10vw, 8rem)',
@@ -130,7 +136,7 @@ export default function Blueprint() {
                   <div style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-4)', display: 'flex', justifyContent: 'center' }}>
                     <CheckCircle size={44} strokeWidth={1.5} />
                   </div>
-                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', marginBottom: 'var(--space-2)', color: 'var(--color-text)' }}>You\'re in!</h2>
+                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', marginBottom: 'var(--space-2)', color: 'var(--color-text)' }}>You're in!</h2>
                   <p style={{ fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: 'var(--space-6)' }}>
                     Access your blueprint below. Open in Chrome and press <strong style={{ color: 'var(--color-text)' }}>Ctrl+P - Save as PDF</strong> to keep a copy.
                   </p>
@@ -398,10 +404,12 @@ export default function Blueprint() {
             Whether you're 90 days out or just starting to plan, this framework gives you the structure to open with confidence.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
-            <a href="#top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="btn btn-primary">
+            <button onClick={scrollToTop} className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)' }}>
               <Download size={16} /> Get the Free Blueprint
-            </a>
-            <Link to="/services" className="btn btn-secondary">Explore Consulting Services <ArrowRight size={15} /></Link>
+            </button>
+            <Link to="/services" className="btn btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+              Explore Consulting Services <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
       </section>
