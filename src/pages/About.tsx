@@ -14,8 +14,8 @@ export default function About() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '520px' }}>
         <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/about.jpg)' }}
+          className="absolute inset-0 bg-cover"
+          style={{ backgroundImage: 'url(/images/aboutme.jpg)', backgroundPosition: 'center 40%' }}
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
@@ -50,7 +50,7 @@ export default function About() {
             </div>
             <div>
               <img
-                src="/images/about.jpg"
+                src="/images/aboutme.jpg"
                 alt="Leander Mena - Miami F&B Operations Consultant"
                 style={{ borderRadius: 'var(--radius-lg)', width: '100%', objectFit: 'cover', aspectRatio: '4/5' }}
               />

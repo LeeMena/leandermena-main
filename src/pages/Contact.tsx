@@ -45,16 +45,33 @@ export default function Contact() {
         schemaType="contact"
       />
 
-      <section className="section" style={{ minHeight: '80dvh' }}>
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '360px' }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/contact.jpg)' }}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
+        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
+          <span className="kicker">Contact</span>
+          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
+            Let&rsquo;s Talk
+          </h1>
+          <p className="text-[#b8b8b8] text-base max-w-[48ch] leading-relaxed">
+            Tell me about your operation. I&rsquo;ll respond within one business day.
+          </p>
+        </div>
+      </section>
+
+      {/* Form section */}
+      <section className="section">
         <div className="container">
           <div className="grid-2" style={{ gap: 'clamp(2rem,5vw,4rem)', alignItems: 'start' }}>
 
             {/* Left */}
             <div>
-              <span className="kicker">Contact</span>
-              <h1 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-tight mb-4">
-                Contact Leander Mena
-              </h1>
+              <span className="kicker">Get in touch</span>
+              <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Contact Leander Mena</h2>
               <p style={{ fontSize: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.7, maxWidth: '44ch', marginBottom: '2rem' }}>
                 Tell me about your operation and what you're trying to solve. I'll respond within one business day.
               </p>
@@ -100,7 +117,7 @@ export default function Contact() {
                     <label htmlFor="interest">What are you looking for?</label>
                     <select id="interest" value={form.interest} onChange={set('interest')} required>
                       <option value="">Select one...</option>
-                      <option value="fractional">Fractional F&B Leadership</option>
+                      <option value="fractional">Fractional F&amp;B Leadership</option>
                       <option value="pre-opening">Pre-Opening Support</option>
                       <option value="recovery">Operations Recovery</option>
                       <option value="speaking">Speaking or Training</option>
@@ -111,7 +128,6 @@ export default function Contact() {
                     <label htmlFor="details">Tell me about your situation</label>
                     <textarea id="details" rows={5} value={form.details} onChange={set('details')} placeholder="What's the challenge? What have you tried? What does success look like?" />
                   </div>
-                  {/* Honeypot */}
                   <input type="text" name="website" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                   {errorMsg && <p style={{ color: '#e05555', fontSize: '0.875rem' }}>{errorMsg}</p>}
                   <button type="submit" className="btn btn-primary" disabled={status === 'sending'} style={{ fontWeight: 800 }}>

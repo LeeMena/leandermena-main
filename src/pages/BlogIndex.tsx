@@ -42,13 +42,21 @@ export default function BlogIndex() {
         schemaType="insights"
       />
 
-      <section className="page-header">
-        <div className="container">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/insights.jpg)' }}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
+        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <span className="kicker">Insights</span>
-          <h1 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight mb-3">
-            F&B Operations Insights
+          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
+            F&amp;B Operations Insights
           </h1>
-          <p className="section-intro">Practical thinking on restaurant and hotel operations from the floor up.</p>
+          <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
+            Practical thinking on restaurant and hotel operations from the floor up.
+          </p>
         </div>
       </section>
 

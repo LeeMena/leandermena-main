@@ -66,13 +66,21 @@ export default function Products() {
         path="/products"
       />
 
-      <section className="page-header">
-        <div className="container">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(/images/playbook.jpg)' }}
+        />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
+        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <span className="kicker">Resources</span>
-          <h1 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight mb-3">
-            Operational Tools & Resources
+          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
+            Operational Tools &amp; Resources
           </h1>
-          <p className="section-intro">Playbooks, templates, and sessions built from 18+ years running Miami hospitality operations.</p>
+          <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
+            Playbooks, templates, and sessions built from 18+ years running Miami hospitality operations.
+          </p>
         </div>
       </section>
 
@@ -96,13 +104,20 @@ export default function Products() {
                 <ul className="list" style={{ marginBottom: '1.25rem' }}>
                   {p.features.map((f) => <li key={f}>{f}</li>)}
                 </ul>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
-                  <strong style={{ fontSize: '1.35rem', color: 'var(--color-primary)' }}>{p.price}</strong>
-                  <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.82rem' }}>{p.cta}</Link>
-                </div>
+                <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto' }}>{p.cta}</Link>
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section" style={{ background: 'var(--color-surface)' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
+          <span className="kicker">Custom work</span>
+          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Need something more specific?</h2>
+          <p className="section-intro" style={{ marginInline: 'auto' }}>Every engagement can be scoped to your exact situation. Let's talk.</p>
+          <Link to="/contact" className="btn btn-primary">Get in Touch</Link>
         </div>
       </section>
     </>
