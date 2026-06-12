@@ -42,7 +42,7 @@ export default function Home() {
 
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
         <div className="absolute inset-0" style={{ zIndex: 0 }}>
           <img
@@ -84,7 +84,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
               style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', fontStyle: 'italic', color: 'rgba(255,255,255,0.75)', maxWidth: '54ch', margin: '0 auto var(--space-10)', lineHeight: 1.7 }}
             >
-              18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami -now available as fractional leadership and digital products.
+              18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami. Now available as fractional leadership and digital products.
             </motion.p>
 
             <motion.div
@@ -119,7 +119,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Trust Bar ── */}
+      {/* Trust Bar */}
       <div style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)', paddingBlock: 'var(--space-6)' }}>
         <div className="container">
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-6)' }}>
@@ -130,16 +130,16 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ── Blueprint CTA -Position 2: after hero, before services ── */}
+      {/* Blueprint CTA */}
       <BlueprintCTA />
 
-      {/* ── Services ── */}
+      {/* Services */}
       <section className="section">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
             <span className="kicker">Consulting Services</span>
             <h2 style={{ marginBottom: 'var(--space-3)' }}>Operational Leadership, On Demand</h2>
-            <p className="section-intro" style={{ marginBottom: 0 }}>Four engagement models designed to meet you where you are -from pre-opening builds to operational turnarounds.</p>
+            <p className="section-intro" style={{ marginBottom: 0 }}>Four engagement models designed to meet you where you are, from pre-opening builds to operational turnarounds.</p>
           </motion.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-6)' }}>
             {services.map((service, i) => <ServiceCard key={service.id} service={service} index={i} />)}
@@ -150,7 +150,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Products Preview ── */}
+      {/* Products Preview */}
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
@@ -167,7 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
+      {/* Testimonials */}
       <section className="section">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
@@ -186,7 +186,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Why Fractional ── */}
+      {/* Why Fractional */}
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-16)', alignItems: 'center' }}>
@@ -194,14 +194,14 @@ export default function Home() {
               <span className="kicker">The Difference</span>
               <h2 style={{ marginBottom: 'var(--space-4)' }}>Why Operators Choose Fractional Leadership</h2>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: 'var(--space-8)', fontSize: '0.95rem' }}>
-                Most hospitality groups don&rsquo;t need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team -without the overhead of a permanent C-suite hire.
+                Most hospitality groups don&rsquo;t need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team, without the overhead of a permanent C-suite hire.
               </p>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-8)' }}>
                 {[
                   { icon: <Zap size={18} />, title: 'Rapid Diagnosis', desc: 'Identify root causes within the first week, not months' },
                   { icon: <CheckCircle size={18} />, title: 'Systems That Stick', desc: 'SOPs and training programs your team will actually follow' },
                   { icon: <Star size={18} />, title: 'Proven Track Record', desc: '18+ years across Michelin concepts, luxury hotels, and independents' },
-                  { icon: <TrendingUp size={18} />, title: 'Measurable ROI', desc: 'Average 3–5× return on consulting investment within 6 months' },
+                  { icon: <TrendingUp size={18} />, title: 'Measurable ROI', desc: 'Average 3-5x return on consulting investment within 6 months' },
                 ].map((item) => (
                   <li key={item.title} style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start' }}>
                     <div style={{ width: '38px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(184,160,128,0.10)', color: 'var(--color-primary)', borderRadius: 'var(--radius-sm)', flexShrink: 0 }}>{item.icon}</div>
@@ -217,7 +217,7 @@ export default function Home() {
 
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <div style={{ aspectRatio: '4/5', borderRadius: 'var(--radius-lg)', overflow: 'hidden', position: 'relative', border: '1px solid var(--color-border)' }}>
-                <img src="/images/about.jpg" alt="Leander Mena -F&B Operations Leader" width="600" height="750" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                <img src="/images/about.jpg" alt="Leander Mena - F&B Operations Leader" width="600" height="750" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 45%)' }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--space-8)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)' }}>
                   {[{ num: '$12M+', label: 'Revenue Optimized' }, { num: '500+', label: 'Team Members' }, { num: '40+', label: 'Properties' }, { num: '18+', label: 'Years Leading' }].map((s) => (
@@ -233,7 +233,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Process ── */}
+      {/* Process */}
       <section className="section">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
@@ -243,7 +243,7 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-8)' }}>
             {[
               { step: '01', title: 'Discovery Call', desc: '30-minute conversation to understand your challenges, timeline, and goals.' },
-              { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations, typically 3–5 days on location.' },
+              { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations, typically 3-5 days on location.' },
               { step: '03', title: 'Implementation', desc: 'Execute the action plan with weekly check-ins and real-time adjustments.' },
               { step: '04', title: 'Sustainable Results', desc: 'Handover systems, train your team, and ensure improvements stick long-term.' },
             ].map((item, i) => (
@@ -257,7 +257,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA Banner ── */}
+      {/* CTA Banner */}
       <CTABanner
         title="Let's Build Something That Runs Well"
         subtitle="Whether you're 90 days from opening or trying to fix a difficult quarter, the next move is simple: start the conversation."
