@@ -1,44 +1,22 @@
-# Redirect legacy .html URLs to clean React routes
-/index.html                          /                    301
-/about.html                          /about               301
-/services.html                       /services            301
-/pre-opening.html                    /pre-opening         301
-/experience.html                     /experience          301
-/philosophy.html                     /philosophy          301
-/contact.html                        /contact             301
-/profile.html                        /profile             301
-/leander-mena-miami-hospitality.html /leander-mena-miami-hospitality  301
-/insights.html                       /insights            301
+# Cloudflare Pages - Redirects & Rewrites
+# Format: [source] [destination] [status_code]
 
-# Canonical www redirect (non-www → www)
-https://leandermena.com/*            https://www.leandermena.com/:splat  301
+# Force www canonical (SEO - eliminates duplicate indexing)
+# Cloudflare handles the HTTPS redirect automatically
+https://leandermena.com/* https://www.leandermena.com/:splat 301
 
-# Legacy short blog slugs → canonical long-form URLs (301)
-/insights/fractional-gm              /insights/what-a-fractional-gm-actually-does  301
-/insights/pre-opening                /insights/miami-pre-opening-playbook          301
-/insights/labor-cost                 /insights/labor-cost-control-miami-restaurants 301
+# Legacy slug cleanup - redirect old insight paths to canonical
+/blog /insights 301
+/blog/* /insights/:splat 301
 
-# SEO static page shells — serve prerendered index before SPA fallback
-/leander-mena-miami-hospitality      /leander-mena-miami-hospitality/index.html  200
-/pre-opening                         /pre-opening/index.html    200
-/philosophy                          /philosophy/index.html     200
-/about                               /about/index.html          200
-/skills                              /skills/index.html         200
-/services                            /services/index.html       200
-/experience                          /experience/index.html     200
-/contact                             /contact/index.html        200
-/insights                            /insights/index.html       200
-/book                                /book/index.html           200
-/case-studies                        /case-studies/index.html   200
-/blueprint                           /blueprint/index.html      200
-/shop                                /shop/index.html           200
-/profile                             /profile/index.html        200
-/privacy                             /privacy/index.html        200
+# Pre-opening path alias
+/pre-opening-blueprint /blueprint 301
+/pre-opening-checklist /blueprint 301
+/90-day-blueprint /blueprint 301
 
-# Blog post prerendered shells
-/insights/what-a-fractional-gm-actually-does      /insights/what-a-fractional-gm-actually-does/index.html   200
-/insights/miami-pre-opening-playbook              /insights/miami-pre-opening-playbook/index.html           200
-/insights/labor-cost-control-miami-restaurants    /insights/labor-cost-control-miami-restaurants/index.html 200
+# Case studies redirect
+/work /case-studies 301
+/portfolio /case-studies 301
 
-# SPA fallback — all unmatched routes serve index.html
-/*    /index.html   200
+# SPA fallback for React Router - must be last
+/* /index.html 200

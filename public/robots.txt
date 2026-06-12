@@ -1,9 +1,29 @@
 User-agent: *
 Allow: /
 
-# Block app-internal routes
-Disallow: /profile
-Disallow: /downloads/
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
 
-# Sitemap
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+# Block duplicate/noindex paths from crawling
+Disallow: /docs/
+Disallow: /leander-mena-miami-hospitality/
+Disallow: /*.yml$
+Disallow: /AUDIT_AND_ELEVATION.md
+
 Sitemap: https://www.leandermena.com/sitemap.xml

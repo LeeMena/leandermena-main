@@ -1,100 +1,46 @@
-# =============================================================
-# Cloudflare Pages _headers
-# leandermena.com — Security + Cache + SEO directives
-# Last updated: 2026-06-11
-# =============================================================
+# Cloudflare Pages - HTTP Headers
+# Applies to all routes served from /public
 
-# -------------------------------------------------------------
-# GLOBAL — applies to every response
-# -------------------------------------------------------------
 /*
-  # SEO
-  X-Robots-Tag: index, follow
-
-  # Security baseline
+  X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
-  X-XSS-Protection: 0
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://www.googletagmanager.com https://js.convertkit.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; img-src 'self' data: https:; connect-src 'self' https://api.convertkit.com https://formspree.io; frame-ancestors 'none';
 
-  # HSTS — 2-year max-age, subdomains, preload-ready
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+# Cache static assets aggressively
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
 
-  # Permissions — deny all sensors/hardware access
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-
-  # Cross-Origin policies
-  Cross-Origin-Opener-Policy: same-origin-allow-popups
-  Cross-Origin-Resource-Policy: same-site
-
-  # Content Security Policy
-  # Allows: self, inline styles (Tailwind), Google Fonts, Cloudflare Images,
-  #         Calendly (for /book embed), Formspree removed — replaced by Worker
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://imagedelivery.net https://www.leandermena.com; connect-src 'self' https://contact.leandermena.com https://static.cloudflareinsights.com; frame-src https://calendly.com; object-src 'none'; base-uri 'self'; form-action 'self' https://contact.leandermena.com; upgrade-insecure-requests;
-
-# -------------------------------------------------------------
-# ASSETS — Vite hashed bundles (JS, CSS, fonts, images)
-# Immutable: 1 year, cached at edge + browser
-# -------------------------------------------------------------
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
-  X-Robots-Tag: noindex
 
-# -------------------------------------------------------------
-# HTML ENTRY POINTS
-# SPA root: no-cache so React updates are picked up immediately
-# Static shells: short edge TTL (2h) so GSC sees updates fast
-# -------------------------------------------------------------
-/index.html
-  Cache-Control: no-cache, no-store, must-revalidate
+*.jpg
+  Cache-Control: public, max-age=31536000, immutable
 
-/about/index.html
-  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+*.png
+  Cache-Control: public, max-age=31536000, immutable
 
-/services/index.html
-  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+*.webp
+  Cache-Control: public, max-age=31536000, immutable
 
-/pre-opening/index.html
-  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+*.svg
+  Cache-Control: public, max-age=31536000, immutable
 
-/experience/index.html
-  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+*.woff2
+  Cache-Control: public, max-age=31536000, immutable
 
-/philosophy/index.html
-  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+*.css
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 
-/contact/index.html
-  Cache-Control: public, max-age=7200, s-maxage=7200, stale-while-revalidate=86400
+*.js
+  Cache-Control: public, max-age=86400, stale-while-revalidate=3600
 
-# -------------------------------------------------------------
-# CRAWL ASSETS — short TTL, public
-# -------------------------------------------------------------
-/sitemap.xml
-  Cache-Control: public, max-age=3600
-  X-Robots-Tag: noindex
+# HTML pages - short cache, always revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
 
-/robots.txt
-  Cache-Control: public, max-age=86400
-  X-Robots-Tag: noindex
-
-# -------------------------------------------------------------
-# IMAGES — public cache, no index signal needed
-# -------------------------------------------------------------
-/images/*
-  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
-  X-Robots-Tag: noindex
-
-# -------------------------------------------------------------
-# APP-INTERNAL ROUTES — block from indexing
-# -------------------------------------------------------------
-/profile
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: no-store
-
-/skills
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: no-store
-
-/downloads/*
-  X-Robots-Tag: noindex, nofollow
-  Cache-Control: private, no-store
+/
+  Cache-Control: public, max-age=0, must-revalidate

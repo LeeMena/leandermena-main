@@ -1,7 +1,19 @@
-name = "formspree-to-convertkit"
+name = "blueprint-lead-capture"
 main = "index.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2026-01-01"
+
+# Free tier: 100,000 requests/day, 10ms CPU/request
+# No paid plan needed
 
 [vars]
-# CONVERTKIT_API_KEY is set as a secret via: npx wrangler secret put CONVERTKIT_API_KEY
-# CONVERTKIT_FORM_ID is set as a secret via: npx wrangler secret put CONVERTKIT_FORM_ID
+# Non-secret vars (safe to commit)
+ENVIRONMENT = "production"
+
+# DO NOT commit secrets here.
+# Set these in Cloudflare Dashboard → Workers → blueprint-lead-capture → Settings → Variables
+# CONVERTKIT_API_KEY = "your-key-here"   <-- set as Secret in dashboard
+# CONVERTKIT_FORM_ID = "your-form-id"    <-- set as Secret in dashboard
+
+[[routes]]
+pattern = "www.leandermena.com/subscribe"
+zone_name = "leandermena.com"
