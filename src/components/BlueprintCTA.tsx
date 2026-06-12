@@ -34,7 +34,7 @@ export default function BlueprintCTA() {
               alignItems: 'center',
             }}
           >
-            {/* Left — copy */}
+            {/* Left - copy */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -62,7 +62,7 @@ export default function BlueprintCTA() {
                   maxWidth: '46ch',
                 }}
               >
-                The exact framework I've used to open restaurants and hotels on time and on budget — distilled into a free, actionable guide.
+                The exact framework I've used to open restaurants and hotels on time and on budget - distilled into a free, actionable guide.
               </p>
 
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginBottom: 'var(--space-8)' }}>
@@ -89,7 +89,7 @@ export default function BlueprintCTA() {
               </div>
             </motion.div>
 
-            {/* Right — ebook mockup */}
+            {/* Right - ebook mockup */}
             <motion.div
               initial={{ opacity: 0, x: 24 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -104,11 +104,9 @@ export default function BlueprintCTA() {
                   maxWidth: '320px',
                 }}
               >
-                {/* Shadow stack for depth */}
                 <div style={{ position: 'absolute', inset: 0, transform: 'rotate(3deg) translateY(8px)', background: 'var(--color-surface-offset)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }} />
                 <div style={{ position: 'absolute', inset: 0, transform: 'rotate(1.5deg) translateY(4px)', background: 'var(--color-surface-offset-2)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }} />
 
-                {/* Main card */}
                 <div
                   style={{
                     position: 'relative',
