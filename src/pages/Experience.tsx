@@ -67,7 +67,7 @@ export default function Experience() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/dining.jpg"
+            src="/images/services.jpg"
             alt=""
             width="1400"
             height="900"
@@ -85,7 +85,7 @@ export default function Experience() {
                 18 Years of Hospitality Leadership
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                Opening, scaling, and leading operations across Miami’s most demanding restaurants, hotels, and catering venues.
+                Opening, scaling, and leading operations across Miami's most demanding restaurants, hotels, and catering venues.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
@@ -148,7 +148,7 @@ export default function Experience() {
 
           <ScrollReveal delay={120}>
             <div className="mt-6 card" style={{ padding: 'var(--space-6)' }}>
-              <h3 className="text-xs font-bold tracking-widest uppercase text-[#b8a080] mb-5">Technical Proficiency & Languages</h3>
+              <h3 className="text-xs font-bold tracking-widest uppercase text-[#b8a080] mb-5">Technical Proficiency &amp; Languages</h3>
               <div className="flex flex-col gap-4">
                 {tools.map((t) => (
                   <div key={t.category} style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'baseline', flexWrap: 'wrap' }}>
