@@ -1,22 +1,14 @@
-# Cloudflare Pages - Redirects & Rewrites
-# Format: [source] [destination] [status_code]
-
-# Force www canonical (SEO - eliminates duplicate indexing)
-# Cloudflare handles the HTTPS redirect automatically
-https://leandermena.com/* https://www.leandermena.com/:splat 301
-
-# Legacy slug cleanup - redirect old insight paths to canonical
+# Cloudflare Pages - Redirects
+# Specific static rules first (most performant)
 /blog /insights 301
-/blog/* /insights/:splat 301
-
-# Pre-opening path alias
 /pre-opening-blueprint /blueprint 301
 /pre-opening-checklist /blueprint 301
 /90-day-blueprint /blueprint 301
-
-# Case studies redirect
 /work /case-studies 301
 /portfolio /case-studies 301
 
-# SPA fallback for React Router - must be last
+# Splat rules after static rules
+/blog/* /insights/:splat 301
+
+# SPA fallback - React Router (must be last)
 /* /index.html 200
