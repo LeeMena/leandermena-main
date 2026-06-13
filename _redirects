@@ -1,0 +1,24 @@
+# Cloudflare Pages - Redirects
+# Specific static rules first (most performant)
+/blog /insights 301
+/pre-opening-blueprint /blueprint 301
+/pre-opening-checklist /blueprint 301
+/90-day-blueprint /blueprint 301
+/work /case-studies 301
+/portfolio /case-studies 301
+
+# Splat rules after static rules
+/blog/* /insights/:splat 301
+
+# Static assets — serve directly, don't rewrite
+/assets/* /assets/:splat 200
+/images/* /images/:splat 200
+/*.js /:splat 200
+/*.css /:splat 200
+/*.png /:splat 200
+/*.jpg /:splat 200
+/*.svg /:splat 200
+/*.ico /:splat 200
+
+# SPA fallback — force rewrite to break the loop detector
+/* /index.html 200!
