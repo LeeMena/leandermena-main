@@ -11,6 +11,7 @@ import Contact from '@/pages/Contact'
 import Profile from '@/pages/Profile'
 import Blueprint from '@/pages/Blueprint'
 import CaseStudies from '@/pages/CaseStudies'
+import CaseStudyDetail from '@/pages/CaseStudyDetail'
 import Book from '@/pages/Book'
 import Shop from '@/pages/Shop'
 import Products from '@/pages/Products'
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/blueprint" element={<Blueprint />} />
         <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
         <Route path="/book" element={<Book />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/products" element={<Products />} />
