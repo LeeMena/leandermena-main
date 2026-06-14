@@ -13,6 +13,7 @@ import Blueprint from '@/pages/Blueprint'
 import CaseStudies from '@/pages/CaseStudies'
 import Book from '@/pages/Book'
 import Shop from '@/pages/Shop'
+import Products from '@/pages/Products'
 import NotFound from '@/pages/NotFound'
 
 import BlogIndex from '@/pages/BlogIndex'
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/book" element={<Book />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/products" element={<Products />} />
 
         <Route path="/insights" element={<BlogIndex />} />
         <Route path="/insights/what-a-fractional-gm-actually-does" element={<BlogFractionalGM />} />
