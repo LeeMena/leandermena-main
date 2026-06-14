@@ -58,11 +58,40 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Case Studies -->
   <url>
     <loc>https://www.leandermena.com/case-studies</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leandermena.com/case-studies/maska-indian-kitchen</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leandermena.com/case-studies/ve-hospitality-turnaround</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leandermena.com/case-studies/sls-brickell-banquets</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leandermena.com/case-studies/butler-hospitality-scale</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
@@ -72,7 +101,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Insights index -->
+  <!-- Insights -->
   <url>
     <loc>https://www.leandermena.com/insights</loc>
     <lastmod>2026-06-14</lastmod>
@@ -80,7 +109,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Insights articles (newest first) -->
   <url>
     <loc>https://www.leandermena.com/insights/building-training-program-that-works</loc>
     <lastmod>2026-06-14</lastmod>

@@ -12,6 +12,7 @@ export type SchemaType =
   | 'insights'
   | 'article'
   | 'case-studies'
+  | 'case-study-detail'
   | 'blueprint'
 
 interface ArticleMeta {
@@ -28,6 +29,11 @@ interface Props {
   type?: string
   schemaType?: SchemaType
   article?: ArticleMeta
+  caseStudy?: {
+    client: string
+    slug: string
+    results: { metric: string; label: string }[]
+  }
 }
 
 const BASE_URL = 'https://www.leandermena.com'
@@ -68,15 +74,70 @@ const ORGANIZATION_PUBLISHER = {
   },
 }
 
-function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string) {
-  const breadcrumb = (label: string) => ({
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
+const SERVICES_FAQ = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is a fractional F&B leader?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A fractional F&B leader is an experienced Food & Beverage executive who works with your operation on a part-time or project basis — delivering senior-level leadership without the cost of a full-time hire. You get the strategy, systems, and execution expertise of a seasoned GM or F&B Director, engaged only for the hours and duration you actually need.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What does fractional F&B consulting cost in Miami?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Fractional F&B consulting engagements are scoped to the specific project or retainer. Pre-opening consulting typically runs 3–5 months. Fractional leadership retainers are structured monthly. Every engagement begins with a discovery conversation to define scope, timeline, and investment.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you only work with Miami restaurants?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The primary market is Miami and South Florida, but remote advisory and project-based engagements are available for operations outside the area. Contact to discuss your specific situation.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does a pre-opening consulting engagement last?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most pre-opening engagements run 90–120 days, beginning 3–4 months before target opening date. The timeline covers concept alignment, SOP development, hiring and training, vendor onboarding, and opening-day execution. Projects with longer construction timelines can be structured to match.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What types of venues do you work with?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Engagements span independent restaurants, hotel F&B programs, multi-concept groups, banquet and catering operations, and food-tech hospitality companies. From a 40-seat neighborhood restaurant to a 500-person hotel banquet program.',
+      },
+    },
+  ],
+}
+
+function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string, caseStudy?: Props['caseStudy']) {
+  const breadcrumb = (label: string, parentPath?: string, parentLabel?: string) => {
+    const items: object[] = [
       { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: label, item: url },
-    ],
-  })
+    ]
+    if (parentPath && parentLabel) {
+      items.push({ '@type': 'ListItem', position: 2, name: parentLabel, item: `${BASE_URL}${parentPath}` })
+      items.push({ '@type': 'ListItem', position: 3, name: label, item: url })
+    } else {
+      items.push({ '@type': 'ListItem', position: 2, name: label, item: url })
+    }
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items,
+    }
+  }
 
   switch (schemaType) {
     case 'home':
@@ -130,6 +191,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           url: `${BASE_URL}/services`,
           description: 'Fractional F&B Director services for Miami restaurants and hotels including operations leadership, menu development, team training, and financial oversight.',
         },
+        SERVICES_FAQ,
         breadcrumb('Services'),
       ]
     case 'pre-opening':
@@ -214,12 +276,36 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
         {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
-          name: 'Case Studies - Leander Mena',
+          name: 'Case Studies - F&B Operations Results | Leander Mena',
           url: `${BASE_URL}/case-studies`,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
           description: 'Real results from hospitality consulting engagements: pre-opening builds, operations turnarounds, and labor cost improvements across Miami restaurants and hotels.',
+          hasPart: [
+            { '@type': 'WebPage', name: 'Maska Indian Kitchen Case Study', url: `${BASE_URL}/case-studies/maska-indian-kitchen` },
+            { '@type': 'WebPage', name: 'V&E Hospitality Turnaround', url: `${BASE_URL}/case-studies/ve-hospitality-turnaround` },
+            { '@type': 'WebPage', name: 'SLS Brickell Banquet Operations', url: `${BASE_URL}/case-studies/sls-brickell-banquets` },
+            { '@type': 'WebPage', name: 'Butler Hospitality Scale', url: `${BASE_URL}/case-studies/butler-hospitality-scale` },
+          ],
         },
         breadcrumb('Case Studies'),
+      ]
+    case 'case-study-detail':
+      if (!caseStudy) return []
+      return [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: description ?? caseStudy.client,
+          url,
+          image: DEFAULT_IMAGE,
+          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          publisher: ORGANIZATION_PUBLISHER,
+          datePublished: '2026-06-14',
+          dateModified: '2026-06-14',
+          description: description ?? '',
+          mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+        },
+        breadcrumb(caseStudy.client, '/case-studies', 'Case Studies'),
       ]
     case 'blueprint':
       return [
@@ -269,6 +355,7 @@ export default function SEO({
   type = 'website',
   schemaType = 'home',
   article,
+  caseStudy,
 }: Props) {
   const fullTitle = title.includes('Leander Mena') ? title : `${title} | Leander Mena`
   const url = `${BASE_URL}${path}`
@@ -318,7 +405,7 @@ export default function SEO({
     }
   }, [fullTitle, description, url, image, ogType, schemaType, article])
 
-  const schemas = buildSchema(schemaType, url, article, description)
+  const schemas = buildSchema(schemaType, url, article, description, caseStudy)
 
   return (
     <>
