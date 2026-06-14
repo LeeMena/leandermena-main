@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from '@/components/Layout'
 
-// Main pages
 import Home from '@/pages/Home'
 import About from '@/pages/About'
 import Services from '@/pages/Services'
@@ -16,10 +15,7 @@ import Book from '@/pages/Book'
 import Shop from '@/pages/Shop'
 import NotFound from '@/pages/NotFound'
 
-// Insights index
 import BlogIndex from '@/pages/BlogIndex'
-
-// Insights articles
 import BlogFractionalGM from '@/pages/BlogFractionalGM'
 import BlogWhyFractionalLeadership from '@/pages/BlogWhyFractionalLeadership'
 import BlogPreOpeningTimeline from '@/pages/BlogPreOpeningTimeline'
@@ -35,7 +31,6 @@ export default function App() {
   return (
     <Layout>
       <Routes>
-        {/* Main */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
@@ -49,7 +44,6 @@ export default function App() {
         <Route path="/book" element={<Book />} />
         <Route path="/shop" element={<Shop />} />
 
-        {/* Insights */}
         <Route path="/insights" element={<BlogIndex />} />
         <Route path="/insights/what-a-fractional-gm-actually-does" element={<BlogFractionalGM />} />
         <Route path="/insights/why-fractional-leadership-works" element={<BlogWhyFractionalLeadership />} />
@@ -62,7 +56,6 @@ export default function App() {
         <Route path="/insights/miami-restaurant-labor-market-2026" element={<BlogMiamiLabor />} />
         <Route path="/insights/building-training-program-that-works" element={<BlogTraining />} />
 
-        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
