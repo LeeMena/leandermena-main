@@ -14,16 +14,16 @@ export default function BlogTraining() {
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/dining.jpg)' }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/blog-training.jpg)' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <ScrollReveal>
-            <span className="kicker">Operations</span>
+            <span className="kicker">Training</span>
             <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-4">
-              How to Build a Training Program That Actually Works
+              Building a Training Program That Works
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              Most restaurant training fails within the first week. Here is how to build one that does not.
+              Why most restaurant training fails — and how to build one that actually sticks and improves performance.
             </p>
           </ScrollReveal>
         </div>
