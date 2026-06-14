@@ -29,8 +29,8 @@ import BlogTraining from '@/pages/BlogTraining'
 
 export default function App() {
   return (
-    <Layout>
-      <Routes>
+    <Routes>
+      <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
@@ -57,7 +57,7 @@ export default function App() {
         <Route path="/insights/building-training-program-that-works" element={<BlogTraining />} />
 
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Layout>
+      </Route>
+    </Routes>
   )
 }
