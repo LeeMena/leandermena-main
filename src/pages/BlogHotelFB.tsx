@@ -6,130 +6,108 @@ export default function BlogHotelFB() {
   return (
     <>
       <SEO
-        title="Hotel F&B Operations: Why Your Restaurant Is Underperforming"
-        description="Five problems seen across every underperforming hotel F&B outlet — from Viceroy Miami's $4.2M portfolio — and the operational fixes that work."
+        title="Hotel F&B: Why Your Restaurant Underperforms"
+        description="The structural differences between hotel F&B and standalone restaurants — and why most hotel operators get it wrong."
         path="/insights/hotel-fb-why-your-restaurant-underperforms"
         type="article"
         schemaType="article"
-        article={{
-          headline: 'Hotel F&B Operations: Why Your Restaurant Is Underperforming',
-          datePublished: '2026-02-15',
-          dateModified: '2026-06-01',
-        }}
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
-        <div className="absolute inset-0 z-0" aria-hidden="true">
-          <img src="/images/blog-hotel-fb.jpg" alt="" width="1400" height="600" className="w-full h-full object-cover" loading="eager" />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.1) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 40%)' }} />
-        </div>
-        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
-          <span className="kicker">Hotel Operations</span>
-          <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[28ch] mb-4">
-            Hotel F&amp;B: Why Your Restaurant Is Underperforming
-          </h1>
-          <p className="text-[#d8d8d8] text-lg max-w-[52ch] leading-relaxed">February 2026</p>
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/blog-hotel-fb.jpg)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
+        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
+          <ScrollReveal>
+            <span className="kicker">Hotel F&amp;B</span>
+            <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-4">
+              Hotel F&amp;B: Why Your Restaurant Underperforms
+            </h1>
+            <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
+              The structural differences between hotel F&amp;B and standalone restaurants — and why most hotel operators get it wrong.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
+      <article className="section">
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                I've managed F&amp;B operations across restaurant, pool, and banquet outlets at Viceroy Miami —
-                a $4.2M annual revenue portfolio. I've also walked into underperforming hotel F&amp;B outlets
-                and seen the same five problems every time.
+                Hotel restaurants are structurally different from independent restaurants. The ownership
+                model, the incentive structure, the guest mix, and the operational constraints are all
+                different. Most hotel F&amp;B programs underperform not because of bad food or bad
+                service, but because they are being run like standalone restaurants when they are not.
               </p>
             </ScrollReveal>
+
             <ScrollReveal delay={100}>
               <p>
-                Hotel F&amp;B is a different animal than independent restaurants. You have brand standards,
-                guest expectations, and a captive audience that can just as easily order room service or
-                walk across the street. The margin for error is thin, and the cost of fixing it is high.
+                I have run F&amp;B for Accor properties and led hotel outlet openings in Miami.
+                Here is what I have learned about why hotel restaurants fail — and what the operators
+                who get it right do differently.
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={150}><h2>Problem 1: The Menu Is Too Broad</h2></ScrollReveal>
+            <ScrollReveal delay={150}>
+              <h2>The Captive Guest Problem</h2>
+              <p>
+                Hotel restaurants often rely too heavily on captive guests — hotel guests who eat
+                on-property because it is convenient, not because they chose you. This creates a
+                false sense of demand that masks the restaurant's actual competitive position. When
+                occupancy drops, so does cover count, and the P&amp;L falls apart because the cost
+                structure was built for a volume that was never sustainable without the hotel feeding it.
+              </p>
+            </ScrollReveal>
+
             <ScrollReveal delay={200}>
-              <div className="card">
-                <p>
-                  Hotel restaurants try to be everything to everyone — breakfast buffet, lunch, dinner,
-                  room service, banquets, pool, minibar. The result is a kitchen that can't execute
-                  anything well. At Viceroy, we reduced the dinner menu from 42 items to 28.
-                  Food cost dropped 3%, ticket times improved 18%, and guest satisfaction for food
-                  quality rose from 3.7 to 4.5.
-                </p>
-              </div>
+              <h2>The Incentive Misalignment</h2>
+              <p>
+                In most hotel structures, the F&amp;B director reports to a general manager whose
+                primary focus is rooms revenue. F&amp;B is often seen as a support function — a
+                guest amenity — rather than a profit center. This creates chronic underinvestment
+                in the restaurant: in staffing, in menu development, in marketing. The restaurant
+                that could drive destination dining becomes a break-even amenity.
+              </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={250}><h2>Problem 2: Labor Misallocated Across Outlets</h2></ScrollReveal>
+            <ScrollReveal delay={250}>
+              <h2>The Staffing Model Is Wrong</h2>
+              <p>
+                Hotel F&amp;B staffing is often based on hotel occupancy projections that do not
+                account for local dining demand. Restaurants that could fill from the street are
+                staffed lean because rooms are slow. Alternatively, restaurants are overstaffed
+                for banquet events and underserved during regular dinner service. Labor cost runs
+                high not because of wages but because of poor alignment between staffing models
+                and actual demand patterns.
+              </p>
+            </ScrollReveal>
+
             <ScrollReveal delay={300}>
+              <h2>What the Best Hotel F&amp;B Programs Do Differently</h2>
               <p>
-                Hotel F&amp;B has multiple revenue centers but one labor pool. The GM sees total labor cost.
-                The outlets see individual P&amp;Ls. No one sees the full picture. We restructured from
-                department-based to outlet-based labor budgets at Viceroy. The pool outlet went from
-                38% labor cost to 29% while increasing revenue 25% through better upsell training.
+                The hotel F&amp;B programs I have seen succeed treat the restaurant as a standalone
+                business with a hotel distribution advantage. They build a local guest base
+                independent of hotel occupancy. They track restaurant P&amp;L separately from
+                hotel financials. They hire F&amp;B operators, not hotel generalists, to run the
+                outlet. And they give those operators the autonomy to make decisions at the speed
+                the restaurant business requires.
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={350}><h2>Problem 3: No Brand Identity for the Restaurant</h2></ScrollReveal>
-            <ScrollReveal delay={400}>
-              <div className="card">
-                <p>
-                  If guests can't describe your restaurant in one sentence, you don't have a concept.
-                  At SLS Brickell, the banquet team struggled because guests didn't understand the F&amp;B
-                  concept. We created a culinary story — a 2-minute narrative about the chef's vision,
-                  local sourcing, and Miami flavors — that servers used during tastings.
-                  Event bookings increased 22%.
+            <ScrollReveal delay={350}>
+              <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Running a hotel F&amp;B outlet that is not performing?</p>
+                <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
+                  I have restructured hotel F&amp;B operations from the staffing model to the P&amp;L.
+                  Let's talk about what is holding your outlet back.
                 </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={450}><h2>Problem 4: Inconsistent Guest Experience Across Outlets</h2></ScrollReveal>
-            <ScrollReveal delay={500}>
-              <p>
-                A guest has breakfast, lunch by the pool, and dinner in the restaurant. Three different
-                teams, three different service standards, three different experiences. The guest doesn't
-                care about your org chart. The fix is one service standard across all outlets,
-                cross-outlet training, daily pre-shift with representatives from every outlet,
-                and a single guest feedback system regardless of which outlet they visited.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={550}><h2>Problem 5: The P&L Is Invisible to the People Who Run It</h2></ScrollReveal>
-            <ScrollReveal delay={600}>
-              <div className="card">
-                <p>
-                  Most hotel F&amp;B outlets don't see their numbers until month-end — 30 days after the
-                  damage is done. At Viceroy, we implemented daily flash reports: labor cost, food cost,
-                  and revenue by outlet emailed to managers by 10am every day. Labor variance went from
-                  8% over budget to 2% under budget within one quarter. Managers started self-correcting
-                  before the GM had to intervene.
-                </p>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={650}>
-              <p>
-                Hotel F&amp;B underperforms because it's treated as an amenity, not a business.
-                The fix is operational discipline — clear concepts, smart labor allocation,
-                consistent standards, and real-time accountability. The solution is never a new chef
-                or a new menu. It's a new operating system.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={700}>
-              <div className="mt-4 flex gap-4 flex-wrap">
-                <Link to="/contact" className="btn btn-primary">Book a Hotel F&amp;B Assessment</Link>
-                <Link to="/insights/what-a-fractional-gm-actually-does" className="btn btn-ghost">What a Fractional GM Does &rarr;</Link>
-                <Link to="/insights" className="btn btn-ghost">&larr; Back to Insights</Link>
+                <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
               </div>
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </article>
     </>
   )
 }

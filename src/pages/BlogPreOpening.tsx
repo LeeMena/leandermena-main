@@ -7,99 +7,103 @@ export default function BlogPreOpening() {
     <>
       <SEO
         title="The Miami Pre-Opening Playbook"
-        description="What the first 90 days before opening should look like and the mistakes that cause most new concepts to stumble in week one."
+        description="A practical framework for opening restaurants and hotel F&B programs in Miami on time and on budget."
         path="/insights/miami-pre-opening-playbook"
         type="article"
         schemaType="article"
-        article={{
-          headline: 'The Miami Pre-Opening Playbook',
-          datePublished: '2024-01-01',
-          dateModified: '2026-05-30',
-        }}
       />
 
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
-        <div className="absolute inset-0 z-0" aria-hidden="true">
-          <img
-            src="/images/blog-pre-opening.jpg"
-            alt=""
-            width="1400"
-            height="600"
-            className="w-full h-full object-cover"
-            style={{ opacity: 1 }}
-            loading="eager"
-          />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.45) 55%, rgba(10,10,10,0.1) 100%)' }} />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.95) 0%, transparent 40%)' }} />
-        </div>
-        <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
-          <span className="kicker">Pre-Opening</span>
-          <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[26ch] mb-4">
-            The Miami Pre-Opening Playbook
-          </h1>
-          <p className="text-[#d8d8d8] text-lg max-w-[52ch] leading-relaxed">January 2024</p>
+      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/blog-pre-opening.jpg)' }} />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
+        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
+          <ScrollReveal>
+            <span className="kicker">Pre-Opening</span>
+            <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-4">
+              The Miami Pre-Opening Playbook
+            </h1>
+            <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
+              A practical framework for opening restaurants and hotel F&amp;B programs in Miami on time and on budget.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
+      <article className="section">
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                Most openings fail in the last thirty days before the doors open. Not because the
-                concept is wrong or the team is bad - but because the operational foundation was
-                never built. Menus get finalized too late. Training happens in a rush. SOPs get
-                skipped entirely. And on opening night, everything the guest experiences reflects
-                that chaos.
+                Miami is one of the most competitive restaurant markets in the United States.
+                Real estate costs are high, labor is tight, and the guest has seen everything.
+                Opening here without a disciplined pre-opening process is expensive.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
-              <h2>The 90-day window</h2>
+              <p>
+                I have led five restaurant and hotel F&amp;B pre-openings in Miami. The framework
+                below is what I use. It is built around a 120-day timeline with clear milestones
+                and deliverables at each phase.
+              </p>
             </ScrollReveal>
+
             <ScrollReveal delay={150}>
-              <div className="card">
-                <p>
-                  Ninety days out is when operations work should start in parallel with the
-                  construction and design process. Staffing plans, training sequences, SOP
-                  development, vendor onboarding, and service rehearsals all need time to develop
-                  properly. Trying to compress that work into two weeks before opening is where
-                  most of the damage happens.
-                </p>
-              </div>
+              <h2>Phase 1: Foundation (Days 1–30)</h2>
+              <p>
+                The first 30 days are about infrastructure. Business entity, permits, liquor
+                license application, lease review, insurance, and the beginning of vendor
+                outreach. This phase also includes the first version of the organizational chart
+                and the hiring plan. Most operators start hiring too late and too fast. The
+                right sequence is: define the roles, write the job descriptions, build the
+                training plan, then hire.
+              </p>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <h2>What a structured opening looks like</h2>
-            </ScrollReveal>
-            <ScrollReveal delay={250}>
-              <div className="card">
-                <p>
-                  A structured pre-opening has a staffing plan built before the first hire is made.
-                  It has a training sequence that moves from classroom to floor in stages, with
-                  assessments at each step. It has friends-and-family events that are treated like
-                  real service - not a party. It has post-opening audits at 30, 60, and 90 days
-                  that measure performance against targets and adjust systems before problems compound.
-                </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={300}>
+              <h2>Phase 2: Build (Days 31–75)</h2>
               <p>
-                The goal is not a perfect opening night. The goal is a team that knows what to do
-                when things go wrong - because they will.
+                This phase runs concurrently with construction. Vendor contracts are finalized.
+                Management hires are complete and working. The menu is developed and costed.
+                The POS is configured. The training program is written. Recruiting for hourly
+                staff begins no later than day 60. In Miami, high-quality FOH candidates get
+                multiple offers — if you post too late, you lose them to concepts that planned ahead.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={250}>
+              <h2>Phase 3: Train (Days 76–105)</h2>
+              <p>
+                The 30 days before opening are for training, not logistics. If logistics are
+                still unresolved at day 76, the opening date needs to move or the pre-opening
+                budget needs to expand. Training phase includes full team onboarding, menu
+                knowledge testing, service sequence rehearsal, and multiple full-service
+                simulations before friends-and-family night.
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <h2>Phase 4: Launch (Days 106–120)</h2>
+              <p>
+                Soft open with controlled covers. Identify the gaps. Fix them before full
+                public opening. The soft open is not a marketing event — it is a diagnostic.
+                Use it accordingly. Full opening follows with the team already operating at
+                a standard, not still learning it.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
-              <div className="mt-4 flex gap-4 flex-wrap">
-                <Link to="/contact" className="btn btn-primary">Start a Pre-Opening Conversation</Link>
-                <Link to="/pre-opening" className="btn btn-ghost">Pre-Opening Services &rarr;</Link>
-                <Link to="/insights" className="btn btn-ghost">&larr; Back to Insights</Link>
+              <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Opening in Miami in the next 6 months?</p>
+                <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
+                  I lead pre-openings end-to-end or step in at any phase to get an opening back on track.
+                </p>
+                <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
               </div>
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </article>
     </>
   )
 }
