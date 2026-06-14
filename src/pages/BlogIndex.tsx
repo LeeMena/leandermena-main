@@ -1,27 +1,35 @@
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
-const posts = [
+const ALL_POSTS = [
   {
-    slug: '/insights/what-a-fractional-gm-actually-does',
-    title: 'What a Fractional F&B Director Actually Does',
-    description: 'The role explained for operators who are considering it - scope, schedule, deliverables, and real expectations.',
-    kicker: 'Fractional Leadership',
-    date: '2024-02-29',
+    slug: '/insights/miami-restaurant-labor-market-2026',
+    title: 'Miami Restaurant Labor Market 2026',
+    description: 'What operators need to know about hiring, wages, and retention in the current Miami market.',
+    kicker: 'Labor Market',
+    date: '2024-07-01',
   },
   {
-    slug: '/insights/why-fractional-leadership-works',
-    title: 'Why Fractional F&B Leadership Works',
-    description: 'How operators are replacing full-time directors with fractional leaders - and getting better results at a fraction of the cost.',
-    kicker: 'Leadership',
-    date: '2024-04-20',
+    slug: '/insights/building-training-program-that-works',
+    title: 'Building a Training Program That Works',
+    description: 'Why most restaurant training fails — and how to build one that actually sticks and improves performance.',
+    kicker: 'Training',
+    date: '2024-07-15',
   },
   {
-    slug: '/insights/pre-opening-timeline',
-    title: 'The Pre-Opening Timeline Most Operators Get Wrong',
-    description: 'Why most restaurant pre-openings run behind - and the 120-day framework that fixes it.',
-    kicker: 'Pre-Opening',
-    date: '2024-04-01',
+    slug: '/insights/hotel-fb-why-your-restaurant-underperforms',
+    title: 'Hotel F&B: Why Your Restaurant Underperforms',
+    description: 'The structural differences between hotel F&B and standalone restaurants — and why most hotel operators get it wrong.',
+    kicker: 'Hotel F&B',
+    date: '2024-06-15',
+  },
+  {
+    slug: '/insights/reduce-labor-cost-without-cutting-service',
+    title: 'How to Reduce Labor Cost Without Cutting Service',
+    description: 'A case study and framework for restructuring labor without degrading guest experience.',
+    kicker: 'Operations',
+    date: '2024-06-01',
   },
   {
     slug: '/insights/miami-pre-opening-playbook',
@@ -33,9 +41,23 @@ const posts = [
   {
     slug: '/insights/real-cost-of-bad-pre-opening',
     title: 'The Real Cost of a Bad Pre-Opening',
-    description: 'What actually goes wrong when pre-opening planning is skipped or rushed - and the financial impact.',
+    description: 'What actually goes wrong when pre-opening planning is skipped or rushed — and the financial impact.',
     kicker: 'Pre-Opening',
     date: '2024-05-15',
+  },
+  {
+    slug: '/insights/why-fractional-leadership-works',
+    title: 'Why Fractional F&B Leadership Works',
+    description: 'How operators are replacing full-time directors with fractional leaders — and getting better results at a fraction of the cost.',
+    kicker: 'Leadership',
+    date: '2024-04-20',
+  },
+  {
+    slug: '/insights/pre-opening-timeline',
+    title: 'The Pre-Opening Timeline Most Operators Get Wrong',
+    description: 'Why most restaurant pre-openings run behind — and the 120-day framework that fixes it.',
+    kicker: 'Pre-Opening',
+    date: '2024-04-01',
   },
   {
     slug: '/insights/labor-cost-control-miami-restaurants',
@@ -45,41 +67,29 @@ const posts = [
     date: '2024-03-15',
   },
   {
-    slug: '/insights/reduce-labor-cost-without-cutting-service',
-    title: 'How to Reduce Labor Cost Without Cutting Service',
-    description: 'A case study and framework for restructuring labor without degrading guest experience.',
-    kicker: 'Operations',
-    date: '2024-06-01',
-  },
-  {
-    slug: '/insights/hotel-fb-why-your-restaurant-underperforms',
-    title: 'Hotel F&B: Why Your Restaurant Underperforms',
-    description: 'The structural differences between hotel F&B and standalone restaurants - and why most hotel operators get it wrong.',
-    kicker: 'Hotel F&B',
-    date: '2024-06-15',
-  },
-  {
-    slug: '/insights/miami-restaurant-labor-market-2026',
-    title: 'Miami Restaurant Labor Market 2026',
-    description: 'What operators need to know about hiring, wages, and retention in the current Miami market.',
-    kicker: 'Labor Market',
-    date: '2024-07-01',
-  },
-  {
-    slug: '/insights/building-training-program-that-works',
-    title: 'Building a Training Program That Works',
-    description: 'Why most restaurant training fails - and how to build one that actually sticks and improves performance.',
-    kicker: 'Training',
-    date: '2024-07-15',
+    slug: '/insights/what-a-fractional-gm-actually-does',
+    title: 'What a Fractional F&B Director Actually Does',
+    description: 'The role explained for operators who are considering it — scope, schedule, deliverables, and real expectations.',
+    kicker: 'Fractional Leadership',
+    date: '2024-02-29',
   },
 ]
 
+// Sort newest first
+const posts = [...ALL_POSTS].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+
+const CATEGORIES = ['All', ...Array.from(new Set(posts.map((p) => p.kicker)))]
+
 export default function BlogIndex() {
+  const [activeCategory, setActiveCategory] = useState('All')
+
+  const filtered = activeCategory === 'All' ? posts : posts.filter((p) => p.kicker === activeCategory)
+
   return (
     <>
       <SEO
         title="Insights"
-        description="F&B operations insights from Leander Mena - pre-opening, labor cost, fractional leadership, and more."
+        description={`${posts.length} practical articles on F&B operations — pre-openings, labor cost, fractional leadership, training, and more from Leander Mena.`}
         path="/insights"
         schemaType="insights"
       />
@@ -102,28 +112,64 @@ export default function BlogIndex() {
         </div>
       </section>
 
+      {/* Category Filter */}
+      <section style={{ borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)', paddingBlock: '0.85rem' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.06em',
+                  textTransform: 'uppercase',
+                  padding: '0.3rem 0.85rem',
+                  borderRadius: '9999px',
+                  border: '1px solid var(--color-border)',
+                  background: activeCategory === cat ? 'var(--color-text)' : 'transparent',
+                  color: activeCategory === cat ? 'var(--color-bg)' : 'var(--color-text-muted)',
+                  cursor: 'pointer',
+                  transition: 'all 180ms ease',
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Posts List */}
       <section className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-            {posts.map((p) => (
-              <Link
-                key={p.slug}
-                to={p.slug}
-                style={{
-                  display: 'block',
-                  padding: '1.5rem 0',
-                  borderBottom: '1px solid var(--color-border)',
-                  textDecoration: 'none',
-                }}
-              >
-                <span className="kicker" style={{ marginBottom: '0.35rem' }}>{p.kicker}</span>
-                <h2 style={{ fontSize: 'clamp(1.05rem,2vw,1.2rem)', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.4rem', lineHeight: 1.35 }}>{p.title}</h2>
-                <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>{p.description}</p>
-                <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.5rem', display: 'block' }}>
-                  {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </span>
-              </Link>
-            ))}
+            {filtered.length > 0 ? (
+              filtered.map((p) => (
+                <Link
+                  key={p.slug}
+                  to={p.slug}
+                  style={{
+                    display: 'block',
+                    padding: '1.5rem 0',
+                    borderBottom: '1px solid var(--color-border)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  <span className="kicker" style={{ marginBottom: '0.35rem' }}>{p.kicker}</span>
+                  <h2 style={{ fontSize: 'clamp(1.05rem,2vw,1.2rem)', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.4rem', lineHeight: 1.35 }}>{p.title}</h2>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>{p.description}</p>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.5rem', display: 'block' }}>
+                    {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </span>
+                </Link>
+              ))
+            ) : (
+              <p style={{ padding: '3rem 0', color: 'var(--color-text-muted)', textAlign: 'center' }}>
+                No articles in this category yet.
+              </p>
+            )}
           </div>
         </div>
       </section>
