@@ -4,6 +4,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -15,13 +16,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          // Core React — cached separately, rarely changes
           'vendor-react': ['react', 'react-dom'],
-          // Router
           'vendor-router': ['react-router-dom'],
-          // Animation library
           'vendor-motion': ['framer-motion'],
-          // Icons
           'vendor-icons': ['lucide-react'],
         },
       },
