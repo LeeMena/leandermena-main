@@ -10,4 +10,5 @@
 # Splat rules after static rules
 /blog/* /insights/:splat 301
 
-# SPA fallback - handled by _routes.json (removed wildcard to prevent conflict)
+# SPA fallback — must be last
+/* /index.html 200
