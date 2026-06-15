@@ -20,10 +20,14 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
-# Block duplicate/noindex paths from crawling
+# Block non-canonical and internal paths
 Disallow: /docs/
+Disallow: /leander-mena-miami-hospitality
 Disallow: /leander-mena-miami-hospitality/
 Disallow: /*.yml$
 Disallow: /AUDIT_AND_ELEVATION.md
+Disallow: /profile
+Disallow: /shop
+Disallow: /products
 
 Sitemap: https://www.leandermena.com/sitemap.xml
