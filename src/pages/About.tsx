@@ -44,7 +44,7 @@ export default function About() {
         schemaType="about"
       />
 
-      {/* Hero — mirrors Experience exactly */}
+      {/* Hero - mirrors Experience exactly */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: 'clamp(420px, 60vw, 680px)' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
@@ -106,13 +106,13 @@ export default function About() {
               <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">From the floor up</h2>
               <div className="prose-article">
                 <p>
-                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap — from Michelin-starred pre-openings in Midtown Miami to multi-unit P&amp;L management at scale, and everywhere in between.
+                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap - from Michelin-starred pre-openings in Midtown Miami to multi-unit P&amp;L management at scale, and everywhere in between.
                 </p>
                 <p>
                   I've opened hotels, turned around struggling concepts, built training programs from scratch, and managed teams of 80+ across multiple outlets. The through-line in every engagement: operations only improve when someone with real accountability is in the building.
                 </p>
                 <p>
-                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real — not just on paper. I work in English, Spanish, and conversational French, and I'm at home in both independent concepts and luxury hotel environments.
+                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real - not just on paper. I work in English, Spanish, and conversational French, and I'm at home in both independent concepts and luxury hotel environments.
                 </p>
               </div>
             </Reveal>
@@ -140,10 +140,10 @@ export default function About() {
             {[
               { title: 'Systems over heroics', body: 'A well-run operation doesn\'t depend on the owner being present 80 hours a week. The goal is always replicable systems.' },
               { title: 'Floor presence is non-negotiable', body: 'You can\'t manage a restaurant from a spreadsheet. The data tells you what; the floor tells you why.' },
-              { title: 'Root cause over symptom', body: 'High turnover, missed targets, inconsistent quality — these are symptoms. I work backward to the actual problem.' },
+              { title: 'Root cause over symptom', body: 'High turnover, missed targets, inconsistent quality - these are symptoms. I work backward to the actual problem.' },
               { title: 'Speed with discipline', body: 'Operators need results quickly. I move fast without cutting corners on the fundamentals.' },
               { title: 'People build operations', body: 'The best SOP in the world fails without buy-in. Training, culture, and accountability come before the manual.' },
-              { title: 'Honest assessment first', body: 'Before any plan, I need to understand what\'s actually happening — not what anyone wishes were happening.' },
+              { title: 'Honest assessment first', body: 'Before any plan, I need to understand what\'s actually happening - not what anyone wishes were happening.' },
             ].map((p) => (
               <Reveal key={p.title}>
                 <div className="card">
