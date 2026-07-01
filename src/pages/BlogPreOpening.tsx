@@ -34,69 +34,66 @@ export default function BlogPreOpening() {
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                Miami is one of the most competitive restaurant markets in the United States.
-                Real estate costs are high, labor is tight, and the guest has seen everything.
-                Opening here without a disciplined pre-opening process is expensive.
+                Every restaurant opening is a project management problem before it is an
+                operations problem. The operators who open on time and on budget approach
+                pre-opening as a sequenced process with clear milestones. The ones who struggle
+                treat it as a checklist to be completed when time allows.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
               <p>
-                I have led five restaurant and hotel F&amp;B pre-openings in Miami. The framework
-                below is what I use. It is built around a 120-day timeline with clear milestones
-                and deliverables at each phase.
+                This is the framework I use when leading pre-openings in Miami - built from
+                leading openings for independent concepts, hotel outlets, and multi-unit groups.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
-              <h2>Phase 1: Foundation (Days 1–30)</h2>
+              <h2>Phase 1: Infrastructure (120-90 Days Out)</h2>
               <p>
-                The first 30 days are about infrastructure. Business entity, permits, liquor
-                license application, lease review, insurance, and the beginning of vendor
-                outreach. This phase also includes the first version of the organizational chart
-                and the hiring plan. Most operators start hiring too late and too fast. The
-                right sequence is: define the roles, write the job descriptions, build the
-                training plan, then hire.
+                Vendor selection, contract execution, and supply chain setup. POS configuration
+                and reporting structure. Leadership hiring and compensation structure finalized.
+                This phase creates the operational infrastructure that everything else runs on.
+                Delays here cascade into every subsequent phase.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <h2>Phase 2: Build (Days 31–75)</h2>
+              <h2>Phase 2: People (90-45 Days Out)</h2>
               <p>
-                This phase runs concurrently with construction. Vendor contracts are finalized.
-                Management hires are complete and working. The menu is developed and costed.
-                The POS is configured. The training program is written. Recruiting for hourly
-                staff begins no later than day 60. In Miami, high-quality FOH candidates get
-                multiple offers — if you post too late, you lose them to concepts that planned ahead.
+                Full hiring complete. Training materials written and production-ready. Management
+                team in place and aligned on standards. The people phase is where most pre-openings
+                fall behind. Hiring takes longer than expected, training materials are not ready
+                when staff arrive, and the management team is still being assembled when training
+                should already be underway.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <h2>Phase 3: Train (Days 76–105)</h2>
+              <h2>Phase 3: Operations (45-14 Days Out)</h2>
               <p>
-                The 30 days before opening are for training, not logistics. If logistics are
-                still unresolved at day 76, the opening date needs to move or the pre-opening
-                budget needs to expand. Training phase includes full team onboarding, menu
-                knowledge testing, service sequence rehearsal, and multiple full-service
-                simulations before friends-and-family night.
+                Training in full execution. Menu and recipe costing finalized. Par levels calculated
+                and initial orders placed. Systems tested under real conditions - not theoretical.
+                This is where problems surface and get resolved before opening night rather than
+                during it.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <h2>Phase 4: Launch (Days 106–120)</h2>
+              <h2>Phase 4: Opening (14-0 Days)</h2>
               <p>
-                Soft open with controlled covers. Identify the gaps. Fix them before full
-                public opening. The soft open is not a marketing event — it is a diagnostic.
-                Use it accordingly. Full opening follows with the team already operating at
-                a standard, not still learning it.
+                Soft opening with controlled covers. Team calibration and feedback loops. Management
+                observation and real-time coaching. The opening phase is not a celebration - it is
+                the most important training period in the restaurant's life. Treat it that way.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
-                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Opening in Miami in the next 6 months?</p>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Opening in Miami in the next 6-12 months?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  I lead pre-openings end-to-end or step in at any phase to get an opening back on track.
+                  I lead pre-openings end-to-end. Let's talk about where you are in the process
+                  and what you need to get to a clean opening.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
               </div>

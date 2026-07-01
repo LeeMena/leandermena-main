@@ -6,8 +6,8 @@ export default function BlogTraining() {
   return (
     <>
       <SEO
-        title="How to Build a Restaurant Training Program That Works"
-        description="A practical guide to building a restaurant training program that reduces turnover, improves consistency, and scales with your team in Miami."
+        title="Building a Training Program That Works"
+        description="Why most restaurant training fails - and how to build one that actually sticks and improves performance."
         path="/insights/building-training-program-that-works"
         type="article"
         schemaType="article"
@@ -23,7 +23,7 @@ export default function BlogTraining() {
               Building a Training Program That Works
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              Why most restaurant training fails — and how to build one that actually sticks and improves performance.
+              Why most restaurant training fails - and how to build one that actually sticks and improves performance.
             </p>
           </ScrollReveal>
         </div>
@@ -34,99 +34,80 @@ export default function BlogTraining() {
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                Most restaurant training is broken. It is a 2-day shadow shift followed by a
-                sink-or-swim first week. The new hire makes mistakes in front of guests, gets
-                frustrated, and quits or gets fired within 30 days. The manager blames the hire.
-                The hire blames the training. The cycle repeats.
+                Most restaurant training programs do not work. Not because the content is wrong,
+                but because the delivery model is wrong. Information is transferred, but behavior
+                does not change. The training is considered complete when the material has been
+                covered, not when the skill has been demonstrated.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
               <p>
-                I have built training programs for independent restaurants, hotel F&amp;B outlets,
-                and multi-unit groups in Miami. The ones that work share the same structure.
-                The ones that fail share the same gaps.
+                Here is what separates training programs that produce consistent execution from
+                ones that become binders on a shelf.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
-              <h2>The 4 Pillars of a Training Program That Holds</h2>
+              <h2>The Core Problem: Coverage vs. Competency</h2>
+              <p>
+                Most training programs are designed around coverage: here is the menu, here are
+                the steps of service, here is the POS. Completion is measured by whether the
+                material was presented, not whether the trainee can perform the skill under
+                real conditions. This produces staff who have been trained but not prepared.
+              </p>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <h3>1. Role-Specific, Not Generic</h3>
+              <h2>Competency-Based Training</h2>
               <p>
-                A server and a barback do not need the same training document. Generic onboarding
-                binders get ignored because they are not relevant to the person reading them.
-                Every role needs its own track: what you need to know, what you need to be able
-                to do, and how you will be evaluated before you are cleared to solo.
+                A competency-based program is structured differently. Each skill has a defined
+                observable standard. The trainee is assessed against that standard, not against
+                a checklist of topics covered. Training is not complete until the standard is
+                met. This requires more work to design but produces dramatically better results
+                because it forces clarity about what good performance actually looks like.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <h3>2. Structured Observation Before Solo Shifts</h3>
+              <h2>The Trainer Is the Weakest Link</h2>
               <p>
-                Shadow shifts without a checklist are not training, they are observation. Every
-                shadow shift needs a structured checklist the trainer signs off on. The new hire
-                should not be cleared for solo until they have demonstrated competency on each item,
-                not just been present for a set number of days.
+                Most restaurant training fails at the trainer level. Your best server is often
+                not your best trainer. Training requires patience, communication skill, and the
+                ability to demonstrate and observe simultaneously. Investing in trainer
+                development - teaching your trainers how to train - produces more improvement
+                than any content upgrade.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <h3>3. A 30-Day Check-In That Actually Happens</h3>
+              <h2>Reinforcement Is Not Optional</h2>
               <p>
-                The 30-day check-in is the single highest-leverage retention tool available to
-                managers. Most concepts either skip it or treat it as a formality. Done right,
-                it catches misalignment before it becomes a resignation. The structure is simple:
-                what is going well, what is hard, what do you need from us. Then you listen and act.
+                Initial training sets the baseline. Reinforcement determines whether the baseline
+                holds. Pre-shift conversations, observation and feedback during service, and regular
+                recalibration on standards are what separate teams that maintain quality from teams
+                that drift. Build reinforcement into the schedule as a non-negotiable management
+                activity, not something that happens when there is time.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
-              <h3>4. Training That Connects to Standards</h3>
+              <h2>What a Working Training Program Looks Like</h2>
               <p>
-                Staff do not follow standards they do not know exist. Every training program needs
-                a direct line from onboarding content to the operational standards they are being
-                held to. If you have an SOP for table turns, that SOP should be in the training.
-                If you have a service sequence, new hires should be tested on it before they hit
-                the floor.
+                A training program that works has: written competency standards for every role,
+                a structured onboarding sequence with defined progression milestones, trained
+                trainers who are assessed and developed, a reinforcement calendar that is
+                built into management schedules, and a feedback loop that identifies where
+                the program is not working and fixes it.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <h2>What Good Looks Like: A Real Example</h2>
-              <p>
-                At a 120-seat independent concept in Wynwood, I rebuilt the front-of-house training
-                program from scratch during pre-opening. The previous approach was two shadow shifts
-                and a verbal overview of the menu. We replaced it with a 5-day structured track:
-                day one orientation and tour, day two product knowledge and menu testing, day three
-                shadow with checklist, day four supervised solo with manager sign-off, day five
-                evaluated solo shift with feedback session.
-              </p>
-              <p>
-                Turnover in the first 90 days dropped compared to the owner's previous concept.
-                The GM cited the training structure as the primary reason. Staff knew what was
-                expected before they were ever evaluated on it.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={450}>
-              <h2>The Common Gaps</h2>
-              <p>
-                In every underperforming training program I have seen, the problem is one of three things:
-                the content exists but is not used, the trainer is inconsistent, or there is no
-                accountability mechanism at the end of training. Fixing any one of these will improve
-                outcomes. Fixing all three transforms retention.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={500}>
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
-                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Need a training program built from scratch?</p>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Is your training producing consistent execution?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  I work with Miami restaurants and hotel F&amp;B teams to build training programs
-                  that reduce turnover and create consistent guest experiences.
+                  I build training programs from the competency standard up - including trainer
+                  development and the reinforcement structure that makes them hold. Let's talk.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
               </div>

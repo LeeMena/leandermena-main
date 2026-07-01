@@ -7,7 +7,7 @@ export default function BlogHotelFB() {
     <>
       <SEO
         title="Hotel F&B: Why Your Restaurant Underperforms"
-        description="The structural differences between hotel F&B and standalone restaurants — and why most hotel operators get it wrong."
+        description="The structural differences between hotel F&B and standalone restaurants - and why most hotel operators get it wrong."
         path="/insights/hotel-fb-why-your-restaurant-underperforms"
         type="article"
         schemaType="article"
@@ -23,7 +23,7 @@ export default function BlogHotelFB() {
               Hotel F&amp;B: Why Your Restaurant Underperforms
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              The structural differences between hotel F&amp;B and standalone restaurants — and why most hotel operators get it wrong.
+              The structural differences between hotel F&amp;B and standalone restaurants - and why most hotel operators get it wrong.
             </p>
           </ScrollReveal>
         </div>
@@ -44,7 +44,7 @@ export default function BlogHotelFB() {
             <ScrollReveal delay={100}>
               <p>
                 I have run F&amp;B for Accor properties and led hotel outlet openings in Miami.
-                Here is what I have learned about why hotel restaurants fail — and what the operators
+                Here is what I have learned about why hotel restaurants fail - and what the operators
                 who get it right do differently.
               </p>
             </ScrollReveal>
@@ -52,7 +52,7 @@ export default function BlogHotelFB() {
             <ScrollReveal delay={150}>
               <h2>The Captive Guest Problem</h2>
               <p>
-                Hotel restaurants often rely too heavily on captive guests — hotel guests who eat
+                Hotel restaurants often rely too heavily on captive guests - hotel guests who eat
                 on-property because it is convenient, not because they chose you. This creates a
                 false sense of demand that masks the restaurant's actual competitive position. When
                 occupancy drops, so does cover count, and the P&amp;L falls apart because the cost
@@ -64,8 +64,8 @@ export default function BlogHotelFB() {
               <h2>The Incentive Misalignment</h2>
               <p>
                 In most hotel structures, the F&amp;B director reports to a general manager whose
-                primary focus is rooms revenue. F&amp;B is often seen as a support function — a
-                guest amenity — rather than a profit center. This creates chronic underinvestment
+                primary focus is rooms revenue. F&amp;B is often seen as a support function - a
+                guest amenity - rather than a profit center. This creates chronic underinvestment
                 in the restaurant: in staffing, in menu development, in marketing. The restaurant
                 that could drive destination dining becomes a break-even amenity.
               </p>
