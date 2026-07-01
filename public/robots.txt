@@ -1,3 +1,6 @@
+# robots.txt — leandermena.com
+# Last updated: 2026-07-01
+
 User-agent: *
 Allow: /
 
@@ -20,14 +23,16 @@ Disallow: /
 User-agent: Google-Extended
 Disallow: /
 
-# Block non-canonical and internal paths
+# Block internal / utility paths
 Disallow: /docs/
 Disallow: /leander-mena-miami-hospitality
 Disallow: /leander-mena-miami-hospitality/
 Disallow: /*.yml$
-Disallow: /AUDIT_AND_ELEVATION.md
+
+# Intentionally unlisted pages — no SEO value
 Disallow: /profile
 Disallow: /shop
 Disallow: /products
 
+# Sitemap
 Sitemap: https://www.leandermena.com/sitemap.xml

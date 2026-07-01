@@ -3,28 +3,147 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Leander Mena | Fractional F&amp;B Leadership &amp; Hospitality Consulting - Miami</title>
-    <meta name="description" content="Fractional F&amp;B operations leadership for Miami restaurants, hotels &amp; new openings. 18 years opening, stabilizing, and scaling hospitality operations." />
+    <title>Leander Mena | Fractional F&amp;B Leadership &amp; Hospitality Consulting | Miami</title>
+    <meta name="description" content="Fractional F&amp;B operations leadership for Miami restaurants, hotels &amp; new openings. 18+ years opening, stabilizing, and scaling hospitality operations across 40+ properties." />
     <link rel="canonical" href="https://www.leandermena.com/" />
+
+    <!-- Open Graph -->
     <meta property="og:title" content="Leander Mena | Fractional F&amp;B Leadership - Miami" />
-    <meta property="og:description" content="Fractional F&amp;B operations leadership for Miami restaurants, hotels &amp; new openings." />
+    <meta property="og:description" content="Fractional F&amp;B operations leadership for Miami restaurants, hotels &amp; new openings. 18+ years. 40+ properties. Results-first consulting." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.leandermena.com/" />
     <meta property="og:image" content="https://www.leandermena.com/images/about.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Leander Mena - Miami F&amp;B Operations Consultant" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Leander Mena" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Leander Mena | Fractional F&amp;B Leadership - Miami" />
     <meta name="twitter:description" content="Fractional F&amp;B operations leadership for Miami restaurants, hotels &amp; new openings." />
     <meta name="twitter:image" content="https://www.leandermena.com/images/about.jpg" />
     <meta name="twitter:image:alt" content="Leander Mena - Miami F&amp;B Operations Consultant" />
+
+    <!-- Favicons & Manifest -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <!-- Prevent theme flash on hard refresh: set data-theme before React hydrates -->
+
+    <!-- Schema.org JSON-LD: Person + ProfessionalService + LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.leandermena.com/#person",
+          "name": "Leander Mena",
+          "jobTitle": "Fractional F&B Director & Hospitality Consultant",
+          "description": "18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across 40+ properties in Miami and beyond.",
+          "url": "https://www.leandermena.com",
+          "image": "https://www.leandermena.com/images/about.jpg",
+          "sameAs": [
+            "https://www.linkedin.com/in/leandermena"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Miami",
+            "addressRegion": "FL",
+            "addressCountry": "US"
+          },
+          "knowsAbout": [
+            "Food & Beverage Operations",
+            "Restaurant Pre-Opening",
+            "Hospitality Consulting",
+            "Labor Cost Control",
+            "Hotel F&B Management",
+            "Catering Operations"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.leandermena.com/#business",
+          "name": "Leander Mena | Fractional F&B Leadership",
+          "description": "Fractional F&B operations leadership for Miami restaurants, hotels, and new openings. Expert consulting for pre-opening, turnaround, and ongoing operations management.",
+          "url": "https://www.leandermena.com",
+          "logo": "https://www.leandermena.com/images/about.jpg",
+          "image": "https://www.leandermena.com/images/about.jpg",
+          "founder": { "@id": "https://www.leandermena.com/#person" },
+          "areaServed": [
+            { "@type": "City", "name": "Miami", "sameAs": "https://www.wikidata.org/wiki/Q8733" },
+            { "@type": "City", "name": "Miami Beach" },
+            { "@type": "State", "name": "Florida" }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Miami",
+            "addressRegion": "FL",
+            "addressCountry": "US"
+          },
+          "priceRange": "$$$",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "F&B Consulting Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Fractional F&B Director",
+                  "description": "Ongoing embedded fractional F&B operations leadership for restaurants and hotels."
+                },
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "price": "4500",
+                  "priceCurrency": "USD",
+                  "unitText": "WEEK"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Pre-Opening Consulting",
+                  "description": "Full pre-opening F&B setup: SOPs, hiring, menu, training, vendor setup, and launch."
+                },
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "price": "8500",
+                  "priceCurrency": "USD",
+                  "unitText": "WEEK"
+                }
+              }
+            ]
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/leandermena"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.leandermena.com/#website",
+          "url": "https://www.leandermena.com",
+          "name": "Leander Mena",
+          "description": "Fractional F&B Leadership & Hospitality Consulting — Miami",
+          "publisher": { "@id": "https://www.leandermena.com/#person" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.leandermena.com/insights?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Prevent theme flash on hard refresh -->
     <script>
       (function () {
         try {
@@ -35,6 +154,8 @@
         } catch (e) {}
       })();
     </script>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
