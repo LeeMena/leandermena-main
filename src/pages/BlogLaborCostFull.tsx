@@ -54,7 +54,7 @@ export default function BlogLaborCostFull() {
               <p>
                 Before cutting anything, map actual labor hours against actual revenue by daypart
                 and day of week. Most operations have significant labor waste concentrated in
-                specific shifts — typically early week dinner, late Sunday, and opening shifts
+                specific shifts - typically early week dinner, late Sunday, and opening shifts
                 that are staffed for a volume that does not materialize until midday. The audit
                 almost always reveals 8 to 12% of weekly hours that can be restructured without
                 touching coverage during peak periods.
@@ -68,38 +68,38 @@ export default function BlogLaborCostFull() {
                 That approach accumulates inefficiency over time. A rebuild from scratch using
                 actual sales data by daypart, role-by-role coverage requirements, and a target
                 labor percentage as the constraint produces a schedule that is structurally
-                different from what most operations are running.
+                different - and consistently lower cost - than the inherited one.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <h2>Step 3: Build Variance Tracking Into the Weekly Routine</h2>
+              <h2>Step 3: Separate Controllable from Non-Controllable Labor</h2>
               <p>
-                A schedule is a plan. What matters is what actually gets worked. Building a
-                weekly labor variance review into the manager cadence — actual hours vs. scheduled
-                hours, by role and by shift — creates accountability and early warning when
-                overtime is building before it hits the check. Most operations review labor
-                monthly. That is too slow.
+                Not all labor cost is equally controllable. Benefits, mandated minimums, and
+                salaried management cost are relatively fixed. Hourly floor and kitchen labor
+                is variable and directly schedule-driven. Most operators manage against total
+                labor percentage without separating the two, which obscures where the opportunity
+                actually is. Track them separately and you will find the target faster.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <h2>Step 4: Train Managers to Make In-Shift Decisions</h2>
+              <h2>The Result</h2>
               <p>
-                The biggest source of unplanned labor cost is in-shift overstaffing that no one
-                cuts. A manager who is empowered to send one person home when covers are tracking
-                20% below forecast, and who understands the P&amp;L implication of that decision,
-                will make better labor decisions than a manager who is just trying to get through
-                the shift. This requires training and permission, not just expectation.
+                The 8-point labor reduction at the Miami operation came from three sources:
+                schedule restructuring (4 points), menu simplification that reduced kitchen
+                labor complexity (2.5 points), and elimination of a management layer that had
+                been added during a period of growth but was no longer justified by volume
+                (1.5 points). No service cuts. No burnout. Better systems.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
-                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Labor cost running above plan?</p>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Labor cost above 32%?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  I help Miami operators restructure labor scheduling and cost controls without
-                  cutting the team or the guest experience.
+                  I can audit your schedules, identify the structural waste, and build you a
+                  reduction plan that does not require cutting staff or service. Let's talk.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
               </div>

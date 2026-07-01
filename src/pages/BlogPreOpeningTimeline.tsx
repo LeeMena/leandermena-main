@@ -7,7 +7,7 @@ export default function BlogPreOpeningTimeline() {
     <>
       <SEO
         title="The Pre-Opening Timeline Most Operators Get Wrong"
-        description="Why most restaurant pre-openings run behind — and the 120-day framework that fixes it."
+        description="Why most restaurant pre-openings run behind - and the 120-day framework that fixes it."
         path="/insights/pre-opening-timeline"
         type="article"
         schemaType="article"
@@ -23,7 +23,7 @@ export default function BlogPreOpeningTimeline() {
               The Pre-Opening Timeline Most Operators Get Wrong
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              Why most restaurant pre-openings run behind — and the 120-day framework that fixes it.
+              Why most restaurant pre-openings run behind - and the 120-day framework that fixes it.
             </p>
           </ScrollReveal>
         </div>
@@ -34,72 +34,75 @@ export default function BlogPreOpeningTimeline() {
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                Most restaurant pre-openings are planned backwards. The operator picks an opening
-                date, counts back from it, and tries to compress every task into whatever time
-                remains. When construction runs late — and it almost always does — every downstream
-                milestone compresses. Training gets cut. Vendor setup gets rushed. The team
-                opens undertrained and undersupported.
+                Most pre-openings run behind. Not because operators are disorganized, but because
+                the timeline is wrong from the start. The common mistake is working backward from
+                the opening date to set deadlines, rather than working forward from what each phase
+                of preparation actually requires.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
               <p>
-                The 120-day framework I use plans forward from groundbreaking, not backward from
-                an opening date. The opening date is the output of the plan, not the starting
-                constraint.
+                I have led pre-openings that ran on time and ones that ran behind. The difference
+                is almost never budget - it is sequencing and buffer.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
-              <h2>The Most Common Timing Mistakes</h2>
+              <h2>The Mistake: Compressing the Timeline to Hit a Date</h2>
               <p>
-                Starting management hiring too late is the single most costly timing error in a
-                pre-opening. Your GM and department heads need to be hired at least 60 days before
-                opening, ideally 90. They are the ones building the systems and training the team.
-                If they arrive 30 days out, they are in survival mode from day one.
+                When an opening date is set by the owner or investor before the operational
+                team is engaged, the pre-opening timeline gets compressed to fit. Vendor setup
+                that requires 60 days gets allocated 30. Training that needs 3 weeks gets 10 days.
+                The result is a team that arrives underprepared, systems that are not tested, and
+                an opening night that functions as the first real training session - in front of
+                paying guests.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
+              <h2>What 120 Days Actually Covers</h2>
               <p>
-                The second most common mistake is treating liquor license and permit timelines
-                as fixed. In Miami, liquor license processing times vary significantly by
-                municipality and license type. Operators who apply late and then try to open
-                without a license — relying on a temporary permit — consistently encounter
-                problems that are expensive to resolve under time pressure.
+                A 120-day pre-opening timeline is not padded - it is exactly what the work requires.
+                Days 120 to 90 cover infrastructure: vendor contracts, POS setup, management hiring.
+                Days 90 to 45 cover people: staff hiring, training material development, recipe
+                costing. Days 45 to 14 cover operations: full training execution, systems testing,
+                soft opening preparation. Days 14 to 0 cover calibration: soft opens, feedback
+                loops, real-time coaching before full public opening.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <h2>What the 120-Day Framework Fixes</h2>
+              <h2>The Buffer Problem</h2>
               <p>
-                The framework creates 30-day phases with specific deliverables that must be
-                complete before the next phase begins. This creates natural checkpoints that
-                surface problems early, when they are still cheap to fix. A vendor contract
-                that falls through at day 45 is a minor problem. The same issue at day 110
-                is a crisis.
+                Every phase in a pre-opening has dependencies - things that cannot start until
+                something else is complete. Vendor contracts must be signed before training menus
+                are costed. Management must be hired before training materials are finalized.
+                Staff cannot be trained on systems that are not yet configured. A 90-day timeline
+                assumes everything goes right. A 120-day timeline assumes things go wrong and
+                builds in recovery time.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <h2>How to Use It</h2>
+              <h2>When You Are Already Behind</h2>
               <p>
-                Start with the full task inventory — every deliverable across legal, construction
-                coordination, staffing, vendor, menu, training, and systems. Assign an owner and
-                a due date to each item. Review weekly as a leadership team. When items slip,
-                understand why before accepting the slip — some delays are legitimate, many are
-                avoidable with the right intervention.
+                If you are reading this at 60 days out and the foundation work is not done,
+                the options are: push the date, add resources, or accept a compromised opening.
+                Pushing the date is almost always the right call when the alternative is opening
+                underprepared. The financial cost of a delayed opening is real - the financial
+                cost of a failed first 30 days is larger.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
-                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Need the full 120-day framework?</p>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Where are you in your pre-opening timeline?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  The Pre-Opening Blueprint includes the complete task inventory, milestone
-                  schedule, and all supporting templates.
+                  I can assess your current position and build a realistic path to opening day -
+                  whether you are at 120 days or 45. Let's talk.
                 </p>
-                <Link to="/blueprint" className="btn btn-primary">See the Blueprint</Link>
+                <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
               </div>
             </ScrollReveal>
           </div>

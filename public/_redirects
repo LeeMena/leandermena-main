@@ -1,21 +1,41 @@
-# Cloudflare Pages - Redirects
+# Cloudflare Pages — _redirects
 # ============================================================
-# RULE ORDER IS CRITICAL: specific 200 rewrites FIRST,
-# then 301 legacy redirects, then SPA catch-all LAST.
+# RULE ORDER IS CRITICAL:
+#   1. Explicit 200 SPA rewrites (prevents trailing-slash chains)
+#   2. Legacy 301 redirects (single-hop only)
+#   3. SPA catch-all (must be absolute last)
 # ============================================================
 
 # ----------------------------------------------------------
-# 1. EXPLICIT SPA 200 REWRITES — prevent trailing-slash 301
-#    chains that cause Googlebot "Redirect error" fetch fails.
-#    Each route that React Router handles must be listed here
-#    so Cloudflare Pages serves index.html with a clean 200,
-#    never auto-redirecting /path → /path/
+# 1. EXPLICIT SPA 200 REWRITES
+#    Serve index.html with 200 for every React Router route.
+#    Prevents Cloudflare from auto-redirecting /path → /path/
+#    which causes Googlebot "Redirect error" fetch failures.
 # ----------------------------------------------------------
 
-# Insights index
+# Core pages
+/about              /index.html  200
+/services           /index.html  200
+/pre-opening        /index.html  200
+/experience         /index.html  200
+/philosophy         /index.html  200
+/contact            /index.html  200
+/blueprint          /index.html  200
+/book               /index.html  200
+/profile            /index.html  200
+/shop               /index.html  200
+/products           /index.html  200
+
+# Case studies
+/case-studies                                          /index.html  200
+/case-studies/maska-indian-kitchen                     /index.html  200
+/case-studies/ve-hospitality-turnaround                /index.html  200
+/case-studies/sls-brickell-banquets                    /index.html  200
+/case-studies/butler-hospitality-scale                 /index.html  200
+/case-studies/:slug                                    /index.html  200
+
+# Insights
 /insights                                              /index.html  200
-
-# Insights articles
 /insights/what-a-fractional-gm-actually-does           /index.html  200
 /insights/why-fractional-leadership-works              /index.html  200
 /insights/pre-opening-timeline                         /index.html  200
@@ -26,40 +46,24 @@
 /insights/hotel-fb-why-your-restaurant-underperforms   /index.html  200
 /insights/miami-restaurant-labor-market-2026           /index.html  200
 /insights/building-training-program-that-works         /index.html  200
-
-# Case studies
-/case-studies                                          /index.html  200
-/case-studies/maska-indian-kitchen                     /index.html  200
-/case-studies/ve-hospitality-turnaround                /index.html  200
-/case-studies/sls-brickell-banquets                    /index.html  200
-/case-studies/butler-hospitality-scale                 /index.html  200
-
-# Core pages (belt-and-suspenders — prevents trailing-slash issues)
-/about          /index.html  200
-/services       /index.html  200
-/pre-opening    /index.html  200
-/experience     /index.html  200
-/philosophy     /index.html  200
-/contact        /index.html  200
-/blueprint      /index.html  200
-/book           /index.html  200
+/insights/:slug                                        /index.html  200
 
 # ----------------------------------------------------------
-# 2. LEGACY 301 REDIRECTS
-#    Single-hop only — no destination should itself redirect.
+# 2. LEGACY 301 REDIRECTS — single-hop only
+#    No destination should itself redirect.
 # ----------------------------------------------------------
 
-/blog                   /insights   301
-/blog/*                 /insights/:splat  301
-/pre-opening-blueprint  /blueprint  301
-/pre-opening-checklist  /blueprint  301
-/90-day-blueprint       /blueprint  301
-/work                   /case-studies  301
-/portfolio              /case-studies  301
+/blog                   /insights              301
+/blog/*                 /insights/:splat       301
+/pre-opening-blueprint  /blueprint             301
+/pre-opening-checklist  /blueprint             301
+/90-day-blueprint       /blueprint             301
+/work                   /case-studies          301
+/portfolio              /case-studies          301
 
 # ----------------------------------------------------------
 # 3. SPA CATCH-ALL — must be absolute last rule
-#    Handles any future routes not yet listed above.
+#    Handles any future routes not yet explicitly listed.
 # ----------------------------------------------------------
 
 /*  /index.html  200

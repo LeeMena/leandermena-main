@@ -7,7 +7,7 @@ export default function BlogBadPreOpening() {
     <>
       <SEO
         title="The Real Cost of a Bad Pre-Opening"
-        description="What actually goes wrong when pre-opening planning is skipped or rushed — and the financial impact."
+        description="What actually goes wrong when pre-opening planning is skipped or rushed - and the financial impact."
         path="/insights/real-cost-of-bad-pre-opening"
         type="article"
         schemaType="article"
@@ -23,7 +23,7 @@ export default function BlogBadPreOpening() {
               The Real Cost of a Bad Pre-Opening
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              What actually goes wrong when pre-opening planning is skipped or rushed — and the financial impact.
+              What actually goes wrong when pre-opening planning is skipped or rushed - and the financial impact.
             </p>
           </ScrollReveal>
         </div>
@@ -56,7 +56,7 @@ export default function BlogBadPreOpening() {
                 mouth, and repeat visit rate for the following six months. A restaurant that opens
                 with undertrained staff, inconsistent execution, and a menu that is not yet dialed
                 in does not get a second first impression. Those early negative reviews compound.
-                The recovery cost — in marketing spend, in comp meals, in manager time — typically
+                The recovery cost - in marketing spend, in comp meals, in manager time - typically
                 runs two to three times what a proper pre-opening training investment would have cost.
               </p>
             </ScrollReveal>
@@ -88,8 +88,8 @@ export default function BlogBadPreOpening() {
             <ScrollReveal delay={300}>
               <h2>What a Proper Pre-Opening Actually Costs</h2>
               <p>
-                A properly resourced pre-opening — with the right operator leading it, adequate
-                training time, and complete vendor setup — typically adds 3 to 5% to total
+                A properly resourced pre-opening - with the right operator leading it, adequate
+                training time, and complete vendor setup - typically adds 3 to 5% to total
                 pre-opening costs. The downside protection it provides against the scenarios
                 above is multiples of that investment. The operators who treat pre-opening as
                 an area to cut budget are consistently the ones calling for help 60 days after opening.
@@ -100,7 +100,7 @@ export default function BlogBadPreOpening() {
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
                 <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Opening a restaurant in the next 6 months?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  I lead pre-openings end-to-end — from vendor setup and hiring to training and
+                  I lead pre-openings end-to-end - from vendor setup and hiring to training and
                   opening night execution. Let's talk before the problems start.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>

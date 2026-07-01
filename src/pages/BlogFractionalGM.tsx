@@ -7,7 +7,7 @@ export default function BlogFractionalGM() {
     <>
       <SEO
         title="What a Fractional F&B Director Actually Does"
-        description="The role explained for operators who are considering it — scope, schedule, deliverables, and real expectations."
+        description="The role explained for operators who are considering it - scope, schedule, deliverables, and real expectations."
         path="/insights/what-a-fractional-gm-actually-does"
         type="article"
         schemaType="article"
@@ -23,7 +23,7 @@ export default function BlogFractionalGM() {
               What a Fractional F&amp;B Director Actually Does
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              The role explained for operators who are considering it — scope, schedule, deliverables, and real expectations.
+              The role explained for operators who are considering it - scope, schedule, deliverables, and real expectations.
             </p>
           </ScrollReveal>
         </div>
@@ -36,14 +36,14 @@ export default function BlogFractionalGM() {
               <p>
                 Most operators who ask about fractional F&amp;B leadership are not sure exactly
                 what they are buying. The term is used loosely. Some fractional engagements are
-                strategic advisory only — calls and emails. Others are hands-on operational roles
+                strategic advisory only - calls and emails. Others are hands-on operational roles
                 with weekly on-site presence. The difference in outcome is significant.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={100}>
               <p>
-                Here is what a real fractional F&amp;B director engagement looks like — the scope,
+                Here is what a real fractional F&amp;B director engagement looks like - the scope,
                 the schedule, the deliverables, and the expectations on both sides.
               </p>
             </ScrollReveal>
@@ -52,7 +52,7 @@ export default function BlogFractionalGM() {
               <h2>What the Role Actually Covers</h2>
               <p>
                 A fractional F&amp;B director is accountable for operational performance of the
-                food and beverage operation. That means P&amp;L ownership — not just reviewing
+                food and beverage operation. That means P&amp;L ownership - not just reviewing
                 numbers, but making decisions that move them. It means leading the management
                 team, not advising them from a distance. It means being in the operation regularly
                 enough to know what is actually happening, not just what is being reported.
@@ -66,8 +66,8 @@ export default function BlogFractionalGM() {
                 availability for calls and decision support throughout the week. The on-site
                 hours are concentrated on the highest-leverage activities: team meetings,
                 service observation, P&amp;L review, vendor meetings, and manager development.
-                The work that does not require physical presence — reporting, planning,
-                communication — happens off-site.
+                The work that does not require physical presence - reporting, planning,
+                communication - happens off-site.
               </p>
             </ScrollReveal>
 
@@ -77,7 +77,7 @@ export default function BlogFractionalGM() {
                 At minimum: a weekly written update covering operations, people, and financials.
                 Monthly P&amp;L review with variance analysis. A 90-day rolling priorities list
                 that is updated and shared. Direct access to the operator for real-time decisions.
-                And honest assessment of what is working and what is not — including things the
+                And honest assessment of what is working and what is not - including things the
                 operator may not want to hear.
               </p>
             </ScrollReveal>
