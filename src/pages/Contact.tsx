@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SEO from '@/components/SEO'
+import ScrollReveal from '@/components/ScrollReveal'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
@@ -47,10 +48,7 @@ export default function Contact() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '360px' }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/contact.jpg)' }}
-        />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/contact.jpg)' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <span className="kicker">Contact</span>
@@ -58,8 +56,22 @@ export default function Contact() {
             Let&rsquo;s Talk
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[48ch] leading-relaxed">
-            Tell me about your operation. I&rsquo;ll respond within one business day.
+            Most operators know within the first call whether this is the right fit. Let&rsquo;s find out.
           </p>
+        </div>
+      </section>
+
+      {/* Expectation note */}
+      <section style={{ borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)', paddingBlock: 'var(--space-8)' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
+          <ScrollReveal>
+            <p style={{ fontSize: '0.95rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
+              I respond to every message personally, usually within one business day. If you have
+              an opening in less than 60 days or an urgent operational situation, say so in the
+              message and I will prioritize it. There is no sales process here - just a direct
+              conversation about whether I can help.
+            </p>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -73,10 +85,11 @@ export default function Contact() {
               <span className="kicker">Get in touch</span>
               <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Contact Leander Mena</h2>
               <p style={{ fontSize: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.7, maxWidth: '44ch', marginBottom: '2rem' }}>
-                Tell me about your operation and what you're trying to solve. I'll respond within one business day.
+                Tell me about your operation and what you're trying to solve. The more specific
+                you are, the more useful the first conversation will be.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <a href="mailto:leander@leandermena.com" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                <a href="mailto:leander@leandermena.com" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--color-text-muted)', fontSize: '0.9rem', textDecoration: 'none' }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                   leander@leandermena.com
                 </a>
@@ -84,6 +97,11 @@ export default function Contact() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                   Miami, FL
                 </span>
+              </div>
+
+              <div style={{ marginTop: 'var(--space-10)', padding: 'var(--space-6)', background: 'var(--color-surface)', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)' }}>
+                <p style={{ fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Typical response time</p>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>Within one business day. Urgent situations noted in the message are prioritized.</p>
               </div>
             </div>
 

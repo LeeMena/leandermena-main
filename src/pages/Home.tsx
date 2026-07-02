@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, TrendingUp, Users, Clock, Award, Star, Zap, CheckCircle, Download } from 'lucide-react'
+import { ArrowRight, TrendingUp, Users, Clock, Award, Star, Zap, CheckCircle, Download, ChevronDown } from 'lucide-react'
 import SEO from '@/components/SEO'
 import CTABanner from '@/components/CTABanner'
 import ProductCard from '@/components/ProductCard'
@@ -13,12 +13,36 @@ import { products } from '@/data/products'
 import { services } from '@/data/services'
 import { approvedTestimonials } from '@/data/testimonials'
 
-const stats = [
-  { icon: <Clock className="w-5 h-5" />, value: '18+', label: 'Years Experience' },
-  { icon: <TrendingUp className="w-5 h-5" />, value: '$12M+', label: 'Revenue Optimized' },
-  { icon: <Users className="w-5 h-5" />, value: '500+', label: 'Team Members Trained' },
-  { icon: <Award className="w-5 h-5" />, value: '40+', label: 'Properties Operated' },
-]
+// Animated counter hook
+function useCountUp(target: number, duration = 1800, start = false) {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (!start) return
+    let startTime: number | null = null
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      const ease = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.floor(ease * target))
+      if (progress < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }, [start, target, duration])
+  return count
+}
+
+function AnimatedStat({ value, suffix, label, icon, started }: { value: number; suffix: string; label: string; icon: React.ReactNode; started: boolean }) {
+  const count = useCountUp(value, 1600, started)
+  return (
+    <div style={{ textAlign: 'center', padding: 'var(--space-6)', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(8px)', borderRadius: 'var(--radius-md)' }}>
+      <div style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-3)', display: 'flex', justifyContent: 'center' }}>{icon}</div>
+      <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#ffffff', marginBottom: 'var(--space-1)', lineHeight: 1, tabularNums: 'tabular-nums' } as React.CSSProperties}>
+        {count}{suffix}
+      </p>
+      <p style={{ fontSize: '0.68rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>{label}</p>
+    </div>
+  )
+}
 
 const trustBadges = [
   'Michelin-Star Concepts',
@@ -29,8 +53,100 @@ const trustBadges = [
   'Multi-Unit Groups',
 ]
 
+const WHO_ITEMS = [
+  {
+    title: 'Hotel F&B Groups',
+    desc: 'Your outlet is losing money or just breaking even. Occupancy drives covers but the standalone business never took hold. You need a restructure, not a rebrand.',
+    link: '/insights/hotel-fb-why-your-restaurant-underperforms',
+    linkLabel: 'Why Hotel F&B Underperforms',
+  },
+  {
+    title: 'Independent Operators',
+    desc: 'Labor is out of control, the team runs inconsistently without you, or you are 60 days from opening and behind. You need a senior operator, not another consultant deck.',
+    link: '/services',
+    linkLabel: 'See Engagement Models',
+  },
+  {
+    title: 'New Restaurant Openings',
+    desc: 'You have a date, a concept, and a budget. What you need is someone who has done this before and will be on-site when it counts - from vendor setup through the first 30 days.',
+    link: '/insights/miami-pre-opening-playbook',
+    linkLabel: 'Read the Pre-Opening Playbook',
+  },
+]
+
+const FAQ_ITEMS = [
+  {
+    q: 'What does a fractional F&B director actually cost?',
+    a: 'Fractional engagements are scoped based on hours per week and the complexity of your operation. A typical engagement runs $4,500 to $8,500 per week depending on scope. That is 25 to 40% of what a full-time hire at the same experience level would cost in total compensation.',
+  },
+  {
+    q: 'How long does a pre-opening engagement last?',
+    a: 'A properly resourced pre-opening takes 90 to 120 days from vendor setup through the first 30 days post-launch. I can engage at any point in that window, but the earlier the better. Compressed timelines are workable but require more resources and carry more risk.',
+  },
+  {
+    q: 'Do you work outside Miami?',
+    a: 'My primary market is Miami, where I have deep vendor relationships and operator networks. I take on select engagements in other Florida markets and nationally for pre-opening work where I can be fully present during the critical phases.',
+  },
+  {
+    q: 'What is the minimum engagement?',
+    a: 'The minimum engagement is an on-site diagnostic - typically 3 to 5 days - which produces a written operational assessment and a prioritized action plan. Many clients start there before deciding on a longer engagement.',
+  },
+  {
+    q: 'How is this different from a traditional consultant?',
+    a: 'A traditional consultant delivers recommendations. A fractional leader delivers outcomes. I am accountable for what happens after the deck is presented - not just for the quality of the analysis.',
+  },
+]
+
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false)
+  return (
+    <div style={{ borderBottom: '1px solid var(--color-border)' }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          padding: 'var(--space-5) 0', background: 'none', border: 'none', cursor: 'pointer',
+          textAlign: 'left', gap: 'var(--space-4)',
+        }}
+        aria-expanded={open}
+      >
+        <span style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--color-text)', lineHeight: 1.4 }}>{q}</span>
+        <ChevronDown size={18} style={{ color: 'var(--color-primary)', flexShrink: 0, transform: open ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 220ms ease' }} />
+      </button>
+      <div style={{
+        overflow: 'hidden',
+        maxHeight: open ? '300px' : '0',
+        transition: 'max-height 300ms cubic-bezier(0.16,1,0.3,1)',
+      }}>
+        <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.75, paddingBottom: 'var(--space-5)' }}>{a}</p>
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const [blueprintOpen, setBlueprintOpen] = useState(false)
+  const [statsStarted, setStatsStarted] = useState(false)
+  const statsRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStatsStarted(true); observer.disconnect() } },
+      { threshold: 0.3 }
+    )
+    if (statsRef.current) observer.observe(statsRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ_ITEMS.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  }
 
   return (
     <>
@@ -38,6 +154,11 @@ export default function Home() {
         title="Leander Mena | Fractional F&B Leadership & Hospitality Consulting | Miami"
         description="Fractional F&B operations leadership for Miami restaurants, hotels & new openings. 18 years opening, stabilizing, and scaling hospitality operations."
         path="/"
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
@@ -104,17 +225,15 @@ export default function Home() {
           </div>
 
           <motion.div
+            ref={statsRef}
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
             style={{ marginTop: 'clamp(4rem, 8vw, 7rem)', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}
             className="md:grid-cols-4"
           >
-            {stats.map((stat, i) => (
-              <div key={i} style={{ textAlign: 'center', padding: 'var(--space-6)', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(8px)', borderRadius: 'var(--radius-md)' }}>
-                <div style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-3)', display: 'flex', justifyContent: 'center' }}>{stat.icon}</div>
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#ffffff', marginBottom: 'var(--space-1)', lineHeight: 1 }}>{stat.value}</p>
-                <p style={{ fontSize: '0.68rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>{stat.label}</p>
-              </div>
-            ))}
+            <AnimatedStat value={18} suffix="+" label="Years Experience" icon={<Clock className="w-5 h-5" />} started={statsStarted} />
+            <AnimatedStat value={12} suffix="M+" label="Revenue Optimized" icon={<TrendingUp className="w-5 h-5" />} started={statsStarted} />
+            <AnimatedStat value={500} suffix="+" label="Team Members Trained" icon={<Users className="w-5 h-5" />} started={statsStarted} />
+            <AnimatedStat value={40} suffix="+" label="Properties Operated" icon={<Award className="w-5 h-5" />} started={statsStarted} />
           </motion.div>
         </div>
       </section>
@@ -132,6 +251,40 @@ export default function Home() {
 
       {/* Blueprint CTA */}
       <BlueprintCTA />
+
+      {/* Who This Is For */}
+      <section className="section" style={{ background: 'var(--color-surface)' }}>
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
+            <span className="kicker">Who This Is For</span>
+            <h2 style={{ marginBottom: 'var(--space-3)' }}>Three Situations. One Operator.</h2>
+            <p className="section-intro" style={{ marginBottom: 0 }}>The work is different depending on where you are. Here is where most clients come from.</p>
+          </motion.div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-6)' }}>
+            {WHO_ITEMS.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="card"
+                style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', padding: 'var(--space-8)' }}
+              >
+                <span style={{ fontFamily: 'var(--font-serif)', fontSize: '2.5rem', color: 'var(--color-primary)', opacity: 0.25, lineHeight: 1 }}>0{i + 1}</span>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', fontWeight: 700, color: 'var(--color-text)', lineHeight: 1.3 }}>{item.title}</h3>
+                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7, flex: 1 }}>{item.desc}</p>
+                <Link
+                  to={item.link}
+                  style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', gap: '0.35rem', textDecoration: 'none', letterSpacing: '0.02em' }}
+                >
+                  {item.linkLabel} <ArrowRight size={13} />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Services */}
       <section className="section">
@@ -253,6 +406,24 @@ export default function Home() {
                 <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>{item.desc}</p>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="section" style={{ background: 'var(--color-surface)' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-8)' }}>
+            <span className="kicker">Common Questions</span>
+            <h2 style={{ marginBottom: 'var(--space-3)' }}>What Operators Usually Ask First</h2>
+            <p className="section-intro" style={{ marginBottom: 0 }}>The questions that come up most often before an engagement starts.</p>
+          </motion.div>
+          <div>
+            {FAQ_ITEMS.map((item) => <FAQItem key={item.q} q={item.q} a={item.a} />)}
+          </div>
+          <div style={{ marginTop: 'var(--space-8)', textAlign: 'center' }}>
+            <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-4)' }}>Have a question that is not here?</p>
+            <Link to="/contact" className="btn btn-secondary">Ask Leander Directly <ArrowRight size={16} /></Link>
           </div>
         </div>
       </section>
