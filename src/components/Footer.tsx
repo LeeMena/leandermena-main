@@ -74,11 +74,21 @@ export default function Footer() {
                 { label: 'Fractional F&B Leadership', to: '/services' },
                 { label: 'Pre-Opening Consulting', to: '/services' },
                 { label: 'Operations Recovery', to: '/services' },
-                { label: 'Book a Call', to: '/book' },
+                { label: 'Book a Call', to: '/contact' },
               ].map((l) => (
-                <Link key={l.label} to={l.to} style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 180ms' }}
-                  onMouseOver={e => (e.currentTarget.style.color = 'var(--color-text)')}
-                  onMouseOut={e => (e.currentTarget.style.color = 'var(--color-text-muted)')}>
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  className="footer-link"
+                  style={{
+                    fontSize: '0.82rem',
+                    color: 'var(--color-text-muted)',
+                    textDecoration: 'none',
+                    transition: 'color 180ms ease',
+                    display: 'inline-block',
+                    paddingBlock: '0.15rem',
+                  }}
+                >
                   {l.label}
                 </Link>
               ))}
@@ -91,11 +101,22 @@ export default function Footer() {
               {[
                 { label: 'Digital Products', to: '/products' },
                 { label: 'Case Studies', to: '/case-studies' },
+                { label: 'Insights', to: '/insights' },
                 { label: 'About', to: '/about' },
               ].map((l) => (
-                <Link key={l.label} to={l.to} style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)', textDecoration: 'none', transition: 'color 180ms' }}
-                  onMouseOver={e => (e.currentTarget.style.color = 'var(--color-text)')}
-                  onMouseOut={e => (e.currentTarget.style.color = 'var(--color-text-muted)')}>
+                <Link
+                  key={l.label}
+                  to={l.to}
+                  className="footer-link"
+                  style={{
+                    fontSize: '0.82rem',
+                    color: 'var(--color-text-muted)',
+                    textDecoration: 'none',
+                    transition: 'color 180ms ease',
+                    display: 'inline-block',
+                    paddingBlock: '0.15rem',
+                  }}
+                >
                   {l.label}
                 </Link>
               ))}
@@ -122,6 +143,11 @@ export default function Footer() {
           </p>
         </div>
       </div>
+
+      <style>{`
+        .footer-link:hover { color: var(--color-text) !important; }
+        .footer-link:active { color: var(--color-primary) !important; }
+      `}</style>
     </footer>
   )
 }
