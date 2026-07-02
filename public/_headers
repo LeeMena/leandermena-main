@@ -1,98 +1,30 @@
-# Cloudflare Pages - HTTP Headers
-# ============================================================
-# Security, caching, and SEO headers.
-# ============================================================
+# Cloudflare Pages — HTTP response headers
+# https://developers.cloudflare.com/pages/configuration/headers/
 
+# Security headers on every response
 /*
-  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://www.googletagmanager.com https://js.convertkit.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://api.fontshare.com; font-src 'self' https://fonts.gstatic.com https://api.fontshare.com; img-src 'self' data: https:; connect-src 'self' https://api.convertkit.com https://formspree.io; frame-ancestors 'none';
-  Cache-Control: public, max-age=0, must-revalidate
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-XSS-Protection: 1; mode=block
 
-# Static assets — long-lived immutable cache
-/images/*
-  Cache-Control: public, max-age=31536000, immutable
-
+# Aggressive cache for hashed static assets (Vite fingerprints filenames)
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-/favicon*
-  Cache-Control: public, max-age=86400
+# Images — 30-day cache
+/images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 
-/site.webmanifest
-  Cache-Control: public, max-age=86400
+# Fonts from public dir (if any) — 1 year
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
 
-# ============================================================
-# SEO CANONICAL HEADERS
-# Explicitly tell Googlebot the canonical URL for each SPA
-# route so it never has ambiguity between /path and /path/
-# X-Robots-Tag: index,follow ensures no accidental noindex
-# ============================================================
+# HTML — always revalidate so deploys propagate immediately
+/*.html
+  Cache-Control: no-cache, must-revalidate
 
-/insights
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights>; rel="canonical"
-
-/insights/what-a-fractional-gm-actually-does
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/what-a-fractional-gm-actually-does>; rel="canonical"
-
-/insights/why-fractional-leadership-works
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/why-fractional-leadership-works>; rel="canonical"
-
-/insights/pre-opening-timeline
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/pre-opening-timeline>; rel="canonical"
-
-/insights/miami-pre-opening-playbook
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/miami-pre-opening-playbook>; rel="canonical"
-
-/insights/real-cost-of-bad-pre-opening
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/real-cost-of-bad-pre-opening>; rel="canonical"
-
-/insights/labor-cost-control-miami-restaurants
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/labor-cost-control-miami-restaurants>; rel="canonical"
-
-/insights/reduce-labor-cost-without-cutting-service
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/reduce-labor-cost-without-cutting-service>; rel="canonical"
-
-/insights/hotel-fb-why-your-restaurant-underperforms
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/hotel-fb-why-your-restaurant-underperforms>; rel="canonical"
-
-/insights/miami-restaurant-labor-market-2026
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/miami-restaurant-labor-market-2026>; rel="canonical"
-
-/insights/building-training-program-that-works
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/building-training-program-that-works>; rel="canonical"
-
-/case-studies
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/case-studies>; rel="canonical"
-
-/case-studies/maska-indian-kitchen
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/case-studies/maska-indian-kitchen>; rel="canonical"
-
-/case-studies/ve-hospitality-turnaround
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/insights/ve-hospitality-turnaround>; rel="canonical"
-
-/case-studies/sls-brickell-banquets
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/case-studies/sls-brickell-banquets>; rel="canonical"
-
-/case-studies/butler-hospitality-scale
-  X-Robots-Tag: index, follow
-  Link: <https://www.leandermena.com/case-studies/butler-hospitality-scale>; rel="canonical"
+# Root HTML entry point
+/
+  Cache-Control: no-cache, must-revalidate

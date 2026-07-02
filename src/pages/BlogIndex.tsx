@@ -2,6 +2,26 @@ import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 
+// Approximate word counts per article — used to compute read time
+const WORD_COUNTS: Record<string, number> = {
+  '/insights/miami-restaurant-labor-market-2026': 1350,
+  '/insights/building-training-program-that-works': 1600,
+  '/insights/hotel-fb-why-your-restaurant-underperforms': 1450,
+  '/insights/reduce-labor-cost-without-cutting-service': 1800,
+  '/insights/miami-pre-opening-playbook': 2100,
+  '/insights/real-cost-of-bad-pre-opening': 1250,
+  '/insights/why-fractional-leadership-works': 1500,
+  '/insights/pre-opening-timeline': 1700,
+  '/insights/labor-cost-control-miami-restaurants': 1400,
+  '/insights/what-a-fractional-gm-actually-does': 1550,
+}
+
+function readTime(slug: string): string {
+  const words = WORD_COUNTS[slug] ?? 1200
+  const mins = Math.ceil(words / 200)
+  return `${mins} min read`
+}
+
 const ALL_POSTS = [
   {
     slug: '/insights/miami-restaurant-labor-market-2026',
@@ -13,14 +33,14 @@ const ALL_POSTS = [
   {
     slug: '/insights/building-training-program-that-works',
     title: 'Building a Training Program That Works',
-    description: 'Why most restaurant training fails - and how to build one that actually sticks and improves performance.',
+    description: 'Why most restaurant training fails — and how to build one that actually sticks and improves performance.',
     kicker: 'Training',
     date: '2024-07-15',
   },
   {
     slug: '/insights/hotel-fb-why-your-restaurant-underperforms',
     title: 'Hotel F&B: Why Your Restaurant Underperforms',
-    description: 'The structural differences between hotel F&B and standalone restaurants - and why most hotel operators get it wrong.',
+    description: 'The structural differences between hotel F&B and standalone restaurants — and why most hotel operators get it wrong.',
     kicker: 'Hotel F&B',
     date: '2024-06-15',
   },
@@ -41,21 +61,21 @@ const ALL_POSTS = [
   {
     slug: '/insights/real-cost-of-bad-pre-opening',
     title: 'The Real Cost of a Bad Pre-Opening',
-    description: 'What actually goes wrong when pre-opening planning is skipped or rushed - and the financial impact.',
+    description: 'What actually goes wrong when pre-opening planning is skipped or rushed — and the financial impact.',
     kicker: 'Pre-Opening',
     date: '2024-05-15',
   },
   {
     slug: '/insights/why-fractional-leadership-works',
     title: 'Why Fractional F&B Leadership Works',
-    description: 'How operators are replacing full-time directors with fractional leaders - and getting better results at a fraction of the cost.',
+    description: 'How operators are replacing full-time directors with fractional leaders — and getting better results at a fraction of the cost.',
     kicker: 'Leadership',
     date: '2024-04-20',
   },
   {
     slug: '/insights/pre-opening-timeline',
     title: 'The Pre-Opening Timeline Most Operators Get Wrong',
-    description: 'Why most restaurant pre-openings run behind - and the 120-day framework that fixes it.',
+    description: 'Why most restaurant pre-openings run behind — and the 120-day framework that fixes it.',
     kicker: 'Pre-Opening',
     date: '2024-04-01',
   },
@@ -69,7 +89,7 @@ const ALL_POSTS = [
   {
     slug: '/insights/what-a-fractional-gm-actually-does',
     title: 'What a Fractional F&B Director Actually Does',
-    description: 'The role explained for operators who are considering it - scope, schedule, deliverables, and real expectations.',
+    description: 'The role explained for operators who are considering it — scope, schedule, deliverables, and real expectations.',
     kicker: 'Fractional Leadership',
     date: '2024-02-29',
   },
@@ -89,7 +109,7 @@ export default function BlogIndex() {
     <>
       <SEO
         title="Insights"
-        description={`${posts.length} practical articles on F&B operations - pre-openings, labor cost, fractional leadership, training, and more from Leander Mena.`}
+        description={`${posts.length} practical articles on F&B operations — pre-openings, labor cost, fractional leadership, training, and more from Leander Mena.`}
         path="/insights"
         schemaType="insights"
       />
@@ -159,10 +179,16 @@ export default function BlogIndex() {
                 >
                   <span className="kicker" style={{ marginBottom: '0.35rem' }}>{p.kicker}</span>
                   <h2 style={{ fontSize: 'clamp(1.05rem,2vw,1.2rem)', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.4rem', lineHeight: 1.35 }}>{p.title}</h2>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.6 }}>{p.description}</p>
-                  <span style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)', marginTop: '0.5rem', display: 'block' }}>
-                    {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                  </span>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '0.6rem' }}>{p.description}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)' }}>
+                      {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--color-text-faint)', opacity: 0.5 }}>·</span>
+                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)' }}>
+                      {readTime(p.slug)}
+                    </span>
+                  </div>
                 </Link>
               ))
             ) : (
