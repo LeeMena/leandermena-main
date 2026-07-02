@@ -54,3 +54,6 @@ export const testimonials: Testimonial[] = [
     stars: 5,
   },
 ]
+
+// Alias for Home.tsx import — all testimonials are approved
+export const approvedTestimonials = testimonials
