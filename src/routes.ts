@@ -8,6 +8,11 @@ export const prerenderRoutes = [
   '/philosophy',
   '/contact',
   '/profile',
+  '/blueprint',
+  '/case-studies',
+  '/book',
+  '/shop',
+  '/products',
   '/insights',
 
   // Insights — all 10 articles (sorted newest first)
