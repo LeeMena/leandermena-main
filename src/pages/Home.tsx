@@ -61,9 +61,10 @@ export default function Home() {
               <span className="kicker">Miami, Florida</span>
             </motion.div>
 
+            {/* FIX #4: lowered floor from 3rem to 2.25rem so 375px doesn't get a 48px heading */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-              style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(3rem, 10vw, 7rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: '#ffffff', marginBottom: 'var(--space-6)' }}
+              style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.25rem, 10vw, 7rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: '#ffffff', marginBottom: 'var(--space-6)' }}
             >
               Leander Mena
             </motion.h1>
@@ -87,9 +88,10 @@ export default function Home() {
               18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami. Now available as fractional leadership and digital products.
             </motion.p>
 
+            {/* FIX #1: column on mobile, row on tablet+ */}
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}
-              style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', justifyContent: 'center' }}
+              className="hero-cta-group"
             >
               <Link to="/book" className="btn btn-primary">Book a Discovery Call <ArrowRight size={16} /></Link>
               <Link to="/products" className="btn btn-secondary">Explore Digital Products</Link>
@@ -103,10 +105,12 @@ export default function Home() {
             </motion.div>
           </div>
 
+          {/* FIX #2: removed md:grid-cols-4 Tailwind class (conflicts with inline style);
+              responsive columns now handled via .stats-grid CSS below */}
           <motion.div
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
-            style={{ marginTop: 'clamp(4rem, 8vw, 7rem)', display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'var(--space-4)' }}
-            className="md:grid-cols-4"
+            className="stats-grid"
+            style={{ marginTop: 'clamp(4rem, 8vw, 7rem)' }}
           >
             {stats.map((stat, i) => (
               <div key={i} style={{ textAlign: 'center', padding: 'var(--space-6)', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(8px)', borderRadius: 'var(--radius-md)' }}>
@@ -189,7 +193,8 @@ export default function Home() {
       {/* Why Fractional */}
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'var(--space-16)', alignItems: 'center' }}>
+          {/* FIX #3: min(320px, 100%) prevents overflow on narrow viewports */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: 'var(--space-16)', alignItems: 'center' }}>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <span className="kicker">The Difference</span>
               <h2 style={{ marginBottom: 'var(--space-4)' }}>Why Operators Choose Fractional Leadership</h2>
@@ -264,6 +269,47 @@ export default function Home() {
         primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
         secondaryCta={{ label: 'Explore Products', href: '/products' }}
       />
+
+      {/* Mobile layout styles */}
+      <style>{`
+        /* Hero CTA group: column on mobile, row on tablet+ */
+        .hero-cta-group {
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-3);
+          align-items: stretch;
+          width: 100%;
+          max-width: 360px;
+          margin: 0 auto;
+        }
+        .hero-cta-group .btn {
+          width: 100%;
+          justify-content: center;
+        }
+        @media (min-width: 600px) {
+          .hero-cta-group {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: none;
+          }
+          .hero-cta-group .btn {
+            width: auto;
+          }
+        }
+
+        /* Stats grid: 2-col on mobile, 4-col on md+ */
+        .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--space-4);
+        }
+        @media (min-width: 768px) {
+          .stats-grid {
+            grid-template-columns: repeat(4, 1fr);
+          }
+        }
+      `}</style>
     </>
   )
 }
