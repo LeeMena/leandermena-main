@@ -67,7 +67,7 @@ export default function BlogMiamiLabor() {
             <ScrollReveal delay={200}>
               <h2>Where Operators Are Losing Candidates</h2>
               <p>
-                The three most common points of candidate loss I see: slow response time after
+                The three most common points of candidate loss: slow response time after
                 an application, an interview process that feels chaotic or disrespectful of the
                 candidate's time, and an offer that is below market without a compelling reason
                 to accept it anyway.
@@ -85,9 +85,9 @@ export default function BlogMiamiLabor() {
                 In a tight labor market, reducing turnover is worth more than improving your
                 sourcing. A team member who stays 18 months costs a fraction of what it costs to
                 hire and train three replacements over the same period. The operators with the
-                lowest turnover I have worked with share three things: consistent schedules posted
-                at least a week in advance, managers who give feedback in real time rather than
-                only at review time, and a clear path for advancement that is actually used.
+                lowest turnover share three things: consistent schedules posted at least a week
+                in advance, managers who give feedback in real time rather than only at review
+                time, and a clear path for advancement that is actually used.
               </p>
             </ScrollReveal>
 

@@ -7,7 +7,7 @@ export default function BlogWhyFractionalLeadership() {
     <>
       <SEO
         title="Why Fractional F&B Leadership Works"
-        description="How operators are replacing full-time directors with fractional leaders - and getting better results at a fraction of the cost."
+        description="How operators are replacing full-time directors with fractional leaders and getting better results at a fraction of the cost."
         path="/insights/why-fractional-leadership-works"
         type="article"
         schemaType="article"
@@ -23,7 +23,7 @@ export default function BlogWhyFractionalLeadership() {
               Why Fractional F&amp;B Leadership Works
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              How operators are replacing full-time directors with fractional leaders - and getting better results at a fraction of the cost.
+              How operators are replacing full-time directors with fractional leaders and getting better results at a fraction of the cost.
             </p>
           </ScrollReveal>
         </div>
@@ -36,7 +36,7 @@ export default function BlogWhyFractionalLeadership() {
               <p>
                 The fractional model is not new in professional services. Law firms, accounting
                 practices, and consulting firms have operated this way for decades. What is new
-                is the application of the model to operational F&amp;B leadership - and the results
+                is the application of the model to operational F&amp;B leadership, and the results
                 operators are getting from it.
               </p>
             </ScrollReveal>
@@ -63,8 +63,8 @@ export default function BlogWhyFractionalLeadership() {
               <h2>Cost Structure That Matches the Work</h2>
               <p>
                 Most F&amp;B operations do not require full-time strategic leadership every week.
-                The highest-leverage work - opening systems, restructuring labor, developing
-                management, fixing P&amp;L - is intensive for a defined period and then transitions
+                The highest-leverage work, opening systems, restructuring labor, developing
+                management, fixing P&amp;L, is intensive for a defined period and then transitions
                 to maintenance. A fractional engagement is designed to match that reality: intensive
                 at the start, calibrated down as the systems hold.
               </p>
@@ -75,7 +75,7 @@ export default function BlogWhyFractionalLeadership() {
               <p>
                 A fractional leader is not building a career inside your organization. They are
                 not managing upward, protecting their position, or filtering their assessment of
-                what is wrong. The engagement is defined by outcomes - if the outcomes are not
+                what is wrong. The engagement is defined by outcomes. If the outcomes are not
                 delivered, the engagement ends. That accountability structure produces a different
                 quality of feedback and a different level of candor than a full-time hire typically
                 provides.
@@ -99,7 +99,7 @@ export default function BlogWhyFractionalLeadership() {
                 <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Is fractional the right model for your operation?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
                   I can tell you in a single conversation whether fractional leadership fits
-                  your situation - and what it would look like in practice.
+                  your situation and what it would look like in practice.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
               </div>

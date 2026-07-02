@@ -43,8 +43,8 @@ export default function BlogLaborCost() {
 
             <ScrollReveal delay={100}>
               <p>
-                The operators I have worked with who run sustainable labor costs - consistently
-                in the 28% to 32% range for full-service concepts - share a set of practices
+                The operators I have worked with who run sustainable labor costs, consistently
+                in the 28% to 32% range for full-service concepts, share a set of practices
                 that are not complicated but require discipline to maintain.
               </p>
             </ScrollReveal>
@@ -54,9 +54,9 @@ export default function BlogLaborCost() {
               <p>
                 The most common labor management failure I see is building schedules by copying
                 last week and adjusting for requests. That approach locks in whatever inefficiencies
-                existed last week and adds new ones. A schedule built to a labor cost target -
+                existed last week and adds new ones. A schedule built to a labor cost target,
                 where the manager starts with the revenue forecast and the target labor percentage
-                and works backward to hours - produces materially different results over time.
+                and works backward to hours, produces materially different results over time.
               </p>
             </ScrollReveal>
 
@@ -66,7 +66,7 @@ export default function BlogLaborCost() {
                 Monthly labor reviews are too slow. By the time the P&amp;L shows a problem,
                 four weeks of variance have accumulated. A weekly check of actual hours versus
                 scheduled hours, by role and by daypart, catches drift before it compounds.
-                This does not require sophisticated software - a spreadsheet with the right
+                This does not require sophisticated software. A spreadsheet with the right
                 structure works. What it requires is consistency.
               </p>
             </ScrollReveal>
@@ -76,8 +76,8 @@ export default function BlogLaborCost() {
               <p>
                 Overtime in restaurants is almost always predictable 72 hours before it happens.
                 A manager reviewing the schedule on Wednesday can see which employees are
-                tracking toward 40 hours before the weekend. The intervention - adjusting
-                Friday and Saturday shifts - is simple when it happens on Wednesday. It is
+                tracking toward 40 hours before the weekend. The intervention, adjusting
+                Friday and Saturday shifts, is simple when it happens on Wednesday. It becomes
                 expensive when it is discovered on Sunday's payroll close.
               </p>
             </ScrollReveal>
@@ -86,7 +86,7 @@ export default function BlogLaborCost() {
               <h2>Invest in Cross-Training</h2>
               <p>
                 Cross-trained teams run leaner. A server who can run food, a host who can
-                support the bar during a rush, a line cook who can work two stations - these
+                support the bar during a rush, a line cook who can work two stations: these
                 capabilities reduce the number of bodies required to cover a shift at a given
                 volume. Cross-training also improves retention because employees feel more
                 capable and less disposable. The investment is real but the return is consistent.

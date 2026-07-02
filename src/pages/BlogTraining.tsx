@@ -7,7 +7,7 @@ export default function BlogTraining() {
     <>
       <SEO
         title="Building a Training Program That Works"
-        description="Why most restaurant training fails - and how to build one that actually sticks and improves performance."
+        description="Why most restaurant training fails and how to build one that actually sticks and improves performance."
         path="/insights/building-training-program-that-works"
         type="article"
         schemaType="article"
@@ -23,7 +23,7 @@ export default function BlogTraining() {
               Building a Training Program That Works
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              Why most restaurant training fails - and how to build one that actually sticks and improves performance.
+              Why most restaurant training fails and how to build one that actually sticks and improves performance.
             </p>
           </ScrollReveal>
         </div>
@@ -75,7 +75,7 @@ export default function BlogTraining() {
                 Most restaurant training fails at the trainer level. Your best server is often
                 not your best trainer. Training requires patience, communication skill, and the
                 ability to demonstrate and observe simultaneously. Investing in trainer
-                development - teaching your trainers how to train - produces more improvement
+                development, teaching your trainers how to train, produces more improvement
                 than any content upgrade.
               </p>
             </ScrollReveal>
@@ -94,11 +94,11 @@ export default function BlogTraining() {
             <ScrollReveal delay={350}>
               <h2>What a Working Training Program Looks Like</h2>
               <p>
-                A training program that works has: written competency standards for every role,
+                A training program that works has written competency standards for every role,
                 a structured onboarding sequence with defined progression milestones, trained
-                trainers who are assessed and developed, a reinforcement calendar that is
-                built into management schedules, and a feedback loop that identifies where
-                the program is not working and fixes it.
+                trainers who are assessed and developed, a reinforcement calendar built into
+                management schedules, and a feedback loop that identifies where the program
+                is not working and fixes it.
               </p>
             </ScrollReveal>
 
@@ -106,7 +106,7 @@ export default function BlogTraining() {
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
                 <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Is your training producing consistent execution?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  I build training programs from the competency standard up - including trainer
+                  I build training programs from the competency standard up, including trainer
                   development and the reinforcement structure that makes them hold. Let's talk.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>

@@ -43,13 +43,13 @@ export default function BlogPreOpening() {
 
             <ScrollReveal delay={100}>
               <p>
-                This is the framework I use when leading pre-openings in Miami - built from
+                This is the framework I use when leading pre-openings in Miami, built from
                 leading openings for independent concepts, hotel outlets, and multi-unit groups.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
-              <h2>Phase 1: Infrastructure (120-90 Days Out)</h2>
+              <h2>Phase 1: Infrastructure (120 to 90 Days Out)</h2>
               <p>
                 Vendor selection, contract execution, and supply chain setup. POS configuration
                 and reporting structure. Leadership hiring and compensation structure finalized.
@@ -59,7 +59,7 @@ export default function BlogPreOpening() {
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <h2>Phase 2: People (90-45 Days Out)</h2>
+              <h2>Phase 2: People (90 to 45 Days Out)</h2>
               <p>
                 Full hiring complete. Training materials written and production-ready. Management
                 team in place and aligned on standards. The people phase is where most pre-openings
@@ -70,27 +70,27 @@ export default function BlogPreOpening() {
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <h2>Phase 3: Operations (45-14 Days Out)</h2>
+              <h2>Phase 3: Operations (45 to 14 Days Out)</h2>
               <p>
                 Training in full execution. Menu and recipe costing finalized. Par levels calculated
-                and initial orders placed. Systems tested under real conditions - not theoretical.
+                and initial orders placed. Systems tested under real conditions, not theoretical.
                 This is where problems surface and get resolved before opening night rather than
                 during it.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <h2>Phase 4: Opening (14-0 Days)</h2>
+              <h2>Phase 4: Opening (14 to 0 Days)</h2>
               <p>
                 Soft opening with controlled covers. Team calibration and feedback loops. Management
-                observation and real-time coaching. The opening phase is not a celebration - it is
+                observation and real-time coaching. The opening phase is not a celebration. It is
                 the most important training period in the restaurant's life. Treat it that way.
               </p>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
-                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Opening in Miami in the next 6-12 months?</p>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Opening in Miami in the next 6 to 12 months?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
                   I lead pre-openings end-to-end. Let's talk about where you are in the process
                   and what you need to get to a clean opening.

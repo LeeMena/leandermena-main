@@ -54,7 +54,7 @@ export default function BlogLaborCostFull() {
               <p>
                 Before cutting anything, map actual labor hours against actual revenue by daypart
                 and day of week. Most operations have significant labor waste concentrated in
-                specific shifts - typically early week dinner, late Sunday, and opening shifts
+                specific shifts, typically early week dinner, late Sunday, and opening shifts
                 that are staffed for a volume that does not materialize until midday. The audit
                 almost always reveals 8 to 12% of weekly hours that can be restructured without
                 touching coverage during peak periods.
@@ -68,7 +68,7 @@ export default function BlogLaborCostFull() {
                 That approach accumulates inefficiency over time. A rebuild from scratch using
                 actual sales data by daypart, role-by-role coverage requirements, and a target
                 labor percentage as the constraint produces a schedule that is structurally
-                different - and consistently lower cost - than the inherited one.
+                different and consistently lower cost than the inherited one.
               </p>
             </ScrollReveal>
 
