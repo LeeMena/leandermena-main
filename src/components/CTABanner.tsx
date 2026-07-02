@@ -67,7 +67,6 @@ export default function CTABanner({
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`${variantStyles[variant]} py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden`}
     >
-      {/* Gold variant background texture */}
       {variant === 'gold' && (
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(255,255,255,0.2)_0%,_transparent_50%)]" />
@@ -97,17 +96,33 @@ export default function CTABanner({
           {subtitle}
         </motion.p>
 
+        {/* FIX #10: flex-col on mobile (<480px) so buttons always stack and hit ≥44px touch targets */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+          className="cta-banner-btns flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
         >
           <LinkComponent cta={primaryCta} />
           {secondaryCta && <LinkComponent cta={secondaryCta} isSecondary />}
         </motion.div>
       </div>
+
+      {/* FIX #10: ensure full-width buttons on very small screens */}
+      <style>{`
+        @media (max-width: 479px) {
+          .cta-banner-btns {
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .cta-banner-btns a,
+          .cta-banner-btns button {
+            width: 100%;
+            justify-content: center;
+          }
+        }
+      `}</style>
     </motion.section>
   );
 }

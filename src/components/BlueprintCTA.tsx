@@ -29,7 +29,7 @@ export default function BlueprintCTA() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
               gap: 'var(--space-12)',
               alignItems: 'center',
             }}
@@ -62,7 +62,7 @@ export default function BlueprintCTA() {
                   maxWidth: '46ch',
                 }}
               >
-                The exact framework I've used to open restaurants and hotels on time and on budget - distilled into a free, actionable guide.
+                The exact framework I&rsquo;ve used to open restaurants and hotels on time and on budget &mdash; distilled into a free, actionable guide.
               </p>
 
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-3)', marginBottom: 'var(--space-8)' }}>
@@ -74,7 +74,8 @@ export default function BlueprintCTA() {
                 ))}
               </ul>
 
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)' }}>
+              {/* FIX #10: flex-col on mobile so buttons don't squeeze below 44px touch target */}
+              <div className="blueprint-cta-btns">
                 <button onClick={() => setOpen(true)} className="btn btn-primary">
                   <Download size={16} /> Get the Free Blueprint
                 </button>
@@ -146,6 +147,8 @@ export default function BlueprintCTA() {
                       alt="Leander Mena"
                       width="40"
                       height="40"
+                      loading="lazy"
+                      decoding="async"
                       style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(184,160,128,0.4)' }}
                     />
                     <div>
@@ -158,6 +161,28 @@ export default function BlueprintCTA() {
             </motion.div>
           </div>
         </div>
+
+        {/* FIX #10: stack buttons vertically on mobile */}
+        <style>{`
+          .blueprint-cta-btns {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+          }
+          .blueprint-cta-btns .btn {
+            width: 100%;
+            justify-content: center;
+          }
+          @media (min-width: 480px) {
+            .blueprint-cta-btns {
+              flex-direction: row;
+              flex-wrap: wrap;
+            }
+            .blueprint-cta-btns .btn {
+              width: auto;
+            }
+          }
+        `}</style>
       </section>
     </>
   )

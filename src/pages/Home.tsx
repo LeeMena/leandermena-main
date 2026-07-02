@@ -43,13 +43,16 @@ export default function Home() {
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
       {/* Hero */}
-      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
+      {/* FIX #2: minHeight uses 100vh fallback for old Android Chrome that doesn't support 100svh */}
+      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100vh', minHeight: '100svh' } as React.CSSProperties}>
         <div className="absolute inset-0" style={{ zIndex: 0 }}>
+          {/* FIX #6: fetchpriority=high on LCP image so browser prioritises it on mobile networks */}
           <img
             src="/landing-hero.jpg"
             alt=""
             width="1920"
             height="1080"
+            fetchPriority="high"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0.50) 60%, var(--color-bg) 100%)' }} />
@@ -61,7 +64,6 @@ export default function Home() {
               <span className="kicker">Miami, Florida</span>
             </motion.div>
 
-            {/* FIX #4: lowered floor from 3rem to 2.25rem so 375px doesn't get a 48px heading */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
               style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.25rem, 10vw, 7rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: '#ffffff', marginBottom: 'var(--space-6)' }}
@@ -88,7 +90,6 @@ export default function Home() {
               18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami. Now available as fractional leadership and digital products.
             </motion.p>
 
-            {/* FIX #1: column on mobile, row on tablet+ */}
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}
               className="hero-cta-group"
@@ -105,8 +106,6 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* FIX #2: removed md:grid-cols-4 Tailwind class (conflicts with inline style);
-              responsive columns now handled via .stats-grid CSS below */}
           <motion.div
             initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
             className="stats-grid"
@@ -123,14 +122,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <div style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)', paddingBlock: 'var(--space-6)' }}>
+      {/* FIX #7: Trust bar — dot separators + role=list so screen readers and small screens handle it properly */}
+      <div style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)', paddingBlock: 'var(--space-5)' }}>
         <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-6)' }}>
-            {trustBadges.map((badge) => (
-              <span key={badge} style={{ fontSize: '0.72rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'var(--color-text-muted)', opacity: 0.6 }}>{badge}</span>
+          <ul
+            role="list"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0',
+              listStyle: 'none',
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            {trustBadges.map((badge, i) => (
+              <li
+                key={badge}
+                style={{ display: 'flex', alignItems: 'center' }}
+              >
+                <span style={{ fontSize: '0.7rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'var(--color-text-muted)', opacity: 0.65, padding: '0.2rem var(--space-3)' }}>
+                  {badge}
+                </span>
+                {i < trustBadges.length - 1 && (
+                  <span aria-hidden="true" style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--color-border)', flexShrink: 0 }} />
+                )}
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </div>
 
@@ -178,10 +199,11 @@ export default function Home() {
             <span className="kicker">Client Results</span>
             <h2 style={{ marginBottom: 'var(--space-3)' }}>Measurable Impact, Real Words</h2>
           </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-6)', marginBottom: 'var(--space-6)' }}>
+          {/* FIX #4: min() prevents overflow on 375px viewports */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: 'var(--space-6)', marginBottom: 'var(--space-6)' }}>
             {approvedTestimonials.slice(0, 2).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} featured />)}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--space-6)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: 'var(--space-6)' }}>
             {approvedTestimonials.slice(2, 5).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} />)}
           </div>
           <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
@@ -193,7 +215,6 @@ export default function Home() {
       {/* Why Fractional */}
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
-          {/* FIX #3: min(320px, 100%) prevents overflow on narrow viewports */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: 'var(--space-16)', alignItems: 'center' }}>
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <span className="kicker">The Difference</span>
@@ -222,7 +243,8 @@ export default function Home() {
 
             <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <div style={{ aspectRatio: '4/5', borderRadius: 'var(--radius-lg)', overflow: 'hidden', position: 'relative', border: '1px solid var(--color-border)' }}>
-                <img src="/images/about.jpg" alt="Leander Mena - F&B Operations Leader" width="600" height="750" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+                {/* FIX #11: decoding=async prevents main-thread block during image decode on mid-range phones */}
+                <img src="/images/about.jpg" alt="Leander Mena - F&B Operations Leader" width="600" height="750" loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 45%)' }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--space-8)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)' }}>
                   {[{ num: '$12M+', label: 'Revenue Optimized' }, { num: '500+', label: 'Team Members' }, { num: '40+', label: 'Properties' }, { num: '18+', label: 'Years Leading' }].map((s) => (
@@ -245,7 +267,8 @@ export default function Home() {
             <span className="kicker">How It Works</span>
             <h2 style={{ marginBottom: 0 }}>From First Call to Measurable Results</h2>
           </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-8)' }}>
+          {/* FIX #3: min(200px,100%) prevents grid overflow on 375px viewports */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))', gap: 'var(--space-8)' }}>
             {[
               { step: '01', title: 'Discovery Call', desc: '30-minute conversation to understand your challenges, timeline, and goals.' },
               { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations, typically 3-5 days on location.' },

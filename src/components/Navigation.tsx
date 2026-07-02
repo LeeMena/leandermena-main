@@ -34,62 +34,65 @@ function BrandMark() {
   )
 }
 
+// FIX #8: ThemeToggle hover → CSS class-based so it can't get stuck on touch devices
 function ThemeToggleButton() {
   const { theme, toggleTheme } = useTheme()
   const isDark = theme === 'dark'
 
   return (
-    <button
-      onClick={toggleTheme}
-      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      style={{
-        width: '40px',
-        height: '40px',
-        borderRadius: '999px',
-        border: '1px solid var(--color-border)',
-        background: isDark ? 'rgba(10,10,10,0.5)' : 'rgba(0,0,0,0.04)',
-        color: 'var(--color-text-muted)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-        flexShrink: 0,
-        transition: 'background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 120ms ease',
-      }}
-      onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px rgba(184,160,128,0.4)' }}
-      onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLButtonElement
-        el.style.background = isDark ? 'rgba(28,28,26,0.9)' : 'rgba(0,0,0,0.08)'
-        el.style.borderColor = isDark ? '#3a3a3a' : '#c8c0b4'
-        el.style.color = 'var(--color-text)'
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLButtonElement
-        el.style.background = isDark ? 'rgba(10,10,10,0.5)' : 'rgba(0,0,0,0.04)'
-        el.style.borderColor = 'var(--color-border)'
-        el.style.color = 'var(--color-text-muted)'
-        el.style.boxShadow = 'none'
-      }}
-    >
-      {isDark ? (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/>
-          <line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/>
-          <line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-        </svg>
-      ) : (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-        </svg>
-      )}
-    </button>
+    <>
+      <style>{`
+        .theme-toggle-btn {
+          width: 40px;
+          height: 40px;
+          border-radius: 999px;
+          border: 1px solid var(--color-border);
+          background: transparent;
+          color: var(--color-text-muted);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          flex-shrink: 0;
+          transition: background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 120ms ease;
+        }
+        .theme-toggle-btn:hover {
+          background: var(--color-surface-offset);
+          border-color: var(--color-divider);
+          color: var(--color-text);
+        }
+        .theme-toggle-btn:focus-visible {
+          box-shadow: 0 0 0 2px rgba(184,160,128,0.4);
+          outline: none;
+        }
+        .theme-toggle-btn:active {
+          background: var(--color-surface-dynamic);
+        }
+      `}</style>
+      <button
+        onClick={toggleTheme}
+        className="theme-toggle-btn"
+        aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      >
+        {isDark ? (
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        ) : (
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        )}
+      </button>
+    </>
   )
 }
 
@@ -151,9 +154,11 @@ function HamburgerIcon({ open }: { open: boolean }) {
 export default function Navigation({ onBookCall }: Props) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [visible, setVisible] = useState(false) // controls CSS enter animation
+  const [visible, setVisible] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
+  // FIX #1/#5: stable drawer panel id for aria-controls
+  const drawerId = 'mobile-nav-drawer'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -161,13 +166,10 @@ export default function Navigation({ onBookCall }: Props) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close drawer on route change
   useEffect(() => { setOpen(false) }, [pathname])
 
-  // Animate drawer in after mount, lock body scroll
   useEffect(() => {
     if (open) {
-      // Trigger CSS enter animation on next frame
       const raf = requestAnimationFrame(() => setVisible(true))
       document.body.style.overflow = 'hidden'
       return () => cancelAnimationFrame(raf)
@@ -178,7 +180,6 @@ export default function Navigation({ onBookCall }: Props) {
     return () => { document.body.style.overflow = '' }
   }, [open])
 
-  // Close on Escape key
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
     document.addEventListener('keydown', onKey)
@@ -282,7 +283,7 @@ export default function Navigation({ onBookCall }: Props) {
               Let&rsquo;s Talk
             </button>
 
-            {/* Hamburger with morphing icon */}
+            {/* FIX #1/#5: aria-controls links button to drawer panel; aria-expanded already present */}
             <button
               onClick={() => setOpen(o => !o)}
               style={{
@@ -303,6 +304,7 @@ export default function Navigation({ onBookCall }: Props) {
               }}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
+              aria-controls={drawerId}
               id="nav-hamburger"
             >
               <HamburgerIcon open={open} />
@@ -310,12 +312,6 @@ export default function Navigation({ onBookCall }: Props) {
           </div>
         </nav>
       </div>
-
-      {/*
-        Backdrop + drawer — always in DOM so CSS transitions work.
-        `visible` drives the animated-in state.
-        `open` drives pointer-events / visibility.
-      */}
 
       {/* Backdrop */}
       <div
@@ -333,8 +329,13 @@ export default function Navigation({ onBookCall }: Props) {
         aria-hidden="true"
       />
 
-      {/* Drawer panel */}
+      {/* FIX #12: role=dialog + aria-modal=true so VoiceOver/TalkBack trap focus correctly */}
+      {/* FIX #1/#5: id matches aria-controls on the hamburger button */}
       <div
+        id={drawerId}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
         style={{
           position: 'fixed',
           top: 0,
@@ -342,20 +343,16 @@ export default function Navigation({ onBookCall }: Props) {
           right: 0,
           bottom: 0,
           zIndex: 48,
-          // Slide from top: starts above viewport, slides down to correct position
           transform: visible ? 'translateY(0)' : 'translateY(-8px)',
           opacity: visible ? 1 : 0,
           pointerEvents: open ? 'auto' : 'none',
           transition: 'transform 320ms cubic-bezier(0.16,1,0.3,1), opacity 250ms ease',
-          // Only show the part below the sticky header
           clipPath: 'inset(57px 0 0 0)',
           background: 'var(--color-bg)',
           overflowY: 'auto',
-          // Safe area bottom padding
           paddingBottom: 'env(safe-area-inset-bottom)',
         }}
       >
-        {/* Inner scroll area starts below header */}
         <div style={{ paddingTop: '57px' }}>
           <div
             style={{
@@ -366,7 +363,6 @@ export default function Navigation({ onBookCall }: Props) {
             <div className="container" style={{ paddingTop: '0.25rem', paddingBottom: '2.5rem' }}>
               <nav aria-label="Mobile navigation">
 
-                {/* Nav links */}
                 {links.map((l, i) => {
                   const isActive = pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
                   return (
@@ -388,7 +384,6 @@ export default function Navigation({ onBookCall }: Props) {
                         fontWeight: isActive ? 700 : 500,
                         letterSpacing: isActive ? '0.01em' : '0',
                         color: isActive ? 'var(--color-text)' : 'var(--color-text-muted)',
-                        // Staggered slide-in
                         transform: visible ? 'translateX(0)' : 'translateX(-6px)',
                         opacity: visible ? 1 : 0,
                         transition: `transform 320ms cubic-bezier(0.16,1,0.3,1) ${i * 28}ms, opacity 260ms ease ${i * 28}ms, color 150ms ease, padding-left 150ms ease, border-color 150ms ease, background 120ms ease`,
@@ -415,7 +410,6 @@ export default function Navigation({ onBookCall }: Props) {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '0.75rem',
-                    // Stagger after all nav items
                     transform: visible ? 'translateY(0)' : 'translateY(8px)',
                     opacity: visible ? 1 : 0,
                     transition: `transform 320ms cubic-bezier(0.16,1,0.3,1) ${links.length * 28 + 40}ms, opacity 260ms ease ${links.length * 28 + 40}ms`,
@@ -435,7 +429,6 @@ export default function Navigation({ onBookCall }: Props) {
                     Let&rsquo;s Talk
                   </button>
 
-                  {/* Email — proper tap target */}
                   <a
                     href="mailto:leander@leandermena.com"
                     style={{
@@ -464,15 +457,12 @@ export default function Navigation({ onBookCall }: Props) {
         </div>
       </div>
 
-      {/* Responsive + tap styles */}
       <style>{`
         @media (min-width: 768px) {
           .md-nav-desktop { display: flex !important; align-items: center; gap: 1.1rem; }
           #nav-cta-desktop { display: inline-flex !important; }
           #nav-hamburger   { display: none !important; }
         }
-
-        /* Tap active state for nav links */
         .mobile-nav-link:active {
           background: var(--color-surface-offset) !important;
           color: var(--color-text) !important;
