@@ -17,7 +17,7 @@ export default function CaseStudyDetail() {
   return (
     <>
       <SEO
-        title={`${cs.title} | Case Study — Leander Mena`}
+        title={`${cs.title} | Case Study - Leander Mena`}
         description={`${cs.challenge.slice(0, 155)}…`}
         path={`/case-studies/${cs.slug}`}
         schemaType="article"
@@ -172,7 +172,7 @@ export default function CaseStudyDetail() {
                     color: '#b8a080',
                   }}
                 >
-                  — {cs.client}
+                  {cs.client}
                 </cite>
               </blockquote>
             </ScrollReveal>
