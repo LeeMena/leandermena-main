@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '@/context/ThemeProvider'
 
@@ -34,7 +34,6 @@ function BrandMark() {
   )
 }
 
-// Single theme toggle - always top-right in header, never duplicated in drawer
 function ThemeToggleButton() {
   const { theme, toggleTheme } = useTheme()
   const isDark = theme === 'dark'
@@ -44,7 +43,6 @@ function ThemeToggleButton() {
       onClick={toggleTheme}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       style={{
-        // 44px tap target, visually subtle
         width: '40px',
         height: '40px',
         borderRadius: '999px',
@@ -58,12 +56,8 @@ function ThemeToggleButton() {
         flexShrink: 0,
         transition: 'background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 120ms ease',
       }}
-      onFocus={e => {
-        e.currentTarget.style.boxShadow = '0 0 0 2px rgba(184,160,128,0.4)'
-      }}
-      onBlur={e => {
-        e.currentTarget.style.boxShadow = 'none'
-      }}
+      onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px rgba(184,160,128,0.4)' }}
+      onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
       onMouseEnter={e => {
         const el = e.currentTarget as HTMLButtonElement
         el.style.background = isDark ? 'rgba(28,28,26,0.9)' : 'rgba(0,0,0,0.08)'
@@ -79,7 +73,6 @@ function ThemeToggleButton() {
       }}
     >
       {isDark ? (
-        // Sun icon - shown in dark mode to switch to light
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
@@ -92,7 +85,6 @@ function ThemeToggleButton() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       ) : (
-        // Moon icon - shown in light mode to switch to dark
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
@@ -101,9 +93,66 @@ function ThemeToggleButton() {
   )
 }
 
+// Animated hamburger: 3 lines morph to X via CSS transforms
+function HamburgerIcon({ open }: { open: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '20px',
+        height: '20px',
+        gap: 0,
+        position: 'relative',
+      }}
+    >
+      <span style={{
+        display: 'block',
+        width: '18px',
+        height: '1.5px',
+        background: 'currentColor',
+        borderRadius: '2px',
+        position: 'absolute',
+        transition: 'transform 280ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease, top 280ms cubic-bezier(0.16,1,0.3,1)',
+        top: open ? '50%' : '30%',
+        transform: open ? 'translateY(-50%) rotate(45deg)' : 'translateY(-50%) rotate(0deg)',
+      }} />
+      <span style={{
+        display: 'block',
+        width: '18px',
+        height: '1.5px',
+        background: 'currentColor',
+        borderRadius: '2px',
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        transition: 'opacity 180ms ease, transform 180ms ease',
+        opacity: open ? 0 : 1,
+        transformOrigin: 'center',
+      }} />
+      <span style={{
+        display: 'block',
+        width: '18px',
+        height: '1.5px',
+        background: 'currentColor',
+        borderRadius: '2px',
+        position: 'absolute',
+        transition: 'transform 280ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease, top 280ms cubic-bezier(0.16,1,0.3,1)',
+        top: open ? '50%' : '70%',
+        transform: open ? 'translateY(-50%) rotate(-45deg)' : 'translateY(-50%) rotate(0deg)',
+      }} />
+    </span>
+  )
+}
+
 export default function Navigation({ onBookCall }: Props) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(false) // controls CSS enter animation
+  const headerRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -112,32 +161,48 @@ export default function Navigation({ onBookCall }: Props) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Close drawer on route change
   useEffect(() => { setOpen(false) }, [pathname])
 
+  // Animate drawer in after mount, lock body scroll
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
+    if (open) {
+      // Trigger CSS enter animation on next frame
+      const raf = requestAnimationFrame(() => setVisible(true))
+      document.body.style.overflow = 'hidden'
+      return () => cancelAnimationFrame(raf)
+    } else {
+      setVisible(false)
+      document.body.style.overflow = ''
+    }
     return () => { document.body.style.overflow = '' }
   }, [open])
 
+  // Close on Escape key
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [])
+
   return (
     <header
+      ref={headerRef}
       style={{
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        transition: 'background 300ms ease, border-color 300ms ease, backdrop-filter 300ms ease',
+        transition: 'background 300ms ease, border-color 300ms ease',
         borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
         background: scrolled
           ? 'color-mix(in srgb, var(--color-bg) 92%, transparent)'
           : 'var(--color-bg)',
         backdropFilter: scrolled ? 'blur(14px)' : 'none',
-        // Safe area for notched iPhones
         paddingLeft: 'env(safe-area-inset-left)',
         paddingRight: 'env(safe-area-inset-right)',
       }}
     >
       <div className="container">
-        {/* Nav row */}
         <nav style={{
           display: 'flex',
           alignItems: 'center',
@@ -146,7 +211,7 @@ export default function Navigation({ onBookCall }: Props) {
           padding: '0.5rem 0',
         }}>
 
-          {/* Brand lockup */}
+          {/* Brand */}
           <Link
             to="/"
             style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none', minWidth: 0 }}
@@ -182,7 +247,7 @@ export default function Navigation({ onBookCall }: Props) {
             </span>
           </Link>
 
-          {/* Desktop nav links (hidden on mobile) */}
+          {/* Desktop links */}
           <div style={{ display: 'none' }} className="md-nav-desktop">
             {links.map((l) => (
               <Link
@@ -204,13 +269,10 @@ export default function Navigation({ onBookCall }: Props) {
             ))}
           </div>
 
-          {/* Right side: theme toggle (always visible) + desktop CTA + hamburger */}
+          {/* Right controls */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
-
-            {/* Theme toggle - single instance, always top-right */}
             <ThemeToggleButton />
 
-            {/* Desktop CTA - hidden on mobile */}
             <button
               onClick={onBookCall}
               className="btn btn-primary"
@@ -220,9 +282,9 @@ export default function Navigation({ onBookCall }: Props) {
               Let&rsquo;s Talk
             </button>
 
-            {/* Hamburger - hidden on desktop */}
+            {/* Hamburger with morphing icon */}
             <button
-              onClick={() => setOpen(!open)}
+              onClick={() => setOpen(o => !o)}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -231,119 +293,189 @@ export default function Navigation({ onBookCall }: Props) {
                 height: '44px',
                 marginRight: '-0.25rem',
                 color: 'var(--color-text)',
-                background: 'none',
-                border: 'none',
+                background: open ? 'var(--color-surface-offset)' : 'none',
+                border: '1px solid',
+                borderColor: open ? 'var(--color-border)' : 'transparent',
                 cursor: 'pointer',
                 borderRadius: 'var(--radius-md)',
                 flexShrink: 0,
+                transition: 'background 200ms ease, border-color 200ms ease',
               }}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
               id="nav-hamburger"
             >
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                {open ? (
-                  <path d="M6 6l12 12M6 18L18 6" />
-                ) : (
-                  <>
-                    <line x1="3" y1="6" x2="21" y2="6"/>
-                    <line x1="3" y1="12" x2="21" y2="12"/>
-                    <line x1="3" y1="18" x2="21" y2="18"/>
-                  </>
-                )}
-              </svg>
+              <HamburgerIcon open={open} />
             </button>
           </div>
         </nav>
       </div>
 
-      {/* Mobile drawer */}
-      {open && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            top: '57px',
-            zIndex: 40,
-            background: 'var(--color-bg)',
-            overflowY: 'auto',
-            boxShadow: 'inset 0 1px 0 var(--color-border)',
-          }}
-        >
-          <div className="container" style={{ paddingTop: '0.5rem', paddingBottom: '2rem' }}>
-            <nav aria-label="Mobile navigation">
+      {/*
+        Backdrop + drawer — always in DOM so CSS transitions work.
+        `visible` drives the animated-in state.
+        `open` drives pointer-events / visibility.
+      */}
 
-              {/* Nav links */}
-              {links.map((l) => {
-                const isActive = pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
-                return (
-                  <Link
-                    key={l.href}
-                    to={l.href}
+      {/* Backdrop */}
+      <div
+        onClick={() => setOpen(false)}
+        style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 39,
+          background: 'rgba(0,0,0,0.45)',
+          backdropFilter: 'blur(2px)',
+          opacity: visible ? 1 : 0,
+          pointerEvents: open ? 'auto' : 'none',
+          transition: 'opacity 300ms ease',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Drawer panel */}
+      <div
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 48,
+          // Slide from top: starts above viewport, slides down to correct position
+          transform: visible ? 'translateY(0)' : 'translateY(-8px)',
+          opacity: visible ? 1 : 0,
+          pointerEvents: open ? 'auto' : 'none',
+          transition: 'transform 320ms cubic-bezier(0.16,1,0.3,1), opacity 250ms ease',
+          // Only show the part below the sticky header
+          clipPath: 'inset(57px 0 0 0)',
+          background: 'var(--color-bg)',
+          overflowY: 'auto',
+          // Safe area bottom padding
+          paddingBottom: 'env(safe-area-inset-bottom)',
+        }}
+      >
+        {/* Inner scroll area starts below header */}
+        <div style={{ paddingTop: '57px' }}>
+          <div
+            style={{
+              borderTop: '1px solid var(--color-border)',
+              background: 'var(--color-bg)',
+            }}
+          >
+            <div className="container" style={{ paddingTop: '0.25rem', paddingBottom: '2.5rem' }}>
+              <nav aria-label="Mobile navigation">
+
+                {/* Nav links */}
+                {links.map((l, i) => {
+                  const isActive = pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
+                  return (
+                    <Link
+                      key={l.href}
+                      to={l.href}
+                      className="mobile-nav-link"
+                      data-active={isActive ? 'true' : 'false'}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '0.9rem 0',
+                        paddingLeft: isActive ? '0.875rem' : '0',
+                        borderBottom: '1px solid var(--color-border)',
+                        borderLeft: isActive ? '2px solid var(--color-primary)' : '2px solid transparent',
+                        textDecoration: 'none',
+                        fontSize: '1rem',
+                        fontWeight: isActive ? 700 : 500,
+                        letterSpacing: isActive ? '0.01em' : '0',
+                        color: isActive ? 'var(--color-text)' : 'var(--color-text-muted)',
+                        // Staggered slide-in
+                        transform: visible ? 'translateX(0)' : 'translateX(-6px)',
+                        opacity: visible ? 1 : 0,
+                        transition: `transform 320ms cubic-bezier(0.16,1,0.3,1) ${i * 28}ms, opacity 260ms ease ${i * 28}ms, color 150ms ease, padding-left 150ms ease, border-color 150ms ease, background 120ms ease`,
+                        borderRadius: isActive ? '0 var(--radius-sm) var(--radius-sm) 0' : '0',
+                        WebkitTapHighlightColor: 'transparent',
+                      }}
+                    >
+                      <span>{l.label}</span>
+                      <svg
+                        width="14" height="14" fill="none" stroke="currentColor"
+                        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                        style={{ opacity: isActive ? 0.6 : 0.25, flexShrink: 0, transition: 'opacity 150ms ease' }}
+                      >
+                        <path d="M5 3l6 6-6 6"/>
+                      </svg>
+                    </Link>
+                  )
+                })}
+
+                {/* CTA block */}
+                <div
+                  style={{
+                    marginTop: '1.75rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.75rem',
+                    // Stagger after all nav items
+                    transform: visible ? 'translateY(0)' : 'translateY(8px)',
+                    opacity: visible ? 1 : 0,
+                    transition: `transform 320ms cubic-bezier(0.16,1,0.3,1) ${links.length * 28 + 40}ms, opacity 260ms ease ${links.length * 28 + 40}ms`,
+                  }}
+                >
+                  <button
+                    onClick={() => { onBookCall(); setOpen(false) }}
+                    className="btn btn-primary"
+                    style={{
+                      width: '100%',
+                      fontSize: '0.9rem',
+                      fontWeight: 800,
+                      letterSpacing: '0.04em',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    Let&rsquo;s Talk
+                  </button>
+
+                  {/* Email — proper tap target */}
+                  <a
+                    href="mailto:leander@leandermena.com"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'space-between',
-                      padding: '0.875rem 0',
-                      borderBottom: '1px solid var(--color-border)',
+                      justifyContent: 'center',
+                      minHeight: '44px',
+                      padding: '0.5rem 1rem',
+                      textAlign: 'center',
+                      fontSize: '0.8rem',
+                      color: 'var(--color-text-muted)',
+                      letterSpacing: '0.04em',
                       textDecoration: 'none',
-                      fontSize: '1rem',
-                      fontWeight: isActive ? 700 : 500,
-                      color: isActive ? 'var(--color-text)' : 'var(--color-text-muted)',
-                      transition: 'color 180ms ease, padding-left 180ms ease',
-                      paddingLeft: isActive ? '0.75rem' : '0',
-                      borderLeft: isActive ? '2px solid var(--color-primary)' : '2px solid transparent',
+                      borderRadius: 'var(--radius-md)',
+                      border: '1px solid var(--color-border)',
+                      transition: 'color 180ms ease, border-color 180ms ease, background 180ms ease',
+                      WebkitTapHighlightColor: 'transparent',
                     }}
                   >
-                    {l.label}
-                    <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.35, flexShrink: 0 }}>
-                      <path d="M5 3l6 6-6 6"/>
-                    </svg>
-                  </Link>
-                )
-              })}
-
-              {/* Primary CTA */}
-              <button
-                onClick={() => { onBookCall(); setOpen(false) }}
-                className="btn btn-primary"
-                style={{
-                  marginTop: '1.5rem',
-                  width: '100%',
-                  fontSize: '0.9rem',
-                  fontWeight: 800,
-                  letterSpacing: '0.04em',
-                }}
-              >
-                Let&rsquo;s Talk
-              </button>
-
-              {/* Secondary: email link */}
-              <a
-                href="mailto:leander@leandermena.com"
-                style={{
-                  display: 'block',
-                  textAlign: 'center',
-                  marginTop: '0.875rem',
-                  fontSize: '0.8rem',
-                  color: 'var(--color-text-muted)',
-                  letterSpacing: '0.04em',
-                  textDecoration: 'none',
-                }}
-              >
-                leander@leandermena.com
-              </a>
-            </nav>
+                    leander@leandermena.com
+                  </a>
+                </div>
+              </nav>
+            </div>
           </div>
         </div>
-      )}
+      </div>
 
-      {/* Responsive rules */}
+      {/* Responsive + tap styles */}
       <style>{`
         @media (min-width: 768px) {
           .md-nav-desktop { display: flex !important; align-items: center; gap: 1.1rem; }
           #nav-cta-desktop { display: inline-flex !important; }
           #nav-hamburger   { display: none !important; }
+        }
+
+        /* Tap active state for nav links */
+        .mobile-nav-link:active {
+          background: var(--color-surface-offset) !important;
+          color: var(--color-text) !important;
         }
       `}</style>
     </header>
