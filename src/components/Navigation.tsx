@@ -22,13 +22,14 @@ function BrandMark() {
     <img
       src="/favicon-96x96.png"
       alt="Leander Mena"
-      width={36}
-      height={36}
+      width={34}
+      height={34}
       style={{
-        borderRadius: '0.2rem',
-        boxShadow: '0 4px 18px rgba(41,31,20,0.18)',
+        borderRadius: '0',
+        boxShadow: 'none',
         flexShrink: 0,
         display: 'block',
+        opacity: 0.92,
       }}
     />
   )
@@ -45,47 +46,30 @@ function ThemeToggleButton() {
       style={{
         width: '40px',
         height: '40px',
-        borderRadius: '999px',
+        borderRadius: '0',
         border: '1px solid var(--color-border)',
-        background: isDark ? 'rgba(10,10,10,0.5)' : 'rgba(0,0,0,0.04)',
+        background: 'transparent',
         color: 'var(--color-text-muted)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         cursor: 'pointer',
         flexShrink: 0,
-        transition: 'background 180ms ease, color 180ms ease, border-color 180ms ease, box-shadow 120ms ease',
-      }}
-      onFocus={e => { e.currentTarget.style.boxShadow = '0 0 0 2px rgba(184,160,128,0.4)' }}
-      onBlur={e => { e.currentTarget.style.boxShadow = 'none' }}
-      onMouseEnter={e => {
-        const el = e.currentTarget as HTMLButtonElement
-        el.style.background = isDark ? 'rgba(28,28,26,0.9)' : 'rgba(0,0,0,0.08)'
-        el.style.borderColor = isDark ? '#3a3a3a' : '#c8c0b4'
-        el.style.color = 'var(--color-text)'
-      }}
-      onMouseLeave={e => {
-        const el = e.currentTarget as HTMLButtonElement
-        el.style.background = isDark ? 'rgba(10,10,10,0.5)' : 'rgba(0,0,0,0.04)'
-        el.style.borderColor = 'var(--color-border)'
-        el.style.color = 'var(--color-text-muted)'
-        el.style.boxShadow = 'none'
+        transition: 'background 200ms ease, color 200ms ease, border-color 200ms ease',
+        WebkitTapHighlightColor: 'transparent',
+        touchAction: 'manipulation',
       }}
     >
       {isDark ? (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"/>
-          <line x1="12" y1="1" x2="12" y2="3"/>
-          <line x1="12" y1="21" x2="12" y2="23"/>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-          <line x1="1" y1="12" x2="3" y2="12"/>
-          <line x1="21" y1="12" x2="23" y2="12"/>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       ) : (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       )}
@@ -93,7 +77,7 @@ function ThemeToggleButton() {
   )
 }
 
-// Animated hamburger: 3 lines morph to X via CSS transforms
+// Animated hamburger: 3 lines morph to X
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
     <span
@@ -109,41 +93,28 @@ function HamburgerIcon({ open }: { open: boolean }) {
         position: 'relative',
       }}
     >
-      <span style={{
-        display: 'block',
-        width: '18px',
-        height: '1.5px',
-        background: 'currentColor',
-        borderRadius: '2px',
-        position: 'absolute',
-        transition: 'transform 280ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease, top 280ms cubic-bezier(0.16,1,0.3,1)',
-        top: open ? '50%' : '30%',
+      {[{
+        top: open ? '50%' : '28%',
         transform: open ? 'translateY(-50%) rotate(45deg)' : 'translateY(-50%) rotate(0deg)',
-      }} />
-      <span style={{
-        display: 'block',
-        width: '18px',
-        height: '1.5px',
-        background: 'currentColor',
-        borderRadius: '2px',
-        position: 'absolute',
+      }, {
         top: '50%',
         transform: 'translateY(-50%)',
-        transition: 'opacity 180ms ease, transform 180ms ease',
         opacity: open ? 0 : 1,
-        transformOrigin: 'center',
-      }} />
-      <span style={{
-        display: 'block',
-        width: '18px',
-        height: '1.5px',
-        background: 'currentColor',
-        borderRadius: '2px',
-        position: 'absolute',
-        transition: 'transform 280ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease, top 280ms cubic-bezier(0.16,1,0.3,1)',
-        top: open ? '50%' : '70%',
+      }, {
+        top: open ? '50%' : '72%',
         transform: open ? 'translateY(-50%) rotate(-45deg)' : 'translateY(-50%) rotate(0deg)',
-      }} />
+      }].map((s, i) => (
+        <span key={i} style={{
+          display: 'block',
+          width: '18px',
+          height: '1px',
+          background: 'currentColor',
+          borderRadius: 0,
+          position: 'absolute',
+          transition: 'transform 300ms cubic-bezier(0.16,1,0.3,1), opacity 200ms ease, top 300ms cubic-bezier(0.16,1,0.3,1)',
+          ...s,
+        }} />
+      ))}
     </span>
   )
 }
@@ -151,7 +122,7 @@ function HamburgerIcon({ open }: { open: boolean }) {
 export default function Navigation({ onBookCall }: Props) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [visible, setVisible] = useState(false) // controls CSS enter animation
+  const [visible, setVisible] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
 
@@ -161,29 +132,33 @@ export default function Navigation({ onBookCall }: Props) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close drawer on route change
   useEffect(() => { setOpen(false) }, [pathname])
 
-  // Animate drawer in after mount, lock body scroll
   useEffect(() => {
     if (open) {
-      // Trigger CSS enter animation on next frame
       const raf = requestAnimationFrame(() => setVisible(true))
       document.body.style.overflow = 'hidden'
+      document.body.style.touchAction = 'none'
       return () => cancelAnimationFrame(raf)
     } else {
       setVisible(false)
       document.body.style.overflow = ''
+      document.body.style.touchAction = ''
     }
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.touchAction = ''
+    }
   }, [open])
 
-  // Close on Escape key
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false) }
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [])
+
+  // Header height for clip offset
+  const headerH = 57
 
   return (
     <header
@@ -192,14 +167,16 @@ export default function Navigation({ onBookCall }: Props) {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        transition: 'background 300ms ease, border-color 300ms ease',
+        transition: 'background 320ms ease, border-color 320ms ease, backdrop-filter 320ms ease',
         borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
         background: scrolled
-          ? 'color-mix(in srgb, var(--color-bg) 92%, transparent)'
+          ? 'color-mix(in oklch, var(--color-bg) 88%, transparent)'
           : 'var(--color-bg)',
-        backdropFilter: scrolled ? 'blur(14px)' : 'none',
+        backdropFilter: scrolled ? 'blur(18px) saturate(1.4)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(18px) saturate(1.4)' : 'none',
         paddingLeft: 'env(safe-area-inset-left)',
         paddingRight: 'env(safe-area-inset-right)',
+        paddingTop: 'env(safe-area-inset-top)',
       }}
     >
       <div className="container">
@@ -208,24 +185,24 @@ export default function Navigation({ onBookCall }: Props) {
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '0.5rem',
-          padding: '0.5rem 0',
+          height: '57px',
         }}>
 
           {/* Brand */}
           <Link
             to="/"
-            style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none', minWidth: 0 }}
-            aria-label="Leander Mena - Home"
+            style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none', minWidth: 0 }}
+            aria-label="Leander Mena — Home"
           >
             <BrandMark />
-            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, gap: '2px', minWidth: 0 }}>
+            <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, gap: '3px', minWidth: 0 }}>
               <strong style={{
-                fontSize: '0.825rem',
-                letterSpacing: '0.12em',
+                fontFamily: 'var(--font-display)',
+                fontSize: '0.875rem',
+                letterSpacing: '0.08em',
                 textTransform: 'uppercase',
                 color: 'var(--color-text)',
-                fontWeight: 700,
-                transition: 'color 180ms ease',
+                fontWeight: 500,
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
@@ -233,56 +210,63 @@ export default function Navigation({ onBookCall }: Props) {
                 Leander Mena
               </strong>
               <span style={{
-                fontSize: '0.62rem',
-                letterSpacing: '0.16em',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.5625rem',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--color-text-muted)',
-                fontWeight: 500,
+                color: 'var(--color-text-faint)',
+                fontWeight: 400,
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
               }}>
-                Hospitality&nbsp;|&nbsp;F&amp;B&nbsp;Consulting
+                Hospitality&nbsp;·&nbsp;F&amp;B
               </span>
             </span>
           </Link>
 
-          {/* Desktop links */}
+          {/* Desktop nav links */}
           <div style={{ display: 'none' }} className="md-nav-desktop">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                to={l.href}
-                style={{
-                  fontSize: '0.8rem',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                  transition: 'color 180ms ease',
-                  color: pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
-                    ? 'var(--color-primary)'
-                    : 'var(--color-text-muted)',
-                }}
-              >
-                {l.label}
-              </Link>
-            ))}
+            {links.map((l) => {
+              const isActive = pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
+              return (
+                <Link
+                  key={l.href}
+                  to={l.href}
+                  style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.6875rem',
+                    fontWeight: 400,
+                    letterSpacing: '0.10em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap',
+                    transition: 'color 200ms ease',
+                    color: isActive ? 'var(--color-primary)' : 'var(--color-text-muted)',
+                    paddingBottom: '2px',
+                    borderBottom: isActive ? '1px solid var(--color-primary)' : '1px solid transparent',
+                  }}
+                >
+                  {l.label}
+                </Link>
+              )
+            })}
           </div>
 
           {/* Right controls */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
             <ThemeToggleButton />
 
             <button
               onClick={onBookCall}
               className="btn btn-primary"
-              style={{ fontSize: '0.8rem', fontWeight: 800, display: 'none' }}
+              style={{ fontSize: '0.625rem', fontWeight: 500, display: 'none', letterSpacing: '0.16em' }}
               id="nav-cta-desktop"
             >
               Let&rsquo;s Talk
             </button>
 
-            {/* Hamburger with morphing icon */}
+            {/* Hamburger */}
             <button
               onClick={() => setOpen(o => !o)}
               style={{
@@ -293,16 +277,19 @@ export default function Navigation({ onBookCall }: Props) {
                 height: '44px',
                 marginRight: '-0.25rem',
                 color: 'var(--color-text)',
-                background: open ? 'var(--color-surface-offset)' : 'none',
+                background: open ? 'var(--color-surface-offset)' : 'transparent',
                 border: '1px solid',
                 borderColor: open ? 'var(--color-border)' : 'transparent',
                 cursor: 'pointer',
-                borderRadius: 'var(--radius-md)',
+                borderRadius: '0',
                 flexShrink: 0,
                 transition: 'background 200ms ease, border-color 200ms ease',
+                WebkitTapHighlightColor: 'transparent',
+                touchAction: 'manipulation',
               }}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
+              aria-controls="mobile-drawer"
               id="nav-hamburger"
             >
               <HamburgerIcon open={open} />
@@ -311,12 +298,6 @@ export default function Navigation({ onBookCall }: Props) {
         </nav>
       </div>
 
-      {/*
-        Backdrop + drawer — always in DOM so CSS transitions work.
-        `visible` drives the animated-in state.
-        `open` drives pointer-events / visibility.
-      */}
-
       {/* Backdrop */}
       <div
         onClick={() => setOpen(false)}
@@ -324,17 +305,22 @@ export default function Navigation({ onBookCall }: Props) {
           position: 'fixed',
           inset: 0,
           zIndex: 39,
-          background: 'rgba(0,0,0,0.45)',
-          backdropFilter: 'blur(2px)',
+          background: 'oklch(0.06 0.005 60 / 0.70)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
           opacity: visible ? 1 : 0,
           pointerEvents: open ? 'auto' : 'none',
-          transition: 'opacity 300ms ease',
+          transition: 'opacity 320ms ease',
         }}
         aria-hidden="true"
       />
 
-      {/* Drawer panel */}
+      {/* Full-screen mobile drawer */}
       <div
+        id="mobile-drawer"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
         style={{
           position: 'fixed',
           top: 0,
@@ -342,31 +328,36 @@ export default function Navigation({ onBookCall }: Props) {
           right: 0,
           bottom: 0,
           zIndex: 48,
-          // Slide from top: starts above viewport, slides down to correct position
-          transform: visible ? 'translateY(0)' : 'translateY(-8px)',
+          transform: visible ? 'translateY(0)' : 'translateY(-6px)',
           opacity: visible ? 1 : 0,
           pointerEvents: open ? 'auto' : 'none',
-          transition: 'transform 320ms cubic-bezier(0.16,1,0.3,1), opacity 250ms ease',
-          // Only show the part below the sticky header
-          clipPath: 'inset(57px 0 0 0)',
+          transition: 'transform 340ms cubic-bezier(0.16,1,0.3,1), opacity 260ms ease',
+          clipPath: `inset(${headerH}px 0 0 0)`,
           background: 'var(--color-bg)',
           overflowY: 'auto',
-          // Safe area bottom padding
-          paddingBottom: 'env(safe-area-inset-bottom)',
+          overscrollBehavior: 'contain',
+          WebkitOverflowScrolling: 'touch',
+          paddingBottom: 'calc(env(safe-area-inset-bottom) + 2rem)',
         }}
       >
-        {/* Inner scroll area starts below header */}
-        <div style={{ paddingTop: '57px' }}>
-          <div
-            style={{
-              borderTop: '1px solid var(--color-border)',
-              background: 'var(--color-bg)',
-            }}
-          >
-            <div className="container" style={{ paddingTop: '0.25rem', paddingBottom: '2.5rem' }}>
-              <nav aria-label="Mobile navigation">
+        <div style={{ paddingTop: `${headerH}px` }}>
+          <div style={{ borderTop: '1px solid oklch(from var(--color-border) l c h / 0.5)' }}>
+            <div className="container" style={{ paddingTop: 'var(--space-3)', paddingBottom: 'var(--space-10)' }}>
 
-                {/* Nav links */}
+              {/* Page label */}
+              <p style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.5rem',
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: 'var(--color-text-faint)',
+                paddingBlock: 'var(--space-5)',
+                transform: visible ? 'translateY(0)' : 'translateY(6px)',
+                opacity: visible ? 1 : 0,
+                transition: 'transform 300ms ease 40ms, opacity 280ms ease 40ms',
+              }}>Navigation</p>
+
+              <nav aria-label="Mobile navigation">
                 {links.map((l, i) => {
                   const isActive = pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
                   return (
@@ -374,51 +365,57 @@ export default function Navigation({ onBookCall }: Props) {
                       key={l.href}
                       to={l.href}
                       className="mobile-nav-link"
-                      data-active={isActive ? 'true' : 'false'}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
-                        padding: '0.9rem 0',
-                        paddingLeft: isActive ? '0.875rem' : '0',
-                        borderBottom: '1px solid var(--color-border)',
-                        borderLeft: isActive ? '2px solid var(--color-primary)' : '2px solid transparent',
+                        padding: 'var(--space-4) 0',
+                        borderBottom: '1px solid oklch(from var(--color-border) l c h / 0.40)',
                         textDecoration: 'none',
-                        fontSize: '1rem',
-                        fontWeight: isActive ? 700 : 500,
-                        letterSpacing: isActive ? '0.01em' : '0',
+                        fontFamily: isActive ? 'var(--font-display)' : 'var(--font-body)',
+                        fontSize: isActive ? '1.1rem' : '0.875rem',
+                        fontWeight: isActive ? 400 : 400,
+                        fontStyle: isActive ? 'italic' : 'normal',
+                        letterSpacing: isActive ? '0.01em' : '0.06em',
+                        textTransform: isActive ? 'none' : 'uppercase',
                         color: isActive ? 'var(--color-text)' : 'var(--color-text-muted)',
-                        // Staggered slide-in
-                        transform: visible ? 'translateX(0)' : 'translateX(-6px)',
+                        transform: visible ? 'translateX(0)' : 'translateX(-8px)',
                         opacity: visible ? 1 : 0,
-                        transition: `transform 320ms cubic-bezier(0.16,1,0.3,1) ${i * 28}ms, opacity 260ms ease ${i * 28}ms, color 150ms ease, padding-left 150ms ease, border-color 150ms ease, background 120ms ease`,
-                        borderRadius: isActive ? '0 var(--radius-sm) var(--radius-sm) 0' : '0',
+                        transition: `transform 340ms cubic-bezier(0.16,1,0.3,1) ${60 + i * 30}ms, opacity 280ms ease ${60 + i * 30}ms, color 150ms ease`,
                         WebkitTapHighlightColor: 'transparent',
+                        touchAction: 'manipulation',
+                        minHeight: '52px',
                       }}
                     >
                       <span>{l.label}</span>
-                      <svg
-                        width="14" height="14" fill="none" stroke="currentColor"
-                        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                        style={{ opacity: isActive ? 0.6 : 0.25, flexShrink: 0, transition: 'opacity 150ms ease' }}
-                      >
-                        <path d="M5 3l6 6-6 6"/>
-                      </svg>
+                      {isActive ? (
+                        <span style={{
+                          width: '4px',
+                          height: '4px',
+                          borderRadius: '50%',
+                          background: 'var(--color-primary)',
+                          flexShrink: 0,
+                        }} />
+                      ) : (
+                        <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"
+                          style={{ opacity: 0.20, flexShrink: 0 }}>
+                          <path d="M4 2l5 5-5 5"/>
+                        </svg>
+                      )}
                     </Link>
                   )
                 })}
 
-                {/* CTA block */}
+                {/* CTAs */}
                 <div
                   style={{
-                    marginTop: '1.75rem',
+                    marginTop: 'var(--space-8)',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.75rem',
-                    // Stagger after all nav items
-                    transform: visible ? 'translateY(0)' : 'translateY(8px)',
+                    gap: 'var(--space-3)',
+                    transform: visible ? 'translateY(0)' : 'translateY(10px)',
                     opacity: visible ? 1 : 0,
-                    transition: `transform 320ms cubic-bezier(0.16,1,0.3,1) ${links.length * 28 + 40}ms, opacity 260ms ease ${links.length * 28 + 40}ms`,
+                    transition: `transform 340ms cubic-bezier(0.16,1,0.3,1) ${60 + links.length * 30 + 40}ms, opacity 280ms ease ${60 + links.length * 30 + 40}ms`,
                   }}
                 >
                   <button
@@ -426,37 +423,47 @@ export default function Navigation({ onBookCall }: Props) {
                     className="btn btn-primary"
                     style={{
                       width: '100%',
-                      fontSize: '0.9rem',
-                      fontWeight: 800,
-                      letterSpacing: '0.04em',
                       justifyContent: 'center',
+                      fontSize: '0.625rem',
+                      letterSpacing: '0.20em',
+                      minHeight: '52px',
                     }}
                   >
-                    Let&rsquo;s Talk
+                    Book a Discovery Call
                   </button>
 
-                  {/* Email — proper tap target */}
                   <a
                     href="mailto:leander@leandermena.com"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      minHeight: '44px',
-                      padding: '0.5rem 1rem',
+                      minHeight: '48px',
+                      padding: 'var(--space-3) var(--space-4)',
                       textAlign: 'center',
-                      fontSize: '0.8rem',
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.06em',
                       color: 'var(--color-text-muted)',
-                      letterSpacing: '0.04em',
                       textDecoration: 'none',
-                      borderRadius: 'var(--radius-md)',
-                      border: '1px solid var(--color-border)',
-                      transition: 'color 180ms ease, border-color 180ms ease, background 180ms ease',
+                      border: '1px solid oklch(from var(--color-border) l c h / 0.50)',
+                      transition: 'color 200ms ease, border-color 200ms ease',
                       WebkitTapHighlightColor: 'transparent',
                     }}
                   >
                     leander@leandermena.com
                   </a>
+
+                  {/* Location */}
+                  <p style={{
+                    textAlign: 'center',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.5625rem',
+                    letterSpacing: '0.18em',
+                    textTransform: 'uppercase',
+                    color: 'var(--color-text-faint)',
+                    marginTop: 'var(--space-2)',
+                  }}>Miami, Florida</p>
                 </div>
               </nav>
             </div>
@@ -464,18 +471,14 @@ export default function Navigation({ onBookCall }: Props) {
         </div>
       </div>
 
-      {/* Responsive + tap styles */}
       <style>{`
         @media (min-width: 768px) {
-          .md-nav-desktop { display: flex !important; align-items: center; gap: 1.1rem; }
+          .md-nav-desktop { display: flex !important; align-items: center; gap: 1.25rem; }
           #nav-cta-desktop { display: inline-flex !important; }
           #nav-hamburger   { display: none !important; }
         }
-
-        /* Tap active state for nav links */
         .mobile-nav-link:active {
-          background: var(--color-surface-offset) !important;
-          color: var(--color-text) !important;
+          opacity: 0.6 !important;
         }
       `}</style>
     </header>
