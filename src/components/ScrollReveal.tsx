@@ -9,6 +9,10 @@ interface Props {
 
 const isSSR = typeof window === 'undefined'
 
+// Spring easing — consistent with all other motion in the site
+const SPRING = 'cubic-bezier(0.16, 1, 0.3, 1)'
+const DURATION = '0.6s'
+
 export default function ScrollReveal({
   children,
   className = '',
@@ -22,8 +26,14 @@ export default function ScrollReveal({
     const el = ref.current
     if (!el) return
 
+    // Respect prefers-reduced-motion — reveal immediately
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setVisible(true)
+      return
+    }
+
     // Safety fallback: reveal after timeout if observer never fires
-    const fallback = setTimeout(() => setVisible(true), 400 + delay)
+    const fallback = setTimeout(() => setVisible(true), 500 + delay)
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,7 +45,6 @@ export default function ScrollReveal({
       },
       {
         threshold: 0,
-        // Negative bottom margin catches elements already near viewport on load
         rootMargin: '0px 0px -40px 0px',
       }
     )
@@ -48,10 +57,10 @@ export default function ScrollReveal({
   }, [delay])
 
   const transforms = {
-    up: 'translateY(24px)',
-    down: 'translateY(-24px)',
-    left: 'translateX(24px)',
-    right: 'translateX(-24px)',
+    up:    'translateY(28px)',
+    down:  'translateY(-28px)',
+    left:  'translateX(28px)',
+    right: 'translateX(-28px)',
   }
 
   if (isSSR) {
@@ -65,7 +74,7 @@ export default function ScrollReveal({
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? 'translate(0)' : transforms[direction],
-        transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`,
+        transition: `opacity ${DURATION} ${SPRING} ${delay}ms, transform ${DURATION} ${SPRING} ${delay}ms`,
         willChange: visible ? 'auto' : 'opacity, transform',
       }}
     >
