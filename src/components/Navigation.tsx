@@ -34,7 +34,7 @@ function BrandMark() {
   )
 }
 
-// Single theme toggle — always top-right in header, never duplicated in drawer
+// Single theme toggle - always top-right in header, never duplicated in drawer
 function ThemeToggleButton() {
   const { theme, toggleTheme } = useTheme()
   const isDark = theme === 'dark'
@@ -79,7 +79,7 @@ function ThemeToggleButton() {
       }}
     >
       {isDark ? (
-        // Sun icon — shown in dark mode to switch to light
+        // Sun icon - shown in dark mode to switch to light
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
@@ -92,7 +92,7 @@ function ThemeToggleButton() {
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
         </svg>
       ) : (
-        // Moon icon — shown in light mode to switch to dark
+        // Moon icon - shown in light mode to switch to dark
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
@@ -137,7 +137,7 @@ export default function Navigation({ onBookCall }: Props) {
       }}
     >
       <div className="container">
-        {/* ── Tighter nav row — 0.5rem vertical padding on mobile ── */}
+        {/* Nav row */}
         <nav style={{
           display: 'flex',
           alignItems: 'center',
@@ -146,11 +146,11 @@ export default function Navigation({ onBookCall }: Props) {
           padding: '0.5rem 0',
         }}>
 
-          {/* Brand lockup — slightly smaller on mobile */}
+          {/* Brand lockup */}
           <Link
             to="/"
             style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none', minWidth: 0 }}
-            aria-label="Leander Mena — home"
+            aria-label="Leander Mena - Home"
           >
             <BrandMark />
             <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, gap: '2px', minWidth: 0 }}>
@@ -207,10 +207,10 @@ export default function Navigation({ onBookCall }: Props) {
           {/* Right side: theme toggle (always visible) + desktop CTA + hamburger */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
 
-            {/* Theme toggle — single instance, always top-right */}
+            {/* Theme toggle - single instance, always top-right */}
             <ThemeToggleButton />
 
-            {/* Desktop CTA — hidden on mobile */}
+            {/* Desktop CTA - hidden on mobile */}
             <button
               onClick={onBookCall}
               className="btn btn-primary"
@@ -220,7 +220,7 @@ export default function Navigation({ onBookCall }: Props) {
               Let&rsquo;s Talk
             </button>
 
-            {/* Hamburger — hidden on desktop */}
+            {/* Hamburger - hidden on desktop */}
             <button
               onClick={() => setOpen(!open)}
               style={{
@@ -257,7 +257,7 @@ export default function Navigation({ onBookCall }: Props) {
         </nav>
       </div>
 
-      {/* ── Mobile drawer — elevated, navigation-only, no utility controls ── */}
+      {/* Mobile drawer */}
       {open && (
         <div
           style={{
@@ -267,14 +267,13 @@ export default function Navigation({ onBookCall }: Props) {
             zIndex: 40,
             background: 'var(--color-bg)',
             overflowY: 'auto',
-            // subtle top edge shadow to lift drawer
             boxShadow: 'inset 0 1px 0 var(--color-border)',
           }}
         >
           <div className="container" style={{ paddingTop: '0.5rem', paddingBottom: '2rem' }}>
             <nav aria-label="Mobile navigation">
 
-              {/* Nav links — larger tap targets, active accent bar */}
+              {/* Nav links */}
               {links.map((l) => {
                 const isActive = pathname === l.href || (l.href === '/insights' && pathname.startsWith('/insights'))
                 return (
@@ -285,21 +284,18 @@ export default function Navigation({ onBookCall }: Props) {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      padding: '0.9rem 0',
+                      padding: '0.875rem 0',
                       borderBottom: '1px solid var(--color-border)',
-                      fontSize: '1rem',
-                      fontWeight: isActive ? 600 : 500,
-                      letterSpacing: '0.01em',
                       textDecoration: 'none',
-                      color: isActive ? 'var(--color-primary)' : 'var(--color-text)',
-                      transition: 'color 150ms ease',
-                      // left accent on active
+                      fontSize: '1rem',
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? 'var(--color-text)' : 'var(--color-text-muted)',
+                      transition: 'color 180ms ease, padding-left 180ms ease',
                       paddingLeft: isActive ? '0.75rem' : '0',
                       borderLeft: isActive ? '2px solid var(--color-primary)' : '2px solid transparent',
                     }}
                   >
                     {l.label}
-                    {/* Chevron */}
                     <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.35, flexShrink: 0 }}>
                       <path d="M5 3l6 6-6 6"/>
                     </svg>

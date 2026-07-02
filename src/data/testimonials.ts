@@ -29,7 +29,7 @@ export const testimonials: Testimonial[] = [
   {
     id: '3',
     quote:
-      'Our banquet program was bleeding money. Leander\'s systems gave us visibility we never had — we booked 40% more events the following quarter and actually made margin on them.',
+      'Our banquet program was bleeding money. Leander\'s systems gave us visibility we never had. We booked 40% more events the following quarter and actually made margin on them.',
     name: 'David R.',
     role: 'Director of F&B',
     company: 'Full-Service Hotel, Miami Beach',
@@ -55,5 +55,5 @@ export const testimonials: Testimonial[] = [
   },
 ]
 
-// Alias for Home.tsx import — all testimonials are approved
+// Alias for Home.tsx import - all testimonials are approved
 export const approvedTestimonials = testimonials
