@@ -1,36 +1,158 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import { ArrowRight, TrendingUp, Users, Clock, Award, Star, Zap, CheckCircle, Download } from 'lucide-react'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { ArrowRight, Download } from 'lucide-react'
 import SEO from '@/components/SEO'
-import CTABanner from '@/components/CTABanner'
-import ProductCard from '@/components/ProductCard'
-import TestimonialCard from '@/components/TestimonialCard'
-import ServiceCard from '@/components/ServiceCard'
 import BlueprintModal from '@/components/BlueprintModal'
 import BlueprintCTA from '@/components/BlueprintCTA'
-import { products } from '@/data/products'
+import ServiceCard from '@/components/ServiceCard'
+import TestimonialCard from '@/components/TestimonialCard'
+import ProductCard from '@/components/ProductCard'
+import CTABanner from '@/components/CTABanner'
 import { services } from '@/data/services'
 import { approvedTestimonials } from '@/data/testimonials'
+import { products } from '@/data/products'
 
-const stats = [
-  { icon: <Clock className="w-5 h-5" />, value: '18+', label: 'Years Experience' },
-  { icon: <TrendingUp className="w-5 h-5" />, value: '$12M+', label: 'Revenue Optimized' },
-  { icon: <Users className="w-5 h-5" />, value: '500+', label: 'Team Members Trained' },
-  { icon: <Award className="w-5 h-5" />, value: '40+', label: 'Properties Operated' },
-]
+// --- Scroll reveal hook ---
+function useReveal(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, amount: threshold })
+  return { ref, inView }
+}
 
-const trustBadges = [
-  'Michelin-Star Concepts',
-  'Luxury Hotels',
-  'SLS Hotels',
-  'Accor Properties',
-  'Independent Restaurants',
-  'Multi-Unit Groups',
-]
+// --- Single word / line reveal ---
+function RevealLine({ children, delay = 0, style = {} }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
+  const { ref, inView } = useReveal(0.2)
+  return (
+    <div ref={ref} style={{ overflow: 'hidden', ...style }}>
+      <div style={{
+        transform: inView ? 'translateY(0)' : 'translateY(100%)',
+        opacity: inView ? 1 : 0,
+        transition: `transform 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}s, opacity 0.7s ease ${delay}s`,
+      }}>
+        {children}
+      </div>
+    </div>
+  )
+}
+
+// --- Parallax wrapper ---
+function ParallaxSection({ children, speed = 0.15 }: { children: React.ReactNode; speed?: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', `${speed * 100}%`])
+  return (
+    <div ref={ref} style={{ position: 'relative', overflow: 'hidden' }}>
+      <motion.div style={{ y }}>{children}</motion.div>
+    </div>
+  )
+}
+
+// --- Large animated number ---
+function AnimatedStat({ value, label, delay = 0 }: { value: string; label: string; delay?: number }) {
+  const { ref, inView } = useReveal(0.3)
+  return (
+    <div ref={ref} style={{ textAlign: 'center' }}>
+      <div style={{
+        fontFamily: 'var(--font-display)',
+        fontSize: 'clamp(3.5rem, 10vw, 8rem)',
+        fontWeight: 400,
+        letterSpacing: '-0.04em',
+        lineHeight: 0.9,
+        color: '#ffffff',
+        transform: inView ? 'translateY(0)' : 'translateY(40px)',
+        opacity: inView ? 1 : 0,
+        transition: `transform 1s cubic-bezier(0.16,1,0.3,1) ${delay}s, opacity 0.8s ease ${delay}s`,
+      }}>{value}</div>
+      <div style={{
+        fontFamily: 'var(--font-body)',
+        fontSize: '0.5625rem',
+        letterSpacing: '0.22em',
+        textTransform: 'uppercase',
+        color: 'rgba(255,255,255,0.4)',
+        marginTop: '0.75rem',
+        transform: inView ? 'translateY(0)' : 'translateY(12px)',
+        opacity: inView ? 1 : 0,
+        transition: `transform 1s cubic-bezier(0.16,1,0.3,1) ${delay + 0.1}s, opacity 0.8s ease ${delay + 0.1}s`,
+      }}>{label}</div>
+    </div>
+  )
+}
+
+// --- Horizontal rule reveal ---
+function RevealRule({ delay = 0 }: { delay?: number }) {
+  const { ref, inView } = useReveal()
+  return (
+    <div ref={ref} style={{ height: '1px', overflow: 'hidden' }}>
+      <div style={{
+        height: '1px',
+        background: 'rgba(255,255,255,0.12)',
+        transform: inView ? 'scaleX(1)' : 'scaleX(0)',
+        transformOrigin: 'left',
+        transition: `transform 1.2s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
+      }} />
+    </div>
+  )
+}
+
+// --- Statement block (the "Space" big text moments) ---
+function Statement({ lines, accent, sub }: { lines: string[]; accent?: string; sub?: string }) {
+  const { ref, inView } = useReveal(0.15)
+  return (
+    <div ref={ref} style={{ padding: 'clamp(5rem, 10vw, 9rem) 0' }}>
+      {accent && (
+        <div style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '0.5625rem',
+          letterSpacing: '0.28em',
+          textTransform: 'uppercase',
+          color: 'var(--color-primary)',
+          marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
+          opacity: inView ? 1 : 0,
+          transition: 'opacity 0.8s ease 0.1s',
+        }}>{accent}</div>
+      )}
+      <div>
+        {lines.map((line, i) => (
+          <div key={i} style={{ overflow: 'hidden' }}>
+            <div style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.5rem, 8vw, 7.5rem)',
+              fontWeight: 400,
+              letterSpacing: '-0.03em',
+              lineHeight: 0.92,
+              color: '#ffffff',
+              transform: inView ? 'translateY(0)' : 'translateY(110%)',
+              opacity: inView ? 1 : 0,
+              transition: `transform 1s cubic-bezier(0.16,1,0.3,1) ${0.08 * i}s, opacity 0.6s ease ${0.08 * i}s`,
+              paddingBottom: '0.06em',
+            }}>{line}</div>
+          </div>
+        ))}
+      </div>
+      {sub && (
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+          color: 'rgba(255,255,255,0.45)',
+          marginTop: 'clamp(1.5rem, 3vw, 2.5rem)',
+          maxWidth: '52ch',
+          lineHeight: 1.7,
+          opacity: inView ? 1 : 0,
+          transition: 'opacity 0.9s ease 0.4s',
+        }}>{sub}</p>
+      )}
+    </div>
+  )
+}
 
 export default function Home() {
   const [blueprintOpen, setBlueprintOpen] = useState(false)
+  const heroRef = useRef<HTMLElement>(null)
+  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+  const heroY = useTransform(heroScroll, [0, 1], ['0%', '30%'])
+  const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0])
+  const heroTextY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
 
   return (
     <>
@@ -39,273 +161,441 @@ export default function Home() {
         description="Fractional F&B operations leadership for Miami restaurants, hotels & new openings. 18 years opening, stabilizing, and scaling hospitality operations."
         path="/"
       />
-
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
-      {/* Hero */}
-      <section className="relative flex items-center justify-center overflow-hidden" style={{ minHeight: '100svh' }}>
-        <div className="absolute inset-0" style={{ zIndex: 0 }}>
+      {/* ── HERO ── Full-screen cinematic entry */}
+      <section
+        ref={heroRef}
+        style={{
+          position: 'relative',
+          height: '100svh',
+          minHeight: '600px',
+          display: 'flex',
+          alignItems: 'center',
+          overflow: 'hidden',
+          background: '#0a0905',
+        }}
+      >
+        {/* Parallax background image */}
+        <motion.div
+          style={{
+            position: 'absolute',
+            inset: '-20%',
+            y: heroY,
+            zIndex: 0,
+          }}
+        >
           <img
             src="/landing-hero.jpg"
             alt=""
             width="1920"
-            height="1080"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            height="1200"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
           />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.30) 0%, rgba(10,10,10,0.50) 60%, var(--color-bg) 100%)' }} />
-        </div>
+          {/* Multi-layer overlay for cinematic darkness */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,9,5,0.62) 0%, rgba(10,9,5,0.40) 40%, rgba(10,9,5,0.80) 80%, #0a0905 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(10,9,5,0.55) 100%)' }} />
+        </motion.div>
 
-        <div className="container relative" style={{ zIndex: 1, paddingTop: 'clamp(6rem, 12vw, 9rem)', paddingBottom: 'clamp(3rem, 6vw, 5rem)' }}>
-          <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center' }}>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <span className="kicker">Miami, Florida</span>
-            </motion.div>
-
-            {/* FIX #4: lowered floor from 3rem to 2.25rem so 375px doesn't get a 48px heading */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}
-              style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.25rem, 10vw, 7rem)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: '#ffffff', marginBottom: 'var(--space-6)' }}
-            >
-              Leander Mena
-            </motion.h1>
-
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }} animate={{ opacity: 1, scaleX: 1 }} transition={{ delay: 0.3, duration: 0.6 }}
-              style={{ height: '1px', background: 'linear-gradient(to right, transparent, var(--color-primary), transparent)', margin: '0 auto var(--space-6)', maxWidth: '200px' }}
-            />
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
-              style={{ fontSize: '0.72rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', marginBottom: 'var(--space-6)' }}
-            >
-              Hospitality &amp; Food-and-Beverage Operations
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }}
-              style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', fontStyle: 'italic', color: 'rgba(255,255,255,0.75)', maxWidth: '54ch', margin: '0 auto var(--space-10)', lineHeight: 1.7 }}
-            >
-              18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami. Now available as fractional leadership and digital products.
-            </motion.p>
-
-            {/* FIX #1: column on mobile, row on tablet+ */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }}
-              className="hero-cta-group"
-            >
-              <Link to="/book" className="btn btn-primary">Book a Discovery Call <ArrowRight size={16} /></Link>
-              <Link to="/products" className="btn btn-secondary">Explore Digital Products</Link>
-              <button
-                onClick={() => setBlueprintOpen(true)}
-                className="btn btn-secondary"
-                style={{ borderColor: 'var(--color-primary)', color: 'var(--color-primary)' }}
+        {/* Centered hero text */}
+        <motion.div
+          style={{ position: 'relative', zIndex: 1, width: '100%', y: heroTextY, opacity: heroOpacity }}
+        >
+          <div className="container">
+            <div style={{ maxWidth: '900px' }}>
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.5625rem',
+                  letterSpacing: '0.28em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-primary)',
+                  marginBottom: 'clamp(1.25rem, 2.5vw, 2rem)',
+                }}
               >
-                <Download size={16} /> Free Pre-Opening Blueprint
-              </button>
-            </motion.div>
-          </div>
+                Miami, Florida · F&amp;B Operations
+              </motion.p>
 
-          {/* FIX #2: removed md:grid-cols-4 Tailwind class (conflicts with inline style);
-              responsive columns now handled via .stats-grid CSS below */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }}
-            className="stats-grid"
-            style={{ marginTop: 'clamp(4rem, 8vw, 7rem)' }}
-          >
-            {stats.map((stat, i) => (
-              <div key={i} style={{ textAlign: 'center', padding: 'var(--space-6)', border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(8px)', borderRadius: 'var(--radius-md)' }}>
-                <div style={{ color: 'var(--color-primary)', marginBottom: 'var(--space-3)', display: 'flex', justifyContent: 'center' }}>{stat.icon}</div>
-                <p style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', color: '#ffffff', marginBottom: 'var(--space-1)', lineHeight: 1 }}>{stat.value}</p>
-                <p style={{ fontSize: '0.68rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)' }}>{stat.label}</p>
+              <div style={{ overflow: 'hidden', marginBottom: '0.04em' }}>
+                <motion.h1
+                  initial={{ y: '100%', opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(3.25rem, 12vw, 10rem)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.035em',
+                    lineHeight: 0.88,
+                    color: '#ffffff',
+                    margin: 0,
+                  }}
+                >
+                  Leander
+                </motion.h1>
               </div>
-            ))}
-          </motion.div>
-        </div>
+              <div style={{ overflow: 'hidden', marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
+                <motion.div
+                  initial={{ y: '100%', opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(3.25rem, 12vw, 10rem)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.035em',
+                    lineHeight: 0.88,
+                    color: 'rgba(255,255,255,0.22)',
+                    fontStyle: 'italic',
+                  }}
+                >
+                  Mena
+                </motion.div>
+              </div>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 'clamp(0.875rem, 1.5vw, 1.0625rem)',
+                  color: 'rgba(255,255,255,0.50)',
+                  maxWidth: '46ch',
+                  lineHeight: 1.75,
+                  marginBottom: 'clamp(2rem, 4vw, 3rem)',
+                }}
+              >
+                18+ years opening, leading, and scaling restaurants, hotels, and catering operations across Miami — now available as fractional leadership.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.7 }}
+                style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', alignItems: 'center' }}
+              >
+                <Link
+                  to="/book"
+                  className="btn btn-primary"
+                  style={{ fontSize: '0.625rem', letterSpacing: '0.18em', minHeight: '48px', paddingInline: 'var(--space-8)' }}
+                >
+                  Book a Discovery Call
+                </Link>
+                <button
+                  onClick={() => setBlueprintOpen(true)}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.625rem',
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.45)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: '0.75rem 0',
+                    transition: 'color 200ms ease',
+                    WebkitTapHighlightColor: 'transparent',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.80)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
+                >
+                  <Download size={12} /> Free Pre-Opening Blueprint
+                </button>
+              </motion.div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
+          style={{
+            position: 'absolute',
+            bottom: 'clamp(1.5rem, 4vw, 2.5rem)',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 2,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}
+        >
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.4375rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Scroll</p>
+          <motion.div
+            animate={{ y: [0, 6, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(255,255,255,0.30), transparent)' }}
+          />
+        </motion.div>
       </section>
 
-      {/* Trust Bar */}
-      <div style={{ borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)', paddingBlock: 'var(--space-6)' }}>
-        <div className="container">
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 'var(--space-6)' }}>
-            {trustBadges.map((badge) => (
-              <span key={badge} style={{ fontSize: '0.72rem', letterSpacing: '0.13em', textTransform: 'uppercase', color: 'var(--color-text-muted)', opacity: 0.6 }}>{badge}</span>
-            ))}
+      {/* ── DARK SCROLLYTELLING BODY ── */}
+      <div style={{ background: '#0a0905', color: '#ffffff' }}>
+
+        {/* ── NUMBERS SECTION ── The bold data moment */}
+        <section style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)', paddingBlock: 'clamp(4rem, 8vw, 7rem)' }}>
+          <div className="container">
+            <div className="home-stats-grid">
+              <AnimatedStat value="18+" label="Years of Experience" delay={0} />
+              <AnimatedStat value="$12M+" label="Revenue Optimized" delay={0.1} />
+              <AnimatedStat value="500+" label="Team Members Trained" delay={0.2} />
+              <AnimatedStat value="40+" label="Properties Operated" delay={0.3} />
+            </div>
           </div>
-        </div>
+        </section>
+
+        {/* ── STATEMENT 01 — The Problem ── */}
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="container">
+            <Statement
+              accent="The Reality"
+              lines={['Most openings', 'fail the same way.']}
+              sub="Missed timelines. Undertrained staff. Systems built on instinct rather than process. The difference between a venue that opens strong and one that never recovers is decided in the 90 days before the doors open."
+            />
+          </div>
+        </section>
+
+        {/* ── STATEMENT 02 — The Solution ── */}
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.018)' }}>
+          <div className="container">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px,100%), 1fr))', gap: 'clamp(3rem, 6vw, 6rem)', alignItems: 'center', paddingBlock: 'clamp(5rem, 10vw, 9rem)' }}>
+              <Statement
+                accent="The Approach"
+                lines={['Fractional.', 'Focused.', 'Measurable.']}
+              />
+              <div>
+                {[
+                  { n: '01', title: 'Rapid Diagnosis', body: 'Root causes identified within the first week, not months into a retainer.' },
+                  { n: '02', title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow — built with them, not for them.' },
+                  { n: '03', title: 'Measurable ROI', body: 'Average 3–5× return on consulting investment within 6 months.' },
+                  { n: '04', title: 'No Full-Time Overhead', body: 'Senior operator-level expertise without the cost or complexity of a C-suite hire.' },
+                ].map((item, i) => {
+                  const { ref, inView } = useReveal(0.2)
+                  return (
+                    <div
+                      key={item.n}
+                      ref={ref}
+                      style={{
+                        display: 'flex',
+                        gap: 'clamp(1rem, 2.5vw, 2rem)',
+                        paddingBlock: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                        borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                        opacity: inView ? 1 : 0,
+                        transform: inView ? 'translateX(0)' : 'translateX(20px)',
+                        transition: `opacity 0.8s ease ${i * 0.08}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`,
+                      }}
+                    >
+                      <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.5rem', letterSpacing: '0.15em', color: 'rgba(255,255,255,0.20)', paddingTop: '0.2em', flexShrink: 0, width: '1.5rem' }}>{item.n}</span>
+                      <div>
+                        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1rem, 2vw, 1.2rem)', fontWeight: 400, color: '#ffffff', marginBottom: '0.4rem', letterSpacing: '-0.01em' }}>{item.title}</p>
+                        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.40)', lineHeight: 1.65 }}>{item.body}</p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SERVICES ── Dark card grid */}
+        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="container">
+            <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
+              <RevealLine>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '1rem' }}>Consulting Services</p>
+              </RevealLine>
+              <RevealLine delay={0.08}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>Operational leadership,<br />on demand.</h2>
+              </RevealLine>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px,100%), 1fr))', gap: 'var(--space-4)' }}>
+              {services.map((service, i) => <ServiceCard key={service.id} service={service} index={i} />)}
+            </div>
+            <div style={{ marginTop: 'clamp(2rem, 4vw, 3.5rem)' }}>
+              <Link to="/services" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.625rem',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.45)',
+                textDecoration: 'none',
+                transition: 'color 200ms ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
+              >
+                View all services &amp; pricing <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PROCESS — Editorial numbered list ── */}
+        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="container">
+            <div style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
+              <RevealLine>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '1rem' }}>How It Works</p>
+              </RevealLine>
+              <RevealLine delay={0.08}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>First call to<br />measurable results.</h2>
+              </RevealLine>
+            </div>
+            <div>
+              {[
+                { step: '01', title: 'Discovery Call', desc: '30-minute conversation to understand your challenges, timeline, and goals.' },
+                { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations — typically 3–5 days on location.' },
+                { step: '03', title: 'Implementation', desc: 'Execute the action plan with weekly check-ins and real-time adjustments.' },
+                { step: '04', title: 'Sustainable Results', desc: 'Handover systems, train your team, and ensure improvements stick long-term.' },
+              ].map((item, i) => {
+                const { ref, inView } = useReveal(0.25)
+                return (
+                  <div key={item.step} ref={ref}>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: '3rem 1fr auto',
+                      gap: 'clamp(1rem, 3vw, 2.5rem)',
+                      alignItems: 'baseline',
+                      paddingBlock: 'clamp(1.25rem, 2.5vw, 2rem)',
+                      borderBottom: '1px solid rgba(255,255,255,0.07)',
+                      opacity: inView ? 1 : 0,
+                      transform: inView ? 'translateY(0)' : 'translateY(24px)',
+                      transition: `opacity 0.8s ease ${i * 0.1}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${i * 0.1}s`,
+                    }}>
+                      <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.5rem', letterSpacing: '0.14em', color: 'rgba(255,255,255,0.18)' }}>{item.step}</span>
+                      <div>
+                        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.15rem, 2.5vw, 1.75rem)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0.35rem' }}>{item.title}</p>
+                        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.35)', lineHeight: 1.65, maxWidth: '52ch' }}>{item.desc}</p>
+                      </div>
+                      <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'rgba(255,255,255,0.05)', letterSpacing: '-0.04em', lineHeight: 1, alignSelf: 'center' }}>{item.step}</span>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ── STATEMENT 03 — Brand conviction ── */}
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="container">
+            <Statement
+              accent="The Philosophy"
+              lines={['Operations is culture.', 'Culture is revenue.']}
+              sub="Every SOP, every shift briefing, every table turn is a reflection of leadership. When the systems are right, everything else follows."
+            />
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS ── */}
+        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="container">
+            <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
+              <RevealLine>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '1rem' }}>Client Results</p>
+              </RevealLine>
+              <RevealLine delay={0.08}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>Measurable impact,<br />real words.</h2>
+              </RevealLine>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px,100%), 1fr))', gap: 'var(--space-4)', marginBottom: 'var(--space-4)' }}>
+              {approvedTestimonials.slice(0, 2).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} featured />)}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px,100%), 1fr))', gap: 'var(--space-4)' }}>
+              {approvedTestimonials.slice(2, 5).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} />)}
+            </div>
+            <div style={{ marginTop: 'clamp(2rem, 4vw, 3.5rem)' }}>
+              <Link to="/case-studies" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.625rem',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.45)',
+                textDecoration: 'none',
+                transition: 'color 200ms ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
+              >
+                Read full case studies <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── PRODUCTS ── */}
+        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', background: 'rgba(255,255,255,0.018)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+          <div className="container">
+            <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
+              <RevealLine>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '1rem' }}>Digital Products</p>
+              </RevealLine>
+              <RevealLine delay={0.08}>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>Tools built from<br />real experience.</h2>
+              </RevealLine>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px,100%), 1fr))', gap: 'var(--space-4)' }}>
+              {products.slice(0, 3).map((product) => <ProductCard key={product.id} product={product} />)}
+            </div>
+            <div style={{ marginTop: 'clamp(2rem, 4vw, 3.5rem)' }}>
+              <Link to="/products" style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.625rem',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.45)',
+                textDecoration: 'none',
+                transition: 'color 200ms ease',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
+              >
+                Browse all products <ArrowRight size={12} />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── BLUEPRINT CTA ── */}
+        <BlueprintCTA />
+
+        {/* ── FINAL CTA ── */}
+        <CTABanner
+          title="Let's Build Something That Runs Well"
+          subtitle="Whether you're 90 days from opening or trying to fix a difficult quarter — the next move is simple: start the conversation."
+          primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
+          secondaryCta={{ label: 'Explore Products', href: '/products' }}
+        />
       </div>
 
-      {/* Blueprint CTA */}
-      <BlueprintCTA />
-
-      {/* Services */}
-      <section className="section">
-        <div className="container">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
-            <span className="kicker">Consulting Services</span>
-            <h2 style={{ marginBottom: 'var(--space-3)' }}>Operational Leadership, On Demand</h2>
-            <p className="section-intro" style={{ marginBottom: 0 }}>Four engagement models designed to meet you where you are, from pre-opening builds to operational turnarounds.</p>
-          </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 'var(--space-6)' }}>
-            {services.map((service, i) => <ServiceCard key={service.id} service={service} index={i} />)}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
-            <Link to="/services" className="btn btn-secondary">View All Services &amp; Pricing <ArrowRight size={16} /></Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Products Preview */}
-      <section className="section" style={{ background: 'var(--color-surface)' }}>
-        <div className="container">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
-            <span className="kicker">Digital Products</span>
-            <h2 style={{ marginBottom: 'var(--space-3)' }}>Tools Built from Real Experience</h2>
-            <p className="section-intro" style={{ marginBottom: 0 }}>SOPs, playbooks, and courses distilled from 18+ years operating Miami&rsquo;s top hospitality venues.</p>
-          </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-6)' }}>
-            {products.slice(0, 3).map((product) => <ProductCard key={product.id} product={product} />)}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
-            <Link to="/products" className="btn btn-secondary">Browse All Products <ArrowRight size={16} /></Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section">
-        <div className="container">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
-            <span className="kicker">Client Results</span>
-            <h2 style={{ marginBottom: 'var(--space-3)' }}>Measurable Impact, Real Words</h2>
-          </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'var(--space-6)', marginBottom: 'var(--space-6)' }}>
-            {approvedTestimonials.slice(0, 2).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} featured />)}
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--space-6)' }}>
-            {approvedTestimonials.slice(2, 5).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} />)}
-          </div>
-          <div style={{ textAlign: 'center', marginTop: 'var(--space-8)' }}>
-            <Link to="/case-studies" className="btn btn-secondary">Read Full Case Studies <ArrowRight size={16} /></Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Fractional */}
-      <section className="section" style={{ background: 'var(--color-surface)' }}>
-        <div className="container">
-          {/* FIX #3: min(320px, 100%) prevents overflow on narrow viewports */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: 'var(--space-16)', alignItems: 'center' }}>
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <span className="kicker">The Difference</span>
-              <h2 style={{ marginBottom: 'var(--space-4)' }}>Why Operators Choose Fractional Leadership</h2>
-              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.7, marginBottom: 'var(--space-8)', fontSize: '0.95rem' }}>
-                Most hospitality groups don&rsquo;t need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team, without the overhead of a permanent C-suite hire.
-              </p>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-8)' }}>
-                {[
-                  { icon: <Zap size={18} />, title: 'Rapid Diagnosis', desc: 'Identify root causes within the first week, not months' },
-                  { icon: <CheckCircle size={18} />, title: 'Systems That Stick', desc: 'SOPs and training programs your team will actually follow' },
-                  { icon: <Star size={18} />, title: 'Proven Track Record', desc: '18+ years across Michelin concepts, luxury hotels, and independents' },
-                  { icon: <TrendingUp size={18} />, title: 'Measurable ROI', desc: 'Average 3-5x return on consulting investment within 6 months' },
-                ].map((item) => (
-                  <li key={item.title} style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start' }}>
-                    <div style={{ width: '38px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(184,160,128,0.10)', color: 'var(--color-primary)', borderRadius: 'var(--radius-sm)', flexShrink: 0 }}>{item.icon}</div>
-                    <div>
-                      <p style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--color-text)', marginBottom: '0.2rem' }}>{item.title}</p>
-                      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>{item.desc}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <Link to="/about" className="btn btn-primary">Learn More About Leander <ArrowRight size={16} /></Link>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-              <div style={{ aspectRatio: '4/5', borderRadius: 'var(--radius-lg)', overflow: 'hidden', position: 'relative', border: '1px solid var(--color-border)' }}>
-                <img src="/images/about.jpg" alt="Leander Mena - F&B Operations Leader" width="600" height="750" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 45%)' }} />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: 'var(--space-8)', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-6)' }}>
-                  {[{ num: '$12M+', label: 'Revenue Optimized' }, { num: '500+', label: 'Team Members' }, { num: '40+', label: 'Properties' }, { num: '18+', label: 'Years Leading' }].map((s) => (
-                    <div key={s.label}>
-                      <p style={{ fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--color-primary)', lineHeight: 1 }}>{s.num}</p>
-                      <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: '0.2rem' }}>{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="section">
-        <div className="container">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
-            <span className="kicker">How It Works</span>
-            <h2 style={{ marginBottom: 0 }}>From First Call to Measurable Results</h2>
-          </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 'var(--space-8)' }}>
-            {[
-              { step: '01', title: 'Discovery Call', desc: '30-minute conversation to understand your challenges, timeline, and goals.' },
-              { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations, typically 3-5 days on location.' },
-              { step: '03', title: 'Implementation', desc: 'Execute the action plan with weekly check-ins and real-time adjustments.' },
-              { step: '04', title: 'Sustainable Results', desc: 'Handover systems, train your team, and ensure improvements stick long-term.' },
-            ].map((item, i) => (
-              <motion.div key={item.step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.1 }}>
-                <span style={{ fontFamily: 'var(--font-serif)', fontSize: '3.5rem', color: 'rgba(184,160,128,0.18)', lineHeight: 1, display: 'block', marginBottom: 'var(--space-3)' }}>{item.step}</span>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', color: 'var(--color-text)', marginBottom: 'var(--space-2)' }}>{item.title}</h3>
-                <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.65 }}>{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Banner */}
-      <CTABanner
-        title="Let's Build Something That Runs Well"
-        subtitle="Whether you're 90 days from opening or trying to fix a difficult quarter, the next move is simple: start the conversation."
-        primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
-        secondaryCta={{ label: 'Explore Products', href: '/products' }}
-      />
-
-      {/* Mobile layout styles */}
       <style>{`
-        /* Hero CTA group: column on mobile, row on tablet+ */
-        .hero-cta-group {
-          display: flex;
-          flex-direction: column;
-          gap: var(--space-3);
-          align-items: stretch;
-          width: 100%;
-          max-width: 360px;
-          margin: 0 auto;
-        }
-        .hero-cta-group .btn {
-          width: 100%;
-          justify-content: center;
-        }
-        @media (min-width: 600px) {
-          .hero-cta-group {
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: none;
-          }
-          .hero-cta-group .btn {
-            width: auto;
-          }
-        }
-
-        /* Stats grid: 2-col on mobile, 4-col on md+ */
-        .stats-grid {
+        .home-stats-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: var(--space-4);
+          gap: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
         }
-        @media (min-width: 768px) {
-          .stats-grid {
+        @media (min-width: 640px) {
+          .home-stats-grid {
             grid-template-columns: repeat(4, 1fr);
           }
         }
