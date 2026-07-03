@@ -6,6 +6,7 @@ import About from '@/pages/About'
 import Services from '@/pages/Services'
 import PreOpening from '@/pages/PreOpening'
 import Experience from '@/pages/Experience'
+import Skills from '@/pages/Skills'
 import Philosophy from '@/pages/Philosophy'
 import Contact from '@/pages/Contact'
 import Profile from '@/pages/Profile'
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/pre-opening" element={<PreOpening />} />
         <Route path="/experience" element={<Experience />} />
+        <Route path="/skills" element={<Skills />} />
         <Route path="/philosophy" element={<Philosophy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={<Profile />} />
