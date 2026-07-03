@@ -7,12 +7,12 @@
    Density: spacious, breathable — every element earns its room
    ============================================================ */
 
-/* ── Google Fonts — Cormorant Garamond + DM Sans ── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ── Google Fonts — Cormorant Garamond + DM Sans ── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
 
 @layer base {
   /* ── Design tokens (dark-first defaults) ── */
@@ -159,7 +159,6 @@
     font-weight: 400;
   }
 
-  /* Cormorant: use weight 300-400 for refined editorial look */
   h1 { font-weight: 300; letter-spacing: -0.02em; }
   h2 { font-weight: 400; letter-spacing: -0.015em; }
   h3 { font-weight: 500; }
@@ -209,7 +208,6 @@
 
 @layer components {
 
-  /* ── Layout ── */
   .container {
     width: 100%;
     max-width: var(--content-wide);
@@ -221,7 +219,6 @@
     padding-block: clamp(var(--space-16), 9vw, var(--space-32));
   }
 
-  /* ── Typography ── */
   .kicker {
     display: inline-flex;
     align-items: center;
@@ -235,7 +232,6 @@
     margin-bottom: var(--space-4);
   }
 
-  /* Kicker with decorative line */
   .kicker::before {
     content: '';
     display: block;
@@ -256,7 +252,6 @@
     max-width: 56ch;
   }
 
-  /* ── Gold ornamental rule ── */
   .gold-rule {
     display: block;
     height: 1px;
@@ -272,7 +267,6 @@
     margin-block: var(--space-8);
   }
 
-  /* ── Buttons — tactile, refined ── */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -335,7 +329,6 @@
   }
   .btn-ghost:hover { color: var(--color-text); }
 
-  /* ── Cards ── */
   .card {
     background: var(--color-surface);
     border: 1px solid oklch(from var(--color-text) l c h / 0.06);
@@ -352,14 +345,12 @@
     transform: translateY(-3px);
   }
 
-  /* ── Role / editorial indent ── */
   .role {
     border-left: 1px solid oklch(from var(--color-primary) l c h / 0.35);
     padding-left: var(--space-6);
     margin-bottom: var(--space-8);
   }
 
-  /* ── Forms ── */
   .form-label {
     display: block;
     font-family: var(--font-body);
@@ -391,14 +382,12 @@
 
   textarea.form-input { resize: vertical; min-height: 140px; }
 
-  /* ── Divider ── */
   .divider {
     border: none;
     border-top: 1px solid var(--color-divider);
     margin-block: var(--space-10);
   }
 
-  /* ── Badge ── */
   .badge {
     display: inline-flex;
     align-items: center;
@@ -418,7 +407,6 @@
     border: 1px solid oklch(from var(--color-primary) l c h / 0.20);
   }
 
-  /* ── Skeleton loader ── */
   @keyframes shimmer {
     0%   { background-position: -200% 0; }
     100% { background-position:  200% 0; }
@@ -438,7 +426,6 @@
     .skeleton { animation: none; background: var(--color-surface-offset); }
   }
 
-  /* ── Prose ── */
   .prose h2 {
     font-family: var(--font-display);
     font-size: clamp(1.4rem, 2.8vw, 1.9rem);
@@ -498,7 +485,6 @@
   }
   .prose a:hover { color: var(--color-primary-hover); }
 
-  /* ── Stat card ── */
   .stat-value {
     font-family: var(--font-display);
     font-size: clamp(2.25rem, 4.5vw, 3.5rem);
@@ -516,7 +502,6 @@
     margin-top: var(--space-2);
   }
 
-  /* ── Testimonial quote ── */
   .quote-mark {
     font-family: var(--font-accent);
     font-size: 6rem;
@@ -528,7 +513,6 @@
     margin-bottom: var(--space-4);
   }
 
-  /* ── Animated gold underline for nav links ── */
   .nav-link-premium {
     position: relative;
     text-decoration: none;
@@ -551,7 +535,6 @@
     transform-origin: left;
   }
 
-  /* ── Scroll reveal ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -565,7 +548,6 @@
     to   { opacity: 1; transform: scale(1); }
   }
 
-  /* ── Image overlay helper ── */
   .img-overlay-dark {
     position: relative;
     overflow: hidden;
@@ -583,7 +565,6 @@
     pointer-events: none;
   }
 
-  /* ── Section label ── */
   .section-label {
     display: flex;
     align-items: center;
@@ -604,7 +585,6 @@
   }
 }
 
-/* ── Utility: system pref dark mode fallback ── */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --color-bg:               #080807;
