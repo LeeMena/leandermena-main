@@ -1,56 +1,38 @@
-import { useEffect, useState } from 'react';
-import { useCart } from '@/context/CartContext';
+import { useCart } from '@/context/CartContext'
+import { X, ShoppingBag, Minus, Plus, Trash2 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
+// Animate in/out: keep in DOM while transitioning
 export default function CartDrawer() {
-  const { items, removeFromCart, updateQuantity, total, itemCount, isOpen, setIsOpen, clearCart } = useCart();
-  const [visible, setVisible] = useState(false)
-
-  // Animate in/out — keep in DOM while transitioning
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden'
-      const raf = requestAnimationFrame(() => setVisible(true))
-      return () => cancelAnimationFrame(raf)
-    } else {
-      setVisible(false)
-      document.body.style.overflow = ''
-    }
-    return () => { document.body.style.overflow = '' }
-  }, [isOpen])
-
-  // Escape key
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setIsOpen(false) }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [setIsOpen])
+  const { items, isOpen, closeCart, updateQuantity, removeItem, total, itemCount } = useCart()
 
   const handleCheckout = () => {
-    alert('Checkout coming soon — connect your payment processor here.');
-  };
+    alert('Checkout coming soon. Connect your payment processor here.')
+  }
 
-  if (!isOpen && !visible) return null
+  if (!isOpen && items.length === 0) return null
 
   return (
     <>
       {/* Backdrop */}
       <div
+        onClick={closeCart}
         style={{
           position: 'fixed',
           inset: 0,
-          background: 'rgba(0,0,0,0.55)',
-          backdropFilter: 'blur(2px)',
-          zIndex: 999,
-          opacity: visible ? 1 : 0,
-          transition: 'opacity 300ms ease',
+          background: 'rgba(0,0,0,0.5)',
+          zIndex: 200,
+          opacity: isOpen ? 1 : 0,
           pointerEvents: isOpen ? 'auto' : 'none',
+          transition: 'opacity 300ms ease',
         }}
-        onClick={() => setIsOpen(false)}
         aria-hidden="true"
       />
 
       {/* Drawer */}
-      <aside
+      <div
+        role="dialog"
+        aria-modal="true"
         aria-label="Shopping cart"
         style={{
           position: 'fixed',
@@ -59,14 +41,12 @@ export default function CartDrawer() {
           bottom: 0,
           width: 'min(420px, 100vw)',
           background: 'var(--color-surface)',
-          borderLeft: '1px solid var(--color-border)',
-          zIndex: 1000,
+          zIndex: 201,
           display: 'flex',
           flexDirection: 'column',
-          boxShadow: '-8px 0 48px rgba(0,0,0,0.3)',
-          transform: visible ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 320ms cubic-bezier(0.16,1,0.3,1)',
-          paddingBottom: 'env(safe-area-inset-bottom)',
+          transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+          transition: 'transform 400ms cubic-bezier(0.16, 1, 0.3, 1)',
+          boxShadow: 'var(--shadow-lg)',
         }}
       >
         {/* Header */}
@@ -74,189 +54,126 @@ export default function CartDrawer() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '1rem 1.25rem',
-          borderBottom: '1px solid var(--color-border)',
-          flexShrink: 0,
+          padding: 'var(--space-5) var(--space-6)',
+          borderBottom: '1px solid var(--color-divider)',
         }}>
-          <div>
-            <p style={{ fontSize: '0.65rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '2px' }}>Your Order</p>
-            <span style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-text)' }}>
-              Cart {itemCount > 0 && <span style={{ color: 'var(--color-primary)' }}>({itemCount})</span>}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+            <ShoppingBag size={18} />
+            <span style={{ fontFamily: 'var(--font-body)', fontWeight: 600, fontSize: 'var(--text-sm)' }}>
+              Cart {itemCount > 0 && `(${itemCount})`}
             </span>
           </div>
           <button
-            onClick={() => setIsOpen(false)}
+            onClick={closeCart}
             aria-label="Close cart"
-            style={{
-              width: '36px',
-              height: '36px',
-              borderRadius: 'var(--radius-md)',
-              border: '1px solid var(--color-border)',
-              background: 'var(--color-surface-offset)',
-              color: 'var(--color-text-muted)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              flexShrink: 0,
-              transition: 'background 180ms ease, color 180ms ease',
-            }}
-            onMouseEnter={e => {
-              const el = e.currentTarget as HTMLButtonElement
-              el.style.background = 'var(--color-surface-dynamic)'
-              el.style.color = 'var(--color-text)'
-            }}
-            onMouseLeave={e => {
-              const el = e.currentTarget as HTMLButtonElement
-              el.style.background = 'var(--color-surface-offset)'
-              el.style.color = 'var(--color-text-muted)'
-            }}
+            style={{ color: 'var(--color-text-muted)', padding: 'var(--space-2)', borderRadius: 'var(--radius-sm)' }}
           >
-            <svg width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M2 2l10 10M12 2L2 12" />
-            </svg>
+            <X size={20} />
           </button>
         </div>
 
-        {/* Items */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem' }}>
+        {/* Body */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: 'var(--space-5) var(--space-6)' }}>
           {items.length === 0 ? (
-            <div style={{ textAlign: 'center', paddingTop: '4rem', color: 'var(--color-text-muted)' }}>
-              <svg width="40" height="40" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24"
-                style={{ margin: '0 auto 1rem', opacity: 0.3 }}>
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <path d="M16 10a4 4 0 01-8 0"/>
-              </svg>
-              <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-text)', marginBottom: '0.35rem' }}>Your cart is empty</p>
-              <p style={{ fontSize: '0.8rem' }}>Browse the shop to add products.</p>
+            <div style={{ textAlign: 'center', padding: 'var(--space-16) 0', color: 'var(--color-text-muted)' }}>
+              <ShoppingBag size={40} style={{ margin: '0 auto var(--space-4)', opacity: 0.3 }} />
+              <p style={{ fontSize: 'var(--text-sm)' }}>Your cart is empty</p>
+              <button
+                onClick={closeCart}
+                style={{ marginTop: 'var(--space-4)', fontSize: 'var(--text-sm)', color: 'var(--color-primary)', background: 'none', border: 'none', cursor: 'pointer' }}
+              >
+                Continue browsing
+              </button>
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {items.map(({ product, quantity }) => (
-                <div
-                  key={product.id}
-                  style={{
-                    display: 'flex',
-                    gap: '0.875rem',
-                    alignItems: 'flex-start',
-                    padding: '0.875rem',
-                    background: 'var(--color-bg)',
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
+              {items.map(item => (
+                <li key={item.id} style={{ display: 'flex', gap: 'var(--space-4)', alignItems: 'flex-start' }}>
+                  {/* Product icon */}
+                  <div style={{
+                    width: 56,
+                    height: 56,
                     borderRadius: 'var(--radius-md)',
-                    border: '1px solid var(--color-border)',
-                  }}
-                >
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: '0.875rem', fontWeight: 600, marginBottom: '0.2rem', color: 'var(--color-text)' }}>{product.title}</div>
-                    <div style={{ fontSize: '0.775rem', color: 'var(--color-text-muted)', marginBottom: '0.5rem' }}>{product.subtitle}</div>
-                    <div style={{ color: 'var(--color-primary)', fontWeight: 700, fontSize: '0.95rem' }}>${product.price}</div>
+                    background: 'var(--color-surface-offset)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexShrink: 0,
+                    fontSize: '1.5rem',
+                  }}>
+                    {item.icon}
                   </div>
 
-                  {/* Quantity + remove — 44px touch targets */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
-                      <button
-                        onClick={() => updateQuantity(product.id, quantity - 1)}
-                        aria-label="Decrease quantity"
-                        style={{
-                          width: '36px', height: '36px',
-                          borderRadius: 'var(--radius-sm)',
-                          background: 'var(--color-surface-offset)',
-                          border: '1px solid var(--color-border)',
-                          color: 'var(--color-text)',
-                          cursor: 'pointer',
-                          fontSize: '1rem',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          transition: 'background 150ms ease',
-                          WebkitTapHighlightColor: 'transparent',
-                        }}
-                      >−</button>
-                      <span style={{ fontSize: '0.875rem', minWidth: '1.5rem', textAlign: 'center', fontWeight: 600 }}>{quantity}</span>
-                      <button
-                        onClick={() => updateQuantity(product.id, quantity + 1)}
-                        aria-label="Increase quantity"
-                        style={{
-                          width: '36px', height: '36px',
-                          borderRadius: 'var(--radius-sm)',
-                          background: 'var(--color-surface-offset)',
-                          border: '1px solid var(--color-border)',
-                          color: 'var(--color-text)',
-                          cursor: 'pointer',
-                          fontSize: '1rem',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          transition: 'background 150ms ease',
-                          WebkitTapHighlightColor: 'transparent',
-                        }}
-                      >+</button>
+                  {/* Details */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p style={{ fontWeight: 600, fontSize: 'var(--text-sm)', marginBottom: 'var(--space-1)', lineHeight: 1.3 }}>{item.name}</p>
+                    <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)', lineHeight: 1.4 }}>{item.description}</p>
+
+                    {/* Quantity + remove: 44px touch targets */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-full)', overflow: 'hidden' }}>
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          aria-label="Decrease quantity"
+                          style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-muted)' }}
+                        >
+                          <Minus size={12} />
+                        </button>
+                        <span style={{ fontSize: 'var(--text-xs)', fontWeight: 600, minWidth: '1.5rem', textAlign: 'center' }}>{item.quantity}</span>
+                        <button
+                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          aria-label="Increase quantity"
+                          style={{ width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--color-text-muted)' }}
+                        >
+                          <Plus size={12} />
+                        </button>
+                      </div>
+
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                        <span style={{ fontWeight: 700, fontSize: 'var(--text-sm)' }}>${(item.price * item.quantity).toFixed(2)}</span>
+                        <button
+                          onClick={() => removeItem(item.id)}
+                          aria-label={`Remove ${item.name}`}
+                          style={{ color: 'var(--color-text-faint)', padding: 'var(--space-1)' }}
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
                     </div>
-                    <button
-                      onClick={() => removeFromCart(product.id)}
-                      style={{
-                        minHeight: '32px',
-                        padding: '0 0.5rem',
-                        fontSize: '0.72rem',
-                        color: 'var(--color-text-muted)',
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        textDecoration: 'underline',
-                        transition: 'color 150ms ease',
-                      }}
-                      onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-error)' }}
-                      onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-text-muted)' }}
-                    >Remove</button>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
 
         {/* Footer */}
         {items.length > 0 && (
           <div style={{
-            borderTop: '1px solid var(--color-border)',
-            padding: '1.25rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.875rem',
+            padding: 'var(--space-5) var(--space-6)',
+            borderTop: '1px solid var(--color-divider)',
             background: 'var(--color-surface)',
-            flexShrink: 0,
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ color: 'var(--color-text-muted)', fontSize: '0.85rem' }}>Total</span>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 700, color: 'var(--color-primary)' }}>
-                ${total.toLocaleString()}
-              </span>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'var(--space-4)' }}>
+              <span style={{ fontFamily: 'var(--font-body)', fontWeight: 500, fontSize: 'var(--text-sm)', color: 'var(--color-text-muted)' }}>Total</span>
+              <span style={{ fontFamily: 'var(--font-display)', fontSize: 'var(--text-lg)', fontWeight: 400, letterSpacing: '-0.02em' }}>${total.toFixed(2)}</span>
             </div>
             <button
-              className="btn btn-primary"
-              style={{ width: '100%', justifyContent: 'center' }}
               onClick={handleCheckout}
+              className="btn btn-primary"
+              style={{ width: '100%', justifyContent: 'center', marginBottom: 'var(--space-3)' }}
             >
               Proceed to Checkout
             </button>
             <button
-              style={{
-                background: 'none',
-                border: 'none',
-                color: 'var(--color-text-muted)',
-                fontSize: '0.775rem',
-                cursor: 'pointer',
-                textAlign: 'center',
-                textDecoration: 'underline',
-                minHeight: '36px',
-                transition: 'color 150ms ease',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-error)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.color = 'var(--color-text-muted)' }}
-              onClick={clearCart}
+              onClick={closeCart}
+              style={{ width: '100%', textAlign: 'center', fontSize: 'var(--text-xs)', color: 'var(--color-text-muted)', background: 'none', border: 'none', cursor: 'pointer', padding: 'var(--space-2)' }}
             >
-              Clear cart
+              Continue Shopping
             </button>
           </div>
         )}
-      </aside>
+      </div>
     </>
-  );
+  )
 }

@@ -5,93 +5,81 @@ export default function NotFound() {
   return (
     <>
       <SEO
-        title="Page Not Found"
-        description="This page doesn't exist. Return to Leander Mena's homepage or explore F&B consulting services."
+        title="404 - Page Not Found | Leander Mena"
+        description="The page you're looking for doesn't exist. Return to the Leander Mena homepage."
         path="/404"
       />
-      <section className="relative overflow-hidden" style={{ minHeight: '100dvh' }}>
-        {/* Background image — reuses hero asset */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/landing-hero.jpg)' }}
-        />
-        {/* Gradient: strong dark base, lighter top for atmosphere */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(to top, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.7) 50%, rgba(10,10,10,0.45) 100%)',
-          }}
-        />
+      <section
+        style={{
+          position: 'relative',
+          minHeight: '100svh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0a0905',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Background image: reuses hero asset */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+          <img
+            src="/landing-hero.jpg"
+            alt=""
+            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.15 }}
+          />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, #0a0905 0%, rgba(10,9,5,0.6) 50%, #0a0905 100%)' }} />
+        </div>
 
-        <div className="container relative z-10" style={{ paddingBlock: 'clamp(6rem,14vw,12rem)' }}>
-          {/* Oversized faded 404 — decorative depth */}
-          <div
-            aria-hidden="true"
-            style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(6rem,18vw,14rem)',
-              fontWeight: 800,
-              lineHeight: 1,
-              color: 'rgba(184,160,128,0.07)',
-              letterSpacing: '-0.04em',
-              userSelect: 'none',
-              marginBottom: '-1.5rem',
-            }}
-          >
-            404
-          </div>
+        {/* Oversized faded 404: decorative depth */}
+        <div style={{
+          position: 'absolute',
+          fontFamily: 'var(--font-display)',
+          fontSize: 'clamp(12rem, 40vw, 32rem)',
+          fontWeight: 400,
+          color: 'rgba(255,255,255,0.03)',
+          letterSpacing: '-0.06em',
+          lineHeight: 1,
+          userSelect: 'none',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}>404</div>
 
-          <span
-            style={{
-              display: 'inline-block',
-              fontSize: '0.68rem',
-              fontWeight: 700,
-              letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              color: 'var(--color-primary)',
-              marginBottom: '0.75rem',
-            }}
-          >
-            This table isn&rsquo;t set
-          </span>
+        <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: 'var(--space-8)' }}>
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.5625rem',
+            letterSpacing: '0.28em',
+            textTransform: 'uppercase',
+            color: 'var(--color-primary)',
+            marginBottom: 'var(--space-6)',
+          }}>Page Not Found</p>
 
-          <h1
-            className="font-display"
-            style={{
-              fontSize: 'clamp(2rem,4vw,3.25rem)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: '-0.01em',
-              color: '#fff',
-              maxWidth: '22ch',
-              marginBottom: '1rem',
-            }}
-          >
-            But we can find you one.
+          <h1 style={{
+            fontFamily: 'var(--font-display)',
+            fontSize: 'clamp(2.5rem, 8vw, 6rem)',
+            fontWeight: 400,
+            letterSpacing: '-0.03em',
+            lineHeight: 0.95,
+            color: '#ffffff',
+            marginBottom: 'var(--space-6)',
+          }}>
+            Lost in the weeds.
           </h1>
 
-          <p
-            style={{
-              fontSize: '1rem',
-              color: 'rgba(184,184,184,0.85)',
-              maxWidth: '42ch',
-              lineHeight: 1.7,
-              marginBottom: '2rem',
-            }}
-          >
-            The page you&rsquo;re looking for may have moved or never existed.
-            Head back home or reach out directly.
+          <p style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
+            color: 'rgba(255,255,255,0.45)',
+            maxWidth: '38ch',
+            lineHeight: 1.7,
+            margin: '0 auto var(--space-10)',
+          }}>
+            That page doesn't exist. Let's get you back to something useful.
           </p>
 
-          <div style={{ display: 'flex', gap: '0.875rem', flexWrap: 'wrap' }}>
-            <Link to="/" className="btn btn-primary">
-              Back to Home
-            </Link>
-            <Link to="/contact" className="btn btn-secondary">
-              Contact Leander
-            </Link>
-          </div>
+          <Link to="/" className="btn btn-primary" style={{ fontSize: '0.625rem', letterSpacing: '0.18em' }}>
+            Back to Home
+          </Link>
         </div>
       </section>
     </>

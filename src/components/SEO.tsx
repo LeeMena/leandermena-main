@@ -83,7 +83,7 @@ const SERVICES_FAQ = {
       name: 'What is a fractional F&B leader?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A fractional F&B leader is an experienced Food & Beverage executive who works with your operation on a part-time or project basis — delivering senior-level leadership without the cost of a full-time hire. You get the strategy, systems, and execution expertise of a seasoned GM or F&B Director, engaged only for the hours and duration you actually need.',
+        text: 'A fractional F&B leader is an experienced Food & Beverage executive who works with your operation on a part-time or project basis, delivering senior-level leadership without the cost of a full-time hire. You get the strategy, systems, and execution expertise of a seasoned GM or F&B Director, engaged only for the hours and duration you actually need.',
       },
     },
     {
@@ -91,7 +91,7 @@ const SERVICES_FAQ = {
       name: 'What does fractional F&B consulting cost in Miami?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Fractional F&B consulting engagements are scoped to the specific project or retainer. Pre-opening consulting typically runs 3–5 months. Fractional leadership retainers are structured monthly. Every engagement begins with a discovery conversation to define scope, timeline, and investment.',
+        text: 'Fractional F&B consulting engagements are scoped to the specific project or retainer. Pre-opening consulting typically runs 3-5 months. Fractional leadership retainers are structured monthly. Every engagement begins with a discovery conversation to define scope, timeline, and investment.',
       },
     },
     {
@@ -107,7 +107,7 @@ const SERVICES_FAQ = {
       name: 'How long does a pre-opening consulting engagement last?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Most pre-opening engagements run 90–120 days, beginning 3–4 months before target opening date. The timeline covers concept alignment, SOP development, hiring and training, vendor onboarding, and opening-day execution. Projects with longer construction timelines can be structured to match.',
+        text: 'Most pre-opening engagements run 90-120 days, beginning 3-4 months before target opening date. The timeline covers concept alignment, SOP development, hiring and training, vendor onboarding, and opening-day execution. Projects with longer construction timelines can be structured to match.',
       },
     },
     {
@@ -276,16 +276,10 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
         {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
-          name: 'Case Studies - F&B Operations Results | Leander Mena',
+          name: 'Case Studies - Leander Mena',
           url: `${BASE_URL}/case-studies`,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
-          description: 'Real results from hospitality consulting engagements: pre-opening builds, operations turnarounds, and labor cost improvements across Miami restaurants and hotels.',
-          hasPart: [
-            { '@type': 'WebPage', name: 'Maska Indian Kitchen Case Study', url: `${BASE_URL}/case-studies/maska-indian-kitchen` },
-            { '@type': 'WebPage', name: 'V&E Hospitality Turnaround', url: `${BASE_URL}/case-studies/ve-hospitality-turnaround` },
-            { '@type': 'WebPage', name: 'SLS Brickell Banquet Operations', url: `${BASE_URL}/case-studies/sls-brickell-banquets` },
-            { '@type': 'WebPage', name: 'Butler Hospitality Scale', url: `${BASE_URL}/case-studies/butler-hospitality-scale` },
-          ],
+          description: 'Real results from F&B consulting engagements: revenue recovered, openings stabilized, and teams rebuilt across Miami hospitality.',
         },
         breadcrumb('Case Studies'),
       ]
@@ -295,15 +289,12 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
         {
           '@context': 'https://schema.org',
           '@type': 'Article',
-          headline: description ?? caseStudy.client,
-          url,
-          image: DEFAULT_IMAGE,
+          headline: `${caseStudy.client} - F&B Operations Case Study`,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
           publisher: ORGANIZATION_PUBLISHER,
-          datePublished: '2026-06-14',
-          dateModified: '2026-06-14',
-          description: description ?? '',
-          mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+          url: `${BASE_URL}/case-studies/${caseStudy.slug}`,
+          image: DEFAULT_IMAGE,
+          description: `F&B operations case study for ${caseStudy.client}: ${caseStudy.results.map(r => `${r.metric} ${r.label}`).join(', ')}.`,
         },
         breadcrumb(caseStudy.client, '/case-studies', 'Case Studies'),
       ]
@@ -311,13 +302,27 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
       return [
         {
           '@context': 'https://schema.org',
-          '@type': 'WebPage',
-          name: 'Pre-Opening Blueprint - Leander Mena',
-          url: `${BASE_URL}/blueprint`,
-          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
-          description: 'The pre-opening blueprint used across 5+ Miami restaurant and hotel openings. Download the free framework for staffing, SOPs, and opening-day execution.',
+          '@type': 'Product',
+          name: 'Pre-Opening Blueprint',
+          description: 'A battle-tested pre-opening checklist and timeline for restaurant and hotel F&B programs. Built from 18+ years of Miami hospitality openings.',
+          brand: { '@type': 'Brand', name: 'Leander Mena' },
+          offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
         },
-        breadcrumb('Blueprint'),
+        breadcrumb('Pre-Opening Blueprint'),
+      ]
+    case 'profile':
+      return [
+        {
+          '@context': 'https://schema.org',
+          ...PERSON_BASE,
+          description: description || 'Leander Mena is a Miami-based fractional F&B operations leader.',
+        },
+        breadcrumb('Profile'),
       ]
     case 'article':
       if (!article) return []
@@ -326,51 +331,34 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           '@context': 'https://schema.org',
           '@type': 'Article',
           headline: article.headline,
-          url,
-          image: DEFAULT_IMAGE,
-          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
-          publisher: ORGANIZATION_PUBLISHER,
           datePublished: article.datePublished,
           dateModified: article.dateModified,
-          description: description ?? '',
-          mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          publisher: ORGANIZATION_PUBLISHER,
+          url,
+          image: DEFAULT_IMAGE,
+          description,
         },
+        breadcrumb(article.headline, '/insights', 'Insights'),
       ]
     default:
-      return [
-        {
-          '@context': 'https://schema.org',
-          ...PERSON_BASE,
-          description: '18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami.',
-        },
-      ]
+      return []
   }
 }
 
-export default function SEO({
-  title,
-  description,
-  path = '',
-  image = DEFAULT_IMAGE,
-  type = 'website',
-  schemaType = 'home',
-  article,
-  caseStudy,
-}: Props) {
-  const fullTitle = title.includes('Leander Mena') ? title : `${title} | Leander Mena`
+export default function SEO({ title, description, path = '/', image, type = 'website', schemaType, article, caseStudy }: Props) {
   const url = `${BASE_URL}${path}`
-  const ogType = schemaType === 'article' ? 'article' : type
+  const ogImage = image || DEFAULT_IMAGE
 
   useEffect(() => {
-    document.title = fullTitle
+    document.title = title
 
-    const setMeta = (name: string, content: string, prop = false) => {
-      const selector = prop ? `meta[property="${name}"]` : `meta[name="${name}"]`
-      let el = document.querySelector(selector) as HTMLMetaElement | null
+    const setMeta = (name: string, content: string, property = false) => {
+      const attr = property ? 'property' : 'name'
+      let el = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null
       if (!el) {
         el = document.createElement('meta')
-        if (prop) el.setAttribute('property', name)
-        else el.setAttribute('name', name)
+        el.setAttribute(attr, name)
         document.head.appendChild(el)
       }
       el.content = content
@@ -380,40 +368,45 @@ export default function SEO({
       let el = document.querySelector(`link[rel="${rel}"]`) as HTMLLinkElement | null
       if (!el) {
         el = document.createElement('link')
-        el.setAttribute('rel', rel)
+        el.rel = rel
         document.head.appendChild(el)
       }
       el.href = href
     }
 
     setMeta('description', description)
-    setMeta('og:title', fullTitle, true)
-    setMeta('og:description', description, true)
-    setMeta('og:image', image, true)
-    setMeta('og:url', url, true)
-    setMeta('og:type', ogType, true)
-    setMeta('twitter:card', 'summary_large_image')
-    setMeta('twitter:title', fullTitle)
-    setMeta('twitter:description', description)
-    setMeta('twitter:image', image)
+    setMeta('robots', 'index, follow')
     setLink('canonical', url)
 
-    if (schemaType === 'article' && article) {
-      setMeta('article:published_time', article.datePublished, true)
-      setMeta('article:modified_time', article.dateModified, true)
-      setMeta('article:author', 'Leander Mena', true)
+    setMeta('og:type', type, true)
+    setMeta('og:url', url, true)
+    setMeta('og:title', title, true)
+    setMeta('og:description', description, true)
+    setMeta('og:image', ogImage, true)
+    setMeta('og:locale', 'en_US', true)
+    setMeta('og:site_name', 'Leander Mena', true)
+
+    setMeta('twitter:card', 'summary_large_image')
+    setMeta('twitter:url', url)
+    setMeta('twitter:title', title)
+    setMeta('twitter:description', description)
+    setMeta('twitter:image', ogImage)
+
+    if (schemaType) {
+      const schemas = buildSchema(schemaType, url, article, description, caseStudy)
+      if (schemas && schemas.length) {
+        const existing = document.querySelectorAll('script[data-schema]')
+        existing.forEach(el => el.remove())
+        schemas.forEach((schema, i) => {
+          const script = document.createElement('script')
+          script.type = 'application/ld+json'
+          script.setAttribute('data-schema', String(i))
+          script.textContent = JSON.stringify(schema)
+          document.head.appendChild(script)
+        })
+      }
     }
-  }, [fullTitle, description, url, image, ogType, schemaType, article])
+  }, [title, description, url, ogImage, type, schemaType])
 
-  const schemas = buildSchema(schemaType, url, article, description, caseStudy)
-
-  return (
-    <>
-      {schemas.map((schema, i) => (
-        <script key={i} type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      ))}
-    </>
-  )
+  return null
 }
