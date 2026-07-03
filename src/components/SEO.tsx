@@ -6,6 +6,7 @@ export type SchemaType =
   | 'services'
   | 'pre-opening'
   | 'experience'
+  | 'skills'
   | 'philosophy'
   | 'profile'
   | 'contact'
@@ -219,6 +220,30 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           description: 'Career history of Leander Mena across Miami hospitality: restaurant groups, hotel F&B, banquet operations, and pre-opening projects.',
         },
         breadcrumb('Experience'),
+      ]
+    case 'skills':
+      return [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          name: 'Hospitality & F&B Operations Skills — Leander Mena',
+          url: `${BASE_URL}/skills`,
+          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          description: 'Core skill set in pre-opening leadership, labor cost control, SOP development, P&L management, and team training for Miami hotels and restaurants.',
+          mainEntity: {
+            '@context': 'https://schema.org',
+            ...PERSON_BASE,
+            description: 'Leander Mena is a Miami-based fractional F&B operations leader with 18+ years of experience opening and managing restaurants and hotels.',
+            hasCredential: [
+              { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Pre-Opening Leadership' },
+              { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Labor & Cost Control' },
+              { '@type': 'EducationalOccupationalCredential', credentialCategory: 'SOP Development & Training' },
+              { '@type': 'EducationalOccupationalCredential', credentialCategory: 'P&L Management' },
+              { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Multi-Unit Operations' },
+            ],
+          },
+        },
+        breadcrumb('Skills'),
       ]
     case 'philosophy':
       return [
