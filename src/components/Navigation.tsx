@@ -192,7 +192,7 @@ export default function Navigation({ onBookCall }: Props) {
           <Link
             to="/"
             style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none', minWidth: 0 }}
-            aria-label="Leander Mena — Home"
+            aria-label="Leander Mena - Home"
           >
             <BrandMark />
             <span style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.2, gap: '3px', minWidth: 0 }}>
@@ -211,16 +211,16 @@ export default function Navigation({ onBookCall }: Props) {
               </strong>
               <span style={{
                 fontFamily: 'var(--font-body)',
-                fontSize: '0.5625rem',
-                letterSpacing: '0.18em',
+                fontSize: '0.6875rem',
+                letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: 'var(--color-text-faint)',
+                color: 'var(--color-text-muted)',
                 fontWeight: 400,
                 whiteSpace: 'nowrap',
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
               }}>
-                Hospitality&nbsp;·&nbsp;F&amp;B
+                Hospitality&nbsp;&middot;&nbsp;F&amp;B
               </span>
             </span>
           </Link>
