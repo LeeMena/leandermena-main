@@ -169,7 +169,7 @@ export default function Home() {
         style={{
           position: 'relative',
           height: '100svh',
-          minHeight: '600px',
+          minHeight: '480px',
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
@@ -180,7 +180,7 @@ export default function Home() {
         <motion.div
           style={{
             position: 'absolute',
-            inset: '-20%',
+            inset: 0,
             y: heroY,
             zIndex: 0,
           }}
@@ -299,14 +299,12 @@ export default function Home() {
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    padding: '0.75rem 0',
-                    transition: 'color 200ms ease',
+                    padding: 0,
                     WebkitTapHighlightColor: 'transparent',
                   }}
-                  onMouseEnter={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.80)')}
-                  onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
                 >
-                  <Download size={12} /> Free Pre-Opening Blueprint
+                  <Download size={11} />
+                  Explore Digital Products
                 </button>
               </motion.div>
             </div>
@@ -323,283 +321,380 @@ export default function Home() {
             bottom: 'clamp(1.5rem, 4vw, 2.5rem)',
             left: '50%',
             transform: 'translateX(-50%)',
-            zIndex: 2,
+            zIndex: 1,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             gap: '0.5rem',
           }}
         >
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.4375rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Scroll</p>
+          <span style={{
+            fontFamily: 'var(--font-body)',
+            fontSize: '0.4375rem',
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.25)',
+          }}>Scroll</span>
           <motion.div
             animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-            style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, rgba(255,255,255,0.30), transparent)' }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            style={{
+              width: '1px',
+              height: '32px',
+              background: 'linear-gradient(to bottom, rgba(255,255,255,0.4), transparent)',
+            }}
           />
         </motion.div>
       </section>
 
-      {/* ── DARK SCROLLYTELLING BODY ── */}
-      <div style={{ background: '#0a0905', color: '#ffffff' }}>
-
-        {/* ── NUMBERS SECTION ── The bold data moment */}
-        <section style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)', paddingBlock: 'clamp(4rem, 8vw, 7rem)' }}>
-          <div className="container">
-            <div className="home-stats-grid">
-              <AnimatedStat value="18+" label="Years of Experience" delay={0} />
-              <AnimatedStat value="$12M+" label="Revenue Optimized" delay={0.1} />
-              <AnimatedStat value="500+" label="Team Members Trained" delay={0.2} />
-              <AnimatedStat value="40+" label="Properties Operated" delay={0.3} />
-            </div>
+      {/* ── STATS BAR ── */}
+      <section style={{
+        background: 'var(--color-surface)',
+        borderBottom: '1px solid var(--color-border)',
+        padding: 'clamp(var(--space-8), 4vw, var(--space-12)) 0',
+      }}>
+        <div className="container">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 'var(--space-6)',
+          }}>
+            {[
+              { value: '18+', label: 'Years Experience' },
+              { value: '$12M+', label: 'Revenue Optimized' },
+              { value: '500+', label: 'Team Members Trained' },
+              { value: '40+', label: 'Properties Operated' },
+            ].map((s, i) => (
+              <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} />
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── STATEMENT 01 — The Problem ── */}
-        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="container">
-            <Statement
-              accent="The Reality"
-              lines={['Most openings', 'fail the same way.']}
-              sub="Missed timelines. Undertrained staff. Systems built on instinct rather than process. The difference between a venue that opens strong and one that never recovers is decided in the 90 days before the doors open."
-            />
-          </div>
-        </section>
+      {/* ── STATEMENT 01 — The Problem ── */}
+      <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="container">
+          <RevealRule />
+          <Statement
+            accent="The Problem"
+            lines={['Most operators', 'don\'t need more', 'advice.']}
+            sub="They need someone who's actually done it — at scale, under pressure, with real consequences."
+          />
+        </div>
+      </section>
 
-        {/* ── STATEMENT 02 — The Solution ── */}
-        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.018)' }}>
-          <div className="container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px,100%), 1fr))', gap: 'clamp(3rem, 6vw, 6rem)', alignItems: 'center', paddingBlock: 'clamp(5rem, 10vw, 9rem)' }}>
-              <Statement
-                accent="The Approach"
-                lines={['Fractional.', 'Focused.', 'Measurable.']}
-              />
+      {/* ── STATEMENT 02 — The Solution ── */}
+      <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="container">
+          <RevealRule delay={0.1} />
+          <Statement
+            accent="The Solution"
+            lines={['Fractional', 'leadership.', 'Real results.']}
+            sub="Senior operational expertise, available without the overhead of a full-time executive hire."
+          />
+        </div>
+      </section>
+
+      {/* ── SERVICES ── */}
+      <section style={{ background: 'var(--color-bg)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
+        <div className="container">
+          <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
               <div>
-                {[
-                  { n: '01', title: 'Rapid Diagnosis', body: 'Root causes identified within the first week, not months into a retainer.' },
-                  { n: '02', title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow - built with them, not for them.' },
-                  { n: '03', title: 'Measurable ROI', body: 'Average 3-5x return on consulting investment within 6 months.' },
-                  { n: '04', title: 'No Full-Time Overhead', body: 'Senior operator-level expertise without the cost or complexity of a C-suite hire.' },
-                ].map((item, i) => {
-                  const { ref, inView } = useReveal(0.2)
-                  return (
-                    <div
-                      key={item.n}
-                      ref={ref}
-                      style={{
-                        display: 'flex',
-                        gap: 'clamp(1rem, 2.5vw, 2rem)',
-                        paddingBlock: 'clamp(1.25rem, 2.5vw, 1.75rem)',
-                        borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
-                        opacity: inView ? 1 : 0,
-                        transform: inView ? 'translateX(0)' : 'translateX(20px)',
-                        transition: `opacity 0.8s ease ${i * 0.08}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${i * 0.08}s`,
-                      }}
-                    >
-                      <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.5rem', letterSpacing: '0.15em', color: 'rgba(255,255,255,0.20)', paddingTop: '0.2em', flexShrink: 0, width: '1.5rem' }}>{item.n}</span>
-                      <div>
-                        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1rem, 2vw, 1.2rem)', fontWeight: 400, color: '#ffffff', marginBottom: '0.4rem', letterSpacing: '-0.01em' }}>{item.title}</p>
-                        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.40)', lineHeight: 1.65 }}>{item.body}</p>
-                      </div>
-                    </div>
-                  )
-                })}
+                <p style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.5625rem',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-primary)',
+                  marginBottom: 'var(--space-3)',
+                }}>Engagement Models</p>
+                <h2 style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                  fontWeight: 400,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.05,
+                  color: 'var(--color-text)',
+                }}>Operational Leadership,{' '}<em>On Demand</em></h2>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── SERVICES ── Dark card grid */}
-        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="container">
-            <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
-              <RevealLine>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '1rem' }}>Consulting Services</p>
-              </RevealLine>
-              <RevealLine delay={0.08}>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>Operational leadership,<br />on demand.</h2>
-              </RevealLine>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px,100%), 1fr))', gap: 'var(--space-4)' }}>
-              {services.map((service, i) => <ServiceCard key={service.id} service={service} index={i} />)}
-            </div>
-            <div style={{ marginTop: 'clamp(2rem, 4vw, 3.5rem)' }}>
-              <Link to="/services" style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.625rem',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.45)',
-                textDecoration: 'none',
-                transition: 'color 200ms ease',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
+              <Link
+                to="/services"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.625rem',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
               >
-                View all services &amp; pricing <ArrowRight size={12} />
+                View All Services & Pricing <ArrowRight size={11} />
               </Link>
             </div>
+          </RevealLine>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
+            gap: 'var(--space-4)',
+          }}>
+            {services.map((s, i) => (
+              <ServiceCard key={s.id} service={s} index={i} />
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── PROCESS — Editorial numbered list ── */}
-        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="container">
-            <div style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
-              <RevealLine>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '1rem' }}>How It Works</p>
+      {/* ── PROCESS — Editorial numbered list ── */}
+      <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
+        <div className="container">
+          <RevealLine style={{ marginBottom: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.5625rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: 'var(--color-primary)',
+              marginBottom: 'var(--space-3)',
+            }}>How It Works</p>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(1.75rem, 4vw, 3rem)',
+              fontWeight: 400,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.1,
+              color: 'var(--color-text)',
+            }}>From First Call to{' '}<em>Measurable Results</em></h2>
+          </RevealLine>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: 'clamp(var(--space-8), 4vw, var(--space-12))' }}>
+            {[
+              { n: '01', title: 'Discovery Call', body: '30-minute conversation to understand your challenges, timeline, and goals.' },
+              { n: '02', title: 'On-Site Diagnostic', body: 'Deep-dive assessment of your operations, typically 3-5 days on location.' },
+              { n: '03', title: 'Implementation', body: 'Execute the action plan with weekly check-ins and real-time adjustments.' },
+              { n: '04', title: 'Sustainable Results', body: 'Handover systems, train your team, and ensure improvements stick long-term.' },
+            ].map((step, i) => (
+              <RevealLine key={step.n} delay={i * 0.08}>
+                <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-6)' }}>
+                  <div style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.04em',
+                    color: 'var(--color-text-faint)',
+                    lineHeight: 1,
+                    marginBottom: 'var(--space-4)',
+                  }}>{step.n}</div>
+                  <h3 style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.01em',
+                    color: 'var(--color-text)',
+                    marginBottom: 'var(--space-3)',
+                  }}>{step.title}</h3>
+                  <p style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.875rem',
+                    color: 'var(--color-text-muted)',
+                    lineHeight: 1.7,
+                  }}>{step.body}</p>
+                </div>
               </RevealLine>
-              <RevealLine delay={0.08}>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>First call to<br />measurable results.</h2>
-              </RevealLine>
-            </div>
-            <div>
-              {[
-                { step: '01', title: 'Discovery Call', desc: '30-minute conversation to understand your challenges, timeline, and goals.' },
-                { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations - typically 3-5 days on location.' },
-                { step: '03', title: 'Implementation', desc: 'Execute the action plan with weekly check-ins and real-time adjustments.' },
-                { step: '04', title: 'Sustainable Results', desc: 'Handover systems, train your team, and ensure improvements stick long-term.' },
-              ].map((item, i) => {
-                const { ref, inView } = useReveal(0.25)
-                return (
-                  <div key={item.step} ref={ref}>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: '3rem 1fr auto',
-                      gap: 'clamp(1rem, 3vw, 2.5rem)',
-                      alignItems: 'baseline',
-                      paddingBlock: 'clamp(1.25rem, 2.5vw, 2rem)',
-                      borderBottom: '1px solid rgba(255,255,255,0.07)',
-                      opacity: inView ? 1 : 0,
-                      transform: inView ? 'translateY(0)' : 'translateY(24px)',
-                      transition: `opacity 0.8s ease ${i * 0.1}s, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${i * 0.1}s`,
-                    }}>
-                      <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.5rem', letterSpacing: '0.14em', color: 'rgba(255,255,255,0.18)' }}>{item.step}</span>
-                      <div>
-                        <p style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.15rem, 2.5vw, 1.75rem)', fontWeight: 400, letterSpacing: '-0.02em', color: '#ffffff', marginBottom: '0.35rem' }}>{item.title}</p>
-                        <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.35)', lineHeight: 1.65, maxWidth: '52ch' }}>{item.desc}</p>
-                      </div>
-                      <span style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'rgba(255,255,255,0.05)', letterSpacing: '-0.04em', lineHeight: 1, alignSelf: 'center' }}>{item.step}</span>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── STATEMENT 03 — Brand conviction ── */}
-        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="container">
-            <Statement
-              accent="The Philosophy"
-              lines={['Operations is culture.', 'Culture is revenue.']}
-              sub="Every SOP, every shift briefing, every table turn is a reflection of leadership. When the systems are right, everything else follows."
-            />
-          </div>
-        </section>
+      {/* ── BLUEPRINT CTA ── */}
+      <BlueprintCTA onOpen={() => setBlueprintOpen(true)} />
 
-        {/* ── TESTIMONIALS ── */}
-        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="container">
-            <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
-              <RevealLine>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '1rem' }}>Client Results</p>
-              </RevealLine>
-              <RevealLine delay={0.08}>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>Measurable impact,<br />real words.</h2>
-              </RevealLine>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px,100%), 1fr))', gap: 'var(--space-4)', marginBottom: 'var(--space-4)' }}>
-              {approvedTestimonials.slice(0, 2).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} featured />)}
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px,100%), 1fr))', gap: 'var(--space-4)' }}>
-              {approvedTestimonials.slice(2, 5).map((t, i) => <TestimonialCard key={t.name + i} testimonial={t} index={i} />)}
-            </div>
-            <div style={{ marginTop: 'clamp(2rem, 4vw, 3.5rem)' }}>
-              <Link to="/case-studies" style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.625rem',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.45)',
-                textDecoration: 'none',
-                transition: 'color 200ms ease',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
+      {/* ── PRODUCTS ── */}
+      <section style={{ background: 'var(--color-bg)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
+        <div className="container">
+          <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
+              <div>
+                <p style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.5625rem',
+                  letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-primary)',
+                  marginBottom: 'var(--space-3)',
+                }}>Digital Products</p>
+                <h2 style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                  fontWeight: 400,
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.05,
+                  color: 'var(--color-text)',
+                }}>Tools Built from{' '}<em>Real Experience</em></h2>
+              </div>
+              <Link
+                to="/products"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.625rem',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
               >
-                Read full case studies <ArrowRight size={12} />
+                Browse All Products <ArrowRight size={11} />
               </Link>
             </div>
+          </RevealLine>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
+            gap: 'var(--space-4)',
+          }}>
+            {products.slice(0, 3).map((p, i) => (
+              <ProductCard key={p.id} product={p} index={i} />
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── PRODUCTS ── */}
-        <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', background: 'rgba(255,255,255,0.018)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-          <div className="container">
-            <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
-              <RevealLine>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: '1rem' }}>Digital Products</p>
-              </RevealLine>
-              <RevealLine delay={0.08}>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 4rem)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 0.95, color: '#ffffff', margin: 0 }}>Tools built from<br />real experience.</h2>
-              </RevealLine>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px,100%), 1fr))', gap: 'var(--space-4)' }}>
-              {products.slice(0, 3).map((product) => <ProductCard key={product.id} product={product} />)}
-            </div>
-            <div style={{ marginTop: 'clamp(2rem, 4vw, 3.5rem)' }}>
-              <Link to="/products" style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.625rem',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.45)',
-                textDecoration: 'none',
-                transition: 'color 200ms ease',
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#ffffff')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.45)')}
+      {/* ── TESTIMONIALS ── */}
+      <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
+        <div className="container">
+          <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.5625rem',
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: 'var(--color-primary)',
+              marginBottom: 'var(--space-3)',
+            }}>Client Results</p>
+            <h2 style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+              fontWeight: 400,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.05,
+              color: 'var(--color-text)',
+            }}>Measurable Impact,{' '}<em>Real Words</em></h2>
+          </RevealLine>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
+            {approvedTestimonials.map((t, i) => (
+              <TestimonialCard key={t.id} testimonial={t} index={i} />
+            ))}
+          </div>
+          <RevealLine delay={0.2} style={{ marginTop: 'clamp(var(--space-10), 4vw, var(--space-14))' }}>
+            <div style={{ textAlign: 'center' }}>
+              <Link
+                to="/case-studies"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.625rem',
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                }}
               >
-                Browse all products <ArrowRight size={12} />
+                Read Full Case Studies <ArrowRight size={11} />
               </Link>
             </div>
+          </RevealLine>
+        </div>
+      </section>
+
+      {/* ── STATEMENT 03 — Brand conviction ── */}
+      <section style={{ background: '#0a0905', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="container">
+          <RevealRule />
+          <Statement
+            accent="The Difference"
+            lines={['Why operators', 'choose fractional', 'leadership.']}
+            sub="Most hospitality groups don't need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team."
+          />
+          <RevealRule delay={0.1} />
+        </div>
+      </section>
+
+      {/* ── VALUE PROPS ── */}
+      <section style={{ background: '#0a0905', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
+        <div className="container">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))',
+            gap: 'clamp(var(--space-8), 4vw, var(--space-12))',
+          }}>
+            {[
+              { n: '01', title: 'Rapid Diagnosis', body: 'Identify root causes within the first week, not months' },
+              { n: '02', title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow' },
+              { n: '03', title: 'Proven Track Record', body: '18+ years across Michelin concepts, luxury hotels, and independents' },
+              { n: '04', title: 'Measurable ROI', body: 'Average 3-5x return on consulting investment within 6 months' },
+            ].map((v, i) => (
+              <RevealLine key={v.n} delay={i * 0.08}>
+                <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 'var(--space-6)' }}>
+                  <div style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.4375rem',
+                    letterSpacing: '0.28em',
+                    textTransform: 'uppercase',
+                    color: 'rgba(255,255,255,0.2)',
+                    marginBottom: 'var(--space-5)',
+                  }}>{v.n}</div>
+                  <h3 style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
+                    fontWeight: 400,
+                    letterSpacing: '-0.01em',
+                    color: '#ffffff',
+                    marginBottom: 'var(--space-3)',
+                  }}>{v.title}</h3>
+                  <p style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.875rem',
+                    color: 'rgba(255,255,255,0.4)',
+                    lineHeight: 1.7,
+                  }}>{v.body}</p>
+                </div>
+              </RevealLine>
+            ))}
           </div>
-        </section>
 
-        {/* ── BLUEPRINT CTA ── */}
-        <BlueprintCTA />
+          {/* Stats row */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 'var(--space-4)',
+            marginTop: 'clamp(var(--space-16), 8vw, var(--space-24))',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+            paddingTop: 'clamp(var(--space-12), 5vw, var(--space-20))',
+          }}>
+            {[
+              { value: '$12M+', label: 'Revenue Optimized' },
+              { value: '500+', label: 'Team Members' },
+              { value: '40+', label: 'Properties' },
+              { value: '18+', label: 'Years Leading' },
+            ].map((s, i) => (
+              <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} />
+            ))}
+          </div>
+        </div>
+      </section>
 
-        {/* ── FINAL CTA ── */}
-        <CTABanner
-          title="Let's Build Something That Runs Well"
-          subtitle="Whether you're 90 days from opening or trying to fix a difficult quarter, the next move is simple: start the conversation."
-          primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
-          secondaryCta={{ label: 'Explore Products', href: '/products' }}
-        />
-      </div>
-
-      <style>{`
-        .home-stats-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
-        }
-        @media (min-width: 640px) {
-          .home-stats-grid {
-            grid-template-columns: repeat(4, 1fr);
-          }
-        }
-      `}</style>
+      <CTABanner />
     </>
   )
 }
