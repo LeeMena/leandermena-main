@@ -1,10 +1,47 @@
+import { useEffect, useRef } from 'react'
 import { useCart } from '@/context/CartContext'
 import { X, ShoppingBag, Minus, Plus, Trash2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+// Safari-safe scroll lock: locks body scroll while drawer is open.
+// Uses passive:false on wheel/touchmove on the backdrop so Safari honours preventDefault.
+// The drawer panel itself keeps its own overflowY:auto scroll untouched.
+function useScrollLock(active: boolean, backdropRef: React.RefObject<HTMLDivElement | null>) {
+  useEffect(() => {
+    if (!active) return
+
+    // Save current scroll position & lock body
+    const scrollY = window.scrollY
+    const body = document.body
+    body.style.position = 'fixed'
+    body.style.top = `-${scrollY}px`
+    body.style.width = '100%'
+    body.style.overflowY = 'scroll' // keeps scrollbar width to prevent layout shift
+
+    // Additionally block wheel + touchmove on the backdrop (Safari ignores CSS for these)
+    const backdrop = backdropRef.current
+    const prevent = (e: Event) => e.preventDefault()
+    backdrop?.addEventListener('wheel', prevent, { passive: false })
+    backdrop?.addEventListener('touchmove', prevent, { passive: false })
+
+    return () => {
+      body.style.position = ''
+      body.style.top = ''
+      body.style.width = ''
+      body.style.overflowY = ''
+      window.scrollTo(0, scrollY)
+      backdrop?.removeEventListener('wheel', prevent)
+      backdrop?.removeEventListener('touchmove', prevent)
+    }
+  }, [active, backdropRef])
+}
+
 // Animate in/out: keep in DOM while transitioning
 export default function CartDrawer() {
   const { items, isOpen, closeCart, updateQuantity, removeItem, total, itemCount } = useCart()
+  const backdropRef = useRef<HTMLDivElement>(null)
+
+  useScrollLock(isOpen, backdropRef)
 
   const handleCheckout = () => {
     alert('Checkout coming soon. Connect your payment processor here.')
@@ -16,6 +53,7 @@ export default function CartDrawer() {
     <>
       {/* Backdrop */}
       <div
+        ref={backdropRef}
         onClick={closeCart}
         style={{
           position: 'fixed',
