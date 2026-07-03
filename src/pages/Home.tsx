@@ -150,7 +150,8 @@ export default function Home() {
   const [blueprintOpen, setBlueprintOpen] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const heroY = useTransform(heroScroll, [0, 1], ['0%', '30%'])
+  // Reduced travel from 30% → 15% and image is scaled 1.15 so edges never show during scroll
+  const heroY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
   const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0])
   const heroTextY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
 
@@ -176,19 +177,19 @@ export default function Home() {
           background: '#0a0905',
         }}
       >
-        {/* Parallax background image */}
+        {/* Parallax background image — scale(1.15) provides buffer for 15% travel without exposing edges */}
         <motion.div
           style={{
             position: 'absolute',
             inset: 0,
             y: heroY,
+            scale: 1.15,
             zIndex: 0,
           }}
         >
           <img
             src="/landing-hero.jpg"
-            alt=""
-            width="1920"
+            alt=""\n            width="1920"
             height="1200"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
           />
