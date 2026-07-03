@@ -159,7 +159,6 @@
     font-weight: 400;
   }
 
-  /* Cormorant: use weight 300-400 for refined editorial look */
   h1 { font-weight: 300; letter-spacing: -0.02em; }
   h2 { font-weight: 400; letter-spacing: -0.015em; }
   h3 { font-weight: 500; }
@@ -167,6 +166,18 @@
   p, li, figcaption {
     text-wrap: pretty;
     max-width: 70ch;
+  }
+
+  /* ── Flatten all emphasis globally — no bold, no italic, no color shifts ── */
+  strong, b {
+    font-weight: inherit;
+    font-style: inherit;
+    color: inherit;
+  }
+  em, i {
+    font-style: inherit;
+    font-weight: inherit;
+    color: inherit;
   }
 
   ::selection {
@@ -235,7 +246,6 @@
     margin-bottom: var(--space-4);
   }
 
-  /* Kicker with decorative line */
   .kicker::before {
     content: '';
     display: block;
@@ -249,7 +259,7 @@
   .section-intro {
     font-family: var(--font-display);
     font-size: clamp(1rem, 1.8vw, 1.2rem);
-    font-style: italic;
+    font-style: normal;
     font-weight: 300;
     color: var(--color-text-muted);
     line-height: 1.65;
@@ -272,14 +282,14 @@
     margin-block: var(--space-8);
   }
 
-  /* ── Buttons — tactile, refined ── */
+  /* ── Buttons ── */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
     padding: 0.75rem 1.75rem;
-    border-radius: 0;                       /* sharp corners = luxury */
+    border-radius: 0;
     font-family: var(--font-body);
     font-size: 0.6875rem;
     font-weight: 500;
@@ -489,7 +499,17 @@
     background: var(--color-primary);
     opacity: 0.55;
   }
-  .prose strong { color: var(--color-text); font-weight: 600; }
+  /* Prose emphasis — flatten completely, no bold/italic rendering */
+  .prose strong, .prose b {
+    font-weight: inherit;
+    font-style: inherit;
+    color: inherit;
+  }
+  .prose em, .prose i {
+    font-style: inherit;
+    font-weight: inherit;
+    color: inherit;
+  }
   .prose a {
     color: var(--color-primary);
     text-decoration: underline;
@@ -551,8 +571,7 @@
     transform-origin: left;
   }
 
-  /* ── Scroll reveal — handled in ScrollReveal.tsx via framer-motion,
-        but also support a pure CSS fallback for non-animated elements ── */
+  /* ── Keyframes ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -584,7 +603,7 @@
     pointer-events: none;
   }
 
-  /* ── Section label — full-width centered rule with text ── */
+  /* ── Section label ── */
   .section-label {
     display: flex;
     align-items: center;
@@ -605,7 +624,7 @@
   }
 }
 
-/* ── Utility: system pref dark mode fallback ── */
+/* ── System pref dark mode fallback ── */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     --color-bg:               #080807;
