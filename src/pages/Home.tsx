@@ -95,7 +95,7 @@ function RevealRule({ delay = 0 }: { delay?: number }) {
   )
 }
 
-// --- Statement block (the "Space" big text moments) ---
+// --- Statement block ---
 function Statement({ lines, accent, sub }: { lines: string[]; accent?: string; sub?: string }) {
   const { ref, inView } = useReveal(0.15)
   return (
@@ -150,7 +150,6 @@ export default function Home() {
   const [blueprintOpen, setBlueprintOpen] = useState(false)
   const heroRef = useRef<HTMLElement>(null)
   const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  // Reduced travel from 30% → 15% and image is scaled 1.15 so edges never show during scroll
   const heroY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
   const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0])
   const heroTextY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
@@ -164,7 +163,7 @@ export default function Home() {
       />
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
-      {/* ── HERO ── Full-screen cinematic entry */}
+      {/* HERO */}
       <section
         ref={heroRef}
         style={{
@@ -177,7 +176,6 @@ export default function Home() {
           background: '#0a0905',
         }}
       >
-        {/* Parallax background image — scale(1.15) provides buffer for 15% travel without exposing edges */}
         <motion.div
           style={{
             position: 'absolute',
@@ -189,16 +187,15 @@ export default function Home() {
         >
           <img
             src="/landing-hero.jpg"
-            alt=""\n            width="1920"
+            alt=""
+            width="1920"
             height="1200"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
           />
-          {/* Multi-layer overlay for cinematic darkness */}
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,9,5,0.62) 0%, rgba(10,9,5,0.40) 40%, rgba(10,9,5,0.80) 80%, #0a0905 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(10,9,5,0.55) 100%)' }} />
         </motion.div>
 
-        {/* Centered hero text */}
         <motion.div
           style={{ position: 'relative', zIndex: 1, width: '100%', y: heroTextY, opacity: heroOpacity }}
         >
@@ -312,7 +309,6 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -348,18 +344,14 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── STATS BAR ── */}
+      {/* STATS BAR */}
       <section style={{
         background: 'var(--color-surface)',
         borderBottom: '1px solid var(--color-border)',
         padding: 'clamp(var(--space-8), 4vw, var(--space-12)) 0',
       }}>
         <div className="container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 'var(--space-6)',
-          }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-6)' }}>
             {[
               { value: '18+', label: 'Years Experience' },
               { value: '$12M+', label: 'Revenue Optimized' },
@@ -372,105 +364,46 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATEMENT 01 — The Problem ── */}
       <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule />
-          <Statement
-            accent="The Problem"
-            lines={['Most operators', 'don\'t need more', 'advice.']}
-            sub="They need someone who's actually done it — at scale, under pressure, with real consequences."
-          />
+          <Statement accent="The Problem" lines={['Most operators', "don't need more", 'advice.']} sub="They need someone who's actually done it — at scale, under pressure, with real consequences." />
         </div>
       </section>
 
-      {/* ── STATEMENT 02 — The Solution ── */}
       <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule delay={0.1} />
-          <Statement
-            accent="The Solution"
-            lines={['Fractional', 'leadership.', 'Real results.']}
-            sub="Senior operational expertise, available without the overhead of a full-time executive hire."
-          />
+          <Statement accent="The Solution" lines={['Fractional', 'leadership.', 'Real results.']} sub="Senior operational expertise, available without the overhead of a full-time executive hire." />
         </div>
       </section>
 
-      {/* ── SERVICES ── */}
+      {/* SERVICES */}
       <section style={{ background: 'var(--color-bg)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
         <div className="container">
           <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
               <div>
-                <p style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.5625rem',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-primary)',
-                  marginBottom: 'var(--space-3)',
-                }}>Engagement Models</p>
-                <h2 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 400,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.05,
-                  color: 'var(--color-text)',
-                }}>Operational Leadership,{' '}<em>On Demand</em></h2>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Engagement Models</p>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Operational Leadership,{' '}<em>On Demand</em></h2>
               </div>
-              <Link
-                to="/services"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.625rem',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                }}
-              >
-                View All Services & Pricing <ArrowRight size={11} />
+              <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                View All Services &amp; Pricing <ArrowRight size={11} />
               </Link>
             </div>
           </RevealLine>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
-            gap: 'var(--space-4)',
-          }}>
-            {services.map((s, i) => (
-              <ServiceCard key={s.id} service={s} index={i} />
-            ))}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: 'var(--space-4)' }}>
+            {services.map((s, i) => <ServiceCard key={s.id} service={s} index={i} />)}
           </div>
         </div>
       </section>
 
-      {/* ── PROCESS — Editorial numbered list ── */}
+      {/* PROCESS */}
       <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
         <div className="container">
           <RevealLine style={{ marginBottom: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
-            <p style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '0.5625rem',
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-              color: 'var(--color-primary)',
-              marginBottom: 'var(--space-3)',
-            }}>How It Works</p>
-            <h2 style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-              fontWeight: 400,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.1,
-              color: 'var(--color-text)',
-            }}>From First Call to{' '}<em>Measurable Results</em></h2>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>How It Works</p>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--color-text)' }}>From First Call to{' '}<em>Measurable Results</em></h2>
           </RevealLine>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: 'clamp(var(--space-8), 4vw, var(--space-12))' }}>
             {[
@@ -481,29 +414,9 @@ export default function Home() {
             ].map((step, i) => (
               <RevealLine key={step.n} delay={i * 0.08}>
                 <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-6)' }}>
-                  <div style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-                    fontWeight: 400,
-                    letterSpacing: '-0.04em',
-                    color: 'var(--color-text-faint)',
-                    lineHeight: 1,
-                    marginBottom: 'var(--space-4)',
-                  }}>{step.n}</div>
-                  <h3 style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
-                    fontWeight: 400,
-                    letterSpacing: '-0.01em',
-                    color: 'var(--color-text)',
-                    marginBottom: 'var(--space-3)',
-                  }}>{step.title}</h3>
-                  <p style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.875rem',
-                    color: 'var(--color-text-muted)',
-                    lineHeight: 1.7,
-                  }}>{step.body}</p>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.04em', color: 'var(--color-text-faint)', lineHeight: 1, marginBottom: 'var(--space-4)' }}>{step.n}</div>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 400, letterSpacing: '-0.01em', color: 'var(--color-text)', marginBottom: 'var(--space-3)' }}>{step.title}</h3>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>{step.body}</p>
                 </div>
               </RevealLine>
             ))}
@@ -511,106 +424,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BLUEPRINT CTA ── */}
       <BlueprintCTA onOpen={() => setBlueprintOpen(true)} />
 
-      {/* ── PRODUCTS ── */}
+      {/* PRODUCTS */}
       <section style={{ background: 'var(--color-bg)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
         <div className="container">
           <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
               <div>
-                <p style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.5625rem',
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-primary)',
-                  marginBottom: 'var(--space-3)',
-                }}>Digital Products</p>
-                <h2 style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                  fontWeight: 400,
-                  letterSpacing: '-0.02em',
-                  lineHeight: 1.05,
-                  color: 'var(--color-text)',
-                }}>Tools Built from{' '}<em>Real Experience</em></h2>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Digital Products</p>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Tools Built from{' '}<em>Real Experience</em></h2>
               </div>
-              <Link
-                to="/products"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.625rem',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                }}
-              >
+              <Link to="/products" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
                 Browse All Products <ArrowRight size={11} />
               </Link>
             </div>
           </RevealLine>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
-            gap: 'var(--space-4)',
-          }}>
-            {products.slice(0, 3).map((p, i) => (
-              <ProductCard key={p.id} product={p} index={i} />
-            ))}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 'var(--space-4)' }}>
+            {products.slice(0, 3).map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
           </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
+      {/* TESTIMONIALS */}
       <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
         <div className="container">
           <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
-            <p style={{
-              fontFamily: 'var(--font-body)',
-              fontSize: '0.5625rem',
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-              color: 'var(--color-primary)',
-              marginBottom: 'var(--space-3)',
-            }}>Client Results</p>
-            <h2 style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-              fontWeight: 400,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.05,
-              color: 'var(--color-text)',
-            }}>Measurable Impact,{' '}<em>Real Words</em></h2>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Client Results</p>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Measurable Impact,{' '}<em>Real Words</em></h2>
           </RevealLine>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-            {approvedTestimonials.map((t, i) => (
-              <TestimonialCard key={t.id} testimonial={t} index={i} />
-            ))}
+            {approvedTestimonials.map((t, i) => <TestimonialCard key={t.id} testimonial={t} index={i} />)}
           </div>
           <RevealLine delay={0.2} style={{ marginTop: 'clamp(var(--space-10), 4vw, var(--space-14))' }}>
             <div style={{ textAlign: 'center' }}>
-              <Link
-                to="/case-studies"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.4rem',
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.625rem',
-                  letterSpacing: '0.14em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-text-muted)',
-                  textDecoration: 'none',
-                }}
-              >
+              <Link to="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
                 Read Full Case Studies <ArrowRight size={11} />
               </Link>
             </div>
@@ -618,27 +466,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATEMENT 03 — Brand conviction ── */}
       <section style={{ background: '#0a0905', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule />
-          <Statement
-            accent="The Difference"
-            lines={['Why operators', 'choose fractional', 'leadership.']}
-            sub="Most hospitality groups don't need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team."
-          />
+          <Statement accent="The Difference" lines={['Why operators', 'choose fractional', 'leadership.']} sub="Most hospitality groups don't need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team." />
           <RevealRule delay={0.1} />
         </div>
       </section>
 
-      {/* ── VALUE PROPS ── */}
+      {/* VALUE PROPS */}
       <section style={{ background: '#0a0905', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
         <div className="container">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))',
-            gap: 'clamp(var(--space-8), 4vw, var(--space-12))',
-          }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: 'clamp(var(--space-8), 4vw, var(--space-12))' }}>
             {[
               { n: '01', title: 'Rapid Diagnosis', body: 'Identify root causes within the first week, not months' },
               { n: '02', title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow' },
@@ -647,50 +486,20 @@ export default function Home() {
             ].map((v, i) => (
               <RevealLine key={v.n} delay={i * 0.08}>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 'var(--space-6)' }}>
-                  <div style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.4375rem',
-                    letterSpacing: '0.28em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.2)',
-                    marginBottom: 'var(--space-5)',
-                  }}>{v.n}</div>
-                  <h3 style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
-                    fontWeight: 400,
-                    letterSpacing: '-0.01em',
-                    color: '#ffffff',
-                    marginBottom: 'var(--space-3)',
-                  }}>{v.title}</h3>
-                  <p style={{
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.875rem',
-                    color: 'rgba(255,255,255,0.4)',
-                    lineHeight: 1.7,
-                  }}>{v.body}</p>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.4375rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: 'var(--space-5)' }}>{v.n}</div>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', fontWeight: 400, letterSpacing: '-0.01em', color: '#ffffff', marginBottom: 'var(--space-3)' }}>{v.title}</h3>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7 }}>{v.body}</p>
                 </div>
               </RevealLine>
             ))}
           </div>
-
-          {/* Stats row */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 'var(--space-4)',
-            marginTop: 'clamp(var(--space-16), 8vw, var(--space-24))',
-            borderTop: '1px solid rgba(255,255,255,0.06)',
-            paddingTop: 'clamp(var(--space-12), 5vw, var(--space-20))',
-          }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-4)', marginTop: 'clamp(var(--space-16), 8vw, var(--space-24))', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
             {[
               { value: '$12M+', label: 'Revenue Optimized' },
               { value: '500+', label: 'Team Members' },
               { value: '40+', label: 'Properties' },
               { value: '18+', label: 'Years Leading' },
-            ].map((s, i) => (
-              <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} />
-            ))}
+            ].map((s, i) => <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} />)}
           </div>
         </div>
       </section>
