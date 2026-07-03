@@ -163,7 +163,7 @@ export default function Home() {
       />
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
-      {/* ── HERO ── Full-screen cinematic entry */}
+      {/* HERO - Full-screen cinematic entry */}
       <section
         ref={heroRef}
         style={{
@@ -269,7 +269,7 @@ export default function Home() {
                   marginBottom: 'clamp(2rem, 4vw, 3rem)',
                 }}
               >
-                18+ years opening, leading, and scaling restaurants, hotels, and catering operations across Miami — now available as fractional leadership.
+                18+ years opening, leading, and scaling restaurants, hotels, and catering operations across Miami, now available as fractional leadership.
               </motion.p>
 
               <motion.div
@@ -339,10 +339,10 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── DARK SCROLLYTELLING BODY ── */}
+      {/* DARK SCROLLYTELLING BODY */}
       <div style={{ background: '#0a0905', color: '#ffffff' }}>
 
-        {/* ── NUMBERS SECTION ── The bold data moment */}
+        {/* NUMBERS SECTION - The bold data moment */}
         <section style={{ borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)', paddingBlock: 'clamp(4rem, 8vw, 7rem)' }}>
           <div className="container">
             <div className="home-stats-grid">
@@ -354,7 +354,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── STATEMENT 01 — The Problem ── */}
+        {/* STATEMENT 01 - The Problem */}
         <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="container">
             <Statement
@@ -365,7 +365,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── STATEMENT 02 — The Solution ── */}
+        {/* STATEMENT 02 - The Solution */}
         <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.018)' }}>
           <div className="container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px,100%), 1fr))', gap: 'clamp(3rem, 6vw, 6rem)', alignItems: 'center', paddingBlock: 'clamp(5rem, 10vw, 9rem)' }}>
@@ -376,8 +376,8 @@ export default function Home() {
               <div>
                 {[
                   { n: '01', title: 'Rapid Diagnosis', body: 'Root causes identified within the first week, not months into a retainer.' },
-                  { n: '02', title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow — built with them, not for them.' },
-                  { n: '03', title: 'Measurable ROI', body: 'Average 3–5× return on consulting investment within 6 months.' },
+                  { n: '02', title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow - built with them, not for them.' },
+                  { n: '03', title: 'Measurable ROI', body: 'Average 3-5x return on consulting investment within 6 months.' },
                   { n: '04', title: 'No Full-Time Overhead', body: 'Senior operator-level expertise without the cost or complexity of a C-suite hire.' },
                 ].map((item, i) => {
                   const { ref, inView } = useReveal(0.2)
@@ -408,7 +408,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── SERVICES ── Dark card grid */}
+        {/* SERVICES - Dark card grid */}
         <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="container">
             <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
@@ -444,7 +444,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── PROCESS — Editorial numbered list ── */}
+        {/* PROCESS - Editorial numbered list */}
         <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="container">
             <div style={{ marginBottom: 'clamp(3rem, 6vw, 5rem)' }}>
@@ -458,7 +458,7 @@ export default function Home() {
             <div>
               {[
                 { step: '01', title: 'Discovery Call', desc: '30-minute conversation to understand your challenges, timeline, and goals.' },
-                { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations — typically 3–5 days on location.' },
+                { step: '02', title: 'On-Site Diagnostic', desc: 'Deep-dive assessment of your operations, typically 3-5 days on location.' },
                 { step: '03', title: 'Implementation', desc: 'Execute the action plan with weekly check-ins and real-time adjustments.' },
                 { step: '04', title: 'Sustainable Results', desc: 'Handover systems, train your team, and ensure improvements stick long-term.' },
               ].map((item, i) => {
@@ -490,7 +490,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── STATEMENT 03 — Brand conviction ── */}
+        {/* STATEMENT 03 - Brand conviction */}
         <section style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="container">
             <Statement
@@ -501,7 +501,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ── */}
+        {/* TESTIMONIALS */}
         <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="container">
             <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
@@ -540,7 +540,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── PRODUCTS ── */}
+        {/* PRODUCTS */}
         <section style={{ paddingBlock: 'clamp(5rem, 10vw, 9rem)', background: 'rgba(255,255,255,0.018)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
           <div className="container">
             <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4.5rem)' }}>
@@ -576,13 +576,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ── BLUEPRINT CTA ── */}
+        {/* BLUEPRINT CTA */}
         <BlueprintCTA />
 
-        {/* ── FINAL CTA ── */}
+        {/* FINAL CTA */}
         <CTABanner
           title="Let's Build Something That Runs Well"
-          subtitle="Whether you're 90 days from opening or trying to fix a difficult quarter — the next move is simple: start the conversation."
+          subtitle="Whether you're 90 days from opening or trying to fix a difficult quarter, the next move is simple: start the conversation."
           primaryCta={{ label: 'Book a Discovery Call', href: '/book' }}
           secondaryCta={{ label: 'Explore Products', href: '/products' }}
         />
