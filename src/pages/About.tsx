@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
-// Lightweight scroll reveal matching Experience page
 function Reveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -38,8 +37,8 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Leander Mena"
-        description="18 years driving multi-unit operations, pre-opening launches, and revenue growth across high-volume independent and luxury concepts in Miami."
+        title="About Leander Mena – Fractional F&B Director & Restaurant Consultant, Miami"
+        description="Leander Mena is a Miami-based fractional F&B director and restaurant consultant with 18+ years opening and leading restaurants, hotel F&B programs, banquet operations, and catering venues across Miami."
         path="/about"
         schemaType="about"
       />
@@ -64,14 +63,14 @@ export default function About() {
             <Reveal>
               <span className="kicker">About</span>
               <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
-                Built in the Trenches of Miami Hospitality
+                Fractional F&amp;B Director &amp; Restaurant Consultant — Miami
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                18 years. Pre-openings, turnarounds, multi-unit management. Every system I use was earned on the floor.
+                18 years. Pre-openings, turnarounds, multi-unit management, and catering leadership. Every system I use was earned on the floor.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
-                <Link to="/experience" className="btn btn-secondary">View Experience</Link>
+                <Link to="/experience" className="btn btn-secondary">View Career Experience</Link>
               </div>
             </Reveal>
 
@@ -103,23 +102,23 @@ export default function About() {
           <div className="grid-2" style={{ gap: 'clamp(2rem,5vw,4rem)', alignItems: 'start' }}>
             <Reveal>
               <span className="kicker">Background</span>
-              <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">From the floor up</h2>
+              <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">Built in the Trenches of Miami Hospitality</h2>
               <div className="prose-article">
                 <p>
-                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap. From Michelin-starred pre-openings in Midtown Miami to multi-unit P&amp;L management at scale, every engagement has sharpened the same core skill: turning a vision into a functioning operation.
+                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap — from Michelin-starred <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>pre-openings in Midtown Miami</Link> to multi-unit P&amp;L management at scale. Every engagement has sharpened the same core skill: turning a vision into a functioning operation.
                 </p>
                 <p>
-                  I've opened hotels, turned around struggling concepts, built training programs from scratch, and managed teams of 80 or more across multiple outlets. The through-line in every engagement is real accountability. Operations only improve when someone with genuine ownership is in the building.
+                  I've opened hotels, turned around struggling concepts, built training programs from scratch, managed teams of 80 or more across multiple outlets, and led catering and banquet operations for Miami's largest hotel venues. The through-line in every engagement is real accountability — operations only improve when someone with genuine ownership is in the building.
                 </p>
                 <p>
-                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
+                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. As a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B director in Miami</Link>, I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={150}>
               <img
                 src="/images/about.jpg"
-                alt="Leander Mena - Miami F&B Operations Consultant"
+                alt="Leander Mena - Fractional F&B Director and Restaurant Consultant, Miami"
                 width="600"
                 height="750"
                 loading="lazy"
@@ -135,7 +134,7 @@ export default function About() {
         <div className="container">
           <span className="kicker">What I believe</span>
           <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-3">Operating principles</h2>
-          <p className="section-intro">The mindset behind every engagement.</p>
+          <p className="section-intro">The mindset behind every fractional F&amp;B and consulting engagement.</p>
           <div className="grid-3">
             {[
               { title: 'Systems over heroics', body: 'A well-run operation doesn\'t depend on the owner being present 80 hours a week. The goal is always replicable systems that hold without constant intervention.' },
@@ -164,7 +163,7 @@ export default function About() {
           <p className="section-intro" style={{ marginInline: 'auto' }}>Let's talk about where your operation is and where it needs to go.</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
-            <Link to="/services" className="btn btn-secondary">View Services</Link>
+            <Link to="/services" className="btn btn-secondary">View Fractional F&amp;B Services</Link>
           </div>
         </div>
       </section>

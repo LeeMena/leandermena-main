@@ -6,11 +6,16 @@ export default function BlogLaborCost() {
   return (
     <>
       <SEO
-        title="Labor Cost Control in Miami Restaurants"
-        description="Practical tactics for reducing labor cost percentage without cutting service quality or burning out your team."
+        title="Labor Cost Control for Miami Restaurants – F&B Operations Guide | Leander Mena"
+        description="Practical labor cost control tactics for Miami restaurant and hotel F&B operators: scheduling to a target, weekly variance tracking, overtime control, and cross-training systems that hold."
         path="/insights/labor-cost-control-miami-restaurants"
         type="article"
         schemaType="article"
+        article={{
+          headline: 'Labor Cost Control for Miami Restaurants – F&B Operations Guide',
+          datePublished: '2026-02-01',
+          dateModified: '2026-07-03',
+        }}
       />
 
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
@@ -18,12 +23,12 @@ export default function BlogLaborCost() {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <ScrollReveal>
-            <span className="kicker">Operations</span>
+            <span className="kicker">F&amp;B Operations</span>
             <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-4">
-              Labor Cost Control in Miami Restaurants
+              Labor Cost Control for Miami Restaurants
             </h1>
             <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-              Practical tactics for reducing labor cost percentage without cutting service quality or burning out your team.
+              Practical tactics for reducing labor cost percentage in Miami restaurants and hotel F&amp;B programs — without cutting service quality or burning out your team.
             </p>
           </ScrollReveal>
         </div>
@@ -34,7 +39,7 @@ export default function BlogLaborCost() {
           <div className="prose-article">
             <ScrollReveal>
               <p>
-                Labor cost in Miami restaurants runs high for structural reasons: a competitive
+                <strong>Labor cost in Miami restaurants</strong> runs high for structural reasons: a competitive
                 labor market, high cost of living relative to wages, and a guest culture that
                 expects high service levels. Operators who try to solve the problem by cutting
                 headcount create a service problem that costs more than the labor savings.
@@ -43,8 +48,8 @@ export default function BlogLaborCost() {
 
             <ScrollReveal delay={100}>
               <p>
-                The operators I have worked with who run sustainable labor costs, consistently
-                in the 28% to 32% range for full-service concepts, share a set of practices
+                The Miami restaurant and hotel F&amp;B operators I have worked with who run sustainable labor costs — consistently
+                in the 28% to 32% range for full-service concepts — share a set of practices
                 that are not complicated but require discipline to maintain.
               </p>
             </ScrollReveal>
@@ -52,11 +57,11 @@ export default function BlogLaborCost() {
             <ScrollReveal delay={150}>
               <h2>Build the Schedule to a Target, Not a Template</h2>
               <p>
-                The most common labor management failure I see is building schedules by copying
+                The most common <strong>labor cost control</strong> failure I see in Miami restaurants is building schedules by copying
                 last week and adjusting for requests. That approach locks in whatever inefficiencies
-                existed last week and adds new ones. A schedule built to a labor cost target,
+                existed last week and adds new ones. A schedule built to a labor cost target —
                 where the manager starts with the revenue forecast and the target labor percentage
-                and works backward to hours, produces materially different results over time.
+                and works backward to hours — produces materially different results over time.
               </p>
             </ScrollReveal>
 
@@ -74,10 +79,10 @@ export default function BlogLaborCost() {
             <ScrollReveal delay={250}>
               <h2>Control Overtime at the Source</h2>
               <p>
-                Overtime in restaurants is almost always predictable 72 hours before it happens.
+                Overtime in Miami restaurants is almost always predictable 72 hours before it happens.
                 A manager reviewing the schedule on Wednesday can see which employees are
-                tracking toward 40 hours before the weekend. The intervention, adjusting
-                Friday and Saturday shifts, is simple when it happens on Wednesday. It becomes
+                tracking toward 40 hours before the weekend. The intervention — adjusting
+                Friday and Saturday shifts — is simple when it happens on Wednesday. It becomes
                 expensive when it is discovered on Sunday's payroll close.
               </p>
             </ScrollReveal>
@@ -86,7 +91,7 @@ export default function BlogLaborCost() {
               <h2>Invest in Cross-Training</h2>
               <p>
                 Cross-trained teams run leaner. A server who can run food, a host who can
-                support the bar during a rush, a line cook who can work two stations: these
+                support the bar during a rush, a line cook who can work two stations — these
                 capabilities reduce the number of bodies required to cover a shift at a given
                 volume. Cross-training also improves retention because employees feel more
                 capable and less disposable. The investment is real but the return is consistent.
@@ -95,9 +100,9 @@ export default function BlogLaborCost() {
 
             <ScrollReveal delay={350}>
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
-                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Labor cost running above 32%?</p>
+                <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Labor cost running above 32% in your Miami restaurant or hotel?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  I help Miami operators build scheduling systems and labor controls that bring
+                  I help Miami operators build scheduling systems and <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B operations leadership</Link> that brings
                   cost into line without cutting the team.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>

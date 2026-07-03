@@ -29,9 +29,10 @@ export default function PreOpening() {
   return (
     <>
       <SEO
-        title="Pre-Opening"
-        description="Pre-opening restaurant consulting: 90-day framework from concept through launch. Leander Mena, Miami."
+        title="Restaurant Pre-Opening Consultant Miami – 90-Day Launch Framework | Leander Mena"
+        description="Restaurant and hotel F&B pre-opening consultant in Miami. End-to-end 90-day framework covering concept, hiring, SOP development, training, and opening-day execution."
         path="/pre-opening"
+        schemaType="pre-opening"
       />
 
       {/* Hero */}
@@ -50,18 +51,33 @@ export default function PreOpening() {
         </div>
         <div className="container relative z-10 py-[clamp(5rem,11vw,9rem)]">
           <ScrollReveal>
-            <span className="kicker">Pre-Opening Framework</span>
+            <span className="kicker">Pre-Opening Consulting</span>
             <h1 className="font-display text-[clamp(2.25rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-6">
-              From Concept to Open Door
+              Restaurant Pre-Opening Consultant — Miami
             </h1>
-            <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-8 leading-relaxed">
-              A battle-tested 90-day pre-opening system covering every phase from financial foundation through grand opening execution.
+            <p className="text-[#d8d8d8] text-lg max-w-[52ch] mb-4 leading-relaxed">
+              A battle-tested 90-day pre-opening system for Miami restaurants and hotel F&amp;B programs — covering every phase from financial foundation through grand opening execution.
+            </p>
+            <p className="text-[#b8b8b8] text-base max-w-[52ch] mb-8 leading-relaxed">
+              18+ years leading pre-openings across independent concepts, luxury hotels, and multi-unit groups in Miami. Every phase is run with the same discipline: sequenced milestones, clear ownership, and no surprises on opening night.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
-              <Link to="/blueprint" className="btn btn-secondary">Get the Blueprint</Link>
+              <Link to="/blueprint" className="btn btn-secondary">Get the Pre-Opening Blueprint</Link>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
+
+      {/* SEO intro */}
+      <section className="section" style={{ borderBottom: '1px solid var(--color-border)' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
+          <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            A <strong style={{ color: 'var(--color-text)' }}>restaurant pre-opening consultant in Miami</strong> manages every workstream between the day you sign your lease and the day you open your doors: concept alignment, vendor sourcing, licensing, hiring, SOP development, staff training, and opening-week execution. Without that structure, most openings run over budget, open late, and struggle through the first 90 days.
+          </p>
+          <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
+            The <Link to="/blueprint" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Pre-Opening Blueprint</Link> that drives every engagement is built from 5+ pre-openings led across Miami — including a Michelin-starred concept, a luxury hotel banquet program, and multi-unit independent groups. <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>See all fractional F&amp;B director services →</Link>
+          </p>
         </div>
       </section>
 
@@ -88,7 +104,7 @@ export default function PreOpening() {
           </div>
           <div className="mt-10 flex flex-wrap gap-4 justify-center">
             <Link to="/book" className="btn btn-primary">Start the Conversation</Link>
-            <Link to="/blueprint" className="btn btn-secondary">Download the Blueprint</Link>
+            <Link to="/blueprint" className="btn btn-secondary">Download the Pre-Opening Blueprint</Link>
           </div>
         </div>
       </section>

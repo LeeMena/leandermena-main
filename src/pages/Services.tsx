@@ -6,8 +6,8 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Hospitality Consulting Services - Miami | Leander Mena"
-        description="Fractional GM services, pre-opening builds, and operations recovery for Miami restaurants and hotel F&B teams."
+        title="Fractional F&B Director & GM Services – Miami Restaurants & Hotels | Leander Mena"
+        description="Fractional F&B director and GM services for Miami restaurants, hotels, and hotel F&B programs. Operations leadership, pre-opening support, and team development — scoped to your exact needs."
         path="/services"
         schemaType="services"
       />
@@ -21,12 +21,26 @@ export default function Services() {
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <span className="kicker">Services</span>
-          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
-            Miami Hospitality Consulting Services
+          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-4">
+            Fractional F&amp;B Operations &amp; GM Services in Miami
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            Every engagement is scoped to the specific gaps and goals of your operation.
-            No retainers, no vague deliverables - just clear work and measurable outcomes.
+            Executive-level F&amp;B leadership for Miami restaurants and hotels — without the full-time executive cost. Every engagement is scoped to the specific gaps and goals of your operation.
+          </p>
+        </div>
+      </section>
+
+      {/* SEO intro section */}
+      <section className="section" style={{ borderBottom: '1px solid var(--color-border)' }}>
+        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
+          <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            Leander Mena provides <strong style={{ color: 'var(--color-text)' }}>fractional F&amp;B director and general manager services for Miami restaurants and hotels</strong>. With 18+ years running operations across independent concepts, hotel F&amp;B programs, and high-volume banquet venues, you get executive-level leadership and a proven operating playbook — without the full-time executive headcount.
+          </p>
+          <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
+            The fractional model is built for owners and operators who need an experienced GM or F&amp;B director to stabilize operations, build systems, and develop teams — but don't want to commit to a permanent executive salary. Engagements range from <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>restaurant pre-opening GM support</Link> to ongoing fractional F&amp;B oversight across one or multiple Miami venues.
+          </p>
+          <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
+            Whether you're launching a new concept in Miami or fixing an underperforming restaurant or hotel outlet, <Link to="/about" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B leadership</Link> delivers a structured operating playbook: labor models, SOPs, menu economics, training programs, and performance dashboards tailored to your property.
           </p>
         </div>
       </section>

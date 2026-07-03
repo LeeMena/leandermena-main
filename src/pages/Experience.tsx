@@ -9,6 +9,7 @@ const roles = [
     subtitle: 'Marabu Cuban Coal Fire Restaurant + La Cervecería de Barrio · Miami, FL',
     body: 'Handpicked to launch La Cervecería de Barrio during a period of operational disruption, then earned the expanded mandate to run both venues simultaneously. Managed full P&L for a 220-seat, 78-FTE operation delivering $9.1M in annual revenue - maintaining prime costs within plan while achieving double-digit sales and margin gains. Built a delivery and takeout operation in 10 days during the 2020 pandemic pivot; scaled off-premise to 24% of the following year\'s sales without margin dilution. Drove sustained profitability through data-informed menu strategy, labor optimization, and hands-on team development.',
     link: '/case-studies',
+    linkLabel: 'See case study →',
   },
   {
     venue: 'Maska Indian Kitchen + Bar',
@@ -16,6 +17,7 @@ const roles = [
     subtitle: 'Midtown Miami, FL',
     body: 'Spearheaded the full pre-opening and launch of a 7,000 sq. ft. upscale Indian concept developed in partnership with Michelin-starred Chef Hemant Mathur. Directed 40+ hires, vendor sourcing and negotiations, supply chain setup, and cost control frameworks from groundbreaking to opening night. Drove P&L to $1.2M+ in year one through disciplined pricing, labor scheduling, and capital efficiency. Developed comprehensive SOPs and training protocols ensuring seamless FOH/BOH execution from day one.',
     link: '/case-studies',
+    linkLabel: 'See case study →',
   },
   {
     venue: 'Plomo Tequila & Taco Bar',
@@ -23,20 +25,23 @@ const roles = [
     subtitle: 'Miami, FL',
     body: 'Led all opening logistics for a high-energy taco concept - recruiting the team, designing operational workflows, establishing vendor partnerships, and implementing service standards. Scaled the restaurant to accommodate 300 covers on peak days. Reduced FOH overtime by 23% through strategic labor scheduling, controlling costs while maintaining service quality across the floor.',
     link: '/services',
+    linkLabel: 'Fractional F&B director services →',
   },
   {
     venue: 'SBE | SLS Brickell Hotel Miami',
     title: 'Director of Banquets & Events | Pre-Opening',
     subtitle: 'Miami, FL',
-    body: 'Built banquet operations from scratch during the construction phase of one of Miami\'s most anticipated luxury hotel openings. Established workflows, vendor coordination, and team protocols to ensure seamless day-one readiness. Played a key role in executing the star-studded grand opening welcoming 1,500+ guests including celebrities and VIPs. Guided the full transition from construction site to five-star operational venue.',
+    body: 'Built banquet and catering operations from scratch during the construction phase of one of Miami\'s most anticipated luxury hotel openings. Established workflows, vendor coordination, and team protocols to ensure seamless day-one readiness. Played a key role in executing the star-studded grand opening welcoming 1,500+ guests including celebrities and VIPs. Guided the full transition from construction site to five-star operational venue.',
     link: '/case-studies',
+    linkLabel: 'See case study →',
   },
   {
     venue: 'Accor Hotels | Sofitel → Pullman Miami Airport',
     title: 'Food & Beverage Manager | Rebrand',
     subtitle: 'Miami, FL',
-    body: 'Led F&B operations through the repositioning of Sofitel Miami into Pullman Miami Airport, aligning all service standards with an elevated brand identity. Centralized beverage purchasing and achieved $180K+ in annual savings while strengthening supplier relationships and quality control. Developed comprehensive SOPs and staff training programs that raised team efficiency and service consistency across all outlets.',
+    body: 'Led F&B operations and F&B leadership consulting through the repositioning of Sofitel Miami into Pullman Miami Airport, aligning all service standards with an elevated brand identity. Centralized beverage purchasing and achieved $180K+ in annual savings while strengthening supplier relationships and quality control. Developed comprehensive SOPs and staff training programs that raised team efficiency and service consistency across all outlets.',
     link: '/services',
+    linkLabel: 'Fractional F&B director services →',
   },
 ]
 
@@ -57,8 +62,8 @@ export default function Experience() {
   return (
     <>
       <SEO
-        title="Experience"
-        description="Leander Mena's Miami hospitality career - GM, pre-opening director, and F&B consultant across restaurants, hotels, and catering operations."
+        title="Leander Mena Career Experience – Miami F&B Director, Restaurant GM & Pre-Opening Consultant"
+        description="18+ years of Miami hospitality leadership: restaurant GM, fractional F&B director, pre-opening consultant, banquet director, and catering operations leader across independent concepts and luxury hotels."
         path="/experience"
         schemaType="experience"
       />
@@ -82,10 +87,10 @@ export default function Experience() {
             <ScrollReveal>
               <span className="kicker">Career History</span>
               <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
-                18 Years of Hospitality Leadership
+                18 Years of Miami F&amp;B Leadership
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                Opening, scaling, and leading operations across Miami's most demanding restaurants, hotels, and catering venues.
+                Restaurant GM, <Link to="/services" className="text-[#d4b896] hover:text-white transition-colors">fractional F&amp;B director</Link>, <Link to="/pre-opening" className="text-[#d4b896] hover:text-white transition-colors">pre-opening consultant</Link>, banquet director, and catering operations leader — across Miami's most demanding restaurants, hotels, and catering venues.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
@@ -128,7 +133,7 @@ export default function Experience() {
                     <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-1">{r.title}</h2>
                     <p className="text-xs text-[#888888] mb-3 tracking-wide">{r.subtitle}</p>
                     <p className="text-[#888888] max-w-[68ch] mb-3 leading-relaxed" style={{ fontSize: '0.9rem' }}>{r.body}</p>
-                    <Link to={r.link} className="text-xs text-[#b8a080] hover:text-[#d4b896] transition-colors">Related work →</Link>
+                    <Link to={r.link} className="text-xs text-[#b8a080] hover:text-[#d4b896] transition-colors">{r.linkLabel}</Link>
                   </div>
                 </div>
               </ScrollReveal>
@@ -137,7 +142,7 @@ export default function Experience() {
 
           <ScrollReveal delay={100}>
             <div className="mt-10 card" style={{ padding: 'var(--space-6)' }}>
-              <h3 className="text-xs font-bold tracking-widest uppercase text-[#b8a080] mb-4">Earlier Roles</h3>
+              <h3 className="text-xs font-bold tracking-widest uppercase text-[#b8a080] mb-4">Earlier Roles — Catering, Banquets & Hotel F&B</h3>
               <div className="flex flex-wrap gap-3">
                 {earlier.map((e) => (
                   <span key={e} style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-full)', padding: '0.25rem 0.75rem' }}>{e}</span>
