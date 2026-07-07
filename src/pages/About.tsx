@@ -63,7 +63,7 @@ export default function About() {
             <Reveal>
               <span className="kicker">About</span>
               <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
-                Fractional F&amp;B Director &amp; Restaurant Consultant — Miami
+                Fractional F&amp;B Director &amp; Restaurant Consultant, Miami
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
                 18 years. Pre-openings, turnarounds, multi-unit management, and catering leadership. Every system I use was earned on the floor.
