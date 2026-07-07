@@ -37,17 +37,21 @@ function RevealLine({ children, delay = 0, style = {} }: { children: React.React
 }
 
 // --- Large animated number ---
-function AnimatedStat({ value, label, delay = 0 }: { value: string; label: string; delay?: number }) {
+// tone="dark" is for sections with a fixed near-black background where white
+// is always readable; tone="theme" follows the light/dark design tokens.
+function AnimatedStat({ value, label, delay = 0, tone = 'dark' }: { value: string; label: string; delay?: number; tone?: 'dark' | 'theme' }) {
   const { ref, inView } = useReveal(0.3)
+  const valueColor = tone === 'dark' ? '#ffffff' : 'var(--color-text)'
+  const labelColor = tone === 'dark' ? 'rgba(255,255,255,0.4)' : 'var(--color-text-muted)'
   return (
     <div ref={ref} style={{ textAlign: 'center' }}>
       <div style={{
         fontFamily: 'var(--font-display)',
-        fontSize: 'clamp(3.5rem, 10vw, 8rem)',
+        fontSize: 'clamp(2.75rem, 9vw, 8rem)',
         fontWeight: 400,
         letterSpacing: '-0.04em',
         lineHeight: 0.9,
-        color: '#ffffff',
+        color: valueColor,
         transform: inView ? 'translateY(0)' : 'translateY(40px)',
         opacity: inView ? 1 : 0,
         transition: `transform 1s cubic-bezier(0.16,1,0.3,1) ${delay}s, opacity 0.8s ease ${delay}s`,
@@ -57,7 +61,7 @@ function AnimatedStat({ value, label, delay = 0 }: { value: string; label: strin
         fontSize: '0.5625rem',
         letterSpacing: '0.22em',
         textTransform: 'uppercase',
-        color: 'rgba(255,255,255,0.4)',
+        color: labelColor,
         marginTop: '0.75rem',
         transform: inView ? 'translateY(0)' : 'translateY(12px)',
         opacity: inView ? 1 : 0,
@@ -156,12 +160,12 @@ export default function Home() {
         ref={heroRef}
         style={{
           position: 'relative',
-          height: '100svh',
-          minHeight: '480px',
+          minHeight: '100svh',
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
           background: '#0a0905',
+          paddingBlock: 'clamp(5rem, 12svh, 8rem)',
         }}
       >
         <motion.div
@@ -266,34 +270,20 @@ export default function Home() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.7 }}
-                style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--space-3)', alignItems: 'center' }}
+                className="hero-cta-row"
               >
                 <Link
                   to="/book"
-                  className="btn btn-primary"
+                  className="btn btn-primary hero-cta"
                   style={{ fontSize: '0.625rem', letterSpacing: '0.18em', minHeight: '48px', paddingInline: 'var(--space-8)' }}
                 >
                   Book a Discovery Call
                 </Link>
                 <button
                   onClick={() => setBlueprintOpen(true)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '0.625rem',
-                    letterSpacing: '0.14em',
-                    textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.45)',
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: 0,
-                    WebkitTapHighlightColor: 'transparent',
-                  }}
+                  className="hero-cta-ghost"
                 >
-                  <Download size={11} />
+                  <Download size={12} />
                   Explore Digital Products
                 </button>
               </motion.div>
@@ -343,14 +333,14 @@ export default function Home() {
         padding: 'clamp(var(--space-8), 4vw, var(--space-12)) 0',
       }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-6)' }}>
+          <div className="home-stats-grid">
             {[
               { value: '18+', label: 'Years Experience' },
               { value: '$12M+', label: 'Revenue Optimized' },
               { value: '500+', label: 'Team Members Trained' },
               { value: '40+', label: 'Properties Operated' },
             ].map((s, i) => (
-              <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} />
+              <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} tone="theme" />
             ))}
           </div>
         </div>
@@ -379,7 +369,7 @@ export default function Home() {
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Engagement Models</p>
                 <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Operational Leadership,{' '}<em>On Demand</em></h2>
               </div>
-              <Link to="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+              <Link to="/services" className="home-section-link">
                 View All Services &amp; Pricing <ArrowRight size={11} />
               </Link>
             </div>
@@ -427,7 +417,7 @@ export default function Home() {
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Digital Products</p>
                 <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Tools Built from{' '}<em>Real Experience</em></h2>
               </div>
-              <Link to="/products" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none', whiteSpace: 'nowrap', flexShrink: 0 }}>
+              <Link to="/products" className="home-section-link">
                 Browse All Products <ArrowRight size={11} />
               </Link>
             </div>
@@ -450,7 +440,7 @@ export default function Home() {
           </div>
           <RevealLine delay={0.2} style={{ marginTop: 'clamp(var(--space-10), 4vw, var(--space-14))' }}>
             <div style={{ textAlign: 'center' }}>
-              <Link to="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-text-muted)', textDecoration: 'none' }}>
+              <Link to="/case-studies" className="home-section-link" style={{ whiteSpace: 'normal' }}>
                 Read Full Case Studies <ArrowRight size={11} />
               </Link>
             </div>
@@ -485,7 +475,7 @@ export default function Home() {
               </RevealLine>
             ))}
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 'var(--space-4)', marginTop: 'clamp(var(--space-16), 8vw, var(--space-24))', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
+          <div className="home-stats-grid" style={{ marginTop: 'clamp(var(--space-16), 8vw, var(--space-24))', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
             {[
               { value: '$12M+', label: 'Revenue Optimized' },
               { value: '500+', label: 'Team Members' },
@@ -497,6 +487,85 @@ export default function Home() {
       </section>
 
       <CTABanner />
+
+      <style>{`
+        /* ---- Stats: 2x2 editorial grid on mobile, 4-across on desktop ---- */
+        .home-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: clamp(2.5rem, 8vw, 3.5rem) var(--space-4);
+        }
+        @media (min-width: 768px) {
+          .home-stats-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: var(--space-6);
+          }
+        }
+
+        /* ---- Hero CTAs: inline on desktop, stacked full-width on mobile ---- */
+        .hero-cta-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--space-3);
+          align-items: center;
+        }
+        .hero-cta-ghost {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          min-height: 48px;
+          padding: 0 var(--space-6);
+          font-family: var(--font-body);
+          font-size: 0.625rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.55);
+          background: none;
+          border: 1px solid rgba(255,255,255,0.16);
+          cursor: pointer;
+          -webkit-tap-highlight-color: transparent;
+          transition: color 200ms ease, border-color 200ms ease;
+        }
+        .hero-cta-ghost:hover {
+          color: #ffffff;
+          border-color: rgba(255,255,255,0.4);
+        }
+        @media (max-width: 639px) {
+          .hero-cta-row {
+            flex-direction: column;
+            align-items: stretch;
+          }
+          .hero-cta-row .hero-cta {
+            width: 100%;
+            justify-content: center;
+            min-height: 52px;
+          }
+          .hero-cta-ghost {
+            width: 100%;
+          }
+        }
+
+        /* ---- Section header links: comfortable tap target on touch ---- */
+        .home-section-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-family: var(--font-body);
+          font-size: 0.625rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-text-muted);
+          text-decoration: none;
+          white-space: nowrap;
+          flex-shrink: 0;
+          min-height: 44px;
+          transition: color 200ms ease;
+        }
+        .home-section-link:hover {
+          color: var(--color-primary);
+        }
+      `}</style>
     </>
   )
 }

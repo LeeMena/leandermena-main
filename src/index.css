@@ -141,6 +141,9 @@
     background-color: var(--color-bg);
     line-height: 1.70;
     letter-spacing: 0.005em;
+    /* No element may widen the layout viewport on mobile - any overflow
+       is clipped instead of forcing horizontal scroll / zoomed-out layout. */
+    overflow-x: clip;
   }
 
   /* Refined scrollbar */
