@@ -38,6 +38,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Luxury palette — kept in sync with CSS custom properties in index.css
         gold: {
           DEFAULT: '#b8a080',
           light: '#c9b89a',
@@ -51,12 +52,14 @@ module.exports = {
           border: '#2a2a2a',
           text: '#e8e8e8',
           muted: '#888888',
-        }
+        },
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
-        serif: ['"Cormorant Garamond"', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        // Aligned with index.css — Cormorant Garamond for display, DM Sans for body
+        // Previously listed Playfair Display + Inter which were unused
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        serif:   ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans:    ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         xl: "calc(var(--radius) + 4px)",
@@ -66,52 +69,52 @@ module.exports = {
         xs: "calc(var(--radius) - 6px)",
       },
       boxShadow: {
-        xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        xs:   "0 1px 2px 0 rgb(0 0 0 / 0.05)",
         glow: '0 0 40px rgba(184, 160, 128, 0.15)',
       },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          to:   { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          to:   { height: "0" },
         },
         "fade-up": {
           from: { opacity: "0", transform: "translateY(30px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+          to:   { opacity: "1", transform: "translateY(0)" },
         },
         "fade-in": {
           from: { opacity: "0" },
-          to: { opacity: "1" },
+          to:   { opacity: "1" },
         },
         "slide-in-right": {
           from: { opacity: "0", transform: "translateX(30px)" },
-          to: { opacity: "1", transform: "translateX(0)" },
+          to:   { opacity: "1", transform: "translateX(0)" },
         },
         "scale-in": {
           from: { opacity: "0", transform: "scale(0.95)" },
-          to: { opacity: "1", transform: "scale(1)" },
+          to:   { opacity: "1", transform: "scale(1)" },
         },
         shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
+          "0%":   { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "50%":      { transform: "translateY(-10px)" },
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-up": "fade-up 0.8s ease-out forwards",
-        "fade-in": "fade-in 0.6s ease-out forwards",
-        "slide-in-right": "slide-in-right 0.8s ease-out forwards",
-        "scale-in": "scale-in 0.5s ease-out forwards",
-        shimmer: "shimmer 3s ease-in-out infinite",
-        float: "float 6s ease-in-out infinite",
+        "accordion-down":  "accordion-down 0.2s ease-out",
+        "accordion-up":    "accordion-up 0.2s ease-out",
+        "fade-up":         "fade-up 0.8s ease-out forwards",
+        "fade-in":         "fade-in 0.6s ease-out forwards",
+        "slide-in-right":  "slide-in-right 0.8s ease-out forwards",
+        "scale-in":        "scale-in 0.5s ease-out forwards",
+        shimmer:           "shimmer 3s ease-in-out infinite",
+        float:             "float 6s ease-in-out infinite",
       },
     },
   },
