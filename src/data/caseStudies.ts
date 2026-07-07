@@ -33,7 +33,7 @@ export const caseStudies: CaseStudy[] = [
     services: ['Pre-Opening Consulting', 'Team Training', 'SOP Development'],
     duration: '4 months',
     testimonial: 'Leander built our entire operational foundation. From a construction site to a fully functioning fine dining restaurant - his system left nothing to chance.',
-    image: '/case-studies/maska.jpg',
+    image: '/images/pre-opening.jpg',
     slug: 'maska-indian-kitchen'
   },
   {
@@ -52,7 +52,7 @@ export const caseStudies: CaseStudy[] = [
     services: ['Fractional Leadership', 'Operations Recovery', 'Labor Optimization'],
     duration: '6 months',
     testimonial: 'Within 60 days we saw measurable improvement. By month four, we were a completely different operation. Leander changed how we think about labor.',
-    image: '/case-studies/ve-hospitality.jpg',
+    image: '/images/labor.jpg',
     slug: 've-hospitality-turnaround'
   },
   {
@@ -71,7 +71,7 @@ export const caseStudies: CaseStudy[] = [
     services: ['Pre-Opening Consulting', 'Banquet Operations', 'Team Training'],
     duration: '3 months',
     testimonial: 'The banquet systems Leander created are still our gold standard. He set us up to scale from day one.',
-    image: '/case-studies/sls-brickell.jpg',
+    image: '/images/dining.jpg',
     slug: 'sls-brickell-banquets'
   },
   {
@@ -90,7 +90,7 @@ export const caseStudies: CaseStudy[] = [
     services: ['Fractional Leadership', 'SOP Development', 'Quality Systems'],
     duration: '12 months',
     testimonial: 'Leander built the operational infrastructure that made our growth possible. We scaled without sacrificing quality.',
-    image: '/case-studies/butler-hospitality.jpg',
+    image: '/images/fnb-manager.jpg',
     slug: 'butler-hospitality-scale'
   }
 ];

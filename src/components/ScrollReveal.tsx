@@ -9,7 +9,7 @@ interface Props {
 
 const isSSR = typeof window === 'undefined'
 
-// Spring easing — consistent with all other motion in the site
+// Spring easing: consistent with all other motion in the site
 const SPRING = 'cubic-bezier(0.16, 1, 0.3, 1)'
 const DURATION = '0.6s'
 
@@ -26,7 +26,7 @@ export default function ScrollReveal({
     const el = ref.current
     if (!el) return
 
-    // Respect prefers-reduced-motion — reveal immediately
+    // Respect prefers-reduced-motion: reveal immediately
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setVisible(true)
       return

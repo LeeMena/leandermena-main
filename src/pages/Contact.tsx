@@ -45,7 +45,7 @@ export default function Contact() {
         schemaType="contact"
       />
 
-      {/* Mobile styles — scoped, reliable */}
+      {/* Mobile styles: scoped, reliable */}
       <style>{`
         .contact-grid {
           display: grid;

@@ -1,4 +1,4 @@
-// Route list for vite-ssg prerender — must match App.tsx routes
+// Route list for vite-ssg prerender: must match App.tsx routes
 export const prerenderRoutes = [
   '/',
   '/about',
@@ -15,7 +15,7 @@ export const prerenderRoutes = [
   '/products',
   '/insights',
 
-  // Insights — all 10 articles (sorted newest first)
+  // Insights: all 10 articles (sorted newest first)
   '/insights/building-training-program-that-works',
   '/insights/miami-restaurant-labor-market-2026',
   '/insights/hotel-fb-why-your-restaurant-underperforms',

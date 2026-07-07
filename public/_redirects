@@ -1,7 +1,7 @@
-# Cloudflare Pages — _redirects
+# Cloudflare Pages: _redirects
 # ============================================================
 # RULE ORDER IS CRITICAL:
-#   1. Trailing-slash 301s (must come first — single-hop)
+#   1. Trailing-slash 301s (must come first: single-hop)
 #   2. Legacy path 301 redirects (single-hop only)
 #   3. Explicit 200 SPA rewrites (prevents trailing-slash chains)
 #   4. SPA catch-all (must be absolute last)
@@ -31,7 +31,7 @@
 /insights/           /insights           301
 
 # ----------------------------------------------------------
-# 2. LEGACY PATH + FILE 301 REDIRECTS — single-hop only
+# 2. LEGACY PATH + FILE 301 REDIRECTS: single-hop only
 #    No destination should itself redirect.
 # ----------------------------------------------------------
 
@@ -88,7 +88,7 @@
 /insights/:slug                                        /index.html  200
 
 # ----------------------------------------------------------
-# 4. SPA CATCH-ALL — must be absolute last rule
+# 4. SPA CATCH-ALL: must be absolute last rule
 #    Handles any future routes not yet explicitly listed.
 # ----------------------------------------------------------
 

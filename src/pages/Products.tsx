@@ -70,7 +70,6 @@ export default function Products() {
         title="F&B Operations Resources & Services | Leander Mena"
         description="Pre-opening planning guides, fractional F&B director services, and GM support for Miami restaurants and hotels. Practical resources from 18+ years of hands-on operations."
         path="/products"
-        schemaType="services"
       />
 
       {/* Hero */}

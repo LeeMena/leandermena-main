@@ -35,11 +35,6 @@ export default function Testimonials() {
                 <div className="mt-6 pt-4 border-t border-[#2a2a2a]">
                   <p className="text-sm font-semibold text-[#e8e8e8]">{t.name}</p>
                   <p className="text-xs text-[#888888]">{t.role}, {t.company}</p>
-                  {t.date && (
-                    <p className="text-xs text-[#555555] mt-1">
-                      {new Date(t.date + '-01').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-                    </p>
-                  )}
                 </div>
               </div>
             </ScrollReveal>

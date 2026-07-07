@@ -1,4 +1,4 @@
-# robots.txt — leandermena.com
+# robots.txt: leandermena.com
 # Last updated: 2026-07-01
 
 User-agent: *
@@ -29,7 +29,7 @@ Disallow: /leander-mena-miami-hospitality
 Disallow: /leander-mena-miami-hospitality/
 Disallow: /*.yml$
 
-# Intentionally unlisted pages — no SEO value
+# Intentionally unlisted pages: no SEO value
 Disallow: /profile
 Disallow: /shop
 Disallow: /products
