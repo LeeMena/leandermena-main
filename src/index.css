@@ -224,6 +224,33 @@
     padding-block: clamp(var(--space-16), 9vw, var(--space-32));
   }
 
+  /* Responsive column utilities used across About, Services, Products,
+     Philosophy, and Skills. Single column on mobile; splits on larger
+     viewports. Pages may override gap via inline style. */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+  @media (min-width: 900px) {
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-12);
+    }
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+  @media (min-width: 640px) {
+    .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (min-width: 1024px) {
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
   .kicker {
     display: inline-flex;
     align-items: center;

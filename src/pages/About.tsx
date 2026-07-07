@@ -116,13 +116,26 @@ export default function About() {
               </div>
             </Reveal>
             <Reveal delay={150}>
+              {/* Source photo is 414x418 - render at (or below) native size and
+                  keep its natural square ratio so it never upscales or crops. */}
               <img
                 src="/images/about.jpg"
                 alt="Leander Mena - Fractional F&B Director and Restaurant Consultant, Miami"
-                width="600"
-                height="750"
+                width="414"
+                height="418"
                 loading="lazy"
-                style={{ borderRadius: 'var(--radius-lg)', width: '100%', objectFit: 'cover', objectPosition: 'top', aspectRatio: '4/5' }}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  maxWidth: '400px',
+                  marginInline: 'auto',
+                  aspectRatio: '1 / 1',
+                  objectFit: 'cover',
+                  objectPosition: 'top',
+                  borderRadius: 'var(--radius-lg)',
+                  border: '1px solid var(--color-border)',
+                  boxShadow: 'var(--shadow-lg)',
+                }}
               />
             </Reveal>
           </div>
