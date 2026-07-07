@@ -45,6 +45,44 @@ export default function Contact() {
         schemaType="contact"
       />
 
+      {/* Mobile styles — scoped, reliable */}
+      <style>{`
+        .contact-grid {
+          display: grid;
+          grid-template-columns: clamp(260px, 34%, 400px) 1fr;
+          gap: clamp(2.5rem, 6vw, 5rem);
+          align-items: start;
+        }
+        .contact-left {
+          position: sticky;
+          top: var(--space-16);
+        }
+        .field-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: var(--space-4);
+        }
+        .steps-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: clamp(var(--space-6), 4vw, var(--space-10));
+        }
+        @media (max-width: 760px) {
+          .contact-grid {
+            grid-template-columns: 1fr;
+          }
+          .contact-left {
+            position: static;
+          }
+          .field-row {
+            grid-template-columns: 1fr;
+          }
+          .steps-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      `}</style>
+
       {/* ── Hero ── */}
       <section
         className="relative overflow-hidden border-b border-[#2a2a2a]"
@@ -109,18 +147,10 @@ export default function Contact() {
       {/* ── Main: left panel + form ── */}
       <section className="section">
         <div className="container">
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'clamp(260px,34%,400px) 1fr',
-              gap: 'clamp(2.5rem,6vw,5rem)',
-              alignItems: 'start'
-            }}
-            className="contact-grid"
-          >
+          <div className="contact-grid">
 
             {/* ── Left: credibility panel ── */}
-            <div style={{ position: 'sticky', top: 'var(--space-16)' }}>
+            <div className="contact-left">
 
               {/* Availability badge */}
               <div
@@ -320,7 +350,7 @@ export default function Contact() {
                   <span className="gold-rule" style={{ marginBlock: 0 }} />
 
                   {/* Name + Email */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-4)' }} className="field-row">
+                  <div className="field-row">
                     <div>
                       <label className="form-label" htmlFor="name">Your name</label>
                       <input
@@ -355,7 +385,7 @@ export default function Contact() {
                       type="text"
                       value={form.business}
                       onChange={set('business')}
-                      placeholder="Optional &mdash; helps me understand the context"
+                      placeholder="Optional \u2014 helps me understand the context"
                       className="form-input"
                     />
                   </div>
@@ -442,13 +472,7 @@ export default function Contact() {
             </h2>
           </div>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-              gap: 'clamp(var(--space-6),4vw,var(--space-10))'
-            }}
-          >
+          <div className="steps-grid">
             {[
               {
                 step: '01',
@@ -493,18 +517,6 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      {/* ── Mobile responsive ── */}
-      <style>{`
-        @media (max-width: 720px) {
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .field-row {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </>
   )
 }
