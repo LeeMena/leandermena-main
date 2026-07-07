@@ -1,23 +1,25 @@
 /* ============================================================
-   LEANDER MENA — ULTRA PREMIUM STYLESHEET
+   LEANDER MENA - ULTRA PREMIUM STYLESHEET
    leandermena.com | Miami F&B Consulting
-   Art direction: Michelin-grade hospitality → editorial luxury
+   Art direction: Michelin-grade hospitality to editorial luxury
    Palette: near-black surfaces + burnished champagne gold accent
    Typography: Cormorant Garamond (display) + DM Sans (body)
-   Density: spacious, breathable — every element earns its room
+   Density: spacious, breathable, every element earns its room
    ============================================================ */
+
+/* Google Fonts are loaded via <link> in index.html, not @import here:
+   @import inside the bundled stylesheet blocks deferred script execution
+   until the font request resolves, stalling first paint on slow/blocked
+   connections to fonts.googleapis.com. */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ── Google Fonts — Cormorant Garamond + DM Sans ── */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap');
-
 @layer base {
   /* ── Design tokens (dark-first defaults) ── */
   :root {
-    /* Surfaces — near-black with warm undertone */
+    /* Surfaces - near-black with warm undertone */
     --color-bg:               #080807;
     --color-surface:          #0e0d0c;
     --color-surface-2:        #131210;
@@ -26,13 +28,13 @@
     --color-divider:          #252320;
     --color-border:           #2c2a26;
 
-    /* Text — warm white, never pure */
+    /* Text - warm white, never pure */
     --color-text:             #ede9e2;
     --color-text-muted:       #8c8780;
     --color-text-faint:       #4a4842;
     --color-text-inverse:     #080807;
 
-    /* Primary — burnished champagne gold (OKLCH) */
+    /* Primary - burnished champagne gold (OKLCH) */
     --color-primary:          oklch(0.72 0.075 68);
     --color-primary-hover:    oklch(0.80 0.080 68);
     --color-primary-active:   oklch(0.62 0.065 68);
@@ -43,7 +45,7 @@
     --font-body:    'DM Sans', 'system-ui', sans-serif;
     --font-accent:  'Cormorant Garamond', 'Georgia', serif;
 
-    /* Type scale — fluid clamp */
+    /* Type scale - fluid clamp */
     --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
     --text-sm:   clamp(0.8125rem, 0.75rem + 0.30vw, 0.9375rem);
     --text-base: clamp(0.9375rem, 0.88rem + 0.28vw, 1.0625rem);
@@ -75,7 +77,7 @@
     --radius-xl:   1rem;
     --radius-full: 9999px;
 
-    /* Shadows — dark, warm-tinted */
+    /* Shadows - dark, warm-tinted */
     --shadow-sm: 0 1px 3px oklch(0.08 0.01 60 / 0.50), 0 1px 2px oklch(0.08 0.01 60 / 0.30);
     --shadow-md: 0 4px 20px oklch(0.08 0.01 60 / 0.60), 0 2px 6px oklch(0.08 0.01 60 / 0.35);
     --shadow-lg: 0 16px 48px oklch(0.08 0.01 60 / 0.70), 0 6px 16px oklch(0.08 0.01 60 / 0.40);

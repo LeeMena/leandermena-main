@@ -29,4 +29,12 @@ export default tseslint.config(
       '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
+  {
+    // shadcn/ui primitives and context providers intentionally export
+    // helper constants/hooks alongside their component - not a fast-refresh issue.
+    files: ['src/components/ui/**/*.tsx', 'src/context/**/*.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 )

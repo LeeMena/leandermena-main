@@ -9,7 +9,7 @@ export default function PreOpening() {
         title="Restaurant Pre-Opening Consultant, Miami | Leander Mena"
         description="Restaurant and hotel F&B pre-opening consulting in Miami. SOPs, staffing plans, training programs, vendor setup, and cost controls for new concepts from groundbreaking to opening night."
         path="/pre-opening"
-        schemaType="services"
+        schemaType="pre-opening"
       />
 
       {/* Hero */}

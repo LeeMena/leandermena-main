@@ -10,7 +10,7 @@ export default function CaseStudies() {
         title="Case Studies"
         description="Real results from Miami restaurant and hotel F&B consulting engagements: pre-opening builds, labor turnarounds, and multi-property scaling."
         path="/case-studies"
-        schemaType="article"
+        schemaType="case-studies"
       />
 
       {/* Hero */}
@@ -67,7 +67,7 @@ export default function CaseStudies() {
                     }}
                   >
                     {/* Quote block */}
-                    {cs.quote && (
+                    {cs.testimonial && (
                       <blockquote style={{
                         margin: 0,
                         padding: '1.5rem 1.5rem 1rem',
@@ -78,24 +78,24 @@ export default function CaseStudies() {
                         lineHeight: 1.65,
                         flexShrink: 0,
                       }}>
-                        &ldquo;{cs.quote.text}&rdquo;
+                        &ldquo;{cs.testimonial}&rdquo;
                         <cite style={{ display: 'block', marginTop: '0.5rem', fontStyle: 'normal' }}>
-                          <span className="block mt-1 not-italic font-bold text-xs uppercase tracking-widest text-[#b8a080]">{cs.quote.author}</span>
+                          <span className="block mt-1 not-italic font-bold text-xs uppercase tracking-widest text-[#b8a080]">{cs.client}</span>
                         </cite>
                       </blockquote>
                     )}
 
                     {/* Body */}
                     <div style={{ padding: '1.25rem 1.5rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                      <span className="kicker" style={{ marginBottom: '0.4rem' }}>{cs.category}</span>
+                      <span className="kicker" style={{ marginBottom: '0.4rem' }}>{cs.industry}</span>
                       <h2 style={{ fontSize: 'clamp(1rem,2vw,1.15rem)', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.3 }}>{cs.title}</h2>
                       <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: '1rem', flex: 1 }}>{cs.challenge}</p>
 
                       {/* Metrics */}
-                      {cs.metrics && cs.metrics.length > 0 && (
+                      {cs.results && cs.results.length > 0 && (
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 'auto' }}>
-                          {cs.metrics.map((m, mi) => (
-                            <span key={mi} style={{
+                          {cs.results.map((r) => (
+                            <span key={r.label} style={{
                               fontSize: '0.7rem',
                               fontWeight: 700,
                               letterSpacing: '0.05em',
@@ -105,7 +105,7 @@ export default function CaseStudies() {
                               background: 'var(--color-surface-offset)',
                               color: 'var(--color-text-muted)',
                               border: '1px solid var(--color-border)',
-                            }}>{m}</span>
+                            }}>{r.metric} {r.label}</span>
                           ))}
                         </div>
                       )}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary meta -->
-    <title>Leander Mena | Fractional F&amp;B Director &amp; Pre-Opening Consultant — Miami</title>
+    <title>Leander Mena | Fractional F&amp;B Director &amp; Pre-Opening Consultant, Miami</title>
     <meta name="description" content="Leander Mena is a Miami-based Fractional F&amp;B Operations Leader with 18+ years opening and running restaurants, hotels, and banquet programs across 40+ properties. Pre-opening consulting, fractional GM, and operations recovery." />
     <meta name="theme-color" content="#0a0a0a" />
     <meta name="color-scheme" content="dark light" />
@@ -34,7 +34,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Hero image LCP preload — shaves 300–800ms off largest contentful paint -->
+    <!-- Fonts load async (preload + swap on load) so a slow/blocked
+         connection to fonts.googleapis.com never blocks first render. -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap"
+      />
+    </noscript>
+
+    <!-- Hero image LCP preload: shaves 300-800ms off largest contentful paint -->
     <link
       rel="preload"
       as="image"
@@ -42,7 +57,7 @@
       fetchpriority="high"
     />
 
-    <!-- Schema.org — Person + ProfessionalService + WebSite (full @graph) -->
+    <!-- Schema.org: Person + ProfessionalService + WebSite (full @graph) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -74,7 +89,7 @@
         {
           "@type": "ProfessionalService",
           "@id": "https://www.leandermena.com/#service",
-          "name": "Leander Mena — F&B Operations & Consulting",
+          "name": "Leander Mena - F&B Operations & Consulting",
           "url": "https://www.leandermena.com",
           "image": "https://www.leandermena.com/images/about.jpg",
           "description": "Fractional F&B Director and pre-opening consultant serving Miami restaurants, hotels, and banquet programs.",
@@ -126,7 +141,7 @@
     }
     </script>
 
-    <!-- Plausible Analytics — privacy-first, no cookies, GDPR compliant -->
+    <!-- Plausible Analytics: privacy-first, no cookies, GDPR compliant -->
     <script defer data-domain="leandermena.com" src="https://plausible.io/js/script.js"></script>
   </head>
   <body>

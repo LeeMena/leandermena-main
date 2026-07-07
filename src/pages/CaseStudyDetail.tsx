@@ -20,7 +20,8 @@ export default function CaseStudyDetail() {
         title={`${cs.title} | Case Study - Leander Mena`}
         description={`${cs.challenge.slice(0, 155)}…`}
         path={`/case-studies/${cs.slug}`}
-        schemaType="article"
+        schemaType="case-study-detail"
+        caseStudy={{ client: cs.client, slug: cs.slug, results: cs.results }}
       />
 
       {/* Hero */}
@@ -43,7 +44,7 @@ export default function CaseStudyDetail() {
           >
             <ArrowLeft size={12} /> Case Studies
           </Link>
-          <span className="kicker" style={{ marginBottom: '0.75rem' }}>{cs.kicker ?? cs.industry}</span>
+          <span className="kicker" style={{ marginBottom: '0.75rem' }}>{cs.industry}</span>
           <h1 className="font-display text-[clamp(1.85rem,4.5vw,3rem)] font-bold leading-[1.1] tracking-tight text-white max-w-[22ch] mb-4">
             {cs.title}
           </h1>

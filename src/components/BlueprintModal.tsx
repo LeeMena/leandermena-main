@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Download, CheckCircle, Loader2, FileText, ExternalLink } from 'lucide-react'
+import { X, Download, CheckCircle, Loader2, ExternalLink } from 'lucide-react'
 
 interface BlueprintModalProps {
   isOpen: boolean

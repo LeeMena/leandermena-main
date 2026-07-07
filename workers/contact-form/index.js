@@ -46,7 +46,7 @@ async function sendEmail(env, { name, email, message }) {
     `From: Contact Form <${env.SENDER_EMAIL}>`,
     `To: ${env.RECIPIENT_EMAIL}`,
     `Reply-To: ${email}`,
-    `Subject: New Contact Form Submission — ${name}`,
+    `Subject: New Contact Form Submission - ${name}`,
     `MIME-Version: 1.0`,
     `Content-Type: text/plain; charset=utf-8`,
     ``,

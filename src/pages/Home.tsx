@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { ArrowRight, Download } from 'lucide-react'
@@ -32,18 +32,6 @@ function RevealLine({ children, delay = 0, style = {} }: { children: React.React
       }}>
         {children}
       </div>
-    </div>
-  )
-}
-
-// --- Parallax wrapper ---
-function ParallaxSection({ children, speed = 0.15 }: { children: React.ReactNode; speed?: number }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', `${speed * 100}%`])
-  return (
-    <div ref={ref} style={{ position: 'relative', overflow: 'hidden' }}>
-      <motion.div style={{ y }}>{children}</motion.div>
     </div>
   )
 }
@@ -217,42 +205,46 @@ export default function Home() {
                 Miami, Florida · F&amp;B Operations
               </motion.p>
 
-              <div style={{ overflow: 'hidden', marginBottom: '0.04em' }}>
-                <motion.h1
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(3.25rem, 12vw, 10rem)',
-                    fontWeight: 400,
-                    letterSpacing: '-0.035em',
-                    lineHeight: 0.88,
-                    color: '#ffffff',
-                    margin: 0,
-                  }}
-                >
-                  Leander
-                </motion.h1>
-              </div>
-              <div style={{ overflow: 'hidden', marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
-                <motion.div
-                  initial={{ y: '100%', opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: 'clamp(3.25rem, 12vw, 10rem)',
-                    fontWeight: 400,
-                    letterSpacing: '-0.035em',
-                    lineHeight: 0.88,
-                    color: 'rgba(255,255,255,0.22)',
-                    fontStyle: 'italic',
-                  }}
-                >
-                  Mena
-                </motion.div>
-              </div>
+              <h1 style={{ margin: 0 }}>
+                <div style={{ overflow: 'hidden', marginBottom: '0.04em' }}>
+                  <motion.span
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                    style={{
+                      display: 'inline-block',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(3.25rem, 12vw, 10rem)',
+                      fontWeight: 400,
+                      letterSpacing: '-0.035em',
+                      lineHeight: 0.88,
+                      color: '#ffffff',
+                    }}
+                  >
+                    Leander
+                  </motion.span>
+                </div>
+                <span className="sr-only"> </span>
+                <div style={{ overflow: 'hidden', marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
+                  <motion.span
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
+                    style={{
+                      display: 'inline-block',
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(3.25rem, 12vw, 10rem)',
+                      fontWeight: 400,
+                      letterSpacing: '-0.035em',
+                      lineHeight: 0.88,
+                      color: 'rgba(255,255,255,0.22)',
+                      fontStyle: 'italic',
+                    }}
+                  >
+                    Mena
+                  </motion.span>
+                </div>
+              </h1>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -424,7 +416,7 @@ export default function Home() {
         </div>
       </section>
 
-      <BlueprintCTA onOpen={() => setBlueprintOpen(true)} />
+      <BlueprintCTA />
 
       {/* PRODUCTS */}
       <section style={{ background: 'var(--color-bg)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
