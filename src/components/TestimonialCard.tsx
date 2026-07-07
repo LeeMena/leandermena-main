@@ -30,7 +30,7 @@ export default function TestimonialCard({ testimonial, index, featured = false }
       <footer style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)' }}>
         <p style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--color-text)' }}>{testimonial.name}</p>
         <p style={{ fontSize: '0.78rem', color: 'var(--color-primary)' }}>{testimonial.role}</p>
-        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{testimonial.venue}</p>
+        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{testimonial.company}</p>
       </footer>
     </motion.blockquote>
   )

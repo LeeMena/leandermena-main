@@ -104,14 +104,18 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
               ))}
             </ul>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
-              <div style={{ display: 'flex', gap: '2px' }}>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} size={12} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
-                ))}
+            {typeof product.rating === 'number' && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
+                <div style={{ display: 'flex', gap: '2px' }}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} size={12} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating as number) ? 'var(--color-primary)' : 'transparent' }} />
+                  ))}
+                </div>
+                <span style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>
+                  {product.rating}{product.reviewCount ? ` (${product.reviewCount} reviews)` : ''}
+                </span>
               </div>
-              <span style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>{product.rating} ({product.reviewCount} reviews)</span>
-            </div>
+            )}
 
             <div style={{ marginTop: 'auto', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
@@ -120,14 +124,29 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
                   <span style={{ fontSize: '0.82rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-2)' }}>${product.originalPrice}</span>
                 )}
               </div>
-              {isBlueprint ? (
-                <button onClick={handleCTA} className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
+              {product.checkoutUrl ? (
+                <a
+                  href={product.checkoutUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                  aria-label={`Buy ${product.title} for $${product.price}`}
+                  style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}
+                >
+                  <ShoppingCart size={14} /> Buy Now <ExternalLink size={12} />
+                </a>
+              ) : isBlueprint ? (
+                <button onClick={handleCTA} className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px' }}>
                   <Download size={14} /> Free Download
                 </button>
               ) : (
-                <button className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
-                  <ShoppingCart size={14} /> Add to Cart
-                </button>
+                <a
+                  href={`mailto:leander@leandermena.com?subject=${encodeURIComponent(`Notify me: ${product.title}`)}`}
+                  className="btn btn-primary"
+                  style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}
+                >
+                  Notify Me
+                </a>
               )}
             </div>
           </div>
@@ -189,12 +208,14 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--color-text)', marginBottom: 'var(--space-1)' }}>{product.title}</h3>
           <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>{product.subtitle}</p>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-4)' }}>
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} size={11} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
-            ))}
-            <span style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-1)' }}>{product.rating}</span>
-          </div>
+          {typeof product.rating === 'number' && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-4)' }}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star key={i} size={11} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating as number) ? 'var(--color-primary)' : 'transparent' }} />
+              ))}
+              <span style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-1)' }}>{product.rating}</span>
+            </div>
+          )}
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--color-border)' }}>
             <div>
@@ -203,14 +224,24 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
                 <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-1)' }}>${product.originalPrice}</span>
               )}
             </div>
-            {isBlueprint ? (
-              <button onClick={handleCTA} style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600 }}>
+            {product.checkoutUrl ? (
+              <a
+                href={product.checkoutUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Buy ${product.title} for $${product.price}`}
+                style={{ color: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600, minWidth: '44px', minHeight: '44px', justifyContent: 'center' }}
+              >
+                Buy <ShoppingCart size={15} />
+              </a>
+            ) : isBlueprint ? (
+              <button onClick={handleCTA} aria-label="Download free blueprint" style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600, minWidth: '44px', minHeight: '44px', justifyContent: 'center' }}>
                 <Download size={15} />
               </button>
             ) : (
-              <button style={{ color: 'var(--color-primary)' }}>
-                <ShoppingCart size={18} />
-              </button>
+              <span style={{ fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
+                Coming Soon
+              </span>
             )}
           </div>
         </div>

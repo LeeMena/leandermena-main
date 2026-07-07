@@ -3,19 +3,19 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface CTABannerProps {
-  title: string;
-  subtitle: string;
-  primaryCta: { label: string; href: string; external?: boolean };
+  title?: string;
+  subtitle?: string;
+  primaryCta?: { label: string; href: string; external?: boolean };
   secondaryCta?: { label: string; href: string; external?: boolean };
   variant?: 'default' | 'dark' | 'gold';
 }
 
 export default function CTABanner({
-  title,
-  subtitle,
-  primaryCta,
+  title = 'Ready to work together?',
+  subtitle = 'Book a free discovery call and find out what a fractional F&B leader can do for your operation.',
+  primaryCta = { label: 'Book a Discovery Call', href: '/book' },
   secondaryCta,
-  variant = 'default',
+  variant = 'dark',
 }: CTABannerProps) {
   const variantStyles = {
     default: 'bg-[#F2EDE6] text-[#121212]',
@@ -35,10 +35,12 @@ export default function CTABanner({
     gold: 'border-[#121212]/20 text-[#121212] hover:bg-[#121212]/5 hover:border-[#121212]/40',
   };
 
-  const LinkComponent = ({ cta, isSecondary = false }: { cta: CTABannerProps['primaryCta']; isSecondary?: boolean }) => {
+  const LinkComponent = ({ cta, isSecondary = false }: { cta: { label: string; href: string; external?: boolean }; isSecondary?: boolean }) => {
+    if (!cta?.href) return null;
+
     const baseClasses = 'inline-flex items-center gap-2 px-6 py-3 rounded-sm font-semibold transition-all duration-300 text-sm sm:text-base uppercase tracking-[1px]';
 
-    const classes = isSecondary 
+    const classes = isSecondary
       ? `${baseClasses} border ${ghostButtonStyles[variant]}`
       : `${baseClasses} ${buttonStyles[variant]} shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-0.5`;
 
@@ -67,7 +69,6 @@ export default function CTABanner({
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`${variantStyles[variant]} py-16 sm:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden`}
     >
-      {/* Gold variant background texture */}
       {variant === 'gold' && (
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,_rgba(255,255,255,0.2)_0%,_transparent_50%)]" />

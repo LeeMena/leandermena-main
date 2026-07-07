@@ -12,7 +12,7 @@ export default function BlogPreOpening() {
         type="article"
         schemaType="article"
         article={{
-          headline: 'Miami Restaurant Pre-Opening Playbook – Consultant's Framework',
+          headline: "Miami Restaurant Pre-Opening Playbook – Consultant's Framework",
           datePublished: '2026-01-20',
           dateModified: '2026-07-03',
         }}

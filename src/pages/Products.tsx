@@ -1,13 +1,26 @@
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
 
-const products = [
+interface ProductItem {
+  id: string
+  title: string
+  subtitle: string
+  description: string
+  price: string
+  badge: string | null
+  features: string[]
+  cta: string
+  href: string
+  external?: boolean
+}
+
+const products: ProductItem[] = [
   {
     id: 'pre-opening-blueprint',
     title: 'Pre-Opening Blueprint',
     subtitle: 'The complete operational framework for restaurant launches',
     description: 'A battle-tested system covering every phase from groundbreaking to opening night. SOPs, hiring timelines, vendor checklists, training frameworks, and P&L templates - built from 5 real pre-openings.',
-    price: '$297',
+    price: '$197',
     badge: 'Most Popular',
     features: [
       '120-day pre-opening roadmap',
@@ -17,8 +30,9 @@ const products = [
       'Opening night run-of-show',
       'P&L and cost projection models',
     ],
-    cta: 'Get the Blueprint',
-    href: '/blueprint',
+    cta: 'Buy Now',
+    href: 'https://leemena.gumroad.com/l/ypudd',
+    external: true,
   },
   {
     id: 'labor-cost-toolkit',
@@ -66,6 +80,17 @@ export default function Products() {
         path="/products"
       />
 
+      {/* Free resource banner */}
+      <div style={{ background: 'linear-gradient(90deg, var(--color-primary, #CFA55B) 0%, #b88d4a 100%)', color: '#121212' }}>
+        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.75rem 1.25rem', paddingBlock: '0.75rem', textAlign: 'center' }}>
+          <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Free Resource</span>
+          <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>Start with the free 90-Day Pre-Opening Blueprint</span>
+          <Link to="/blueprint" style={{ background: '#121212', color: 'var(--color-primary, #CFA55B)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.5rem 1rem', borderRadius: '2px', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}>
+            Get Free Blueprint
+          </Link>
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
         <div
@@ -74,7 +99,7 @@ export default function Products() {
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
-          <span className="kicker">Resources</span>
+          <span className="kicker">Shop Tools</span>
           <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
             Operational Tools &amp; Resources
           </h1>
@@ -104,7 +129,14 @@ export default function Products() {
                 <ul className="list" style={{ marginBottom: '1.25rem' }}>
                   {p.features.map((f) => <li key={f}>{f}</li>)}
                 </ul>
-                <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto' }}>{p.cta}</Link>
+                <div style={{ fontFamily: 'var(--font-serif, inherit)', fontSize: '2rem', color: 'var(--color-primary)', marginBottom: '0.85rem' }}>{p.price}</div>
+                {p.external ? (
+                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto', minHeight: '44px' }} aria-label={`${p.cta} — ${p.title} for ${p.price}`}>
+                    {p.cta}
+                  </a>
+                ) : (
+                  <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto', minHeight: '44px' }}>{p.cta}</Link>
+                )}
               </div>
             ))}
           </div>

@@ -8,7 +8,7 @@ const links = [
   { href: '/pre-opening', label: 'Pre-Opening' },
   { href: '/experience', label: 'Experience' },
   { href: '/case-studies', label: 'Case Studies' },
-  { href: '/products', label: 'Resources' },
+  { href: '/products', label: 'Shop Tools' },
   { href: '/insights', label: 'Insights' },
   { href: '/contact', label: 'Contact' },
 ]
