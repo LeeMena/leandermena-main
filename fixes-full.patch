@@ -1,0 +1,387 @@
+diff --git a/src/components/CTABanner.tsx b/src/components/CTABanner.tsx
+index cb46015..aa5efa5 100644
+--- a/src/components/CTABanner.tsx
++++ b/src/components/CTABanner.tsx
+@@ -3,19 +3,19 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
+ import { motion } from 'framer-motion';
+ 
+ interface CTABannerProps {
+-  title: string;
+-  subtitle: string;
+-  primaryCta: { label: string; href: string; external?: boolean };
++  title?: string;
++  subtitle?: string;
++  primaryCta?: { label: string; href: string; external?: boolean };
+   secondaryCta?: { label: string; href: string; external?: boolean };
+   variant?: 'default' | 'dark' | 'gold';
+ }
+ 
+ export default function CTABanner({
+-  title,
+-  subtitle,
+-  primaryCta,
+-  secondaryCta,
+-  variant = 'default',
++  title = 'Ready to work together?',
++  subtitle = 'Book a free discovery call and find out what a fractional F&B leader can do for your operation.',
++  primaryCta = { label: 'Book a Discovery Call', href: '/book' },
++  secondaryCta = { label: 'Download Free Blueprint', href: '/blueprint' },
++  variant = 'dark',
+ }: CTABannerProps) {
+   const variantStyles = {
+     default: 'bg-[#F2EDE6] text-[#121212]',
+@@ -42,6 +42,8 @@ export default function CTABanner({
+       ? `${baseClasses} border ${ghostButtonStyles[variant]}`
+       : `${baseClasses} ${buttonStyles[variant]} shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-0.5`;
+ 
++    if (!cta?.href) return null;
++
+     if (cta.external) {
+       return (
+         <a href={cta.href} target="_blank" rel="noopener noreferrer" className={classes}>
+diff --git a/src/components/ErrorBoundary.tsx b/src/components/ErrorBoundary.tsx
+new file mode 100644
+index 0000000..68c3233
+--- /dev/null
++++ b/src/components/ErrorBoundary.tsx
+@@ -0,0 +1,87 @@
++import { Component, type ErrorInfo, type ReactNode } from 'react'
++
++interface Props {
++  children: ReactNode
++}
++
++interface State {
++  hasError: boolean
++}
++
++export default class ErrorBoundary extends Component<Props, State> {
++  state: State = { hasError: false }
++
++  static getDerivedStateFromError(): State {
++    return { hasError: true }
++  }
++
++  componentDidCatch(error: Error, info: ErrorInfo) {
++    // Surface in dev tools without polluting production consoles with noise
++    const meta = import.meta as unknown as { env?: { DEV?: boolean } }
++    if (meta.env?.DEV) {
++      console.error('ErrorBoundary caught:', error, info)
++    }
++  }
++
++  render() {
++    if (this.state.hasError) {
++      return (
++        <div
++          style={{
++            minHeight: '100vh',
++            display: 'flex',
++            flexDirection: 'column',
++            alignItems: 'center',
++            justifyContent: 'center',
++            background: '#0a0a0a',
++            color: '#F2EDE6',
++            padding: '2rem',
++            textAlign: 'center',
++            fontFamily: 'system-ui, sans-serif',
++          }}
++        >
++          <span
++            style={{
++              fontSize: '0.7rem',
++              letterSpacing: '0.3em',
++              textTransform: 'uppercase',
++              color: '#CFA55B',
++              marginBottom: '1rem',
++            }}
++          >
++            LX
++          </span>
++          <h1 style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.75rem' }}>
++            Something went wrong on this page
++          </h1>
++          <p style={{ fontSize: '0.9rem', color: 'rgba(242,237,230,0.6)', maxWidth: '32rem', marginBottom: '2rem', lineHeight: 1.6 }}>
++            Reload the page to continue. If this keeps happening, email{' '}
++            <a href="mailto:leander@leandermena.com" style={{ color: '#CFA55B' }}>
++              leander@leandermena.com
++            </a>
++            .
++          </p>
++          <button
++            onClick={() => window.location.reload()}
++            style={{
++              background: '#CFA55B',
++              color: '#121212',
++              border: 'none',
++              padding: '0.75rem 1.75rem',
++              fontSize: '0.8rem',
++              fontWeight: 600,
++              letterSpacing: '0.1em',
++              textTransform: 'uppercase',
++              cursor: 'pointer',
++              minHeight: '44px',
++            }}
++          >
++            Reload Page
++          </button>
++        </div>
++      )
++    }
++
++    return this.props.children
++  }
++}
+diff --git a/src/components/Navigation.tsx b/src/components/Navigation.tsx
+index 3eefe2b..815c269 100644
+--- a/src/components/Navigation.tsx
++++ b/src/components/Navigation.tsx
+@@ -8,7 +8,7 @@ const links = [
+   { href: '/pre-opening', label: 'Pre-Opening' },
+   { href: '/experience', label: 'Experience' },
+   { href: '/case-studies', label: 'Case Studies' },
+-  { href: '/products', label: 'Resources' },
++  { href: '/products', label: 'Shop Tools' },
+   { href: '/insights', label: 'Insights' },
+   { href: '/contact', label: 'Contact' },
+ ]
+diff --git a/src/components/ProductCard.tsx b/src/components/ProductCard.tsx
+index cda0e02..9ff77ea 100644
+--- a/src/components/ProductCard.tsx
++++ b/src/components/ProductCard.tsx
+@@ -104,14 +104,16 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+               ))}
+             </ul>
+ 
+-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
+-              <div style={{ display: 'flex', gap: '2px' }}>
+-                {Array.from({ length: 5 }).map((_, i) => (
+-                  <Star key={i} size={12} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
+-                ))}
++            {typeof product.rating === 'number' && (
++              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
++                <div style={{ display: 'flex', gap: '2px' }}>
++                  {Array.from({ length: 5 }).map((_, i) => (
++                    <Star key={i} size={12} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating ?? 0) ? 'var(--color-primary)' : 'transparent' }} />
++                  ))}
++                </div>
++                <span style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>{product.rating}{product.reviewCount ? ` (${product.reviewCount} reviews)` : ''}</span>
+               </div>
+-              <span style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>{product.rating} ({product.reviewCount} reviews)</span>
+-            </div>
++            )}
+ 
+             <div style={{ marginTop: 'auto', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+               <div>
+@@ -120,14 +122,29 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+                   <span style={{ fontSize: '0.82rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-2)' }}>${product.originalPrice}</span>
+                 )}
+               </div>
+-              {isBlueprint ? (
+-                <button onClick={handleCTA} className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
++              {product.checkoutUrl ? (
++                <a
++                  href={product.checkoutUrl}
++                  target="_blank"
++                  rel="noopener noreferrer"
++                  className="btn btn-primary"
++                  aria-label={`Buy ${product.title} for $${product.price}`}
++                  style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}
++                >
++                  <ShoppingCart size={14} /> Buy Now <ExternalLink size={12} />
++                </a>
++              ) : isBlueprint ? (
++                <button onClick={handleCTA} className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px' }}>
+                   <Download size={14} /> Free Download
+                 </button>
+               ) : (
+-                <button className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
+-                  <ShoppingCart size={14} /> Add to Cart
+-                </button>
++                <a
++                  href={`mailto:leander@leandermena.com?subject=${encodeURIComponent(`Notify me: ${product.title}`)}`}
++                  className="btn btn-primary"
++                  style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}
++                >
++                  Notify Me
++                </a>
+               )}
+             </div>
+           </div>
+@@ -189,12 +206,14 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--color-text)', marginBottom: 'var(--space-1)' }}>{product.title}</h3>
+           <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>{product.subtitle}</p>
+ 
+-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-4)' }}>
+-            {Array.from({ length: 5 }).map((_, i) => (
+-              <Star key={i} size={11} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
+-            ))}
+-            <span style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-1)' }}>{product.rating}</span>
+-          </div>
++          {typeof product.rating === 'number' && (
++            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-4)' }}>
++              {Array.from({ length: 5 }).map((_, i) => (
++                <Star key={i} size={11} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating ?? 0) ? 'var(--color-primary)' : 'transparent' }} />
++              ))}
++              <span style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-1)' }}>{product.rating}</span>
++            </div>
++          )}
+ 
+           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--color-border)' }}>
+             <div>
+@@ -203,14 +222,24 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+                 <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-1)' }}>${product.originalPrice}</span>
+               )}
+             </div>
+-            {isBlueprint ? (
+-              <button onClick={handleCTA} style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600 }}>
++            {product.checkoutUrl ? (
++              <a
++                href={product.checkoutUrl}
++                target="_blank"
++                rel="noopener noreferrer"
++                aria-label={`Buy ${product.title} for $${product.price}`}
++                style={{ color: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600, minWidth: '44px', minHeight: '44px', justifyContent: 'center' }}
++              >
++                Buy <ShoppingCart size={15} />
++              </a>
++            ) : isBlueprint ? (
++              <button onClick={handleCTA} aria-label="Download free blueprint" style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600, minWidth: '44px', minHeight: '44px', justifyContent: 'center' }}>
+                 <Download size={15} />
+               </button>
+             ) : (
+-              <button style={{ color: 'var(--color-primary)' }}>
+-                <ShoppingCart size={18} />
+-              </button>
++              <span style={{ fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
++                Coming Soon
++              </span>
+             )}
+           </div>
+         </div>
+diff --git a/src/components/TestimonialCard.tsx b/src/components/TestimonialCard.tsx
+index 0eacc77..2a07645 100644
+--- a/src/components/TestimonialCard.tsx
++++ b/src/components/TestimonialCard.tsx
+@@ -30,7 +30,7 @@ export default function TestimonialCard({ testimonial, index, featured = false }
+       <footer style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)' }}>
+         <p style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--color-text)' }}>{testimonial.name}</p>
+         <p style={{ fontSize: '0.78rem', color: 'var(--color-primary)' }}>{testimonial.role}</p>
+-        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{testimonial.venue}</p>
++        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{testimonial.company}</p>
+       </footer>
+     </motion.blockquote>
+   )
+diff --git a/src/components/Testimonials.tsx b/src/components/Testimonials.tsx
+index 57b1060..726ea21 100644
+--- a/src/components/Testimonials.tsx
++++ b/src/components/Testimonials.tsx
+@@ -34,7 +34,7 @@ export default function Testimonials() {
+                 </p>
+                 <div className="mt-6 pt-4 border-t border-[#2a2a2a]">
+                   <p className="text-sm font-semibold text-[#e8e8e8]">{t.name}</p>
+-                  <p className="text-xs text-[#888888]">{t.role}, {t.venue}</p>
++                  <p className="text-xs text-[#888888]">{t.role}, {t.company}</p>
+                   {t.date && (
+                     <p className="text-xs text-[#555555] mt-1">
+                       {new Date(t.date + '-01').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+diff --git a/src/main.tsx b/src/main.tsx
+index f5063bc..50a51d2 100644
+--- a/src/main.tsx
++++ b/src/main.tsx
+@@ -2,15 +2,18 @@ import React from 'react'
+ import ReactDOM from 'react-dom/client'
+ import { BrowserRouter } from 'react-router-dom'
+ import { ThemeProvider } from '@/context/ThemeProvider'
++import ErrorBoundary from '@/components/ErrorBoundary'
+ import App from './App'
+ import './index.css'
+ 
+ ReactDOM.createRoot(document.getElementById('root')!).render(
+   <React.StrictMode>
+-    <BrowserRouter>
+-      <ThemeProvider>
+-        <App />
+-      </ThemeProvider>
+-    </BrowserRouter>
++    <ErrorBoundary>
++      <BrowserRouter>
++        <ThemeProvider>
++          <App />
++        </ThemeProvider>
++      </BrowserRouter>
++    </ErrorBoundary>
+   </React.StrictMode>,
+ )
+diff --git a/src/pages/BlogPreOpening.tsx b/src/pages/BlogPreOpening.tsx
+index 6849510..6f44784 100644
+--- a/src/pages/BlogPreOpening.tsx
++++ b/src/pages/BlogPreOpening.tsx
+@@ -12,7 +12,7 @@ export default function BlogPreOpening() {
+         type="article"
+         schemaType="article"
+         article={{
+-          headline: 'Miami Restaurant Pre-Opening Playbook – Consultant's Framework',
++          headline: "Miami Restaurant Pre-Opening Playbook – Consultant's Framework",
+           datePublished: '2026-01-20',
+           dateModified: '2026-07-03',
+         }}
+diff --git a/src/pages/Products.tsx b/src/pages/Products.tsx
+index af8dc0a..5649fa3 100644
+--- a/src/pages/Products.tsx
++++ b/src/pages/Products.tsx
+@@ -7,7 +7,7 @@ const products = [
+     title: 'Pre-Opening Blueprint',
+     subtitle: 'The complete operational framework for restaurant launches',
+     description: 'A battle-tested system covering every phase from groundbreaking to opening night. SOPs, hiring timelines, vendor checklists, training frameworks, and P&L templates - built from 5 real pre-openings.',
+-    price: '$297',
++    price: '$197',
+     badge: 'Most Popular',
+     features: [
+       '120-day pre-opening roadmap',
+@@ -17,8 +17,9 @@ const products = [
+       'Opening night run-of-show',
+       'P&L and cost projection models',
+     ],
+-    cta: 'Get the Blueprint',
+-    href: '/blueprint',
++    cta: 'Buy Now',
++    href: 'https://leemena.gumroad.com/l/ypudd',
++    external: true,
+   },
+   {
+     id: 'labor-cost-toolkit',
+@@ -66,6 +67,17 @@ export default function Products() {
+         path="/products"
+       />
+ 
++      {/* Free resource banner */}
++      <div style={{ background: 'linear-gradient(90deg, #CFA55B 0%, #b88d4a 100%)', color: '#121212' }}>
++        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.75rem 1.25rem', paddingBlock: '0.75rem', textAlign: 'center' }}>
++          <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Free Resource</span>
++          <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>Start with the free 90-Day Pre-Opening Blueprint</span>
++          <Link to="/blueprint" style={{ background: '#121212', color: '#CFA55B', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.5rem 1rem', borderRadius: '2px', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}>
++            Get Free Blueprint
++          </Link>
++        </div>
++      </div>
++
+       {/* Hero */}
+       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
+         <div
+@@ -104,7 +116,14 @@ export default function Products() {
+                 <ul className="list" style={{ marginBottom: '1.25rem' }}>
+                   {p.features.map((f) => <li key={f}>{f}</li>)}
+                 </ul>
+-                <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto' }}>{p.cta}</Link>
++                <div style={{ fontFamily: 'var(--font-serif, inherit)', fontSize: '2rem', color: 'var(--color-primary)', marginBottom: '0.85rem' }}>{p.price}</div>
++                {(p as { external?: boolean }).external ? (
++                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto', minHeight: '44px' }} aria-label={`${p.cta} — ${p.title} for ${p.price}`}>
++                    {p.cta}
++                  </a>
++                ) : (
++                  <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto', minHeight: '44px' }}>{p.cta}</Link>
++                )}
+               </div>
+             ))}
+           </div>

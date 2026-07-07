@@ -1,0 +1,1004 @@
+diff --git a/src/components/BlueprintCTA.tsx b/src/components/BlueprintCTA.tsx
+index bbbaf77..46199d9 100644
+--- a/src/components/BlueprintCTA.tsx
++++ b/src/components/BlueprintCTA.tsx
+@@ -143,6 +143,7 @@ export default function BlueprintCTA() {
+                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+                     <img
+                       src="/assets/Profile-Headshot.jpg"
++                      loading="lazy"
+                       alt="Leander Mena"
+                       width="40"
+                       height="40"
+diff --git a/src/components/BlueprintModal.tsx b/src/components/BlueprintModal.tsx
+index 825545b..12e7efe 100644
+--- a/src/components/BlueprintModal.tsx
++++ b/src/components/BlueprintModal.tsx
+@@ -130,6 +130,14 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
+                     >
+                       <Download size={16} /> Download PDF Version
+                     </a>
++                    <a
++                      href="https://leemena.gumroad.com/l/ypudd"
++                      target="_blank"
++                      rel="noopener noreferrer"
++                      style={{ fontSize: '0.8rem', color: 'var(--color-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', marginTop: 'var(--space-1)' }}
++                    >
++                      Want the full 120-day system? Get the Pre-Opening Playbook — $197
++                    </a>
+                   </div>
+ 
+                   <button onClick={handleClose} style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+diff --git a/src/components/CTABanner.tsx b/src/components/CTABanner.tsx
+index cb46015..aa5efa5 100644
+--- a/src/components/CTABanner.tsx
++++ b/src/components/CTABanner.tsx
+@@ -3,19 +3,19 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
+ import { motion } from 'framer-motion';
+ 
+ interface CTABannerProps {
+-  title: string;
+-  subtitle: string;
+-  primaryCta: { label: string; href: string; external?: boolean };
++  title?: string;
++  subtitle?: string;
++  primaryCta?: { label: string; href: string; external?: boolean };
+   secondaryCta?: { label: string; href: string; external?: boolean };
+   variant?: 'default' | 'dark' | 'gold';
+ }
+ 
+ export default function CTABanner({
+-  title,
+-  subtitle,
+-  primaryCta,
+-  secondaryCta,
+-  variant = 'default',
++  title = 'Ready to work together?',
++  subtitle = 'Book a free discovery call and find out what a fractional F&B leader can do for your operation.',
++  primaryCta = { label: 'Book a Discovery Call', href: '/book' },
++  secondaryCta = { label: 'Download Free Blueprint', href: '/blueprint' },
++  variant = 'dark',
+ }: CTABannerProps) {
+   const variantStyles = {
+     default: 'bg-[#F2EDE6] text-[#121212]',
+@@ -42,6 +42,8 @@ export default function CTABanner({
+       ? `${baseClasses} border ${ghostButtonStyles[variant]}`
+       : `${baseClasses} ${buttonStyles[variant]} shadow-lg shadow-black/10 hover:shadow-xl hover:shadow-black/15 hover:-translate-y-0.5`;
+ 
++    if (!cta?.href) return null;
++
+     if (cta.external) {
+       return (
+         <a href={cta.href} target="_blank" rel="noopener noreferrer" className={classes}>
+diff --git a/src/components/ErrorBoundary.tsx b/src/components/ErrorBoundary.tsx
+new file mode 100644
+index 0000000..68c3233
+--- /dev/null
++++ b/src/components/ErrorBoundary.tsx
+@@ -0,0 +1,87 @@
++import { Component, type ErrorInfo, type ReactNode } from 'react'
++
++interface Props {
++  children: ReactNode
++}
++
++interface State {
++  hasError: boolean
++}
++
++export default class ErrorBoundary extends Component<Props, State> {
++  state: State = { hasError: false }
++
++  static getDerivedStateFromError(): State {
++    return { hasError: true }
++  }
++
++  componentDidCatch(error: Error, info: ErrorInfo) {
++    // Surface in dev tools without polluting production consoles with noise
++    const meta = import.meta as unknown as { env?: { DEV?: boolean } }
++    if (meta.env?.DEV) {
++      console.error('ErrorBoundary caught:', error, info)
++    }
++  }
++
++  render() {
++    if (this.state.hasError) {
++      return (
++        <div
++          style={{
++            minHeight: '100vh',
++            display: 'flex',
++            flexDirection: 'column',
++            alignItems: 'center',
++            justifyContent: 'center',
++            background: '#0a0a0a',
++            color: '#F2EDE6',
++            padding: '2rem',
++            textAlign: 'center',
++            fontFamily: 'system-ui, sans-serif',
++          }}
++        >
++          <span
++            style={{
++              fontSize: '0.7rem',
++              letterSpacing: '0.3em',
++              textTransform: 'uppercase',
++              color: '#CFA55B',
++              marginBottom: '1rem',
++            }}
++          >
++            LX
++          </span>
++          <h1 style={{ fontSize: '1.5rem', fontWeight: 500, marginBottom: '0.75rem' }}>
++            Something went wrong on this page
++          </h1>
++          <p style={{ fontSize: '0.9rem', color: 'rgba(242,237,230,0.6)', maxWidth: '32rem', marginBottom: '2rem', lineHeight: 1.6 }}>
++            Reload the page to continue. If this keeps happening, email{' '}
++            <a href="mailto:leander@leandermena.com" style={{ color: '#CFA55B' }}>
++              leander@leandermena.com
++            </a>
++            .
++          </p>
++          <button
++            onClick={() => window.location.reload()}
++            style={{
++              background: '#CFA55B',
++              color: '#121212',
++              border: 'none',
++              padding: '0.75rem 1.75rem',
++              fontSize: '0.8rem',
++              fontWeight: 600,
++              letterSpacing: '0.1em',
++              textTransform: 'uppercase',
++              cursor: 'pointer',
++              minHeight: '44px',
++            }}
++          >
++            Reload Page
++          </button>
++        </div>
++      )
++    }
++
++    return this.props.children
++  }
++}
+diff --git a/src/components/Navigation.tsx b/src/components/Navigation.tsx
+index 3eefe2b..ac7cd54 100644
+--- a/src/components/Navigation.tsx
++++ b/src/components/Navigation.tsx
+@@ -8,7 +8,7 @@ const links = [
+   { href: '/pre-opening', label: 'Pre-Opening' },
+   { href: '/experience', label: 'Experience' },
+   { href: '/case-studies', label: 'Case Studies' },
+-  { href: '/products', label: 'Resources' },
++  { href: '/products', label: 'Shop Tools' },
+   { href: '/insights', label: 'Insights' },
+   { href: '/contact', label: 'Contact' },
+ ]
+@@ -21,6 +21,7 @@ function BrandMark() {
+   return (
+     <img
+       src="/favicon-96x96.png"
++      loading="eager"
+       alt="Leander Mena"
+       width={34}
+       height={34}
+diff --git a/src/components/ProductCard.tsx b/src/components/ProductCard.tsx
+index cda0e02..9ff77ea 100644
+--- a/src/components/ProductCard.tsx
++++ b/src/components/ProductCard.tsx
+@@ -104,14 +104,16 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+               ))}
+             </ul>
+ 
+-            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
+-              <div style={{ display: 'flex', gap: '2px' }}>
+-                {Array.from({ length: 5 }).map((_, i) => (
+-                  <Star key={i} size={12} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
+-                ))}
++            {typeof product.rating === 'number' && (
++              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-5)' }}>
++                <div style={{ display: 'flex', gap: '2px' }}>
++                  {Array.from({ length: 5 }).map((_, i) => (
++                    <Star key={i} size={12} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating ?? 0) ? 'var(--color-primary)' : 'transparent' }} />
++                  ))}
++                </div>
++                <span style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>{product.rating}{product.reviewCount ? ` (${product.reviewCount} reviews)` : ''}</span>
+               </div>
+-              <span style={{ fontSize: '0.72rem', color: 'var(--color-text-muted)' }}>{product.rating} ({product.reviewCount} reviews)</span>
+-            </div>
++            )}
+ 
+             <div style={{ marginTop: 'auto', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+               <div>
+@@ -120,14 +122,29 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+                   <span style={{ fontSize: '0.82rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-2)' }}>${product.originalPrice}</span>
+                 )}
+               </div>
+-              {isBlueprint ? (
+-                <button onClick={handleCTA} className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
++              {product.checkoutUrl ? (
++                <a
++                  href={product.checkoutUrl}
++                  target="_blank"
++                  rel="noopener noreferrer"
++                  className="btn btn-primary"
++                  aria-label={`Buy ${product.title} for $${product.price}`}
++                  style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}
++                >
++                  <ShoppingCart size={14} /> Buy Now <ExternalLink size={12} />
++                </a>
++              ) : isBlueprint ? (
++                <button onClick={handleCTA} className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px' }}>
+                   <Download size={14} /> Free Download
+                 </button>
+               ) : (
+-                <button className="btn btn-primary" style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem' }}>
+-                  <ShoppingCart size={14} /> Add to Cart
+-                </button>
++                <a
++                  href={`mailto:leander@leandermena.com?subject=${encodeURIComponent(`Notify me: ${product.title}`)}`}
++                  className="btn btn-primary"
++                  style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}
++                >
++                  Notify Me
++                </a>
+               )}
+             </div>
+           </div>
+@@ -189,12 +206,14 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+           <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--color-text)', marginBottom: 'var(--space-1)' }}>{product.title}</h3>
+           <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)', marginBottom: 'var(--space-3)' }}>{product.subtitle}</p>
+ 
+-          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-4)' }}>
+-            {Array.from({ length: 5 }).map((_, i) => (
+-              <Star key={i} size={11} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating) ? 'var(--color-primary)' : 'transparent' }} />
+-            ))}
+-            <span style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-1)' }}>{product.rating}</span>
+-          </div>
++          {typeof product.rating === 'number' && (
++            <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-1)', marginBottom: 'var(--space-4)' }}>
++              {Array.from({ length: 5 }).map((_, i) => (
++                <Star key={i} size={11} style={{ color: 'var(--color-primary)', fill: i < Math.floor(product.rating ?? 0) ? 'var(--color-primary)' : 'transparent' }} />
++              ))}
++              <span style={{ fontSize: '0.68rem', color: 'var(--color-text-muted)', marginLeft: 'var(--space-1)' }}>{product.rating}</span>
++            </div>
++          )}
+ 
+           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--color-border)' }}>
+             <div>
+@@ -203,14 +222,24 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
+                 <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-1)' }}>${product.originalPrice}</span>
+               )}
+             </div>
+-            {isBlueprint ? (
+-              <button onClick={handleCTA} style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600 }}>
++            {product.checkoutUrl ? (
++              <a
++                href={product.checkoutUrl}
++                target="_blank"
++                rel="noopener noreferrer"
++                aria-label={`Buy ${product.title} for $${product.price}`}
++                style={{ color: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600, minWidth: '44px', minHeight: '44px', justifyContent: 'center' }}
++              >
++                Buy <ShoppingCart size={15} />
++              </a>
++            ) : isBlueprint ? (
++              <button onClick={handleCTA} aria-label="Download free blueprint" style={{ color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.75rem', fontWeight: 600, minWidth: '44px', minHeight: '44px', justifyContent: 'center' }}>
+                 <Download size={15} />
+               </button>
+             ) : (
+-              <button style={{ color: 'var(--color-primary)' }}>
+-                <ShoppingCart size={18} />
+-              </button>
++              <span style={{ fontSize: '0.68rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
++                Coming Soon
++              </span>
+             )}
+           </div>
+         </div>
+diff --git a/src/components/SEO.tsx b/src/components/SEO.tsx
+index a954516..1e7889f 100644
+--- a/src/components/SEO.tsx
++++ b/src/components/SEO.tsx
+@@ -1,6 +1,7 @@
+ import { useEffect } from 'react'
+ 
+ export type SchemaType =
++  | 'products'
+   | 'home'
+   | 'about'
+   | 'services'
+@@ -340,6 +341,25 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
+         },
+         breadcrumb('Pre-Opening Blueprint'),
+       ]
++    case 'products':
++      return [
++        {
++          '@context': 'https://schema.org',
++          '@type': 'Product',
++          name: 'Pre-Opening Playbook',
++          description: 'A 120-day restaurant and hotel F&B pre-opening system with week-by-week checklists and fillable templates.',
++          brand: { '@type': 'Person', name: 'Leander Mena' },
++          url: 'https://www.leandermena.com/products',
++          offers: {
++            '@type': 'Offer',
++            price: '197',
++            priceCurrency: 'USD',
++            availability: 'https://schema.org/InStock',
++            url: 'https://leemena.gumroad.com/l/ypudd',
++          },
++        },
++        breadcrumb('Products'),
++      ]
+     case 'profile':
+       return [
+         {
+diff --git a/src/components/TestimonialCard.tsx b/src/components/TestimonialCard.tsx
+index 0eacc77..2a07645 100644
+--- a/src/components/TestimonialCard.tsx
++++ b/src/components/TestimonialCard.tsx
+@@ -30,7 +30,7 @@ export default function TestimonialCard({ testimonial, index, featured = false }
+       <footer style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-4)' }}>
+         <p style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--color-text)' }}>{testimonial.name}</p>
+         <p style={{ fontSize: '0.78rem', color: 'var(--color-primary)' }}>{testimonial.role}</p>
+-        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{testimonial.venue}</p>
++        <p style={{ fontSize: '0.78rem', color: 'var(--color-text-muted)' }}>{testimonial.company}</p>
+       </footer>
+     </motion.blockquote>
+   )
+diff --git a/src/components/Testimonials.tsx b/src/components/Testimonials.tsx
+index 57b1060..726ea21 100644
+--- a/src/components/Testimonials.tsx
++++ b/src/components/Testimonials.tsx
+@@ -34,7 +34,7 @@ export default function Testimonials() {
+                 </p>
+                 <div className="mt-6 pt-4 border-t border-[#2a2a2a]">
+                   <p className="text-sm font-semibold text-[#e8e8e8]">{t.name}</p>
+-                  <p className="text-xs text-[#888888]">{t.role}, {t.venue}</p>
++                  <p className="text-xs text-[#888888]">{t.role}, {t.company}</p>
+                   {t.date && (
+                     <p className="text-xs text-[#555555] mt-1">
+                       {new Date(t.date + '-01').toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+diff --git a/src/main.tsx b/src/main.tsx
+index f5063bc..50a51d2 100644
+--- a/src/main.tsx
++++ b/src/main.tsx
+@@ -2,15 +2,18 @@ import React from 'react'
+ import ReactDOM from 'react-dom/client'
+ import { BrowserRouter } from 'react-router-dom'
+ import { ThemeProvider } from '@/context/ThemeProvider'
++import ErrorBoundary from '@/components/ErrorBoundary'
+ import App from './App'
+ import './index.css'
+ 
+ ReactDOM.createRoot(document.getElementById('root')!).render(
+   <React.StrictMode>
+-    <BrowserRouter>
+-      <ThemeProvider>
+-        <App />
+-      </ThemeProvider>
+-    </BrowserRouter>
++    <ErrorBoundary>
++      <BrowserRouter>
++        <ThemeProvider>
++          <App />
++        </ThemeProvider>
++      </BrowserRouter>
++    </ErrorBoundary>
+   </React.StrictMode>,
+ )
+diff --git a/src/pages/BlogBadPreOpening.tsx b/src/pages/BlogBadPreOpening.tsx
+index 2620b80..49c31cc 100644
+--- a/src/pages/BlogBadPreOpening.tsx
++++ b/src/pages/BlogBadPreOpening.tsx
+@@ -104,6 +104,7 @@ export default function BlogBadPreOpening() {
+                   opening night execution. Let's talk before the problems start.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/blueprint" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Get the Free Blueprint</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogFractionalGM.tsx b/src/pages/BlogFractionalGM.tsx
+index ba84d25..635de05 100644
+--- a/src/pages/BlogFractionalGM.tsx
++++ b/src/pages/BlogFractionalGM.tsx
+@@ -105,6 +105,7 @@ export default function BlogFractionalGM() {
+                   exactly what a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B director engagement</Link> would look like for your concept.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/book" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Book a Discovery Call</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogHotelFB.tsx b/src/pages/BlogHotelFB.tsx
+index 581efd9..86a2a4b 100644
+--- a/src/pages/BlogHotelFB.tsx
++++ b/src/pages/BlogHotelFB.tsx
+@@ -103,6 +103,7 @@ export default function BlogHotelFB() {
+                   Let's talk about what is holding your outlet back.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/book" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Book a Discovery Call</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogLaborCost.tsx b/src/pages/BlogLaborCost.tsx
+index 77ca055..8fceb4e 100644
+--- a/src/pages/BlogLaborCost.tsx
++++ b/src/pages/BlogLaborCost.tsx
+@@ -106,6 +106,7 @@ export default function BlogLaborCost() {
+                   cost into line without cutting the team.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/products" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Labor Cost Toolkit &rarr;</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogLaborCostFull.tsx b/src/pages/BlogLaborCostFull.tsx
+index 133a4a5..2722d93 100644
+--- a/src/pages/BlogLaborCostFull.tsx
++++ b/src/pages/BlogLaborCostFull.tsx
+@@ -102,6 +102,7 @@ export default function BlogLaborCostFull() {
+                   reduction plan that does not require cutting staff or service. Let's talk.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/products" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Labor Cost Toolkit &rarr;</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogMiamiLabor.tsx b/src/pages/BlogMiamiLabor.tsx
+index a3fd73d..ee23168 100644
+--- a/src/pages/BlogMiamiLabor.tsx
++++ b/src/pages/BlogMiamiLabor.tsx
+@@ -110,6 +110,7 @@ export default function BlogMiamiLabor() {
+                   turnover and improve team stability.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/products" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Labor Cost Toolkit &rarr;</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogPreOpening.tsx b/src/pages/BlogPreOpening.tsx
+index 6849510..aec8cf8 100644
+--- a/src/pages/BlogPreOpening.tsx
++++ b/src/pages/BlogPreOpening.tsx
+@@ -12,7 +12,7 @@ export default function BlogPreOpening() {
+         type="article"
+         schemaType="article"
+         article={{
+-          headline: 'Miami Restaurant Pre-Opening Playbook – Consultant's Framework',
++          headline: "Miami Restaurant Pre-Opening Playbook – Consultant's Framework",
+           datePublished: '2026-01-20',
+           dateModified: '2026-07-03',
+         }}
+@@ -101,6 +101,7 @@ export default function BlogPreOpening() {
+                   and what you need to get to a clean opening.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/blueprint" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Get the Free Blueprint</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogPreOpeningTimeline.tsx b/src/pages/BlogPreOpeningTimeline.tsx
+index 4457dff..2552e2c 100644
+--- a/src/pages/BlogPreOpeningTimeline.tsx
++++ b/src/pages/BlogPreOpeningTimeline.tsx
+@@ -103,6 +103,7 @@ export default function BlogPreOpeningTimeline() {
+                   whether you are at 120 days or 45. Let's talk.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/blueprint" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Get the Free Blueprint</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogTraining.tsx b/src/pages/BlogTraining.tsx
+index c9d6fc8..526ba4e 100644
+--- a/src/pages/BlogTraining.tsx
++++ b/src/pages/BlogTraining.tsx
+@@ -110,6 +110,7 @@ export default function BlogTraining() {
+                   development and the reinforcement structure that makes them hold. Let's talk.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/products" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Training Kit &rarr;</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/BlogWhyFractionalLeadership.tsx b/src/pages/BlogWhyFractionalLeadership.tsx
+index a29215b..6f3497b 100644
+--- a/src/pages/BlogWhyFractionalLeadership.tsx
++++ b/src/pages/BlogWhyFractionalLeadership.tsx
+@@ -102,6 +102,7 @@ export default function BlogWhyFractionalLeadership() {
+                   your situation and what it would look like in practice.
+                 </p>
+                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
++                <Link to="/book" className="btn btn-secondary" style={{ marginLeft: '0.75rem' }}>Book a Discovery Call</Link>
+               </div>
+             </ScrollReveal>
+           </div>
+diff --git a/src/pages/Blueprint.tsx b/src/pages/Blueprint.tsx
+index 557829b..4ed15db 100644
+--- a/src/pages/Blueprint.tsx
++++ b/src/pages/Blueprint.tsx
+@@ -148,6 +148,17 @@ export default function Blueprint() {
+                       <Download size={16} /> Download PDF Version
+                     </a>
+                   </div>
++                  <div style={{ marginTop: 'var(--space-6)', paddingTop: 'var(--space-5)', borderTop: '1px solid var(--color-border)', textAlign: 'left' }}>
++                    <span style={{ fontSize: '0.62rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-primary)', display: 'block', marginBottom: 'var(--space-2)' }}>
++                      While you wait
++                    </span>
++                    <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: 'var(--space-4)' }}>
++                      Ready for the full system? The <strong style={{ color: 'var(--color-text)' }}>Pre-Opening Playbook</strong> is the complete 120-day version — week-by-week checklists, fillable templates, and vendor scripts.
++                    </p>
++                    <a href="https://leemena.gumroad.com/l/ypudd" target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ justifyContent: 'center', gap: 'var(--space-2)' }}>
++                      Get the Full Playbook — $197
++                    </a>
++                  </div>
+                 </motion.div>
+               ) : (
+                 <div
+@@ -250,7 +261,7 @@ export default function Blueprint() {
+                     </div>
+                   </div>
+                   <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+-                    <img src="/assets/Profile-Headshot.jpg" alt="Leander Mena" width="36" height="36" style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(184,160,128,0.4)' }} />
++                    <img src="/assets/Profile-Headshot.jpg" alt="Leander Mena" loading="lazy" width="36" height="36" style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(184,160,128,0.4)' }} />
+                     <div>
+                       <p style={{ fontSize: '0.7rem', color: '#fff', fontWeight: 600 }}>Leander Mena</p>
+                       <p style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.5)' }}>18+ Years F&amp;B Operations</p>
+diff --git a/src/pages/Book.tsx b/src/pages/Book.tsx
+index b8cb7ef..38afd94 100644
+--- a/src/pages/Book.tsx
++++ b/src/pages/Book.tsx
+@@ -1,6 +1,25 @@
++import { useEffect } from 'react'
+ import SEO from '@/components/SEO'
+ 
++const CALENDLY_SRC = 'https://assets.calendly.com/assets/external/widget.js'
++
+ export default function Book() {
++  useEffect(() => {
++    // The Calendly embed script must be injected imperatively —
++    // <script> tags rendered through JSX do not execute in React 18.
++    const existing = document.querySelector(`script[src="${CALENDLY_SRC}"]`)
++    if (existing) {
++      // Script already loaded on a previous visit — re-init the widget
++      const w = window as unknown as { Calendly?: { initInlineWidgets?: () => void } }
++      w.Calendly?.initInlineWidgets?.()
++      return
++    }
++    const script = document.createElement('script')
++    script.src = CALENDLY_SRC
++    script.async = true
++    document.body.appendChild(script)
++  }, [])
++
+   return (
+     <>
+       <SEO
+@@ -9,21 +28,41 @@ export default function Book() {
+         path="/book"
+       />
+ 
+-      <section className="section" style={{ minHeight: '80dvh' }}>
+-        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
++      {/* Hero */}
++      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '320px', display: 'flex', alignItems: 'center' }}>
++        <div className="absolute inset-0 z-0" aria-hidden="true">
++          <img
++            src="/images/fnb-manager.jpg"
++            alt=""
++            width="1400"
++            height="900"
++            loading="eager"
++            className="w-full h-full"
++            style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
++          />
++          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
++        </div>
++        <div className="container relative z-10" style={{ paddingBlock: 'clamp(3rem,7vw,5rem)' }}>
+           <span className="kicker">Book a Call</span>
+-          <h1 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-tight mb-4">
++          <h1 className="font-display text-[clamp(2rem,4.5vw,3rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4">
+             Schedule a Discovery Call
+           </h1>
+-          <p style={{ fontSize: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.7, maxWidth: '44ch', marginBottom: '2rem' }}>
++          <p className="text-[#b8b8b8] text-base max-w-[46ch] leading-relaxed">
+             30 minutes. No pitch, no pressure. Just an honest conversation about your operation and whether I can help.
+           </p>
++          <p style={{ fontSize: '0.78rem', color: 'var(--color-primary)', marginTop: '1rem', letterSpacing: '0.05em' }}>
++            I respond within one business day.
++          </p>
++        </div>
++      </section>
++
++      <section className="section">
++        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
+           <div
+             className="calendly-inline-widget"
+             data-url="https://calendly.com/leandermena/discovery"
+             style={{ minWidth: '320px', height: '700px' }}
+           />
+-          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async />
+         </div>
+       </section>
+     </>
+diff --git a/src/pages/CaseStudies.tsx b/src/pages/CaseStudies.tsx
+index ed23e06..60ce482 100644
+--- a/src/pages/CaseStudies.tsx
++++ b/src/pages/CaseStudies.tsx
+@@ -67,7 +67,7 @@ export default function CaseStudies() {
+                     }}
+                   >
+                     {/* Quote block */}
+-                    {cs.quote && (
++                    {cs.testimonial && (
+                       <blockquote style={{
+                         margin: 0,
+                         padding: '1.5rem 1.5rem 1rem',
+@@ -78,23 +78,23 @@ export default function CaseStudies() {
+                         lineHeight: 1.65,
+                         flexShrink: 0,
+                       }}>
+-                        &ldquo;{cs.quote.text}&rdquo;
++                        &ldquo;{cs.testimonial}&rdquo;
+                         <cite style={{ display: 'block', marginTop: '0.5rem', fontStyle: 'normal' }}>
+-                          <span className="block mt-1 not-italic font-bold text-xs uppercase tracking-widest text-[#b8a080]">{cs.quote.author}</span>
++                          <span className="block mt-1 not-italic font-bold text-xs uppercase tracking-widest text-[#b8a080]">{cs.client}</span>
+                         </cite>
+                       </blockquote>
+                     )}
+ 
+                     {/* Body */}
+                     <div style={{ padding: '1.25rem 1.5rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+-                      <span className="kicker" style={{ marginBottom: '0.4rem' }}>{cs.category}</span>
++                      <span className="kicker" style={{ marginBottom: '0.4rem' }}>{cs.industry}</span>
+                       <h2 style={{ fontSize: 'clamp(1rem,2vw,1.15rem)', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.5rem', lineHeight: 1.3 }}>{cs.title}</h2>
+                       <p style={{ fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.65, marginBottom: '1rem', flex: 1 }}>{cs.challenge}</p>
+ 
+                       {/* Metrics */}
+-                      {cs.metrics && cs.metrics.length > 0 && (
++                      {cs.results && cs.results.length > 0 && (
+                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 'auto' }}>
+-                          {cs.metrics.map((m, mi) => (
++                          {cs.results.slice(0, 3).map((m, mi) => (
+                             <span key={mi} style={{
+                               fontSize: '0.7rem',
+                               fontWeight: 700,
+@@ -105,7 +105,7 @@ export default function CaseStudies() {
+                               background: 'var(--color-surface-offset)',
+                               color: 'var(--color-text-muted)',
+                               border: '1px solid var(--color-border)',
+-                            }}>{m}</span>
++                            }}>{m.metric} {m.label}</span>
+                           ))}
+                         </div>
+                       )}
+diff --git a/src/pages/CaseStudyDetail.tsx b/src/pages/CaseStudyDetail.tsx
+index 44f96fb..0007a33 100644
+--- a/src/pages/CaseStudyDetail.tsx
++++ b/src/pages/CaseStudyDetail.tsx
+@@ -190,8 +190,13 @@ export default function CaseStudyDetail() {
+                 borderTop: '1px solid #2a2a2a',
+               }}
+             >
+-              <Link to="/contact" className="btn btn-primary">
+-                Start the Conversation
++              <div style={{ width: '100%', marginBottom: 'var(--space-1)' }}>
++                <p style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 700, color: '#e8e8e8', margin: 0 }}>
++                  Want results like this?
++                </p>
++              </div>
++              <Link to="/book" className="btn btn-primary">
++                Book a 90-Minute Audit
+               </Link>
+               <Link
+                 to="/case-studies"
+diff --git a/src/pages/Home.tsx b/src/pages/Home.tsx
+index 44e2005..c85aa3c 100644
+--- a/src/pages/Home.tsx
++++ b/src/pages/Home.tsx
+@@ -148,11 +148,6 @@ function Statement({ lines, accent, sub }: { lines: string[]; accent?: string; s
+ 
+ export default function Home() {
+   const [blueprintOpen, setBlueprintOpen] = useState(false)
+-  const heroRef = useRef<HTMLElement>(null)
+-  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
+-  const heroY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
+-  const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0])
+-  const heroTextY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
+ 
+   return (
+     <>
+@@ -165,7 +160,6 @@ export default function Home() {
+ 
+       {/* HERO */}
+       <section
+-        ref={heroRef}
+         style={{
+           position: 'relative',
+           height: '100svh',
+@@ -180,13 +174,13 @@ export default function Home() {
+           style={{
+             position: 'absolute',
+             inset: 0,
+-            y: heroY,
+-            scale: 1.15,
++
+             zIndex: 0,
+           }}
+         >
+           <img
+             src="/landing-hero.jpg"
++            loading="eager"
+             alt=""
+             width="1920"
+             height="1200"
+@@ -197,7 +191,7 @@ export default function Home() {
+         </motion.div>
+ 
+         <motion.div
+-          style={{ position: 'relative', zIndex: 1, width: '100%', y: heroTextY, opacity: heroOpacity }}
++          style={{ position: 'relative', zIndex: 1, width: '100%' }}
+         >
+           <div className="container">
+             <div style={{ maxWidth: '900px' }}>
+diff --git a/src/pages/NotFound.tsx b/src/pages/NotFound.tsx
+index 5fc73fc..8697cd7 100644
+--- a/src/pages/NotFound.tsx
++++ b/src/pages/NotFound.tsx
+@@ -24,6 +24,9 @@ export default function NotFound() {
+         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+           <img
+             src="/landing-hero.jpg"
++            width="1920"
++            height="1200"
++            loading="lazy"
+             alt=""
+             style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.15 }}
+           />
+diff --git a/src/pages/Philosophy.tsx b/src/pages/Philosophy.tsx
+index b8df9ce..4e1c95e 100644
+--- a/src/pages/Philosophy.tsx
++++ b/src/pages/Philosophy.tsx
+@@ -38,13 +38,25 @@ export default function Philosophy() {
+         schemaType="philosophy"
+       />
+ 
+-      <section className="page-header">
+-        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
++      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px', display: 'flex', alignItems: 'center' }}>
++        <div className="absolute inset-0 z-0" aria-hidden="true">
++          <img
++            src="/images/philosophy-banner.jpg"
++            alt=""
++            width="1400"
++            height="900"
++            loading="eager"
++            className="w-full h-full"
++            style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
++          />
++          <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
++        </div>
++        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
+           <span className="kicker">Philosophy</span>
+-          <h1 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-bold leading-tight mb-3">
++          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4">
+             How I Think About Operations
+           </h1>
+-          <p className="section-intro">
++          <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
+             These aren't values on a wall. They're the actual principles behind every decision I make on a property.
+           </p>
+         </div>
+diff --git a/src/pages/Products.tsx b/src/pages/Products.tsx
+index af8dc0a..a7aeae5 100644
+--- a/src/pages/Products.tsx
++++ b/src/pages/Products.tsx
+@@ -7,7 +7,7 @@ const products = [
+     title: 'Pre-Opening Blueprint',
+     subtitle: 'The complete operational framework for restaurant launches',
+     description: 'A battle-tested system covering every phase from groundbreaking to opening night. SOPs, hiring timelines, vendor checklists, training frameworks, and P&L templates - built from 5 real pre-openings.',
+-    price: '$297',
++    price: '$197',
+     badge: 'Most Popular',
+     features: [
+       '120-day pre-opening roadmap',
+@@ -17,8 +17,9 @@ const products = [
+       'Opening night run-of-show',
+       'P&L and cost projection models',
+     ],
+-    cta: 'Get the Blueprint',
+-    href: '/blueprint',
++    cta: 'Buy Now',
++    href: 'https://leemena.gumroad.com/l/ypudd',
++    external: true,
+   },
+   {
+     id: 'labor-cost-toolkit',
+@@ -55,6 +56,95 @@ const products = [
+     cta: 'Book a Session',
+     href: '/contact',
+   },
++  {
++    id: 'run-of-show-bundle',
++    title: 'Opening Week Run-of-Show Bundle',
++    subtitle: 'Hour-by-hour execution for opening week',
++    description: 'The exact run-of-show documents used across five Miami openings: soft-open scripts, friends & family service plans, daily debrief templates, and the punch-list system that keeps opening week from unraveling.',
++    price: '$39',
++    badge: null,
++    features: [
++      'Soft-opening run-of-show scripts',
++      'Friends & family service plan',
++      'Daily debrief template',
++      'Opening week punch-list system',
++      'Day-one manager checklist',
++    ],
++    cta: 'Join the Waitlist',
++    href: 'mailto:leander@leandermena.com?subject=Waitlist%3A%20Opening%20Week%20Run-of-Show%20Bundle',
++    external: true,
++  },
++  {
++    id: 'training-kit',
++    title: 'Server & Bartender Training Kit',
++    subtitle: 'Train FOH staff to standard in 30 days',
++    description: 'Competency-based training paths for servers and bartenders: daily lesson plans, service standard scripts, validation checklists, and the trainer development framework that makes training stick.',
++    price: '$49',
++    badge: null,
++    features: [
++      '30-day server training path',
++      '30-day bartender training path',
++      'Service standard scripts',
++      'Skill validation checklists',
++      'Trainer development guide',
++    ],
++    cta: 'Join the Waitlist',
++    href: 'mailto:leander@leandermena.com?subject=Waitlist%3A%20Server%20%26%20Bartender%20Training%20Kit',
++    external: true,
++  },
++  {
++    id: 'banquet-sop-pack',
++    title: 'Banquet & Catering SOP Pack',
++    subtitle: 'Systems for profitable events',
++    description: 'BEO templates, event costing models, staffing matrices, and execution checklists from banquet programs that went from bleeding money to booking 40% more events at real margin.',
++    price: '$59',
++    badge: null,
++    features: [
++      'BEO template system',
++      'Event costing model',
++      'Staffing matrix by event size',
++      'Setup & breakdown checklists',
++      'Post-event P&L review template',
++    ],
++    cta: 'Join the Waitlist',
++    href: 'mailto:leander@leandermena.com?subject=Waitlist%3A%20Banquet%20%26%20Catering%20SOP%20Pack',
++    external: true,
++  },
++  {
++    id: 'manager-onboarding-kit',
++    title: 'F&B Manager Onboarding Kit',
++    subtitle: 'Ramp a new manager in 90 days',
++    description: 'A structured 90-day onboarding plan for new F&B managers: weekly milestones, accountability frameworks, floor audit checklists, and the 1-on-1 cadence that turns a hire into a leader.',
++    price: '$129',
++    badge: null,
++    features: [
++      '90-day onboarding roadmap',
++      'Weekly milestone checkpoints',
++      'Floor audit checklist library',
++      '1-on-1 meeting frameworks',
++      'Performance review templates',
++    ],
++    cta: 'Join the Waitlist',
++    href: 'mailto:leander@leandermena.com?subject=Waitlist%3A%20F%26B%20Manager%20Onboarding%20Kit',
++    external: true,
++  },
++  {
++    id: 'full-operator-bundle',
++    title: 'Full Operator Bundle',
++    subtitle: 'Every tool, one package',
++    description: 'The complete library: Pre-Opening Blueprint, Labor Cost Toolkit, Banquet SOP Pack, Training Kit, Run-of-Show Bundle, and Manager Onboarding Kit. Everything I hand a client on day one of an engagement.',
++    price: '$297',
++    badge: 'Best Value',
++    features: [
++      'All six digital products included',
++      'Save over $150 vs. buying separately',
++      'Lifetime updates on every pack',
++      'Single download, organized library',
++    ],
++    cta: 'Join the Waitlist',
++    href: 'mailto:leander@leandermena.com?subject=Waitlist%3A%20Full%20Operator%20Bundle',
++    external: true,
++  },
+ ]
+ 
+ export default function Products() {
+@@ -64,8 +154,20 @@ export default function Products() {
+         title="Products & Tools - F&B Operations | Leander Mena"
+         description="Operational templates, playbooks, and consulting sessions for restaurant and hospitality operators."
+         path="/products"
++        schemaType="products"
+       />
+ 
++      {/* Free resource banner */}
++      <div style={{ background: 'linear-gradient(90deg, #CFA55B 0%, #b88d4a 100%)', color: '#121212' }}>
++        <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.75rem 1.25rem', paddingBlock: '0.75rem', textAlign: 'center' }}>
++          <span style={{ fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' }}>Free Resource</span>
++          <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>Start with the free 90-Day Pre-Opening Blueprint</span>
++          <Link to="/blueprint" style={{ background: '#121212', color: '#CFA55B', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', padding: '0.5rem 1rem', borderRadius: '2px', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}>
++            Get Free Blueprint
++          </Link>
++        </div>
++      </div>
++
+       {/* Hero */}
+       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
+         <div
+@@ -104,7 +206,14 @@ export default function Products() {
+                 <ul className="list" style={{ marginBottom: '1.25rem' }}>
+                   {p.features.map((f) => <li key={f}>{f}</li>)}
+                 </ul>
+-                <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto' }}>{p.cta}</Link>
++                <div style={{ fontFamily: 'var(--font-serif, inherit)', fontSize: '2rem', color: 'var(--color-primary)', marginBottom: '0.85rem' }}>{p.price}</div>
++                {(p as { external?: boolean }).external ? (
++                  <a href={p.href} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto', minHeight: '44px' }} aria-label={`${p.cta} — ${p.title} for ${p.price}`}>
++                    {p.cta}
++                  </a>
++                ) : (
++                  <Link to={p.href} className="btn btn-primary" style={{ fontSize: '0.85rem', marginTop: 'auto', minHeight: '44px' }}>{p.cta}</Link>
++                )}
+               </div>
+             ))}
+           </div>
+diff --git a/src/pages/Profile.tsx b/src/pages/Profile.tsx
+index 1da0b0b..fc43bac 100644
+--- a/src/pages/Profile.tsx
++++ b/src/pages/Profile.tsx
+@@ -63,6 +63,9 @@ export default function Profile() {
+             <ScrollReveal>
+               <img
+                 src="/images/about.jpg"
++                width="1400"
++                height="900"
++                loading="lazy"
+                 alt="Leander Mena"
+                 className="w-full rounded-xl shadow-md object-cover aspect-[3/4]"
+                 loading="lazy"
+diff --git a/src/pages/Skills.tsx b/src/pages/Skills.tsx
+index c43b348..30ec7d9 100644
+--- a/src/pages/Skills.tsx
++++ b/src/pages/Skills.tsx
+@@ -97,8 +97,8 @@ export default function Skills() {
+   return (
+     <>
+       <SEO
+-        title="Hospitality & F&B Operations Skills"
+-        description="Detailed skill set in pre-opening leadership, labor and cost control, SOP development, P&L management, and team training for Miami hotels and restaurants — Leander Mena."
++        title="What Does a Fractional F&B Director Do? | Leander Mena"
++        description="What a fractional F&B director actually does for restaurants and hotels: pre-opening leadership, labor and cost control, SOP development, P&L management, and team training — without the full-time executive salary."
+         path="/skills"
+         schemaType="profile"
+       />
+@@ -120,15 +120,15 @@ export default function Skills() {
+         <div className="container relative z-10" style={{ paddingTop: 'clamp(3rem, 10vw, 7rem)', paddingBottom: 'clamp(3rem, 10vw, 7rem)' }}>
+           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+             <ScrollReveal>
+-              <span className="kicker">Capabilities & Expertise</span>
++              <span className="kicker">Fractional Leadership, Explained</span>
+               <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-4 lg:mb-6">
+-                Hospitality & F&B Operations Skills — Miami, FL
++                What Does a Fractional F&B Director Do?
+               </h1>
+               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
+-                These are the specific operational levers I bring into hotels, restaurants, and pre-opening projects across Miami and South Florida — built from 18+ years running real venues at every level.
++                A fractional F&B director gives your restaurant or hotel executive-level operations leadership — pre-openings, labor control, SOPs, P&L accountability, training — for a fraction of a full-time salary. These are the specific levers I pull, built from 18+ years running real Miami venues.
+               </p>
+               <div className="flex flex-wrap gap-3">
+-                <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
++                <Link to="/book" className="btn btn-primary">Hire Leander — Book a Discovery Call</Link>
+                 <Link to="/experience" className="btn btn-secondary">View Full Experience</Link>
+               </div>
+             </ScrollReveal>
