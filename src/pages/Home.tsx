@@ -367,7 +367,7 @@ export default function Home() {
       <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule />
-          <Statement accent="The Problem" lines={['Most operators', "don't need more", 'advice.']} sub="They need someone who's actually done it — at scale, under pressure, with real consequences." />
+          <Statement accent="The Problem" lines={['Most operators', "don't need more", 'advice.']} sub="They need someone who's actually done it, at scale, under pressure, with real consequences." />
         </div>
       </section>
 
