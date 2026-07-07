@@ -105,10 +105,10 @@ export default function About() {
               <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">Built in the Trenches of Miami Hospitality</h2>
               <div className="prose-article">
                 <p>
-                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap — from Michelin-starred <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>pre-openings in Midtown Miami</Link> to multi-unit P&amp;L management at scale. Every engagement has sharpened the same core skill: turning a vision into a functioning operation.
+                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap, from Michelin-starred <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>pre-openings in Midtown Miami</Link> to multi-unit P&amp;L management at scale. Every engagement has sharpened the same core skill: turning a vision into a functioning operation.
                 </p>
                 <p>
-                  I've opened hotels, turned around struggling concepts, built training programs from scratch, managed teams of 80 or more across multiple outlets, and led catering and banquet operations for Miami's largest hotel venues. The through-line in every engagement is real accountability — operations only improve when someone with genuine ownership is in the building.
+                  I've opened hotels, turned around struggling concepts, built training programs from scratch, managed teams of 80 or more across multiple outlets, and led catering and banquet operations for Miami's largest hotel venues. The through-line in every engagement is real accountability: operations only improve when someone with genuine ownership is in the building.
                 </p>
                 <p>
                   My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. As a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B director in Miami</Link>, I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
