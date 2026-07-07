@@ -31,7 +31,7 @@ export default function Contact() {
         setStatus('error')
       }
     } catch {
-      setErrorMsg('Network error — please email leander@leandermena.com directly.')
+      setErrorMsg('Network error \u2014 please email leander@leandermena.com directly.')
       setStatus('error')
     }
   }
@@ -40,7 +40,7 @@ export default function Contact() {
     <>
       <SEO
         title="Contact"
-        description="Get in touch with Leander Mena — Miami F&B operations consultant. Response within one business day."
+        description="Get in touch with Leander Mena \u2014 Miami F&B operations consultant. Response within one business day."
         path="/contact"
         schemaType="contact"
       />
@@ -70,7 +70,7 @@ export default function Contact() {
             Let&rsquo;s Talk About Your Operation
           </h1>
           <p style={{ color: '#b8b8b8', fontSize: 'var(--text-base)', maxWidth: '48ch', lineHeight: 1.75 }}>
-            Whether you&rsquo;re opening, recovering, or scaling — tell me what you&rsquo;re working through.
+            Whether you&rsquo;re opening, recovering, or scaling &mdash; tell me what you&rsquo;re working through.
             I read every message and respond within one business day.
           </p>
 
@@ -169,7 +169,7 @@ export default function Contact() {
                 }}
               >
                 Every inquiry goes directly to me. No intake coordinators, no discovery calls
-                with junior staff. You tell me what you need — I&rsquo;ll tell you honestly
+                with junior staff. You tell me what you need &mdash; I&rsquo;ll tell you honestly
                 whether I can help.
               </p>
 
@@ -256,7 +256,7 @@ export default function Contact() {
                   &ldquo;He fixed our labor costs inside the first 30 days. We went from 38% to 26% without losing a single team member.&rdquo;
                 </p>
                 <p style={{ fontSize: '0.5625rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
-                  GM — South Beach Hotel Group
+                  GM &mdash; South Beach Hotel Group
                 </p>
               </div>
             </div>
@@ -355,7 +355,7 @@ export default function Contact() {
                       type="text"
                       value={form.business}
                       onChange={set('business')}
-                      placeholder="Optional — helps me understand the context"
+                      placeholder="Optional &mdash; helps me understand the context"
                       className="form-input"
                     />
                   </div>
@@ -412,7 +412,7 @@ export default function Contact() {
                   </button>
 
                   <p style={{ fontSize: '0.625rem', letterSpacing: '0.10em', color: 'var(--color-text-faint)', marginTop: 'var(--space-1)' }}>
-                    I respond within one business day. No sales pitch — just a straight answer.
+                    I respond within one business day. No sales pitch &mdash; just a straight answer.
                   </p>
                 </form>
               )}
@@ -453,7 +453,7 @@ export default function Contact() {
               {
                 step: '01',
                 title: 'I Read It',
-                body: 'Every message goes directly to me — no intake team, no triage. I read it the same day.'
+                body: 'Every message goes directly to me \u2014 no intake team, no triage. I read it the same day.'
               },
               {
                 step: '02',
@@ -463,7 +463,7 @@ export default function Contact() {
               {
                 step: '03',
                 title: 'We Decide Together',
-                body: 'If there\'s a fit, we do a short call to confirm scope and get started. No pressure, no pitch deck.'
+                body: "If there's a fit, we do a short call to confirm scope and get started. No pressure, no pitch deck."
               }
             ].map(({ step, title, body }) => (
               <div key={step} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
