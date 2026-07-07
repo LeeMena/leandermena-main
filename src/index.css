@@ -251,6 +251,19 @@
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
 
+  /* Product card cover band: full 16:9 where cards sit in a multi-column
+     grid; collapses to a short strip when cards stack on phones, where a
+     tall decorative area is mostly dead scroll. */
+  .product-cover {
+    aspect-ratio: 16 / 9;
+  }
+  @media (max-width: 639px) {
+    .product-cover {
+      aspect-ratio: auto;
+      height: 96px;
+    }
+  }
+
   .kicker {
     display: inline-flex;
     align-items: center;

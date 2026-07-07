@@ -49,8 +49,8 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
         >
           {/* Image / cover area */}
           <div
+            className="product-cover"
             style={{
-              aspectRatio: '16/9',
               background: 'linear-gradient(135deg, #0f0e0c 0%, #1c1a16 100%)',
               position: 'relative',
               display: 'flex',
@@ -172,8 +172,8 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
         }}
       >
         <div
+          className="product-cover"
           style={{
-            aspectRatio: '16/9',
             background: 'linear-gradient(135deg, #0f0e0c 0%, #1c1a16 100%)',
             position: 'relative',
             display: 'flex',

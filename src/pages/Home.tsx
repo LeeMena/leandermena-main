@@ -91,7 +91,7 @@ function RevealRule({ delay = 0 }: { delay?: number }) {
 function Statement({ lines, accent, sub }: { lines: string[]; accent?: string; sub?: string }) {
   const { ref, inView } = useReveal(0.15)
   return (
-    <div ref={ref} style={{ padding: 'clamp(5rem, 10vw, 9rem) 0' }}>
+    <div ref={ref} style={{ padding: 'clamp(3.5rem, 9vw, 9rem) 0' }}>
       {accent && (
         <div style={{
           fontFamily: 'var(--font-body)',
@@ -468,7 +468,7 @@ export default function Home() {
             ].map((v, i) => (
               <RevealLine key={v.n} delay={i * 0.08}>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 'var(--space-6)' }}>
-                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.4375rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: 'var(--space-5)' }}>{v.n}</div>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 'var(--space-5)' }}>{v.n}</div>
                   <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', fontWeight: 400, letterSpacing: '-0.01em', color: '#ffffff', marginBottom: 'var(--space-3)' }}>{v.title}</h3>
                   <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7 }}>{v.body}</p>
                 </div>
