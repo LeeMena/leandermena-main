@@ -184,9 +184,9 @@ export default function Home() {
             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = heroImages.home.fallback }}
             alt={heroImages.home.alt}
             width="1920"
-            height="1080"
+            height="1200"
             loading="eager"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,9,5,0.62) 0%, rgba(10,9,5,0.40) 40%, rgba(10,9,5,0.80) 80%, #0a0905 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(10,9,5,0.55) 100%)' }} />
@@ -293,8 +293,6 @@ export default function Home() {
                 </button>
               </motion.div>
 
-              {/* Availability strip: deliberately subordinate to the national
-                  headline (Phase 2: international layers on, never replaces) */}
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
