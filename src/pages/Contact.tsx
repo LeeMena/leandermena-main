@@ -39,8 +39,8 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Contact"
-        description="Get in touch with Leander Mena \u2014 Miami F&B operations consultant. Response within one business day."
+        title="Book a Discovery Call | Leander Mena, Fractional F&B"
+        description="Tell me about your restaurant or hotel and where it's stuck. Book a free discovery call - engagements available on-site and remote, nationwide."
         path="/contact"
         schemaType="contact"
       />

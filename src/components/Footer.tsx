@@ -91,9 +91,9 @@ export default function Footer() {
               fontSize: '0.8125rem',
               color: 'var(--color-text-muted)',
               lineHeight: 1.65,
-              maxWidth: '26ch',
+              maxWidth: '28ch',
             }}>
-              Fractional F&amp;B Operations Leader based in Miami, Florida.
+              Fractional F&amp;B operations consultant. Available nationwide, on-site + remote. Home base: Miami, Florida.
             </p>
           </div>
 
@@ -110,8 +110,10 @@ export default function Footer() {
             links: [
               { label: 'Digital Products', to: '/products' },
               { label: 'Case Studies', to: '/case-studies' },
+              { label: 'Who I Work With', to: '/industries' },
               { label: 'Insights', to: '/insights' },
               { label: 'About', to: '/about' },
+              { label: 'Miami Consulting', to: '/miami-restaurant-consultant' },
             ],
           }].map((col) => (
             <div key={col.heading}>
@@ -179,7 +181,7 @@ export default function Footer() {
             textTransform: 'uppercase',
             color: 'var(--color-text-faint)',
           }}>
-            Miami, Florida
+            Miami, Florida · Available Nationwide
           </p>
         </div>
       </div>

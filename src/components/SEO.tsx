@@ -15,6 +15,8 @@ export type SchemaType =
   | 'case-studies'
   | 'case-study-detail'
   | 'blueprint'
+  | 'miami'
+  | 'industries'
 
 interface ArticleMeta {
   datePublished: string
@@ -38,12 +40,22 @@ interface Props {
 }
 
 const BASE_URL = 'https://www.leandermena.com'
+// Person/portrait image for schema (headshot)
 const DEFAULT_IMAGE = `${BASE_URL}/images/about.jpg`
+// Default social-share image: landscape 1200x630 (portrait headshots render
+// badly in link previews). Photo: Nick Karvounis, Unsplash License.
+const OG_DEFAULT_IMAGE =
+  'https://images.unsplash.com/photo-1552566626-2d907dab0dff?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format'
+
+// National service area: the business serves clients across the U.S. with an
+// on-site + remote hybrid model. Miami stays in the Person address (where
+// Leander is based) but is no longer presented as the service boundary.
+const AREA_SERVED_US = { '@type': 'Country', name: 'United States' }
 
 const PERSON_BASE = {
   '@type': 'Person',
   name: 'Leander Mena',
-  jobTitle: 'Fractional F&B Operations Leader',
+  jobTitle: 'Fractional F&B Operations Consultant',
   url: BASE_URL,
   image: DEFAULT_IMAGE,
   address: {
@@ -59,6 +71,7 @@ const PERSON_BASE = {
     'Pre-Opening Consulting',
     'Banquet Operations',
     'Labor Cost Control',
+    'Menu Engineering',
     'SOP Development',
   ],
 }
@@ -89,18 +102,18 @@ const SERVICES_FAQ = {
     },
     {
       '@type': 'Question',
-      name: 'What does fractional F&B consulting cost in Miami?',
+      name: 'What does fractional F&B consulting cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Fractional F&B consulting engagements are scoped to the specific project or retainer. Pre-opening consulting typically runs 3-5 months. Fractional leadership retainers are structured monthly. Every engagement begins with a discovery conversation to define scope, timeline, and investment.',
+        text: 'Engagements are scoped as fixed packages, not hourly billing. Pre-opening builds typically run 3-5 months as a fixed-scope project. Turnaround work starts with a diagnostic plus a 90-day plan. Fractional leadership is a monthly retainer. Every engagement begins with a discovery conversation to define scope, timeline, and investment, and travel is built into project scope so the cost is always known upfront.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Do you only work with Miami restaurants?',
+      name: 'Do you work with restaurants outside Miami?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'The primary market is Miami and South Florida, but remote advisory and project-based engagements are available for operations outside the area. Contact to discuss your specific situation.',
+        text: 'Yes. Engagements are available nationwide through a hybrid model: on-site sprints for kickoffs, openings, and turnaround intensives, with remote systems work, P&L reviews, and team coaching between visits. Miami is home base and the market where the systems were built, not a service boundary.',
       },
     },
     {
@@ -146,20 +159,24 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
         {
           '@context': 'https://schema.org',
           ...PERSON_BASE,
-          description: '18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations across Miami.',
+          description: '18+ years opening, leading, and growing restaurants, hotels, banquets, and catering operations - forged in Miami, now working with operators nationwide.',
         },
         {
           '@context': 'https://schema.org',
-          '@type': 'LocalBusiness',
-          name: 'Leander Mena - F&B Operations',
+          '@type': 'ProfessionalService',
+          '@id': `${BASE_URL}/#business`,
+          name: 'Leander Mena - Fractional F&B Operations Consulting',
           url: BASE_URL,
-          image: DEFAULT_IMAGE,
-          description: 'Fractional F&B Director and pre-opening consultant serving Miami restaurants and hotels.',
-          address: PERSON_BASE.address,
-          areaServed: [
-            { '@type': 'City', name: 'Miami', sameAs: 'https://www.wikidata.org/wiki/Q8654' },
-            { '@type': 'State', name: 'Florida' },
-          ],
+          image: OG_DEFAULT_IMAGE,
+          description: 'Fractional food & beverage operations leadership, pre-opening consulting, and operations turnaround for restaurants and hotels nationwide.',
+          founder: { '@type': 'Person', name: 'Leander Mena' },
+          areaServed: AREA_SERVED_US,
+          availableChannel: {
+            '@type': 'ServiceChannel',
+            serviceUrl: `${BASE_URL}/contact`,
+            availableLanguage: 'English',
+          },
+          knowsAbout: PERSON_BASE.knowsAbout,
           priceRange: '$$$$',
           sameAs: PERSON_BASE.sameAs,
         },
@@ -169,13 +186,13 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
         {
           '@context': 'https://schema.org',
           ...PERSON_BASE,
-          description: 'Leander Mena is a Miami-based fractional F&B operations leader with 18+ years of experience opening and managing restaurants, hotels, and hospitality venues.',
+          description: 'Leander Mena is a fractional F&B operations consultant with 18+ years of experience opening and managing restaurants, hotels, and hospitality venues. Forged in Miami, available nationwide.',
           hasOccupation: {
             '@type': 'Occupation',
-            name: 'Fractional F&B Director',
+            name: 'Fractional F&B Operations Consultant',
             occupationLocation: PERSON_BASE.address,
             estimatedSalary: [],
-            description: 'Pre-opening consulting, operations leadership, and team development for Miami hospitality brands.',
+            description: 'Pre-opening consulting, operations leadership, and team development for restaurants and hotels nationwide.',
           },
         },
         breadcrumb('About'),
@@ -188,9 +205,9 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           name: 'Fractional F&B Operations & Consulting',
           provider: { ...PERSON_BASE },
           serviceType: 'Food and Beverage Operations Consulting',
-          areaServed: PERSON_BASE.address,
+          areaServed: AREA_SERVED_US,
           url: `${BASE_URL}/services`,
-          description: 'Fractional F&B Director services for Miami restaurants and hotels including operations leadership, menu development, team training, and financial oversight.',
+          description: 'Fractional F&B leadership for restaurants and hotels nationwide: operations leadership, menu development, team training, and financial oversight, delivered on-site and remote.',
         },
         SERVICES_FAQ,
         breadcrumb('Services'),
@@ -203,9 +220,9 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           name: 'Restaurant & Hotel Pre-Opening Consulting',
           provider: { ...PERSON_BASE },
           serviceType: 'Pre-Opening F&B Consulting',
-          areaServed: PERSON_BASE.address,
+          areaServed: AREA_SERVED_US,
           url: `${BASE_URL}/pre-opening`,
-          description: 'End-to-end pre-opening consulting for new restaurants and hotel F&B programs in Miami: concept development, SOP creation, staff hiring and training, and opening-day execution.',
+          description: 'End-to-end pre-opening consulting for new restaurants and hotel F&B programs nationwide: concept development, SOP creation, staff hiring and training, and opening-day execution.',
         },
         breadcrumb('Pre-Opening'),
       ]
@@ -263,16 +280,12 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
       return [
         {
           '@context': 'https://schema.org',
-          '@type': 'LocalBusiness',
-          name: 'Leander Mena - F&B Operations',
+          '@type': 'ProfessionalService',
+          name: 'Leander Mena - Fractional F&B Operations Consulting',
           url: `${BASE_URL}/contact`,
-          image: DEFAULT_IMAGE,
-          description: 'Contact Leander Mena for fractional F&B consulting, pre-opening projects, and operations leadership engagements in Miami.',
-          address: PERSON_BASE.address,
-          areaServed: [
-            { '@type': 'City', name: 'Miami' },
-            { '@type': 'State', name: 'Florida' },
-          ],
+          image: OG_DEFAULT_IMAGE,
+          description: 'Contact Leander Mena for fractional F&B consulting, pre-opening projects, and operations turnaround engagements - available on-site and remote, nationwide.',
+          areaServed: AREA_SERVED_US,
           contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'customer service',
@@ -282,6 +295,39 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           sameAs: PERSON_BASE.sameAs,
         },
         breadcrumb('Contact'),
+      ]
+    case 'miami':
+      // The one location page: keeps local rankings and Map Pack eligibility
+      // while every national page targets geo-neutral terms.
+      return [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'LocalBusiness',
+          name: 'Leander Mena - Miami Restaurant & Hotel F&B Consulting',
+          url: `${BASE_URL}/miami-restaurant-consultant`,
+          image: DEFAULT_IMAGE,
+          description: 'Miami-based fractional F&B operator with 18+ years opening and running the city’s top restaurants, hotels, and banquet programs. On-site consulting across South Florida.',
+          address: PERSON_BASE.address,
+          areaServed: [
+            { '@type': 'City', name: 'Miami', sameAs: 'https://www.wikidata.org/wiki/Q8654' },
+            { '@type': 'State', name: 'Florida' },
+          ],
+          priceRange: '$$$$',
+          sameAs: PERSON_BASE.sameAs,
+        },
+        breadcrumb('Miami Restaurant Consultant'),
+      ]
+    case 'industries':
+      return [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: 'Who I Work With - Leander Mena',
+          url: `${BASE_URL}/industries`,
+          author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
+          description: 'Fractional F&B operations leadership for independent restaurants, multi-unit groups, hotel and resort F&B programs, banquet and catering operations, and private clubs nationwide.',
+        },
+        breadcrumb('Who I Work With'),
       ]
     case 'insights':
       return [
@@ -373,7 +419,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
 
 export default function SEO({ title, description, path = '/', image, type = 'website', schemaType, article, caseStudy }: Props) {
   const url = `${BASE_URL}${path}`
-  const ogImage = image || DEFAULT_IMAGE
+  const ogImage = image || OG_DEFAULT_IMAGE
 
   useEffect(() => {
     document.title = title

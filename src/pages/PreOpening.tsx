@@ -1,28 +1,29 @@
 import SEO from '@/components/SEO'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
+import { heroImages } from '@/data/heroImages'
 
 export default function PreOpening() {
   return (
     <>
       <SEO
-        title="Restaurant Pre-Opening Consultant, Miami | Leander Mena"
-        description="Restaurant and hotel F&B pre-opening consulting in Miami. SOPs, staffing plans, training programs, vendor setup, and cost controls for new concepts from groundbreaking to opening night."
+        title="Restaurant & Hotel Pre-Opening Consultant | Leander Mena"
+        description="Open on time and on budget. A fractional pre-opening partner who builds your org chart, SOPs, vendor matrix, training, and soft-launch plan - on-site and remote, nationwide."
         path="/pre-opening"
         schemaType="pre-opening"
       />
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/kitchen.jpg)' }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImages.preOpening.url}), url(${heroImages.preOpening.fallback})` }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <span className="kicker">Pre-Opening</span>
-          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[22ch] mb-4">
-            Restaurant Pre-Opening Consulting in Miami
+          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[24ch] mb-4">
+            Pre-Opening Consulting That Gets You Open On Time, On Budget
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            Systems, staffing, and operating infrastructure built before opening night, not after.
+            Systems, staffing, and operating infrastructure built before opening night, not after. On-site and remote, nationwide.
           </p>
         </div>
       </section>
@@ -31,7 +32,7 @@ export default function PreOpening() {
       <section className="section" style={{ borderBottom: '1px solid var(--color-border)' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-            Leander Mena is a <strong style={{ color: 'var(--color-text)' }}>restaurant pre-opening consultant based in Miami</strong> with hands-on GM experience launching independent restaurants and hotel F&amp;B programs, covering every phase from construction coordination through soft open and full launch.
+            Leander Mena is a <strong style={{ color: 'var(--color-text)' }}>restaurant and hotel pre-opening consultant</strong> with hands-on GM experience launching independent restaurants and hotel F&amp;B programs, covering every phase from construction coordination through soft open and full launch. Engagements run on-site and remote, anywhere in the U.S.
           </p>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
             Pre-opening engagements cover the full scope of launch infrastructure: staffing plans and hiring roadmaps, vendor sourcing and contract negotiation, SOP development, FOH and BOH training programs, POS configuration, cost control frameworks, and opening-week contingency planning. Every system is built to be owned and operated by your team after the engagement ends.

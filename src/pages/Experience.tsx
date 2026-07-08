@@ -56,8 +56,8 @@ export default function Experience() {
   return (
     <>
       <SEO
-        title="F&B & Restaurant GM Experience | Leander Mena"
-        description="18+ years of F&B and GM experience in Miami: pre-opening GM roles, dual-concept operations, hotel banquets and catering leadership across independent restaurants and major hotel brands."
+        title="Experience & Track Record | Leander Mena, F&B Operations"
+        description="18+ years, 40+ properties, $12M+ in revenue optimized, 500+ team members trained across Michelin concepts, SLS Hotels, and Accor properties."
         path="/experience"
         schemaType="profile"
       />

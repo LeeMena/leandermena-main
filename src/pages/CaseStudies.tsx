@@ -2,13 +2,14 @@ import { caseStudies } from '@/data/caseStudies'
 import { Link } from 'react-router-dom'
 import SEO from '@/components/SEO'
 import ScrollReveal from '@/components/ScrollReveal'
+import { heroImages } from '@/data/heroImages'
 
 export default function CaseStudies() {
   return (
     <>
       <SEO
-        title="Case Studies"
-        description="Real results from Miami restaurant and hotel F&B consulting engagements: pre-opening builds, labor turnarounds, and multi-property scaling."
+        title="F&B Consulting Case Studies & Results | Leander Mena"
+        description="Real engagements: a 45-day pre-opening rescue, a banquet department turned from 38% labor cost to profitable, and more. See how fractional operations leadership pays for itself."
         path="/case-studies"
         schemaType="case-studies"
       />
@@ -16,8 +17,8 @@ export default function CaseStudies() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '380px' }}>
         <div
-          className="absolute inset-0 bg-cover bg-top"
-          style={{ backgroundImage: 'url(/images/fnb-manager.jpg)' }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroImages.caseStudies.url}), url(${heroImages.caseStudies.fallback})` }}
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.45) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,8vw,6rem)' }}>

@@ -3,13 +3,13 @@ import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '@/context/ThemeProvider'
 
 const links = [
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
+  { href: '/services', label: 'Work With Me' },
   { href: '/pre-opening', label: 'Pre-Opening' },
+  { href: '/products', label: 'Playbooks' },
+  { href: '/case-studies', label: 'Results' },
   { href: '/experience', label: 'Experience' },
-  { href: '/case-studies', label: 'Case Studies' },
-  { href: '/products', label: 'Shop Tools' },
   { href: '/insights', label: 'Insights' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ]
 

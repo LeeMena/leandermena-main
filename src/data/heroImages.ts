@@ -1,111 +1,84 @@
-// Hero image data for all rotator slots.
-// All Unsplash images are free for commercial use (Unsplash License).
-// Local fallbacks in /public/images/ keep the site whole if CDN is unreachable.
+// Landscape hero imagery served from the Unsplash CDN with forced 16:9 crops.
+// All photos are under the Unsplash License (free for commercial use, no
+// attribution required; photographer credit kept here and in alt text as a
+// courtesy). The `fallback` is a repo-local asset used if the CDN image is
+// ever removed by its contributor.
+//
+// URL pattern: base + ?fm=jpg&w=<w>&h=<h>&fit=crop&crop=edges&q=80&auto=format
+
+const params = (w: number, h: number) =>
+  `?fm=jpg&w=${w}&h=${h}&fit=crop&crop=edges&q=80&auto=format`
 
 export interface HeroImage {
-  id: number;
-  url: string;          // Unsplash CDN URL — 16:9 forced crop, w=1920
-  fallback: string;     // Local asset path
-  alt: string;
-  photographer: string;
-  unsplashHandle: string;
+  url: string
+  fallback: string
+  credit: string
+  alt: string
 }
 
-export const heroImages: HeroImage[] = [
-  {
-    id: 1,
-    url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&h=1080&q=80',
+export const heroImages: Record<string, HeroImage> = {
+  // Moody hotel lounge/lobby bar, warm amber light
+  home: {
+    url: `https://images.unsplash.com/photo-1552566626-2d907dab0dff${params(1920, 1080)}`,
+    fallback: '/landing-hero.jpg',
+    credit: 'Photo: Nick Karvounis, Unsplash',
+    alt: 'Dimly lit upscale hotel lounge with warm amber pendant lighting',
+  },
+  // Warm, refined restaurant interior with pendant lighting
+  about: {
+    url: `https://images.unsplash.com/photo-1521917441209-e886f0404a7b${params(1920, 1080)}`,
+    fallback: '/images/aboutme.jpg',
+    credit: 'Photo: Sebastian Schuppik, Unsplash',
+    alt: 'Warm, refined restaurant dining room with tables and pendant lighting',
+  },
+  // Dark, empty upscale dining room, dramatic low light
+  services: {
+    url: `https://images.unsplash.com/photo-1555266375-9efc2860bd56${params(1920, 1080)}`,
     fallback: '/images/dining.jpg',
-    alt: 'Upscale restaurant dining room with warm ambient lighting',
-    photographer: 'Thomas Lefebvre',
-    unsplashHandle: 'thomaslefebvre'
+    credit: 'Photo: Behzad Ghaffarian, Unsplash',
+    alt: 'Dark, empty upscale restaurant dining room in dramatic low light',
   },
-  {
-    id: 2,
-    url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&h=1080&q=80',
+  // Softly-lit dining room with guests: opening-night energy
+  preOpening: {
+    url: `https://images.unsplash.com/photo-1567745219000-b99afacf5ef6${params(1920, 1080)}`,
+    fallback: '/images/kitchen.jpg',
+    credit: 'Photo: Kristian Angelo, Unsplash',
+    alt: 'Softly lit restaurant dining room full of guests on a busy evening',
+  },
+  // Refined dining room, white-set tables: the after-state of a turnaround
+  caseStudies: {
+    url: `https://images.unsplash.com/photo-1583354608715-177553a4035e${params(1920, 1080)}`,
+    fallback: '/images/fnb-manager.jpg',
+    credit: 'Photo: Klara Kulikova, Unsplash',
+    alt: 'Polished restaurant dining room with white-set tables and warm lighting',
+  },
+  // Plated fine-dining dish, dark background
+  products: {
+    url: `https://images.unsplash.com/photo-1414235077428-338989a2e8c0${params(1600, 900)}`,
     fallback: '/images/dining.jpg',
-    alt: 'Modern restaurant interior with bar seating',
-    photographer: 'Renate Vanaga',
-    unsplashHandle: 'renatevanaga'
+    credit: 'Photo: Jay Wennington, Unsplash',
+    alt: 'Elegantly plated fine-dining dish against a dark background',
   },
-  {
-    id: 3,
-    url: 'https://images.unsplash.com/photo-1552566626-52f8b828329b?auto=format&fit=crop&w=1920&h=1080&q=80',
+  // Warm upscale bar with counter and stools
+  industries: {
+    url: `https://images.unsplash.com/photo-1687945512099-400cbe94460c${params(1920, 1080)}`,
     fallback: '/images/dining.jpg',
-    alt: 'Fine dining table setting with white linens',
-    photographer: 'Dan Gold',
-    unsplashHandle: 'danielcgold'
+    credit: 'Photo: ASR Design Studio, Unsplash',
+    alt: 'Upscale bar with counter seating and warm backlighting',
   },
-  {
-    id: 4,
-    url: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1920&h=1080&q=80',
-    fallback: '/images/hotel.jpg',
-    alt: 'Hotel F&B operations — open kitchen view',
-    photographer: 'Bimo Luki',
-    unsplashHandle: 'bimoluki'
-  },
-  {
-    id: 5,
-    url: 'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?auto=format&fit=crop&w=1920&h=1080&q=80',
-    fallback: '/images/hotel.jpg',
-    alt: 'Hotel lobby bar and lounge area',
-    photographer: 'Suhyeon Choi',
-    unsplashHandle: 'choisyeon'
-  },
-  {
-    id: 6,
-    url: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1920&h=1080&q=80',
+  // People dining in a warm restaurant: service culture / training
+  miami: {
+    url: `https://images.unsplash.com/photo-1559329007-40df8a9345d8${params(1920, 1080)}`,
     fallback: '/images/dining.jpg',
-    alt: 'Restaurant service — waiter presenting dishes tableside',
-    photographer: 'Jessie Beck',
-    unsplashHandle: 'jessiebeck'
+    credit: 'Photo: K8, Unsplash',
+    alt: 'Guests dining in a warm, busy restaurant',
   },
-  {
-    id: 7,
-    url: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1920&h=1080&q=80',
+  // Elegant banquet hall: chandeliers, white linens, round tables
+  // (slot #12 from the repositioning brief, sourced in PR #10)
+  banquet: {
+    url: `https://images.unsplash.com/photo-1519167758481-83f550bb49b3${params(1920, 1080)}`,
     fallback: '/images/dining.jpg',
-    alt: 'Commercial kitchen — brigade in service',
-    photographer: 'Alyson McPhee',
-    unsplashHandle: 'alysonmcphee'
+    credit: 'Photo: Shawn Ang, Unsplash',
+    alt: 'Elegant banquet hall set for a large-scale event with chandeliers, white linens, and round tables',
   },
-  {
-    id: 8,
-    url: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1920&h=1080&q=80',
-    fallback: '/images/dining.jpg',
-    alt: 'Plated dishes — precision food presentation',
-    photographer: 'Brooke Lark',
-    unsplashHandle: 'brookelark'
-  },
-  {
-    id: 9,
-    url: 'https://images.unsplash.com/photo-1559329007-40df8a9345d8?auto=format&fit=crop&w=1920&h=1080&q=80',
-    fallback: '/images/hotel.jpg',
-    alt: 'Resort pool bar and outdoor F&B service',
-    photographer: 'Ishan @seefromthesky',
-    unsplashHandle: 'seefromthesky'
-  },
-  {
-    id: 10,
-    url: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1920&h=1080&q=80',
-    fallback: '/images/dining.jpg',
-    alt: 'Team training session in a hospitality setting',
-    photographer: 'Annie Spratt',
-    unsplashHandle: 'anniespratt'
-  },
-  {
-    id: 11,
-    url: 'https://images.unsplash.com/photo-1582037928769-181f2644ecb7?auto=format&fit=crop&w=1920&h=1080&q=80',
-    fallback: '/images/dining.jpg',
-    alt: 'Pre-opening restaurant — empty dining room before launch',
-    photographer: 'Naomi Ellsworth',
-    unsplashHandle: 'naomie'
-  },
-  {
-    id: 12,
-    url: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1920&h=1080&q=80',
-    fallback: '/images/hotel.jpg',
-    alt: 'Elegant banquet hall set for a large-scale event — chandeliers, white linens, round tables',
-    photographer: 'Shawn Ang',
-    unsplashHandle: 'shawnanggg'
-  }
-];
+}

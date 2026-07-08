@@ -12,6 +12,7 @@ import CTABanner from '@/components/CTABanner'
 import { services } from '@/data/services'
 import { approvedTestimonials } from '@/data/testimonials'
 import { products } from '@/data/products'
+import { heroImages } from '@/data/heroImages'
 
 // --- Scroll reveal hook ---
 function useReveal(threshold = 0.15) {
@@ -149,9 +150,10 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Leander Mena | Fractional F&B Leadership & Hospitality Consulting | Miami"
-        description="Fractional F&B operations leadership for Miami restaurants, hotels & new openings. 18 years opening, stabilizing, and scaling hospitality operations."
+        title="Fractional F&B Operations Consultant | Leander Mena"
+        description="Fractional F&B leadership, pre-opening builds, and operations turnaround for restaurants and hotels nationwide. 18+ years running Miami's top hospitality venues - now available across the U.S."
         path="/"
+        schemaType="home"
       />
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
@@ -178,11 +180,13 @@ export default function Home() {
           }}
         >
           <img
-            src="/landing-hero.jpg"
-            alt=""
+            src={heroImages.home.url}
+            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = heroImages.home.fallback }}
+            alt={heroImages.home.alt}
             width="1920"
-            height="1200"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
+            height="1080"
+            loading="eager"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,9,5,0.62) 0%, rgba(10,9,5,0.40) 40%, rgba(10,9,5,0.80) 80%, #0a0905 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(10,9,5,0.55) 100%)' }} />
@@ -206,10 +210,11 @@ export default function Home() {
                   marginBottom: 'clamp(1.25rem, 2.5vw, 2rem)',
                 }}
               >
-                Miami, Florida · F&amp;B Operations
+                Fractional F&amp;B Operations · U.S. Nationwide
               </motion.p>
 
               <h1 style={{ margin: 0 }}>
+                <span className="sr-only">Fractional F&amp;B Operations Leadership for Restaurants &amp; Hotels Nationwide - </span>
                 <div style={{ overflow: 'hidden', marginBottom: '0.04em' }}>
                   <motion.span
                     initial={{ y: '100%', opacity: 0 }}
@@ -263,7 +268,7 @@ export default function Home() {
                   marginBottom: 'clamp(2rem, 4vw, 3rem)',
                 }}
               >
-                18+ years opening, leading, and scaling restaurants, hotels, and catering operations across Miami, now available as fractional leadership.
+                Eighteen years forged in Miami's most demanding kitchens, hotels, and banquet halls. Now embedded with operators nationwide - on-site when it matters, remote in between.
               </motion.p>
 
               <motion.div
