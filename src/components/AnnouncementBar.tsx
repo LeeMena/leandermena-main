@@ -33,13 +33,15 @@ export default function AnnouncementBar() {
       style={{
         background: 'var(--color-primary)',
         color: '#ffffff',
-        padding: 'var(--space-2) var(--space-4)',
+        // extra inline padding keeps the centered text clear of the dismiss button
+        padding: 'var(--space-2) var(--space-10)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         gap: 'var(--space-3)',
         position: 'relative',
         zIndex: 100,
+        minHeight: '40px',
       }}
     >
       <p style={{
@@ -50,7 +52,7 @@ export default function AnnouncementBar() {
         color: '#ffffff',
         textAlign: 'center',
       }}>
-        Now booking Q3 engagements.{' '}
+        <span className="hidden sm:inline">Now booking Q3 engagements.{' '}</span>
         <Link
           to="/book"
           style={{
@@ -58,6 +60,7 @@ export default function AnnouncementBar() {
             textDecoration: 'underline',
             textUnderlineOffset: '3px',
             fontWeight: 600,
+            whiteSpace: 'nowrap',
           }}
         >
           Schedule your discovery call

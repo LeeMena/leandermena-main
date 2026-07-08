@@ -1,5 +1,5 @@
 # robots.txt: leandermena.com
-# Last updated: 2026-07-01
+# Last updated: 2026-07-08
 
 User-agent: *
 Allow: /
@@ -30,9 +30,10 @@ Disallow: /leander-mena-miami-hospitality/
 Disallow: /*.yml$
 
 # Intentionally unlisted pages: no SEO value
+# (/products is deliberately indexable: it is the national digital-products
+# entry tier of the two-tier funnel)
 Disallow: /profile
 Disallow: /shop
-Disallow: /products
 
 # Sitemap
 Sitemap: https://www.leandermena.com/sitemap.xml

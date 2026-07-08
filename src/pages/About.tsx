@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
+import { heroImages } from '@/data/heroImages'
 
 function Reveal({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -37,8 +38,8 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Leander Mena – Fractional F&B Director & Restaurant Consultant, Miami"
-        description="Leander Mena is a Miami-based fractional F&B director and restaurant consultant with 18+ years opening and leading restaurants, hotel F&B programs, banquet operations, and catering venues across Miami."
+        title="About Leander Mena | 18+ Years in F&B Operations"
+        description="From Miami's most demanding restaurants and luxury hotels to a nationally available fractional operator. Meet Leander Mena - pre-opening, turnaround, and F&B operations specialist."
         path="/about"
         schemaType="about"
       />
@@ -47,13 +48,14 @@ export default function About() {
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '480px' }}>
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <img
-            src="/images/aboutme.jpg"
+            src={heroImages.about.url}
+            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = heroImages.about.fallback }}
             alt=""
-            width="1400"
-            height="900"
+            width="1920"
+            height="1080"
             className="w-full h-full"
             loading="eager"
-            style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.15) 100%)' }} />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 35%)' }} />
@@ -63,10 +65,10 @@ export default function About() {
             <Reveal>
               <span className="kicker">About</span>
               <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
-                Fractional F&amp;B Director &amp; Restaurant Consultant, Miami
+                Miami-Forged. Nationally Available.
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                18 years. Pre-openings, turnarounds, multi-unit management, and catering leadership. Every system I use was earned on the floor.
+                18 years. Pre-openings, turnarounds, multi-unit management, and catering leadership. Every system I use was earned on the floor, and it travels.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
@@ -105,24 +107,37 @@ export default function About() {
               <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">Built in the Trenches of Miami Hospitality</h2>
               <div className="prose-article">
                 <p>
-                  Over 18 years in hospitality, I've learned that the gap between a great concept and a great restaurant is almost always operational. My career has been built closing that gap, from Michelin-starred <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>pre-openings in Midtown Miami</Link> to multi-unit P&amp;L management at scale. Every engagement has sharpened the same core skill: turning a vision into a functioning operation.
+                  I learned operations in the only market that would let me fail fast enough to get good: Miami. Eighteen years across 40+ properties, from Michelin-starred <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>pre-openings in Midtown</Link> to SLS and Accor luxury hotel programs, independent rooms, and multi-unit groups. Every engagement sharpened the same core skill: turning a vision into a functioning operation.
                 </p>
                 <p>
-                  I've opened hotels, turned around struggling concepts, built training programs from scratch, managed teams of 80 or more across multiple outlets, and led catering and banquet operations for Miami's largest hotel venues. The through-line in every engagement is real accountability: operations only improve when someone with genuine ownership is in the building.
+                  The systems that survive Miami's labor market, seasonality, and guest expectations travel. So I do too. Today I work as a fractional F&amp;B operator with restaurants and hotels across the country: on-site for the moments that require presence, remote for the systems, reporting, and coaching in between.
                 </p>
                 <p>
-                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. As a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B director in Miami</Link>, I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
+                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. As a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B operations consultant</Link>, I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
                 </p>
               </div>
             </Reveal>
             <Reveal delay={150}>
+              {/* Source photo is 414x418 - render at (or below) native size and
+                  keep its natural square ratio so it never upscales or crops. */}
               <img
                 src="/images/about.jpg"
                 alt="Leander Mena - Fractional F&B Director and Restaurant Consultant, Miami"
-                width="600"
-                height="750"
+                width="414"
+                height="418"
                 loading="lazy"
-                style={{ borderRadius: 'var(--radius-lg)', width: '100%', objectFit: 'cover', objectPosition: 'top', aspectRatio: '4/5' }}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  maxWidth: '400px',
+                  marginInline: 'auto',
+                  aspectRatio: '1 / 1',
+                  objectFit: 'cover',
+                  objectPosition: 'top',
+                  borderRadius: 'var(--radius-lg)',
+                  border: '1px solid var(--color-border)',
+                  boxShadow: 'var(--shadow-lg)',
+                }}
               />
             </Reveal>
           </div>

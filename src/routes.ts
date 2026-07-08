@@ -13,6 +13,8 @@ export const prerenderRoutes = [
   '/book',
   '/shop',
   '/products',
+  '/industries',
+  '/miami-restaurant-consultant',
   '/insights',
 
   // Insights: all 10 articles (sorted newest first)
