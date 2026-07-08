@@ -17,12 +17,12 @@ export interface HeroImage {
 }
 
 export const heroImages: Record<string, HeroImage> = {
-  // Moody hotel lounge/lobby bar, warm amber light
+  // Original landing-hero.jpg (repo-local, served from /public)
   home: {
-    url: `https://images.unsplash.com/photo-1552566626-2d907dab0dff${params(1920, 1080)}`,
+    url: '/landing-hero.jpg',
     fallback: '/landing-hero.jpg',
-    credit: 'Photo: Nick Karvounis, Unsplash',
-    alt: 'Dimly lit upscale hotel lounge with warm amber pendant lighting',
+    credit: '',
+    alt: 'Leander Mena - hospitality operations leader',
   },
   // Warm, refined restaurant interior with pendant lighting
   about: {
@@ -74,7 +74,6 @@ export const heroImages: Record<string, HeroImage> = {
     alt: 'Guests dining in a warm, busy restaurant',
   },
   // Elegant banquet hall: chandeliers, white linens, round tables
-  // (slot #12 from the repositioning brief, sourced in PR #10)
   banquet: {
     url: `https://images.unsplash.com/photo-1519167758481-83f550bb49b3${params(1920, 1080)}`,
     fallback: '/images/dining.jpg',
