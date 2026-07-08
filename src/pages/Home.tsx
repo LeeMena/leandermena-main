@@ -292,6 +292,24 @@ export default function Home() {
                   Explore Digital Products
                 </button>
               </motion.div>
+
+              {/* Availability strip: deliberately subordinate to the national
+                  headline (Phase 2: international layers on, never replaces) */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.5625rem',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.35)',
+                  marginTop: 'clamp(1.25rem, 2.5vw, 2rem)',
+                }}
+              >
+                Based in Miami · US Nationwide · Select International Engagements
+              </motion.p>
             </div>
           </div>
         </motion.div>

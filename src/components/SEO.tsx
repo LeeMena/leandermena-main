@@ -47,10 +47,21 @@ const DEFAULT_IMAGE = `${BASE_URL}/images/about.jpg`
 const OG_DEFAULT_IMAGE =
   'https://images.unsplash.com/photo-1552566626-2d907dab0dff?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format'
 
-// National service area: the business serves clients across the U.S. with an
-// on-site + remote hybrid model. Miami stays in the Person address (where
-// Leander is based) but is no longer presented as the service boundary.
-const AREA_SERVED_US = { '@type': 'Country', name: 'United States' }
+// Service area: US nationwide plus select international engagements
+// (Caribbean first, Latin America second, Europe opportunistically, per the
+// Phase 2 expansion brief). Miami stays in the Person address (home base)
+// but is not presented as a service boundary. areaServed accepts a mixed
+// array and supersedes the older serviceArea property.
+const AREA_SERVED = [
+  { '@type': 'Country', name: 'United States' },
+  { '@type': 'Country', name: 'Dominican Republic' },
+  { '@type': 'Country', name: 'Mexico' },
+  { '@type': 'Country', name: 'Bahamas' },
+  { '@type': 'Country', name: 'Jamaica' },
+  { '@type': 'Country', name: 'Turks and Caicos Islands' },
+  { '@type': 'AdministrativeArea', name: 'Caribbean' },
+  { '@type': 'AdministrativeArea', name: 'Latin America' },
+]
 
 const PERSON_BASE = {
   '@type': 'Person',
@@ -170,11 +181,11 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           image: OG_DEFAULT_IMAGE,
           description: 'Fractional food & beverage operations leadership, pre-opening consulting, and operations turnaround for restaurants and hotels nationwide.',
           founder: { '@type': 'Person', name: 'Leander Mena' },
-          areaServed: AREA_SERVED_US,
+          areaServed: AREA_SERVED,
           availableChannel: {
             '@type': 'ServiceChannel',
             serviceUrl: `${BASE_URL}/contact`,
-            availableLanguage: 'English',
+            availableLanguage: ['English', 'Spanish'],
           },
           knowsAbout: PERSON_BASE.knowsAbout,
           priceRange: '$$$$',
@@ -205,7 +216,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           name: 'Fractional F&B Operations & Consulting',
           provider: { ...PERSON_BASE },
           serviceType: 'Food and Beverage Operations Consulting',
-          areaServed: AREA_SERVED_US,
+          areaServed: AREA_SERVED,
           url: `${BASE_URL}/services`,
           description: 'Fractional F&B leadership for restaurants and hotels nationwide: operations leadership, menu development, team training, and financial oversight, delivered on-site and remote.',
         },
@@ -220,7 +231,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           name: 'Restaurant & Hotel Pre-Opening Consulting',
           provider: { ...PERSON_BASE },
           serviceType: 'Pre-Opening F&B Consulting',
-          areaServed: AREA_SERVED_US,
+          areaServed: AREA_SERVED,
           url: `${BASE_URL}/pre-opening`,
           description: 'End-to-end pre-opening consulting for new restaurants and hotel F&B programs nationwide: concept development, SOP creation, staff hiring and training, and opening-day execution.',
         },
@@ -285,7 +296,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           url: `${BASE_URL}/contact`,
           image: OG_DEFAULT_IMAGE,
           description: 'Contact Leander Mena for fractional F&B consulting, pre-opening projects, and operations turnaround engagements - available on-site and remote, nationwide.',
-          areaServed: AREA_SERVED_US,
+          areaServed: AREA_SERVED,
           contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'customer service',

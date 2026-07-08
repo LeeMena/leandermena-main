@@ -52,7 +52,7 @@ export default function Services() {
           <span className="kicker">Nationwide</span>
           <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">How National Engagements Work</h2>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-            On-site sprints for kickoffs, openings, and turnaround intensives; remote systems, P&amp;L reviews, and team coaching between visits. Travel is built into project scope, so you always know the cost. I work with clients coast to coast.
+            On-site sprints for kickoffs, openings, and turnaround intensives; remote systems, P&amp;L reviews, and team coaching between visits. Travel is built into project scope, so you always know the cost. I work with clients coast to coast, and select international engagements are available across the Caribbean, Latin America, and Europe (minimum scope applies).
           </p>
           <div className="grid-3" style={{ marginTop: '1.5rem' }}>
             {[

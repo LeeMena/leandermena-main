@@ -34,6 +34,9 @@ export default function Products() {
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
             Start with the free <Link to="/blueprint" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>90-Day Pre-Opening Blueprint</Link>, go deeper with the $197 Pre-Opening Playbook, and upgrade to a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>hands-on engagement</Link> anytime. Each product stands alone; together they are the operating system I install in client venues.
           </p>
+          <p style={{ fontSize: '0.8rem', color: 'var(--color-text-faint)', lineHeight: 1.7, marginTop: '1rem' }}>
+            Available worldwide. The operational frameworks (timelines, SOPs, labor models, menu math) apply anywhere; compliance sections reference US regulations, so verify local health, labor, and tax requirements in your jurisdiction.
+          </p>
         </div>
       </section>
 
