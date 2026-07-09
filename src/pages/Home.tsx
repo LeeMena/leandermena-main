@@ -14,14 +14,12 @@ import { approvedTestimonials } from '@/data/testimonials'
 import { products } from '@/data/products'
 import { heroImages } from '@/data/heroImages'
 
-// --- Scroll reveal hook ---
 function useReveal(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, amount: threshold })
   return { ref, inView }
 }
 
-// --- Single word / line reveal ---
 function RevealLine({ children, delay = 0, style = {} }: { children: React.ReactNode; delay?: number; style?: React.CSSProperties }) {
   const { ref, inView } = useReveal(0.2)
   return (
@@ -37,7 +35,6 @@ function RevealLine({ children, delay = 0, style = {} }: { children: React.React
   )
 }
 
-// --- Large animated number ---
 function AnimatedStat({ value, label, delay = 0, tone = 'dark' }: { value: string; label: string; delay?: number; tone?: 'dark' | 'theme' }) {
   const { ref, inView } = useReveal(0.3)
   const valueColor = tone === 'dark' ? '#ffffff' : 'var(--color-text)'
@@ -70,7 +67,6 @@ function AnimatedStat({ value, label, delay = 0, tone = 'dark' }: { value: strin
   )
 }
 
-// --- Horizontal rule reveal ---
 function RevealRule({ delay = 0 }: { delay?: number }) {
   const { ref, inView } = useReveal()
   return (
@@ -86,7 +82,6 @@ function RevealRule({ delay = 0 }: { delay?: number }) {
   )
 }
 
-// --- Statement block ---
 function Statement({ lines, accent, sub }: { lines: string[]; accent?: string; sub?: string }) {
   const { ref, inView } = useReveal(0.15)
   return (
@@ -170,11 +165,11 @@ export default function Home() {
             width="1600"
             height="1067"
             loading="eager"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 80%' }}
           />
-          {/* Brighter: reduced left opacity from 0.92 to 0.72, right from 0.5 to 0.3 */}
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,9,5,0.72) 40%, rgba(10,9,5,0.3) 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,5,0.6) 0%, transparent 40%)' }} />
+          {/* Brighter: left 0.55/0.18, bottom 0.4 */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,9,5,0.55) 40%, rgba(10,9,5,0.18) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,5,0.4) 0%, transparent 40%)' }} />
         </div>
 
         <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
