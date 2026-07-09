@@ -32,17 +32,19 @@ export const heroImages: Record<string, HeroImage> = {
     credit: 'Photo: Sebastian Schuppik, Unsplash',
     alt: 'Warm, refined restaurant dining room with tables and pendant lighting',
   },
-  // Dark, empty upscale dining room, dramatic low light
+  // Moody hotel lounge/lobby bar, warm amber pendant light (the brief's
+  // premium pick; distinct from the home hero and from blog card imagery)
   services: {
-    url: `https://images.unsplash.com/photo-1555266375-9efc2860bd56${params(1920, 1080)}`,
-    fallback: '/images/dining.jpg',
-    credit: 'Photo: Behzad Ghaffarian, Unsplash',
-    alt: 'Dark, empty upscale restaurant dining room in dramatic low light',
+    url: `https://images.unsplash.com/photo-1552566626-2d907dab0dff${params(1920, 1080)}`,
+    fallback: '/images/services.jpg',
+    credit: 'Photo: Nick Karvounis, Unsplash',
+    alt: 'Dimly lit upscale hotel lounge with warm amber pendant lighting',
   },
   // Softly-lit dining room with guests: opening-night energy
   preOpening: {
     url: `https://images.unsplash.com/photo-1567745219000-b99afacf5ef6${params(1920, 1080)}`,
-    fallback: '/images/kitchen.jpg',
+    // /images/kitchen.jpg does not exist in the repo; use the real local asset
+    fallback: '/images/pre-opening.jpg',
     credit: 'Photo: Kristian Angelo, Unsplash',
     alt: 'Softly lit restaurant dining room full of guests on a busy evening',
   },

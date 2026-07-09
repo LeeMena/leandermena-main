@@ -9,7 +9,8 @@ const posts = [
     category: 'Labor Cost',
     date: 'July 9, 2026',
     readTime: '8 min read',
-    image: '/images/blog-labor-cost.jpg',
+    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-labor-cost.jpg',
   },
   {
     slug: 'labor-cost-control-latin-america',
@@ -18,7 +19,8 @@ const posts = [
     category: 'Labor Cost',
     date: 'July 9, 2026',
     readTime: '8 min read',
-    image: '/images/blog-labor-cost.jpg',
+    image: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-labor-cost.jpg',
   },
   {
     slug: 'labor-cost-control-europe-restaurants',
@@ -27,7 +29,8 @@ const posts = [
     category: 'Labor Cost',
     date: 'July 9, 2026',
     readTime: '8 min read',
-    image: '/images/blog-labor-cost.jpg',
+    image: 'https://images.unsplash.com/photo-1552566626-52f8b828329b?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-labor-cost.jpg',
   },
   {
     slug: 'labor-cost-control-us-restaurants',
@@ -36,7 +39,8 @@ const posts = [
     category: 'Labor Cost',
     date: 'July 9, 2026',
     readTime: '8 min read',
-    image: '/images/blog-labor-cost.jpg',
+    image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-labor-cost.jpg',
   },
   {
     slug: 'building-training-program-that-works',
@@ -45,7 +49,8 @@ const posts = [
     category: 'Operations',
     date: 'June 10, 2026',
     readTime: '7 min read',
-    image: '/images/blog-training.jpg',
+    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-training.jpg',
   },
   {
     slug: 'miami-restaurant-labor-market-2026',
@@ -55,6 +60,7 @@ const posts = [
     date: 'June 5, 2026',
     readTime: '6 min read',
     image: '/images/blog-miami-labor.jpg',
+    fallback: '/images/blog-miami-labor.jpg',
   },
   {
     slug: 'hotel-fb-why-your-restaurant-underperforms',
@@ -63,7 +69,8 @@ const posts = [
     category: 'Hotel F&B',
     date: 'May 28, 2026',
     readTime: '7 min read',
-    image: '/images/blog-hotel-fb.jpg',
+    image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-hotel-fb.jpg',
   },
   {
     slug: 'reduce-labor-cost-without-cutting-service',
@@ -72,7 +79,8 @@ const posts = [
     category: 'Labor Cost',
     date: 'May 20, 2026',
     readTime: '8 min read',
-    image: '/images/blog-labor-cost.jpg',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-labor-cost.jpg',
   },
   {
     slug: 'labor-cost-control-miami-restaurants',
@@ -81,7 +89,8 @@ const posts = [
     category: 'Labor Cost',
     date: 'May 10, 2026',
     readTime: '7 min read',
-    image: '/images/blog-labor-cost.jpg',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-labor-cost.jpg',
   },
   {
     slug: 'real-cost-of-bad-pre-opening',
@@ -90,7 +99,8 @@ const posts = [
     category: 'Pre-Opening',
     date: 'April 30, 2026',
     readTime: '6 min read',
-    image: '/images/blog-pre-opening.jpg',
+    image: 'https://images.unsplash.com/photo-1582037928769-181f2644ecb7?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-pre-opening.jpg',
   },
   {
     slug: 'miami-pre-opening-playbook',
@@ -99,7 +109,8 @@ const posts = [
     category: 'Pre-Opening',
     date: 'April 15, 2026',
     readTime: '9 min read',
-    image: '/images/blog-pre-opening.jpg',
+    image: 'https://images.unsplash.com/photo-1579027989536-b7b1f875659b?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-pre-opening.jpg',
   },
   {
     slug: 'pre-opening-timeline',
@@ -109,6 +120,7 @@ const posts = [
     date: 'April 1, 2026',
     readTime: '8 min read',
     image: '/images/blog-pre-opening.jpg',
+    fallback: '/images/blog-pre-opening.jpg',
   },
   {
     slug: 'why-fractional-leadership-works',
@@ -117,7 +129,8 @@ const posts = [
     category: 'Fractional Leadership',
     date: 'March 20, 2026',
     readTime: '6 min read',
-    image: '/images/blog-fractional-leadership.jpg',
+    image: 'https://images.unsplash.com/photo-1555266375-9efc2860bd56?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/blog-fractional-leadership.jpg',
   },
   {
     slug: 'what-a-fractional-gm-actually-does',
@@ -126,7 +139,8 @@ const posts = [
     category: 'Fractional Leadership',
     date: 'March 10, 2026',
     readTime: '5 min read',
-    image: '/images/blog-fractional-gm.jpg',
+    image: 'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    fallback: '/images/fnb-manager.jpg',
   },
 ]
 
@@ -178,7 +192,11 @@ export default function BlogIndex() {
                 <div className="h-48 bg-neutral-800 overflow-hidden">
                   <img
                     src={post.image}
+                    onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = post.fallback }}
                     alt={post.title}
+                    loading="lazy"
+                    width="800"
+                    height="450"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

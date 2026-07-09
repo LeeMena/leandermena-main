@@ -64,7 +64,7 @@ export default function Experience() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/kitchen.jpg)' }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/fnb-manager.jpg)' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
           <span className="kicker">Experience</span>

@@ -84,7 +84,7 @@ export default function Skills() {
 
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '380px' }}>
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/kitchen.jpg)' }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(/images/labor.jpg)' }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right,rgba(10,10,10,0.92) 40%,rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(3.5rem,8vw,6rem)' }}>
           <span className="kicker">Skills</span>
