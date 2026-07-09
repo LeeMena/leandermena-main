@@ -17,11 +17,9 @@ export interface HeroImage {
 }
 
 export const heroImages: Record<string, HeroImage> = {
-  // Repo-local landscape hero (1600x1067): the previous /landing-hero.jpg is
-  // portrait (1920x2880) and force-cropped badly into a wide banner.
   home: {
-    url: '/images/dining.jpg',
-    fallback: '/images/dining.jpg',
+    url: '/images/landing-hero.jpg',
+    fallback: '/images/landing-hero.jpg',
     credit: '',
     alt: 'Upscale restaurant dining room with warm ambient lighting',
   },
@@ -43,7 +41,6 @@ export const heroImages: Record<string, HeroImage> = {
   // Softly-lit dining room with guests: opening-night energy
   preOpening: {
     url: `https://images.unsplash.com/photo-1567745219000-b99afacf5ef6${params(1920, 1080)}`,
-    // /images/kitchen.jpg does not exist in the repo; use the real local asset
     fallback: '/images/pre-opening.jpg',
     credit: 'Photo: Kristian Angelo, Unsplash',
     alt: 'Softly lit restaurant dining room full of guests on a busy evening',
