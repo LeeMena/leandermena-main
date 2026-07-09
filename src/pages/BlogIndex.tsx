@@ -1,204 +1,198 @@
-import SEO from '@/components/SEO'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import SEO from '@/components/SEO'
 
-// Approximate word counts per article - used to compute read time
-const WORD_COUNTS: Record<string, number> = {
-  '/insights/miami-restaurant-labor-market-2026': 1350,
-  '/insights/building-training-program-that-works': 1600,
-  '/insights/hotel-fb-why-your-restaurant-underperforms': 1450,
-  '/insights/reduce-labor-cost-without-cutting-service': 1800,
-  '/insights/miami-pre-opening-playbook': 2100,
-  '/insights/real-cost-of-bad-pre-opening': 1250,
-  '/insights/why-fractional-leadership-works': 1500,
-  '/insights/pre-opening-timeline': 1700,
-  '/insights/labor-cost-control-miami-restaurants': 1400,
-  '/insights/what-a-fractional-gm-actually-does': 1550,
-}
-
-function readTime(slug: string): string {
-  const words = WORD_COUNTS[slug] ?? 1200
-  const mins = Math.ceil(words / 200)
-  return `${mins} min read`
-}
-
-const ALL_POSTS = [
+const posts = [
   {
-    slug: '/insights/miami-restaurant-labor-market-2026',
+    slug: 'labor-cost-control-caribbean',
+    title: 'Labor Cost Control in Caribbean Restaurants',
+    excerpt: 'How resort and independent restaurant operators in the Dominican Republic, Jamaica, Barbados, and the Bahamas manage labor costs in seasonal markets.',
+    category: 'Labor Cost',
+    date: 'July 9, 2026',
+    readTime: '8 min read',
+    image: '/images/blog-labor-cost.jpg',
+  },
+  {
+    slug: 'labor-cost-control-latin-america',
+    title: 'Labor Cost Control in Latin America',
+    excerpt: 'How restaurant operators in Mexico City, Cancun, Bogota, and Buenos Aires manage labor costs across currency risk and high-turnover markets.',
+    category: 'Labor Cost',
+    date: 'July 9, 2026',
+    readTime: '8 min read',
+    image: '/images/blog-labor-cost.jpg',
+  },
+  {
+    slug: 'labor-cost-control-europe-restaurants',
+    title: 'Labor Cost Control for European Restaurants',
+    excerpt: 'How restaurant operators in London, Paris, and Amsterdam manage labor costs under Europe wage floors, predictive scheduling rules, and mandatory benefit structures.',
+    category: 'Labor Cost',
+    date: 'July 9, 2026',
+    readTime: '8 min read',
+    image: '/images/blog-labor-cost.jpg',
+  },
+  {
+    slug: 'labor-cost-control-us-restaurants',
+    title: 'Labor Cost Control for U.S. Restaurants',
+    excerpt: 'How restaurant operators in New York, Chicago, Los Angeles, and Miami can bring labor costs under control without sacrificing service quality.',
+    category: 'Labor Cost',
+    date: 'July 9, 2026',
+    readTime: '8 min read',
+    image: '/images/blog-labor-cost.jpg',
+  },
+  {
+    slug: 'building-training-program-that-works',
+    title: 'Building a Training Program That Actually Works',
+    excerpt: 'Most restaurant training programs are manuals no one reads. Here is how to build one that changes behavior, reduces turnover, and raises service scores.',
+    category: 'Operations',
+    date: 'June 10, 2026',
+    readTime: '7 min read',
+    image: '/images/blog-training.jpg',
+  },
+  {
+    slug: 'miami-restaurant-labor-market-2026',
     title: 'Miami Restaurant Labor Market 2026',
-    description: 'What operators need to know about hiring, wages, and retention in the current Miami market.',
-    kicker: 'Labor Market',
-    date: '2024-07-01',
+    excerpt: 'Wage floors, retention tactics, and scheduling models for Miami operators navigating a competitive hospitality labor market.',
+    category: 'Labor Cost',
+    date: 'June 5, 2026',
+    readTime: '6 min read',
+    image: '/images/blog-miami-labor.jpg',
   },
   {
-    slug: '/insights/building-training-program-that-works',
-    title: 'Building a Training Program That Works',
-    description: 'Why most restaurant training fails and how to build one that actually sticks and improves performance.',
-    kicker: 'Training',
-    date: '2024-07-15',
-  },
-  {
-    slug: '/insights/hotel-fb-why-your-restaurant-underperforms',
+    slug: 'hotel-fb-why-your-restaurant-underperforms',
     title: 'Hotel F&B: Why Your Restaurant Underperforms',
-    description: 'The structural differences between hotel F&B and standalone restaurants, and why most hotel operators get it wrong.',
-    kicker: 'Hotel F&B',
-    date: '2024-06-15',
+    excerpt: 'Hotel restaurants fail when they are run as amenities instead of businesses. Here is what changes when you treat them like standalone operations.',
+    category: 'Hotel F&B',
+    date: 'May 28, 2026',
+    readTime: '7 min read',
+    image: '/images/blog-hotel-fb.jpg',
   },
   {
-    slug: '/insights/reduce-labor-cost-without-cutting-service',
-    title: 'How to Reduce Labor Cost Without Cutting Service',
-    description: 'A case study and framework for restructuring labor without degrading guest experience.',
-    kicker: 'Operations',
-    date: '2024-06-01',
+    slug: 'reduce-labor-cost-without-cutting-service',
+    title: 'Reduce Labor Cost Without Cutting Service',
+    excerpt: 'Cutting headcount is the wrong first move. Here are the scheduling, cross-training, and tracking levers that actually move the number.',
+    category: 'Labor Cost',
+    date: 'May 20, 2026',
+    readTime: '8 min read',
+    image: '/images/blog-labor-cost.jpg',
   },
   {
-    slug: '/insights/miami-pre-opening-playbook',
-    title: 'The Miami Pre-Opening Playbook',
-    description: 'A practical framework for opening restaurants and hotel F&B programs in Miami on time and on budget.',
-    kicker: 'Pre-Opening',
-    date: '2024-05-01',
+    slug: 'labor-cost-control-miami-restaurants',
+    title: 'Labor Cost Control for Miami Restaurants',
+    excerpt: 'The specific wage, scheduling, and staffing patterns that keep labor cost under control in Miami full-service restaurants.',
+    category: 'Labor Cost',
+    date: 'May 10, 2026',
+    readTime: '7 min read',
+    image: '/images/blog-labor-cost.jpg',
   },
   {
-    slug: '/insights/real-cost-of-bad-pre-opening',
+    slug: 'real-cost-of-bad-pre-opening',
     title: 'The Real Cost of a Bad Pre-Opening',
-    description: 'What actually goes wrong when pre-opening planning is skipped or rushed, and the financial impact.',
-    kicker: 'Pre-Opening',
-    date: '2024-05-15',
+    excerpt: 'A failed opening does not just lose money on day one. It sets a reputation ceiling that is very hard to raise. Here is what actually goes wrong.',
+    category: 'Pre-Opening',
+    date: 'April 30, 2026',
+    readTime: '6 min read',
+    image: '/images/blog-pre-opening.jpg',
   },
   {
-    slug: '/insights/why-fractional-leadership-works',
-    title: 'Why F&B Operations Consulting Works',
-    description: 'How operators are replacing full-time directors with fractional leaders and getting better results at a fraction of the cost.',
-    kicker: 'Leadership',
-    date: '2024-04-20',
+    slug: 'miami-pre-opening-playbook',
+    title: 'Miami Pre-Opening Playbook',
+    excerpt: 'The sequence, timeline, and decision points for opening a restaurant in Miami, based on 18 years and 40+ properties.',
+    category: 'Pre-Opening',
+    date: 'April 15, 2026',
+    readTime: '9 min read',
+    image: '/images/blog-pre-opening.jpg',
   },
   {
-    slug: '/insights/pre-opening-timeline',
-    title: 'The Pre-Opening Timeline Most Operators Get Wrong',
-    description: 'Why most restaurant pre-openings run behind and the 120-day framework that fixes it.',
-    kicker: 'Pre-Opening',
-    date: '2024-04-01',
+    slug: 'pre-opening-timeline',
+    title: 'Pre-Opening Timeline: What to Do and When',
+    excerpt: 'A week-by-week breakdown of the 16 weeks before opening day, with the tasks that move the needle and the ones that can wait.',
+    category: 'Pre-Opening',
+    date: 'April 1, 2026',
+    readTime: '8 min read',
+    image: '/images/blog-pre-opening.jpg',
   },
   {
-    slug: '/insights/labor-cost-control-miami-restaurants',
-    title: 'Labor Cost Control in Miami Restaurants',
-    description: 'Practical tactics for reducing labor cost percentage without cutting service quality or burning out your team.',
-    kicker: 'Operations',
-    date: '2024-03-15',
+    slug: 'why-fractional-leadership-works',
+    title: 'Why Fractional Leadership Works for Independent Restaurants',
+    excerpt: 'Senior operations leadership on a part-time basis is not a compromise. For the right operator at the right stage, it is the most efficient structure available.',
+    category: 'Fractional Leadership',
+    date: 'March 20, 2026',
+    readTime: '6 min read',
+    image: '/images/blog-fractional-leadership.jpg',
   },
   {
-    slug: '/insights/what-a-fractional-gm-actually-does',
-    title: 'What a F&B Operations Consultant Actually Does',
-    description: 'The role explained for operators who are considering it: scope, schedule, deliverables, and real expectations.',
-    kicker: 'Fractional Leadership',
-    date: '2024-02-29',
+    slug: 'what-a-fractional-gm-actually-does',
+    title: 'What a Fractional GM Actually Does',
+    excerpt: 'The title sounds like a compromise. The function is not. Here is what a fractional general manager delivers and what it costs relative to a full-time hire.',
+    category: 'Fractional Leadership',
+    date: 'March 10, 2026',
+    readTime: '5 min read',
+    image: '/images/blog-fractional-gm.jpg',
   },
 ]
 
-// Sort newest first
-const posts = [...ALL_POSTS].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+const categories = ['All', 'Labor Cost', 'Pre-Opening', 'Operations', 'Hotel F&B', 'Fractional Leadership']
 
-const CATEGORIES = ['All', ...Array.from(new Set(posts.map((p) => p.kicker)))]
+import { useState } from 'react'
 
 export default function BlogIndex() {
-  const [activeCategory, setActiveCategory] = useState('All')
+  const [active, setActive] = useState('All')
 
-  const filtered = activeCategory === 'All' ? posts : posts.filter((p) => p.kicker === activeCategory)
+  const filtered = active === 'All' ? posts : posts.filter(p => p.category === active)
 
   return (
     <>
       <SEO
-        title="Insights"
-        description={`${posts.length} practical articles on F&B operations: pre-openings, labor cost, consulting, training, and more from Leander Mena.`}
+        title="Insights | Leander Mena"
+        description="Practical F&B operations content on labor cost, pre-opening, hotel restaurants, and fractional leadership from Leander Mena."
         path="/insights"
         schemaType="insights"
       />
+      <main className="min-h-screen bg-neutral-950 text-white">
+        <section className="max-w-5xl mx-auto px-6 py-24">
+          <h1 className="text-4xl font-bold mb-2">Insights</h1>
+          <p className="text-neutral-400 mb-10">Practical content on F&B operations, labor cost, and leadership.</p>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#2a2a2a]" style={{ minHeight: '420px' }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(/images/insights.jpg)' }}
-        />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
-        <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
-          <span className="kicker">Insights</span>
-          <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[18ch] mb-4">
-            F&amp;B Operations Insights
-          </h1>
-          <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            Practical thinking on restaurant and hotel operations from the floor up.
-          </p>
-        </div>
-      </section>
-
-      {/* Category Filter */}
-      <section style={{ borderBottom: '1px solid var(--color-border)', background: 'var(--color-surface)' }}>
-        <div className="container" style={{ maxWidth: 'var(--content-narrow)', paddingBlock: '0.85rem' }}>
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {CATEGORIES.map((cat) => (
+          <div className="flex flex-wrap gap-2 mb-12">
+            {categories.map(cat => (
               <button
                 key={cat}
-                onClick={() => setActiveCategory(cat)}
-                style={{
-                  fontSize: '0.75rem',
-                  fontWeight: 600,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  padding: '0.3rem 0.85rem',
-                  borderRadius: '9999px',
-                  border: '1px solid var(--color-border)',
-                  background: activeCategory === cat ? 'var(--color-text)' : 'transparent',
-                  color: activeCategory === cat ? 'var(--color-bg)' : 'var(--color-text-muted)',
-                  cursor: 'pointer',
-                  transition: 'all 180ms ease',
-                }}
+                onClick={() => setActive(cat)}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  active === cat
+                    ? 'bg-amber-400 text-black'
+                    : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
+                }`}
               >
                 {cat}
               </button>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Posts List */}
-      <section className="section">
-        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-            {filtered.length > 0 ? (
-              filtered.map((p) => (
-                <Link
-                  key={p.slug}
-                  to={p.slug}
-                  style={{
-                    display: 'block',
-                    padding: '1.5rem 0',
-                    borderBottom: '1px solid var(--color-border)',
-                    textDecoration: 'none',
-                  }}
-                >
-                  <span className="kicker" style={{ marginBottom: '0.35rem' }}>{p.kicker}</span>
-                  <h2 style={{ fontSize: 'clamp(1.05rem,2vw,1.2rem)', fontWeight: 700, color: 'var(--color-text)', marginBottom: '0.4rem', lineHeight: 1.35 }}>{p.title}</h2>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.6, marginBottom: '0.6rem' }}>{p.description}</p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)' }}>
-                      {new Date(p.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                    </span>
-                    <span style={{ fontSize: '0.7rem', color: 'var(--color-text-faint)', opacity: 0.5 }}>·</span>
-                    <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)' }}>
-                      {readTime(p.slug)}
-                    </span>
-                  </div>
-                </Link>
-              ))
-            ) : (
-              <p style={{ padding: '3rem 0', color: 'var(--color-text-muted)', textAlign: 'center' }}>
-                No articles in this category yet.
-              </p>
-            )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {filtered.map(post => (
+              <Link
+                key={post.slug}
+                to={`/insights/${post.slug}`}
+                className="group block bg-neutral-900 rounded-xl overflow-hidden border border-neutral-800 hover:border-amber-400 transition-colors"
+              >
+                <div className="h-48 bg-neutral-800 overflow-hidden">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-6">
+                  <span className="text-xs font-semibold tracking-widest text-amber-400 uppercase">{post.category}</span>
+                  <h2 className="mt-2 text-lg font-semibold leading-snug group-hover:text-amber-400 transition-colors">{post.title}</h2>
+                  <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{post.excerpt}</p>
+                  <p className="mt-4 text-xs text-neutral-500">{post.date} &bull; {post.readTime}</p>
+                </div>
+              </Link>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </>
   )
 }

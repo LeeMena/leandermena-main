@@ -31,6 +31,10 @@ import BlogLaborCostFull from '@/pages/BlogLaborCostFull'
 import BlogHotelFB from '@/pages/BlogHotelFB'
 import BlogMiamiLabor from '@/pages/BlogMiamiLabor'
 import BlogTraining from '@/pages/BlogTraining'
+import BlogLaborCostUS from '@/pages/BlogLaborCostUS'
+import BlogLaborCostEurope from '@/pages/BlogLaborCostEurope'
+import BlogLaborCostLatAm from '@/pages/BlogLaborCostLatAm'
+import BlogLaborCostCaribbean from '@/pages/BlogLaborCostCaribbean'
 
 export default function App() {
   return (
@@ -65,6 +69,10 @@ export default function App() {
         <Route path="/insights/hotel-fb-why-your-restaurant-underperforms" element={<BlogHotelFB />} />
         <Route path="/insights/miami-restaurant-labor-market-2026" element={<BlogMiamiLabor />} />
         <Route path="/insights/building-training-program-that-works" element={<BlogTraining />} />
+        <Route path="/insights/labor-cost-control-us-restaurants" element={<BlogLaborCostUS />} />
+        <Route path="/insights/labor-cost-control-europe-restaurants" element={<BlogLaborCostEurope />} />
+        <Route path="/insights/labor-cost-control-latin-america" element={<BlogLaborCostLatAm />} />
+        <Route path="/insights/labor-cost-control-caribbean" element={<BlogLaborCostCaribbean />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>
