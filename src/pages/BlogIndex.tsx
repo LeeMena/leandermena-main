@@ -29,7 +29,7 @@ const posts = [
     category: 'Labor Cost',
     date: 'July 9, 2026',
     readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1552566626-52f8b828329b?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
     fallback: '/images/blog-labor-cost.jpg',
   },
   {
