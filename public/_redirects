@@ -84,7 +84,10 @@
 /insights/:slug                                        /index.html  200
 
 # ----------------------------------------------------------
-# 4. SPA CATCH-ALL: must be absolute last rule
+# 4. NO CATCH-ALL RULE
+#    A `/* /index.html 200` rule here trips Cloudflare's
+#    infinite-loop detection and is silently ignored (see deploy
+#    logs). Unknown routes are handled by the SPA fallback in
+#    functions/_middleware.js instead. New React routes should
+#    still get an explicit 301 + 200 pair above.
 # ----------------------------------------------------------
-
-/*  /index.html  200

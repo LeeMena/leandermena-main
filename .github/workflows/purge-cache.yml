@@ -1,28 +1,13 @@
-name: Cloudflare Cache Purge
-
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
-
-jobs:
-  purge:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Purge Cloudflare Cache
-        run: |
-          RESPONSE=$(curl -s -X POST \
-            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
-            -H "Authorization: Bearer ${{ secrets.CF_API_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}')
-
-          echo "$RESPONSE"
-
-          if echo "$RESPONSE" | grep -q '"success":true'; then
-            echo "✅ Cloudflare cache purged successfully"
-          else
-            echo "❌ Cache purge failed"
-            echo "$RESPONSE"
-            exit 1
-          fi
+# DEPRECATED - superseded by deploy.yml (purge job)
+# This file is kept as a tombstone to prevent accidental recreation.
+#
+# This workflow previously ran on every push to main and called the
+# Cloudflare purge API with a secret name (CF_API_TOKEN) that was never
+# configured, so it FAILED every push with a red X. The surgical,
+# secret-guarded purge now lives in .github/workflows/deploy.yml (job 2)
+# and skips cleanly when its secrets are absent.
+#
+# DO NOT re-enable this workflow.
+#
+# To manually trigger a cache purge + status check:
+#   GitHub -> Actions -> "Deploy -> Purge -> Status" -> Run workflow

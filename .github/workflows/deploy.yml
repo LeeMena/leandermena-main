@@ -1,15 +1,25 @@
 # =============================================================
 # deploy.yml
-# leandermena.com — Build → Deploy → Cache Purge → Status Check
+# leandermena.com - Build -> Deploy -> Cache Purge -> Status Check
 #
-# Secrets required (Settings → Secrets → Actions):
-#   CLOUDFLARE_API_TOKEN   — Pages deploy token (needs Pages:Edit)
-#   CLOUDFLARE_ACCOUNT_ID  — CF account ID
-#   CF_ZONE_ID             — Zone ID for leandermena.com
-#   CF_CACHE_TOKEN         — CF API token scoped to Cache Purge only
+# The Cloudflare Pages GIT INTEGRATION performs the production
+# deploy on every push to main. The deploy/purge jobs below are
+# OPTIONAL extras and skip cleanly (green, not red) when their
+# secrets are not configured. Previously a missing secret failed
+# this workflow on every push.
+#
+# Optional secrets (Settings -> Secrets -> Actions):
+#   CLOUDFLARE_API_TOKEN   - Pages deploy token (needs Pages:Edit)
+#   CLOUDFLARE_ACCOUNT_ID  - CF account ID
+#   CF_ZONE_ID             - Zone ID for leandermena.com
+#   CF_CACHE_TOKEN         - CF API token scoped to Cache Purge only
+#
+# NOTE: the `secrets` context is not allowed in job-level `if`
+# conditions, so the preflight job exports secret presence as
+# outputs that downstream jobs can gate on via `needs`.
 # =============================================================
 
-name: Deploy → Purge → Status
+name: Deploy -> Purge -> Status
 
 on:
   push:
@@ -18,11 +28,44 @@ on:
 
 jobs:
   # -----------------------------------------------------------
-  # JOB 1: Build & Deploy to Cloudflare Pages
+  # JOB 0: Preflight - detect which optional secrets exist
+  # -----------------------------------------------------------
+  preflight:
+    name: Preflight
+    runs-on: ubuntu-latest
+    outputs:
+      has_deploy_secrets: ${{ steps.detect.outputs.has_deploy_secrets }}
+      has_purge_secrets: ${{ steps.detect.outputs.has_purge_secrets }}
+    steps:
+      - name: Detect configured secrets
+        id: detect
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CF_CACHE_TOKEN: ${{ secrets.CF_CACHE_TOKEN }}
+          CF_ZONE_ID: ${{ secrets.CF_ZONE_ID }}
+        run: |
+          if [ -n "$CF_API_TOKEN" ] && [ -n "$CF_ACCOUNT_ID" ]; then
+            echo "has_deploy_secrets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_deploy_secrets=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID not set - skipping Action deploy (Cloudflare Pages Git integration deploys on push regardless)."
+          fi
+          if [ -n "$CF_CACHE_TOKEN" ] && [ -n "$CF_ZONE_ID" ]; then
+            echo "has_purge_secrets=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_purge_secrets=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::CF_CACHE_TOKEN / CF_ZONE_ID not set - skipping cache purge."
+          fi
+
+  # -----------------------------------------------------------
+  # JOB 1: Build & Deploy to Cloudflare Pages (optional)
   # -----------------------------------------------------------
   deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
+    needs: preflight
+    if: needs.preflight.outputs.has_deploy_secrets == 'true'
     outputs:
       deploy_url: ${{ steps.pages_deploy.outputs.url }}
 
@@ -55,14 +98,18 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
   # -----------------------------------------------------------
-  # JOB 2: Surgical Cache Purge
-  # Runs AFTER deploy succeeds. Purges only HTML pages +
-  # crawl assets — leaves immutable /assets/* bundles intact.
+  # JOB 2: Surgical Cache Purge (optional)
+  # Purges only HTML pages + crawl assets; leaves immutable
+  # /assets/* bundles intact. Runs after the deploy (Action or
+  # Git integration) has had time to propagate.
   # -----------------------------------------------------------
   purge:
     name: Purge Cache
     runs-on: ubuntu-latest
-    needs: deploy  # waits for deploy job to finish
+    needs: [preflight, deploy]
+    # always() lets this run even when the deploy job was skipped
+    # (Git-integration deploys still need a purge).
+    if: always() && needs.preflight.outputs.has_purge_secrets == 'true' && needs.deploy.result != 'failure'
 
     steps:
       - name: Wait for Pages edge propagation
@@ -86,6 +133,9 @@ jobs:
               "https://www.leandermena.com/case-studies",
               "https://www.leandermena.com/blueprint",
               "https://www.leandermena.com/shop",
+              "https://www.leandermena.com/products",
+              "https://www.leandermena.com/industries",
+              "https://www.leandermena.com/miami-restaurant-consultant",
               "https://www.leandermena.com/insights",
               "https://www.leandermena.com/sitemap.xml",
               "https://www.leandermena.com/robots.txt"
@@ -101,7 +151,7 @@ jobs:
           echo "CF purge response: $RESPONSE"
 
           if echo "$RESPONSE" | grep -q '"success":true'; then
-            echo "::notice::Cache purged for 14 URLs"
+            echo "::notice::Cache purged for 17 URLs"
           else
             echo "::error::Cloudflare cache purge failed"
             echo "$RESPONSE"
@@ -110,18 +160,19 @@ jobs:
 
   # -----------------------------------------------------------
   # JOB 3: Deploy Status Check
-  # Fetches all 6 rebuilt static shells + homepage after
-  # purge and verifies HTTP 200 + correct Content-Type.
-  # Fails the workflow if any page returns non-200.
+  # Verifies key pages return HTTP 200 on the live site. Runs
+  # on every push (the Git integration deploys regardless of
+  # whether the optional jobs above ran).
   # -----------------------------------------------------------
   status_check:
     name: Status Check
     runs-on: ubuntu-latest
-    needs: purge  # waits for purge to finish
+    needs: [preflight, deploy, purge]
+    if: always() && needs.deploy.result != 'failure' && needs.purge.result != 'failure'
 
     steps:
       - name: Wait for global edge propagation
-        run: sleep 15
+        run: sleep 30
 
       - name: Check all key pages return HTTP 200
         run: |
@@ -134,13 +185,16 @@ jobs:
             "https://www.leandermena.com/experience"
             "https://www.leandermena.com/philosophy"
             "https://www.leandermena.com/contact"
+            "https://www.leandermena.com/products"
+            "https://www.leandermena.com/industries"
+            "https://www.leandermena.com/miami-restaurant-consultant"
             "https://www.leandermena.com/sitemap.xml"
           )
 
           for URL in "${PAGES[@]}"; do
             STATUS=$(curl -o /dev/null -s -w "%{http_code}" --max-time 10 "$URL")
             if [ "$STATUS" = "200" ]; then
-              echo "::notice::${URL} — ${STATUS} OK"
+              echo "::notice::${URL} - ${STATUS} OK"
             else
               echo "::error::${URL} returned HTTP ${STATUS}"
               FAILED=1
@@ -152,4 +206,4 @@ jobs:
             exit 1
           fi
 
-          echo "::notice::All pages passed status check ✔"
+          echo "::notice::All pages passed status check"
