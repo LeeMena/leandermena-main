@@ -93,14 +93,14 @@ export default function Footer() {
               lineHeight: 1.65,
               maxWidth: '28ch',
             }}>
-              Fractional F&amp;B operations consultant. Available nationwide, on-site + remote. Home base: Miami, Florida.
+              F&amp;B operations consultant. Available nationwide, on-site + remote. Home base: Miami, Florida.
             </p>
           </div>
 
           {[{
             heading: 'Services',
             links: [
-              { label: 'Fractional F&B Leadership', to: '/services' },
+              { label: 'F&B Operations Consulting', to: '/services' },
               { label: 'Pre-Opening Consulting', to: '/services' },
               { label: 'Operations Recovery', to: '/services' },
               { label: 'Book a Call', to: '/contact' },

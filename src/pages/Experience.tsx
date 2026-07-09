@@ -25,7 +25,7 @@ const roles = [
     subtitle: 'Miami, FL',
     body: 'Led all opening logistics for a high-energy taco concept - recruiting the team, designing operational workflows, establishing vendor partnerships, and implementing service standards. Scaled the restaurant to accommodate 300 covers on peak days. Reduced FOH overtime by 23% through strategic labor scheduling, controlling costs while maintaining service quality across the floor.',
     link: '/services',
-    linkLabel: 'Fractional F&B director services →',
+    linkLabel: 'F&B consulting services →',
   },
   {
     venue: 'SBE | SLS Brickell Hotel Miami',

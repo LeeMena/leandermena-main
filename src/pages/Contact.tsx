@@ -39,7 +39,7 @@ export default function Contact() {
   return (
     <>
       <SEO
-        title="Book a Discovery Call | Leander Mena, Fractional F&B"
+        title="Book a Discovery Call | Leander Mena, F&B Consulting"
         description="Tell me about your restaurant or hotel and where it's stuck. Book a free discovery call - engagements available on-site and remote, nationwide."
         path="/contact"
         schemaType="contact"
@@ -402,7 +402,7 @@ export default function Contact() {
                       style={{ cursor: 'pointer' }}
                     >
                       <option value="">Select one...</option>
-                      <option value="fractional">Fractional F&amp;B Leadership</option>
+                      <option value="fractional">F&amp;B Operations Consulting</option>
                       <option value="pre-opening">Pre-Opening Support</option>
                       <option value="recovery">Operations Recovery</option>
                       <option value="speaking">Speaking or Training</option>

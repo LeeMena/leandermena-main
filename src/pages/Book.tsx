@@ -5,7 +5,7 @@ export default function Book() {
     <>
       <SEO
         title="Book a Call | Leander Mena"
-        description="Schedule a discovery call or operational deep-dive with Leander Mena - Miami fractional F&B operations leader."
+        description="Schedule a discovery call or operational deep-dive with Leander Mena - Miami F&B operations consultant."
         path="/book"
       />
 

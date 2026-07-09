@@ -12,7 +12,7 @@ interface CTABannerProps {
 
 export default function CTABanner({
   title = 'Ready to work together?',
-  subtitle = 'Book a free discovery call and find out what a fractional F&B leader can do for your operation.',
+  subtitle = 'Book a free discovery call and find out what an F&B operations consultant can do for your operation.',
   primaryCta = { label: 'Book a Discovery Call', href: '/book' },
   secondaryCta = { label: 'Download Free Blueprint', href: '/blueprint' },
   variant = 'dark',

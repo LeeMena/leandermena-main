@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
   {
     id: '2',
     quote:
-      'We had tried two GMs before engaging Leander fractionally. Within 60 days our labor cost dropped 4 points and the team actually wanted to show up. That\'s rare.',
+      'We had tried two GMs before bringing Leander in as a consultant. Within 60 days our labor cost dropped 4 points and the team actually wanted to show up. That\'s rare.',
     name: 'Rachel T.',
     role: 'Managing Partner',
     company: 'Multi-Unit F&B Group, South Florida',

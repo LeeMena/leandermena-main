@@ -9,7 +9,7 @@ export default function CaseStudies() {
     <>
       <SEO
         title="F&B Consulting Case Studies & Results | Leander Mena"
-        description="Real engagements: a 45-day pre-opening rescue, a banquet department turned from 38% labor cost to profitable, and more. See how fractional operations leadership pays for itself."
+        description="Real engagements: a 45-day pre-opening rescue, a banquet department turned from 38% labor cost to profitable, and more. See how expert operations consulting pays for itself."
         path="/case-studies"
         schemaType="case-studies"
       />

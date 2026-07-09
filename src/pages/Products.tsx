@@ -55,7 +55,7 @@ export default function Products() {
           <span className="kicker">Ready for hands-on help?</span>
           <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">The Playbooks Are the Map. I Also Drive.</h2>
           <p className="section-intro" style={{ marginInline: 'auto', marginBottom: '1.5rem' }}>
-            If you want the systems installed with you, on your floor, that is a fractional engagement: pre-opening builds, turnarounds, and ongoing leadership, available nationwide.
+            If you want the systems installed with you, on your floor, that is a consulting engagement: pre-opening builds, turnarounds, and ongoing leadership, available nationwide.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/services" className="btn btn-primary">See Ways to Work Together</Link>

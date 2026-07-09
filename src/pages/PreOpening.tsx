@@ -8,7 +8,7 @@ export default function PreOpening() {
     <>
       <SEO
         title="Restaurant & Hotel Pre-Opening Consultant | Leander Mena"
-        description="Open on time and on budget. A fractional pre-opening partner who builds your org chart, SOPs, vendor matrix, training, and soft-launch plan - on-site and remote, nationwide."
+        description="Open on time and on budget. A pre-opening consultant who builds your org chart, SOPs, vendor matrix, training, and soft-launch plan - on-site and remote, nationwide."
         path="/pre-opening"
         schemaType="pre-opening"
       />

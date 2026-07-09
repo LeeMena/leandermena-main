@@ -10,7 +10,7 @@ export default function MiamiRestaurantConsultant() {
     <>
       <SEO
         title="Miami Restaurant & Hotel F&B Consultant | Leander Mena"
-        description="A Miami-based fractional F&B operator with 18+ years opening and running the city's top restaurants, hotels, and banquet programs. On-site consulting across South Florida."
+        description="A Miami-based F&B operations consultant with 18+ years opening and running the city's top restaurants, hotels, and banquet programs. On-site consulting across South Florida."
         path="/miami-restaurant-consultant"
         schemaType="miami"
       />
@@ -28,7 +28,7 @@ export default function MiamiRestaurantConsultant() {
             Miami Restaurant &amp; Hotel F&amp;B Consulting
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            18+ years opening and running Miami's top restaurants, hotels, and banquet programs. On-site fractional leadership across South Florida.
+            18+ years opening and running Miami's top restaurants, hotels, and banquet programs. On-site consulting across South Florida.
           </p>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default function MiamiRestaurantConsultant() {
               Leander Mena is a <strong style={{ color: 'var(--color-text)' }}>Miami restaurant and hotel F&amp;B consultant</strong> whose entire operating playbook was built in this market: Michelin-starred pre-openings in Midtown, banquet and events leadership at SLS Brickell, dual-concept P&amp;L management for V&amp;E Hospitality, and catering roles across the JW Marriott Marquis, Conrad, and InterContinental Miami.
             </p>
             <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-              For Miami and South Florida operators, that means on-site fractional leadership without travel overhead: pre-opening builds, operations turnarounds, banquet program fixes, and ongoing fractional F&amp;B oversight, with same-week floor presence when something breaks.
+              For Miami and South Florida operators, that means on-site consulting without travel overhead: pre-opening builds, operations turnarounds, banquet program fixes, and ongoing F&amp;B consulting oversight, with same-week floor presence when something breaks.
             </p>
             <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
               Explore <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>engagement models</Link>, see <Link to="/case-studies" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Miami case studies</Link>, or <Link to="/contact" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>book a discovery call</Link>.

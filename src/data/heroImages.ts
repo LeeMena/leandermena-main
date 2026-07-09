@@ -17,12 +17,13 @@ export interface HeroImage {
 }
 
 export const heroImages: Record<string, HeroImage> = {
-  // Original landing-hero.jpg (repo-local, served from /public)
+  // Repo-local landscape hero (1600x1067): the previous /landing-hero.jpg is
+  // portrait (1920x2880) and force-cropped badly into a wide banner.
   home: {
-    url: '/landing-hero.jpg',
-    fallback: '/landing-hero.jpg',
+    url: '/images/dining.jpg',
+    fallback: '/images/dining.jpg',
     credit: '',
-    alt: 'Leander Mena - hospitality operations leader',
+    alt: 'Upscale restaurant dining room with warm ambient lighting',
   },
   // Warm, refined restaurant interior with pendant lighting
   about: {

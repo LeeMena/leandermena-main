@@ -51,15 +51,15 @@ const skillData = {
   faq: [
     {
       q: 'Do you work with restaurants outside Miami?',
-      a: 'My network and market knowledge are deepest in Miami and South Florida, built from 18+ years operating here. That said, I take pre-opening and fractional engagements in other markets when the project is the right fit. Reach out and let’s talk through the specifics.',
+      a: 'My network and market knowledge are deepest in Miami and South Florida, built from 18+ years operating here. That said, I take pre-opening and consulting engagements in other markets when the project is the right fit. Reach out and let’s talk through the specifics.',
     },
     {
       q: 'How do you typically engage with a new client?',
       a: 'I embed alongside your existing team, not as a replacement, but as an operating layer that builds systems, fills gaps, and elevates the team already in place. Most engagements start with a scoping call to understand your operation, then a proposed scope and timeline.',
     },
     {
-      q: 'What’s the difference between fractional and pre-opening support?',
-      a: 'You get senior F&B operational leadership (the kind that typically comes with a full-time executive hire) at a fraction of the cost. For pre-opening, that means GM-level oversight from groundbreaking to launch. For fractional, it means ongoing operational leadership scoped to your needs.',
+      q: 'What’s the difference between ongoing consulting and pre-opening support?',
+      a: 'You get senior F&B operational leadership (the kind that typically comes with a full-time executive hire) at a fraction of the cost. For pre-opening, that means GM-level oversight from groundbreaking to launch. For ongoing consulting, it means operational leadership scoped to your needs.',
     },
   ],
 }

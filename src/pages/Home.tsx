@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { ArrowRight, Download } from 'lucide-react'
 import SEO from '@/components/SEO'
 import BlueprintModal from '@/components/BlueprintModal'
@@ -141,60 +141,44 @@ function Statement({ lines, accent, sub }: { lines: string[]; accent?: string; s
 
 export default function Home() {
   const [blueprintOpen, setBlueprintOpen] = useState(false)
-  const heroRef = useRef<HTMLElement>(null)
-  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] })
-  const heroY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
-  const heroOpacity = useTransform(heroScroll, [0, 0.7], [1, 0])
-  const heroTextY = useTransform(heroScroll, [0, 1], ['0%', '15%'])
 
   return (
     <>
       <SEO
-        title="Fractional F&B Operations Consultant | Leander Mena"
-        description="Fractional F&B leadership, pre-opening builds, and operations turnaround for restaurants and hotels nationwide. 18+ years running Miami's top hospitality venues - now available across the U.S."
+        title="F&B Operations Consultant | Leander Mena"
+        description="F&B operations consulting, pre-opening builds, and operations turnaround for restaurants and hotels nationwide. 18+ years running Miami's top hospitality venues - now available across the U.S."
         path="/"
         schemaType="home"
       />
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
-      {/* HERO */}
+      {/* HERO: static treatment matching Experience.tsx (no scroll parallax) */}
       <section
-        ref={heroRef}
         style={{
           position: 'relative',
-          minHeight: '100svh',
+          minHeight: 'clamp(420px, 60vw, 680px)',
           display: 'flex',
           alignItems: 'center',
           overflow: 'hidden',
           background: '#0a0905',
-          paddingBlock: 'clamp(5rem, 12svh, 8rem)',
+          paddingBlock: 'clamp(4rem, 9vw, 7rem)',
         }}
       >
-        <motion.div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            y: heroY,
-            scale: 1.15,
-            zIndex: 0,
-          }}
-        >
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <img
             src={heroImages.home.url}
             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = heroImages.home.fallback }}
             alt={heroImages.home.alt}
-            width="1920"
-            height="1200"
+            width="1600"
+            height="1067"
             loading="eager"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(10,9,5,0.62) 0%, rgba(10,9,5,0.40) 40%, rgba(10,9,5,0.80) 80%, #0a0905 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 60% 50%, transparent 30%, rgba(10,9,5,0.55) 100%)' }} />
-        </motion.div>
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,9,5,0.92) 40%, rgba(10,9,5,0.5) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,5,0.85) 0%, transparent 40%)' }} />
+        </div>
 
-        <motion.div
-          style={{ position: 'relative', zIndex: 1, width: '100%', y: heroTextY, opacity: heroOpacity }}
-        >
+        <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className="container">
             <div style={{ maxWidth: '900px' }}>
               <motion.p
@@ -210,11 +194,11 @@ export default function Home() {
                   marginBottom: 'clamp(1.25rem, 2.5vw, 2rem)',
                 }}
               >
-                Fractional F&amp;B Operations · U.S. Nationwide
+                F&amp;B Operations Consulting · U.S. Nationwide
               </motion.p>
 
               <h1 style={{ margin: 0 }}>
-                <span className="sr-only">Fractional F&amp;B Operations Leadership for Restaurants &amp; Hotels Nationwide - </span>
+                <span className="sr-only">F&amp;B Operations Consulting for Restaurants &amp; Hotels Nationwide - </span>
                 <div style={{ overflow: 'hidden', marginBottom: '0.04em' }}>
                   <motion.span
                     initial={{ y: '100%', opacity: 0 }}
@@ -310,41 +294,7 @@ export default function Home() {
               </motion.p>
             </div>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
-          style={{
-            position: 'absolute',
-            bottom: 'clamp(1.5rem, 4vw, 2.5rem)',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            zIndex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.5rem',
-          }}
-        >
-          <span style={{
-            fontFamily: 'var(--font-body)',
-            fontSize: '0.4375rem',
-            letterSpacing: '0.3em',
-            textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.25)',
-          }}>Scroll</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              width: '1px',
-              height: '32px',
-              background: 'linear-gradient(to bottom, rgba(255,255,255,0.4), transparent)',
-            }}
-          />
-        </motion.div>
+        </div>
       </section>
 
       {/* STATS BAR */}
@@ -377,7 +327,7 @@ export default function Home() {
       <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule delay={0.1} />
-          <Statement accent="The Solution" lines={['Fractional', 'leadership.', 'Real results.']} sub="Senior operational expertise, available without the overhead of a full-time executive hire." />
+          <Statement accent="The Solution" lines={['Expert', 'consulting.', 'Real results.']} sub="Senior operational expertise, available without the overhead of a full-time executive hire." />
         </div>
       </section>
 
@@ -472,7 +422,7 @@ export default function Home() {
       <section style={{ background: '#0a0905', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule />
-          <Statement accent="The Difference" lines={['Why operators', 'choose fractional', 'leadership.']} sub="Most hospitality groups don't need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team." />
+          <Statement accent="The Difference" lines={['Why operators', 'choose expert', 'consulting.']} sub="Most hospitality groups don't need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team." />
           <RevealRule delay={0.1} />
         </div>
       </section>

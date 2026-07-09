@@ -7,8 +7,8 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="Fractional F&B & Pre-Opening Consulting Services | Leander Mena"
-        description="Four ways to work with a fractional F&B operator: pre-opening builds, fractional operations leadership, turnaround engagements, and on-site + remote hybrid support - anywhere in the U.S."
+        title="F&B Operations & Pre-Opening Consulting Services | Leander Mena"
+        description="Four ways to work with an F&B operations consultant: pre-opening builds, ongoing operations consulting, turnaround engagements, and on-site + remote hybrid support - anywhere in the U.S."
         path="/services"
         schemaType="services"
       />
@@ -35,13 +35,13 @@ export default function Services() {
       <section className="section" style={{ borderBottom: '1px solid var(--color-border)' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-            Leander Mena provides <strong style={{ color: 'var(--color-text)' }}>fractional F&amp;B leadership and operations consulting for restaurants and hotels nationwide</strong>. With 18+ years running operations across independent concepts, hotel F&amp;B programs, and high-volume banquet venues in Miami's most competitive market, you get executive-level leadership and a proven operating playbook, without the full-time executive headcount.
+            Leander Mena provides <strong style={{ color: 'var(--color-text)' }}>F&amp;B operations consulting for restaurants and hotels nationwide</strong>. With 18+ years running operations across independent concepts, hotel F&amp;B programs, and high-volume banquet venues in Miami's most competitive market, you get executive-level leadership and a proven operating playbook, without the full-time executive headcount.
           </p>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-            The fractional model is built for owners and operators who need an experienced GM or F&amp;B director to stabilize operations, build systems, and develop teams, but don’t want to commit to a permanent executive salary. Engagements range from <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>restaurant pre-opening builds</Link> to ongoing fractional F&amp;B oversight across one or multiple venues.
+            The consulting model is built for owners and operators who need an experienced GM or F&amp;B director to stabilize operations, build systems, and develop teams, but don’t want to commit to a permanent executive salary. Engagements range from <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>restaurant pre-opening builds</Link> to ongoing F&amp;B consulting oversight across one or multiple venues.
           </p>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
-            Whether you’re launching a new concept or fixing an underperforming restaurant or hotel outlet, <Link to="/about" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B leadership</Link> delivers a structured operating playbook: labor models, SOPs, menu economics, training programs, and performance dashboards tailored to your property.
+            Whether you’re launching a new concept or fixing an underperforming restaurant or hotel outlet, <Link to="/about" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>F&amp;B operations consulting</Link> delivers a structured operating playbook: labor models, SOPs, menu economics, training programs, and performance dashboards tailored to your property.
           </p>
         </div>
       </section>
@@ -57,7 +57,7 @@ export default function Services() {
           <div className="grid-3" style={{ marginTop: '1.5rem' }}>
             {[
               { title: 'Pre-Opening Builds', anchor: 'Fixed-scope project', detail: 'Typically 90-120 days from construction to opening night. On-site for the build, remote for the runway.' },
-              { title: 'Fractional Leadership', anchor: 'Monthly retainer', detail: 'Typically 2-4 on-site days per sprint plus remote oversight, scoped month to month.' },
+              { title: 'Ongoing Consulting', anchor: 'Monthly retainer', detail: 'Typically 2-4 on-site days per sprint plus remote oversight, scoped month to month.' },
               { title: 'Turnaround / Recovery', anchor: 'Diagnostic + 90-day plan', detail: 'Root-cause diagnostic on-site, then a 90-day execution plan with remote accountability.' },
             ].map((m) => (
               <div key={m.title} className="card" style={{ padding: '1.25rem 1.5rem' }}>

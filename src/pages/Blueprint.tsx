@@ -364,7 +364,7 @@ export default function Blueprint() {
               <span className="kicker">About the Author</span>
               <h2 style={{ marginBottom: 'var(--space-4)' }}>18+ Years Opening Miami's Best</h2>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, fontSize: '0.95rem', marginBottom: 'var(--space-6)' }}>
-                Leander Mena is a fractional F&amp;B operations leader based in Miami, Florida. He's opened, stabilized, and scaled restaurants, hotels, banquets, and catering operations across South Florida - from Michelin-starred concepts to large-scale luxury hotels.
+                Leander Mena is an F&amp;B operations consultant based in Miami, Florida. He's opened, stabilized, and scaled restaurants, hotels, banquets, and catering operations across South Florida - from Michelin-starred concepts to large-scale luxury hotels.
               </p>
               <div style={{ display: 'flex', gap: 'var(--space-8)', marginBottom: 'var(--space-8)' }}>
                 {[{ num: '18+', label: 'Years' }, { num: '40+', label: 'Properties' }, { num: '$12M+', label: 'Revenue' }].map((s) => (

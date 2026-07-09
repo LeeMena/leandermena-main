@@ -67,7 +67,7 @@ const ALL_POSTS = [
   },
   {
     slug: '/insights/why-fractional-leadership-works',
-    title: 'Why Fractional F&B Leadership Works',
+    title: 'Why F&B Operations Consulting Works',
     description: 'How operators are replacing full-time directors with fractional leaders and getting better results at a fraction of the cost.',
     kicker: 'Leadership',
     date: '2024-04-20',
@@ -88,7 +88,7 @@ const ALL_POSTS = [
   },
   {
     slug: '/insights/what-a-fractional-gm-actually-does',
-    title: 'What a Fractional F&B Director Actually Does',
+    title: 'What a F&B Operations Consultant Actually Does',
     description: 'The role explained for operators who are considering it: scope, schedule, deliverables, and real expectations.',
     kicker: 'Fractional Leadership',
     date: '2024-02-29',
@@ -109,7 +109,7 @@ export default function BlogIndex() {
     <>
       <SEO
         title="Insights"
-        description={`${posts.length} practical articles on F&B operations: pre-openings, labor cost, fractional leadership, training, and more from Leander Mena.`}
+        description={`${posts.length} practical articles on F&B operations: pre-openings, labor cost, consulting, training, and more from Leander Mena.`}
         path="/insights"
         schemaType="insights"
       />

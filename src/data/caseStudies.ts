@@ -49,7 +49,7 @@ export const caseStudies: CaseStudy[] = [
       { metric: '40%→15%', label: 'Turner reduction' },
       { metric: '3.2x', label: 'ROI on consulting investment' }
     ],
-    services: ['Fractional Leadership', 'Operations Recovery', 'Labor Optimization'],
+    services: ['Ongoing Consulting', 'Operations Recovery', 'Labor Optimization'],
     duration: '6 months',
     testimonial: 'Within 60 days we saw measurable improvement. By month four, we were a completely different operation. Leander changed how we think about labor.',
     image: '/images/labor.jpg',
@@ -87,7 +87,7 @@ export const caseStudies: CaseStudy[] = [
       { metric: '34%', label: 'Reduction in operational complaints' },
       { metric: '2.3x', label: 'Portfolio growth supported' }
     ],
-    services: ['Fractional Leadership', 'SOP Development', 'Quality Systems'],
+    services: ['Ongoing Consulting', 'SOP Development', 'Quality Systems'],
     duration: '12 months',
     testimonial: 'Leander built the operational infrastructure that made our growth possible. We scaled without sacrificing quality.',
     image: '/images/fnb-manager.jpg',

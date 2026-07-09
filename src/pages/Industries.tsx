@@ -8,7 +8,7 @@ const industries = [
     title: 'Independent Restaurants',
     body: 'Single-unit and owner-operated concepts that need executive-level systems without executive headcount: labor models, menu economics, SOPs, and a trained bench.',
     link: '/services',
-    linkLabel: 'Fractional leadership',
+    linkLabel: 'Ongoing consulting',
   },
   {
     title: 'Multi-Unit Restaurant Groups',
@@ -46,8 +46,8 @@ export default function Industries() {
   return (
     <>
       <SEO
-        title="Who I Work With | Leander Mena, Fractional F&B"
-        description="Fractional F&B operations leadership for independent restaurants, multi-unit groups, hotel and resort F&B programs, banquet and catering operations, and private clubs nationwide."
+        title="Who I Work With | Leander Mena, F&B Consulting"
+        description="F&B operations consulting for independent restaurants, multi-unit groups, hotel and resort F&B programs, banquet and catering operations, and private clubs nationwide."
         path="/industries"
         schemaType="industries"
       />
@@ -96,7 +96,7 @@ export default function Industries() {
             <span className="kicker">Not sure where you fit?</span>
             <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Every Engagement Starts the Same Way</h2>
             <p className="section-intro" style={{ marginInline: 'auto', marginBottom: '1.5rem' }}>
-              A 30-minute conversation about your operation, your numbers, and whether fractional leadership is the right tool.
+              A 30-minute conversation about your operation, your numbers, and whether consulting is the right tool.
             </p>
             <Link to="/contact" className="btn btn-primary">Book a Discovery Call</Link>
           </ScrollReveal>

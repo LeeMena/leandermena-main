@@ -39,7 +39,7 @@ export default function About() {
     <>
       <SEO
         title="About Leander Mena | 18+ Years in F&B Operations"
-        description="From Miami's most demanding restaurants and luxury hotels to a nationally available fractional operator. Meet Leander Mena - pre-opening, turnaround, and F&B operations specialist."
+        description="From Miami's most demanding restaurants and luxury hotels to a nationally available consultant. Meet Leander Mena - pre-opening, turnaround, and F&B operations specialist."
         path="/about"
         schemaType="about"
       />
@@ -110,10 +110,10 @@ export default function About() {
                   I learned operations in the only market that would let me fail fast enough to get good: Miami. Eighteen years across 40+ properties, from Michelin-starred <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>pre-openings in Midtown</Link> to SLS and Accor luxury hotel programs, independent rooms, and multi-unit groups. Every engagement sharpened the same core skill: turning a vision into a functioning operation.
                 </p>
                 <p>
-                  The systems that survive Miami's labor market, seasonality, and guest expectations travel. So I do too. Today I work as a fractional F&amp;B operator with restaurants and hotels across the country: on-site for the moments that require presence, remote for the systems, reporting, and coaching in between.
+                  The systems that survive Miami's labor market, seasonality, and guest expectations travel. So I do too. Today I work as an F&amp;B operations consultant with restaurants and hotels across the country: on-site for the moments that require presence, remote for the systems, reporting, and coaching in between.
                 </p>
                 <p>
-                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. As a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B operations consultant</Link>, I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
+                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. As a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>F&amp;B operations consultant</Link>, I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
                 </p>
               </div>
             </Reveal>
@@ -122,7 +122,7 @@ export default function About() {
                   keep its natural square ratio so it never upscales or crops. */}
               <img
                 src="/images/about.jpg"
-                alt="Leander Mena - Fractional F&B Director and Restaurant Consultant, Miami"
+                alt="Leander Mena - F&B Operations Consultant and Restaurant Consultant, Miami"
                 width="414"
                 height="418"
                 loading="lazy"
@@ -149,7 +149,7 @@ export default function About() {
         <div className="container">
           <span className="kicker">What I believe</span>
           <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-3">Operating principles</h2>
-          <p className="section-intro">The mindset behind every fractional F&amp;B and consulting engagement.</p>
+          <p className="section-intro">The mindset behind every F&amp;B consulting engagement.</p>
           <div className="grid-3">
             {[
               { title: 'Systems over heroics', body: 'A well-run operation doesn\'t depend on the owner being present 80 hours a week. The goal is always replicable systems that hold without constant intervention.' },
@@ -178,7 +178,7 @@ export default function About() {
           <p className="section-intro" style={{ marginInline: 'auto' }}>Let's talk about where your operation is and where it needs to go.</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
-            <Link to="/services" className="btn btn-secondary">View Fractional F&amp;B Services</Link>
+            <Link to="/services" className="btn btn-secondary">View F&amp;B Consulting Services</Link>
           </div>
         </div>
       </section>

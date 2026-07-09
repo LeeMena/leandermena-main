@@ -102,7 +102,7 @@ export default function BlogLaborCost() {
               <div style={{ marginTop: 'var(--space-12)', padding: 'var(--space-8)', background: 'var(--color-surface)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--color-border)' }}>
                 <p style={{ fontWeight: 600, marginBottom: 'var(--space-3)' }}>Labor cost running above 32% in your Miami restaurant or hotel?</p>
                 <p style={{ color: 'var(--color-text-muted)', marginBottom: 'var(--space-6)' }}>
-                  I help Miami operators build scheduling systems and <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>fractional F&amp;B operations leadership</Link> that brings
+                  I help Miami operators build scheduling systems and <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>F&amp;B operations consultantship</Link> that brings
                   cost into line without cutting the team.
                 </p>
                 <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
