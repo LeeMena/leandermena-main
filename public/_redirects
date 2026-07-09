@@ -9,30 +9,27 @@
 
 # ----------------------------------------------------------
 # 1. TRAILING-SLASH 301s
-#    Strip trailing slashes on all known routes so Google
-#    only ever sees one canonical URL per page.
-#    Source: GSC "Alternate page with proper canonical tag"
-#    and "Page with redirect" for /contact/, /skills/, etc.
 # ----------------------------------------------------------
 
-/about/              /about              301
-/services/           /services           301
-/pre-opening/        /pre-opening        301
-/experience/         /experience         301
-/philosophy/         /philosophy         301
-/contact/            /contact            301
-/blueprint/          /blueprint          301
-/book/               /book               301
-/profile/            /profile            301
-/shop/               /shop               301
-/products/           /products           301
-/skills/             /skills             301
-/case-studies/       /case-studies       301
-/insights/           /insights           301
+/about/                        /about                       301
+/services/                     /services                    301
+/pre-opening/                  /pre-opening                 301
+/experience/                   /experience                  301
+/philosophy/                   /philosophy                  301
+/contact/                      /contact                     301
+/blueprint/                    /blueprint                   301
+/book/                         /book                        301
+/profile/                      /profile                     301
+/shop/                         /shop                        301
+/products/                     /products                    301
+/skills/                       /skills                      301
+/case-studies/                 /case-studies                301
+/insights/                     /insights                    301
+/industries/                   /industries                  301
+/miami-restaurant-consultant/  /miami-restaurant-consultant 301
 
 # ----------------------------------------------------------
 # 2. LEGACY PATH + FILE 301 REDIRECTS: single-hop only
-#    No destination should itself redirect.
 # ----------------------------------------------------------
 
 /contact.html        /contact            301
@@ -46,9 +43,6 @@
 
 # ----------------------------------------------------------
 # 3. EXPLICIT SPA 200 REWRITES
-#    Serve index.html with 200 for every React Router route.
-#    Prevents Cloudflare from auto-redirecting /path to /path/
-#    which causes Googlebot "Redirect error" fetch failures.
 # ----------------------------------------------------------
 
 # Core pages
@@ -64,6 +58,8 @@
 /shop               /index.html  200
 /products           /index.html  200
 /skills             /index.html  200
+/industries                      /index.html  200
+/miami-restaurant-consultant     /index.html  200
 
 # Case studies
 /case-studies                                          /index.html  200
@@ -89,7 +85,6 @@
 
 # ----------------------------------------------------------
 # 4. SPA CATCH-ALL: must be absolute last rule
-#    Handles any future routes not yet explicitly listed.
 # ----------------------------------------------------------
 
 /*  /index.html  200
