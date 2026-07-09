@@ -170,10 +170,11 @@ export default function Home() {
             width="1600"
             height="1067"
             loading="eager"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 28%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 60%' }}
           />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,9,5,0.92) 40%, rgba(10,9,5,0.5) 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,5,0.85) 0%, transparent 40%)' }} />
+          {/* Brighter: reduced left opacity from 0.92 to 0.72, right from 0.5 to 0.3 */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,9,5,0.72) 40%, rgba(10,9,5,0.3) 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,5,0.6) 0%, transparent 40%)' }} />
         </div>
 
         <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
