@@ -38,8 +38,6 @@ function RevealLine({ children, delay = 0, style = {} }: { children: React.React
 }
 
 // --- Large animated number ---
-// tone="dark" is for sections with a fixed near-black background where white
-// is always readable; tone="theme" follows the light/dark design tokens.
 function AnimatedStat({ value, label, delay = 0, tone = 'dark' }: { value: string; label: string; delay?: number; tone?: 'dark' | 'theme' }) {
   const { ref, inView } = useReveal(0.3)
   const valueColor = tone === 'dark' ? '#ffffff' : 'var(--color-text)'
@@ -152,7 +150,7 @@ export default function Home() {
       />
       <BlueprintModal isOpen={blueprintOpen} onClose={() => setBlueprintOpen(false)} />
 
-      {/* HERO: static treatment matching Experience.tsx (no scroll parallax) */}
+      {/* HERO */}
       <section
         style={{
           position: 'relative',
@@ -172,7 +170,7 @@ export default function Home() {
             width="1600"
             height="1067"
             loading="eager"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 28%' }}
           />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,9,5,0.92) 40%, rgba(10,9,5,0.5) 100%)' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,5,0.85) 0%, transparent 40%)' }} />
@@ -460,7 +458,6 @@ export default function Home() {
       <CTABanner />
 
       <style>{`
-        /* ---- Stats: 2x2 editorial grid on mobile, 4-across on desktop ---- */
         .home-stats-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -472,8 +469,6 @@ export default function Home() {
             gap: var(--space-6);
           }
         }
-
-        /* ---- Hero CTAs: inline on desktop, stacked full-width on mobile ---- */
         .hero-cta-row {
           display: flex;
           flex-wrap: wrap;
@@ -516,8 +511,6 @@ export default function Home() {
             width: 100%;
           }
         }
-
-        /* ---- Section header links: comfortable tap target on touch ---- */
         .home-section-link {
           display: inline-flex;
           align-items: center;
