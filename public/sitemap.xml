@@ -209,4 +209,32 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://www.leandermena.com/insights/labor-cost-control-us-restaurants</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leandermena.com/insights/labor-cost-control-europe-restaurants</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leandermena.com/insights/labor-cost-control-latin-america</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.leandermena.com/insights/labor-cost-control-caribbean</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
