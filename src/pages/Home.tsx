@@ -157,24 +157,29 @@ export default function Home() {
           paddingBlock: 'clamp(4rem, 9vw, 7rem)',
         }}
       >
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+        {/* Art-directed media: the source photo is portrait (711x1067), so
+            instead of force-cropping it full-bleed it is anchored to the
+            RIGHT as a bounded panel on desktop (text sits on the solid dark
+            left), and used as a dimmed full-bleed backdrop on mobile where
+            the narrow column suits a portrait crop. */}
+        <div className="home-hero-media" aria-hidden="true">
           <img
             src={heroImages.home.url}
             onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = heroImages.home.fallback }}
             alt={heroImages.home.alt}
-            width="1600"
+            width="711"
             height="1067"
             loading="eager"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 80%' }}
           />
-          {/* Brighter: left 0.55/0.18, bottom 0.4 */}
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(10,9,5,0.55) 40%, rgba(10,9,5,0.18) 100%)' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,9,5,0.4) 0%, transparent 40%)' }} />
+          {/* Seam gradient: solid dark on the left blending into the photo,
+              so the panel edge reads as intentional, not a hard cut. */}
+          <div className="home-hero-scrim" />
+          <div className="home-hero-scrim-bottom" />
         </div>
 
         <div style={{ position: 'relative', zIndex: 1, width: '100%' }}>
           <div className="container">
-            <div style={{ maxWidth: '900px' }}>
+            <div className="home-hero-copy" style={{ maxWidth: '900px' }}>
               <motion.p
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -454,6 +459,59 @@ export default function Home() {
       <CTABanner />
 
       <style>{`
+        /* ---- Hero media: portrait photo, art-directed ---- */
+        .home-hero-media {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+        }
+        .home-hero-media img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          /* Feature the lit white chef's jacket and the plated dish; the
+             face is intentionally in shadow in the source, so skip it. */
+          object-position: center 58%;
+        }
+        /* Mobile: dim the full-bleed backdrop so the text stays legible. */
+        .home-hero-scrim {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to right, rgba(10,9,5,0.82) 0%, rgba(10,9,5,0.62) 100%);
+        }
+        .home-hero-scrim-bottom {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(10,9,5,0.55) 0%, transparent 45%);
+        }
+        @media (min-width: 768px) {
+          /* Desktop: photo becomes a right-anchored panel, shown whole. */
+          .home-hero-media {
+            left: auto;
+            right: 0;
+            width: 50%;
+          }
+          .home-hero-media img {
+            object-position: center 60%;
+          }
+          /* Blend the left edge of the photo into the solid dark section
+             background so the seam is a soft fade, not a hard line. The
+             photo is already dark, so keep the right side clear. */
+          .home-hero-scrim {
+            background: linear-gradient(to right, #0a0905 0%, rgba(10,9,5,0.35) 40%, rgba(10,9,5,0) 78%);
+          }
+          .home-hero-scrim-bottom {
+            background: none;
+          }
+          /* Keep the copy clear of the photo panel. */
+          .home-hero-copy {
+            max-width: min(56ch, 52%) !important;
+          }
+        }
+        @media (min-width: 1100px) {
+          .home-hero-media { width: 46%; }
+        }
+
         .home-stats-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
