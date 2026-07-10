@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '@/context/ThemeProvider'
+import { useLanguage } from '@/context/LanguageProvider'
+import { getT } from '@/i18n/copy'
 
 const links = [
-  { href: '/services', label: 'Work With Me' },
-  { href: '/pre-opening', label: 'Pre-Opening' },
-  { href: '/products', label: 'Playbooks' },
-  { href: '/case-studies', label: 'Results' },
-  { href: '/experience', label: 'Experience' },
-  { href: '/insights', label: 'Insights' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/services', key: 'nav.workWithMe' },
+  { href: '/pre-opening', key: 'nav.preOpening' },
+  { href: '/products', key: 'nav.products' },
+  { href: '/case-studies', key: 'nav.caseStudies' },
+  { href: '/experience', key: 'nav.experience' },
+  { href: '/insights', key: 'nav.insights' },
+  { href: '/about', key: 'nav.about' },
+  { href: '/contact', key: 'nav.contact' },
 ]
 
 interface Props {
@@ -77,6 +79,42 @@ function ThemeToggleButton() {
   )
 }
 
+function LangToggleButton() {
+  const { lang, toggleLang } = useLanguage()
+  const next = lang === 'en' ? 'ES' : 'EN'
+  return (
+    <button
+      onClick={toggleLang}
+      aria-label={`Switch language to ${lang === 'en' ? 'Spanish' : 'English'}`}
+      style={{
+        height: '40px',
+        padding: '0 12px',
+        borderRadius: '0',
+        border: '1px solid var(--color-border)',
+        background: 'transparent',
+        color: 'var(--color-text-muted)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        flexShrink: 0,
+        fontFamily: 'var(--font-body)',
+        fontSize: '0.625rem',
+        letterSpacing: '0.10em',
+        textTransform: 'uppercase',
+        fontWeight: 600,
+        transition: 'background 200ms ease, color 200ms ease, border-color 200ms ease',
+        WebkitTapHighlightColor: 'transparent',
+        touchAction: 'manipulation',
+      }}
+    >
+      {lang === 'en' ? 'EN' : 'ES'}
+      <span style={{ opacity: 0.4, margin: '0 4px' }}>/</span>
+      {next}
+    </button>
+  )
+}
+
 function HamburgerIcon({ open }: { open: boolean }) {
   return (
     <span
@@ -124,6 +162,8 @@ export default function Navigation({ onBookCall }: Props) {
   const [visible, setVisible] = useState(false)
   const headerRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
+  const { lang } = useLanguage()
+  const t = getT(lang)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -243,13 +283,14 @@ export default function Navigation({ onBookCall }: Props) {
                     borderBottom: isActive ? '1px solid var(--color-primary)' : '1px solid transparent',
                   }}
                 >
-                  {l.label}
+                  {t(l.key)}
                 </Link>
               )
             })}
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}>
+            <LangToggleButton />
             <ThemeToggleButton />
             <button
               onClick={onBookCall}
@@ -257,7 +298,7 @@ export default function Navigation({ onBookCall }: Props) {
               style={{ fontSize: '0.625rem', fontWeight: 500, display: 'none', letterSpacing: '0.16em' }}
               id="nav-cta-desktop"
             >
-              Let&rsquo;s Talk
+              {t('nav.bookCall')}
             </button>
             <button
               onClick={() => setOpen(o => !o)}
@@ -375,7 +416,7 @@ export default function Navigation({ onBookCall }: Props) {
                         minHeight: '52px',
                       }}
                     >
-                      <span>{l.label}</span>
+                      <span>{t(l.key)}</span>
                       {isActive ? (
                         <span style={{
                           width: '4px',
@@ -416,7 +457,7 @@ export default function Navigation({ onBookCall }: Props) {
                       minHeight: '52px',
                     }}
                   >
-                    Book a Discovery Call
+                    {t('nav.bookCall')}
                   </button>
 
                   <a
@@ -440,6 +481,14 @@ export default function Navigation({ onBookCall }: Props) {
                   >
                     leander@leandermena.com
                   </a>
+
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    paddingTop: 'var(--space-2)',
+                  }}>
+                    <LangToggleButton />
+                  </div>
 
                   <p style={{
                     textAlign: 'center',

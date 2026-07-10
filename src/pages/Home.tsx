@@ -13,6 +13,8 @@ import { services } from '@/data/services'
 import { approvedTestimonials } from '@/data/testimonials'
 import { products } from '@/data/products'
 import { heroImages } from '@/data/heroImages'
+import { useLanguage } from '@/context/LanguageProvider'
+import { getT } from '@/i18n/copy'
 
 function useReveal(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null)
@@ -134,6 +136,8 @@ function Statement({ lines, accent, sub }: { lines: string[]; accent?: string; s
 
 export default function Home() {
   const [blueprintOpen, setBlueprintOpen] = useState(false)
+  const { lang } = useLanguage()
+  const t = getT(lang)
 
   return (
     <>
@@ -157,11 +161,6 @@ export default function Home() {
           paddingBlock: 'clamp(4rem, 9vw, 7rem)',
         }}
       >
-        {/* Art-directed media: the source photo is portrait (711x1067), so
-            instead of force-cropping it full-bleed it is anchored to the
-            RIGHT as a bounded panel on desktop (text sits on the solid dark
-            left), and used as a dimmed full-bleed backdrop on mobile where
-            the narrow column suits a portrait crop. */}
         <div className="home-hero-media" aria-hidden="true">
           <img
             src={heroImages.home.url}
@@ -171,8 +170,6 @@ export default function Home() {
             height="1067"
             loading="eager"
           />
-          {/* Seam gradient: solid dark on the left blending into the photo,
-              so the panel edge reads as intentional, not a hard cut. */}
           <div className="home-hero-scrim" />
           <div className="home-hero-scrim-bottom" />
         </div>
@@ -193,7 +190,7 @@ export default function Home() {
                   marginBottom: 'clamp(1.25rem, 2.5vw, 2rem)',
                 }}
               >
-                F&amp;B Operations Consulting · U.S. Nationwide
+                {t('home.heroEyebrow')}
               </motion.p>
 
               <h1 style={{ margin: 0 }}>
@@ -251,7 +248,7 @@ export default function Home() {
                   marginBottom: 'clamp(2rem, 4vw, 3rem)',
                 }}
               >
-                Eighteen years forged in Miami's most demanding kitchens, hotels, and banquet halls. Now embedded with operators nationwide - on-site when it matters, remote in between.
+                {t('home.heroSub')}
               </motion.p>
 
               <motion.div
@@ -265,14 +262,14 @@ export default function Home() {
                   className="btn btn-primary hero-cta"
                   style={{ fontSize: '0.625rem', letterSpacing: '0.18em', minHeight: '48px', paddingInline: 'var(--space-8)' }}
                 >
-                  Book a Discovery Call
+                  {t('home.ctaPrimary')}
                 </Link>
                 <button
                   onClick={() => setBlueprintOpen(true)}
                   className="hero-cta-ghost"
                 >
                   <Download size={12} />
-                  Explore Digital Products
+                  {t('home.ctaSecondary')}
                 </button>
               </motion.div>
 
@@ -289,7 +286,7 @@ export default function Home() {
                   marginTop: 'clamp(1.25rem, 2.5vw, 2rem)',
                 }}
               >
-                Based in Miami · US Nationwide · Select International Engagements
+                {t('home.heroLocation')}
               </motion.p>
             </div>
           </div>
@@ -305,12 +302,12 @@ export default function Home() {
         <div className="container">
           <div className="home-stats-grid">
             {[
-              { value: '18+', label: 'Years Experience' },
-              { value: '$12M+', label: 'Revenue Optimized' },
-              { value: '500+', label: 'Team Members Trained' },
-              { value: '40+', label: 'Properties Operated' },
+              { value: '18+', labelKey: 'home.stat.years' },
+              { value: '$12M+', labelKey: 'home.stat.revenue' },
+              { value: '500+', labelKey: 'home.stat.trained' },
+              { value: '40+', labelKey: 'home.stat.properties' },
             ].map((s, i) => (
-              <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} tone="theme" />
+              <AnimatedStat key={s.labelKey} value={s.value} label={t(s.labelKey)} delay={i * 0.08} tone="theme" />
             ))}
           </div>
         </div>
@@ -319,14 +316,22 @@ export default function Home() {
       <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule />
-          <Statement accent="The Problem" lines={['Most operators', "don't need more", 'advice.']} sub="They need someone who's actually done it, at scale, under pressure, with real consequences." />
+          <Statement
+            accent={t('home.problem.accent')}
+            lines={[t('home.problem.line1'), t('home.problem.line2'), t('home.problem.line3')]}
+            sub={t('home.problem.sub')}
+          />
         </div>
       </section>
 
       <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule delay={0.1} />
-          <Statement accent="The Solution" lines={['Expert', 'consulting.', 'Real results.']} sub="Senior operational expertise, available without the overhead of a full-time executive hire." />
+          <Statement
+            accent={t('home.solution.accent')}
+            lines={[t('home.solution.line1'), t('home.solution.line2'), t('home.solution.line3')]}
+            sub={t('home.solution.sub')}
+          />
         </div>
       </section>
 
@@ -336,11 +341,13 @@ export default function Home() {
           <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
               <div>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Engagement Models</p>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Operational Leadership,{' '}<em>On Demand</em></h2>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>{t('home.services.accent')}</p>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>
+                  {t('home.services.heading')}{' '}<em>{t('home.services.headingEm')}</em>
+                </h2>
               </div>
               <Link to="/services" className="home-section-link">
-                View All Services &amp; Pricing <ArrowRight size={11} />
+                {t('home.services.viewAll')} <ArrowRight size={11} />
               </Link>
             </div>
           </RevealLine>
@@ -354,21 +361,23 @@ export default function Home() {
       <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', borderBottom: '1px solid var(--color-border)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
         <div className="container">
           <RevealLine style={{ marginBottom: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>How It Works</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--color-text)' }}>From First Call to{' '}<em>Measurable Results</em></h2>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>{t('home.process.accent')}</p>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.75rem, 4vw, 3rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.1, color: 'var(--color-text)' }}>
+              {t('home.process.heading')}{' '}<em>{t('home.process.headingEm')}</em>
+            </h2>
           </RevealLine>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: 'clamp(var(--space-8), 4vw, var(--space-12))' }}>
             {[
-              { n: '01', title: 'Discovery Call', body: '30-minute conversation to understand your challenges, timeline, and goals.' },
-              { n: '02', title: 'On-Site Diagnostic', body: 'Deep-dive assessment of your operations, typically 3-5 days on location.' },
-              { n: '03', title: 'Implementation', body: 'Execute the action plan with weekly check-ins and real-time adjustments.' },
-              { n: '04', title: 'Sustainable Results', body: 'Handover systems, train your team, and ensure improvements stick long-term.' },
+              { n: '01', titleKey: 'home.process.step1.title', bodyKey: 'home.process.step1.body' },
+              { n: '02', titleKey: 'home.process.step2.title', bodyKey: 'home.process.step2.body' },
+              { n: '03', titleKey: 'home.process.step3.title', bodyKey: 'home.process.step3.body' },
+              { n: '04', titleKey: 'home.process.step4.title', bodyKey: 'home.process.step4.body' },
             ].map((step, i) => (
               <RevealLine key={step.n} delay={i * 0.08}>
                 <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: 'var(--space-6)' }}>
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.04em', color: 'var(--color-text-faint)', lineHeight: 1, marginBottom: 'var(--space-4)' }}>{step.n}</div>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 400, letterSpacing: '-0.01em', color: 'var(--color-text)', marginBottom: 'var(--space-3)' }}>{step.title}</h3>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>{step.body}</p>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 400, letterSpacing: '-0.01em', color: 'var(--color-text)', marginBottom: 'var(--space-3)' }}>{t(step.titleKey)}</h3>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>{t(step.bodyKey)}</p>
                 </div>
               </RevealLine>
             ))}
@@ -384,11 +393,13 @@ export default function Home() {
           <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 'var(--space-4)' }}>
               <div>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Digital Products</p>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Tools Built from{' '}<em>Real Experience</em></h2>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>{t('home.products.accent')}</p>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>
+                  {t('home.products.heading')}{' '}<em>{t('home.products.headingEm')}</em>
+                </h2>
               </div>
               <Link to="/products" className="home-section-link">
-                Browse All Products <ArrowRight size={11} />
+                {t('home.products.viewAll')} <ArrowRight size={11} />
               </Link>
             </div>
           </RevealLine>
@@ -402,16 +413,18 @@ export default function Home() {
       <section style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)', padding: 'clamp(var(--space-16), 8vw, var(--space-28)) 0' }}>
         <div className="container">
           <RevealLine style={{ marginBottom: 'clamp(var(--space-10), 4vw, var(--space-16))' }}>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>Client Results</p>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>Measurable Impact,{' '}<em>Real Words</em></h2>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-primary)', marginBottom: 'var(--space-3)' }}>{t('home.testimonials.accent')}</p>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--color-text)' }}>
+              {t('home.testimonials.heading')}{' '}<em>{t('home.testimonials.headingEm')}</em>
+            </h2>
           </RevealLine>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>
-            {approvedTestimonials.map((t, i) => <TestimonialCard key={t.id} testimonial={t} index={i} />)}
+            {approvedTestimonials.map((t_item, i) => <TestimonialCard key={t_item.id} testimonial={t_item} index={i} />)}
           </div>
           <RevealLine delay={0.2} style={{ marginTop: 'clamp(var(--space-10), 4vw, var(--space-14))' }}>
             <div style={{ textAlign: 'center' }}>
               <Link to="/case-studies" className="home-section-link" style={{ whiteSpace: 'normal' }}>
-                Read Full Case Studies <ArrowRight size={11} />
+                {t('home.testimonials.viewAll')} <ArrowRight size={11} />
               </Link>
             </div>
           </RevealLine>
@@ -421,7 +434,11 @@ export default function Home() {
       <section style={{ background: '#0a0905', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">
           <RevealRule />
-          <Statement accent="The Difference" lines={['Why operators', 'choose expert', 'consulting.']} sub="Most hospitality groups don't need another full-time executive. They need a seasoned operator who can diagnose issues fast, implement systems that stick, and transfer knowledge to your existing team." />
+          <Statement
+            accent={t('home.diff.accent')}
+            lines={[t('home.diff.line1'), t('home.diff.line2'), t('home.diff.line3')]}
+            sub={t('home.diff.sub')}
+          />
           <RevealRule delay={0.1} />
         </div>
       </section>
@@ -431,27 +448,27 @@ export default function Home() {
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: 'clamp(var(--space-8), 4vw, var(--space-12))' }}>
             {[
-              { n: '01', title: 'Rapid Diagnosis', body: 'Identify root causes within the first week, not months' },
-              { n: '02', title: 'Systems That Stick', body: 'SOPs and training programs your team will actually follow' },
-              { n: '03', title: 'Proven Track Record', body: '18+ years across Michelin concepts, luxury hotels, and independents' },
-              { n: '04', title: 'Measurable ROI', body: 'Average 3-5x return on consulting investment within 6 months' },
+              { n: '01', titleKey: 'home.value1.title', bodyKey: 'home.value1.body' },
+              { n: '02', titleKey: 'home.value2.title', bodyKey: 'home.value2.body' },
+              { n: '03', titleKey: 'home.value3.title', bodyKey: 'home.value3.body' },
+              { n: '04', titleKey: 'home.value4.title', bodyKey: 'home.value4.body' },
             ].map((v, i) => (
               <RevealLine key={v.n} delay={i * 0.08}>
                 <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: 'var(--space-6)' }}>
                   <div style={{ fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: 'var(--space-5)' }}>{v.n}</div>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', fontWeight: 400, letterSpacing: '-0.01em', color: '#ffffff', marginBottom: 'var(--space-3)' }}>{v.title}</h3>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7 }}>{v.body}</p>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', fontWeight: 400, letterSpacing: '-0.01em', color: '#ffffff', marginBottom: 'var(--space-3)' }}>{t(v.titleKey)}</h3>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'rgba(255,255,255,0.4)', lineHeight: 1.7 }}>{t(v.bodyKey)}</p>
                 </div>
               </RevealLine>
             ))}
           </div>
           <div className="home-stats-grid" style={{ marginTop: 'clamp(var(--space-16), 8vw, var(--space-24))', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
             {[
-              { value: '$12M+', label: 'Revenue Optimized' },
-              { value: '500+', label: 'Team Members' },
-              { value: '40+', label: 'Properties' },
-              { value: '18+', label: 'Years Leading' },
-            ].map((s, i) => <AnimatedStat key={s.label} value={s.value} label={s.label} delay={i * 0.08} />)}
+              { value: '$12M+', labelKey: 'home.stat.revenue' },
+              { value: '500+', labelKey: 'home.stat.team' },
+              { value: '40+', labelKey: 'home.stat.properties' },
+              { value: '18+', labelKey: 'home.stat.yearsLeading' },
+            ].map((s, i) => <AnimatedStat key={s.labelKey} value={s.value} label={t(s.labelKey)} delay={i * 0.08} />)}
           </div>
         </div>
       </section>
@@ -469,11 +486,8 @@ export default function Home() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          /* Feature the lit white chef's jacket and the plated dish; the
-             face is intentionally in shadow in the source, so skip it. */
           object-position: center 58%;
         }
-        /* Mobile: dim the full-bleed backdrop so the text stays legible. */
         .home-hero-scrim {
           position: absolute;
           inset: 0;
@@ -485,7 +499,6 @@ export default function Home() {
           background: linear-gradient(to top, rgba(10,9,5,0.55) 0%, transparent 45%);
         }
         @media (min-width: 768px) {
-          /* Desktop: photo becomes a right-anchored panel, shown whole. */
           .home-hero-media {
             left: auto;
             right: 0;
@@ -494,16 +507,12 @@ export default function Home() {
           .home-hero-media img {
             object-position: center 60%;
           }
-          /* Blend the left edge of the photo into the solid dark section
-             background so the seam is a soft fade, not a hard line. The
-             photo is already dark, so keep the right side clear. */
           .home-hero-scrim {
             background: linear-gradient(to right, #0a0905 0%, rgba(10,9,5,0.35) 40%, rgba(10,9,5,0) 78%);
           }
           .home-hero-scrim-bottom {
             background: none;
           }
-          /* Keep the copy clear of the photo panel. */
           .home-hero-copy {
             max-width: min(56ch, 52%) !important;
           }
