@@ -12,7 +12,7 @@ const en: Dict = {
   'nav.insights': 'Insights',
   'nav.about': 'About',
   'nav.contact': 'Contact',
-  'nav.bookCall': "Book a Discovery Call",
+  'nav.bookCall': "Let's Talk",
 
   // --- home hero ---
   'home.heroEyebrow': 'F&B Operations Consulting · U.S. Nationwide',
@@ -92,7 +92,7 @@ const en: Dict = {
 
 const es: Dict = {
   // --- nav ---
-  'nav.workWithMe': 'Servicios',
+  'nav.workWithMe': 'Trabaja Conmigo',
   'nav.preOpening': 'Pre-Apertura',
   'nav.products': 'Recursos',
   'nav.caseStudies': 'Resultados',
@@ -100,14 +100,14 @@ const es: Dict = {
   'nav.insights': 'Artículos',
   'nav.about': 'Perfil',
   'nav.contact': 'Contacto',
-  'nav.bookCall': 'Agenda una Llamada',
+  'nav.bookCall': 'Hablemos',
 
   // --- home hero ---
-  'home.heroEyebrow': 'Consultoría de Operaciones de A&B · EE.UU. Nacional',
-  'home.heroSub': 'Dieciocho años forjados en las cocinas, hoteles y salones de banquetes más exigentes de Miami. Ahora integrado con operadores en todo el país, en sitio cuando importa y remoto entre medio.',
+  'home.heroEyebrow': 'Consultoría de Operaciones de A&B · Todo EE. UU.',
+  'home.heroSub': 'Dieciocho años forjados en las cocinas, hoteles y salones de banquetes más exigentes de Miami. Hoy trabajo con operadores de todo el país: presencial cuando importa, remoto entre visitas.',
   'home.ctaPrimary': 'Agenda una Llamada',
   'home.ctaSecondary': 'Ver Productos Digitales',
-  'home.heroLocation': 'Con base en Miami · EE.UU. Nacional · Proyectos Internacionales Selectos',
+  'home.heroLocation': 'Con Base en Miami · Todo EE. UU. · Proyectos Internacionales Selectos',
 
   // --- home stats ---
   'home.stat.years': 'Años de Experiencia',
@@ -149,7 +149,7 @@ const es: Dict = {
   'home.process.step1.title': 'Llamada de Diagnóstico',
   'home.process.step1.body': 'Conversación de 30 minutos para entender sus desafíos, plazos y objetivos.',
   'home.process.step2.title': 'Diagnóstico en Sitio',
-  'home.process.step2.body': 'Evaluación profunda de sus operaciones, típicamente 3-5 días en ubicación.',
+  'home.process.step2.body': 'Evaluación a fondo de sus operaciones, normalmente de 3 a 5 días en sitio.',
   'home.process.step3.title': 'Implementación',
   'home.process.step3.body': 'Ejecución del plan de acción con revisiones semanales y ajustes en tiempo real.',
   'home.process.step4.title': 'Resultados Sostenibles',

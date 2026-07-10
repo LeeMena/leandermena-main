@@ -88,7 +88,7 @@ function LangToggleButton() {
       aria-label={`Switch language to ${lang === 'en' ? 'Spanish' : 'English'}`}
       style={{
         height: '40px',
-        padding: '0 12px',
+        padding: '0 8px',
         borderRadius: '0',
         border: '1px solid var(--color-border)',
         background: 'transparent',
@@ -228,7 +228,7 @@ export default function Navigation({ onBookCall }: Props) {
 
           <Link
             to="/"
-            style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none', minWidth: 0 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', textDecoration: 'none', flexShrink: 0 }}
             aria-label="Leander Mena - Home"
           >
             <BrandMark />
@@ -273,7 +273,7 @@ export default function Navigation({ onBookCall }: Props) {
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.6875rem',
                     fontWeight: 400,
-                    letterSpacing: '0.10em',
+                    letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                     textDecoration: 'none',
                     whiteSpace: 'nowrap',
@@ -507,8 +507,11 @@ export default function Navigation({ onBookCall }: Props) {
       </div>
 
       <style>{`
-        @media (min-width: 768px) {
-          .md-nav-desktop { display: flex !important; align-items: center; gap: 1.25rem; }
+        /* Full link row only where all 8 labels fit in BOTH languages
+           (Spanish labels run ~25% longer); below this the hamburger
+           drawer owns navigation, so nothing ever crushes or overflows. */
+        @media (min-width: 1240px) {
+          .md-nav-desktop { display: flex !important; align-items: center; gap: clamp(0.65rem, 1.1vw, 1.15rem); }
           #nav-cta-desktop { display: inline-flex !important; }
           #nav-hamburger   { display: none !important; }
         }
