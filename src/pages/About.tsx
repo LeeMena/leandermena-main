@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
 import SEO from '@/components/SEO'
+import { useLanguage } from '@/context/LanguageProvider'
+import { getT } from '@/i18n/copy'
 import { Link } from 'react-router-dom'
 import { heroImages } from '@/data/heroImages'
 
@@ -35,6 +37,8 @@ function Reveal({ children, delay = 0, className = '' }: { children: React.React
 }
 
 export default function About() {
+  const { lang } = useLanguage()
+  const t = getT(lang)
   return (
     <>
       <SEO
@@ -63,28 +67,28 @@ export default function About() {
         <div className="container relative z-10" style={{ paddingTop: 'clamp(3rem, 10vw, 7rem)', paddingBottom: 'clamp(3rem, 10vw, 7rem)' }}>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
             <Reveal>
-              <span className="kicker">About</span>
+              <span className="kicker">{t('nav.about')}</span>
               <h1 className="font-display text-[clamp(2rem,4.5vw,3.75rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4 lg:mb-6">
-                Miami-Forged. Nationally Available.
+                {t('about.heroTitle')}
               </h1>
               <p className="text-[#d8d8d8] text-base lg:text-lg max-w-[52ch] mb-6 lg:mb-8 leading-relaxed">
-                18 years. Pre-openings, turnarounds, multi-unit management, and catering leadership. Every system I use was earned on the floor, and it travels.
+                {t('about.heroSub')}
               </p>
               <div className="flex flex-wrap gap-3">
-                <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
-                <Link to="/experience" className="btn btn-secondary">View Career Experience</Link>
+                <Link to="/contact" className="btn btn-primary">{t('about.ctaStart')}</Link>
+                <Link to="/experience" className="btn btn-secondary">{t('about.ctaExperience')}</Link>
               </div>
             </Reveal>
 
             <Reveal delay={200} className="hidden lg:block">
               <div className="bg-[#0a0a0a]/75 backdrop-blur-md border border-[#3a3a3a] rounded-xl p-8 shadow-xl">
-                <span className="kicker">By the Numbers</span>
+                <span className="kicker">{t('about.numbers.kicker')}</span>
                 <div className="grid grid-cols-2 gap-6 mt-4">
                   {[
-                    { num: '18+', label: 'Years in Miami Hospitality' },
-                    { num: '5+', label: 'Pre-Opening Projects Led' },
-                    { num: '$9.1M', label: 'Annual Revenue Managed' },
-                    { num: '3', label: 'Languages Spoken' },
+                    { num: '18+', label: t('about.numbers.years') },
+                    { num: '5+', label: t('about.numbers.projects') },
+                    { num: '$9.1M', label: t('about.numbers.revenue') },
+                    { num: '3', label: t('about.numbers.languages') },
                   ].map((s) => (
                     <div key={s.label} className="flex flex-col gap-1">
                       <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
@@ -103,17 +107,17 @@ export default function About() {
         <div className="container">
           <div className="grid-2" style={{ gap: 'clamp(2rem,5vw,4rem)', alignItems: 'start' }}>
             <Reveal>
-              <span className="kicker">Background</span>
-              <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">Built in the Trenches of Miami Hospitality</h2>
+              <span className="kicker">{t('about.bio.kicker')}</span>
+              <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">{t('about.bio.heading')}</h2>
               <div className="prose-article">
                 <p>
-                  I learned operations in the only market that would let me fail fast enough to get good: Miami. Eighteen years across 40+ properties, from Michelin-starred <Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>pre-openings in Midtown</Link> to SLS and Accor luxury hotel programs, independent rooms, and multi-unit groups. Every engagement sharpened the same core skill: turning a vision into a functioning operation.
+                  {t('about.bio.p1.pre')}<Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>{t('about.bio.p1.link')}</Link>{t('about.bio.p1.post')}
                 </p>
                 <p>
-                  The systems that survive Miami's labor market, seasonality, and guest expectations travel. So I do too. Today I work as an F&amp;B operations consultant with restaurants and hotels across the country: on-site for the moments that require presence, remote for the systems, reporting, and coaching in between.
+                  {t('about.bio.p2')}
                 </p>
                 <p>
-                  My approach is straightforward: understand the operation as it actually is, identify the highest-leverage interventions, and stay involved until the change is real and lasting. As a <Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>F&amp;B operations consultant</Link>, I work in English, Spanish, and conversational French, and I'm equally at home in independent concepts and luxury hotel environments.
+                  {t('about.bio.p3.pre')}<Link to="/services" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>{t('about.bio.p3.link')}</Link>{t('about.bio.p3.post')}
                 </p>
               </div>
             </Reveal>
@@ -147,17 +151,17 @@ export default function About() {
       {/* Operating principles */}
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
-          <span className="kicker">What I believe</span>
-          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-3">Operating principles</h2>
-          <p className="section-intro">The mindset behind every F&amp;B consulting engagement.</p>
+          <span className="kicker">{t('about.principles.kicker')}</span>
+          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-3">{t('about.principles.heading')}</h2>
+          <p className="section-intro">{t('about.principles.intro')}</p>
           <div className="grid-3">
             {[
-              { title: 'Systems over heroics', body: 'A well-run operation doesn\'t depend on the owner being present 80 hours a week. The goal is always replicable systems that hold without constant intervention.' },
-              { title: 'Floor presence is non-negotiable', body: 'You can\'t manage a restaurant from a spreadsheet. The data tells you what happened. The floor tells you why.' },
-              { title: 'Root cause over symptom', body: 'High turnover, missed targets, inconsistent quality are symptoms. I work backward to the actual problem before recommending anything.' },
-              { title: 'Speed with discipline', body: 'Operators need results quickly. I move fast without cutting corners on the fundamentals that make change stick.' },
-              { title: 'People build operations', body: 'The best SOP in the world fails without buy-in. Training, culture, and accountability come before the manual.' },
-              { title: 'Honest assessment first', body: 'Before any plan, I need to understand what is actually happening on the ground, not what anyone wishes were happening.' },
+              { title: t('about.principles.p1.title'), body: t('about.principles.p1.body') },
+              { title: t('about.principles.p2.title'), body: t('about.principles.p2.body') },
+              { title: t('about.principles.p3.title'), body: t('about.principles.p3.body') },
+              { title: t('about.principles.p4.title'), body: t('about.principles.p4.body') },
+              { title: t('about.principles.p5.title'), body: t('about.principles.p5.body') },
+              { title: t('about.principles.p6.title'), body: t('about.principles.p6.body') },
             ].map((p) => (
               <Reveal key={p.title}>
                 <div className="card">
@@ -173,12 +177,12 @@ export default function About() {
       {/* CTA */}
       <section className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
-          <span className="kicker">Work together</span>
-          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Ready to stabilize and grow?</h2>
-          <p className="section-intro" style={{ marginInline: 'auto' }}>Let's talk about where your operation is and where it needs to go.</p>
+          <span className="kicker">{t('about.cta.kicker')}</span>
+          <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">{t('about.cta.heading')}</h2>
+          <p className="section-intro" style={{ marginInline: 'auto' }}>{t('about.cta.body')}</p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn-primary">Start a Conversation</Link>
-            <Link to="/services" className="btn btn-secondary">View F&amp;B Consulting Services</Link>
+            <Link to="/contact" className="btn btn-primary">{t('about.ctaStart')}</Link>
+            <Link to="/services" className="btn btn-secondary">{t('about.cta.services')}</Link>
           </div>
         </div>
       </section>

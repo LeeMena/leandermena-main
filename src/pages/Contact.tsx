@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import SEO from '@/components/SEO'
+import { useLanguage } from '@/context/LanguageProvider'
+import { getT } from '@/i18n/copy'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
 export default function Contact() {
+  const { lang } = useLanguage()
+  const t = getT(lang)
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
   const [form, setForm] = useState({
@@ -27,11 +31,11 @@ export default function Contact() {
       if (res.ok && data.status === 'success') {
         setStatus('success')
       } else {
-        setErrorMsg(data.message || 'Something went wrong. Please try again.')
+        setErrorMsg(data.message || t('contact.err.generic'))
         setStatus('error')
       }
     } catch {
-      setErrorMsg('Network error \u2014 please email leander@leandermena.com directly.')
+      setErrorMsg(t('contact.err.network'))
       setStatus('error')
     }
   }
@@ -100,16 +104,15 @@ export default function Contact() {
           }}
         />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(5rem,10vw,8rem)' }}>
-          <span className="kicker">Start the conversation</span>
+          <span className="kicker">{t('contact.kicker')}</span>
           <h1
             className="font-display font-light leading-[1.05] tracking-tight text-white"
             style={{ fontSize: 'clamp(2.5rem,5.5vw,4.25rem)', maxWidth: '16ch', marginBottom: 'var(--space-5)' }}
           >
-            Let&rsquo;s Talk About Your Operation
+            {t('contact.heroTitle')}
           </h1>
           <p style={{ color: '#b8b8b8', fontSize: 'var(--text-base)', maxWidth: '48ch', lineHeight: 1.75 }}>
-            Whether you&rsquo;re opening, recovering, or scaling &mdash; tell me what you&rsquo;re working through.
-            I read every message and respond within one business day.
+            {t('contact.heroSub')}
           </p>
 
           {/* Trust bar */}
@@ -124,9 +127,9 @@ export default function Contact() {
             }}
           >
             {[
-              { stat: '18+', label: 'Years in Miami F&B' },
-              { stat: '< 24h', label: 'Response time' },
-              { stat: '30+', label: 'Properties opened' },
+              { stat: '18+', label: t('contact.trust.years') },
+              { stat: '< 24h', label: t('contact.trust.response') },
+              { stat: '30+', label: t('contact.trust.properties') },
             ].map(({ stat, label }) => (
               <div key={label} style={{ minWidth: '80px' }}>
                 <div
@@ -177,17 +180,17 @@ export default function Contact() {
                     boxShadow: '0 0 6px oklch(0.72 0.075 68 / 0.60)'
                   }}
                 />
-                Currently accepting clients
+                {t('contact.accepting')}
               </div>
 
-              <span className="kicker">Direct line</span>
+              <span className="kicker">{t('contact.directLine')}</span>
               <h2
                 className="font-display"
                 style={{ fontSize: 'clamp(1.4rem,2.8vw,2rem)', fontWeight: 400, marginBottom: 'var(--space-5)', lineHeight: 1.15 }}
               >
-                Talk to Leander,
+                {t('contact.talkTo.line1')}
                 <br />
-                <em>not a team</em>
+                <em>{t('contact.talkTo.line2')}</em>
               </h2>
               <p
                 style={{
@@ -198,9 +201,7 @@ export default function Contact() {
                   maxWidth: '36ch'
                 }}
               >
-                Every inquiry goes directly to me. No intake coordinators, no discovery calls
-                with junior staff. You tell me what you need &mdash; I&rsquo;ll tell you honestly
-                whether I can help.
+                {t('contact.directBody')}
               </p>
 
               {/* Contact details */}
@@ -283,10 +284,10 @@ export default function Contact() {
                     maxWidth: '32ch'
                   }}
                 >
-                  &ldquo;He fixed our labor costs inside the first 30 days. We went from 38% to 26% without losing a single team member.&rdquo;
+                  &ldquo;{t('contact.quote')}&rdquo;
                 </p>
                 <p style={{ fontSize: '0.5625rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-text-muted)' }}>
-                  GM &mdash; South Beach Hotel Group
+                  {t('contact.quoteAttrib')}
                 </p>
               </div>
             </div>
@@ -318,11 +319,10 @@ export default function Contact() {
                     className="font-display"
                     style={{ fontSize: 'clamp(1.5rem,3vw,2.2rem)', fontWeight: 300, marginBottom: 'var(--space-3)' }}
                   >
-                    Message Received
+                    {t('contact.success.heading')}
                   </h2>
                   <p style={{ color: 'var(--color-text-muted)', fontSize: 'var(--text-sm)', lineHeight: 1.7, maxWidth: '36ch', marginInline: 'auto' }}>
-                    I&rsquo;ll read your message and respond within one business day with honest
-                    thoughts on whether and how I can help.
+                    {t('contact.success.body')}
                   </p>
                 </div>
               ) : (
@@ -338,12 +338,12 @@ export default function Contact() {
                   }}
                 >
                   <div style={{ marginBottom: 'var(--space-2)' }}>
-                    <span className="kicker">Inquiry form</span>
+                    <span className="kicker">{t('contact.form.kicker')}</span>
                     <h2
                       className="font-display"
                       style={{ fontSize: 'clamp(1.3rem,2.5vw,1.8rem)', fontWeight: 400, lineHeight: 1.2 }}
                     >
-                      Tell Me About Your Operation
+                      {t('contact.form.heading')}
                     </h2>
                   </div>
 
@@ -352,26 +352,26 @@ export default function Contact() {
                   {/* Name + Email */}
                   <div className="field-row">
                     <div>
-                      <label className="form-label" htmlFor="name">Your name</label>
+                      <label className="form-label" htmlFor="name">{t('contact.form.name')}</label>
                       <input
                         id="name"
                         type="text"
                         required
                         value={form.name}
                         onChange={set('name')}
-                        placeholder="First and last"
+                        placeholder={t('contact.form.namePh')}
                         className="form-input"
                       />
                     </div>
                     <div>
-                      <label className="form-label" htmlFor="email">Email address</label>
+                      <label className="form-label" htmlFor="email">{t('contact.form.email')}</label>
                       <input
                         id="email"
                         type="email"
                         required
                         value={form.email}
                         onChange={set('email')}
-                        placeholder="you@example.com"
+                        placeholder={t('contact.form.emailPh')}
                         className="form-input"
                       />
                     </div>
@@ -379,20 +379,20 @@ export default function Contact() {
 
                   {/* Business */}
                   <div>
-                    <label className="form-label" htmlFor="business">Restaurant or hotel name</label>
+                    <label className="form-label" htmlFor="business">{t('contact.form.business')}</label>
                     <input
                       id="business"
                       type="text"
                       value={form.business}
                       onChange={set('business')}
-                      placeholder="Optional \u2014 helps me understand the context"
+                      placeholder={t('contact.form.businessPh')}
                       className="form-input"
                     />
                   </div>
 
                   {/* Interest */}
                   <div>
-                    <label className="form-label" htmlFor="interest">What are you looking for?</label>
+                    <label className="form-label" htmlFor="interest">{t('contact.form.interest')}</label>
                     <select
                       id="interest"
                       value={form.interest}
@@ -401,24 +401,24 @@ export default function Contact() {
                       className="form-input"
                       style={{ cursor: 'pointer' }}
                     >
-                      <option value="">Select one...</option>
-                      <option value="fractional">F&amp;B Operations Consulting</option>
-                      <option value="pre-opening">Pre-Opening Support</option>
-                      <option value="recovery">Operations Recovery</option>
-                      <option value="speaking">Speaking or Training</option>
-                      <option value="other">Something else</option>
+                      <option value="">{t('contact.form.select')}</option>
+                      <option value="fractional">{t('contact.form.opt.fractional')}</option>
+                      <option value="pre-opening">{t('contact.form.opt.preOpening')}</option>
+                      <option value="recovery">{t('contact.form.opt.recovery')}</option>
+                      <option value="speaking">{t('contact.form.opt.speaking')}</option>
+                      <option value="other">{t('contact.form.opt.other')}</option>
                     </select>
                   </div>
 
                   {/* Details */}
                   <div>
-                    <label className="form-label" htmlFor="details">Tell me about your situation</label>
+                    <label className="form-label" htmlFor="details">{t('contact.form.details')}</label>
                     <textarea
                       id="details"
                       rows={6}
                       value={form.details}
                       onChange={set('details')}
-                      placeholder="What's the challenge? What have you already tried? What does success look like in 90 days?"
+                      placeholder={t('contact.form.detailsPh')}
                       className="form-input"
                     />
                   </div>
@@ -438,11 +438,11 @@ export default function Contact() {
                     disabled={status === 'sending'}
                     style={{ fontWeight: 600, alignSelf: 'flex-start', minWidth: '180px' }}
                   >
-                    {status === 'sending' ? 'Sending\u2026' : 'Send Message'}
+                    {status === 'sending' ? t('contact.form.sending') : t('contact.form.submit')}
                   </button>
 
                   <p style={{ fontSize: '0.625rem', letterSpacing: '0.10em', color: 'var(--color-text-faint)', marginTop: 'var(--space-1)' }}>
-                    I respond within one business day. No sales pitch &mdash; just a straight answer.
+                    {t('contact.form.note')}
                   </p>
                 </form>
               )}
@@ -463,12 +463,12 @@ export default function Contact() {
       >
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: 'var(--space-12)' }}>
-            <span className="kicker">The process</span>
+            <span className="kicker">{t('contact.process.kicker')}</span>
             <h2
               className="font-display"
               style={{ fontSize: 'clamp(1.5rem,3vw,2.2rem)', fontWeight: 400 }}
             >
-              What Happens After You Send
+              {t('contact.process.heading')}
             </h2>
           </div>
 
@@ -476,18 +476,18 @@ export default function Contact() {
             {[
               {
                 step: '01',
-                title: 'I Read It',
-                body: 'Every message goes directly to me \u2014 no intake team, no triage. I read it the same day.'
+                title: t('contact.process.s1.title'),
+                body: t('contact.process.s1.body')
               },
               {
                 step: '02',
-                title: 'Honest Reply',
-                body: 'Within one business day you get a direct response on whether I can help, and what that looks like.'
+                title: t('contact.process.s2.title'),
+                body: t('contact.process.s2.body')
               },
               {
                 step: '03',
-                title: 'We Decide Together',
-                body: "If there's a fit, we do a short call to confirm scope and get started. No pressure, no pitch deck."
+                title: t('contact.process.s3.title'),
+                body: t('contact.process.s3.body')
               }
             ].map(({ step, title, body }) => (
               <div key={step} style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)' }}>

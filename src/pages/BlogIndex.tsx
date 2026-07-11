@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import SEO from '@/components/SEO'
+import { useLanguage } from '@/context/LanguageProvider'
+import { getT } from '@/i18n/copy'
 
 const posts = [
   {
@@ -149,7 +151,18 @@ const categories = ['All', 'Labor Cost', 'Pre-Opening', 'Operations', 'Hotel F&B
 import { useState } from 'react'
 
 export default function BlogIndex() {
+  const { lang } = useLanguage()
+  const t = getT(lang)
   const [active, setActive] = useState('All')
+
+  const catLabel: Record<string, string> = {
+    'All': t('blog.cat.all'),
+    'Labor Cost': t('blog.cat.labor'),
+    'Pre-Opening': t('blog.cat.preOpening'),
+    'Operations': t('blog.cat.operations'),
+    'Hotel F&B': t('blog.cat.hotel'),
+    'Fractional Leadership': t('blog.cat.fractional'),
+  }
 
   const filtered = active === 'All' ? posts : posts.filter(p => p.category === active)
 
@@ -163,8 +176,8 @@ export default function BlogIndex() {
       />
       <main className="min-h-screen bg-neutral-950 text-white">
         <section className="max-w-5xl mx-auto px-6 py-24">
-          <h1 className="text-4xl font-bold mb-2">Insights</h1>
-          <p className="text-neutral-400 mb-10">Practical content on F&B operations, labor cost, and leadership.</p>
+          <h1 className="text-4xl font-bold mb-2">{t('nav.insights')}</h1>
+          <p className="text-neutral-400 mb-10">{t('blog.intro')}</p>
 
           <div className="flex flex-wrap gap-2 mb-12">
             {categories.map(cat => (
@@ -177,7 +190,7 @@ export default function BlogIndex() {
                     : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
                 }`}
               >
-                {cat}
+                {catLabel[cat] ?? cat}
               </button>
             ))}
           </div>
@@ -193,7 +206,7 @@ export default function BlogIndex() {
                   <img
                     src={post.image}
                     onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = post.fallback }}
-                    alt={post.title}
+                    alt={t(`blog.title.${post.slug}`)}
                     loading="lazy"
                     width="800"
                     height="450"
@@ -201,8 +214,8 @@ export default function BlogIndex() {
                   />
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-semibold tracking-widest text-amber-400 uppercase">{post.category}</span>
-                  <h2 className="mt-2 text-lg font-semibold leading-snug group-hover:text-amber-400 transition-colors">{post.title}</h2>
+                  <span className="text-xs font-semibold tracking-widest text-amber-400 uppercase">{catLabel[post.category] ?? post.category}</span>
+                  <h2 className="mt-2 text-lg font-semibold leading-snug group-hover:text-amber-400 transition-colors">{t(`blog.title.${post.slug}`)}</h2>
                   <p className="mt-2 text-sm text-neutral-400 leading-relaxed">{post.excerpt}</p>
                   <p className="mt-4 text-xs text-neutral-500">{post.date} &bull; {post.readTime}</p>
                 </div>

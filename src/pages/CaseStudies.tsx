@@ -1,10 +1,14 @@
 import { caseStudies } from '@/data/caseStudies'
 import { Link } from 'react-router-dom'
 import SEO from '@/components/SEO'
+import { useLanguage } from '@/context/LanguageProvider'
+import { getT } from '@/i18n/copy'
 import ScrollReveal from '@/components/ScrollReveal'
 import { heroImages } from '@/data/heroImages'
 
 export default function CaseStudies() {
+  const { lang } = useLanguage()
+  const t = getT(lang)
   return (
     <>
       <SEO
@@ -22,12 +26,12 @@ export default function CaseStudies() {
         />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.45) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,8vw,6rem)' }}>
-          <span className="kicker">Results</span>
+          <span className="kicker">{t('nav.caseStudies')}</span>
           <h1 className="font-display text-[clamp(2rem,5vw,3.25rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[20ch] mb-4">
-            Case Studies
+            {t('caseStudies.heroTitle')}
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            Real outcomes from the floor. Every engagement measured by results.
+            {t('caseStudies.heroSub')}
           </p>
         </div>
       </section>

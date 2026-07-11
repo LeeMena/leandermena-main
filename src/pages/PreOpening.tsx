@@ -1,9 +1,14 @@
 import SEO from '@/components/SEO'
+import { useLanguage } from '@/context/LanguageProvider'
+import { getT } from '@/i18n/copy'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 import { heroImages } from '@/data/heroImages'
 
 export default function PreOpening() {
+  const { lang } = useLanguage()
+  const t = getT(lang)
+
   return (
     <>
       <SEO
@@ -18,12 +23,12 @@ export default function PreOpening() {
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroImages.preOpening.url}), url(${heroImages.preOpening.fallback})` }} />
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(10,10,10,0.92) 40%, rgba(10,10,10,0.5) 100%)' }} />
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(4rem,9vw,7rem)' }}>
-          <span className="kicker">Pre-Opening</span>
+          <span className="kicker">{t('nav.preOpening')}</span>
           <h1 className="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-[1.08] tracking-tight text-white max-w-[24ch] mb-4">
-            Pre-Opening Consulting That Gets You Open On Time, On Budget
+            {t('preOpening.heroTitle')}
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            Systems, staffing, and operating infrastructure built before opening night, not after. On-site and remote, nationwide.
+            {t('preOpening.heroSub')}
           </p>
         </div>
       </section>
@@ -32,13 +37,13 @@ export default function PreOpening() {
       <section className="section" style={{ borderBottom: '1px solid var(--color-border)' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-            Leander Mena is a <strong style={{ color: 'var(--color-text)' }}>restaurant and hotel pre-opening consultant</strong> with hands-on GM experience launching independent restaurants and hotel F&amp;B programs, covering every phase from construction coordination through soft open and full launch. Engagements run on-site and remote, anywhere in the U.S.
+            {t('preOpening.intro1.pre')}<strong style={{ color: 'var(--color-text)' }}>{t('preOpening.intro1.strong')}</strong>{t('preOpening.intro1.post')}
           </p>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-            Pre-opening engagements cover the full scope of launch infrastructure: staffing plans and hiring roadmaps, vendor sourcing and contract negotiation, SOP development, FOH and BOH training programs, POS configuration, cost control frameworks, and opening-week contingency planning. Every system is built to be owned and operated by your team after the engagement ends.
+            {t('preOpening.intro2')}
           </p>
           <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>
-            With 5 pre-openings led across Miami, including a Michelin-starred chef partnership and a luxury hotel F&amp;B program, the playbook is refined and repeatable.
+            {t('preOpening.intro3')}
           </p>
         </div>
       </section>
@@ -47,16 +52,16 @@ export default function PreOpening() {
       <section className="section">
         <div className="container">
           <ScrollReveal>
-            <span className="kicker">Scope</span>
-            <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-8">What Pre-Opening Covers</h2>
+            <span className="kicker">{t('preOpening.scope.kicker')}</span>
+            <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-8">{t('preOpening.scope.heading')}</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(280px,1fr))', gap: '1.25rem' }}>
               {[
-                { title: 'Staffing & Hiring Plans', desc: 'Org charts, role definitions, hiring timelines, and onboarding schedules built for your concept and cover count.' },
-                { title: 'Vendor Sourcing & Negotiation', desc: 'Supplier identification, contract review, and cost benchmarking across food, beverage, linen, smallwares, and equipment.' },
-                { title: 'SOP Development', desc: 'Opening and closing procedures, service standards, kitchen protocols, and management checklists built from scratch.' },
-                { title: 'Training Programs', desc: 'FOH and BOH training curricula, role-specific learning paths, and a pre-opening training calendar.' },
-                { title: 'Cost Control & Labor Models', desc: 'Prime cost targets, labor scheduling templates, and food cost control systems in place before day one.' },
-                { title: 'Opening Week Execution', desc: 'On-site GM-level leadership through soft open, friends-and-family, and grand opening, with real-time adjustments.' },
+                { title: t('preOpening.scope.c1.title'), desc: t('preOpening.scope.c1.desc') },
+                { title: t('preOpening.scope.c2.title'), desc: t('preOpening.scope.c2.desc') },
+                { title: t('preOpening.scope.c3.title'), desc: t('preOpening.scope.c3.desc') },
+                { title: t('preOpening.scope.c4.title'), desc: t('preOpening.scope.c4.desc') },
+                { title: t('preOpening.scope.c5.title'), desc: t('preOpening.scope.c5.desc') },
+                { title: t('preOpening.scope.c6.title'), desc: t('preOpening.scope.c6.desc') },
               ].map((item) => (
                 <div key={item.title} className="card">
                   <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>{item.title}</h3>
@@ -72,8 +77,8 @@ export default function PreOpening() {
       <section className="section" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
           <ScrollReveal>
-            <span className="kicker">Track Record</span>
-            <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">Concepts Launched</h2>
+            <span className="kicker">{t('preOpening.track.kicker')}</span>
+            <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">{t('preOpening.track.heading')}</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
               {[
                 { name: 'Maska Indian Kitchen + Bar', note: 'Michelin-starred chef partnership · Midtown Miami · $1.2M+ year one' },
@@ -96,12 +101,12 @@ export default function PreOpening() {
       <section className="section" style={{ borderTop: '1px solid var(--color-border)' }}>
         <div className="container" style={{ maxWidth: 'var(--content-narrow)', textAlign: 'center' }}>
           <ScrollReveal>
-            <span className="kicker">Start the project</span>
-            <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Opening Something in Miami?</h2>
-            <p className="section-intro" style={{ marginInline: 'auto', marginBottom: '2rem' }}>Tell me your concept, timeline, and where you are in the process. I’ll tell you what pre-opening support makes sense.</p>
+            <span className="kicker">{t('preOpening.cta.kicker')}</span>
+            <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">{t('preOpening.cta.heading')}</h2>
+            <p className="section-intro" style={{ marginInline: 'auto', marginBottom: '2rem' }}>{t('preOpening.cta.body')}</p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link to="/contact" className="btn btn-primary">Start the Conversation</Link>
-              <Link to="/blueprint" className="btn btn-secondary">Download the Blueprint</Link>
+              <Link to="/contact" className="btn btn-primary">{t('services.cta.button')}</Link>
+              <Link to="/blueprint" className="btn btn-secondary">{t('preOpening.cta.blueprint')}</Link>
             </div>
           </ScrollReveal>
         </div>
