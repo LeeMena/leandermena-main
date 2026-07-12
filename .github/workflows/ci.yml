@@ -32,3 +32,9 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # The build's prebuild hook regenerates functions/route-meta.json;
+      # a diff here means someone changed page meta without committing
+      # the regenerated map.
+      - name: Route meta freshness
+        run: git diff --exit-code functions/route-meta.json
