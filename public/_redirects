@@ -28,6 +28,11 @@
 /industries/                   /industries                  301
 /miami-restaurant-consultant/  /miami-restaurant-consultant 301
 
+# Detail pages: placeholder rules kill trailing-slash duplicates in one hop
+# (placeholders do not cross slashes, so /insights/ above still wins first)
+/insights/:slug/               /insights/:slug              301
+/case-studies/:slug/           /case-studies/:slug          301
+
 # ----------------------------------------------------------
 # 2. LEGACY PATH + FILE 301 REDIRECTS: single-hop only
 # ----------------------------------------------------------
@@ -81,6 +86,10 @@
 /insights/hotel-fb-why-your-restaurant-underperforms   /index.html  200
 /insights/miami-restaurant-labor-market-2026           /index.html  200
 /insights/building-training-program-that-works         /index.html  200
+/insights/labor-cost-control-us-restaurants            /index.html  200
+/insights/labor-cost-control-europe-restaurants        /index.html  200
+/insights/labor-cost-control-latin-america             /index.html  200
+/insights/labor-cost-control-caribbean                 /index.html  200
 /insights/:slug                                        /index.html  200
 
 # ----------------------------------------------------------

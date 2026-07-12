@@ -45,8 +45,12 @@ const BASE_URL = 'https://www.leandermena.com'
 const DEFAULT_IMAGE = `${BASE_URL}/images/about.jpg`
 // Default social-share image: landscape 1200x630 (portrait headshots render
 // badly in link previews). Photo: Nick Karvounis, Unsplash License.
+// Any custom `image` prop should also be 1200x630 to match the declared
+// og:image:width/height below.
 const OG_DEFAULT_IMAGE =
   'https://images.unsplash.com/photo-1552566626-2d907dab0dff?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format'
+const OG_IMAGE_ALT =
+  'Dimly lit upscale hotel lounge with warm amber pendant lighting'
 
 // Service area: US nationwide plus select international engagements
 // (Caribbean first, Latin America second, Europe opportunistically, per the
@@ -433,6 +437,14 @@ export default function SEO({ title, description, path = '/', image, type = 'web
   const url = `${BASE_URL}${path}`
   const ogImage = image || OG_DEFAULT_IMAGE
 
+  // article/caseStudy are typically inline object literals, so they get a
+  // new identity on every render. Serialize them for the effect deps so the
+  // head is only rewritten when their content actually changes - not on
+  // unrelated re-renders (e.g. the EN/ES language toggle re-rendering the
+  // page tree), which would tear down and rebuild the JSON-LD scripts.
+  const articleKey = article ? JSON.stringify(article) : ''
+  const caseStudyKey = caseStudy ? JSON.stringify(caseStudy) : ''
+
   useEffect(() => {
     document.title = title
 
@@ -466,6 +478,9 @@ export default function SEO({ title, description, path = '/', image, type = 'web
     setMeta('og:title', title, true)
     setMeta('og:description', description, true)
     setMeta('og:image', ogImage, true)
+    setMeta('og:image:width', '1200', true)
+    setMeta('og:image:height', '630', true)
+    setMeta('og:image:alt', OG_IMAGE_ALT, true)
     setMeta('og:locale', 'en_US', true)
     setMeta('og:site_name', 'Leander Mena', true)
 
@@ -474,9 +489,12 @@ export default function SEO({ title, description, path = '/', image, type = 'web
     setMeta('twitter:title', title)
     setMeta('twitter:description', description)
     setMeta('twitter:image', ogImage)
+    setMeta('twitter:image:alt', OG_IMAGE_ALT)
 
     if (schemaType) {
-      const schemas = buildSchema(schemaType, url, article, description, caseStudy)
+      const articleMeta = articleKey ? (JSON.parse(articleKey) as ArticleMeta) : undefined
+      const caseStudyMeta = caseStudyKey ? (JSON.parse(caseStudyKey) as Props['caseStudy']) : undefined
+      const schemas = buildSchema(schemaType, url, articleMeta, description, caseStudyMeta)
       if (schemas && schemas.length) {
         const existing = document.querySelectorAll('script[data-schema]')
         existing.forEach(el => el.remove())
@@ -489,7 +507,7 @@ export default function SEO({ title, description, path = '/', image, type = 'web
         })
       }
     }
-  }, [title, description, url, ogImage, type, noindex, schemaType, article, caseStudy])
+  }, [title, description, url, ogImage, type, noindex, schemaType, articleKey, caseStudyKey])
 
   return null
 }
