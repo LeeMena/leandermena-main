@@ -1,0 +1,193 @@
+{
+  "__404__": {
+    "title": "404 - Page Not Found | Leander Mena",
+    "description": "The page you're looking for doesn't exist. Return to the Leander Mena homepage.",
+    "noindex": true
+  },
+  "/": {
+    "title": "F&B Operations Consultant | Leander Mena",
+    "description": "F&B operations consulting, pre-opening builds, and operations turnaround for restaurants and hotels nationwide. 18+ years running Miami's top hospitality venues - now available across the U.S."
+  },
+  "/about": {
+    "title": "About Leander Mena | 18+ Years in F&B Operations",
+    "description": "From Miami's most demanding restaurants and luxury hotels to a nationally available consultant. Meet Leander Mena - pre-opening, turnaround, and F&B operations specialist."
+  },
+  "/blueprint": {
+    "title": "Free 90-Day Pre-Opening Blueprint | Restaurant & Hotel Opening Checklist | Leander Mena",
+    "description": "Download the free 90-day pre-opening blueprint used by Miami's top hospitality operators. Day-by-day checklist for opening restaurants and hotels on time and on budget."
+  },
+  "/book": {
+    "title": "Book a Discovery Call | Leander Mena",
+    "description": "Schedule a 30-minute discovery call with Leander Mena, F&amp;B operations consultant. No pitch, no pressure. We discuss your operation, your challenges, and whether I can help."
+  },
+  "/case-studies": {
+    "title": "F&B Consulting Case Studies & Results | Leander Mena",
+    "description": "Real engagements: a 45-day pre-opening rescue, a banquet department turned from 38% labor cost to profitable, and more. See how expert operations consulting pays for itself."
+  },
+  "/case-studies/butler-hospitality-scale": {
+    "title": "Scaling Multi-Property F&B Operations Across 28 Hotels | Case Study - Leander Mena",
+    "description": "A rapidly growing hospitality technology company needed to manage F&B delivery and brand standards across an expanding portfolio of hotel partners, scaling…",
+    "ogType": "article"
+  },
+  "/case-studies/maska-indian-kitchen": {
+    "title": "Building a Michelin-Starred Restaurant from Ground Zero | Case Study - Leander Mena",
+    "description": "Open an upscale Indian restaurant concept led by a Michelin-starred chef in Miami's competitive dining market. The project required building an entirely ne…",
+    "ogType": "article"
+  },
+  "/case-studies/sls-brickell-banquets": {
+    "title": "Pre-Opening Banquet Operations for 500-Person Events | Case Study - Leander Mena",
+    "description": "A luxury hotel needed comprehensive banquet and catering operations built from scratch before the first guest arrival. The event space needed to handle int…",
+    "ogType": "article"
+  },
+  "/case-studies/ve-hospitality-turnaround": {
+    "title": "18% Labor Cost Reduction While Improving Service Scores | Case Study - Leander Mena",
+    "description": "A high-volume Miami restaurant was experiencing labor cost overruns exceeding budget by 24%, declining guest satisfaction scores, and 40% annual staff turn…",
+    "ogType": "article"
+  },
+  "/contact": {
+    "title": "Book a Discovery Call | Leander Mena, F&B Consulting",
+    "description": "Tell me about your restaurant or hotel and where it's stuck. Book a free discovery call - engagements available on-site and remote, nationwide."
+  },
+  "/experience": {
+    "title": "Experience & Track Record | Leander Mena, F&B Operations",
+    "description": "18+ years, 40+ properties, $12M+ in revenue optimized, 500+ team members trained across Michelin concepts, SLS Hotels, and Accor properties."
+  },
+  "/industries": {
+    "title": "Who I Work With | Leander Mena, F&B Consulting",
+    "description": "F&B operations consulting for independent restaurants, multi-unit groups, hotel and resort F&B programs, banquet and catering operations, and private clubs nationwide."
+  },
+  "/insights": {
+    "title": "Insights | Leander Mena",
+    "description": "Practical F&B operations content on labor cost, pre-opening, hotel restaurants, and fractional leadership from Leander Mena."
+  },
+  "/insights/building-training-program-that-works": {
+    "title": "Building a Training Program That Works",
+    "description": "Why most restaurant training fails and how to build one that actually sticks and improves performance.",
+    "image": "https://images.unsplash.com/photo-1528605248644-14dd04022da1?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Team gathered around a table during a training session",
+    "ogType": "article"
+  },
+  "/insights/hotel-fb-why-your-restaurant-underperforms": {
+    "title": "Hotel F&amp;B: Why Your Restaurant Underperforms",
+    "description": "The structural differences between hotel F&amp;B and standalone restaurants, and why most hotel operators get it wrong.",
+    "image": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Plated entree served in a hotel restaurant",
+    "ogType": "article"
+  },
+  "/insights/labor-cost-control-caribbean": {
+    "title": "Labor Cost Control in Caribbean Restaurants | Leander Mena",
+    "description": "How resort and independent restaurant operators in the Dominican Republic, Jamaica, Barbados, and the Bahamas manage labor costs in seasonal, import-dependent markets.",
+    "image": "https://images.unsplash.com/photo-1470337458703-46ad1756a187?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Beachside restaurant tables overlooking the Caribbean sea",
+    "ogType": "article"
+  },
+  "/insights/labor-cost-control-europe-restaurants": {
+    "title": "Labor Cost Control for European Restaurants | Leander Mena",
+    "description": "How restaurant operators in London, Paris, and Amsterdam manage labor costs under Europe's wage floors, predictive scheduling rules, and mandatory benefit structures.",
+    "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Elegantly plated fine-dining dish against a dark background",
+    "ogType": "article"
+  },
+  "/insights/labor-cost-control-latin-america": {
+    "title": "Labor Cost Control in Latin America | Leander Mena",
+    "description": "How restaurant operators in Mexico City, Cancun, Bogota, and Buenos Aires manage labor costs across currency risk, informal employment norms, and high turnover markets.",
+    "image": "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Warmly lit restaurant table with plated dishes",
+    "ogType": "article"
+  },
+  "/insights/labor-cost-control-miami-restaurants": {
+    "title": "Labor Cost Control for Miami Restaurants - F&amp;B Operations Guide | Leander Mena",
+    "description": "Practical labor cost control tactics for Miami restaurant and hotel F&amp;B operators: scheduling to a target, weekly variance tracking, overtime control, and cross-training systems that hold.",
+    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Full-service restaurant dining room set for service",
+    "ogType": "article"
+  },
+  "/insights/labor-cost-control-us-restaurants": {
+    "title": "Labor Cost Control for U.S. Restaurants | Leander Mena",
+    "description": "How restaurant operators in New York, Chicago, Los Angeles, and Miami can bring labor costs under control without sacrificing service quality.",
+    "image": "https://images.unsplash.com/photo-1544148103-0773bf10d330?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Restaurant staff at work during a busy dinner service",
+    "ogType": "article"
+  },
+  "/insights/miami-pre-opening-playbook": {
+    "title": "Miami Restaurant Pre-Opening Playbook – Consultant's Framework | Leander Mena",
+    "description": "A practical pre-opening consulting framework for Miami restaurants and hotel F&B programs: phased milestones, people hiring, operations setup, and opening-week execution from a consultant with 5+ Miami openings.",
+    "image": "https://images.unsplash.com/photo-1579027989536-b7b1f875659b?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Restaurant interior prepared ahead of opening night",
+    "ogType": "article"
+  },
+  "/insights/miami-restaurant-labor-market-2026": {
+    "title": "Miami Restaurant Labor Market 2026: What Operators Need to Know",
+    "description": "The state of Miami's hospitality labor market in 2026. Hiring challenges, wage expectations, retention strategies, and what is working for operators right now.",
+    "image": "https://www.leandermena.com/images/og/blog-miami-labor.jpg",
+    "imageAlt": "Restaurant team working a busy Miami dinner service",
+    "ogType": "article"
+  },
+  "/insights/pre-opening-timeline": {
+    "title": "The Pre-Opening Timeline Most Operators Get Wrong",
+    "description": "Why most restaurant pre-openings run behind and the 120-day framework that fixes it.",
+    "image": "https://www.leandermena.com/images/og/blog-pre-opening.jpg",
+    "imageAlt": "Dining room prepared in the weeks before a restaurant opening",
+    "ogType": "article"
+  },
+  "/insights/real-cost-of-bad-pre-opening": {
+    "title": "The Real Cost of a Bad Pre-Opening",
+    "description": "What actually goes wrong when pre-opening planning is skipped or rushed, and the financial impact.",
+    "image": "https://images.unsplash.com/photo-1582037928769-181f2644ecb7?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Empty restaurant dining room before opening",
+    "ogType": "article"
+  },
+  "/insights/reduce-labor-cost-without-cutting-service": {
+    "title": "How to Reduce Labor Cost Without Cutting Service",
+    "description": "A case study and framework for restructuring labor without degrading guest experience.",
+    "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Table spread of dishes at a full-service restaurant",
+    "ogType": "article"
+  },
+  "/insights/what-a-fractional-gm-actually-does": {
+    "title": "What a Fractional GM Actually Does for Miami Restaurants | Leander Mena",
+    "description": "The fractional GM role explained for Miami operators: scope, weekly schedule, deliverables, and real expectations from someone who has led engagements at independent restaurants, hotel F&B programs, and multi-unit groups.",
+    "image": "https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Manager working at the counter of a restaurant",
+    "ogType": "article"
+  },
+  "/insights/why-fractional-leadership-works": {
+    "title": "Why F&amp;B Operations Consulting Works",
+    "description": "How operators are replacing full-time directors with expert consultants and getting better results at a fraction of the cost.",
+    "image": "https://images.unsplash.com/photo-1555266375-9efc2860bd56?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format",
+    "imageAlt": "Two operators reviewing plans at a restaurant table",
+    "ogType": "article"
+  },
+  "/miami-restaurant-consultant": {
+    "title": "Miami Restaurant & Hotel F&B Consultant | Leander Mena",
+    "description": "A Miami-based F&B operations consultant with 18+ years opening and running the city's top restaurants, hotels, and banquet programs. On-site consulting across South Florida."
+  },
+  "/philosophy": {
+    "title": "Leadership Philosophy",
+    "description": "Leander Mena's operational philosophy: systems thinking, floor presence, root-cause analysis, and leadership accountability in restaurant and hotel F&amp;B."
+  },
+  "/pre-opening": {
+    "title": "Restaurant & Hotel Pre-Opening Consultant | Leander Mena",
+    "description": "Open on time and on budget. A pre-opening consultant who builds your org chart, SOPs, vendor matrix, training, and soft-launch plan - on-site and remote, nationwide."
+  },
+  "/products": {
+    "title": "F&B Operations Playbooks, SOPs & Toolkits | Leander Mena",
+    "description": "Battle-tested pre-opening playbooks, SOP collections, labor and menu-engineering toolkits distilled from 18+ years running top hospitality venues. Instant download."
+  },
+  "/profile": {
+    "title": "Profile",
+    "description": "Full professional profile for Leander Mena - 18 years in Miami F&B and hospitality operations."
+  },
+  "/services": {
+    "title": "F&B Operations & Pre-Opening Consulting Services | Leander Mena",
+    "description": "Four ways to work with an F&B operations consultant: pre-opening builds, ongoing operations consulting, turnaround engagements, and on-site + remote hybrid support - anywhere in the U.S."
+  },
+  "/shop": {
+    "title": "Shop - F&B Operations Resources | Leander Mena",
+    "description": "Digital playbooks, SOP templates, toolkits, and courses built from 18+ years leading Miami hospitality operations."
+  },
+  "/skills": {
+    "title": "Hospitality & F&B Operations Skills | Leander Mena",
+    "description": "Detailed skill set in pre-opening leadership, labor and cost control, SOP development, P&L management, and team training for Miami hotels and restaurants | Leander Mena."
+  }
+}
