@@ -17,7 +17,7 @@
   # enforced policy - watch devtools for a clean run, then switch the
   # header name to Content-Security-Policy. Host list derived from every
   # external origin the app talks to (script/style/font/img/connect/frame).
-  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://plausible.io https://contact.leandermena.com https://blueprint-lead-capture.httpsskytabtechupdate011pagesdev.workers.dev; frame-src https://calendly.com https://assets.calendly.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://plausible.io https://assets.calendly.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://images.unsplash.com; media-src 'self'; connect-src 'self' https://plausible.io https://contact.leandermena.com https://blueprint-lead-capture.httpsskytabtechupdate011pagesdev.workers.dev; frame-src https://calendly.com https://assets.calendly.com; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'self'
 
 # Aggressive cache for hashed static assets (Vite fingerprints filenames)
 /assets/*
@@ -25,6 +25,10 @@
 
 # Images: 30-day cache
 /images/*
+  Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
+
+# Video: 30-day cache (swap the file name to bust, or rename per version)
+/videos/*
   Cache-Control: public, max-age=2592000, stale-while-revalidate=86400
 
 # Fonts from public dir (if any): 1 year

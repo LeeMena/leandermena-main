@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Download } from 'lucide-react'
 import SEO from '@/components/SEO'
 import BlueprintModal from '@/components/BlueprintModal'
@@ -12,7 +12,7 @@ import CTABanner from '@/components/CTABanner'
 import { services } from '@/data/services'
 import { approvedTestimonials } from '@/data/testimonials'
 import { products } from '@/data/products'
-import { heroImages } from '@/data/heroImages'
+import { heroImages, homeHeroVideo } from '@/data/heroImages'
 import { useLanguage } from '@/context/LanguageProvider'
 import { getT } from '@/i18n/copy'
 
@@ -138,6 +138,10 @@ export default function Home() {
   const [blueprintOpen, setBlueprintOpen] = useState(false)
   const { lang } = useLanguage()
   const t = getT(lang)
+  // Ambient hero video plays only when a clip is configured and the visitor
+  // hasn't asked for reduced motion; otherwise the static hero photo shows.
+  const prefersReducedMotion = useReducedMotion()
+  const showHeroVideo = Boolean(homeHeroVideo) && !prefersReducedMotion
 
   return (
     <>
@@ -162,14 +166,28 @@ export default function Home() {
         }}
       >
         <div className="home-hero-media" aria-hidden="true">
-          <img
-            src={heroImages.home.url}
-            onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = heroImages.home.fallback }}
-            alt={heroImages.home.alt}
-            width="711"
-            height="1067"
-            loading="eager"
-          />
+          {showHeroVideo ? (
+            <video
+              className="home-hero-video"
+              poster={heroImages.home.url}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            >
+              <source src={homeHeroVideo!} type="video/mp4" />
+            </video>
+          ) : (
+            <img
+              src={heroImages.home.url}
+              onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = heroImages.home.fallback }}
+              alt={heroImages.home.alt}
+              width="711"
+              height="1067"
+              loading="eager"
+            />
+          )}
           <div className="home-hero-scrim" />
           <div className="home-hero-scrim-bottom" />
         </div>
@@ -482,7 +500,8 @@ export default function Home() {
           inset: 0;
           z-index: 0;
         }
-        .home-hero-media img {
+        .home-hero-media img,
+        .home-hero-media video {
           width: 100%;
           height: 100%;
           object-fit: cover;
@@ -504,7 +523,8 @@ export default function Home() {
             right: 0;
             width: 50%;
           }
-          .home-hero-media img {
+          .home-hero-media img,
+          .home-hero-media video {
             object-position: center 60%;
           }
           .home-hero-scrim {
