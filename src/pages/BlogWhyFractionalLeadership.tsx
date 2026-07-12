@@ -9,6 +9,8 @@ export default function BlogWhyFractionalLeadership() {
         title="Why F&amp;B Operations Consulting Works"
         description="How operators are replacing full-time directors with expert consultants and getting better results at a fraction of the cost."
         path="/insights/why-fractional-leadership-works"
+        image="https://images.unsplash.com/photo-1555266375-9efc2860bd56?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Two operators reviewing plans at a restaurant table"
         type="article"
         schemaType="article"
       />

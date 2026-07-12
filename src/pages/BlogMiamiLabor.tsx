@@ -9,6 +9,8 @@ export default function BlogMiamiLabor() {
         title="Miami Restaurant Labor Market 2026: What Operators Need to Know"
         description="The state of Miami's hospitality labor market in 2026. Hiring challenges, wage expectations, retention strategies, and what is working for operators right now."
         path="/insights/miami-restaurant-labor-market-2026"
+        image="https://www.leandermena.com/images/og/blog-miami-labor.jpg"
+        imageAlt="Restaurant team working a busy Miami dinner service"
         type="article"
         schemaType="article"
       />

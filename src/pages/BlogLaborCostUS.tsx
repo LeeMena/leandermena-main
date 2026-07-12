@@ -7,6 +7,9 @@ export default function BlogLaborCostUS() {
         title="Labor Cost Control for U.S. Restaurants | Leander Mena"
         description="How restaurant operators in New York, Chicago, Los Angeles, and Miami can bring labor costs under control without sacrificing service quality."
         path="/insights/labor-cost-control-us-restaurants"
+        image="https://images.unsplash.com/photo-1544148103-0773bf10d330?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Restaurant staff at work during a busy dinner service"
+        type="article"
         schemaType="article"
         article={{
           headline: "Labor Cost Control for U.S. Restaurants",

@@ -9,6 +9,8 @@ export default function BlogHotelFB() {
         title="Hotel F&amp;B: Why Your Restaurant Underperforms"
         description="The structural differences between hotel F&amp;B and standalone restaurants, and why most hotel operators get it wrong."
         path="/insights/hotel-fb-why-your-restaurant-underperforms"
+        image="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Plated entree served in a hotel restaurant"
         type="article"
         schemaType="article"
       />

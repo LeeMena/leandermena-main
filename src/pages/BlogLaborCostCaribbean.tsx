@@ -7,6 +7,9 @@ export default function BlogLaborCostCaribbean() {
         title="Labor Cost Control in Caribbean Restaurants | Leander Mena"
         description="How resort and independent restaurant operators in the Dominican Republic, Jamaica, Barbados, and the Bahamas manage labor costs in seasonal, import-dependent markets."
         path="/insights/labor-cost-control-caribbean"
+        image="https://images.unsplash.com/photo-1470337458703-46ad1756a187?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Beachside restaurant tables overlooking the Caribbean sea"
+        type="article"
         schemaType="article"
         article={{
           headline: "Labor Cost Control in Caribbean Restaurants",

@@ -9,6 +9,8 @@ export default function BlogBadPreOpening() {
         title="The Real Cost of a Bad Pre-Opening"
         description="What actually goes wrong when pre-opening planning is skipped or rushed, and the financial impact."
         path="/insights/real-cost-of-bad-pre-opening"
+        image="https://images.unsplash.com/photo-1582037928769-181f2644ecb7?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Empty restaurant dining room before opening"
         type="article"
         schemaType="article"
       />

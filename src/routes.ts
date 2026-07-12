@@ -5,6 +5,7 @@ export const prerenderRoutes = [
   '/services',
   '/pre-opening',
   '/experience',
+  '/skills',
   '/philosophy',
   '/contact',
   '/profile',
@@ -17,7 +18,17 @@ export const prerenderRoutes = [
   '/miami-restaurant-consultant',
   '/insights',
 
-  // Insights: all 10 articles (sorted newest first)
+  // Case study detail pages
+  '/case-studies/maska-indian-kitchen',
+  '/case-studies/ve-hospitality-turnaround',
+  '/case-studies/sls-brickell-banquets',
+  '/case-studies/butler-hospitality-scale',
+
+  // Insights: all 14 articles (sorted newest first)
+  '/insights/labor-cost-control-caribbean',
+  '/insights/labor-cost-control-latin-america',
+  '/insights/labor-cost-control-europe-restaurants',
+  '/insights/labor-cost-control-us-restaurants',
   '/insights/building-training-program-that-works',
   '/insights/miami-restaurant-labor-market-2026',
   '/insights/hotel-fb-why-your-restaurant-underperforms',

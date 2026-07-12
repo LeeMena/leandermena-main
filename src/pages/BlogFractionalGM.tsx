@@ -9,6 +9,8 @@ export default function BlogFractionalGM() {
         title="What a Fractional GM Actually Does for Miami Restaurants | Leander Mena"
         description="The fractional GM role explained for Miami operators: scope, weekly schedule, deliverables, and real expectations from someone who has led engagements at independent restaurants, hotel F&B programs, and multi-unit groups."
         path="/insights/what-a-fractional-gm-actually-does"
+        image="https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Manager working at the counter of a restaurant"
         type="article"
         schemaType="article"
         article={{
