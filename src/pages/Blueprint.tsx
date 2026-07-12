@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Download, CheckCircle, Loader2, ExternalLink, ArrowRight, FileText, Clock, Star } from 'lucide-react'
 import SEO from '@/components/SEO'
+import { trackEvent } from '@/lib/analytics'
 
 const WORKER_URL = 'https://blueprint-lead-capture.httpsskytabtechupdate011pagesdev.workers.dev/subscribe'
 
@@ -41,6 +42,7 @@ export default function Blueprint() {
       })
       if (!res.ok) throw new Error('Worker error')
       setStatus('success')
+      trackEvent('Blueprint Lead', { source: 'blueprint-page' })
     } catch {
       setStatus('error')
       setErrorMsg('Something went wrong. Please try again.')
