@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO'
+import RelatedArticles from '@/components/RelatedArticles'
 
 export default function BlogLaborCostCaribbean() {
   return (
@@ -75,6 +76,7 @@ export default function BlogLaborCostCaribbean() {
             </a>
           </div>
         </section>
+      <RelatedArticles currentSlug="labor-cost-control-caribbean" />
       </main>
     </>
   )

@@ -2,151 +2,8 @@ import { Link } from 'react-router-dom'
 import SEO from '@/components/SEO'
 import { useLanguage } from '@/context/LanguageProvider'
 import { getT } from '@/i18n/copy'
+import { insightPosts as posts, insightCategories } from '@/data/insights'
 
-const posts = [
-  {
-    slug: 'labor-cost-control-caribbean',
-    title: 'Labor Cost Control in Caribbean Restaurants',
-    excerpt: 'How resort and independent restaurant operators in the Dominican Republic, Jamaica, Barbados, and the Bahamas manage labor costs in seasonal markets.',
-    category: 'Labor Cost',
-    date: 'July 9, 2026',
-    readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1470337458703-46ad1756a187?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-labor-cost.jpg',
-  },
-  {
-    slug: 'labor-cost-control-latin-america',
-    title: 'Labor Cost Control in Latin America',
-    excerpt: 'How restaurant operators in Mexico City, Cancun, Bogota, and Buenos Aires manage labor costs across currency risk and high-turnover markets.',
-    category: 'Labor Cost',
-    date: 'July 9, 2026',
-    readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-labor-cost.jpg',
-  },
-  {
-    slug: 'labor-cost-control-europe-restaurants',
-    title: 'Labor Cost Control for European Restaurants',
-    excerpt: 'How restaurant operators in London, Paris, and Amsterdam manage labor costs under Europe wage floors, predictive scheduling rules, and mandatory benefit structures.',
-    category: 'Labor Cost',
-    date: 'July 9, 2026',
-    readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-labor-cost.jpg',
-  },
-  {
-    slug: 'labor-cost-control-us-restaurants',
-    title: 'Labor Cost Control for U.S. Restaurants',
-    excerpt: 'How restaurant operators in New York, Chicago, Los Angeles, and Miami can bring labor costs under control without sacrificing service quality.',
-    category: 'Labor Cost',
-    date: 'July 9, 2026',
-    readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1544148103-0773bf10d330?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-labor-cost.jpg',
-  },
-  {
-    slug: 'building-training-program-that-works',
-    title: 'Building a Training Program That Actually Works',
-    excerpt: 'Most restaurant training programs are manuals no one reads. Here is how to build one that changes behavior, reduces turnover, and raises service scores.',
-    category: 'Operations',
-    date: 'June 10, 2026',
-    readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-training.jpg',
-  },
-  {
-    slug: 'miami-restaurant-labor-market-2026',
-    title: 'Miami Restaurant Labor Market 2026',
-    excerpt: 'Wage floors, retention tactics, and scheduling models for Miami operators navigating a competitive hospitality labor market.',
-    category: 'Labor Cost',
-    date: 'June 5, 2026',
-    readTime: '6 min read',
-    image: '/images/blog-miami-labor.jpg',
-    fallback: '/images/blog-miami-labor.jpg',
-  },
-  {
-    slug: 'hotel-fb-why-your-restaurant-underperforms',
-    title: 'Hotel F&B: Why Your Restaurant Underperforms',
-    excerpt: 'Hotel restaurants fail when they are run as amenities instead of businesses. Here is what changes when you treat them like standalone operations.',
-    category: 'Hotel F&B',
-    date: 'May 28, 2026',
-    readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-hotel-fb.jpg',
-  },
-  {
-    slug: 'reduce-labor-cost-without-cutting-service',
-    title: 'Reduce Labor Cost Without Cutting Service',
-    excerpt: 'Cutting headcount is the wrong first move. Here are the scheduling, cross-training, and tracking levers that actually move the number.',
-    category: 'Labor Cost',
-    date: 'May 20, 2026',
-    readTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-labor-cost.jpg',
-  },
-  {
-    slug: 'labor-cost-control-miami-restaurants',
-    title: 'Labor Cost Control for Miami Restaurants',
-    excerpt: 'The specific wage, scheduling, and staffing patterns that keep labor cost under control in Miami full-service restaurants.',
-    category: 'Labor Cost',
-    date: 'May 10, 2026',
-    readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-labor-cost.jpg',
-  },
-  {
-    slug: 'real-cost-of-bad-pre-opening',
-    title: 'The Real Cost of a Bad Pre-Opening',
-    excerpt: 'A failed opening does not just lose money on day one. It sets a reputation ceiling that is very hard to raise. Here is what actually goes wrong.',
-    category: 'Pre-Opening',
-    date: 'April 30, 2026',
-    readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1582037928769-181f2644ecb7?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-pre-opening.jpg',
-  },
-  {
-    slug: 'miami-pre-opening-playbook',
-    title: 'Miami Pre-Opening Playbook',
-    excerpt: 'The sequence, timeline, and decision points for opening a restaurant in Miami, based on 18 years and 40+ properties.',
-    category: 'Pre-Opening',
-    date: 'April 15, 2026',
-    readTime: '9 min read',
-    image: 'https://images.unsplash.com/photo-1579027989536-b7b1f875659b?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-pre-opening.jpg',
-  },
-  {
-    slug: 'pre-opening-timeline',
-    title: 'Pre-Opening Timeline: What to Do and When',
-    excerpt: 'A week-by-week breakdown of the 16 weeks before opening day, with the tasks that move the needle and the ones that can wait.',
-    category: 'Pre-Opening',
-    date: 'April 1, 2026',
-    readTime: '8 min read',
-    image: '/images/blog-pre-opening.jpg',
-    fallback: '/images/blog-pre-opening.jpg',
-  },
-  {
-    slug: 'why-fractional-leadership-works',
-    title: 'Why Fractional Leadership Works for Independent Restaurants',
-    excerpt: 'Senior operations leadership on a part-time basis is not a compromise. For the right operator at the right stage, it is the most efficient structure available.',
-    category: 'Fractional Leadership',
-    date: 'March 20, 2026',
-    readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1555266375-9efc2860bd56?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/blog-fractional-leadership.jpg',
-  },
-  {
-    slug: 'what-a-fractional-gm-actually-does',
-    title: 'What a Fractional GM Actually Does',
-    excerpt: 'The title sounds like a compromise. The function is not. Here is what a fractional general manager delivers and what it costs relative to a full-time hire.',
-    category: 'Fractional Leadership',
-    date: 'March 10, 2026',
-    readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?fm=jpg&w=800&h=450&fit=crop&crop=edges&q=80&auto=format',
-    fallback: '/images/fnb-manager.jpg',
-  },
-]
-
-const categories = ['All', 'Labor Cost', 'Pre-Opening', 'Operations', 'Hotel F&B', 'Fractional Leadership']
 
 import { useState } from 'react'
 
@@ -180,7 +37,7 @@ export default function BlogIndex() {
           <p className="text-neutral-400 mb-10">{t('blog.intro')}</p>
 
           <div className="flex flex-wrap gap-2 mb-12">
-            {categories.map(cat => (
+            {insightCategories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActive(cat)}
