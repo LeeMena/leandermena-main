@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO'
+import RelatedArticles from '@/components/RelatedArticles'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
@@ -116,6 +117,7 @@ export default function BlogMiamiLabor() {
             </ScrollReveal>
           </div>
         </div>
+      <RelatedArticles currentSlug="miami-restaurant-labor-market-2026" />
       </article>
     </>
   )

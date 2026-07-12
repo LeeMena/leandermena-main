@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO'
+import RelatedArticles from '@/components/RelatedArticles'
 
 export default function BlogLaborCostUS() {
   return (
@@ -75,6 +76,7 @@ export default function BlogLaborCostUS() {
             </a>
           </div>
         </section>
+      <RelatedArticles currentSlug="labor-cost-control-us-restaurants" />
       </main>
     </>
   )

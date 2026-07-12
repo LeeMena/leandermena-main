@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO'
+import RelatedArticles from '@/components/RelatedArticles'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
@@ -110,6 +111,7 @@ export default function BlogBadPreOpening() {
             </ScrollReveal>
           </div>
         </div>
+      <RelatedArticles currentSlug="real-cost-of-bad-pre-opening" />
       </article>
     </>
   )

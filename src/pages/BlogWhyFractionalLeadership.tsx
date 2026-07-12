@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO'
+import RelatedArticles from '@/components/RelatedArticles'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
@@ -107,6 +108,7 @@ export default function BlogWhyFractionalLeadership() {
             </ScrollReveal>
           </div>
         </div>
+      <RelatedArticles currentSlug="why-fractional-leadership-works" />
       </article>
     </>
   )

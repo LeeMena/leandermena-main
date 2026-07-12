@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO'
+import RelatedArticles from '@/components/RelatedArticles'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
@@ -109,6 +110,7 @@ export default function BlogPreOpeningTimeline() {
             </ScrollReveal>
           </div>
         </div>
+      <RelatedArticles currentSlug="pre-opening-timeline" />
       </article>
     </>
   )

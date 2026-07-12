@@ -1,4 +1,5 @@
 import SEO from '@/components/SEO'
+import RelatedArticles from '@/components/RelatedArticles'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 
@@ -111,6 +112,7 @@ export default function BlogFractionalGM() {
             </ScrollReveal>
           </div>
         </div>
+      <RelatedArticles currentSlug="what-a-fractional-gm-actually-does" />
       </article>
     </>
   )
