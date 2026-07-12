@@ -8,6 +8,7 @@ export default function NotFound() {
         title="404 - Page Not Found | Leander Mena"
         description="The page you're looking for doesn't exist. Return to the Leander Mena homepage."
         path="/404"
+        noindex
       />
       <section
         style={{

@@ -30,6 +30,7 @@ interface Props {
   path?: string
   image?: string
   type?: string
+  noindex?: boolean
   schemaType?: SchemaType
   article?: ArticleMeta
   caseStudy?: {
@@ -428,7 +429,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
   }
 }
 
-export default function SEO({ title, description, path = '/', image, type = 'website', schemaType, article, caseStudy }: Props) {
+export default function SEO({ title, description, path = '/', image, type = 'website', noindex = false, schemaType, article, caseStudy }: Props) {
   const url = `${BASE_URL}${path}`
   const ogImage = image || OG_DEFAULT_IMAGE
 
@@ -457,7 +458,7 @@ export default function SEO({ title, description, path = '/', image, type = 'web
     }
 
     setMeta('description', description)
-    setMeta('robots', 'index, follow')
+    setMeta('robots', noindex ? 'noindex, follow' : 'index, follow')
     setLink('canonical', url)
 
     setMeta('og:type', type, true)
@@ -488,7 +489,7 @@ export default function SEO({ title, description, path = '/', image, type = 'web
         })
       }
     }
-  }, [title, description, url, ogImage, type, schemaType, article, caseStudy])
+  }, [title, description, url, ogImage, type, noindex, schemaType, article, caseStudy])
 
   return null
 }
