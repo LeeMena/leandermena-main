@@ -21,10 +21,11 @@ export default function NotFound() {
           overflow: 'hidden',
         }}
       >
-        {/* Background image: reuses hero asset */}
+        {/* Background image: reuses the home hero asset (already cached for
+            most visitors, and avoids shipping a duplicate encode) */}
         <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
           <img
-            src="/landing-hero.jpg"
+            src="/images/landing-hero.jpg"
             alt=""
             style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.15 }}
           />
