@@ -18,7 +18,7 @@ import routeMeta from './route-meta.json'
 
 const BASE_URL = 'https://www.leandermena.com'
 
-const ASSET_RE = /\.(js|css|map|png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|json|xml|txt|pdf|webmanifest|html)$/
+const ASSET_RE = /\.(js|css|map|png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|json|xml|txt|pdf|webmanifest|html|mp4|webm|mov|ogg|m4v)$/
 
 // Legacy-path 301s. These lived in _redirects, but _redirects does not
 // apply to requests routed through Functions (verified with wrangler
@@ -96,6 +96,7 @@ export async function onRequest(context) {
   if (
     path.startsWith('/assets/') ||
     path.startsWith('/images/') ||
+    path.startsWith('/videos/') ||
     path.startsWith('/downloads/') ||
     ASSET_RE.test(path)
   ) {

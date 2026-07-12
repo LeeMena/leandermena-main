@@ -16,6 +16,15 @@ export interface HeroImage {
   alt: string
 }
 
+// Optional ambient background video for the home hero. Leave null and the
+// hero shows the static heroImages.home photo (current behavior). To enable:
+//   1. Drop a short, muted, looping clip at public/videos/home-hero.mp4
+//      (see public/videos/README.md for recommended specs).
+//   2. Set this to '/videos/home-hero.mp4'.
+// The static photo above stays as the video's poster + fallback, and
+// visitors with prefers-reduced-motion always get the still image.
+export const homeHeroVideo: string | null = null
+
 export const heroImages: Record<string, HeroImage> = {
   home: {
     url: '/images/landing-hero.jpg',
