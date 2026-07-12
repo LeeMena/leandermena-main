@@ -461,7 +461,7 @@ export default function Navigation({ onBookCall }: Props) {
                   </button>
 
                   <a
-                    href="mailto:leander@leandermena.com"
+                    href="mailto:letstalk@leandermena.com"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -479,7 +479,7 @@ export default function Navigation({ onBookCall }: Props) {
                       WebkitTapHighlightColor: 'transparent',
                     }}
                   >
-                    leander@leandermena.com
+                    letstalk@leandermena.com
                   </a>
 
                   <div style={{
@@ -507,9 +507,6 @@ export default function Navigation({ onBookCall }: Props) {
       </div>
 
       <style>{`
-        /* Full link row only where all 8 labels fit in BOTH languages
-           (Spanish labels run ~25% longer); below this the hamburger
-           drawer owns navigation, so nothing ever crushes or overflows. */
         @media (min-width: 1240px) {
           .md-nav-desktop { display: flex !important; align-items: center; gap: clamp(0.65rem, 1.1vw, 1.15rem); }
           #nav-cta-desktop { display: inline-flex !important; }

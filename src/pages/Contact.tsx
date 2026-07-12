@@ -89,7 +89,7 @@ export default function Contact() {
         }
       `}</style>
 
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section
         className="relative overflow-hidden border-b border-[#2a2a2a]"
         style={{ minHeight: '420px' }}
@@ -149,12 +149,12 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── Main: left panel + form ── */}
+      {/* Main: left panel + form */}
       <section className="section">
         <div className="container">
           <div className="contact-grid">
 
-            {/* ── Left: credibility panel ── */}
+            {/* Left: credibility panel */}
             <div className="contact-left">
 
               {/* Availability badge */}
@@ -209,7 +209,7 @@ export default function Contact() {
               {/* Contact details */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-10)' }}>
                 <a
-                  href="mailto:leander@leandermena.com"
+                  href="mailto:letstalk@leandermena.com"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -235,7 +235,7 @@ export default function Contact() {
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                     </svg>
                   </span>
-                  leander@leandermena.com
+                  letstalk@leandermena.com
                 </a>
                 <span
                   style={{
@@ -294,7 +294,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* ── Right: form ── */}
+            {/* Right: form */}
             <div>
               {status === 'success' ? (
                 <div
@@ -454,7 +454,7 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* ── What happens next ── */}
+      {/* What happens next */}
       <section
         style={{
           background: 'var(--color-surface)',

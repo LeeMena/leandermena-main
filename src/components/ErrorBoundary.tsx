@@ -16,7 +16,6 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: ErrorInfo) {
-    // Surface in dev tools without polluting production consoles with noise
     const meta = import.meta as unknown as { env?: { DEV?: boolean } }
     if (meta.env?.DEV) {
       console.error('ErrorBoundary caught:', error, info)
@@ -56,8 +55,8 @@ export default class ErrorBoundary extends Component<Props, State> {
           </h1>
           <p style={{ fontSize: '0.9rem', color: 'rgba(242,237,230,0.6)', maxWidth: '32rem', marginBottom: '2rem', lineHeight: 1.6 }}>
             Reload the page to continue. If this keeps happening, email{' '}
-            <a href="mailto:leander@leandermena.com" style={{ color: '#CFA55B' }}>
-              leander@leandermena.com
+            <a href="mailto:letstalk@leandermena.com" style={{ color: '#CFA55B' }}>
+              letstalk@leandermena.com
             </a>
             .
           </p>
