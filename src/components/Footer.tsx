@@ -92,9 +92,36 @@ export default function Footer() {
               color: 'var(--color-text-muted)',
               lineHeight: 1.65,
               maxWidth: '28ch',
+              marginBottom: 'var(--space-4)',
             }}>
               F&amp;B operations consultant. Available nationwide, on-site + remote. Home base: Miami, Florida.
             </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)' }}>
+              <a
+                href="tel:+17865425517"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.8125rem',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 200ms ease',
+                }}
+              >
+                (786) 542-5517
+              </a>
+              <a
+                href="mailto:letstalk@leandermena.com"
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.8125rem',
+                  color: 'var(--color-text-muted)',
+                  textDecoration: 'none',
+                  transition: 'color 200ms ease',
+                }}
+              >
+                letstalk@leandermena.com
+              </a>
+            </div>
           </div>
 
           {[{

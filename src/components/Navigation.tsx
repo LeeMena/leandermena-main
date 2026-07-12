@@ -461,6 +461,28 @@ export default function Navigation({ onBookCall }: Props) {
                   </button>
 
                   <a
+                    href="tel:+17865425517"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minHeight: '48px',
+                      padding: 'var(--space-3) var(--space-4)',
+                      textAlign: 'center',
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.6875rem',
+                      letterSpacing: '0.06em',
+                      color: 'var(--color-text-muted)',
+                      textDecoration: 'none',
+                      border: '1px solid oklch(from var(--color-border) l c h / 0.50)',
+                      transition: 'color 200ms ease, border-color 200ms ease',
+                      WebkitTapHighlightColor: 'transparent',
+                    }}
+                  >
+                    (786) 542-5517
+                  </a>
+
+                  <a
                     href="mailto:letstalk@leandermena.com"
                     style={{
                       display: 'flex',
