@@ -9,6 +9,8 @@ export default function BlogLaborCost() {
         title="Labor Cost Control for Miami Restaurants - F&amp;B Operations Guide | Leander Mena"
         description="Practical labor cost control tactics for Miami restaurant and hotel F&amp;B operators: scheduling to a target, weekly variance tracking, overtime control, and cross-training systems that hold."
         path="/insights/labor-cost-control-miami-restaurants"
+        image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Full-service restaurant dining room set for service"
         type="article"
         schemaType="article"
         article={{

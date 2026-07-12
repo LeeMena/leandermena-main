@@ -9,6 +9,8 @@ export default function BlogLaborCostFull() {
         title="How to Reduce Labor Cost Without Cutting Service"
         description="A case study and framework for restructuring labor without degrading guest experience."
         path="/insights/reduce-labor-cost-without-cutting-service"
+        image="https://images.unsplash.com/photo-1490645935967-10de6ba17061?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Table spread of dishes at a full-service restaurant"
         type="article"
         schemaType="article"
       />

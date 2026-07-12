@@ -7,6 +7,8 @@ export default function BlogLaborCostLatAm() {
         title="Labor Cost Control in Latin America | Leander Mena"
         description="How restaurant operators in Mexico City, Cancun, Bogota, and Buenos Aires manage labor costs across currency risk, informal employment norms, and high turnover markets."
         path="/insights/labor-cost-control-latin-america"
+        image="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Warmly lit restaurant table with plated dishes"
         type="article"
         schemaType="article"
         article={{

@@ -9,6 +9,8 @@ export default function BlogPreOpeningTimeline() {
         title="The Pre-Opening Timeline Most Operators Get Wrong"
         description="Why most restaurant pre-openings run behind and the 120-day framework that fixes it."
         path="/insights/pre-opening-timeline"
+        image="https://www.leandermena.com/images/og/blog-pre-opening.jpg"
+        imageAlt="Dining room prepared in the weeks before a restaurant opening"
         type="article"
         schemaType="article"
       />

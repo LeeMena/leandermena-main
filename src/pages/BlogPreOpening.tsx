@@ -9,6 +9,8 @@ export default function BlogPreOpening() {
         title="Miami Restaurant Pre-Opening Playbook – Consultant's Framework | Leander Mena"
         description="A practical pre-opening consulting framework for Miami restaurants and hotel F&B programs: phased milestones, people hiring, operations setup, and opening-week execution from a consultant with 5+ Miami openings."
         path="/insights/miami-pre-opening-playbook"
+        image="https://images.unsplash.com/photo-1579027989536-b7b1f875659b?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Restaurant interior prepared ahead of opening night"
         type="article"
         schemaType="article"
         article={{

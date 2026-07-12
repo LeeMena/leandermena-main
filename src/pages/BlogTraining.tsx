@@ -9,6 +9,8 @@ export default function BlogTraining() {
         title="Building a Training Program That Works"
         description="Why most restaurant training fails and how to build one that actually sticks and improves performance."
         path="/insights/building-training-program-that-works"
+        image="https://images.unsplash.com/photo-1528605248644-14dd04022da1?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Team gathered around a table during a training session"
         type="article"
         schemaType="article"
       />

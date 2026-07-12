@@ -7,6 +7,8 @@ export default function BlogLaborCostEurope() {
         title="Labor Cost Control for European Restaurants | Leander Mena"
         description="How restaurant operators in London, Paris, and Amsterdam manage labor costs under Europe's wage floors, predictive scheduling rules, and mandatory benefit structures."
         path="/insights/labor-cost-control-europe-restaurants"
+        image="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
+        imageAlt="Elegantly plated fine-dining dish against a dark background"
         type="article"
         schemaType="article"
         article={{

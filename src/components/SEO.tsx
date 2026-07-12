@@ -29,6 +29,8 @@ interface Props {
   description: string
   path?: string
   image?: string
+  /** Alt text for the social-share image; pair with a custom `image`. */
+  imageAlt?: string
   type?: string
   noindex?: boolean
   schemaType?: SchemaType
@@ -151,7 +153,7 @@ const SERVICES_FAQ = {
   ],
 }
 
-function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string, caseStudy?: Props['caseStudy']) {
+function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta, description?: string, caseStudy?: Props['caseStudy'], ogImage?: string) {
   const breadcrumb = (label: string, parentPath?: string, parentLabel?: string) => {
     const items: object[] = [
       { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
@@ -423,7 +425,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
           author: { '@type': 'Person', name: 'Leander Mena', url: BASE_URL },
           publisher: ORGANIZATION_PUBLISHER,
           url,
-          image: DEFAULT_IMAGE,
+          image: ogImage || DEFAULT_IMAGE,
           description,
         },
         breadcrumb(article.headline, '/insights', 'Insights'),
@@ -433,9 +435,10 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
   }
 }
 
-export default function SEO({ title, description, path = '/', image, type = 'website', noindex = false, schemaType, article, caseStudy }: Props) {
+export default function SEO({ title, description, path = '/', image, imageAlt, type = 'website', noindex = false, schemaType, article, caseStudy }: Props) {
   const url = `${BASE_URL}${path}`
   const ogImage = image || OG_DEFAULT_IMAGE
+  const ogAlt = imageAlt || OG_IMAGE_ALT
 
   // article/caseStudy are typically inline object literals, so they get a
   // new identity on every render. Serialize them for the effect deps so the
@@ -480,7 +483,7 @@ export default function SEO({ title, description, path = '/', image, type = 'web
     setMeta('og:image', ogImage, true)
     setMeta('og:image:width', '1200', true)
     setMeta('og:image:height', '630', true)
-    setMeta('og:image:alt', OG_IMAGE_ALT, true)
+    setMeta('og:image:alt', ogAlt, true)
     setMeta('og:locale', 'en_US', true)
     setMeta('og:site_name', 'Leander Mena', true)
 
@@ -489,12 +492,12 @@ export default function SEO({ title, description, path = '/', image, type = 'web
     setMeta('twitter:title', title)
     setMeta('twitter:description', description)
     setMeta('twitter:image', ogImage)
-    setMeta('twitter:image:alt', OG_IMAGE_ALT)
+    setMeta('twitter:image:alt', ogAlt)
 
     if (schemaType) {
       const articleMeta = articleKey ? (JSON.parse(articleKey) as ArticleMeta) : undefined
       const caseStudyMeta = caseStudyKey ? (JSON.parse(caseStudyKey) as Props['caseStudy']) : undefined
-      const schemas = buildSchema(schemaType, url, articleMeta, description, caseStudyMeta)
+      const schemas = buildSchema(schemaType, url, articleMeta, description, caseStudyMeta, ogImage)
       if (schemas && schemas.length) {
         const existing = document.querySelectorAll('script[data-schema]')
         existing.forEach(el => el.remove())
@@ -507,7 +510,7 @@ export default function SEO({ title, description, path = '/', image, type = 'web
         })
       }
     }
-  }, [title, description, url, ogImage, type, noindex, schemaType, articleKey, caseStudyKey])
+  }, [title, description, url, ogImage, ogAlt, type, noindex, schemaType, articleKey, caseStudyKey])
 
   return null
 }

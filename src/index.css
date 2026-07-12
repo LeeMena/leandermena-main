@@ -213,6 +213,30 @@
 
 @layer components {
 
+  /* Keyboard-accessibility skip link: visually hidden until focused,
+     then drops in over the announcement bar. */
+  .skip-link {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -110%);
+    z-index: 200;
+    padding: var(--space-3) var(--space-5);
+    background: var(--color-primary);
+    color: #0a0905;
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    transition: transform 0.2s ease;
+  }
+
+  .skip-link:focus-visible {
+    transform: translate(-50%, 0);
+  }
+
   .container {
     width: 100%;
     max-width: var(--content-wide);
