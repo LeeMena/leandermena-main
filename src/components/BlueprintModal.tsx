@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, CheckCircle, Loader2, ExternalLink } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 interface BlueprintModalProps {
   isOpen: boolean
@@ -31,6 +32,7 @@ export default function BlueprintModal({ isOpen, onClose }: BlueprintModalProps)
       })
       if (!res.ok) throw new Error('Worker error')
       setStatus('success')
+      trackEvent('Blueprint Lead', { source: 'modal' })
     } catch {
       setStatus('error')
       setErrorMsg('Something went wrong. Please try again.')

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import SEO from '@/components/SEO'
 import { useLanguage } from '@/context/LanguageProvider'
 import { getT } from '@/i18n/copy'
+import { trackEvent } from '@/lib/analytics'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
@@ -30,6 +31,7 @@ export default function Contact() {
       const data = await res.json()
       if (res.ok && data.status === 'success') {
         setStatus('success')
+        trackEvent('Contact Form Submit')
       } else {
         setErrorMsg(data.message || t('contact.err.generic'))
         setStatus('error')
