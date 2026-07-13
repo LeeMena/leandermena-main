@@ -12,7 +12,7 @@ export default function Experience() {
     {
       venue: 'V&E Hospitality',
       title: t('experience.r1.title'),
-      subtitle: 'Marabu Cuban Coal Fire Restaurant + La Cervecer\u00eda de Barrio \u00b7 Miami, FL',
+      subtitle: 'Marabu Cuban Coal Fire Restaurant + La Cervezer\u00eda de Barrio \u00b7 Miami, FL',
       body: t('experience.r1.body'),
       link: '/case-studies',
       linkLabel: t('experience.linkCase'),
@@ -125,26 +125,6 @@ export default function Experience() {
                   <div style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>{e.title}</div>
                 </div>
               ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Credentials */}
-      <section className="section" style={{ borderTop: '1px solid var(--color-border)' }}>
-        <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <ScrollReveal>
-            <span className="kicker">{t('experience.edu.kicker')}</span>
-            <h2 className="font-display text-[clamp(1.35rem,2.5vw,1.75rem)] font-bold mb-4">{t('experience.edu.heading')}</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div className="card" style={{ padding: '1.25rem 1.5rem' }}>
-                <div style={{ fontWeight: 700, marginBottom: '0.2rem' }}>{t('experience.edu.degree')}</div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>Florida International University - FIU Chaplin School of Hospitality &amp; Tourism Management</div>
-              </div>
-              <div className="card" style={{ padding: '1.25rem 1.5rem' }}>
-                <div style={{ fontWeight: 700, marginBottom: '0.2rem' }}>{t('experience.edu.servsafe')}</div>
-                <div style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)' }}>National Restaurant Association</div>
-              </div>
             </div>
           </ScrollReveal>
         </div>
