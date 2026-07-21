@@ -24,6 +24,19 @@ const ASSET_RE = /\.(js|css|map|png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2|tt
 // apply to requests routed through Functions (verified with wrangler
 // pages dev), so they must be handled here to actually fire.
 const LEGACY_REDIRECTS = {
+  // Old pre-React static-site URLs (.html). These are checked before the
+  // ASSET_RE test below, so the .html entries here still fire as 301s
+  // instead of being served as static assets. Google discovered them from
+  // the pre-migration site and reports them under "Alternate page with
+  // proper canonical tag"; a real 301 resolves them to the clean path.
+  '/about.html': '/about',
+  '/services.html': '/services',
+  '/experience.html': '/experience',
+  '/philosophy.html': '/philosophy',
+  '/pre-opening.html': '/pre-opening',
+  '/case-studies.html': '/case-studies',
+  '/blog.html': '/insights',
+  '/what-fractional-gm-does.html': '/insights/what-a-fractional-gm-actually-does',
   '/contact.html': '/contact',
   '/blog': '/insights',
   '/pre-opening-blueprint': '/blueprint',

@@ -37,6 +37,15 @@
 # 2. LEGACY PATH + FILE 301 REDIRECTS: single-hop only
 # ----------------------------------------------------------
 
+# Legacy pre-React static-site URLs (.html) -> clean React paths
+/about.html          /about              301
+/services.html       /services           301
+/experience.html     /experience         301
+/philosophy.html     /philosophy         301
+/pre-opening.html    /pre-opening        301
+/case-studies.html   /case-studies       301
+/blog.html           /insights           301
+/what-fractional-gm-does.html  /insights/what-a-fractional-gm-actually-does  301
 /contact.html        /contact            301
 /blog                /insights           301
 /blog/*              /insights/:splat    301
