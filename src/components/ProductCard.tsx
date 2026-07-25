@@ -21,6 +21,10 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
   const hasRealRating =
     typeof product.rating === 'number' && typeof product.reviewCount === 'number'
 
+  // A product is buyable only if it is marked available AND has a live link.
+  // Anything else renders an honest waitlist state.
+  const isAvailable = product.status === 'available' && Boolean(product.checkoutUrl)
+
   if (detailed) {
     return (
       <motion.div
@@ -58,16 +62,16 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
           >
             <Download size={24} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
           </div>
-          {product.badge && (
-            <span style={{
-              position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
-              fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase',
-              background: 'var(--color-primary)', color: '#fff',
-              padding: '3px 10px', borderRadius: 'var(--radius-full)',
-              fontWeight: 600,
-            }}>{product.badge}</span>
-          )}
-          {product.originalPrice && (
+          <span style={{
+            position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
+            fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase',
+            background: isAvailable ? 'var(--color-primary)' : 'rgba(255,255,255,0.10)',
+            color: isAvailable ? '#fff' : 'var(--color-text-muted)',
+            border: isAvailable ? 'none' : '1px solid var(--color-border)',
+            padding: '3px 10px', borderRadius: 'var(--radius-full)',
+            fontWeight: 600,
+          }}>{isAvailable ? (product.badge ?? 'Available Now') : 'In Development'}</span>
+          {isAvailable && product.originalPrice && (
             <span style={{
               position: 'absolute', top: 'var(--space-3)', right: 'var(--space-3)',
               fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase',
@@ -109,12 +113,17 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
 
           <div style={{ marginTop: 'auto', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--color-border)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div>
-              <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--color-primary)' }}>${product.price}</span>
-              {product.originalPrice && (
+              <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: isAvailable ? 'var(--color-primary)' : 'var(--color-text-muted)' }}>
+                {isAvailable ? `$${product.price}` : `$${product.price} at launch`}
+              </span>
+              {isAvailable && product.originalPrice && (
                 <span style={{ fontSize: '0.82rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-2)' }}>${product.originalPrice}</span>
               )}
+              {!isAvailable && product.expected && (
+                <span style={{ display: 'block', fontSize: '0.72rem', color: 'var(--color-text-faint)', marginTop: '2px' }}>Expected: {product.expected}</span>
+              )}
             </div>
-            {product.checkoutUrl ? (
+            {isAvailable ? (
               <a
                 href={product.checkoutUrl}
                 target="_blank"
@@ -128,11 +137,11 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
             ) : (
               <Link
                 to={`/contact?interest=${product.id}`}
-                className="btn btn-primary"
-                aria-label={`Get notified when ${product.title} launches`}
+                className="btn btn-secondary"
+                aria-label={`Join the waitlist for ${product.title}`}
                 style={{ fontSize: '0.78rem', gap: 'var(--space-2)', padding: '0.55rem 1rem', minHeight: '44px', display: 'inline-flex', alignItems: 'center' }}
               >
-                Notify Me
+                Join the Waitlist
               </Link>
             )}
           </div>
@@ -175,14 +184,14 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
         >
           <Download size={20} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
         </div>
-        {product.badge && (
-          <span style={{
-            position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
-            fontSize: '0.58rem', letterSpacing: '0.15em', textTransform: 'uppercase',
-            background: 'var(--color-primary)', color: '#fff',
-            padding: '2px 8px', borderRadius: 'var(--radius-full)', fontWeight: 600,
-          }}>{product.badge}</span>
-        )}
+        <span style={{
+          position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
+          fontSize: '0.58rem', letterSpacing: '0.15em', textTransform: 'uppercase',
+          background: isAvailable ? 'var(--color-primary)' : 'rgba(255,255,255,0.10)',
+          color: isAvailable ? '#fff' : 'var(--color-text-muted)',
+          border: isAvailable ? 'none' : '1px solid var(--color-border)',
+          padding: '2px 8px', borderRadius: 'var(--radius-full)', fontWeight: 600,
+        }}>{isAvailable ? (product.badge ?? 'Available Now') : 'In Development'}</span>
       </div>
 
       <div style={{ padding: 'var(--space-5)' }}>
@@ -203,12 +212,12 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
 
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 'var(--space-3)', borderTop: '1px solid var(--color-border)' }}>
           <div>
-            <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--color-primary)' }}>${product.price}</span>
-            {product.originalPrice && (
+            <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: isAvailable ? 'var(--color-primary)' : 'var(--color-text-muted)' }}>${product.price}</span>
+            {isAvailable && product.originalPrice && (
               <span style={{ fontSize: '0.75rem', color: 'var(--color-text-faint)', textDecoration: 'line-through', marginLeft: 'var(--space-1)' }}>${product.originalPrice}</span>
             )}
           </div>
-          {product.checkoutUrl ? (
+          {isAvailable ? (
             <a
               href={product.checkoutUrl}
               target="_blank"
@@ -221,10 +230,10 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
           ) : (
             <Link
               to={`/contact?interest=${product.id}`}
-              aria-label={`Get notified when ${product.title} launches`}
+              aria-label={`Join the waitlist for ${product.title}`}
               style={{ color: 'var(--color-text-muted)', display: 'inline-flex', alignItems: 'center', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', minHeight: '44px', justifyContent: 'center' }}
             >
-              Notify Me
+              Waitlist
             </Link>
           )}
         </div>
