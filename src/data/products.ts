@@ -44,10 +44,10 @@ export const products: Product[] = [
       'Inspection readiness checklist',
       'Marketing launch sequence'
     ],
+    badge: 'Available Now',
     includes: ['120-day roadmap PDF', 'Editable checklists', 'Vendor contact templates', 'Vendor negotiation scripts'],
-    status: 'waitlist',
-    // checkoutUrl temporarily disabled: the Gumroad product (l/ypudd) returns 404 and needs republishing. Restore status to 'available', uncomment this line, and re-add the 'Available Now' badge once the product is live.
-    // checkoutUrl: 'https://leemena.gumroad.com/l/ypudd'
+    status: 'available',
+    checkoutUrl: 'https://leandermena.gumroad.com/l/ypudd'
   },
   {
     id: 'sop-master-collection',
