@@ -1,8 +1,13 @@
 # robots.txt: leandermena.com
-# Last updated: 2026-07-08
+# Last updated: 2026-10-03
 
+# Rules for every crawler. Path rules must live inside a User-agent group;
+# /profile and /privacy are kept out of search with a noindex tag instead,
+# because a robots.txt block would hide that tag from Google.
 User-agent: *
 Allow: /
+Disallow: /docs/
+Disallow: /*.yml$
 
 # Block AI training crawlers
 User-agent: GPTBot
@@ -22,18 +27,6 @@ Disallow: /
 
 User-agent: Google-Extended
 Disallow: /
-
-# Block internal / utility paths
-Disallow: /docs/
-Disallow: /leander-mena-miami-hospitality
-Disallow: /leander-mena-miami-hospitality/
-Disallow: /*.yml$
-
-# Intentionally unlisted pages: no SEO value
-# (/products is deliberately indexable: it is the national digital-products
-# entry tier of the two-tier funnel)
-Disallow: /profile
-Disallow: /shop
 
 # Sitemap
 Sitemap: https://www.leandermena.com/sitemap.xml

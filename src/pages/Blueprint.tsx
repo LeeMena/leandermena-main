@@ -57,7 +57,7 @@ export default function Blueprint() {
   return (
     <>
       <SEO
-        title="Free 90-Day Pre-Opening Blueprint | Restaurant & Hotel Opening Checklist | Leander Mena"
+        title="Free 90-Day Pre-Opening Checklist & Blueprint | Leander Mena"
         description="Download the free 90-day pre-opening blueprint used by Miami's top hospitality operators. Day-by-day checklist for opening restaurants and hotels on time and on budget."
         path="/blueprint"
       />

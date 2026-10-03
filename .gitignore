@@ -29,6 +29,6 @@ Thumbs.db
 .vite
 .cache
 
-# Internal planning docs — keep off public tracking
+# Internal planning docs - keep off public tracking
 AUDIT_AND_ELEVATION.md
 AUDIT_*.md

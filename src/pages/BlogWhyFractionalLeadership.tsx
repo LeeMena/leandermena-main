@@ -7,7 +7,7 @@ export default function BlogWhyFractionalLeadership() {
   return (
     <>
       <SEO
-        title="Why F&amp;B Operations Consulting Works"
+        title="Why F&B Operations Consulting Works | Leander Mena"
         description="How operators are replacing full-time directors with expert consultants and getting better results at a fraction of the cost."
         path="/insights/why-fractional-leadership-works"
         image="https://images.unsplash.com/photo-1555266375-9efc2860bd56?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
@@ -34,7 +34,7 @@ export default function BlogWhyFractionalLeadership() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 The expert consulting model is not new in professional services. Law firms, accounting practices, and management consulting firms have operated this way for decades. What is new is the application of the model to operational F&amp;B leadership, and the results operators are getting from it.

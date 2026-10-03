@@ -7,7 +7,7 @@ export default function BlogBadPreOpening() {
   return (
     <>
       <SEO
-        title="The Real Cost of a Bad Pre-Opening"
+        title="The Real Cost of a Bad Pre-Opening | Leander Mena"
         description="What actually goes wrong when pre-opening planning is skipped or rushed, and the financial impact."
         path="/insights/real-cost-of-bad-pre-opening"
         image="https://images.unsplash.com/photo-1582037928769-181f2644ecb7?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
@@ -34,7 +34,7 @@ export default function BlogBadPreOpening() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 A bad pre-opening is not just an operational inconvenience. It is a financial event.

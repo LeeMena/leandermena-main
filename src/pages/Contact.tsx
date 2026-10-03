@@ -1,22 +1,53 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import SEO from '@/components/SEO'
 import { useLanguage } from '@/context/LanguageProvider'
 import { getT } from '@/i18n/copy'
 import { trackEvent } from '@/lib/analytics'
+import { getProductById } from '@/data/products'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
+type ContactForm = { name: string; email: string; business: string; interest: string; details: string }
+
+const CONTACT_EMAIL = 'info@leandermena.com'
+const INTEREST_LABEL_KEYS: Record<string, string> = {
+  fractional: 'contact.form.opt.fractional',
+  'pre-opening': 'contact.form.opt.preOpening',
+  recovery: 'contact.form.opt.recovery',
+  speaking: 'contact.form.opt.speaking',
+  other: 'contact.form.opt.other',
+}
 
 export default function Contact() {
   const { lang } = useLanguage()
   const t = getT(lang)
+  const [searchParams] = useSearchParams()
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
-  const [form, setForm] = useState({
-    name: '', email: '', business: '', interest: '', details: ''
+  const [form, setForm] = useState<ContactForm>(() => {
+    const blank = { name: '', email: '', business: '', interest: '', details: '' }
+    const interest = searchParams.get('interest')
+    if (!interest) return blank
+    if (interest in INTEREST_LABEL_KEYS) return { ...blank, interest }
+    // Waitlist buttons on product cards link here with ?interest=<product id>.
+    const product = getProductById(interest)
+    return product
+      ? { ...blank, interest: 'other', details: t('contact.form.waitlist').replace('{product}', product.title) }
+      : blank
   })
 
-  const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+  const set = (k: keyof ContactForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [k]: e.target.value }))
+
+  // If the form backend is unreachable, the visitor can still send the inquiry from their own mail app.
+  const mailtoHref = () => {
+    const lines = [`Name: ${form.name}`, `Email: ${form.email}`]
+    if (form.business) lines.push(`Business: ${form.business}`)
+    if (form.interest) lines.push(`Looking for: ${t(INTEREST_LABEL_KEYS[form.interest] ?? form.interest)}`)
+    if (form.details) lines.push('', form.details)
+    const subject = form.business ? `Website inquiry: ${form.business}` : 'Website inquiry'
+    return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -27,25 +58,27 @@ export default function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
+        signal: AbortSignal.timeout(10000),
       })
       const data = await res.json()
       if (res.ok && data.status === 'success') {
         setStatus('success')
         trackEvent('Contact Form Submit')
       } else {
-        setErrorMsg(data.message || t('contact.err.generic'))
+        setErrorMsg(data.error || data.message || t('contact.err.generic'))
         setStatus('error')
       }
     } catch {
       setErrorMsg(t('contact.err.network'))
       setStatus('error')
+      trackEvent('Contact Form Unreachable')
     }
   }
 
   return (
     <>
       <SEO
-        title="Book a Discovery Call | Leander Mena, F&B Consulting"
+        title="Contact Leander Mena | F&B Operations Consultant"
         description="Tell me about your restaurant or hotel and where it's stuck. Book a free discovery call - engagements available on-site and remote, nationwide."
         path="/contact"
         schemaType="contact"
@@ -163,7 +196,7 @@ export default function Contact() {
                   alignItems: 'center',
                   gap: 'var(--space-2)',
                   padding: '0.3rem 0.75rem',
-                  border: '1px solid oklch(0.72 0.075 68 / 0.25)',
+                  border: '1px solid oklch(from var(--color-primary) l c h / 0.25)',
                   marginBottom: 'var(--space-6)',
                   fontSize: '0.5625rem',
                   letterSpacing: '0.14em',
@@ -178,7 +211,7 @@ export default function Contact() {
                     borderRadius: '50%',
                     background: 'var(--color-primary)',
                     flexShrink: 0,
-                    boxShadow: '0 0 6px oklch(0.72 0.075 68 / 0.60)'
+                    boxShadow: '0 0 6px oklch(from var(--color-primary) l c h / 0.60)'
                   }}
                 />
                 {t('contact.accepting')}
@@ -208,7 +241,7 @@ export default function Contact() {
               {/* Contact details */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', marginBottom: 'var(--space-10)' }}>
                 <a
-                  href="mailto:letstalk@leandermena.com"
+                  href="mailto:info@leandermena.com"
                   style={{
                     display: 'flex',
                     alignItems: 'center',
@@ -234,7 +267,7 @@ export default function Contact() {
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                     </svg>
                   </span>
-                  letstalk@leandermena.com
+                  info@leandermena.com
                 </a>
                 <a
                   href="tel:+17865425517"
@@ -296,7 +329,7 @@ export default function Contact() {
               {/* Testimonial pull-quote */}
               <div
                 style={{
-                  borderLeft: '1px solid oklch(0.72 0.075 68 / 0.30)',
+                  borderLeft: '1px solid oklch(from var(--color-primary) l c h / 0.30)',
                   paddingLeft: 'var(--space-5)',
                   paddingBlock: 'var(--space-2)'
                 }}
@@ -451,9 +484,20 @@ export default function Contact() {
                   <input type="text" name="website" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
                   {errorMsg && (
-                    <p style={{ color: '#e05555', fontSize: 'var(--text-sm)', lineHeight: 1.5 }}>
+                    <p role="alert" style={{ color: '#e05555', fontSize: 'var(--text-sm)', lineHeight: 1.5 }}>
                       {errorMsg}
                     </p>
+                  )}
+
+                  {status === 'error' && (
+                    <a
+                      href={mailtoHref()}
+                      onClick={() => trackEvent('Contact Email Fallback')}
+                      className="btn btn-secondary"
+                      style={{ alignSelf: 'flex-start', minHeight: '48px' }}
+                    >
+                      {t('contact.err.emailCta')}
+                    </a>
                   )}
 
                   <button

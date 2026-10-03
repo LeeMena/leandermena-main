@@ -131,10 +131,10 @@ export default function CalendlyModal({ isOpen, onClose }: Props) {
         >
           Having trouble?{' '}
           <a
-            href="mailto:leander@leandermena.com"
+            href="mailto:info@leandermena.com"
             style={{ color: 'var(--color-primary)', textDecoration: 'none' }}
           >
-            leander@leandermena.com
+            info@leandermena.com
           </a>
         </p>
       </div>

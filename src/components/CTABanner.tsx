@@ -20,13 +20,13 @@ export default function CTABanner({
   const variantStyles = {
     default: 'bg-[#F2EDE6] text-[#121212]',
     dark: 'bg-[#121212] text-[#F2EDE6] border border-[#171717]',
-    gold: 'bg-gradient-to-br from-[#CFA55B] via-[#b88d4a] to-[#9a7539] text-[#121212]',
+    gold: 'bg-gradient-to-br from-[#f4e5a6] via-[#dfc268] to-[#bfa55a] text-[#121212]',
   };
 
   const buttonStyles = {
     default: 'bg-[#121212] text-[#F2EDE6] hover:bg-[#171717]',
-    dark: 'bg-[#CFA55B] text-[#121212] hover:bg-[#b88d4a]',
-    gold: 'bg-[#121212] text-[#CFA55B] hover:bg-[#171717]',
+    dark: 'bg-[#dfc268] text-[#121212] hover:bg-[#ecd78a]',
+    gold: 'bg-[#121212] text-[#dfc268] hover:bg-[#171717]',
   };
 
   const ghostButtonStyles = {

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '@/context/ThemeProvider'
 import { useLanguage } from '@/context/LanguageProvider'
@@ -160,6 +161,7 @@ export default function Navigation({ onBookCall }: Props) {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [visible, setVisible] = useState(false)
+  const [drawerTop, setDrawerTop] = useState(57)
   const headerRef = useRef<HTMLElement>(null)
   const { pathname } = useLocation()
   const { lang } = useLanguage()
@@ -174,19 +176,27 @@ export default function Navigation({ onBookCall }: Props) {
   useEffect(() => { setOpen(false) }, [pathname])
 
   useEffect(() => {
-    if (open) {
-      const raf = requestAnimationFrame(() => setVisible(true))
-      document.body.style.overflow = 'hidden'
-      document.body.style.touchAction = 'none'
-      return () => cancelAnimationFrame(raf)
-    } else {
-      setVisible(false)
+    const unlock = () => {
       document.body.style.overflow = ''
       document.body.style.touchAction = ''
+      document.body.style.paddingRight = ''
     }
+    if (!open) {
+      setVisible(false)
+      unlock()
+      return
+    }
+    // The announcement bar can push the header down, so measure where it ends.
+    const bottom = headerRef.current?.getBoundingClientRect().bottom ?? 57
+    setDrawerTop(Math.max(0, Math.round(bottom)))
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth
+    document.body.style.overflow = 'hidden'
+    document.body.style.touchAction = 'none'
+    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`
+    const raf = requestAnimationFrame(() => setVisible(true))
     return () => {
-      document.body.style.overflow = ''
-      document.body.style.touchAction = ''
+      cancelAnimationFrame(raf)
+      unlock()
     }
   }, [open])
 
@@ -195,8 +205,6 @@ export default function Navigation({ onBookCall }: Props) {
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [])
-
-  const headerH = 57
 
   return (
     <header
@@ -331,6 +339,10 @@ export default function Navigation({ onBookCall }: Props) {
         </nav>
       </div>
 
+      {/* Portaled to <body>: the header's backdrop-filter (applied once the
+          page is scrolled) makes it the containing block for position:fixed
+          children, which would shrink the drawer to the header's height. */}
+      {createPortal(<>
       <div
         onClick={() => setOpen(false)}
         style={{
@@ -352,6 +364,7 @@ export default function Navigation({ onBookCall }: Props) {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
+        aria-hidden={!open}
         style={{
           position: 'fixed',
           top: 0,
@@ -361,9 +374,10 @@ export default function Navigation({ onBookCall }: Props) {
           zIndex: 48,
           transform: visible ? 'translateY(0)' : 'translateY(-6px)',
           opacity: visible ? 1 : 0,
+          visibility: open ? 'visible' : 'hidden',
           pointerEvents: open ? 'auto' : 'none',
-          transition: 'transform 340ms cubic-bezier(0.16,1,0.3,1), opacity 260ms ease',
-          clipPath: `inset(${headerH}px 0 0 0)`,
+          transition: `transform 340ms cubic-bezier(0.16,1,0.3,1), opacity 260ms ease, visibility 0s linear ${open ? '0ms' : '340ms'}`,
+          clipPath: `inset(${drawerTop}px 0 0 0)`,
           background: 'var(--color-bg)',
           overflowY: 'auto',
           overscrollBehavior: 'contain',
@@ -371,7 +385,7 @@ export default function Navigation({ onBookCall }: Props) {
           paddingBottom: 'calc(env(safe-area-inset-bottom) + 2rem)',
         }}
       >
-        <div style={{ paddingTop: `${headerH}px` }}>
+        <div style={{ paddingTop: `${drawerTop}px` }}>
           <div style={{ borderTop: '1px solid oklch(from var(--color-border) l c h / 0.5)' }}>
             <div className="container" style={{ paddingTop: 'var(--space-3)', paddingBottom: 'var(--space-10)' }}>
               <p style={{
@@ -393,6 +407,7 @@ export default function Navigation({ onBookCall }: Props) {
                     <Link
                       key={l.href}
                       to={l.href}
+                      onClick={() => setOpen(false)}
                       className="mobile-nav-link"
                       style={{
                         display: 'flex',
@@ -483,7 +498,7 @@ export default function Navigation({ onBookCall }: Props) {
                   </a>
 
                   <a
-                    href="mailto:letstalk@leandermena.com"
+                    href="mailto:info@leandermena.com"
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -501,7 +516,7 @@ export default function Navigation({ onBookCall }: Props) {
                       WebkitTapHighlightColor: 'transparent',
                     }}
                   >
-                    letstalk@leandermena.com
+                    info@leandermena.com
                   </a>
 
                   <div style={{
@@ -527,6 +542,7 @@ export default function Navigation({ onBookCall }: Props) {
           </div>
         </div>
       </div>
+      </>, document.body)}
 
       <style>{`
         @media (min-width: 1240px) {

@@ -47,6 +47,7 @@ export default function Products() {
       {/* Catalog: all six products */}
       <section className="section">
         <div className="container">
+          <h2 className="sr-only">{t('products.kicker')}</h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: 'var(--space-4)' }}>
             {products.map((p, i) => <ProductCard key={p.id} product={p} index={i} detailed />)}
           </div>

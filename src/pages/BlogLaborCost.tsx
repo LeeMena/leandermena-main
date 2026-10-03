@@ -7,8 +7,8 @@ export default function BlogLaborCost() {
   return (
     <>
       <SEO
-        title="Labor Cost Control for Miami Restaurants - F&amp;B Operations Guide | Leander Mena"
-        description="Practical labor cost control tactics for Miami restaurant and hotel F&amp;B operators: scheduling to a target, weekly variance tracking, overtime control, and cross-training systems that hold."
+        title="Labor Cost Control for Miami Restaurants | Leander Mena"
+        description="Labor cost control for Miami restaurant and hotel F&B operators: scheduling to a target, weekly variance tracking, overtime control, and cross-training."
         path="/insights/labor-cost-control-miami-restaurants"
         image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
         imageAlt="Full-service restaurant dining room set for service"
@@ -39,7 +39,7 @@ export default function BlogLaborCost() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 <strong>Labor cost in Miami restaurants</strong> runs high for structural reasons: a competitive labor market, high cost of living relative to wages, and a guest culture that expects high service levels. Operators who try to solve the problem by cutting headcount create a service problem that costs more than the labor savings.

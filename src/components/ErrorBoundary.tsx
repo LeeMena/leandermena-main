@@ -44,7 +44,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               fontSize: '0.7rem',
               letterSpacing: '0.3em',
               textTransform: 'uppercase',
-              color: '#CFA55B',
+              color: '#dfc268',
               marginBottom: '1rem',
             }}
           >
@@ -55,15 +55,15 @@ export default class ErrorBoundary extends Component<Props, State> {
           </h1>
           <p style={{ fontSize: '0.9rem', color: 'rgba(242,237,230,0.6)', maxWidth: '32rem', marginBottom: '2rem', lineHeight: 1.6 }}>
             Reload the page to continue. If this keeps happening, email{' '}
-            <a href="mailto:letstalk@leandermena.com" style={{ color: '#CFA55B' }}>
-              letstalk@leandermena.com
+            <a href="mailto:info@leandermena.com" style={{ color: '#dfc268' }}>
+              info@leandermena.com
             </a>
             .
           </p>
           <button
             onClick={() => window.location.reload()}
             style={{
-              background: '#CFA55B',
+              background: '#dfc268',
               color: '#121212',
               border: 'none',
               padding: '0.75rem 1.75rem',

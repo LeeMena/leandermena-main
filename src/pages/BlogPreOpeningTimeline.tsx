@@ -7,7 +7,7 @@ export default function BlogPreOpeningTimeline() {
   return (
     <>
       <SEO
-        title="The Pre-Opening Timeline Most Operators Get Wrong"
+        title="The Pre-Opening Timeline Operators Get Wrong | Leander Mena"
         description="Why most restaurant pre-openings run behind and the 120-day framework that fixes it."
         path="/insights/pre-opening-timeline"
         image="https://www.leandermena.com/images/og/blog-pre-opening.jpg"
@@ -34,7 +34,7 @@ export default function BlogPreOpeningTimeline() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 Most pre-openings run behind. Not because operators are disorganized, but because

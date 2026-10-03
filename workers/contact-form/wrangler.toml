@@ -14,7 +14,7 @@ compatibility_date = "2025-01-01"
 # --- Email Routing binding ---
 # 1. Enable Cloudflare Email Routing for leandermena.com in the dashboard.
 # 2. Verify noreply@leandermena.com as a sender address.
-# 3. Add destination address leander@leandermena.com.
+# 3. Add destination address info@leandermena.com.
 # The binding name below (SEND_EMAIL) must match the env variable used in index.js.
 [[send_email]]
 binding = "SEND_EMAIL"
@@ -28,5 +28,5 @@ binding = "RATE_LIMIT_KV"
 id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
 
 # --- Secrets (set via CLI, never commit values) ---
-# npx wrangler secret put RECIPIENT_EMAIL    # leander@leandermena.com
+# npx wrangler secret put RECIPIENT_EMAIL    # info@leandermena.com
 # npx wrangler secret put SENDER_EMAIL       # noreply@leandermena.com

@@ -20,7 +20,9 @@
 /blueprint/                    /blueprint                   301
 /book/                         /book                        301
 /profile/                      /profile                     301
-/shop/                         /shop                        301
+/shop/                         /products                    301
+/shop                          /products                    301
+/privacy/                      /privacy                     301
 /products/                     /products                    301
 /skills/                       /skills                      301
 /case-studies/                 /case-studies                301
@@ -69,7 +71,7 @@
 /blueprint          /index.html  200
 /book               /index.html  200
 /profile            /index.html  200
-/shop               /index.html  200
+/privacy            /index.html  200
 /products           /index.html  200
 /skills             /index.html  200
 /industries                      /index.html  200

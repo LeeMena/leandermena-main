@@ -7,7 +7,7 @@ export default function BlogLaborCostFull() {
   return (
     <>
       <SEO
-        title="How to Reduce Labor Cost Without Cutting Service"
+        title="Reduce Labor Cost Without Cutting Service | Leander Mena"
         description="A case study and framework for restructuring labor without degrading guest experience."
         path="/insights/reduce-labor-cost-without-cutting-service"
         image="https://images.unsplash.com/photo-1490645935967-10de6ba17061?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
@@ -34,7 +34,7 @@ export default function BlogLaborCostFull() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 Labor cost is the lever most operators reach for first when margins tighten. The

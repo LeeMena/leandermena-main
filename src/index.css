@@ -31,14 +31,18 @@
     /* Text - warm white, never pure */
     --color-text:             #ede9e2;
     --color-text-muted:       #8c8780;
-    --color-text-faint:       #4a4842;
+    --color-text-faint:       #66625b;
     --color-text-inverse:     #080807;
 
-    /* Primary - burnished champagne gold (OKLCH) */
-    --color-primary:          oklch(0.72 0.075 68);
-    --color-primary-hover:    oklch(0.80 0.080 68);
-    --color-primary-active:   oklch(0.62 0.065 68);
-    --color-primary-highlight: oklch(0.72 0.075 68 / 0.10);
+    /* Primary - vibrant gold sampled from the brand mark (OKLCH).
+       "fill" tokens are for solid gold backgrounds, which always carry dark text. */
+    --color-primary:          oklch(0.82 0.115 92);
+    --color-primary-hover:    oklch(0.88 0.100 95);
+    --color-primary-active:   oklch(0.73 0.100 91);
+    --color-primary-highlight: oklch(0.82 0.115 92 / 0.10);
+    --color-primary-fill:        oklch(0.82 0.115 92);
+    --color-primary-fill-hover:  oklch(0.88 0.100 95);
+    --color-primary-fill-active: oklch(0.73 0.100 91);
 
     /* Fonts */
     --font-display: 'Cormorant Garamond', 'Georgia', serif;
@@ -81,7 +85,7 @@
     --shadow-sm: 0 1px 3px oklch(0.08 0.01 60 / 0.50), 0 1px 2px oklch(0.08 0.01 60 / 0.30);
     --shadow-md: 0 4px 20px oklch(0.08 0.01 60 / 0.60), 0 2px 6px oklch(0.08 0.01 60 / 0.35);
     --shadow-lg: 0 16px 48px oklch(0.08 0.01 60 / 0.70), 0 6px 16px oklch(0.08 0.01 60 / 0.40);
-    --shadow-gold: 0 0 0 1px oklch(0.72 0.075 68 / 0.20), 0 4px 20px oklch(0.72 0.075 68 / 0.12);
+    --shadow-gold: 0 0 0 1px oklch(0.82 0.115 92 / 0.20), 0 4px 20px oklch(0.82 0.115 92 / 0.12);
 
     /* Content widths */
     --content-narrow:  640px;
@@ -105,16 +109,19 @@
     --color-border:           #cec9be;
     --color-text:             #16140f;
     --color-text-muted:       #625e55;
-    --color-text-faint:       #a49e93;
+    --color-text-faint:       #736d63;
     --color-text-inverse:     #f5f3ee;
-    --color-primary:          oklch(0.48 0.075 68);
-    --color-primary-hover:    oklch(0.40 0.072 68);
-    --color-primary-active:   oklch(0.34 0.065 68);
-    --color-primary-highlight: oklch(0.48 0.075 68 / 0.08);
+    --color-primary:          oklch(0.54 0.110 86);
+    --color-primary-hover:    oklch(0.47 0.100 84);
+    --color-primary-active:   oklch(0.42 0.090 82);
+    --color-primary-highlight: oklch(0.54 0.110 86 / 0.08);
+    --color-primary-fill:        oklch(0.80 0.120 90);
+    --color-primary-fill-hover:  oklch(0.85 0.110 93);
+    --color-primary-fill-active: oklch(0.72 0.110 88);
     --shadow-sm: 0 1px 3px oklch(0.2 0.02 70 / 0.10);
     --shadow-md: 0 4px 20px oklch(0.2 0.02 70 / 0.12);
     --shadow-lg: 0 16px 48px oklch(0.2 0.02 70 / 0.16);
-    --shadow-gold: 0 0 0 1px oklch(0.48 0.075 68 / 0.18), 0 4px 20px oklch(0.48 0.075 68 / 0.10);
+    --shadow-gold: 0 0 0 1px oklch(0.54 0.110 86 / 0.18), 0 4px 20px oklch(0.54 0.110 86 / 0.10);
   }
 }
 
@@ -174,7 +181,7 @@
   }
 
   ::selection {
-    background: oklch(0.72 0.075 68 / 0.18);
+    background: oklch(from var(--color-primary) l c h / 0.18);
     color: var(--color-text);
   }
 
@@ -327,9 +334,9 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      oklch(0.72 0.075 68 / 0.50) 30%,
-      oklch(0.72 0.075 68 / 0.80) 50%,
-      oklch(0.72 0.075 68 / 0.50) 70%,
+      oklch(from var(--color-primary) l c h / 0.50) 30%,
+      oklch(from var(--color-primary) l c h / 0.80) 50%,
+      oklch(from var(--color-primary) l c h / 0.50) 70%,
       transparent 100%
     );
     border: none;
@@ -357,24 +364,28 @@
     position: relative;
   }
 
+  @media (max-width: 479px) {
+    .btn { white-space: normal; text-align: center; max-width: 100%; line-height: 1.35; }
+  }
+
   .btn-primary {
-    background: var(--color-primary);
+    background: var(--color-primary-fill);
     color: #080807;
-    border-color: var(--color-primary);
+    border-color: var(--color-primary-fill);
     box-shadow:
-      inset 0 1px 0 oklch(1 0 0 / 0.12),
-      0 2px 8px oklch(0.72 0.075 68 / 0.20);
+      inset 0 1px 0 oklch(1 0 0 / 0.18),
+      0 2px 8px oklch(from var(--color-primary-fill) l c h / 0.25);
   }
   .btn-primary:hover {
-    background: var(--color-primary-hover);
-    border-color: var(--color-primary-hover);
+    background: var(--color-primary-fill-hover);
+    border-color: var(--color-primary-fill-hover);
     box-shadow:
-      inset 0 1px 0 oklch(1 0 0 / 0.15),
-      0 4px 16px oklch(0.72 0.075 68 / 0.30);
+      inset 0 1px 0 oklch(1 0 0 / 0.22),
+      0 4px 16px oklch(from var(--color-primary-fill) l c h / 0.35);
     transform: translateY(-1px);
   }
   .btn-primary:active {
-    background: var(--color-primary-active);
+    background: var(--color-primary-fill-active);
     transform: translateY(0);
     box-shadow: inset 0 2px 4px oklch(0 0 0 / 0.15);
   }
@@ -388,6 +399,9 @@
     border-color: oklch(from var(--color-text) l c h / 0.40);
     background: oklch(from var(--color-text) l c h / 0.04);
   }
+  /* For secondary buttons inside sections that stay dark in both themes */
+  .btn-on-dark { color: #ede9e2; border-color: oklch(1 0 0 / 0.22); }
+  .btn-on-dark:hover { border-color: oklch(1 0 0 / 0.45); background: oklch(1 0 0 / 0.05); }
 
   .btn-ghost {
     background: transparent;
@@ -546,13 +560,13 @@
     opacity: 0.55;
   }
   .prose strong { color: var(--color-text); font-weight: 600; }
-  .prose a {
+  .prose a:not(.btn) {
     color: var(--color-primary);
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-thickness: 1px;
   }
-  .prose a:hover { color: var(--color-primary-hover); }
+  .prose a:not(.btn):hover { color: var(--color-primary-hover); }
 
   .stat-value {
     font-family: var(--font-display);
@@ -665,15 +679,18 @@
     --color-border:           #2c2a26;
     --color-text:             #ede9e2;
     --color-text-muted:       #8c8780;
-    --color-text-faint:       #4a4842;
+    --color-text-faint:       #66625b;
     --color-text-inverse:     #080807;
-    --color-primary:          oklch(0.72 0.075 68);
-    --color-primary-hover:    oklch(0.80 0.080 68);
-    --color-primary-active:   oklch(0.62 0.065 68);
-    --color-primary-highlight: oklch(0.72 0.075 68 / 0.10);
+    --color-primary:          oklch(0.82 0.115 92);
+    --color-primary-hover:    oklch(0.88 0.100 95);
+    --color-primary-active:   oklch(0.73 0.100 91);
+    --color-primary-highlight: oklch(0.82 0.115 92 / 0.10);
+    --color-primary-fill:        oklch(0.82 0.115 92);
+    --color-primary-fill-hover:  oklch(0.88 0.100 95);
+    --color-primary-fill-active: oklch(0.73 0.100 91);
     --shadow-sm: 0 1px 3px oklch(0.08 0.01 60 / 0.50), 0 1px 2px oklch(0.08 0.01 60 / 0.30);
     --shadow-md: 0 4px 20px oklch(0.08 0.01 60 / 0.60), 0 2px 6px oklch(0.08 0.01 60 / 0.35);
     --shadow-lg: 0 16px 48px oklch(0.08 0.01 60 / 0.70), 0 6px 16px oklch(0.08 0.01 60 / 0.40);
-    --shadow-gold: 0 0 0 1px oklch(0.72 0.075 68 / 0.20), 0 4px 20px oklch(0.72 0.075 68 / 0.12);
+    --shadow-gold: 0 0 0 1px oklch(0.82 0.115 92 / 0.20), 0 4px 20px oklch(0.82 0.115 92 / 0.12);
   }
 }

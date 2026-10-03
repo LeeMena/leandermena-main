@@ -30,9 +30,18 @@ const outFile = join(root, 'functions', 'route-meta.json')
 
 // ---- 1. Extract <SEO .../> props from static page components ----
 
+// JSX decodes HTML entities in string attributes (title="F&amp;B" renders "F&B"),
+// so decode them here too; the middleware re-escapes text when it writes the head.
+const ENTITIES = { amp: '&', quot: '"', apos: "'", lt: '<', gt: '>', nbsp: ' ', middot: '·', rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“' }
+const decodeEntities = (s) =>
+  s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);/gi, (m, e) => {
+    if (e[0] === '#') return String.fromCodePoint(e[1].toLowerCase() === 'x' ? parseInt(e.slice(2), 16) : Number(e.slice(1)))
+    return ENTITIES[e] ?? m
+  })
+
 const prop = (block, name) => {
   const m = block.match(new RegExp(`\\b${name}="([^"]*)"`))
-  return m ? m[1] : undefined
+  return m ? decodeEntities(m[1]) : undefined
 }
 
 const meta = {}

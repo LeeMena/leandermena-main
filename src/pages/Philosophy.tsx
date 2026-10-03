@@ -32,7 +32,7 @@ export default function Philosophy() {
   return (
     <>
       <SEO
-        title="Leadership Philosophy"
+        title="Leadership Philosophy | Leander Mena, F&B Operations"
         description="Leander Mena's operational philosophy: systems thinking, floor presence, root-cause analysis, and leadership accountability in restaurant and hotel F&amp;B."
         path="/philosophy"
         schemaType="philosophy"
@@ -96,7 +96,7 @@ export default function Philosophy() {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: 'var(--space-8)' }}>
             <Link to="/book" className="btn btn-primary">Book a Discovery Call</Link>
-            <Link to="/about" className="btn btn-secondary">More About Leander</Link>
+            <Link to="/about" className="btn btn-secondary btn-on-dark">More About Leander</Link>
           </div>
         </div>
       </section>

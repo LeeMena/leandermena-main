@@ -7,7 +7,7 @@ export default function BlogMiamiLabor() {
   return (
     <>
       <SEO
-        title="Miami Restaurant Labor Market 2026: What Operators Need to Know"
+        title="Miami Restaurant Labor Market 2026 | Leander Mena"
         description="The state of Miami's hospitality labor market in 2026. Hiring challenges, wage expectations, retention strategies, and what is working for operators right now."
         path="/insights/miami-restaurant-labor-market-2026"
         image="https://www.leandermena.com/images/og/blog-miami-labor.jpg"
@@ -34,7 +34,7 @@ export default function BlogMiamiLabor() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 Miami's hospitality labor market is tight. Unemployment in the leisure and hospitality

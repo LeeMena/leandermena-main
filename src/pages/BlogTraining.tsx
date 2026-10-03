@@ -7,7 +7,7 @@ export default function BlogTraining() {
   return (
     <>
       <SEO
-        title="Building a Training Program That Works"
+        title="Building a Training Program That Works | Leander Mena"
         description="Why most restaurant training fails and how to build one that actually sticks and improves performance."
         path="/insights/building-training-program-that-works"
         image="https://images.unsplash.com/photo-1528605248644-14dd04022da1?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
@@ -34,7 +34,7 @@ export default function BlogTraining() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 Most restaurant training programs do not work. Not because the content is wrong,

@@ -1,44 +1,44 @@
-# Leander Mena — Corrected & Elevated Build v2.0
+# Leander Mena - Corrected & Elevated Build v2.0
 
 ## Critical Fixes Applied
 
-### 1. App.tsx — JSX Syntax Error (CRITICAL)
+### 1. App.tsx - JSX Syntax Error (CRITICAL)
 **Before:** All `<Route>` elements had empty/missing `element` props and malformed closing tags. The app would not compile.
 **After:** Proper JSX with `element={<Component />}` and clean closing tags.
 
-### 2. Tailwind Config — Broken CSS Variables
+### 2. Tailwind Config - Broken CSS Variables
 **Before:** `destructive` and `destructive-foreground` used `/` instead of `<alpha-value>`, causing build errors.
 **After:** Correct HSL syntax with proper alpha channel handling.
 
-### 3. Theme Unification — Light vs Dark Conflict
+### 3. Theme Unification - Light vs Dark Conflict
 **Before:** `index.css` used a light cream theme (`#f7f6f2` background) while `tailwind.config.js` defined a dark luxury theme. The live site renders dark, but the CSS was fighting itself.
 **After:** Unified dark luxury theme (`#0a0a0a` background, `#b8a080` gold accents) across both Tailwind and custom CSS. Removed all light-theme artifacts.
 
-### 4. Navigation — Missing Mobile Menu
+### 4. Navigation - Missing Mobile Menu
 **Before:** No mobile hamburger menu; `nav-links` simply `display:none` below 600px with no fallback.
 **After:** Full responsive navigation with hamburger toggle, scroll-aware background blur, and active state highlighting.
 
-### 5. SEO — Missing Entirely
+### 5. SEO - Missing Entirely
 **Before:** No meta tags, no Open Graph, no JSON-LD structured data, no canonical tags.
 **After:** `SEO` component on every page with dynamic title/description, Open Graph, Twitter Cards, and Schema.org `Person` structured data.
 
-### 6. Scroll Animations — Missing
+### 6. Scroll Animations - Missing
 **Before:** Static page with no scroll-triggered animations.
 **After:** `ScrollReveal` component using IntersectionObserver with configurable direction and delay. Applied to all major sections.
 
-### 7. Contact Form — Incomplete & Unvalidated
+### 7. Contact Form - Incomplete & Unvalidated
 **Before:** Partial file with no validation, no error states, no success UI completion.
 **After:** Full form with real-time validation, honeypot spam protection, loading states, success confirmation, and fallback error messaging.
 
-### 8. Services Page — Missing Content
+### 8. Services Page - Missing Content
 **Before:** File existed but content was not retrievable; likely empty or broken.
 **After:** Full services page with 4 offerings (Fractional, Pre-Opening, Recovery, Banquet), each with detailed bullet points.
 
-### 9. index.html — Missing Font Preconnect & Meta
+### 9. index.html - Missing Font Preconnect & Meta
 **Before:** No Google Fonts preconnect, no `theme-color`, no `color-scheme`, generic title.
 **After:** Preconnected fonts, dark theme-color, proper meta description, canonical link.
 
-### 10. Layout — No Scroll Restoration
+### 10. Layout - No Scroll Restoration
 **Before:** No scroll-to-top on route change.
 **After:** `useEffect` hook in `Layout.tsx` scrolls to top on every `pathname` change.
 
@@ -72,9 +72,9 @@
 - **What:** Full XML sitemap with all 11 routes, priorities, and changefreq. Robots.txt allows all crawlers and points to sitemap.
 - **Status:** Production-ready. Submit to Google Search Console after deployment.
 
-### 5. Analytics — Plausible (Privacy-First)
+### 5. Analytics - Plausible (Privacy-First)
 - **File:** `index.html`
-- **What:** Plausible Analytics script — no cookies, GDPR compliant, lightweight (<1KB). Tracks page views and outbound links.
+- **What:** Plausible Analytics script - no cookies, GDPR compliant, lightweight (<1KB). Tracks page views and outbound links.
 - **Status:** Configured for `leandermena.com`. **TODO:** Sign up at plausible.io and add your domain to the dashboard.
 - **Alternative:** If you prefer GA4 or Fathom, replace the script tag in `index.html`.
 
@@ -129,17 +129,17 @@ leandermena-corrected/
     │   ├── Footer.tsx                  # Three-column + LinkedIn
     │   ├── ScrollReveal.tsx            # IntersectionObserver animation
     │   ├── SEO.tsx                     # Meta + JSON-LD structured data
-    │   ├── Testimonials.tsx            # NEW — quote grid/carousel
-    │   ├── TrustBar.tsx                # NEW — client name row
-    │   └── CalendlyModal.tsx           # NEW — booking modal
+    │   ├── Testimonials.tsx            # NEW - quote grid/carousel
+    │   ├── TrustBar.tsx                # NEW - client name row
+    │   └── CalendlyModal.tsx           # NEW - booking modal
     └── pages/
-        ├── Home.tsx                    # ELEVATED — bg image + testimonials + trust bar
+        ├── Home.tsx                    # ELEVATED - bg image + testimonials + trust bar
         ├── About.tsx                   # Polished
         ├── Services.tsx                # Full content
         ├── PreOpening.tsx              # Polished
         ├── Experience.tsx              # Polished
         ├── Philosophy.tsx              # Polished
-        ├── Contact.tsx                 # FIXED — validation + Calendly embed
+        ├── Contact.tsx                 # FIXED - validation + Calendly embed
         ├── Profile.tsx                 # Polished
         ├── BlogIndex.tsx               # Polished
         ├── BlogPreOpening.tsx          # Polished
@@ -154,16 +154,16 @@ leandermena-corrected/
 1. **Back up** your current `src/` and root config files.
 2. **Copy** all files from this build into your repo.
 3. Ensure these image assets exist in `/public`:
-   - `landing-hero.jpg` — Hero background (1920×1080+, dimmed/dark preferred)
-   - `about.jpg` — Headshot
-   - `favicon.svg` — Or update `index.html` to point to your favicon
+   - `landing-hero.jpg` - Hero background (1920×1080+, dimmed/dark preferred)
+   - `about.jpg` - Headshot
+   - `favicon.svg` - Or update `index.html` to point to your favicon
 4. Run `npm install` to update dependencies.
 5. Verify `npm run dev` compiles without errors.
 6. Test mobile navigation (hamburger menu) at < 768px.
 7. Test contact form validation and success state.
 8. Test Calendly modal opens/closes correctly.
 9. Run `npm run build` and verify `/dist` output.
-10. Push to `main` — Cloudflare Pages auto-deploys.
+10. Push to `main` - Cloudflare Pages auto-deploys.
 11. Verify SEO with [Google Rich Results Test](https://search.google.com/test/rich-results).
 12. Submit sitemap to [Google Search Console](https://search.google.com/search-console).
 

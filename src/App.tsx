@@ -14,10 +14,10 @@ import Blueprint from '@/pages/Blueprint'
 import CaseStudies from '@/pages/CaseStudies'
 import CaseStudyDetail from '@/pages/CaseStudyDetail'
 import Book from '@/pages/Book'
-import Shop from '@/pages/Shop'
 import Products from '@/pages/Products'
 import Industries from '@/pages/Industries'
 import MiamiRestaurantConsultant from '@/pages/MiamiRestaurantConsultant'
+import Privacy from '@/pages/Privacy'
 import NotFound from '@/pages/NotFound'
 
 import BlogIndex from '@/pages/BlogIndex'
@@ -53,10 +53,10 @@ export default function App() {
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
         <Route path="/book" element={<Book />} />
-        <Route path="/shop" element={<Shop />} />
         <Route path="/products" element={<Products />} />
         <Route path="/industries" element={<Industries />} />
         <Route path="/miami-restaurant-consultant" element={<MiamiRestaurantConsultant />} />
+        <Route path="/privacy" element={<Privacy />} />
 
         <Route path="/insights" element={<BlogIndex />} />
         <Route path="/insights/what-a-fractional-gm-actually-does" element={<BlogFractionalGM />} />

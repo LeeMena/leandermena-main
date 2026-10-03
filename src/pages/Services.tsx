@@ -13,7 +13,7 @@ export default function Services() {
     <>
       <SEO
         title="F&B Operations & Pre-Opening Consulting Services | Leander Mena"
-        description="Four ways to work with an F&B operations consultant: pre-opening builds, ongoing operations consulting, turnaround engagements, and on-site + remote hybrid support - anywhere in the U.S."
+        description="Four ways to work with an F&B operations consultant: pre-opening builds, ongoing consulting, turnarounds, and hybrid on-site + remote support across the U.S."
         path="/services"
         schemaType="services"
       />
@@ -84,7 +84,7 @@ export default function Services() {
                 {s.popular && (
                   <span style={{
                     position: 'absolute', top: '1rem', right: '1rem',
-                    background: 'var(--color-primary)', color: '#0a0a0a',
+                    background: 'var(--color-primary-fill)', color: '#0a0a0a',
                     fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.08em',
                     textTransform: 'uppercase', padding: '0.2rem 0.6rem',
                     borderRadius: 'var(--radius-sm)'

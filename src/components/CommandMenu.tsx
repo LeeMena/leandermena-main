@@ -22,7 +22,6 @@ const searchItems: SearchItem[] = [
   { id: 'about', title: 'About', description: 'Learn about Leander', href: '/about', icon: <User className="h-4 w-4" />, category: 'Pages' },
   { id: 'services', title: 'Services', description: 'Consulting services', href: '/services', icon: <Briefcase className="h-4 w-4" />, category: 'Pages' },
   { id: 'products', title: 'Products', description: 'Digital products & courses', href: '/products', icon: <ShoppingBag className="h-4 w-4" />, category: 'Pages' },
-  { id: 'shop', title: 'Shop', description: 'Browse all products', href: '/shop', icon: <ShoppingBag className="h-4 w-4" />, category: 'Pages' },
   { id: 'case-studies', title: 'Case Studies', description: 'Client results', href: '/case-studies', icon: <BarChart3 className="h-4 w-4" />, category: 'Pages' },
   { id: 'insights', title: 'Insights', description: 'Blog & articles', href: '/insights', icon: <BookOpen className="h-4 w-4" />, category: 'Pages' },
   { id: 'contact', title: 'Contact', description: 'Get in touch', href: '/contact', icon: <Mail className="h-4 w-4" />, category: 'Pages' },

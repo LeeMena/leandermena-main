@@ -38,12 +38,12 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Luxury palette — kept in sync with CSS custom properties in index.css
+        // Luxury palette - kept in sync with CSS custom properties in index.css
         gold: {
-          DEFAULT: '#b8a080',
-          light: '#c9b89a',
-          dark: '#8c7555',
-          muted: '#d4c4a8',
+          DEFAULT: '#dfc268',
+          light: '#ecd78a',
+          dark: '#bfa55a',
+          muted: '#f4e5a6',
         },
         luxury: {
           black: '#0a0a0a',
@@ -55,7 +55,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        // Aligned with index.css — Cormorant Garamond for display, DM Sans for body
+        // Aligned with index.css - Cormorant Garamond for display, DM Sans for body
         // Previously listed Playfair Display + Inter which were unused
         display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         serif:   ['"Cormorant Garamond"', 'Georgia', 'serif'],

@@ -20,6 +20,10 @@ const BASE_URL = 'https://www.leandermena.com'
 
 const ASSET_RE = /\.(js|css|map|png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|json|xml|txt|pdf|webmanifest|html|mp4|webm|mov|ogg|m4v)$/
 
+// Same list minus .html: Pages serves .html files at extensionless URLs,
+// so only these extensions can be judged by the response content type.
+const NON_HTML_FILE_RE = /\.(js|css|map|png|jpg|jpeg|gif|webp|avif|svg|ico|woff|woff2|ttf|otf|json|xml|txt|pdf|webmanifest|mp4|webm|mov|ogg|m4v)$/
+
 // Legacy-path 301s. These lived in _redirects, but _redirects does not
 // apply to requests routed through Functions (verified with wrangler
 // pages dev), so they must be handled here to actually fire.
@@ -44,6 +48,7 @@ const LEGACY_REDIRECTS = {
   '/90-day-blueprint': '/blueprint',
   '/work': '/case-studies',
   '/portfolio': '/case-studies',
+  '/shop': '/products',
 }
 
 // Handler factories (plain objects with an `element` function; any other
@@ -113,7 +118,12 @@ export async function onRequest(context) {
     path.startsWith('/downloads/') ||
     ASSET_RE.test(path)
   ) {
-    return next()
+    const asset = await next()
+    // A missing file comes back as the SPA shell (200 text/html): report a real 404.
+    if (NON_HTML_FILE_RE.test(path) && (asset.headers.get('content-type') || '').startsWith('text/html')) {
+      return new Response('Not found', { status: 404, headers: { 'content-type': 'text/plain; charset=utf-8' } })
+    }
+    return asset
   }
 
   // Trailing-slash canonicalization: single-hop 301 (root excluded)

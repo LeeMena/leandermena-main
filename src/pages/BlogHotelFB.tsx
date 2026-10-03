@@ -7,7 +7,7 @@ export default function BlogHotelFB() {
   return (
     <>
       <SEO
-        title="Hotel F&amp;B: Why Your Restaurant Underperforms"
+        title="Hotel F&B: Why Your Restaurant Underperforms | Leander Mena"
         description="The structural differences between hotel F&amp;B and standalone restaurants, and why most hotel operators get it wrong."
         path="/insights/hotel-fb-why-your-restaurant-underperforms"
         image="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?fm=jpg&w=1200&h=630&fit=crop&crop=edges&q=80&auto=format"
@@ -34,7 +34,7 @@ export default function BlogHotelFB() {
 
       <article className="section">
         <div className="container" style={{ maxWidth: 'var(--content-narrow)' }}>
-          <div className="prose-article">
+          <div className="prose">
             <ScrollReveal>
               <p>
                 Hotel restaurants are structurally different from independent restaurants. The ownership model, the incentive structure, the guest mix, and the operational constraints are all different. Most hotel F&amp;B programs underperform not because of bad food or bad service, but because they are being run like standalone restaurants when they are not.

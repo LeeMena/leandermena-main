@@ -107,7 +107,7 @@ export default function Skills() {
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               {skillData.bullets.map((b, i) => (
                 <li key={i} style={{ display: 'flex', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
-                  <span className="text-[#b8a080] mt-1 shrink-0">•</span>
+                  <span className="text-[color:var(--color-primary)] mt-1 shrink-0">•</span>
                   <span>{b}</span>
                 </li>
               ))}
@@ -126,7 +126,7 @@ export default function Skills() {
               <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                 {skillData.bullets.map((b, i) => (
                   <li key={i} style={{ display: 'flex', gap: '0.75rem', fontSize: '0.88rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
-                    <span className="text-[#b8a080] mt-1 shrink-0">•</span>
+                    <span className="text-[color:var(--color-primary)] mt-1 shrink-0">•</span>
                     <span>{b}</span>
                   </li>
                 ))}
@@ -156,7 +156,7 @@ export default function Skills() {
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               {skillData.training.map((b, i) => (
                 <li key={i} style={{ display: 'flex', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
-                  <span className="text-[#b8a080] mt-1 shrink-0">•</span>
+                  <span className="text-[color:var(--color-primary)] mt-1 shrink-0">•</span>
                   <span>{b}</span>
                 </li>
               ))}
@@ -174,7 +174,7 @@ export default function Skills() {
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               {skillData.menu.map((b, i) => (
                 <li key={i} style={{ display: 'flex', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
-                  <span className="text-[#b8a080] mt-1 shrink-0">•</span>
+                  <span className="text-[color:var(--color-primary)] mt-1 shrink-0">•</span>
                   <span>{b}</span>
                 </li>
               ))}
@@ -213,7 +213,7 @@ export default function Skills() {
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
               {skillData.formats.map((b, i) => (
                 <li key={i} style={{ display: 'flex', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--color-text-muted)', lineHeight: 1.7 }}>
-                  <span className="text-[#b8a080] mt-1 shrink-0">•</span>
+                  <span className="text-[color:var(--color-primary)] mt-1 shrink-0">•</span>
                   <span>{b}</span>
                 </li>
               ))}

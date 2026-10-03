@@ -40,18 +40,19 @@ export default function Profile() {
   return (
     <>
       <SEO
-        title="Profile"
+        title="Professional Profile | Leander Mena"
         description="Full professional profile for Leander Mena - 18 years in Miami F&B and hospitality operations."
         path="/profile"
+        noindex
       />
 
       <section className="page-header">
         <div className="container">
           <span className="kicker">Professional Profile</span>
-          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[#e8e8e8] max-w-[36ch] mb-3">
+          <h1 className="font-display text-[clamp(1.75rem,3.5vw,2.75rem)] font-bold tracking-tight text-[color:var(--color-text)] max-w-[36ch] mb-3">
             Leander Mena
           </h1>
-          <p className="text-[#888888] text-lg max-w-[54ch]">
+          <p className="text-[color:var(--color-text-muted)] text-lg max-w-[54ch]">
             18 years of F&B and hospitality operations leadership across Miami.
           </p>
         </div>
@@ -70,8 +71,8 @@ export default function Profile() {
             </ScrollReveal>
 
             <ScrollReveal delay={150}>
-              <h2 className="font-display text-2xl font-bold text-[#e8e8e8] mb-4">About</h2>
-              <div className="flex flex-col gap-4 text-[#888888] max-w-[68ch]">
+              <h2 className="font-display text-2xl font-bold text-[color:var(--color-text)] mb-4">About</h2>
+              <div className="flex flex-col gap-4 text-[color:var(--color-text-muted)] max-w-[68ch]">
                 <p>
                   With more than 18 years in hospitality and food-and-beverage operations, I have
                   led teams across restaurants, hotels, banquets, and catering throughout Miami.
@@ -87,14 +88,14 @@ export default function Profile() {
           </div>
 
           <ScrollReveal>
-            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-6">Selected Experience</h3>
+            <h3 className="font-display text-xl font-bold text-[color:var(--color-text)] mb-6">Selected Experience</h3>
             <div className="flex flex-col gap-8 mb-12">
               {roles.map((r, i) => (
                 <ScrollReveal key={r.title} delay={i * 100}>
                   <div className="role">
                     <span className="role-meta">{r.meta}</span>
-                    <h2 className="font-display text-xl font-bold text-[#e8e8e8] mb-2">{r.title}</h2>
-                    <p className="text-[#888888] max-w-[62ch] mb-4">{r.body}</p>
+                    <h2 className="font-display text-xl font-bold text-[color:var(--color-text)] mb-2">{r.title}</h2>
+                    <p className="text-[color:var(--color-text-muted)] max-w-[62ch] mb-4">{r.body}</p>
                     <div className="skills-wall">
                       {r.skills.map((s) => (
                         <span key={s} className="skill-tag">{s}</span>
@@ -107,12 +108,12 @@ export default function Profile() {
           </ScrollReveal>
 
           <ScrollReveal>
-            <h3 className="font-display text-xl font-bold text-[#e8e8e8] mb-6">Areas of Focus</h3>
+            <h3 className="font-display text-xl font-bold text-[color:var(--color-text)] mb-6">Areas of Focus</h3>
             <div className="grid sm:grid-cols-2 gap-6 mb-10">
               {areas.map((a) => (
                 <div key={a.label} className="card">
-                  <h4 className="text-sm font-bold text-[#e8e8e8] mb-2">{a.label}</h4>
-                  <p className="text-sm text-[#888888]">{a.desc}</p>
+                  <h4 className="text-sm font-bold text-[color:var(--color-text)] mb-2">{a.label}</h4>
+                  <p className="text-sm text-[color:var(--color-text-muted)]">{a.desc}</p>
                 </div>
               ))}
             </div>

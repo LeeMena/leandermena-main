@@ -1,12 +1,12 @@
 # leandermena-contact-form Worker
 
 Cloudflare Worker that handles the `/contact` form on `leandermena.com`.  
-Replaces Formspree. Sends email via **Cloudflare Email Routing** — zero third-party dependency.
+Replaces Formspree. Sends email via **Cloudflare Email Routing** - zero third-party dependency.
 
 ## Features
-- Honeypot bot trap (hidden `website` field — bots fill it, humans don't)
+- Honeypot bot trap (hidden `website` field - bots fill it, humans don't)
 - Per-IP rate limiting via KV (5 submissions / hour)
-- Input validation (name ≥ 2 chars, valid email regex, message 10–5000 chars)
+- Input validation (name ≥ 2 chars, valid email regex, message 10-5000 chars)
 - CORS locked to `https://www.leandermena.com`
 - Accepts both `application/json` and `multipart/form-data`
 - Graceful fallback error message with direct email on failure
@@ -17,7 +17,7 @@ Replaces Formspree. Sends email via **Cloudflare Email Routing** — zero third-
 - Cloudflare account with `leandermena.com` zone
 - Cloudflare Email Routing enabled (Dashboard → Email → Email Routing)
 - `noreply@leandermena.com` added as a **sender** address and verified
-- `leander@leandermena.com` added as a **destination** address and verified
+- `info@leandermena.com` added as a **destination** address and verified
 
 ### 2. Create KV namespace
 ```bash
@@ -28,7 +28,7 @@ Copy the returned `id` and paste it into `wrangler.toml` → `kv_namespaces[0].i
 ### 3. Set secrets
 ```bash
 npx wrangler secret put RECIPIENT_EMAIL
-# enter: leander@leandermena.com
+# enter: info@leandermena.com
 
 npx wrangler secret put SENDER_EMAIL
 # enter: noreply@leandermena.com
@@ -63,7 +63,7 @@ Content-Type: application/json
   "name": "Jane Smith",
   "email": "jane@example.com",
   "message": "I'd like to discuss a pre-opening engagement.",
-  "website": ""  // honeypot — must be empty string or absent
+  "website": ""  // honeypot - must be empty string or absent
 }
 ```
 

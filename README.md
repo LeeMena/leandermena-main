@@ -1,6 +1,6 @@
 # leandermena.com
 
-Personal brand and consulting site for **Leander Mena** — Fractional F&B Director & Pre-Opening Consultant, Miami.
+Personal brand and consulting site for **Leander Mena** - Fractional F&B Director & Pre-Opening Consultant, Miami.
 
 [![CI](https://github.com/LeeMena/leandermena-main/actions/workflows/ci.yml/badge.svg)](https://github.com/LeeMena/leandermena-main/actions/workflows/ci.yml)
 
@@ -67,12 +67,12 @@ src/
   index.css     # Design tokens + global styles (source of truth for fonts/colors)
 public/         # Static assets served at root
 functions/      # Cloudflare Pages Functions (contact form, etc.)
-legacy/         # Old static site files — do not use in new code
+legacy/         # Old static site files - do not use in new code
 ```
 
 ## Design System
 
-- **Fonts:** Cormorant Garamond (display) + DM Sans (body) — loaded from Google Fonts
+- **Fonts:** Cormorant Garamond (display) + DM Sans (body) - loaded from Google Fonts
 - **Colors:** OKLCH-based custom properties defined in `src/index.css`; mirrored in `tailwind.config.js`
 - **Dark mode:** Default. Class-based toggle via `[data-theme]` on `<html>`
 
@@ -80,4 +80,4 @@ legacy/         # Old static site files — do not use in new code
 
 - The site is a fully client-side SPA. SEO relies on a well-structured sitemap and Cloudflare's edge caching.
 - `legacy/` contains the previous static site and is not referenced by the React app. Safe to ignore.
-- Root-level `.jpg` files (`blog-*.jpg`, `contacts.jpg`) are legacy assets — new images should go in `public/images/`.
+- Root-level `.jpg` files (`blog-*.jpg`, `contacts.jpg`) are legacy assets - new images should go in `public/images/`.

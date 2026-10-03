@@ -6,7 +6,7 @@ export default function Book() {
     <>
       <SEO
         title="Book a Discovery Call | Leander Mena"
-        description="Schedule a 30-minute discovery call with Leander Mena, F&amp;B operations consultant. No pitch, no pressure. We discuss your operation, your challenges, and whether I can help."
+        description="Schedule a free 30-minute discovery call with Leander Mena, F&B operations consultant. No pitch, no pressure: just your operation and whether I can help."
         path="/book"
       />
 
@@ -114,7 +114,7 @@ export default function Book() {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/blueprint" className="btn btn-primary">Get the Blueprint</Link>
-            <Link to="/insights" className="btn btn-secondary">Read Insights</Link>
+            <Link to="/insights" className="btn btn-secondary btn-on-dark">Read Insights</Link>
           </div>
         </div>
       </section>

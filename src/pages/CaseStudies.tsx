@@ -85,7 +85,7 @@ export default function CaseStudies() {
                       }}>
                         &ldquo;{cs.testimonial}&rdquo;
                         <cite style={{ display: 'block', marginTop: '0.5rem', fontStyle: 'normal' }}>
-                          <span className="block mt-1 not-italic font-bold text-xs uppercase tracking-widest text-[#b8a080]">{cs.client}</span>
+                          <span className="block mt-1 not-italic font-bold text-xs uppercase tracking-widest text-[color:var(--color-primary)]">{cs.client}</span>
                         </cite>
                       </blockquote>
                     )}

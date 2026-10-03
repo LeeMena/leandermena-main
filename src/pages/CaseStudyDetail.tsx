@@ -40,7 +40,7 @@ export default function CaseStudyDetail() {
         <div className="container relative z-10" style={{ paddingBlock: 'clamp(3.5rem,8vw,6rem)' }}>
           <Link
             to="/case-studies"
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#888] hover:text-[#b8a080] transition-colors mb-6"
+            className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#888] hover:text-[color:var(--color-primary)] transition-colors mb-6"
           >
             <ArrowLeft size={12} /> Case Studies
           </Link>
@@ -72,7 +72,7 @@ export default function CaseStudyDetail() {
               <div key={r.label} style={{ textAlign: 'center' }}>
                 <div
                   className="font-display"
-                  style={{ fontSize: 'clamp(1.75rem,4vw,2.5rem)', fontWeight: 700, color: '#d4b896', lineHeight: 1, marginBottom: '0.4rem' }}
+                  style={{ fontSize: 'clamp(1.75rem,4vw,2.5rem)', fontWeight: 700, color: 'var(--color-primary-hover)', lineHeight: 1, marginBottom: '0.4rem' }}
                 >
                   {r.metric}
                 </div>
@@ -104,7 +104,7 @@ export default function CaseStudyDetail() {
                     letterSpacing: '0.1em',
                     border: '1px solid #3a3a3a',
                     borderRadius: 'var(--radius-full)',
-                    color: '#b8a080',
+                    color: 'var(--color-primary)',
                   }}
                 >
                   {s}
@@ -122,7 +122,7 @@ export default function CaseStudyDetail() {
               >
                 The Challenge
               </h2>
-              <p style={{ color: '#a0a0a0', lineHeight: 1.75, fontSize: '0.97rem' }}>{cs.challenge}</p>
+              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, fontSize: '0.97rem' }}>{cs.challenge}</p>
             </div>
           </ScrollReveal>
 
@@ -135,7 +135,7 @@ export default function CaseStudyDetail() {
               >
                 The Approach
               </h2>
-              <p style={{ color: '#a0a0a0', lineHeight: 1.75, fontSize: '0.97rem' }}>{cs.approach}</p>
+              <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, fontSize: '0.97rem' }}>{cs.approach}</p>
             </div>
           </ScrollReveal>
 
@@ -146,7 +146,7 @@ export default function CaseStudyDetail() {
                 style={{
                   margin: '0 0 var(--space-10)',
                   padding: 'var(--space-6) var(--space-8)',
-                  borderLeft: '3px solid #b8a080',
+                  borderLeft: '3px solid var(--color-primary)',
                   background: 'var(--color-surface)',
                   borderRadius: '0 var(--radius-md) var(--radius-md) 0',
                 }}
@@ -155,7 +155,7 @@ export default function CaseStudyDetail() {
                   style={{
                     fontSize: 'clamp(1rem,2vw,1.15rem)',
                     fontStyle: 'italic',
-                    color: '#d0d0d0',
+                    color: 'var(--color-text)',
                     lineHeight: 1.7,
                     marginBottom: '0.75rem',
                   }}
@@ -170,7 +170,7 @@ export default function CaseStudyDetail() {
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.12em',
-                    color: '#b8a080',
+                    color: 'var(--color-primary)',
                   }}
                 >
                   {cs.client}
@@ -197,7 +197,7 @@ export default function CaseStudyDetail() {
               <Link
                 to="/case-studies"
                 className="inline-flex items-center gap-2 text-sm font-semibold"
-                style={{ color: '#888' }}
+                style={{ color: 'var(--color-text-muted)' }}
               >
                 <ArrowLeft size={13} /> All Case Studies
               </Link>
@@ -232,7 +232,7 @@ export default function CaseStudyDetail() {
                   <ArrowLeft size={12} style={{ color: '#666' }} />
                   <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#666' }}>Previous</span>
                 </div>
-                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#b8a080' }}>{prev.client}</span>
+                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-primary)' }}>{prev.client}</span>
               </Link>
             )}
             {next && (
@@ -252,7 +252,7 @@ export default function CaseStudyDetail() {
                   <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: '#666' }}>Next</span>
                   <ArrowRight size={12} style={{ color: '#666' }} />
                 </div>
-                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#b8a080' }}>{next.client}</span>
+                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-primary)' }}>{next.client}</span>
               </Link>
             )}
           </div>

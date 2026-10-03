@@ -4,12 +4,12 @@
  *         (or Pages Function at /api/contact)
  *
  * Secrets required (set via: npx wrangler secret put SECRET_NAME):
- *   RECIPIENT_EMAIL   — leander@leandermena.com
- *   SENDER_EMAIL      — noreply@leandermena.com  (must be verified in CF Email Routing)
- *   RATE_LIMIT_SECRET — any random string, used to namespace KV keys
+ *   RECIPIENT_EMAIL - info@leandermena.com
+ *   SENDER_EMAIL - noreply@leandermena.com  (must be verified in CF Email Routing)
+ *   RATE_LIMIT_SECRET - any random string, used to namespace KV keys
  *
  * KV Binding required:
- *   RATE_LIMIT_KV     — bound in wrangler.toml, used for per-IP rate limiting
+ *   RATE_LIMIT_KV - bound in wrangler.toml, used for per-IP rate limiting
  */
 
 const CORS_HEADERS = {
@@ -30,7 +30,7 @@ function isValidEmail(email) {
 }
 
 async function checkRateLimit(env, ip) {
-  if (!env.RATE_LIMIT_KV) return false; // KV not bound — skip limiting
+  if (!env.RATE_LIMIT_KV) return false; // KV not bound - skip limiting
   const key = `rl:${ip}`;
   const raw = await env.RATE_LIMIT_KV.get(key);
   const count = raw ? parseInt(raw, 10) : 0;
@@ -104,14 +104,19 @@ export default {
     // --- Honeypot check (bot trap) ---
     // Field named "website" must be empty. Bots fill all fields.
     if (body.website && String(body.website).trim() !== '') {
-      // Silently accept but do not process — bots see success
+      // Silently accept but do not process - bots see success
       return json({ status: 'success', message: 'Thank you. Leander will respond within 24 hours.' });
     }
 
     // --- Field validation ---
-    const name    = String(body.name    || '').trim();
-    const email   = String(body.email   || '').trim();
-    const message = String(body.message || '').trim();
+    // Single-line fields feed email headers, so line breaks are stripped (header injection).
+    const line     = (v, max) => String(v || '').replace(/[\r\n]+/g, ' ').trim().slice(0, max);
+    const name     = line(body.name, 200);
+    const email    = line(body.email, 254);
+    const business = line(body.business, 200);
+    const interest = line(body.interest, 100);
+    // The site form sends `details` (optional); `message` is accepted for other callers.
+    const details  = String(body.message || body.details || '').trim();
 
     if (!name || name.length < 2) {
       return json({ error: 'Please enter your name.' }, 422);
@@ -119,19 +124,22 @@ export default {
     if (!email || !isValidEmail(email)) {
       return json({ error: 'Please enter a valid email address.' }, 422);
     }
-    if (!message || message.length < 10) {
-      return json({ error: 'Message must be at least 10 characters.' }, 422);
-    }
-    if (message.length > 5000) {
+    if (details.length > 5000) {
       return json({ error: 'Message is too long (max 5000 characters).' }, 422);
     }
+
+    const message = [
+      business && `Business: ${business}`,
+      interest && `Looking for: ${interest}`,
+      details || '(No message provided)',
+    ].filter(Boolean).join('\r\n\r\n');
 
     // --- Send email ---
     try {
       await sendEmail(env, { name, email, message });
     } catch (err) {
       console.error('Email send failed:', err);
-      return json({ error: 'Failed to send message. Please email leander@leandermena.com directly.' }, 502);
+      return json({ error: 'Failed to send message. Please email info@leandermena.com directly.' }, 502);
     }
 
     return json({

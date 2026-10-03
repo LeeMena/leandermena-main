@@ -91,7 +91,7 @@ export default function About() {
                     { num: '3', label: t('about.numbers.languages') },
                   ].map((s) => (
                     <div key={s.label} className="flex flex-col gap-1">
-                      <strong className="text-2xl font-extrabold text-[#d4b896]">{s.num}</strong>
+                      <strong className="text-2xl font-extrabold text-[color:var(--color-primary-hover)]">{s.num}</strong>
                       <span className="text-xs text-[#cccccc] leading-snug">{s.label}</span>
                     </div>
                   ))}
@@ -109,7 +109,7 @@ export default function About() {
             <Reveal>
               <span className="kicker">{t('about.bio.kicker')}</span>
               <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">{t('about.bio.heading')}</h2>
-              <div className="prose-article">
+              <div className="prose">
                 <p>
                   {t('about.bio.p1.pre')}<Link to="/pre-opening" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>{t('about.bio.p1.link')}</Link>{t('about.bio.p1.post')}
                 </p>

@@ -26,7 +26,7 @@ export default function BlogIndex() {
   return (
     <>
       <SEO
-        title="Insights | Leander Mena"
+        title="F&B Operations Insights & Guides | Leander Mena"
         description="Practical F&B operations content on labor cost, pre-opening, hotel restaurants, and fractional leadership from Leander Mena."
         path="/insights"
         schemaType="insights"

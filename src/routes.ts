@@ -12,10 +12,10 @@ export const prerenderRoutes = [
   '/blueprint',
   '/case-studies',
   '/book',
-  '/shop',
   '/products',
   '/industries',
   '/miami-restaurant-consultant',
+  '/privacy',
   '/insights',
 
   // Case study detail pages

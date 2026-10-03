@@ -110,7 +110,7 @@ export default function Footer() {
                 (786) 542-5517
               </a>
               <a
-                href="mailto:letstalk@leandermena.com"
+                href="mailto:info@leandermena.com"
                 style={{
                   fontFamily: 'var(--font-body)',
                   fontSize: '0.8125rem',
@@ -119,7 +119,7 @@ export default function Footer() {
                   transition: 'color 200ms ease',
                 }}
               >
-                letstalk@leandermena.com
+                info@leandermena.com
               </a>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function Footer() {
             heading: 'Services',
             links: [
               { label: 'F&B Operations Consulting', to: '/services' },
-              { label: 'Pre-Opening Consulting', to: '/services' },
+              { label: 'Pre-Opening Consulting', to: '/pre-opening' },
               { label: 'Operations Recovery', to: '/services' },
               { label: 'Book a Call', to: '/contact' },
             ],
@@ -140,6 +140,8 @@ export default function Footer() {
               { label: 'Who I Work With', to: '/industries' },
               { label: 'Insights', to: '/insights' },
               { label: 'About', to: '/about' },
+              { label: 'Leadership Philosophy', to: '/philosophy' },
+              { label: 'Skills & Expertise', to: '/skills' },
               { label: 'Miami Consulting', to: '/miami-restaurant-consultant' },
             ],
           }].map((col) => (
@@ -200,6 +202,10 @@ export default function Footer() {
             color: 'var(--color-text-faint)',
           }}>
             &copy; {year} Leander Mena. All rights reserved.
+            <span aria-hidden="true" style={{ margin: '0 0.6em', opacity: 0.5 }}>·</span>
+            <Link to="/privacy" className="footer-link" style={{ color: 'inherit', textDecoration: 'none' }}>
+              Privacy Policy
+            </Link>
           </p>
           <p style={{
             fontFamily: 'var(--font-body)',

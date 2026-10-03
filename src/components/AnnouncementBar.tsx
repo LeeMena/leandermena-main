@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+// Current quarter, rolling forward during a quarter's final month so the bar never advertises a past quarter.
+function bookingQuarter(now = new Date()) {
+  const q = Math.floor(now.getMonth() / 3) + (now.getMonth() % 3 === 2 ? 2 : 1)
+  return q > 4 ? `Q1 ${now.getFullYear() + 1}` : `Q${q}`
+}
+
 export default function AnnouncementBar() {
   const [visible, setVisible] = useState(false)
 
@@ -31,8 +37,8 @@ export default function AnnouncementBar() {
     <div
       role="banner"
       style={{
-        background: 'var(--color-primary)',
-        color: '#ffffff',
+        background: 'var(--color-primary-fill)',
+        color: '#080807',
         // extra inline padding keeps the centered text clear of the dismiss button
         padding: 'var(--space-2) var(--space-10)',
         display: 'flex',
@@ -49,14 +55,14 @@ export default function AnnouncementBar() {
         fontSize: '0.6875rem',
         letterSpacing: '0.10em',
         textTransform: 'uppercase',
-        color: '#ffffff',
+        color: '#080807',
         textAlign: 'center',
       }}>
-        <span className="hidden sm:inline">Now booking Q3 engagements.{' '}</span>
+        <span className="hidden sm:inline">Now booking {bookingQuarter()} engagements.{' '}</span>
         <Link
           to="/book"
           style={{
-            color: '#ffffff',
+            color: '#080807',
             textDecoration: 'underline',
             textUnderlineOffset: '3px',
             fontWeight: 600,
@@ -72,7 +78,7 @@ export default function AnnouncementBar() {
         style={{
           position: 'absolute',
           right: 'var(--space-4)',
-          color: 'rgba(255,255,255,0.7)',
+          color: 'rgba(8,8,7,0.65)',
           padding: 'var(--space-1)',
           display: 'flex',
           alignItems: 'center',

@@ -23,7 +23,7 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
-      // Discourage unused vars — common source of bundle bloat
+      // Discourage unused vars - common source of bundle bloat
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       // Prevent accidental any types
       '@typescript-eslint/no-explicit-any': 'warn',
