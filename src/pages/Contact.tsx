@@ -10,6 +10,8 @@ type Status = 'idle' | 'sending' | 'success' | 'error'
 type ContactForm = { name: string; email: string; business: string; interest: string; details: string }
 
 const CONTACT_EMAIL = 'info@leandermena.com'
+// Formspree delivers submissions to info@leandermena.com (iCloud+ mail, so Cloudflare Email Routing is not an option).
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xyezrawy'
 const INTEREST_LABEL_KEYS: Record<string, string> = {
   fractional: 'contact.form.opt.fractional',
   'pre-opening': 'contact.form.opt.preOpening',
@@ -49,23 +51,34 @@ export default function Contact() {
     return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    const honeypot = (e.currentTarget.elements.namedItem('_gotcha') as HTMLInputElement | null)?.value ?? ''
+    const tEn = getT('en')
     setStatus('sending')
     setErrorMsg('')
     try {
-      const res = await fetch('https://contact.leandermena.com/contact', {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          business: form.business,
+          interest: form.interest ? tEn(INTEREST_LABEL_KEYS[form.interest] ?? form.interest) : '',
+          message: form.details,
+          _subject: form.business ? `Website inquiry: ${form.business}` : `Website inquiry from ${form.name}`,
+          _gotcha: honeypot,
+        }),
         signal: AbortSignal.timeout(10000),
       })
-      const data = await res.json()
-      if (res.ok && data.status === 'success') {
+      const data = await res.json().catch(() => ({}))
+      if (res.ok) {
         setStatus('success')
         trackEvent('Contact Form Submit')
       } else {
-        setErrorMsg(data.error || data.message || t('contact.err.generic'))
+        const msg = Array.isArray(data.errors) ? data.errors.map((x: { message?: string }) => x.message).filter(Boolean).join(' ') : ''
+        setErrorMsg(msg || t('contact.err.generic'))
         setStatus('error')
       }
     } catch {
@@ -481,7 +494,7 @@ export default function Contact() {
                     />
                   </div>
 
-                  <input type="text" name="website" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+                  <input type="text" name="_gotcha" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
                   {errorMsg && (
                     <p role="alert" style={{ color: '#e05555', fontSize: 'var(--text-sm)', lineHeight: 1.5 }}>

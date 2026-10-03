@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom'
 const EMAIL = 'info@leandermena.com'
 
 const services = [
-  ['Cloudflare', 'hosting, security, form processing, and privacy-friendly traffic statistics'],
+  ['Cloudflare', 'hosting, security, and privacy-friendly traffic statistics'],
+  ['Formspree', 'delivers contact form messages by email'],
   ['Kit (ConvertKit)', 'delivers the free 90-Day Pre-Opening Blueprint and related follow-up emails'],
   ['Calendly', 'scheduling for discovery calls'],
   ['Gumroad', 'checkout and delivery for digital products'],
