@@ -146,7 +146,7 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="F&B Operations Consultant | Leander Mena"
+        title="F&B Operations Consultant & Fractional GM | Leander Mena"
         description="F&B operations consulting, pre-opening builds, and operations turnaround for restaurants and hotels nationwide. 18+ years running Miami's top hospitality venues - now available across the U.S."
         path="/"
         schemaType="home"
