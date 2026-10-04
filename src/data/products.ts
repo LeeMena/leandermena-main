@@ -47,7 +47,7 @@ export const products: Product[] = [
     badge: 'Available Now',
     includes: ['120-day roadmap PDF', 'Editable checklists', 'Vendor contact templates', 'Vendor negotiation scripts'],
     status: 'available',
-    checkoutUrl: 'https://leandermena.gumroad.com/l/ypudd'
+    checkoutUrl: 'https://gumroad.com/l/ypudd'
   },
   {
     id: 'sop-master-collection',
