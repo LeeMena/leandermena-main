@@ -150,6 +150,9 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
               {!isAvailable && product.expected && (
                 <span style={{ display: 'block', fontSize: '0.72rem', color: 'var(--color-text-faint)', marginTop: '2px' }}>Expected: {product.expected}</span>
               )}
+              {isAvailable && (
+                <span style={{ display: 'block', fontSize: '0.68rem', color: 'var(--color-text-faint)', marginTop: '2px' }}>Secure checkout: card or PayPal</span>
+              )}
             </div>
             {isAvailable ? (
               <a
