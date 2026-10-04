@@ -81,11 +81,10 @@ export default function PreOpening() {
             <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">{t('preOpening.track.heading')}</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
               {[
-                { name: 'Maska Indian Kitchen + Bar', note: 'With Michelin-starred Chef Hemant Mathur · Midtown Miami · $1.2M+ year one' },
-                { name: 'Plomo Tequila & Taco Bar', note: '300-cover peak days · Miami' },
-                { name: 'La Cervecería de Barrio', note: 'Launch GM · V&E Hospitality · Miami' },
-                { name: 'SLS Brickell Hotel Miami', note: 'Director of Banquets & Events pre-opening · SBE' },
-                { name: 'Additional hotel F&B programs', note: 'Marriott, Conrad, InterContinental, Hyatt properties across Miami' },
+                { name: 'Maska Indian Kitchen + Bar', note: 'Opening GM · Michelin-starred Chef Hemant Mathur · Midtown Miami · Opened January 2019' },
+                { name: 'Cho:Tu Indian Street Food', note: 'Fast-casual and off-premise launch from Maska’s kitchen · Midtown Miami' },
+                { name: 'SLS Brickell Hotel Miami', note: 'Director of Banquet Operations, opening team · 1,800-guest grand opening · sbe' },
+                { name: 'Pullman Miami Airport', note: 'Banquet procedures through the Sofitel-to-Pullman brand conversion · Accor' },
               ].map((c, i) => (
                 <div key={i} style={{ padding: '1rem 0', borderBottom: '1px solid var(--color-border)', display: 'flex', flexWrap: 'wrap', gap: '0.5rem 1.5rem', alignItems: 'baseline' }}>
                   <span style={{ fontWeight: 600 }}>{c.name}</span>

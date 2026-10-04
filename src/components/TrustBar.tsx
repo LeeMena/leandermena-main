@@ -3,9 +3,9 @@ import { useRef } from 'react'
 
 const TRUST_ITEMS = [
   { stat: '20', label: 'Years in Miami Hospitality' },
-  { stat: '$12M+', label: 'Revenue Optimized' },
-  { stat: '500+', label: 'Team Members Trained' },
-  { stat: '40+', label: 'Properties Operated' },
+  { stat: '$9.1M', label: 'Annual Revenue Led' },
+  { stat: '5,000+', label: 'Hotel Rooms Served' },
+  { stat: '$180K+', label: 'Saved Yearly in Purchasing' },
 ]
 
 export default function TrustBar() {

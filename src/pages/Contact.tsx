@@ -176,7 +176,7 @@ export default function Contact() {
             {[
               { stat: '20', label: t('contact.trust.years') },
               { stat: '< 24h', label: t('contact.trust.response') },
-              { stat: '30+', label: t('contact.trust.properties') },
+              { stat: '3', label: t('contact.trust.properties') },
             ].map(({ stat, label }) => (
               <div key={label} style={{ minWidth: '80px' }}>
                 <div

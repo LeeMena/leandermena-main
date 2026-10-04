@@ -321,9 +321,9 @@ export default function Home() {
           <div className="home-stats-grid">
             {[
               { value: '20', labelKey: 'home.stat.years' },
-              { value: '$12M+', labelKey: 'home.stat.revenue' },
-              { value: '500+', labelKey: 'home.stat.trained' },
-              { value: '40+', labelKey: 'home.stat.properties' },
+              { value: '$9.1M', labelKey: 'home.stat.revenue' },
+              { value: '5,000+', labelKey: 'home.stat.trained' },
+              { value: '$180K+', labelKey: 'home.stat.properties' },
             ].map((s, i) => (
               <AnimatedStat key={s.labelKey} value={s.value} label={t(s.labelKey)} delay={i * 0.08} tone="theme" />
             ))}
@@ -482,9 +482,9 @@ export default function Home() {
           </div>
           <div className="home-stats-grid" style={{ marginTop: 'clamp(var(--space-16), 8vw, var(--space-24))', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 'clamp(var(--space-12), 5vw, var(--space-20))' }}>
             {[
-              { value: '$12M+', labelKey: 'home.stat.revenue' },
-              { value: '500+', labelKey: 'home.stat.team' },
-              { value: '40+', labelKey: 'home.stat.properties' },
+              { value: '1,800', labelKey: 'home.stat.team' },
+              { value: '24%', labelKey: 'home.stat.offPremise' },
+              { value: '3', labelKey: 'contact.trust.properties' },
               { value: '20', labelKey: 'home.stat.yearsLeading' },
             ].map((s, i) => <AnimatedStat key={s.labelKey} value={s.value} label={t(s.labelKey)} delay={i * 0.08} />)}
           </div>

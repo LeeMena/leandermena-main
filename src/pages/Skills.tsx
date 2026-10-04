@@ -44,9 +44,9 @@ const skillData = {
   ],
   stats: [
     { num: '20', label: 'Years in F&B Operations' },
-    { num: '5', label: 'Pre-Openings Led' },
+    { num: '3', label: 'Openings Led' },
     { num: '$9.1M', label: 'Annual Revenue Managed' },
-    { num: '$1.2M+', label: 'Year-One Revenue, Maska Indian Kitchen Pre-Opening' },
+    { num: '1,800', label: 'Guests at the SLS Brickell Grand Opening' },
   ],
   faq: [
     {

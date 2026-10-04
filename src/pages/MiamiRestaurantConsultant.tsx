@@ -40,7 +40,7 @@ export default function MiamiRestaurantConsultant() {
             <span className="kicker">Local Track Record</span>
             <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">Built in This Market</h2>
             <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
-              Leander Mena is a <strong style={{ color: 'var(--color-text)' }}>Miami restaurant and hotel F&amp;B consultant</strong> whose entire operating playbook was built in this market: Michelin-starred pre-openings in Midtown, banquet and events leadership at SLS Brickell, dual-concept P&amp;L management for V&amp;E Hospitality, and catering roles across the JW Marriott Marquis, Conrad, and InterContinental Miami.
+              Leander Mena is a <strong style={{ color: 'var(--color-text)' }}>Miami restaurant and hotel F&amp;B consultant</strong> whose entire operating playbook was built in this market: opening Chef Hemant Mathur’s Maska in Midtown, opening the banquet department at SLS Brickell, running two restaurants for V&amp;E Hospitality, hotel room-service delivery across Downtown, Brickell, and South Beach, and banquet and F&amp;B roles at Accor, Viceroy, InterContinental, and The Palms.
             </p>
             <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8, marginBottom: '1.25rem' }}>
               For Miami and South Florida operators, that means on-site consulting without travel overhead: pre-opening builds, operations turnarounds, banquet program fixes, and ongoing F&amp;B consulting oversight, with same-week floor presence when something breaks.
@@ -63,9 +63,9 @@ export default function MiamiRestaurantConsultant() {
                 { venue: 'Maska Indian Kitchen + Bar', role: 'Pre-Opening GM, with Michelin-starred Chef Hemant Mathur' },
                 { venue: 'SLS Brickell (SBE)', role: 'Director of Banquets & Events, pre-opening' },
                 { venue: 'Marabu + La Cervecería de Barrio', role: 'Dual-concept GM, $9.1M annual revenue' },
-                { venue: 'Plomo Tequila & Taco Bar', role: 'Pre-Opening GM, 300-cover peak days' },
-                { venue: 'JW Marriott Marquis Miami', role: 'Catering & Convention Services' },
-                { venue: 'Conrad · InterContinental · Hyatt', role: 'Catering and events leadership' },
+                { venue: 'Butler Hospitality', role: 'Local Area F&B Manager, 5,000+ partner hotel rooms' },
+                { venue: 'Sofitel / Pullman Miami Airport', role: 'Banquet Manager, $180K+ yearly purchasing savings' },
+                { venue: 'Viceroy · InterContinental · The Palms', role: 'Banquets, events, and hotel F&B' },
               ].map((v) => (
                 <div key={v.venue} className="card" style={{ padding: '1.25rem 1.5rem' }}>
                   <strong style={{ display: 'block', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.35rem' }}>{v.venue}</strong>

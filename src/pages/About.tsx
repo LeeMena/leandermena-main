@@ -86,7 +86,7 @@ export default function About() {
                 <div className="grid grid-cols-2 gap-6 mt-4">
                   {[
                     { num: '20', label: t('about.numbers.years') },
-                    { num: '5+', label: t('about.numbers.projects') },
+                    { num: '3', label: t('about.numbers.projects') },
                     { num: '$9.1M', label: t('about.numbers.revenue') },
                     { num: '3', label: t('about.numbers.languages') },
                   ].map((s) => (

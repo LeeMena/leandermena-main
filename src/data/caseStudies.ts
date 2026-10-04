@@ -16,23 +16,24 @@ export interface CaseStudy {
   slug: string;
 }
 
+// Every fact here comes from the resume (the master source) or public records
+// about the property. No testimonials are shown until real, attributable ones exist.
 export const caseStudies: CaseStudy[] = [
   {
     id: '1',
     client: 'Maska Indian Kitchen + Bar',
-    industry: 'Fine Dining / Michelin Concept',
+    industry: 'Restaurant Opening / Michelin-Chef Concept',
     title: "Opening a Michelin-Starred Chef's Restaurant from Ground Zero",
-    challenge: 'Open an upscale Indian restaurant concept led by Chef Hemant Mathur, America\'s first Michelin-starred Indian chef, in Miami\'s competitive dining market. The project required building an entirely new team, establishing vendor relationships, creating service standards, and executing a flawless opening - all within a compressed timeline.',
-    approach: 'Implemented a comprehensive 120-day pre-opening system: recruited and trained 35+ team members across FOH and BOH, established 22 vendor partnerships, developed 50+ SOPs, and executed a phased soft opening leading to the grand opening. Created custom training modules for Indian cuisine service standards.',
+    challenge: 'Open Maska Indian Kitchen + Bar, a 7,000 sq. ft., 140-seat modern Indian restaurant in Midtown Miami led by Chef Hemant Mathur, America\'s first Michelin-starred Indian chef, with no existing team, vendors, or systems in place.',
+    approach: 'As opening General Manager, built the operation from the ground up: hiring and training, purchasing controls, vendor relationships, inventory pars, front- and back-of-house procedures, service standards, and the opening-readiness timeline. After opening, launched Cho:Tu Indian Street Food next door as a fast-casual and off-premise concept run from Maska\'s kitchen.',
     results: [
-      { metric: '35+', label: 'Team members hired & trained' },
-      { metric: '50+', label: 'SOPs implemented' },
-      { metric: '0', label: 'Critical issues on opening night' },
-      { metric: '4.8★', label: 'Average review rating at 90 days' }
+      { metric: 'Jan 2019', label: 'Opened on schedule in Midtown' },
+      { metric: '140', label: 'Seats across 7,000 sq. ft.' },
+      { metric: '2', label: 'Concepts run from one kitchen' }
     ],
-    services: ['Pre-Opening Consulting', 'Team Training', 'SOP Development'],
-    duration: '4 months',
-    testimonial: 'Leander built our entire operational foundation. From a construction site to a fully functioning fine dining restaurant - his system left nothing to chance.',
+    services: ['Pre-Opening', 'Team Hiring & Training', 'SOP Development'],
+    duration: 'Opening General Manager, 2018 - 2021',
+    testimonial: '',
     image: '/images/pre-opening.jpg',
     slug: 'maska-indian-kitchen'
   },
@@ -40,56 +41,53 @@ export const caseStudies: CaseStudy[] = [
     id: '2',
     client: 'V&E Hospitality Group',
     industry: 'Multi-Concept Restaurant Group',
-    title: '18% Labor Cost Reduction While Improving Service Scores',
-    challenge: 'A high-volume Miami restaurant was experiencing labor cost overruns exceeding budget by 24%, declining guest satisfaction scores, and 40% annual staff turnover. The ownership group needed immediate intervention without disrupting daily operations.',
-    approach: 'Conducted a 5-day operations diagnostic across all shifts, identifying scheduling inefficiencies, overtime patterns, and training gaps. Restructured the labor model with smart scheduling templates, implemented cross-training programs, and reset service standards with a 3-week intensive training sprint.',
+    title: 'Running Two Restaurants and $9.1M in Annual Revenue',
+    challenge: 'V&E Hospitality needed one leader to run two very different restaurants at the same time: Marab\u00fa, a coal-fired Cuban restaurant at Brickell City Centre, and La Cervecer\u00eda de Barrio in Miami Beach, while growing sales without eroding margins.',
+    approach: 'Shared staff, prep, and purchasing across both concepts with the culinary team; tightened labor deployment and prime cost control; and built an off-premise program that grew alongside dine-in service instead of competing with it.',
     results: [
-      { metric: '18%', label: 'Labor cost reduction' },
-      { metric: '22%', label: 'Improvement in guest satisfaction' },
-      { metric: '40%→15%', label: 'Turner reduction' },
-      { metric: '3.2x', label: 'ROI on consulting investment' }
+      { metric: '$9.1M', label: 'Combined annual revenue' },
+      { metric: '24%', label: 'Of total sales from off-premise' },
+      { metric: '2', label: 'Restaurants run at once' }
     ],
-    services: ['Ongoing Consulting', 'Operations Recovery', 'Labor Optimization'],
-    duration: '6 months',
-    testimonial: 'Within 60 days we saw measurable improvement. By month four, we were a completely different operation. Leander changed how we think about labor.',
+    services: ['Multi-Unit Operations', 'Labor & Prime Cost Control', 'Off-Premise Growth'],
+    duration: 'General Manager, 2024 - 2025',
+    testimonial: '',
     image: '/images/labor.jpg',
     slug: 've-hospitality-turnaround'
   },
   {
     id: '3',
     client: 'SLS Brickell',
-    industry: 'Luxury Urban Hotel',
-    title: 'Pre-Opening Banquet Operations for 500-Person Events',
-    challenge: 'A luxury hotel needed comprehensive banquet and catering operations built from scratch before the first guest arrival. The event space needed to handle intimate 20-person dinners to 500-person galas with consistent five-star service.',
-    approach: 'Developed complete banquet operations infrastructure: created BEO templates and workflows, built staffing models for different event types, designed catering menus with costing analysis, and trained a dedicated banquet team. Implemented event execution systems with detailed run-of-shows.',
+    industry: 'Luxury Lifestyle Hotel Opening',
+    title: 'Building a Luxury Hotel Banquet Department Before Opening Day',
+    challenge: 'SLS Brickell, a 124-room Philippe Starck hotel by sbe with 58,000 sq. ft. of indoor and outdoor event space, needed a banquet department built from nothing before its October 2016 opening.',
+    approach: 'As Director of Banquet Operations on the opening team, built the department\'s workflows, staffing, training, service standards, and event-execution procedures, then held banquet service to sbe\'s luxury lifestyle brand standards across the ballroom, terraces, and private-event spaces.',
     results: [
-      { metric: '94%', label: 'Guest satisfaction at launch' },
-      { metric: '500', label: 'Max guest capacity executed flawlessly' },
-      { metric: '12', label: 'Event types systematized' },
-      { metric: '23%', label: 'Above-target banquet revenue' }
+      { metric: '1,800', label: 'Guests at the grand opening' },
+      { metric: '58,000', label: 'Sq. ft. of event space brought online' },
+      { metric: 'Oct 2016', label: 'Hotel opening' }
     ],
-    services: ['Pre-Opening Consulting', 'Banquet Operations', 'Team Training'],
-    duration: '3 months',
-    testimonial: 'The banquet systems Leander created are still our gold standard. He set us up to scale from day one.',
+    services: ['Pre-Opening', 'Banquet Operations', 'Team Training'],
+    duration: 'Director of Banquet Operations, 2015 - 2018',
+    testimonial: '',
     image: '/images/dining.jpg',
     slug: 'sls-brickell-banquets'
   },
   {
     id: '4',
     client: 'Butler Hospitality',
-    industry: 'Hotel F&B Technology',
-    title: 'Scaling Multi-Property F&B Operations Across 28 Hotels',
-    challenge: 'A rapidly growing hospitality technology company needed to manage F&B delivery and brand standards across an expanding portfolio of hotel partners, scaling from 12 to 28 properties while maintaining consistent quality and compliance.',
-    approach: 'Created a multi-property operations framework with standardized brand compliance checklists, unified training programs delivered via digital platform, vendor consolidation strategies, and a performance scorecard system. Implemented weekly quality audits and feedback loops.',
+    industry: 'Hotel In-Room Dining',
+    title: 'Hotel Room-Service Delivery Across 5,000+ Rooms',
+    challenge: 'Butler Hospitality delivered in-room dining to partner hotels from central kitchens, and its Miami market needed fast, consistent service across properties in Downtown, Brickell, and South Beach.',
+    approach: 'As Local Area F&B Manager, ran staffing, order fulfillment, and hotel integrations, and brought new hotel partners online with menu builds, property-management-system order workflows, vendor setup, and field training for staff.',
     results: [
-      { metric: '28', label: 'Properties managed seamlessly' },
-      { metric: '99.2%', label: 'Brand compliance score' },
-      { metric: '34%', label: 'Reduction in operational complaints' },
-      { metric: '2.3x', label: 'Portfolio growth supported' }
+      { metric: '5,000+', label: 'Partner hotel rooms served' },
+      { metric: '< 30 min', label: 'Delivery standard' },
+      { metric: '3', label: 'Miami neighborhoods covered' }
     ],
-    services: ['Ongoing Consulting', 'SOP Development', 'Quality Systems'],
-    duration: '12 months',
-    testimonial: 'Leander built the operational infrastructure that made our growth possible. We scaled without sacrificing quality.',
+    services: ['Multi-Property Operations', 'In-Room Dining', 'Partner Onboarding'],
+    duration: 'Local Area F&B Manager, 2021 - 2024',
+    testimonial: '',
     image: '/images/fnb-manager.jpg',
     slug: 'butler-hospitality-scale'
   }

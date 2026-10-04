@@ -46,9 +46,9 @@ export default function BlogLaborCostFull() {
 
             <ScrollReveal delay={100}>
               <p>
-                At a 220-seat dual-concept operation in Miami, I brought labor cost from 38% to
-                under 30% over 14 months without a single layoff and without a measurable decline
-                in guest satisfaction scores. Here is the framework.
+                Running two restaurants and $9.1M in annual revenue in Miami taught me that labor cost
+                is won in the schedule, not in the payroll report. Here is the framework I use to
+                bring it down without layoffs and without hurting the guest experience.
               </p>
             </ScrollReveal>
 
