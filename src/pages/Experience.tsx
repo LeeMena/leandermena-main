@@ -13,7 +13,7 @@ export default function Experience() {
     {
       venue: 'V&E Hospitality Group',
       title: t('experience.r1.title'),
-      subtitle: 'Marab\u00fa Restaurant + La Cervecer\u00eda de Barrio \u00b7 Miami, FL \u00b7 2024 \u2013 2025',
+      subtitle: 'Marab\u00fa Cuban Coal Fire & Grill + La Cervecer\u00eda de Barrio \u00b7 Miami, FL',
       body: t('experience.r1.body'),
       link: '/case-studies',
       linkLabel: t('experience.linkCase'),
@@ -21,7 +21,7 @@ export default function Experience() {
     {
       venue: 'Butler Hospitality',
       title: t('experience.r2.title'),
-      subtitle: 'Butler Hospitality (B Hospitality Corp.) \u00b7 Miami, FL \u00b7 2021 \u2013 2024',
+      subtitle: 'Butler Hospitality (B Hospitality Corp.) \u00b7 Miami, FL',
       body: t('experience.r2.body'),
       link: '/case-studies',
       linkLabel: t('experience.linkCase'),
@@ -29,7 +29,7 @@ export default function Experience() {
     {
       venue: 'Maska Indian Kitchen + Bar',
       title: t('experience.r3.title'),
-      subtitle: 'Maska + Cho:Tu Indian Street Food \u00b7 Midtown Miami, FL \u00b7 2018 \u2013 2021',
+      subtitle: 'Maska + Cho:Tu Indian Street Food \u00b7 Midtown Miami, FL',
       body: t('experience.r3.body'),
       link: '/case-studies',
       linkLabel: t('experience.linkCase'),
@@ -37,7 +37,7 @@ export default function Experience() {
     {
       venue: 'SLS Brickell Hotel',
       title: t('experience.r4.title'),
-      subtitle: 'sbe Hotels \u00b7 Miami, FL \u00b7 2015 \u2013 2018',
+      subtitle: 'sbe Hotels \u00b7 Miami, FL',
       body: t('experience.r4.body'),
       link: '/pre-opening',
       linkLabel: t('experience.linkPreOpening'),
@@ -45,7 +45,7 @@ export default function Experience() {
     {
       venue: 'Sofitel Miami / Pullman Miami Airport',
       title: t('experience.r5.title'),
-      subtitle: 'Accor \u00b7 Miami, FL \u00b7 2013 \u2013 2015',
+      subtitle: 'Accor \u00b7 Miami, FL',
       body: t('experience.r5.body'),
       link: '/services',
       linkLabel: t('experience.linkServices'),
@@ -62,7 +62,7 @@ export default function Experience() {
     <>
       <SEO
         title="Experience & Track Record | Leander Mena, F&B Operations"
-        description="20 years in Miami hotels and restaurants: SLS Brickell\u2019s opening banquet team, Chef Hemant Mathur\u2019s Maska, a $9.1M two-restaurant operation, and hotel room-service delivery across 5,000+ rooms."
+        description="20 years in Miami hotels and restaurants: SLS Brickell\u2019s opening banquet team, Chef Hemant Mathur\u2019s Maska, a two-restaurant operation, and hotel room-service delivery across 5,000+ rooms."
         path="/experience"
         schemaType="profile"
       />
@@ -125,26 +125,6 @@ export default function Experience() {
                   <div style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>{e.title}</div>
                 </div>
               ))}
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Education */}
-      <section className="section">
-        <div className="container" style={{ maxWidth: 'var(--content-default)' }}>
-          <ScrollReveal>
-            <span className="kicker">{t('experience.edu.kicker')}</span>
-            <h2 className="font-display text-[clamp(1.35rem,2.5vw,1.75rem)] font-bold mb-6">{t('experience.edu.heading')}</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(240px,1fr))', gap: '1rem' }}>
-              <div className="card" style={{ padding: '1.25rem 1.5rem' }}>
-                <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>{t('experience.edu.degree')}</div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>{t('experience.edu.school')}</div>
-              </div>
-              <div className="card" style={{ padding: '1.25rem 1.5rem' }}>
-                <div style={{ fontWeight: 700, marginBottom: '0.25rem' }}>{t('experience.edu.servsafe')}</div>
-                <div style={{ fontSize: '0.82rem', color: 'var(--color-text-muted)' }}>{t('experience.edu.languages')}</div>
-              </div>
             </div>
           </ScrollReveal>
         </div>

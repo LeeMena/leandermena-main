@@ -87,7 +87,7 @@ export default function About() {
                   {[
                     { num: '20', label: t('about.numbers.years') },
                     { num: '3', label: t('about.numbers.projects') },
-                    { num: '$9.1M', label: t('about.numbers.revenue') },
+                    { num: '5,000+', label: t('about.numbers.revenue') },
                     { num: '3', label: t('about.numbers.languages') },
                   ].map((s) => (
                     <div key={s.label} className="flex flex-col gap-1">

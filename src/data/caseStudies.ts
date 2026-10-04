@@ -32,7 +32,7 @@ export const caseStudies: CaseStudy[] = [
       { metric: '2', label: 'Concepts run from one kitchen' }
     ],
     services: ['Pre-Opening', 'Team Hiring & Training', 'SOP Development'],
-    duration: 'Opening General Manager, 2018 - 2021',
+    duration: 'Opening General Manager',
     testimonial: '',
     image: '/images/pre-opening.jpg',
     slug: 'maska-indian-kitchen'
@@ -41,16 +41,16 @@ export const caseStudies: CaseStudy[] = [
     id: '2',
     client: 'V&E Hospitality Group',
     industry: 'Multi-Concept Restaurant Group',
-    title: 'Running Two Restaurants and $9.1M in Annual Revenue',
-    challenge: 'V&E Hospitality needed one leader to run two very different restaurants at the same time: Marab\u00fa, a coal-fired Cuban restaurant at Brickell City Centre, and La Cervecer\u00eda de Barrio in Miami Beach, while growing sales without eroding margins.',
+    title: 'Running Two Restaurants at Once for V&E Hospitality',
+    challenge: 'V&E Hospitality needed one leader to run two very different restaurants at the same time: Marab\u00fa Cuban Coal Fire & Grill at Brickell City Centre, and La Cervecer\u00eda de Barrio in Miami Beach, while growing sales without eroding margins.',
     approach: 'Shared staff, prep, and purchasing across both concepts with the culinary team; tightened labor deployment and prime cost control; and built an off-premise program that grew alongside dine-in service instead of competing with it.',
     results: [
-      { metric: '$9.1M', label: 'Combined annual revenue' },
-      { metric: '24%', label: 'Of total sales from off-premise' },
-      { metric: '2', label: 'Restaurants run at once' }
+      { metric: '2', label: 'Restaurants run at once' },
+      { metric: '2', label: 'Neighborhoods: Brickell and Miami Beach' },
+      { metric: 'New', label: 'Off-premise program built' }
     ],
     services: ['Multi-Unit Operations', 'Labor & Prime Cost Control', 'Off-Premise Growth'],
-    duration: 'General Manager, 2024 - 2025',
+    duration: 'General Manager, Dual Concept',
     testimonial: '',
     image: '/images/labor.jpg',
     slug: 've-hospitality-turnaround'
@@ -68,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
       { metric: 'Oct 2016', label: 'Hotel opening' }
     ],
     services: ['Pre-Opening', 'Banquet Operations', 'Team Training'],
-    duration: 'Director of Banquet Operations, 2015 - 2018',
+    duration: 'Director of Banquet Operations, Opening Team',
     testimonial: '',
     image: '/images/dining.jpg',
     slug: 'sls-brickell-banquets'
@@ -79,14 +79,14 @@ export const caseStudies: CaseStudy[] = [
     industry: 'Hotel In-Room Dining',
     title: 'Hotel Room-Service Delivery Across 5,000+ Rooms',
     challenge: 'Butler Hospitality delivered in-room dining to partner hotels from central kitchens, and its Miami market needed fast, consistent service across properties in Downtown, Brickell, and South Beach.',
-    approach: 'As Local Area F&B Manager, ran staffing, order fulfillment, and hotel integrations, and brought new hotel partners online with menu builds, property-management-system order workflows, vendor setup, and field training for staff.',
+    approach: 'As Local Area Operations Manager, ran staffing, order fulfillment, and hotel integrations, and brought new hotel partners online with menu builds, property-management-system order workflows, vendor setup, and field training for staff.',
     results: [
       { metric: '5,000+', label: 'Partner hotel rooms served' },
       { metric: '< 30 min', label: 'Delivery standard' },
       { metric: '3', label: 'Miami neighborhoods covered' }
     ],
     services: ['Multi-Property Operations', 'In-Room Dining', 'Partner Onboarding'],
-    duration: 'Local Area F&B Manager, 2021 - 2024',
+    duration: 'Local Area Operations Manager',
     testimonial: '',
     image: '/images/fnb-manager.jpg',
     slug: 'butler-hospitality-scale'

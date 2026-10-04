@@ -62,8 +62,8 @@ export default function MiamiRestaurantConsultant() {
               {[
                 { venue: 'Maska Indian Kitchen + Bar', role: 'Pre-Opening GM, with Michelin-starred Chef Hemant Mathur' },
                 { venue: 'SLS Brickell (SBE)', role: 'Director of Banquets & Events, pre-opening' },
-                { venue: 'Marabu + La Cervecería de Barrio', role: 'Dual-concept GM, $9.1M annual revenue' },
-                { venue: 'Butler Hospitality', role: 'Local Area F&B Manager, 5,000+ partner hotel rooms' },
+                { venue: 'Marabú + La Cervecería de Barrio', role: 'Dual-concept General Manager, V&E Hospitality' },
+                { venue: 'Butler Hospitality', role: 'Local Area Operations Manager, 5,000+ partner hotel rooms' },
                 { venue: 'Sofitel / Pullman Miami Airport', role: 'Banquet Manager, $180K+ yearly purchasing savings' },
                 { venue: 'Viceroy · InterContinental · The Palms', role: 'Banquets, events, and hotel F&B' },
               ].map((v) => (

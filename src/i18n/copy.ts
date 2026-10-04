@@ -23,12 +23,11 @@ const en: Dict = {
 
   // --- home stats ---
   'home.stat.years': 'Years Experience',
-  'home.stat.revenue': 'Annual Revenue Led',
   'home.stat.trained': 'Hotel Rooms Served',
   'home.stat.properties': 'Saved Yearly in Purchasing',
   'home.stat.yearsLeading': 'Years Leading',
   'home.stat.team': 'Guest Grand Opening',
-  'home.stat.offPremise': 'Of Sales From Off-Premise',
+  'home.stat.concurrent': 'Restaurants Run at Once',
 
   // --- home problem / solution / difference ---
   'home.problem.accent': 'The Problem',
@@ -88,7 +87,7 @@ const en: Dict = {
   'home.value3.title': 'Proven Track Record',
   'home.value3.body': '20 years across Michelin concepts, luxury hotels, and independents',
   'home.value4.title': 'Results You Can Measure',
-  'home.value4.body': '$180K+ saved yearly through purchasing and 24% of sales added through off-premise',
+  'home.value4.body': '$180K+ saved yearly through centralized purchasing, and a 1,800-guest grand opening run by a newly built team',
 
   // --- services page ---
   'services.heroTitle': 'Ways to Work Together',
@@ -208,7 +207,7 @@ const en: Dict = {
   'about.numbers.kicker': 'By the Numbers',
   'about.numbers.years': 'Years in Miami Hospitality',
   'about.numbers.projects': 'Openings Led',
-  'about.numbers.revenue': 'Annual Revenue Managed',
+  'about.numbers.revenue': 'Hotel Rooms Served',
   'about.numbers.languages': 'Languages Spoken',
   'about.bio.kicker': 'Background',
   'about.bio.heading': 'Built in the Trenches of Miami Hospitality',
@@ -246,8 +245,8 @@ const en: Dict = {
   'experience.linkServices': 'F&B consulting services \u2192',
   'experience.linkPreOpening': 'Pre-opening consulting \u2192',
   'experience.r1.title': 'General Manager | Dual Concept',
-  'experience.r1.body': 'Ran Marabú, a coal-fired Cuban restaurant at Brickell City Centre, and La Cervecería de Barrio in Miami Beach at the same time, accountable for $9.1M in combined annual revenue. Built an off-premise program that grew to 24% of total sales while protecting dine-in margins through tighter labor deployment and prime cost control, and shared staff, prep, and purchasing across both concepts with the culinary team.',
-  'experience.r2.title': 'Local Area F&B Manager, Miami',
+  'experience.r1.body': 'Ran Marabú Cuban Coal Fire & Grill at Brickell City Centre and La Cervecería de Barrio in Miami Beach at the same time, responsible for service, staffing, purchasing, and daily results in both. Built an off-premise program while protecting dine-in margins through tighter labor deployment and prime cost control, and shared staff, prep, and purchasing across the two concepts with the culinary team.',
+  'experience.r2.title': 'Local Area Operations Manager, Miami',
   'experience.r2.body': 'Ran Miami market operations for a hotel food-service company delivering in-room dining from central kitchens to partner hotels with 5,000+ rooms across Downtown, Brickell, and South Beach. Managed staffing, order fulfillment, and hotel integrations against a delivery standard of under 30 minutes, and brought new hotel partners online with menu builds, property-management-system order workflows, vendor setup, and field training.',
   'experience.r3.title': 'Opening General Manager',
   'experience.r3.body': 'Built the opening operation for Chef Hemant Mathur’s 7,000 sq. ft. Midtown restaurant, which opened in January 2019: hiring and training, purchasing controls, vendor relationships, inventory pars, front- and back-of-house procedures, and the opening-readiness timeline. Then launched Cho:Tu next door, a fast-casual and off-premise concept run from Maska’s kitchen.',
@@ -263,9 +262,7 @@ const en: Dict = {
   'experience.edu.kicker': 'Education & Credentials',
   'experience.edu.heading': 'Education & Credentials',
   'experience.edu.degree': 'Bachelor of Science, International Hospitality Management & Travel',
-  'experience.edu.school': 'Glion Institute of Higher Education · Montreux & Bulle, Switzerland',
   'experience.edu.servsafe': 'ServSafe · TIPS · CPR/AED',
-  'experience.edu.languages': 'English and Spanish (fluent) · French (conversational)',
   'experience.cta.kicker': 'Work Together',
   'experience.cta.heading': 'Let\u2019s Build Something Together',
   'experience.cta.body': 'Looking for an experienced F&B operator or pre-opening GM for your next project in Miami?',
@@ -329,12 +326,11 @@ const es: Dict = {
 
   // --- home stats ---
   'home.stat.years': 'Años de Experiencia',
-  'home.stat.revenue': 'Ingresos Anuales Dirigidos',
   'home.stat.trained': 'Habitaciones de Hotel Atendidas',
   'home.stat.properties': 'Ahorro Anual en Compras',
   'home.stat.yearsLeading': 'Años Liderando',
   'home.stat.team': 'Invitados en una Gran Apertura',
-  'home.stat.offPremise': 'De las Ventas en Off-Premise',
+  'home.stat.concurrent': 'Restaurantes Dirigidos a la Vez',
 
   // --- home problem / solution / difference ---
   'home.problem.accent': 'El Problema',
@@ -394,7 +390,7 @@ const es: Dict = {
   'home.value3.title': 'Trayectoria Comprobada',
   'home.value3.body': '20 años en conceptos Michelin, hoteles de lujo e independientes',
   'home.value4.title': 'Resultados Medibles',
-  'home.value4.body': 'Más de $180K ahorrados al año en compras y 24% de las ventas sumadas con off-premise',
+  'home.value4.body': 'Más de $180K ahorrados al año centralizando compras, y una gran apertura de 1,800 invitados con un equipo construido desde cero',
 
   // --- services page ---
   'services.heroTitle': 'Formas de Trabajar Juntos',
@@ -514,7 +510,7 @@ const es: Dict = {
   'about.numbers.kicker': 'En N\u00fameros',
   'about.numbers.years': 'A\u00f1os en Hospitalidad de Miami',
   'about.numbers.projects': 'Aperturas Lideradas',
-  'about.numbers.revenue': 'Ingresos Anuales Gestionados',
+  'about.numbers.revenue': 'Habitaciones de Hotel Atendidas',
   'about.numbers.languages': 'Idiomas Hablados',
   'about.bio.kicker': 'Trayectoria',
   'about.bio.heading': 'Formado en las Trincheras de la Hospitalidad de Miami',
@@ -552,8 +548,8 @@ const es: Dict = {
   'experience.linkServices': 'Servicios de consultor\u00eda F&B \u2192',
   'experience.linkPreOpening': 'Consultor\u00eda de pre-apertura \u2192',
   'experience.r1.title': 'Gerente General | Doble Concepto',
-  'experience.r1.body': 'Dirigí a la vez Marabú, un restaurante cubano a la brasa en Brickell City Centre, y La Cervecería de Barrio en Miami Beach, con responsabilidad sobre $9.1M en ingresos anuales combinados. Construí un programa off-premise que llegó al 24% de las ventas totales sin sacrificar los márgenes del salón, con un mejor despliegue laboral y control del costo primo, y compartí personal, producción y compras entre ambos conceptos junto al equipo de cocina.',
-  'experience.r2.title': 'Gerente de A&B del Área Local, Miami',
+  'experience.r1.body': 'Dirigí a la vez Marabú Cuban Coal Fire & Grill en Brickell City Centre y La Cervecería de Barrio en Miami Beach, con responsabilidad sobre el servicio, el personal, las compras y los resultados diarios de ambos. Construí un programa off-premise sin sacrificar los márgenes del salón, con un mejor despliegue laboral y control del costo primo, y compartí personal, producción y compras entre los dos conceptos junto al equipo de cocina.',
+  'experience.r2.title': 'Gerente de Operaciones del Área Local, Miami',
   'experience.r2.body': 'Dirigí las operaciones del mercado de Miami para una empresa de servicios de alimentos que entrega servicio a la habitación desde cocinas centrales a hoteles asociados con más de 5,000 habitaciones en Downtown, Brickell y South Beach. Gestioné personal, despacho de pedidos e integraciones con los hoteles con un estándar de entrega de menos de 30 minutos, e incorporé nuevos hoteles con menús, flujos de pedidos en el sistema de gestión hotelera, alta de proveedores y capacitación en campo.',
   'experience.r3.title': 'Gerente General de Apertura',
   'experience.r3.body': 'Construí la operación de apertura del restaurante de 7,000 pies cuadrados del chef Hemant Mathur en Midtown, inaugurado en enero de 2019: contratación y capacitación, controles de compras, relaciones con proveedores, niveles de inventario, procedimientos de salón y cocina y el cronograma de preparación para la apertura. Después lancé Cho:Tu al lado, un concepto fast-casual y off-premise operado desde la cocina de Maska.',
@@ -569,9 +565,7 @@ const es: Dict = {
   'experience.edu.kicker': 'Educaci\u00f3n y Credenciales',
   'experience.edu.heading': 'Educaci\u00f3n y Credenciales',
   'experience.edu.degree': 'Licenciatura (B.S.) en Gestión Internacional de Hospitalidad y Viajes',
-  'experience.edu.school': 'Glion Institute of Higher Education · Montreux y Bulle, Suiza',
   'experience.edu.servsafe': 'ServSafe · TIPS · RCP/DEA',
-  'experience.edu.languages': 'Inglés y español (fluido) · Francés (conversacional)',
   'experience.cta.kicker': 'Trabajemos Juntos',
   'experience.cta.heading': 'Construyamos Algo Juntos',
   'experience.cta.body': '\u00bfBuscas un operador F&B con experiencia o un GM de pre-apertura para tu pr\u00f3ximo proyecto en Miami?',

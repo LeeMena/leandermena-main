@@ -46,7 +46,7 @@ export default function BlogLaborCostFull() {
 
             <ScrollReveal delay={100}>
               <p>
-                Running two restaurants and $9.1M in annual revenue in Miami taught me that labor cost
+                Running two restaurants at once in Miami taught me that labor cost
                 is won in the schedule, not in the payroll report. Here is the framework I use to
                 bring it down without layoffs and without hurting the guest experience.
               </p>

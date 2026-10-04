@@ -368,10 +368,10 @@ export default function Blueprint() {
               <span className="kicker">About the Author</span>
               <h2 style={{ marginBottom: 'var(--space-4)' }}>20 Years Opening Miami's Best</h2>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, fontSize: '0.95rem', marginBottom: 'var(--space-6)' }}>
-                Leander Mena is an F&amp;B operations consultant based in Miami, Florida. He opened the banquet department at SLS Brickell and Chef Hemant Mathur’s Maska, ran a $9.1M two-restaurant operation, and managed hotel room-service delivery across 5,000+ rooms.
+                Leander Mena is an F&amp;B operations consultant based in Miami, Florida. He opened the banquet department at SLS Brickell and Chef Hemant Mathur’s Maska, ran two restaurants at once for V&E Hospitality, and managed hotel room-service delivery across 5,000+ rooms.
               </p>
               <div style={{ display: 'flex', gap: 'var(--space-8)', marginBottom: 'var(--space-8)' }}>
-                {[{ num: '20', label: 'Years' }, { num: '3', label: 'Openings Led' }, { num: '$9.1M', label: 'Annual Revenue Led' }].map((s) => (
+                {[{ num: '20', label: 'Years' }, { num: '3', label: 'Openings Led' }, { num: '5,000+', label: 'Hotel Rooms Served' }].map((s) => (
                   <div key={s.label}>
                     <p style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--color-primary)', lineHeight: 1 }}>{s.num}</p>
                     <p style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-text-muted)' }}>{s.label}</p>
