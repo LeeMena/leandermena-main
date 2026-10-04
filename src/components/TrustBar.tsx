@@ -2,7 +2,7 @@ import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 
 const TRUST_ITEMS = [
-  { stat: '18+', label: 'Years in Miami Hospitality' },
+  { stat: '20', label: 'Years in Miami Hospitality' },
   { stat: '$12M+', label: 'Revenue Optimized' },
   { stat: '500+', label: 'Team Members Trained' },
   { stat: '40+', label: 'Properties Operated' },

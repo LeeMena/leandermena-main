@@ -371,7 +371,7 @@ export default function Blueprint() {
                 Leander Mena is an F&amp;B operations consultant based in Miami, Florida. He's opened, stabilized, and scaled restaurants, hotels, banquets, and catering operations across South Florida, from Michelin-starred concepts to large-scale luxury hotels.
               </p>
               <div style={{ display: 'flex', gap: 'var(--space-8)', marginBottom: 'var(--space-8)' }}>
-                {[{ num: '18+', label: 'Years' }, { num: '40+', label: 'Properties' }, { num: '$12M+', label: 'Revenue' }].map((s) => (
+                {[{ num: '20', label: 'Years' }, { num: '40+', label: 'Properties' }, { num: '$12M+', label: 'Revenue' }].map((s) => (
                   <div key={s.label}>
                     <p style={{ fontFamily: 'var(--font-serif)', fontSize: '2rem', color: 'var(--color-primary)', lineHeight: 1 }}>{s.num}</p>
                     <p style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-text-muted)' }}>{s.label}</p>

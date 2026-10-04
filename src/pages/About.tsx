@@ -85,7 +85,7 @@ export default function About() {
                 <span className="kicker">{t('about.numbers.kicker')}</span>
                 <div className="grid grid-cols-2 gap-6 mt-4">
                   {[
-                    { num: '18+', label: t('about.numbers.years') },
+                    { num: '20', label: t('about.numbers.years') },
                     { num: '5+', label: t('about.numbers.projects') },
                     { num: '$9.1M', label: t('about.numbers.revenue') },
                     { num: '3', label: t('about.numbers.languages') },

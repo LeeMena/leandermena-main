@@ -320,7 +320,7 @@ export default function Home() {
         <div className="container">
           <div className="home-stats-grid">
             {[
-              { value: '18+', labelKey: 'home.stat.years' },
+              { value: '20', labelKey: 'home.stat.years' },
               { value: '$12M+', labelKey: 'home.stat.revenue' },
               { value: '500+', labelKey: 'home.stat.trained' },
               { value: '40+', labelKey: 'home.stat.properties' },
@@ -485,7 +485,7 @@ export default function Home() {
               { value: '$12M+', labelKey: 'home.stat.revenue' },
               { value: '500+', labelKey: 'home.stat.team' },
               { value: '40+', labelKey: 'home.stat.properties' },
-              { value: '18+', labelKey: 'home.stat.yearsLeading' },
+              { value: '20', labelKey: 'home.stat.yearsLeading' },
             ].map((s, i) => <AnimatedStat key={s.labelKey} value={s.value} label={t(s.labelKey)} delay={i * 0.08} />)}
           </div>
         </div>

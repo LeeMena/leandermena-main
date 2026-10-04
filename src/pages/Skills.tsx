@@ -43,7 +43,7 @@ const skillData = {
     'Multi-outlet hotel operations, coordinating across F&B, events, and rooms divisions.',
   ],
   stats: [
-    { num: '18+', label: 'Years in F&B Operations' },
+    { num: '20', label: 'Years in F&B Operations' },
     { num: '5', label: 'Pre-Openings Led' },
     { num: '$9.1M', label: 'Annual Revenue Managed' },
     { num: '$1.2M+', label: 'Year-One Revenue, Maska Indian Kitchen Pre-Opening' },
