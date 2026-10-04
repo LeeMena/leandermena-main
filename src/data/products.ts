@@ -50,6 +50,28 @@ export const products: Product[] = [
     checkoutUrl: 'https://menaconsulting.gumroad.com/l/ypudd'
   },
   {
+    id: 'complete-operator-bundle',
+    title: 'Complete Operator Bundle',
+    subtitle: 'Pre-Opening Playbook + 1:1 Strategy Call',
+    description: 'The full Pre-Opening Playbook plus a 60-minute 1:1 video call with me. Work the system, then pressure-test your timeline, budget, and staffing plan with the operator who built it. You leave the call with a prioritized action list.',
+    price: 397,
+    originalPrice: 447,
+    category: 'playbook',
+    image: '/images/products/complete-operator-bundle.png',
+    features: [
+      'Everything in the Pre-Opening Playbook',
+      '60-minute 1:1 strategy call by video',
+      'Pre-call intake so no time is wasted',
+      'Timeline, budget, and staffing review',
+      'Prioritized action list',
+      'Book within 60 days of purchase'
+    ],
+    badge: 'Bundle',
+    includes: ['Playbook workbook + 25 SOPs', '60-minute video call', 'Pre-call intake', 'Instant Playbook download'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/cpvtzj'
+  },
+  {
     id: 'sop-core-collection',
     title: 'F&B SOP Core Collection',
     subtitle: '25 Standard Operating Procedures',
