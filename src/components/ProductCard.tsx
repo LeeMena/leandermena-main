@@ -91,7 +91,7 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
           <div style={{
             position: 'absolute',
             ...(showArt
-              ? { bottom: 'var(--space-3)', right: 'var(--space-3)' }
+              ? { top: 'var(--space-3)', right: 'var(--space-3)' }
               : { top: 'var(--space-3)', left: 'var(--space-3)', right: 'var(--space-3)', justifyContent: 'space-between' }),
             display: 'flex', gap: 'var(--space-2)',
           }}>
@@ -227,7 +227,7 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
         )}
         <span style={{
           position: 'absolute',
-          ...(showArt ? { bottom: 'var(--space-3)', right: 'var(--space-3)' } : { top: 'var(--space-3)', left: 'var(--space-3)' }),
+          ...(showArt ? { top: 'var(--space-3)', right: 'var(--space-3)' } : { top: 'var(--space-3)', left: 'var(--space-3)' }),
           fontSize: '0.58rem', letterSpacing: '0.15em', textTransform: 'uppercase',
           background: isAvailable ? 'var(--color-primary)' : 'rgba(255,255,255,0.10)',
           color: isAvailable ? '#fff' : 'var(--color-text-muted)',
