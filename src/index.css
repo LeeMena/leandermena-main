@@ -31,6 +31,7 @@
     /* Text - warm white, never pure */
     --color-text:             #ede9e2;
     --color-text-muted:       #8c8780;
+    --color-text-body:        #a7a49d;
     --color-text-faint:       #66625b;
     --color-text-inverse:     #080807;
 
@@ -109,6 +110,7 @@
     --color-border:           #cec9be;
     --color-text:             #16140f;
     --color-text-muted:       #625e55;
+    --color-text-body:        #504d45;
     --color-text-faint:       #736d63;
     --color-text-inverse:     #f5f3ee;
     --color-primary:          oklch(0.54 0.110 86);
@@ -529,7 +531,7 @@
   }
   .prose p {
     font-size: var(--text-base);
-    color: var(--color-text-muted);
+    color: var(--color-text-body);
     line-height: 1.85;
     margin-bottom: var(--space-5);
     max-width: 66ch;
@@ -543,7 +545,7 @@
     position: relative;
     padding-left: var(--space-5);
     font-size: var(--text-base);
-    color: var(--color-text-muted);
+    color: var(--color-text-body);
     line-height: 1.75;
     margin-bottom: var(--space-2);
     max-width: 66ch;
@@ -679,6 +681,7 @@
     --color-border:           #2c2a26;
     --color-text:             #ede9e2;
     --color-text-muted:       #8c8780;
+    --color-text-body:        #a7a49d;
     --color-text-faint:       #66625b;
     --color-text-inverse:     #080807;
     --color-primary:          oklch(0.82 0.115 92);
