@@ -33,19 +33,18 @@ export const products: Product[] = [
     subtitle: 'From Construction to Opening Night',
     description: 'The exact system I used to open Maska Indian Kitchen + Bar with a Michelin-starred chef and multiple hotel properties. A 120-day roadmap with week-by-week checklists and fillable templates. The full paid version of the free 90-Day Blueprint overview.',
     price: 197,
-    originalPrice: 297,
     category: 'playbook',
     image: '/images/products/pre-opening-playbook.png',
     features: [
-      '120-day pre-opening timeline',
-      'Vendor negotiation scripts',
-      'Team hiring & training framework',
-      'Menu development workflow',
-      'Inspection readiness checklist',
-      'Marketing launch sequence'
+      '120 dated tasks with 15 critical-path gates',
+      'Vendor negotiation scripts & email templates',
+      'Interview rubrics, hiring pipeline & training matrix',
+      'Menu drafting, costing & POS setup workflow',
+      'Permits, inspection readiness & food safety logs',
+      'Budget, P&L, scenarios & cash runway'
     ],
     badge: 'Available Now',
-    includes: ['120-day roadmap PDF', 'Editable checklists', 'Vendor contact templates', 'Vendor negotiation scripts'],
+    includes: ['26-tab Excel workbook', '120-day roadmap PDF', 'Vendor scripts (Word + PDF)', '25 SOPs (Word, PDF, EPUB)'],
     status: 'available',
     checkoutUrl: 'https://menaconsulting.gumroad.com/l/ypudd'
   },

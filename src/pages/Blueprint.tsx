@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Download, CheckCircle, Loader2, ExternalLink, ArrowRight, FileText, Clock, Star } from 'lucide-react'
 import SEO from '@/components/SEO'
 import { trackEvent } from '@/lib/analytics'
+import { testimonials, type Testimonial } from '@/data/testimonials'
 
 const WORKER_URL = 'https://blueprint-lead-capture.httpsskytabtechupdate011pagesdev.workers.dev/subscribe'
 
@@ -15,11 +16,12 @@ const chapters = [
   { num: '05', days: 'Days 76-90', title: 'Grand Opening & Beyond', items: ['Opening week staffing plan', 'Marketing & press coordination', 'Day-1 operations checklist', 'Week 1 KPI benchmarks'] },
 ]
 
-const socialProof = [
-  { quote: 'Leander\'s framework saved us from a chaotic opening. We hit 80% occupancy in week two.', name: 'Maria R.', role: 'Hotel F&B Director, Miami' },
-  { quote: 'The 90-day structure gave my team a roadmap. We opened on budget for the first time ever.', name: 'Carlos T.', role: 'Restaurant Owner, Brickell' },
-  { quote: 'I\'ve opened 6 restaurants. This is the checklist I wish I\'d had from day one.', name: 'Sophie L.', role: 'Multi-Unit Operator, Miami Beach' },
-]
+// Real client testimonials only, drawn from the curated list in data/testimonials.ts
+// (the pre-opening and on-the-floor stories fit this page best).
+const socialProof = ['4', '1', '5']
+  .map(id => testimonials.find(t => t.id === id))
+  .filter((t): t is Testimonial => Boolean(t))
+  .map(t => ({ quote: t.quote, name: t.name, role: `${t.role}, ${t.company}` }))
 
 export default function Blueprint() {
   const [form, setForm] = useState({ firstName: '', email: '', phone: '' })
@@ -324,8 +326,8 @@ export default function Blueprint() {
       <section className="section" style={{ background: 'var(--color-surface)' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ marginBottom: 'var(--space-10)' }}>
-            <span className="kicker">What Operators Say</span>
-            <h2>Used by Miami's Top Hospitality Operators</h2>
+            <span className="kicker">Client Results</span>
+            <h2>What Operators Say About Working With Leander</h2>
           </motion.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 'var(--space-6)' }}>
             {socialProof.map((t, i) => (
