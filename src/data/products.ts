@@ -31,7 +31,7 @@ export const products: Product[] = [
     id: 'pre-opening-playbook',
     title: 'Pre-Opening Playbook',
     subtitle: 'From Construction to Opening Night',
-    description: 'The exact system I used to open Maska Indian Kitchen + Bar with a Michelin-starred chef and multiple hotel properties. A 120-day roadmap with week-by-week checklists and fillable templates -- the full paid version of the free 90-Day Blueprint overview.',
+    description: 'The exact system I used to open Maska Indian Kitchen + Bar with a Michelin-starred chef and multiple hotel properties. A 120-day roadmap with week-by-week checklists and fillable templates. The full paid version of the free 90-Day Blueprint overview.',
     price: 197,
     originalPrice: 297,
     category: 'playbook',
@@ -49,6 +49,158 @@ export const products: Product[] = [
     status: 'available',
     checkoutUrl: 'https://menaconsulting.gumroad.com/l/ypudd'
   },
+  {
+    id: 'sop-core-collection',
+    title: 'F&B SOP Core Collection',
+    subtitle: '25 Standard Operating Procedures',
+    description: 'The core SOP library for restaurant and hotel F&B teams: front of house, bar, kitchen, management controls, and events. Each SOP is written to be adopted as is or edited to fit your venue.',
+    price: 97,
+    category: 'template',
+    image: '/products/sop-collection.jpg',
+    features: [
+      '25 SOPs across five departments',
+      'Front of house service standards',
+      'Bar and beverage procedures',
+      'Kitchen and food safety protocols',
+      'Manager logs and labor controls',
+      'Banquet and event execution'
+    ],
+    badge: 'Available Now',
+    includes: ['PDF', 'Editable Word file', 'EPUB for e-readers', 'Instant download'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/fsbjtn'
+  },
+  {
+    id: 'financial-model',
+    title: 'F&B Startup Financial Model',
+    subtitle: 'Budget, P&L, Scenarios & Cash Runway',
+    description: 'A ready-to-fill financial model for a new restaurant or hotel F&B outlet. Enter your assumptions once and the startup budget, monthly P&L, scenarios, and 12-month cash runway calculate automatically.',
+    price: 79,
+    category: 'toolkit',
+    image: '/products/financial-model.jpg',
+    features: [
+      'Startup budget builder',
+      'Monthly steady-state P&L',
+      'Downside, base, and upside scenarios',
+      '12-month cash runway',
+      'Built-in model check',
+      'Works in Excel, Google Sheets, and Numbers'
+    ],
+    badge: 'Available Now',
+    includes: ['Excel workbook', 'Start Here guide tab', 'Instant download'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/oxozmc'
+  },
+  {
+    id: 'kitchen-cost-control',
+    title: 'Kitchen Cost Control Toolkit',
+    subtitle: 'Recipe Costing, Inventory, Waste & Purchasing',
+    description: 'The tools I use to get food and beverage cost under control: recipe costing, inventory pars, waste tracking, vendor bid comparison, and a purchase order register, paired with the receiving and inventory SOPs.',
+    price: 67,
+    category: 'toolkit',
+    image: '/products/kitchen-cost-control.jpg',
+    features: [
+      'Recipe costing sheet',
+      'Inventory counts and pars',
+      'Waste log',
+      'Vendor bid comparison',
+      'Purchase order register',
+      'Receiving and inventory SOPs'
+    ],
+    badge: 'Available Now',
+    includes: ['Excel workbook', '2 SOPs in PDF and Word', 'EPUB for e-readers', 'Instant download'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/zdxriw'
+  },
+  {
+    id: 'labor-performance-toolkit',
+    title: 'Labor & Daily Performance Toolkit',
+    subtitle: 'Labor Plan, Daily Flash, Training & Hiring',
+    description: 'Plan labor with employer burden included, track sales, labor, and covers every day, and keep training and hiring organized. Includes the pre-shift, manager log, and labor control SOPs.',
+    price: 57,
+    category: 'toolkit',
+    image: '/products/labor-toolkit.jpg',
+    features: [
+      'Labor plan with employer burden',
+      'Daily flash report',
+      'Training matrix',
+      'Hiring pipeline tracker',
+      'Pre-shift and manager log SOPs',
+      'Labor control SOP'
+    ],
+    badge: 'Available Now',
+    includes: ['Excel workbook', '3 SOPs in PDF and Word', 'EPUB for e-readers', 'Instant download'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/gldspt'
+  },
+  {
+    id: 'food-safety-kit',
+    title: 'Food Safety & Inspection Kit',
+    subtitle: '7 Kitchen SOPs + Monitoring Logs',
+    description: 'Seven kitchen and inspection-readiness SOPs with matching food safety monitoring logs, so your team runs the same safe process every shift and is ready when the inspector walks in.',
+    price: 47,
+    category: 'template',
+    image: '/products/food-safety.jpg',
+    features: [
+      '7 kitchen and food safety SOPs',
+      'Inspection readiness procedure',
+      'Food safety parameter sheet',
+      'Monitoring logs',
+      'Editable for your venue',
+      'Verify against your local code'
+    ],
+    badge: 'Available Now',
+    includes: ['PDF', 'Editable Word file', 'Excel logs', 'EPUB for e-readers'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/ivxrbo'
+  },
+  {
+    id: 'foh-bar-standards',
+    title: 'FOH & Bar Service Standards',
+    subtitle: '10 Service SOPs for Restaurant & Hotel Teams',
+    description: 'Six front of house and four bar SOPs that define how your team greets, serves, and closes out every guest. Use them to train new hires and hold the standard on busy nights.',
+    price: 47,
+    category: 'template',
+    image: '/products/foh-bar-standards.jpg',
+    features: [
+      '6 front of house SOPs',
+      '4 bar and beverage SOPs',
+      'Step-by-step service sequence',
+      'Training-ready format',
+      'Restaurant and hotel ready',
+      'Editable for your venue'
+    ],
+    badge: 'Available Now',
+    includes: ['PDF', 'Editable Word file', 'EPUB for e-readers', 'Instant download'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/bwpke'
+  },
+  {
+    id: 'banquet-events-kit',
+    title: 'Banquet & Events Operations Kit',
+    subtitle: '4 Event SOPs + Guest Recovery Log',
+    description: 'Four SOPs that take a banquet or private event from BEO to final reconciliation, plus a guest recovery log for documenting service issues, what was offered, and the follow-up.',
+    price: 47,
+    category: 'playbook',
+    image: '/products/banquet-blueprint.jpg',
+    features: [
+      '4 banquet and event SOPs',
+      'BEO to reconciliation workflow',
+      'Event setup and execution',
+      'Guest recovery log',
+      'Hotel and restaurant ready',
+      'Editable for your venue'
+    ],
+    badge: 'Available Now',
+    includes: ['PDF', 'Editable Word file', 'Excel log', 'EPUB for e-readers'],
+    status: 'available',
+    checkoutUrl: 'https://menaconsulting.gumroad.com/l/jnecos'
+  }
+];
+
+// Products the catalog no longer displays. Kept here so the copy is not lost
+// if any is built later; not exported into `products`, so nothing renders.
+export const archivedProducts: Product[] = [
   {
     id: 'sop-master-collection',
     title: 'F&B SOP Master Collection',
@@ -107,12 +259,7 @@ export const products: Product[] = [
     ],
     includes: ['Excel + Google Sheets', 'Video tutorials', 'ROI calculator', 'Email support'],
     status: 'waitlist'
-  }
-];
-
-// Products the catalog no longer displays. Kept here so the copy is not lost
-// if either is built later; not exported into `products`, so nothing renders.
-export const archivedProducts: Product[] = [
+  },
   {
     id: 'revenue-recovery-system',
     title: 'Revenue Recovery System',

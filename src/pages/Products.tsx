@@ -44,7 +44,7 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Catalog: all six products */}
+      {/* Catalog: every product in src/data/products.ts */}
       <section className="section">
         <div className="container">
           <h2 className="sr-only">{t('products.kicker')}</h2>
