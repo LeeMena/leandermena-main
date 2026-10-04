@@ -191,6 +191,11 @@
     -webkit-hyphens: auto;
     hyphenate-limit-chars: 7 3 3;
   }
+  /* Phone columns hold ~6 words per line, where justification opens wide
+     gaps between words; align left there, as print typesetters do. */
+  @media (max-width: 639px) {
+    p { text-align: left; }
+  }
 
   /* Intentionally centered or right-aligned layouts keep their alignment.
      Inline styles and Tailwind utilities on the <p> itself still win. */
