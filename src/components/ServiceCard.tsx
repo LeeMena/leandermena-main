@@ -114,7 +114,7 @@ export default function ServiceCard({ service, index = 0, detailed = false }: Se
       <p className="text-sm text-luxury-muted mb-4">{service.subtitle}</p>
       <p className="text-sm text-luxury-muted leading-relaxed mb-6 line-clamp-3">{service.description}</p>
       <div className="flex items-center justify-between pt-4 border-t border-luxury-border">
-        <span className="font-serif text-lg text-gold">{service.price}<span className="text-xs text-luxury-muted font-sans">/week</span></span>
+        <span className="font-serif text-lg text-gold">{service.price}<span className="text-xs text-luxury-muted font-sans">{service.priceUnit}</span></span>
         <Link to="/book" className="text-[11px] tracking-[0.1em] uppercase text-gold hover:text-gold-light transition-colors flex items-center gap-1">
           Learn More <ArrowRight className="w-3 h-3" />
         </Link>

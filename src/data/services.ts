@@ -4,6 +4,8 @@ export interface Service {
   subtitle: string;
   description: string;
   price: string;
+  // Short unit shown after the price on compact cards, e.g. '/month'.
+  priceUnit: string;
   priceNote: string;
   features: string[];
   deliverables: string[];
@@ -20,6 +22,7 @@ export const services: Service[] = [
     subtitle: 'Monthly Retainer · On-Site + Remote',
     description: 'Senior operational leadership on a consulting basis: typically 2-4 days per week on-site, remainder remote. I step in as your interim Director of Operations or F&B Director, bringing 20 years of proven systems to independent restaurants, hotel F&B programs, and multi-unit groups nationwide.',
     price: 'Starting at $7,000',
+    priceUnit: '/month',
     priceNote: '/ month · 3-month minimum · $22,000/mo for full multi-unit oversight',
     features: [
       'On-site presence 2-4 days per week',
@@ -52,7 +55,8 @@ export const services: Service[] = [
     subtitle: 'Fixed-Scope Project · Construction to Opening Night',
     description: 'End-to-end pre-opening management for new restaurant and hotel F&B concepts anywhere in the U.S. From the first construction walkthrough to training your opening team and executing a flawless launch, delivered as a structured fixed-scope engagement.',
     price: 'From $35,000',
-    priceNote: 'fixed-scope project · 3-6 month engagement · complex hotel F&B up to $75,000',
+    priceUnit: '/project',
+    priceNote: 'fixed-scope project · typically 3-4 months · complex hotel F&B up to $75,000',
     features: [
       '120-day pre-opening roadmap creation',
       'Team recruitment and hiring support',
@@ -84,6 +88,7 @@ export const services: Service[] = [
     subtitle: 'Diagnostic + 90-Day Plan · Underperforming Assets',
     description: 'Diagnostic-intensive engagement for restaurants and hotels missing their targets. Starts with a structured on-site diagnostic, then moves into a clear 90-day turnaround plan with weekly accountability, available nationwide.',
     price: 'From $12,000',
+    priceUnit: '/project',
     priceNote: 'diagnostic + 90-day plan · multi-unit recovery engagements quoted separately',
     features: [
       'Full operations diagnostic (5-7 days on-site)',
@@ -116,6 +121,7 @@ export const services: Service[] = [
     subtitle: 'Keynotes, Workshops & Leadership Development',
     description: 'High-impact speaking engagements and customized training programs for hospitality teams, industry conferences, and corporate leadership retreats.',
     price: '$3,500',
+    priceUnit: '/session',
     priceNote: 'per session · travel additional',
     features: [
       'Customized keynote or workshop content',
