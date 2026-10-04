@@ -182,6 +182,27 @@
     max-width: 70ch;
   }
 
+  /* Body copy is justified like a printed document. Hyphenation (driven by
+     <html lang>, which the language toggle keeps in sync) keeps word spacing
+     even so justified lines do not open up gaps on narrow screens. */
+  p {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphenate-limit-chars: 7 3 3;
+  }
+
+  /* Intentionally centered or right-aligned layouts keep their alignment.
+     Inline styles and Tailwind utilities on the <p> itself still win. */
+  .text-center p,
+  .text-right p,
+  [style*="text-align: center"] p,
+  [style*="text-align:center"] p,
+  [style*="text-align: right"] p,
+  [style*="text-align:right"] p {
+    text-align: inherit;
+  }
+
   ::selection {
     background: oklch(from var(--color-primary) l c h / 0.18);
     color: var(--color-text);
