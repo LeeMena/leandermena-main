@@ -41,7 +41,7 @@ export default function Profile() {
     <>
       <SEO
         title="Professional Profile | Leander Mena"
-        description="Full professional profile for Leander Mena - 18 years in Miami F&B and hospitality operations."
+        description="Full professional profile for Leander Mena - 20 years in Miami F&B and hospitality operations."
         path="/profile"
         noindex
       />
@@ -53,7 +53,7 @@ export default function Profile() {
             Leander Mena
           </h1>
           <p className="text-[color:var(--color-text-muted)] text-lg max-w-[54ch]">
-            18 years of F&B and hospitality operations leadership across Miami.
+            20 years of F&B and hospitality operations leadership across Miami.
           </p>
         </div>
       </section>
@@ -74,7 +74,7 @@ export default function Profile() {
               <h2 className="font-display text-2xl font-bold text-[color:var(--color-text)] mb-4">About</h2>
               <div className="flex flex-col gap-4 text-[color:var(--color-text-muted)] max-w-[68ch]">
                 <p>
-                  With more than 18 years in hospitality and food-and-beverage operations, I have
+                  With 20 years in hospitality and food-and-beverage operations, I have
                   led teams across restaurants, hotels, banquets, and catering throughout Miami.
                   My experience spans pre-openings, day-to-day operations, and restructuring under pressure.
                 </p>

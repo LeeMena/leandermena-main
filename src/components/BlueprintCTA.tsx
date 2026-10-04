@@ -150,7 +150,7 @@ export default function BlueprintCTA() {
                     />
                     <div>
                       <p style={{ fontSize: '0.72rem', color: '#ffffff', fontWeight: 600 }}>Leander Mena</p>
-                      <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>18+ Years F&amp;B Operations</p>
+                      <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.5)' }}>20 Years F&amp;B Operations</p>
                     </div>
                   </div>
                 </div>

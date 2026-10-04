@@ -118,7 +118,7 @@ export const posts: InsightPost[] = [
   {
     slug: 'miami-pre-opening-playbook',
     title: 'Miami Pre-Opening Playbook',
-    excerpt: 'The sequence, timeline, and decision points for opening a restaurant in Miami, based on 18 years and 40+ properties.',
+    excerpt: 'The sequence, timeline, and decision points for opening a restaurant in Miami, based on 20 years and 40+ properties.',
     category: 'Pre-Opening',
     date: 'April 15, 2026',
     readTime: '9 min read',

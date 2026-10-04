@@ -10,7 +10,7 @@ export default function MiamiRestaurantConsultant() {
     <>
       <SEO
         title="Miami Restaurant & Hotel F&B Consultant | Leander Mena"
-        description="A Miami-based F&B operations consultant with 18+ years opening and running the city's top restaurants, hotels, and banquet programs. On-site consulting across South Florida."
+        description="A Miami-based F&B operations consultant with 20 years opening and running the city's top restaurants, hotels, and banquet programs. On-site consulting across South Florida."
         path="/miami-restaurant-consultant"
         schemaType="miami"
       />
@@ -28,7 +28,7 @@ export default function MiamiRestaurantConsultant() {
             Miami Restaurant &amp; Hotel F&amp;B Consulting
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            18+ years opening and running Miami's top restaurants, hotels, and banquet programs. On-site consulting across South Florida.
+            20 years opening and running Miami's top restaurants, hotels, and banquet programs. On-site consulting across South Florida.
           </p>
         </div>
       </section>

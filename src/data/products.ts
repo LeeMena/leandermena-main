@@ -226,7 +226,7 @@ export const archivedProducts: Product[] = [
     id: 'sop-master-collection',
     title: 'F&B SOP Master Collection',
     subtitle: '50+ Standard Operating Procedures',
-    description: 'The complete SOP library I have built and refined across 18+ years in Miami hospitality. Covering opening/closing procedures, service standards, food safety protocols, and team training modules.',
+    description: 'The complete SOP library I have built and refined across 20 years in Miami hospitality. Covering opening/closing procedures, service standards, food safety protocols, and team training modules.',
     price: 297,
     originalPrice: 497,
     category: 'template',

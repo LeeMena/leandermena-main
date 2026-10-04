@@ -257,7 +257,7 @@ export default function Blueprint() {
                     <img src="/assets/Profile-Headshot.jpg" alt="Leander Mena" width="36" height="36" style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(184,160,128,0.4)' }} />
                     <div>
                       <p style={{ fontSize: '0.7rem', color: '#fff', fontWeight: 600 }}>Leander Mena</p>
-                      <p style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.5)' }}>18+ Years F&amp;B Operations</p>
+                      <p style={{ fontSize: '0.62rem', color: 'rgba(255,255,255,0.5)' }}>20 Years F&amp;B Operations</p>
                     </div>
                   </div>
                 </div>
@@ -366,7 +366,7 @@ export default function Blueprint() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--space-12)', alignItems: 'center' }}>
             <motion.div initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
               <span className="kicker">About the Author</span>
-              <h2 style={{ marginBottom: 'var(--space-4)' }}>18+ Years Opening Miami's Best</h2>
+              <h2 style={{ marginBottom: 'var(--space-4)' }}>20 Years Opening Miami's Best</h2>
               <p style={{ color: 'var(--color-text-muted)', lineHeight: 1.75, fontSize: '0.95rem', marginBottom: 'var(--space-6)' }}>
                 Leander Mena is an F&amp;B operations consultant based in Miami, Florida. He's opened, stabilized, and scaled restaurants, hotels, banquets, and catering operations across South Florida - from Michelin-starred concepts to large-scale luxury hotels.
               </p>

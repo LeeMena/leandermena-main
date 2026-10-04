@@ -18,7 +18,7 @@ export const services: Service[] = [
     id: 'fractional-leadership',
     title: 'F&B Operations Consulting',
     subtitle: 'Monthly Retainer · On-Site + Remote',
-    description: 'Senior operational leadership on a consulting basis: typically 2-4 days per week on-site, remainder remote. I step in as your interim Director of Operations or F&B Director, bringing 18+ years of proven systems to independent restaurants, hotel F&B programs, and multi-unit groups nationwide.',
+    description: 'Senior operational leadership on a consulting basis: typically 2-4 days per week on-site, remainder remote. I step in as your interim Director of Operations or F&B Director, bringing 20 years of proven systems to independent restaurants, hotel F&B programs, and multi-unit groups nationwide.',
     price: 'Starting at $7,000',
     priceNote: '/ month · 3-month minimum · $22,000/mo for full multi-unit oversight',
     features: [

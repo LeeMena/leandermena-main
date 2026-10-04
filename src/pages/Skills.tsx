@@ -51,7 +51,7 @@ const skillData = {
   faq: [
     {
       q: 'Do you work with restaurants outside Miami?',
-      a: 'My network and market knowledge are deepest in Miami and South Florida, built from 18+ years operating here. That said, I take pre-opening and consulting engagements in other markets when the project is the right fit. Reach out and let’s talk through the specifics.',
+      a: 'My network and market knowledge are deepest in Miami and South Florida, built from 20 years operating here. That said, I take pre-opening and consulting engagements in other markets when the project is the right fit. Reach out and let’s talk through the specifics.',
     },
     {
       q: 'How do you typically engage with a new client?',
@@ -92,7 +92,7 @@ export default function Skills() {
             Hospitality &amp; F&amp;B Operations Skills | Miami, FL
           </h1>
           <p className="text-[#b8b8b8] text-base max-w-[52ch] leading-relaxed">
-            Pre-opening leadership, cost control, team development, and operational systems built from 18+ years in Miami F&amp;B.
+            Pre-opening leadership, cost control, team development, and operational systems built from 20 years in Miami F&amp;B.
           </p>
         </div>
       </section>

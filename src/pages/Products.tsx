@@ -13,7 +13,7 @@ export default function Products() {
     <>
       <SEO
         title="F&B Operations Playbooks, SOPs & Toolkits | Leander Mena"
-        description="Battle-tested pre-opening playbooks, SOP collections, labor and menu-engineering toolkits distilled from 18+ years running top hospitality venues. Instant download."
+        description="Battle-tested pre-opening playbooks, SOP collections, labor and menu-engineering toolkits distilled from 20 years running top hospitality venues. Instant download."
         path="/products"
       />
 

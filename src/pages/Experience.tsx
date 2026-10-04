@@ -62,7 +62,7 @@ export default function Experience() {
     <>
       <SEO
         title="Experience & Track Record | Leander Mena, F&B Operations"
-        description="18+ years, 40+ properties, $12M+ in revenue optimized, 500+ team members trained across Michelin concepts, SLS Hotels, and Accor properties."
+        description="20 years, 40+ properties, $12M+ in revenue optimized, 500+ team members trained across Michelin concepts, SLS Hotels, and Accor properties."
         path="/experience"
         schemaType="profile"
       />

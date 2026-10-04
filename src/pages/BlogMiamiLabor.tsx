@@ -45,7 +45,7 @@ export default function BlogMiamiLabor() {
 
             <ScrollReveal delay={100}>
               <p>
-                I have hired and trained teams across Miami for 18 years, from independent concepts
+                I have hired and trained teams across Miami for 20 years, from independent concepts
                 to luxury hotel outlets. Here is what works in this market, what does not, and
                 what has changed in the last 24 months.
               </p>

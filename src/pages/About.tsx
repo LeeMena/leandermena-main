@@ -42,7 +42,7 @@ export default function About() {
   return (
     <>
       <SEO
-        title="About Leander Mena | 18+ Years in F&B Operations"
+        title="About Leander Mena | 20 Years in F&B Operations"
         description="From Miami's most demanding restaurants and luxury hotels to a nationally available consultant. Meet Leander Mena - pre-opening, turnaround, and F&B operations specialist."
         path="/about"
         schemaType="about"
