@@ -16,7 +16,7 @@ const en: Dict = {
 
   // --- home hero ---
   'home.heroEyebrow': 'F&B Operations Consulting · U.S. Nationwide',
-  'home.heroSub': 'Twenty years forged in Miami\'s most demanding kitchens, hotels, and banquet halls. Now embedded with operators nationwide - on-site when it matters, remote in between.',
+  'home.heroSub': 'Twenty years forged in Miami\'s most demanding kitchens, hotels, and banquet halls. Now embedded with operators nationwide: on-site when it matters, remote in between.',
   'home.ctaPrimary': 'Book a Discovery Call',
   'home.ctaSecondary': 'Explore Digital Products',
   'home.heroLocation': 'Based in Miami · US Nationwide · Select International Engagements',
@@ -132,7 +132,7 @@ const en: Dict = {
   'preOpening.intro1.strong': 'restaurant and hotel pre-opening consultant',
   'preOpening.intro1.post': ' with hands-on GM experience launching independent restaurants and hotel F&B programs, covering every phase from construction coordination through soft open and full launch. Engagements run on-site and remote, anywhere in the U.S.',
   'preOpening.intro2': 'Pre-opening engagements cover the full scope of launch infrastructure: staffing plans and hiring roadmaps, vendor sourcing and contract negotiation, SOP development, FOH and BOH training programs, POS configuration, cost control frameworks, and opening-week contingency planning. Every system is built to be owned and operated by your team after the engagement ends.',
-  'preOpening.intro3': 'With 5 pre-openings led across Miami, including a Michelin-starred chef partnership and a luxury hotel F&B program, the playbook is refined and repeatable.',
+  'preOpening.intro3': 'With 5 pre-openings led across Miami, including a partnership with Michelin-starred Chef Hemant Mathur and a luxury hotel F&B program, the playbook is refined and repeatable.',
   'preOpening.scope.kicker': 'Scope',
   'preOpening.scope.heading': 'What Pre-Opening Covers',
   'preOpening.scope.c1.title': 'Staffing & Hiring Plans',
@@ -437,7 +437,7 @@ const es: Dict = {
   'preOpening.intro1.strong': 'consultor de pre-apertura de restaurantes y hoteles',
   'preOpening.intro1.post': ' con experiencia práctica como GM lanzando restaurantes independientes y programas de A&B hoteleros, cubriendo cada fase desde la coordinación de obra hasta el soft opening y el lanzamiento completo. Los proyectos se ejecutan de forma presencial y remota, en cualquier parte de EE. UU.',
   'preOpening.intro2': 'Los proyectos de pre-apertura cubren toda la infraestructura de lanzamiento: planes de personal y rutas de contratación, búsqueda de proveedores y negociación de contratos, desarrollo de SOPs, programas de capacitación para salón y cocina, configuración de POS, marcos de control de costos y planes de contingencia para la semana de apertura. Cada sistema se construye para que tu equipo lo opere cuando el proyecto termina.',
-  'preOpening.intro3': 'Con 5 pre-aperturas lideradas en Miami, incluida una alianza con un chef con estrella Michelin y un programa de A&B de hotel de lujo, el manual está probado y es repetible.',
+  'preOpening.intro3': 'Con 5 pre-aperturas lideradas en Miami, incluida una alianza con el chef Hemant Mathur, con estrella Michelin, y un programa de A&B de hotel de lujo, el manual está probado y es repetible.',
   'preOpening.scope.kicker': 'Alcance',
   'preOpening.scope.heading': 'Qué Cubre la Pre-Apertura',
   'preOpening.scope.c1.title': 'Planes de Personal y Contratación',

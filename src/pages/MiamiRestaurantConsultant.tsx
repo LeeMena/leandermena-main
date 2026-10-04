@@ -60,7 +60,7 @@ export default function MiamiRestaurantConsultant() {
             <h2 className="font-display text-[clamp(1.35rem,2.5vw,1.75rem)] font-bold mb-6">Miami Properties &amp; Projects</h2>
             <div className="grid-3">
               {[
-                { venue: 'Maska Indian Kitchen + Bar', role: 'Pre-Opening GM, Michelin-starred chef partnership' },
+                { venue: 'Maska Indian Kitchen + Bar', role: 'Pre-Opening GM, with Michelin-starred Chef Hemant Mathur' },
                 { venue: 'SLS Brickell (SBE)', role: 'Director of Banquets & Events, pre-opening' },
                 { venue: 'Marabu + La Cervecería de Barrio', role: 'Dual-concept GM, $9.1M annual revenue' },
                 { venue: 'Plomo Tequila & Taco Bar', role: 'Pre-Opening GM, 300-cover peak days' },

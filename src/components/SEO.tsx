@@ -177,7 +177,7 @@ function buildSchema(schemaType: SchemaType, url: string, article?: ArticleMeta,
         {
           '@context': 'https://schema.org',
           ...PERSON_BASE,
-          description: '20 years opening, leading, and growing restaurants, hotels, banquets, and catering operations - forged in Miami, now working with operators nationwide.',
+          description: '20 years opening, leading, and growing restaurants, hotels, banquets, and catering operations, forged in Miami and now working with operators nationwide.',
         },
         {
           '@context': 'https://schema.org',

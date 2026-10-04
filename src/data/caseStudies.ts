@@ -21,8 +21,8 @@ export const caseStudies: CaseStudy[] = [
     id: '1',
     client: 'Maska Indian Kitchen + Bar',
     industry: 'Fine Dining / Michelin Concept',
-    title: 'Building a Michelin-Starred Restaurant from Ground Zero',
-    challenge: 'Open an upscale Indian restaurant concept led by a Michelin-starred chef in Miami\'s competitive dining market. The project required building an entirely new team, establishing vendor relationships, creating service standards, and executing a flawless opening - all within a compressed timeline.',
+    title: "Opening a Michelin-Starred Chef's Restaurant from Ground Zero",
+    challenge: 'Open an upscale Indian restaurant concept led by Chef Hemant Mathur, America\'s first Michelin-starred Indian chef, in Miami\'s competitive dining market. The project required building an entirely new team, establishing vendor relationships, creating service standards, and executing a flawless opening - all within a compressed timeline.',
     approach: 'Implemented a comprehensive 120-day pre-opening system: recruited and trained 35+ team members across FOH and BOH, established 22 vendor partnerships, developed 50+ SOPs, and executed a phased soft opening leading to the grand opening. Created custom training modules for Indian cuisine service standards.',
     results: [
       { metric: '35+', label: 'Team members hired & trained' },

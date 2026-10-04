@@ -93,12 +93,26 @@ export default function Book() {
             <p style={{ fontSize: '1rem', color: 'var(--color-text-muted)', lineHeight: 1.75, marginBottom: 'var(--space-8)', maxWidth: '56ch', marginInline: 'auto' }}>
               Use the calendar below to find a slot. I keep open hours on weekdays and limited weekend slots for operators who cannot step away during service hours.
             </p>
-            <div
-              className="calendly-inline-widget"
-              data-url="https://calendly.com/leandermena/discovery"
-              style={{ minWidth: '320px', height: '700px' }}
-            />
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async />
+            {/* Direct iframe embed: a <script> tag rendered by React never executes,
+                so the Calendly widget.js inline embed stayed blank. */}
+            <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', background: '#ffffff' }}>
+              <iframe
+                src="https://calendly.com/leandermena/30min?hide_gdpr_banner=1&primary_color=a88a3c"
+                width="100%"
+                height="700"
+                frameBorder="0"
+                loading="lazy"
+                title="Book a 30-minute discovery call with Leander Mena"
+                style={{ display: 'block', minWidth: '320px' }}
+              />
+            </div>
+            <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', marginTop: 'var(--space-4)' }}>
+              Calendar not loading?{' '}
+              <a href="https://calendly.com/leandermena/30min" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-primary)' }}>
+                Open the booking page in Calendly
+              </a>
+              {' '}or email <a href="mailto:info@leandermena.com" style={{ color: 'var(--color-primary)' }}>info@leandermena.com</a>.
+            </p>
           </div>
         </div>
       </section>

@@ -6,7 +6,7 @@ const roles = [
   {
     meta: 'Opening General Manager',
     title: 'Maska Indian Kitchen + Bar - Miami',
-    body: 'Built the opening team, vendor relationships, service standards, and operational systems for a Miami concept led by a Michelin-starred chef.',
+    body: 'Built the opening team, vendor relationships, service standards, and operational systems for a Miami concept led by Michelin-starred Chef Hemant Mathur.',
     skills: ['Pre-Opening', 'Team Building', 'SOP Development', 'Vendor Management'],
   },
   {

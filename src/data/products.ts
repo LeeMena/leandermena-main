@@ -31,7 +31,7 @@ export const products: Product[] = [
     id: 'pre-opening-playbook',
     title: 'Pre-Opening Playbook',
     subtitle: 'From Construction to Opening Night',
-    description: 'The exact system I used to open Maska Indian Kitchen + Bar with a Michelin-starred chef and multiple hotel properties. A 120-day roadmap with week-by-week checklists and fillable templates. The full paid version of the free 90-Day Blueprint overview.',
+    description: 'The exact system I used to open Maska Indian Kitchen + Bar with Michelin-starred Chef Hemant Mathur, plus multiple hotel properties. A 120-day roadmap with week-by-week checklists and fillable templates. The full paid version of the free 90-Day Blueprint overview.',
     price: 197,
     category: 'playbook',
     image: '/images/products/pre-opening-playbook.png',

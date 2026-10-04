@@ -81,7 +81,7 @@ export default function PreOpening() {
             <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">{t('preOpening.track.heading')}</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
               {[
-                { name: 'Maska Indian Kitchen + Bar', note: 'Michelin-starred chef partnership · Midtown Miami · $1.2M+ year one' },
+                { name: 'Maska Indian Kitchen + Bar', note: 'With Michelin-starred Chef Hemant Mathur · Midtown Miami · $1.2M+ year one' },
                 { name: 'Plomo Tequila & Taco Bar', note: '300-cover peak days · Miami' },
                 { name: 'La Cervecería de Barrio', note: 'Launch GM · V&E Hospitality · Miami' },
                 { name: 'SLS Brickell Hotel Miami', note: 'Director of Banquets & Events pre-opening · SBE' },
