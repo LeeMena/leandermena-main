@@ -1,3 +1,4 @@
+import { useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { ShoppingCart, Star, Check, Download, ExternalLink } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -16,6 +17,14 @@ const categoryLabel: Record<Product['category'], string> = {
   toolkit: 'Toolkit',
 }
 
+// Discount pill: dark glass with gold type so it reads over cover art.
+const saveBadge: CSSProperties = {
+  fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase',
+  background: 'rgba(10,10,10,0.78)', color: 'var(--color-primary)',
+  border: '1px solid var(--color-primary)',
+  padding: '2px 10px', borderRadius: 'var(--radius-full)', fontWeight: 600,
+}
+
 export default function ProductCard({ product, index = 0, detailed = false }: ProductCardProps) {
   // Only render social proof that actually exists; never fake ratings.
   const hasRealRating =
@@ -24,6 +33,10 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
   // A product is buyable only if it is marked available AND has a live link.
   // Anything else renders an honest waitlist state.
   const isAvailable = product.status === 'available' && Boolean(product.checkoutUrl)
+
+  // Cover art when the product has an image; falls back to the icon tile if it fails to load.
+  const [artFailed, setArtFailed] = useState(false)
+  const showArt = Boolean(product.image) && !artFailed
 
   if (detailed) {
     return (
@@ -43,7 +56,7 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
       >
         {/* Image / cover area */}
         <div
-          className="product-cover"
+          className={showArt ? 'product-cover product-cover--art' : 'product-cover'}
           style={{
             background: 'linear-gradient(135deg, #0f0e0c 0%, #1c1a16 100%)',
             position: 'relative',
@@ -52,33 +65,48 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
             justifyContent: 'center',
           }}
         >
-          <div
-            style={{
-              width: '64px', height: '64px',
-              borderRadius: '50%',
-              background: 'rgba(184,160,128,0.12)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}
-          >
-            <Download size={24} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
-          </div>
-          <span style={{
-            position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
-            fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase',
-            background: isAvailable ? 'var(--color-primary)' : 'rgba(255,255,255,0.10)',
-            color: isAvailable ? '#fff' : 'var(--color-text-muted)',
-            border: isAvailable ? 'none' : '1px solid var(--color-border)',
-            padding: '3px 10px', borderRadius: 'var(--radius-full)',
-            fontWeight: 600,
-          }}>{isAvailable ? (product.badge ?? 'Available Now') : 'In Development'}</span>
-          {isAvailable && product.originalPrice && (
-            <span style={{
-              position: 'absolute', top: 'var(--space-3)', right: 'var(--space-3)',
-              fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase',
-              background: 'rgba(161,44,123,0.85)', color: '#fff',
-              padding: '3px 10px', borderRadius: 'var(--radius-full)',
-            }}>Save ${product.originalPrice - product.price}</span>
+          {showArt ? (
+            <img
+              src={product.image}
+              alt={`${product.title} cover`}
+              width={1280}
+              height={720}
+              loading="lazy"
+              decoding="async"
+              onError={() => setArtFailed(true)}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ) : (
+            <div
+              style={{
+                width: '64px', height: '64px',
+                borderRadius: '50%',
+                background: 'rgba(184,160,128,0.12)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}
+            >
+              <Download size={24} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
+            </div>
           )}
+          <div style={{
+            position: 'absolute',
+            ...(showArt
+              ? { bottom: 'var(--space-3)', right: 'var(--space-3)' }
+              : { top: 'var(--space-3)', left: 'var(--space-3)', right: 'var(--space-3)', justifyContent: 'space-between' }),
+            display: 'flex', gap: 'var(--space-2)',
+          }}>
+            <span style={{
+              fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase',
+              background: isAvailable ? 'var(--color-primary)' : 'rgba(255,255,255,0.10)',
+              color: isAvailable ? '#fff' : 'var(--color-text-muted)',
+              border: isAvailable ? 'none' : '1px solid var(--color-border)',
+              padding: '3px 10px', borderRadius: 'var(--radius-full)',
+              fontWeight: 600,
+            }}>{isAvailable ? (product.badge ?? 'Available Now') : 'In Development'}</span>
+            {isAvailable && product.originalPrice && (
+              <span style={saveBadge}>Save ${product.originalPrice - product.price}</span>
+            )}
+          </div>
         </div>
 
         <div style={{ padding: 'var(--space-6)', flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -165,7 +193,7 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
       }}
     >
       <div
-        className="product-cover"
+        className={showArt ? 'product-cover product-cover--art' : 'product-cover'}
         style={{
           background: 'linear-gradient(135deg, #0f0e0c 0%, #1c1a16 100%)',
           position: 'relative',
@@ -174,18 +202,32 @@ export default function ProductCard({ product, index = 0, detailed = false }: Pr
           justifyContent: 'center',
         }}
       >
-        <div
-          style={{
-            width: '52px', height: '52px',
-            borderRadius: '50%',
-            background: 'rgba(184,160,128,0.10)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}
-        >
-          <Download size={20} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
-        </div>
+        {showArt ? (
+          <img
+            src={product.image}
+            alt={`${product.title} cover`}
+            width={1280}
+            height={720}
+            loading="lazy"
+            decoding="async"
+            onError={() => setArtFailed(true)}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <div
+            style={{
+              width: '52px', height: '52px',
+              borderRadius: '50%',
+              background: 'rgba(184,160,128,0.10)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}
+          >
+            <Download size={20} style={{ color: 'var(--color-primary)', opacity: 0.7 }} />
+          </div>
+        )}
         <span style={{
-          position: 'absolute', top: 'var(--space-3)', left: 'var(--space-3)',
+          position: 'absolute',
+          ...(showArt ? { bottom: 'var(--space-3)', right: 'var(--space-3)' } : { top: 'var(--space-3)', left: 'var(--space-3)' }),
           fontSize: '0.58rem', letterSpacing: '0.15em', textTransform: 'uppercase',
           background: isAvailable ? 'var(--color-primary)' : 'rgba(255,255,255,0.10)',
           color: isAvailable ? '#fff' : 'var(--color-text-muted)',

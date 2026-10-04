@@ -295,6 +295,11 @@
       aspect-ratio: auto;
       height: 96px;
     }
+    /* Real cover art is the product's face, so it keeps its full 16:9 */
+    .product-cover.product-cover--art {
+      aspect-ratio: 16 / 9;
+      height: auto;
+    }
   }
 
   .kicker {

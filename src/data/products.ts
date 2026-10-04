@@ -35,7 +35,7 @@ export const products: Product[] = [
     price: 197,
     originalPrice: 297,
     category: 'playbook',
-    image: '/products/pre-opening-playbook.jpg',
+    image: '/images/products/pre-opening-playbook.png',
     features: [
       '120-day pre-opening timeline',
       'Vendor negotiation scripts',
@@ -56,7 +56,7 @@ export const products: Product[] = [
     description: 'The core SOP library for restaurant and hotel F&B teams: front of house, bar, kitchen, management controls, and events. Each SOP is written to be adopted as is or edited to fit your venue.',
     price: 97,
     category: 'template',
-    image: '/products/sop-collection.jpg',
+    image: '/images/products/sop-core-collection.png',
     features: [
       '25 SOPs across five departments',
       'Front of house service standards',
@@ -77,7 +77,7 @@ export const products: Product[] = [
     description: 'A ready-to-fill financial model for a new restaurant or hotel F&B outlet. Enter your assumptions once and the startup budget, monthly P&L, scenarios, and 12-month cash runway calculate automatically.',
     price: 79,
     category: 'toolkit',
-    image: '/products/financial-model.jpg',
+    image: '/images/products/financial-model.png',
     features: [
       'Startup budget builder',
       'Monthly steady-state P&L',
@@ -98,7 +98,7 @@ export const products: Product[] = [
     description: 'The tools I use to get food and beverage cost under control: recipe costing, inventory pars, waste tracking, vendor bid comparison, and a purchase order register, paired with the receiving and inventory SOPs.',
     price: 67,
     category: 'toolkit',
-    image: '/products/kitchen-cost-control.jpg',
+    image: '/images/products/kitchen-cost-control.png',
     features: [
       'Recipe costing sheet',
       'Inventory counts and pars',
@@ -119,7 +119,7 @@ export const products: Product[] = [
     description: 'Plan labor with employer burden included, track sales, labor, and covers every day, and keep training and hiring organized. Includes the pre-shift, manager log, and labor control SOPs.',
     price: 57,
     category: 'toolkit',
-    image: '/products/labor-toolkit.jpg',
+    image: '/images/products/labor-performance-toolkit.png',
     features: [
       'Labor plan with employer burden',
       'Daily flash report',
@@ -140,7 +140,7 @@ export const products: Product[] = [
     description: 'Seven kitchen and inspection-readiness SOPs with matching food safety monitoring logs, so your team runs the same safe process every shift and is ready when the inspector walks in.',
     price: 47,
     category: 'template',
-    image: '/products/food-safety.jpg',
+    image: '/images/products/food-safety-kit.png',
     features: [
       '7 kitchen and food safety SOPs',
       'Inspection readiness procedure',
@@ -161,7 +161,7 @@ export const products: Product[] = [
     description: 'Six front of house and four bar SOPs that define how your team greets, serves, and closes out every guest. Use them to train new hires and hold the standard on busy nights.',
     price: 47,
     category: 'template',
-    image: '/products/foh-bar-standards.jpg',
+    image: '/images/products/foh-bar-standards.png',
     features: [
       '6 front of house SOPs',
       '4 bar and beverage SOPs',
@@ -182,7 +182,7 @@ export const products: Product[] = [
     description: 'Four SOPs that take a banquet or private event from BEO to final reconciliation, plus a guest recovery log for documenting service issues, what was offered, and the follow-up.',
     price: 47,
     category: 'playbook',
-    image: '/products/banquet-blueprint.jpg',
+    image: '/images/products/banquet-events-kit.png',
     features: [
       '4 banquet and event SOPs',
       'BEO to reconciliation workflow',
