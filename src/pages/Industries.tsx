@@ -70,6 +70,8 @@ export default function Industries() {
         </div>
       </section>
 
+      <BrandStrip />
+
       {/* Industry grid */}
       <section className="section">
         <div className="container">
