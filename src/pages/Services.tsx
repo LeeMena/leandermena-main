@@ -4,6 +4,14 @@ import { getT } from '@/i18n/copy'
 import { Link } from 'react-router-dom'
 import { services } from '@/data/services'
 import { heroImages } from '@/data/heroImages'
+import BrandStrip from '@/components/BrandStrip'
+
+const GUIDES = [
+  { file: 'pre-opening-consulting-guide.pdf', title: 'Pre-Opening Consulting', key: 'services.guides.preOpening' },
+  { file: 'operations-consulting-guide.pdf', title: 'F&B Operations Consulting', key: 'services.guides.operations' },
+  { file: 'operations-recovery-guide.pdf', title: 'Operations Recovery', key: 'services.guides.recovery' },
+  { file: 'banquet-events-guide.pdf', title: 'Banquet and Events Build-Out', key: 'services.guides.banquet' },
+]
 
 export default function Services() {
   const { lang } = useLanguage()
@@ -121,6 +129,36 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      {/* Downloadable service guides */}
+      <section id="guides" className="section" style={{ background: 'var(--color-surface)', borderTop: '1px solid var(--color-border)' }}>
+        <div className="container">
+          <div style={{ maxWidth: 'var(--content-narrow)', marginBottom: '2rem' }}>
+            <span className="kicker">{t('services.guides.kicker')}</span>
+            <h2 className="font-display text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4">{t('services.guides.heading')}</h2>
+            <p style={{ fontSize: '0.975rem', color: 'var(--color-text-muted)', lineHeight: 1.8 }}>{t('services.guides.body')}</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: '1rem' }}>
+            {GUIDES.map((g) => (
+              <a
+                key={g.file}
+                href={`/downloads/${g.file}`}
+                target="_blank"
+                rel="noopener"
+                className="card"
+                style={{ padding: '1.25rem 1.5rem', textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+              >
+                <span style={{ fontSize: '0.7rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>PDF</span>
+                <strong style={{ fontSize: '1rem', fontWeight: 700 }}>{g.title}</strong>
+                <span style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', lineHeight: 1.6, flex: 1 }}>{t(g.key)}</span>
+                <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-primary)' }}>{t('services.guides.download')} &rarr;</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <BrandStrip />
 
       {/* Playbook cross-sell (tier 1 bridge) */}
       <section className="section" style={{ borderTop: '1px solid var(--color-border)' }}>

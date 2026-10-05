@@ -9,6 +9,7 @@ import ServiceCard from '@/components/ServiceCard'
 import TestimonialCard from '@/components/TestimonialCard'
 import ProductCard from '@/components/ProductCard'
 import CTABanner from '@/components/CTABanner'
+import BrandStrip from '@/components/BrandStrip'
 import { services } from '@/data/services'
 import { approvedTestimonials } from '@/data/testimonials'
 import { products } from '@/data/products'
@@ -330,6 +331,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <BrandStrip />
 
       <section style={{ background: '#0a0905', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="container">

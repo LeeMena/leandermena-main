@@ -124,6 +124,16 @@ const en: Dict = {
   'services.cta.heading': 'Ready to start?',
   'services.cta.body': 'Tell me what you\u2019re working with. I\u2019ll tell you honestly whether I can help.',
   'services.cta.button': 'Start the Conversation',
+  'services.guides.kicker': 'Service Guides',
+  'services.guides.heading': 'Download the Details',
+  'services.guides.body': 'Each guide lays out the method, what is included, what I look for first, engagement options, and the investment. Free, no email required.',
+  'services.guides.download': 'Download PDF',
+  'services.guides.preOpening': 'From construction walkthrough to opening night.',
+  'services.guides.operations': 'Senior operational leadership, on-site and remote.',
+  'services.guides.recovery': 'Diagnostic plus a 90-day turnaround plan.',
+  'services.guides.banquet': 'Launch or reset a hotel banquet department.',
+  'brands.label': 'Where I Have Led Operations',
+  'brands.note': 'Leadership roles held at these properties and groups. Names shown for experience, not endorsement.',
 
   // --- pre-opening page ---
   'preOpening.heroTitle': 'Pre-Opening Consulting That Gets You Open On Time, On Budget',
@@ -427,6 +437,16 @@ const es: Dict = {
   'services.cta.heading': '¿Listo para empezar?',
   'services.cta.body': 'Cuéntame con qué estás trabajando. Te diré con honestidad si puedo ayudarte.',
   'services.cta.button': 'Inicia la Conversación',
+  'services.guides.kicker': 'Guías de Servicio',
+  'services.guides.heading': 'Descarga los Detalles',
+  'services.guides.body': 'Cada guía explica el método, lo que incluye, lo primero que reviso, las opciones de trabajo y la inversión. Gratis, sin registro. (En inglés.)',
+  'services.guides.download': 'Descargar PDF',
+  'services.guides.preOpening': 'Desde la visita de obra hasta la noche de apertura.',
+  'services.guides.operations': 'Liderazgo operativo senior, en sitio y remoto.',
+  'services.guides.recovery': 'Diagnóstico más un plan de recuperación de 90 días.',
+  'services.guides.banquet': 'Lanza o reorganiza el departamento de banquetes de un hotel.',
+  'brands.label': 'Donde He Dirigido Operaciones',
+  'brands.note': 'Cargos de liderazgo en estas propiedades y grupos. Los nombres se muestran como experiencia, no como respaldo.',
 
   // --- pre-opening page ---
   'preOpening.heroTitle': 'Consultoría de Pre-Apertura para Abrir a Tiempo y Dentro del Presupuesto',
