@@ -88,6 +88,25 @@ export default function Footer() {
             </p>
             <p style={{
               fontFamily: 'var(--font-body)',
+              fontSize: '0.6875rem',
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              color: 'var(--color-primary)',
+              marginTop: 'calc(-1 * var(--space-3))',
+              marginBottom: 'var(--space-1)',
+            }}>
+              Groundwork Hospitality Advisory
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '0.75rem',
+              color: 'var(--color-text-muted)',
+              marginBottom: 'var(--space-4)',
+            }}>
+              Food &amp; Beverage Operations &nbsp;|&nbsp; <em>Strong foundations. Consistent execution.</em>
+            </p>
+            <p style={{
+              fontFamily: 'var(--font-body)',
               fontSize: '0.8125rem',
               color: 'var(--color-text-muted)',
               lineHeight: 1.65,

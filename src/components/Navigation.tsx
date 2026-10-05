@@ -265,7 +265,8 @@ export default function Navigation({ onBookCall }: Props) {
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
               }}>
-                Hospitality&nbsp;&middot;&nbsp;F&amp;B
+                <span className="brand-sub-short">Hospitality&nbsp;&middot;&nbsp;F&amp;B</span>
+                <span className="brand-sub-full">Groundwork Hospitality Advisory</span>
               </span>
             </span>
           </Link>
@@ -545,6 +546,13 @@ export default function Navigation({ onBookCall }: Props) {
       </>, document.body)}
 
       <style>{`
+        /* Firm name where the header has room; short subtitle on phones and
+           when the desktop nav links are crowding the logo. */
+        .brand-sub-full { display: none; }
+        @media (min-width: 560px) and (max-width: 1239px), (min-width: 1480px) {
+          .brand-sub-short { display: none; }
+          .brand-sub-full { display: inline; }
+        }
         @media (min-width: 1240px) {
           .md-nav-desktop { display: flex !important; align-items: center; gap: clamp(0.65rem, 1.1vw, 1.15rem); }
           #nav-cta-desktop { display: inline-flex !important; }
