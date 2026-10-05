@@ -2,6 +2,7 @@ import SEO from '@/components/SEO'
 import ScrollReveal from '@/components/ScrollReveal'
 import { Link } from 'react-router-dom'
 import { heroImages } from '@/data/heroImages'
+import BrandStrip from '@/components/BrandStrip'
 
 const industries = [
   {
