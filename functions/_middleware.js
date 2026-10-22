@@ -64,10 +64,21 @@ const escapeHtml = (s) =>
 // Crawlers that skip JS (Bing's SEO checks among them) see an empty
 // <div id="root"> and report "H1 tag missing". Give them the page's
 // heading and summary in the shell; createRoot() replaces it on mount.
+// meta.body is pre-escaped HTML built from the page's own data files by
+// scripts/generate-route-meta.mjs (services, products, contact).
+const SITE_NAV =
+  '<nav><ul>' +
+  [['/', 'Home'], ['/services', 'Services'], ['/pre-opening', 'Pre-Opening'], ['/products', 'Playbooks'],
+   ['/case-studies', 'Case Studies'], ['/about', 'About'], ['/insights', 'Insights'], ['/contact', 'Contact']]
+    .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`).join('') +
+  '</ul></nav>'
+
 function fallbackBody(meta) {
   const h1 = meta.h1 || meta.title.split(' | ')[0]
   return `<main style="max-width:60ch;margin:4rem auto;padding:0 1rem">` +
-    `<h1>${escapeHtml(h1)}</h1><p>${escapeHtml(meta.description)}</p></main>`
+    `<h1>${escapeHtml(h1)}</h1><p>${escapeHtml(meta.description)}</p>${meta.body || ''}` +
+    `<footer><p>Groundwork Hospitality Advisory, led by Leander Mena. Food &amp; Beverage Operations. ` +
+    `<a href="mailto:info@leandermena.com">info@leandermena.com</a></p>${SITE_NAV}</footer></main>`
 }
 
 function rewriteHead(shellResponse, path, meta, status) {
