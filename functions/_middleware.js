@@ -56,6 +56,19 @@ const LEGACY_REDIRECTS = {
 const setContent = (text) => ({ element: (el) => el.setInnerContent(text) })
 const setAttr = (name, value) => ({ element: (el) => el.setAttribute(name, value) })
 const appendHtml = (html) => ({ element: (el) => el.append(html, { html: true }) })
+const setHtml = (html) => ({ element: (el) => el.setInnerContent(html, { html: true }) })
+
+const escapeHtml = (s) =>
+  String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+
+// Crawlers that skip JS (Bing's SEO checks among them) see an empty
+// <div id="root"> and report "H1 tag missing". Give them the page's
+// heading and summary in the shell; createRoot() replaces it on mount.
+function fallbackBody(meta) {
+  const h1 = meta.h1 || meta.title.split(' | ')[0]
+  return `<main style="max-width:60ch;margin:4rem auto;padding:0 1rem">` +
+    `<h1>${escapeHtml(h1)}</h1><p>${escapeHtml(meta.description)}</p></main>`
+}
 
 function rewriteHead(shellResponse, path, meta, status) {
   const url = `${BASE_URL}${path}`
@@ -69,6 +82,7 @@ function rewriteHead(shellResponse, path, meta, status) {
     .on('meta[property="og:type"]', setAttr('content', meta.ogType || 'website'))
     .on('meta[name="twitter:title"]', setAttr('content', meta.title))
     .on('meta[name="twitter:description"]', setAttr('content', meta.description))
+    .on('div#root', setHtml(fallbackBody(meta)))
 
   // Custom share image (per-article): override the default og/twitter
   // image and its alt text. Width/height stay 1200x630 - the generator
